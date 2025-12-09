@@ -1,0 +1,859 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="CasUsers">
+    <service:presents rdf:resource="#CasUsers_Profile"/>
+    <service:describedBy rdf:resource="#CasUsers_Composite"/>
+    <service:supports rdf:resource="#CasUsers_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="CasUsers_Profile">
+    <profile:serviceName>CasUsers</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#CasUsers"/>
+    <profile:hasProcess rdf:resource="#CasUsers_0_CreateAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_privileges__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_gvisible__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_emaillevel__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_email__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasUsers_0_CreateAccount_Atomic_output_Body__http___Users.Cas.jhu.edu_long"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreateAccount(?wsid, ?privileges, ?gvisible, ?password, ?emaillevel, ?name, ?userid, ?email)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?userid, ?long)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_1_GetWebServiceId_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_1_GetWebServiceId_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_1_GetWebServiceId_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasUsers_1_GetWebServiceId_Atomic_output_Body__http___Users.Cas.jhu.edu_long"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasDataType(password, "http://www.w3.org/2001/XMLSchema#string") ^ hasDataType(userid, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasDataType(Body, "http://Users.Cas.jhu.edu#long")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_2_ForgotPassword_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_2_ForgotPassword_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_2_ForgotPassword_Atomic_input_id__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasUsers_2_ForgotPassword_Atomic_output_Body__http___Users.Cas.jhu.edu_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ForgotPassword(?x) ^ hasInput(?x, ?wsid) ^ hasInput(?x, ?id)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, Body) ^ hasOutput(?x, ?password) ^ hasOutput(?x, ?email) ^ hasOutput(?x, ?notification)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_3_FindUserDataSet_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_3_FindUserDataSet_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_3_FindUserDataSet_Atomic_input_predicate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasUsers_3_FindUserDataSet_Atomic_output_Body__http___Users.Cas.jhu.edu_DataSet"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wsid(?x), predicate(?y)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?z) ^ hasDataSet(?z, ?x) ^ hasPredicate(?z, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_4_FindUser_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_4_FindUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_4_FindUser_Atomic_input_predicate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasUsers_4_FindUser_Atomic_output_Body__http___Users.Cas.jhu.edu_ArrayOfUser"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wsid(?x), predicate(?y)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?z) ^ ArrayOfUser(?z) ^ hasUser(?z, ?x, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_5_GetUniqueUserId_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_5_GetUniqueUserId_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasUsers_5_GetUniqueUserId_Atomic_output_Body__http___Users.Cas.jhu.edu_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">userid(?x) ^ string(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ string(?y) ^ unique(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_6_HasMyDB_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_6_HasMyDB_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasUsers_6_HasMyDB_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wsid(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?x) ^ swrlb:datatype(?x, "http://Users.Cas.jhu.edu#boolean")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_7_CreateAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_privileges__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_gvisible__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_emaillevel__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_email__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasUsers_7_CreateAccount_Atomic_output_Body__http___Users.Cas.jhu.edu_long"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreateAccount(?wsid, ?privileges, ?gvisible, ?password, ?emaillevel, ?name, ?userid, ?email)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?userid, ?long)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_8_GetWebServiceId_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_8_GetWebServiceId_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_8_GetWebServiceId_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasUsers_8_GetWebServiceId_Atomic_output_Body__http___Users.Cas.jhu.edu_long"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">password(?password) ^ userid(?userid)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?WebServiceId) ^ long(?WebServiceId) ^ hasId(?WebServiceId) ^ hasPassword(?WebServiceId, ?password) ^ hasUserId(?WebServiceId, ?userid)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_9_ForgotPassword_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_9_ForgotPassword_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_9_ForgotPassword_Atomic_input_id__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasUsers_9_ForgotPassword_Atomic_output_Body__http___Users.Cas.jhu.edu_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(wsid, "http://www.w3.org/2001/XMLSchema#string") ^ hasInputParameter(id, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter("http://Users.Cas.jhu.edu#string", Body) ^ hasOperationPerformed("ForgotPassword")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_10_FindUserDataSet_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_10_FindUserDataSet_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_10_FindUserDataSet_Atomic_input_predicate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasUsers_10_FindUserDataSet_Atomic_output_Body__http___Users.Cas.jhu.edu_DataSet"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wsid(?x), predicate(?y)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?z) ^ hasDataSet(?z, ?x) ^ hasPredicate(?z, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_11_FindUser_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_11_FindUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasUsers_11_FindUser_Atomic_input_predicate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasUsers_11_FindUser_Atomic_output_Body__http___Users.Cas.jhu.edu_ArrayOfUser"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(wsid, "http://www.w3.org/2001/XMLSchema#string") ^ hasInputParameter(predicate, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter("http://Users.Cas.jhu.edu#ArrayOfUser", Body)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_12_GetUniqueUserId_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_12_GetUniqueUserId_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasUsers_12_GetUniqueUserId_Atomic_output_Body__http___Users.Cas.jhu.edu_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">userid(?x) ^ string(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ string(?y) ^ unique(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_13_HasMyDB_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_13_HasMyDB_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasUsers_13_HasMyDB_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wsid(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ swrlb:boolean(?y) ^ hasMyDB(?x) ^ hasDB(?x, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_14_CreateAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_14_CreateAccount_Atomic_input_parameters__http___Users.Cas.jhu.edu_CreateAccount"/>
+    <profile:hasOutput rdf:resource="#CasUsers_14_CreateAccount_Atomic_output_parameters__http___Users.Cas.jhu.edu_CreateAccountResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_15_GetWebServiceId_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_15_GetWebServiceId_Atomic_input_parameters__http___Users.Cas.jhu.edu_GetWebServiceId"/>
+    <profile:hasOutput rdf:resource="#CasUsers_15_GetWebServiceId_Atomic_output_parameters__http___Users.Cas.jhu.edu_GetWebServiceIdResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetWebServiceId(?x) ^ hasNamespace(?x, "http://Users.Cas.jhu.edu")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetWebServiceIdResponse(?y) ^ hasNamespace(?y, "http://Users.Cas.jhu.edu") ^ hasOutput(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_16_ForgotPassword_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_16_ForgotPassword_Atomic_input_parameters__http___Users.Cas.jhu.edu_ForgotPassword"/>
+    <profile:hasOutput rdf:resource="#CasUsers_16_ForgotPassword_Atomic_output_parameters__http___Users.Cas.jhu.edu_ForgotPasswordResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ForgotPassword(?x) ^ hasPermission(?x, http://Users.Cas.jhu.edu/ForgotPasswordPermission)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ForgotPasswordResponse(?y) ^ hasPermission(?y, http://Users.Cas.jhu.edu/ForgotPasswordResponsePermission)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_17_UpdateAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_17_UpdateAccount_Atomic_input_parameters__http___Users.Cas.jhu.edu_UpdateAccount"/>
+    <profile:hasOutput rdf:resource="#CasUsers_17_UpdateAccount_Atomic_output_parameters__http___Users.Cas.jhu.edu_UpdateAccountResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateAccount(?x) ^ hasPermission(?x, "update_account")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateAccountResponse(?y) ^ hasPermission(?y, "view_account") ^ hasPermission(?y, "update_account")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_18_FindUserDataSet_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_18_FindUserDataSet_Atomic_input_parameters__http___Users.Cas.jhu.edu_FindUserDataSet"/>
+    <profile:hasOutput rdf:resource="#CasUsers_18_FindUserDataSet_Atomic_output_parameters__http___Users.Cas.jhu.edu_FindUserDataSetResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?input rdf:type &lt;http://Users.Cas.jhu.edu/FindUserDataSet&gt;)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?output rdf:type &lt;http://Users.Cas.jhu.edu/FindUserDataSetResponse&gt;)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_19_FindUser_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_19_FindUser_Atomic_input_parameters__http___Users.Cas.jhu.edu_FindUser"/>
+    <profile:hasOutput rdf:resource="#CasUsers_19_FindUser_Atomic_output_parameters__http___Users.Cas.jhu.edu_FindUserResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindUser(?x) ^ hasPermission(?x, "read")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindUserResponse(?x) ^ hasPermission(?x, "read")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_20_GetUniqueUserId_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_20_GetUniqueUserId_Atomic_input_parameters__http___Users.Cas.jhu.edu_GetUniqueUserId"/>
+    <profile:hasOutput rdf:resource="#CasUsers_20_GetUniqueUserId_Atomic_output_parameters__http___Users.Cas.jhu.edu_GetUniqueUserIdResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?input rdf:type &lt;http://Users.Cas.jhu.edu/GetUniqueUserId&gt;)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?output rdf:type &lt;http://Users.Cas.jhu.edu/GetUniqueUserIdResponse&gt;)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_21_UploadDataSet_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_21_UploadDataSet_Atomic_input_parameters__http___Users.Cas.jhu.edu_UploadDataSet"/>
+    <profile:hasOutput rdf:resource="#CasUsers_21_UploadDataSet_Atomic_output_parameters__http___Users.Cas.jhu.edu_UploadDataSetResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UploadDataSet(?x) ^ hasParameters(?x, http://Users.Cas.jhu.edu:UploadDataSet)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UploadDataSetResponse(?y) ^ hasParameters(?y, http://Users.Cas.jhu.edu:UploadDataSetResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasUsers_22_HasMyDB_Atomic"/>
+    <profile:hasInput rdf:resource="#CasUsers_22_HasMyDB_Atomic_input_parameters__http___Users.Cas.jhu.edu_HasMyDB"/>
+    <profile:hasOutput rdf:resource="#CasUsers_22_HasMyDB_Atomic_output_parameters__http___Users.Cas.jhu.edu_HasMyDBResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HasMyDB(?x) ^ swrlb:equal(?x, &lt;http://Users.Cas.jhu.edu&gt;HasMyDB)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HasMyDBResponse(?x) ^ swrlb:equal(?x, &lt;http://Users.Cas.jhu.edu&gt;HasMyDBResponse)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="CasUsers_Composite">
+    <process:composedOf rdf:resource="#CasUsers_0_CreateAccount_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_1_GetWebServiceId_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_2_ForgotPassword_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_3_FindUserDataSet_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_4_FindUser_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_5_GetUniqueUserId_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_6_HasMyDB_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_7_CreateAccount_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_8_GetWebServiceId_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_9_ForgotPassword_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_10_FindUserDataSet_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_11_FindUser_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_12_GetUniqueUserId_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_13_HasMyDB_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_14_CreateAccount_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_15_GetWebServiceId_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_16_ForgotPassword_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_17_UpdateAccount_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_18_FindUserDataSet_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_19_FindUser_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_20_GetUniqueUserId_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_21_UploadDataSet_Atomic"/>
+    <process:composedOf rdf:resource="#CasUsers_22_HasMyDB_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="CasUsers_0_CreateAccount_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_0_CreateAccount_Atomic_input_privileges__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>privileges:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_0_CreateAccount_Atomic_input_gvisible__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>gvisible:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_0_CreateAccount_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_0_CreateAccount_Atomic_input_emaillevel__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>emaillevel:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_0_CreateAccount_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>name:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_0_CreateAccount_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_0_CreateAccount_Atomic_input_email__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>email:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_0_CreateAccount_Atomic_output_Body__http___Users.Cas.jhu.edu_long">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}long</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_1_GetWebServiceId_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_1_GetWebServiceId_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_1_GetWebServiceId_Atomic_output_Body__http___Users.Cas.jhu.edu_long">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}long</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_2_ForgotPassword_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_2_ForgotPassword_Atomic_input_id__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>id:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_2_ForgotPassword_Atomic_output_Body__http___Users.Cas.jhu.edu_string">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_3_FindUserDataSet_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_3_FindUserDataSet_Atomic_input_predicate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>predicate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_3_FindUserDataSet_Atomic_output_Body__http___Users.Cas.jhu.edu_DataSet">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_4_FindUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_4_FindUser_Atomic_input_predicate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>predicate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_4_FindUser_Atomic_output_Body__http___Users.Cas.jhu.edu_ArrayOfUser">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}ArrayOfUser</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_5_GetUniqueUserId_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_5_GetUniqueUserId_Atomic_output_Body__http___Users.Cas.jhu.edu_string">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_6_HasMyDB_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_6_HasMyDB_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_7_CreateAccount_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_7_CreateAccount_Atomic_input_privileges__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>privileges:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_7_CreateAccount_Atomic_input_gvisible__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>gvisible:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_7_CreateAccount_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_7_CreateAccount_Atomic_input_emaillevel__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>emaillevel:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_7_CreateAccount_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>name:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_7_CreateAccount_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_7_CreateAccount_Atomic_input_email__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>email:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_7_CreateAccount_Atomic_output_Body__http___Users.Cas.jhu.edu_long">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}long</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_8_GetWebServiceId_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_8_GetWebServiceId_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_8_GetWebServiceId_Atomic_output_Body__http___Users.Cas.jhu.edu_long">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}long</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_9_ForgotPassword_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_9_ForgotPassword_Atomic_input_id__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>id:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_9_ForgotPassword_Atomic_output_Body__http___Users.Cas.jhu.edu_string">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_10_FindUserDataSet_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_10_FindUserDataSet_Atomic_input_predicate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>predicate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_10_FindUserDataSet_Atomic_output_Body__http___Users.Cas.jhu.edu_DataSet">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_11_FindUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasUsers_11_FindUser_Atomic_input_predicate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>predicate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_11_FindUser_Atomic_output_Body__http___Users.Cas.jhu.edu_ArrayOfUser">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}ArrayOfUser</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_12_GetUniqueUserId_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_12_GetUniqueUserId_Atomic_output_Body__http___Users.Cas.jhu.edu_string">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_13_HasMyDB_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_13_HasMyDB_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_14_CreateAccount_Atomic_input_parameters__http___Users.Cas.jhu.edu_CreateAccount">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}CreateAccount</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_14_CreateAccount_Atomic_output_parameters__http___Users.Cas.jhu.edu_CreateAccountResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}CreateAccountResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_15_GetWebServiceId_Atomic_input_parameters__http___Users.Cas.jhu.edu_GetWebServiceId">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}GetWebServiceId</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_15_GetWebServiceId_Atomic_output_parameters__http___Users.Cas.jhu.edu_GetWebServiceIdResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}GetWebServiceIdResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_16_ForgotPassword_Atomic_input_parameters__http___Users.Cas.jhu.edu_ForgotPassword">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}ForgotPassword</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_16_ForgotPassword_Atomic_output_parameters__http___Users.Cas.jhu.edu_ForgotPasswordResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}ForgotPasswordResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_17_UpdateAccount_Atomic_input_parameters__http___Users.Cas.jhu.edu_UpdateAccount">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}UpdateAccount</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_17_UpdateAccount_Atomic_output_parameters__http___Users.Cas.jhu.edu_UpdateAccountResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}UpdateAccountResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_18_FindUserDataSet_Atomic_input_parameters__http___Users.Cas.jhu.edu_FindUserDataSet">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}FindUserDataSet</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_18_FindUserDataSet_Atomic_output_parameters__http___Users.Cas.jhu.edu_FindUserDataSetResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}FindUserDataSetResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_19_FindUser_Atomic_input_parameters__http___Users.Cas.jhu.edu_FindUser">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}FindUser</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_19_FindUser_Atomic_output_parameters__http___Users.Cas.jhu.edu_FindUserResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}FindUserResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_20_GetUniqueUserId_Atomic_input_parameters__http___Users.Cas.jhu.edu_GetUniqueUserId">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}GetUniqueUserId</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_20_GetUniqueUserId_Atomic_output_parameters__http___Users.Cas.jhu.edu_GetUniqueUserIdResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}GetUniqueUserIdResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_21_UploadDataSet_Atomic_input_parameters__http___Users.Cas.jhu.edu_UploadDataSet">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}UploadDataSet</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_21_UploadDataSet_Atomic_output_parameters__http___Users.Cas.jhu.edu_UploadDataSetResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}UploadDataSetResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasUsers_22_HasMyDB_Atomic_input_parameters__http___Users.Cas.jhu.edu_HasMyDB">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}HasMyDB</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasUsers_22_HasMyDB_Atomic_output_parameters__http___Users.Cas.jhu.edu_HasMyDBResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}HasMyDBResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="CasUsers_0_CreateAccount_Atomic">
+    <process:hasName>CreateAccount</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_privileges__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_gvisible__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_emaillevel__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_0_CreateAccount_Atomic_input_email__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasUsers_0_CreateAccount_Atomic_output_Body__http___Users.Cas.jhu.edu_long"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreateAccount(?wsid, ?privileges, ?gvisible, ?password, ?emaillevel, ?name, ?userid, ?email)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?userid, ?long)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_1_GetWebServiceId_Atomic">
+    <process:hasName>GetWebServiceId</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_1_GetWebServiceId_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_1_GetWebServiceId_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasUsers_1_GetWebServiceId_Atomic_output_Body__http___Users.Cas.jhu.edu_long"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasDataType(password, "http://www.w3.org/2001/XMLSchema#string") ^ hasDataType(userid, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasDataType(Body, "http://Users.Cas.jhu.edu#long")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_2_ForgotPassword_Atomic">
+    <process:hasName>ForgotPassword</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_2_ForgotPassword_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_2_ForgotPassword_Atomic_input_id__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasUsers_2_ForgotPassword_Atomic_output_Body__http___Users.Cas.jhu.edu_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ForgotPassword(?x) ^ hasInput(?x, ?wsid) ^ hasInput(?x, ?id)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, Body) ^ hasOutput(?x, ?password) ^ hasOutput(?x, ?email) ^ hasOutput(?x, ?notification)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_3_FindUserDataSet_Atomic">
+    <process:hasName>FindUserDataSet</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_3_FindUserDataSet_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_3_FindUserDataSet_Atomic_input_predicate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasUsers_3_FindUserDataSet_Atomic_output_Body__http___Users.Cas.jhu.edu_DataSet"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wsid(?x), predicate(?y)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?z) ^ hasDataSet(?z, ?x) ^ hasPredicate(?z, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_4_FindUser_Atomic">
+    <process:hasName>FindUser</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_4_FindUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_4_FindUser_Atomic_input_predicate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasUsers_4_FindUser_Atomic_output_Body__http___Users.Cas.jhu.edu_ArrayOfUser"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wsid(?x), predicate(?y)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?z) ^ ArrayOfUser(?z) ^ hasUser(?z, ?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_5_GetUniqueUserId_Atomic">
+    <process:hasName>GetUniqueUserId</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_5_GetUniqueUserId_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasUsers_5_GetUniqueUserId_Atomic_output_Body__http___Users.Cas.jhu.edu_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">userid(?x) ^ string(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ string(?y) ^ unique(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_6_HasMyDB_Atomic">
+    <process:hasName>HasMyDB</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_6_HasMyDB_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasUsers_6_HasMyDB_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wsid(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?x) ^ swrlb:datatype(?x, "http://Users.Cas.jhu.edu#boolean")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_7_CreateAccount_Atomic">
+    <process:hasName>CreateAccount</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_privileges__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_gvisible__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_emaillevel__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_7_CreateAccount_Atomic_input_email__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasUsers_7_CreateAccount_Atomic_output_Body__http___Users.Cas.jhu.edu_long"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreateAccount(?wsid, ?privileges, ?gvisible, ?password, ?emaillevel, ?name, ?userid, ?email)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?userid, ?long)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_8_GetWebServiceId_Atomic">
+    <process:hasName>GetWebServiceId</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_8_GetWebServiceId_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_8_GetWebServiceId_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasUsers_8_GetWebServiceId_Atomic_output_Body__http___Users.Cas.jhu.edu_long"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">password(?password) ^ userid(?userid)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?WebServiceId) ^ long(?WebServiceId) ^ hasId(?WebServiceId) ^ hasPassword(?WebServiceId, ?password) ^ hasUserId(?WebServiceId, ?userid)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_9_ForgotPassword_Atomic">
+    <process:hasName>ForgotPassword</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_9_ForgotPassword_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_9_ForgotPassword_Atomic_input_id__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasUsers_9_ForgotPassword_Atomic_output_Body__http___Users.Cas.jhu.edu_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(wsid, "http://www.w3.org/2001/XMLSchema#string") ^ hasInputParameter(id, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter("http://Users.Cas.jhu.edu#string", Body) ^ hasOperationPerformed("ForgotPassword")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_10_FindUserDataSet_Atomic">
+    <process:hasName>FindUserDataSet</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_10_FindUserDataSet_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_10_FindUserDataSet_Atomic_input_predicate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasUsers_10_FindUserDataSet_Atomic_output_Body__http___Users.Cas.jhu.edu_DataSet"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wsid(?x), predicate(?y)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?z) ^ hasDataSet(?z, ?x) ^ hasPredicate(?z, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_11_FindUser_Atomic">
+    <process:hasName>FindUser</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_11_FindUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasUsers_11_FindUser_Atomic_input_predicate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasUsers_11_FindUser_Atomic_output_Body__http___Users.Cas.jhu.edu_ArrayOfUser"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(wsid, "http://www.w3.org/2001/XMLSchema#string") ^ hasInputParameter(predicate, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter("http://Users.Cas.jhu.edu#ArrayOfUser", Body)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_12_GetUniqueUserId_Atomic">
+    <process:hasName>GetUniqueUserId</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_12_GetUniqueUserId_Atomic_input_userid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasUsers_12_GetUniqueUserId_Atomic_output_Body__http___Users.Cas.jhu.edu_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">userid(?x) ^ string(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ string(?y) ^ unique(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_13_HasMyDB_Atomic">
+    <process:hasName>HasMyDB</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_13_HasMyDB_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasUsers_13_HasMyDB_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wsid(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ swrlb:boolean(?y) ^ hasMyDB(?x) ^ hasDB(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_14_CreateAccount_Atomic">
+    <process:hasName>CreateAccount</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_14_CreateAccount_Atomic_input_parameters__http___Users.Cas.jhu.edu_CreateAccount"/>
+    <process:hasOutput rdf:resource="#CasUsers_14_CreateAccount_Atomic_output_parameters__http___Users.Cas.jhu.edu_CreateAccountResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_15_GetWebServiceId_Atomic">
+    <process:hasName>GetWebServiceId</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_15_GetWebServiceId_Atomic_input_parameters__http___Users.Cas.jhu.edu_GetWebServiceId"/>
+    <process:hasOutput rdf:resource="#CasUsers_15_GetWebServiceId_Atomic_output_parameters__http___Users.Cas.jhu.edu_GetWebServiceIdResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetWebServiceId(?x) ^ hasNamespace(?x, "http://Users.Cas.jhu.edu")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetWebServiceIdResponse(?y) ^ hasNamespace(?y, "http://Users.Cas.jhu.edu") ^ hasOutput(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_16_ForgotPassword_Atomic">
+    <process:hasName>ForgotPassword</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_16_ForgotPassword_Atomic_input_parameters__http___Users.Cas.jhu.edu_ForgotPassword"/>
+    <process:hasOutput rdf:resource="#CasUsers_16_ForgotPassword_Atomic_output_parameters__http___Users.Cas.jhu.edu_ForgotPasswordResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ForgotPassword(?x) ^ hasPermission(?x, http://Users.Cas.jhu.edu/ForgotPasswordPermission)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ForgotPasswordResponse(?y) ^ hasPermission(?y, http://Users.Cas.jhu.edu/ForgotPasswordResponsePermission)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_17_UpdateAccount_Atomic">
+    <process:hasName>UpdateAccount</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_17_UpdateAccount_Atomic_input_parameters__http___Users.Cas.jhu.edu_UpdateAccount"/>
+    <process:hasOutput rdf:resource="#CasUsers_17_UpdateAccount_Atomic_output_parameters__http___Users.Cas.jhu.edu_UpdateAccountResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateAccount(?x) ^ hasPermission(?x, "update_account")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateAccountResponse(?y) ^ hasPermission(?y, "view_account") ^ hasPermission(?y, "update_account")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_18_FindUserDataSet_Atomic">
+    <process:hasName>FindUserDataSet</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_18_FindUserDataSet_Atomic_input_parameters__http___Users.Cas.jhu.edu_FindUserDataSet"/>
+    <process:hasOutput rdf:resource="#CasUsers_18_FindUserDataSet_Atomic_output_parameters__http___Users.Cas.jhu.edu_FindUserDataSetResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?input rdf:type &lt;http://Users.Cas.jhu.edu/FindUserDataSet&gt;)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?output rdf:type &lt;http://Users.Cas.jhu.edu/FindUserDataSetResponse&gt;)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_19_FindUser_Atomic">
+    <process:hasName>FindUser</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_19_FindUser_Atomic_input_parameters__http___Users.Cas.jhu.edu_FindUser"/>
+    <process:hasOutput rdf:resource="#CasUsers_19_FindUser_Atomic_output_parameters__http___Users.Cas.jhu.edu_FindUserResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindUser(?x) ^ hasPermission(?x, "read")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindUserResponse(?x) ^ hasPermission(?x, "read")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_20_GetUniqueUserId_Atomic">
+    <process:hasName>GetUniqueUserId</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_20_GetUniqueUserId_Atomic_input_parameters__http___Users.Cas.jhu.edu_GetUniqueUserId"/>
+    <process:hasOutput rdf:resource="#CasUsers_20_GetUniqueUserId_Atomic_output_parameters__http___Users.Cas.jhu.edu_GetUniqueUserIdResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?input rdf:type &lt;http://Users.Cas.jhu.edu/GetUniqueUserId&gt;)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?output rdf:type &lt;http://Users.Cas.jhu.edu/GetUniqueUserIdResponse&gt;)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_21_UploadDataSet_Atomic">
+    <process:hasName>UploadDataSet</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_21_UploadDataSet_Atomic_input_parameters__http___Users.Cas.jhu.edu_UploadDataSet"/>
+    <process:hasOutput rdf:resource="#CasUsers_21_UploadDataSet_Atomic_output_parameters__http___Users.Cas.jhu.edu_UploadDataSetResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UploadDataSet(?x) ^ hasParameters(?x, http://Users.Cas.jhu.edu:UploadDataSet)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UploadDataSetResponse(?y) ^ hasParameters(?y, http://Users.Cas.jhu.edu:UploadDataSetResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasUsers_22_HasMyDB_Atomic">
+    <process:hasName>HasMyDB</process:hasName>
+    <process:hasInput rdf:resource="#CasUsers_22_HasMyDB_Atomic_input_parameters__http___Users.Cas.jhu.edu_HasMyDB"/>
+    <process:hasOutput rdf:resource="#CasUsers_22_HasMyDB_Atomic_output_parameters__http___Users.Cas.jhu.edu_HasMyDBResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HasMyDB(?x) ^ swrlb:equal(?x, &lt;http://Users.Cas.jhu.edu&gt;HasMyDB)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HasMyDBResponse(?x) ^ swrlb:equal(?x, &lt;http://Users.Cas.jhu.edu&gt;HasMyDBResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="CasUsers_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_0_CreateAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_1_GetWebServiceId_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_2_ForgotPassword_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_3_FindUserDataSet_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_4_FindUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_5_GetUniqueUserId_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_6_HasMyDB_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_7_CreateAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_8_GetWebServiceId_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_9_ForgotPassword_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_10_FindUserDataSet_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_11_FindUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_12_GetUniqueUserId_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_13_HasMyDB_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_14_CreateAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_15_GetWebServiceId_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_16_ForgotPassword_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_17_UpdateAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_18_FindUserDataSet_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_19_FindUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_20_GetUniqueUserId_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_21_UploadDataSet_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasUsers_22_HasMyDB_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_0_CreateAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_0_CreateAccount_Atomic"/>
+    <grounding:wsdlOperationName>CreateAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CreateAccountHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CreateAccountHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_1_GetWebServiceId_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_1_GetWebServiceId_Atomic"/>
+    <grounding:wsdlOperationName>GetWebServiceId</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWebServiceIdHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWebServiceIdHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_2_ForgotPassword_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_2_ForgotPassword_Atomic"/>
+    <grounding:wsdlOperationName>ForgotPassword</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ForgotPasswordHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ForgotPasswordHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_3_FindUserDataSet_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_3_FindUserDataSet_Atomic"/>
+    <grounding:wsdlOperationName>FindUserDataSet</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindUserDataSetHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindUserDataSetHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_4_FindUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_4_FindUser_Atomic"/>
+    <grounding:wsdlOperationName>FindUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindUserHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindUserHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_5_GetUniqueUserId_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_5_GetUniqueUserId_Atomic"/>
+    <grounding:wsdlOperationName>GetUniqueUserId</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUniqueUserIdHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUniqueUserIdHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_6_HasMyDB_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_6_HasMyDB_Atomic"/>
+    <grounding:wsdlOperationName>HasMyDB</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>HasMyDBHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>HasMyDBHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_7_CreateAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_7_CreateAccount_Atomic"/>
+    <grounding:wsdlOperationName>CreateAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CreateAccountHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CreateAccountHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_8_GetWebServiceId_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_8_GetWebServiceId_Atomic"/>
+    <grounding:wsdlOperationName>GetWebServiceId</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWebServiceIdHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWebServiceIdHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_9_ForgotPassword_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_9_ForgotPassword_Atomic"/>
+    <grounding:wsdlOperationName>ForgotPassword</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ForgotPasswordHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ForgotPasswordHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_10_FindUserDataSet_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_10_FindUserDataSet_Atomic"/>
+    <grounding:wsdlOperationName>FindUserDataSet</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindUserDataSetHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindUserDataSetHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_11_FindUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_11_FindUser_Atomic"/>
+    <grounding:wsdlOperationName>FindUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindUserHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindUserHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_12_GetUniqueUserId_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_12_GetUniqueUserId_Atomic"/>
+    <grounding:wsdlOperationName>GetUniqueUserId</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUniqueUserIdHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUniqueUserIdHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_13_HasMyDB_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_13_HasMyDB_Atomic"/>
+    <grounding:wsdlOperationName>HasMyDB</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>HasMyDBHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>HasMyDBHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_14_CreateAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_14_CreateAccount_Atomic"/>
+    <grounding:wsdlOperationName>CreateAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CreateAccountSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CreateAccountSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_15_GetWebServiceId_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_15_GetWebServiceId_Atomic"/>
+    <grounding:wsdlOperationName>GetWebServiceId</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWebServiceIdSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWebServiceIdSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_16_ForgotPassword_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_16_ForgotPassword_Atomic"/>
+    <grounding:wsdlOperationName>ForgotPassword</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ForgotPasswordSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ForgotPasswordSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_17_UpdateAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_17_UpdateAccount_Atomic"/>
+    <grounding:wsdlOperationName>UpdateAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateAccountSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateAccountSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_18_FindUserDataSet_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_18_FindUserDataSet_Atomic"/>
+    <grounding:wsdlOperationName>FindUserDataSet</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindUserDataSetSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindUserDataSetSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_19_FindUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_19_FindUser_Atomic"/>
+    <grounding:wsdlOperationName>FindUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindUserSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindUserSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_20_GetUniqueUserId_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_20_GetUniqueUserId_Atomic"/>
+    <grounding:wsdlOperationName>GetUniqueUserId</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUniqueUserIdSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUniqueUserIdSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_21_UploadDataSet_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_21_UploadDataSet_Atomic"/>
+    <grounding:wsdlOperationName>UploadDataSet</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UploadDataSetSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UploadDataSetSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasUsers_22_HasMyDB_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasUsers_22_HasMyDB_Atomic"/>
+    <grounding:wsdlOperationName>HasMyDB</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasUsersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasUsersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5_CasUsers.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>HasMyDBSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>HasMyDBSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
