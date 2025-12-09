@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Materials">
+    <service:presents rdf:resource="#Materials_Profile"/>
+    <service:describedBy rdf:resource="#Materials_Composite"/>
+    <service:supports rdf:resource="#Materials_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Materials_Profile">
+    <profile:serviceName>Materials</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Materials"/>
+    <profile:hasProcess rdf:resource="#Materials_0_HelloWorld_Atomic"/>
+    <profile:hasInput rdf:resource="#Materials_0_HelloWorld_Atomic_input_parameters__http___aci.matweb.com__HelloWorld"/>
+    <profile:hasOutput rdf:resource="#Materials_0_HelloWorld_Atomic_output_parameters__http___aci.matweb.com__HelloWorldResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?operation rdf:type &lt;http://aci.matweb.com/Operation&gt;)
+(?operation &lt;http://aci.matweb.com/hasInput&gt; ?input)
+(?input rdf:type &lt;http://aci.matweb.com/HelloWorld&gt;)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?operation &lt;http://aci.matweb.com/hasOutput&gt; ?output)
+(?output rdf:type &lt;http://aci.matweb.com/HelloWorldResponse&gt;)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Materials_1_GetRecentMaterials_Atomic"/>
+    <profile:hasInput rdf:resource="#Materials_1_GetRecentMaterials_Atomic_input_parameters__http___aci.matweb.com__GetRecentMaterials"/>
+    <profile:hasOutput rdf:resource="#Materials_1_GetRecentMaterials_Atomic_output_parameters__http___aci.matweb.com__GetRecentMaterialsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRecentMaterials(?x) ^ swrlb:isInstanceOf(?x, &lt;http://aci.matweb.com/GetRecentMaterials&gt;)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRecentMaterialsResponse(?y) ^ swrlb:isInstanceOf(?y, &lt;http://aci.matweb.com/GetRecentMaterialsResponse&gt;)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Materials_2_FindMaterials_Atomic"/>
+    <profile:hasInput rdf:resource="#Materials_2_FindMaterials_Atomic_input_parameters__http___aci.matweb.com__FindMaterials"/>
+    <profile:hasOutput rdf:resource="#Materials_2_FindMaterials_Atomic_output_parameters__http___aci.matweb.com__FindMaterialsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindMaterials(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindMaterialsResponse(?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Materials_Composite">
+    <process:composedOf rdf:resource="#Materials_0_HelloWorld_Atomic"/>
+    <process:composedOf rdf:resource="#Materials_1_GetRecentMaterials_Atomic"/>
+    <process:composedOf rdf:resource="#Materials_2_FindMaterials_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Materials_0_HelloWorld_Atomic_input_parameters__http___aci.matweb.com__HelloWorld">
+    <process:parameterType>parameters:{http://aci.matweb.com/}HelloWorld</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Materials_0_HelloWorld_Atomic_output_parameters__http___aci.matweb.com__HelloWorldResponse">
+    <process:parameterType>parameters:{http://aci.matweb.com/}HelloWorldResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Materials_1_GetRecentMaterials_Atomic_input_parameters__http___aci.matweb.com__GetRecentMaterials">
+    <process:parameterType>parameters:{http://aci.matweb.com/}GetRecentMaterials</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Materials_1_GetRecentMaterials_Atomic_output_parameters__http___aci.matweb.com__GetRecentMaterialsResponse">
+    <process:parameterType>parameters:{http://aci.matweb.com/}GetRecentMaterialsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Materials_2_FindMaterials_Atomic_input_parameters__http___aci.matweb.com__FindMaterials">
+    <process:parameterType>parameters:{http://aci.matweb.com/}FindMaterials</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Materials_2_FindMaterials_Atomic_output_parameters__http___aci.matweb.com__FindMaterialsResponse">
+    <process:parameterType>parameters:{http://aci.matweb.com/}FindMaterialsResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Materials_0_HelloWorld_Atomic">
+    <process:hasName>HelloWorld</process:hasName>
+    <process:hasInput rdf:resource="#Materials_0_HelloWorld_Atomic_input_parameters__http___aci.matweb.com__HelloWorld"/>
+    <process:hasOutput rdf:resource="#Materials_0_HelloWorld_Atomic_output_parameters__http___aci.matweb.com__HelloWorldResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?operation rdf:type &lt;http://aci.matweb.com/Operation&gt;)
+(?operation &lt;http://aci.matweb.com/hasInput&gt; ?input)
+(?input rdf:type &lt;http://aci.matweb.com/HelloWorld&gt;)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?operation &lt;http://aci.matweb.com/hasOutput&gt; ?output)
+(?output rdf:type &lt;http://aci.matweb.com/HelloWorldResponse&gt;)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Materials_1_GetRecentMaterials_Atomic">
+    <process:hasName>GetRecentMaterials</process:hasName>
+    <process:hasInput rdf:resource="#Materials_1_GetRecentMaterials_Atomic_input_parameters__http___aci.matweb.com__GetRecentMaterials"/>
+    <process:hasOutput rdf:resource="#Materials_1_GetRecentMaterials_Atomic_output_parameters__http___aci.matweb.com__GetRecentMaterialsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRecentMaterials(?x) ^ swrlb:isInstanceOf(?x, &lt;http://aci.matweb.com/GetRecentMaterials&gt;)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRecentMaterialsResponse(?y) ^ swrlb:isInstanceOf(?y, &lt;http://aci.matweb.com/GetRecentMaterialsResponse&gt;)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Materials_2_FindMaterials_Atomic">
+    <process:hasName>FindMaterials</process:hasName>
+    <process:hasInput rdf:resource="#Materials_2_FindMaterials_Atomic_input_parameters__http___aci.matweb.com__FindMaterials"/>
+    <process:hasOutput rdf:resource="#Materials_2_FindMaterials_Atomic_output_parameters__http___aci.matweb.com__FindMaterialsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindMaterials(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindMaterialsResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Materials_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Materials_0_HelloWorld_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Materials_1_GetRecentMaterials_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Materials_2_FindMaterials_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Materials_0_HelloWorld_Grounding">
+    <grounding:owlsProcess rdf:resource="#Materials_0_HelloWorld_Atomic"/>
+    <grounding:wsdlOperationName>HelloWorld</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MaterialsSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MaterialsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4342_4341.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>HelloWorldSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>HelloWorldSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Materials_1_GetRecentMaterials_Grounding">
+    <grounding:owlsProcess rdf:resource="#Materials_1_GetRecentMaterials_Atomic"/>
+    <grounding:wsdlOperationName>GetRecentMaterials</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MaterialsSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MaterialsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4342_4341.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRecentMaterialsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRecentMaterialsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Materials_2_FindMaterials_Grounding">
+    <grounding:owlsProcess rdf:resource="#Materials_2_FindMaterials_Atomic"/>
+    <grounding:wsdlOperationName>FindMaterials</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MaterialsSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MaterialsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4342_4341.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindMaterialsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindMaterialsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

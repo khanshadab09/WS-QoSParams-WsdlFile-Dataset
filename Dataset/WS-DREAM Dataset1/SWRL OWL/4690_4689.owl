@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="SearchService">
+    <service:presents rdf:resource="#SearchService_Profile"/>
+    <service:describedBy rdf:resource="#SearchService_Composite"/>
+    <service:supports rdf:resource="#SearchService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="SearchService_Profile">
+    <profile:serviceName>SearchService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#SearchService"/>
+    <profile:hasProcess rdf:resource="#SearchService_0_GetCompletionList_Atomic"/>
+    <profile:hasInput rdf:resource="#SearchService_0_GetCompletionList_Atomic_input_parameters__http___tempuri.org__GetCompletionList"/>
+    <profile:hasOutput rdf:resource="#SearchService_0_GetCompletionList_Atomic_output_parameters__http___tempuri.org__GetCompletionListResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(GetCompletionList, parameters:{http://tempuri.org/}GetCompletionList)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(GetCompletionListResponse, parameters:{http://tempuri.org/}GetCompletionListResponse)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="SearchService_Composite">
+    <process:composedOf rdf:resource="#SearchService_0_GetCompletionList_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="SearchService_0_GetCompletionList_Atomic_input_parameters__http___tempuri.org__GetCompletionList">
+    <process:parameterType>parameters:{http://tempuri.org/}GetCompletionList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SearchService_0_GetCompletionList_Atomic_output_parameters__http___tempuri.org__GetCompletionListResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetCompletionListResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="SearchService_0_GetCompletionList_Atomic">
+    <process:hasName>GetCompletionList</process:hasName>
+    <process:hasInput rdf:resource="#SearchService_0_GetCompletionList_Atomic_input_parameters__http___tempuri.org__GetCompletionList"/>
+    <process:hasOutput rdf:resource="#SearchService_0_GetCompletionList_Atomic_output_parameters__http___tempuri.org__GetCompletionListResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(GetCompletionList, parameters:{http://tempuri.org/}GetCompletionList)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(GetCompletionListResponse, parameters:{http://tempuri.org/}GetCompletionListResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="SearchService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SearchService_0_GetCompletionList_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SearchService_0_GetCompletionList_Grounding">
+    <grounding:owlsProcess rdf:resource="#SearchService_0_GetCompletionList_Atomic"/>
+    <grounding:wsdlOperationName>GetCompletionList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SearchServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SearchServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4690_4689.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCompletionListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCompletionListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,315 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Folders">
+    <service:presents rdf:resource="#Folders_Profile"/>
+    <service:describedBy rdf:resource="#Folders_Composite"/>
+    <service:supports rdf:resource="#Folders_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Folders_Profile">
+    <profile:serviceName>Folders</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Folders"/>
+    <profile:hasProcess rdf:resource="#Folders_0_AddMaterial_Atomic"/>
+    <profile:hasInput rdf:resource="#Folders_0_AddMaterial_Atomic_input_parameters__http___aci.matweb.com__AddMaterial"/>
+    <profile:hasOutput rdf:resource="#Folders_0_AddMaterial_Atomic_output_parameters__http___aci.matweb.com__AddMaterialResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddMaterial(?mat) ^ swrlb:isInstanceOf(?mat, &lt;http://aci.matweb.com/AddMaterial&gt;)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddMaterialResponse(?response) ^ swrlb:isInstanceOf(?response, &lt;http://aci.matweb.com/AddMaterialResponse&gt;)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Folders_1_RemoveMaterial_Atomic"/>
+    <profile:hasInput rdf:resource="#Folders_1_RemoveMaterial_Atomic_input_parameters__http___aci.matweb.com__RemoveMaterial"/>
+    <profile:hasOutput rdf:resource="#Folders_1_RemoveMaterial_Atomic_output_parameters__http___aci.matweb.com__RemoveMaterialResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RemoveMaterial(?x) ^ hasMaterial(?x, ?m)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not hasMaterial(?x, ?m)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Folders_2_GetFolderList_Atomic"/>
+    <profile:hasInput rdf:resource="#Folders_2_GetFolderList_Atomic_input_parameters__http___aci.matweb.com__GetFolderList"/>
+    <profile:hasOutput rdf:resource="#Folders_2_GetFolderList_Atomic_output_parameters__http___aci.matweb.com__GetFolderListResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetFolderList(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetFolderListResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Folders_3_SetSelectedFolder_Atomic"/>
+    <profile:hasInput rdf:resource="#Folders_3_SetSelectedFolder_Atomic_input_parameters__http___aci.matweb.com__SetSelectedFolder"/>
+    <profile:hasOutput rdf:resource="#Folders_3_SetSelectedFolder_Atomic_output_parameters__http___aci.matweb.com__SetSelectedFolderResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SetSelectedFolder(?folder)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SetSelectedFolderResponse(?folder)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Folders_4_IsMatInFolder_Atomic"/>
+    <profile:hasInput rdf:resource="#Folders_4_IsMatInFolder_Atomic_input_parameters__http___aci.matweb.com__IsMatInFolder"/>
+    <profile:hasOutput rdf:resource="#Folders_4_IsMatInFolder_Atomic_output_parameters__http___aci.matweb.com__IsMatInFolderResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsMatInFolder(?mat)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsMatInFolderResponse(?mat)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Folders_5_AddFolder_Atomic"/>
+    <profile:hasInput rdf:resource="#Folders_5_AddFolder_Atomic_input_parameters__http___aci.matweb.com__AddFolder"/>
+    <profile:hasOutput rdf:resource="#Folders_5_AddFolder_Atomic_output_parameters__http___aci.matweb.com__AddFolderResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddFolder(?folder)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddFolderResponse(?folder)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Folders_6_RenameFolder_Atomic"/>
+    <profile:hasInput rdf:resource="#Folders_6_RenameFolder_Atomic_input_parameters__http___aci.matweb.com__RenameFolder"/>
+    <profile:hasOutput rdf:resource="#Folders_6_RenameFolder_Atomic_output_parameters__http___aci.matweb.com__RenameFolderResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RenameFolder(?folder)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RenameFolderResponse(?folder)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Folders_7_EmptyFolder_Atomic"/>
+    <profile:hasInput rdf:resource="#Folders_7_EmptyFolder_Atomic_input_parameters__http___aci.matweb.com__EmptyFolder"/>
+    <profile:hasOutput rdf:resource="#Folders_7_EmptyFolder_Atomic_output_parameters__http___aci.matweb.com__EmptyFolderResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmptyFolder(?folder)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmptyFolderResponse(?folder)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Folders_8_DeleteFolder_Atomic"/>
+    <profile:hasInput rdf:resource="#Folders_8_DeleteFolder_Atomic_input_parameters__http___aci.matweb.com__DeleteFolder"/>
+    <profile:hasOutput rdf:resource="#Folders_8_DeleteFolder_Atomic_output_parameters__http___aci.matweb.com__DeleteFolderResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteFolder(?folder)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not DeleteFolder(?folder)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Folders_Composite">
+    <process:composedOf rdf:resource="#Folders_0_AddMaterial_Atomic"/>
+    <process:composedOf rdf:resource="#Folders_1_RemoveMaterial_Atomic"/>
+    <process:composedOf rdf:resource="#Folders_2_GetFolderList_Atomic"/>
+    <process:composedOf rdf:resource="#Folders_3_SetSelectedFolder_Atomic"/>
+    <process:composedOf rdf:resource="#Folders_4_IsMatInFolder_Atomic"/>
+    <process:composedOf rdf:resource="#Folders_5_AddFolder_Atomic"/>
+    <process:composedOf rdf:resource="#Folders_6_RenameFolder_Atomic"/>
+    <process:composedOf rdf:resource="#Folders_7_EmptyFolder_Atomic"/>
+    <process:composedOf rdf:resource="#Folders_8_DeleteFolder_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Folders_0_AddMaterial_Atomic_input_parameters__http___aci.matweb.com__AddMaterial">
+    <process:parameterType>parameters:{http://aci.matweb.com/}AddMaterial</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Folders_0_AddMaterial_Atomic_output_parameters__http___aci.matweb.com__AddMaterialResponse">
+    <process:parameterType>parameters:{http://aci.matweb.com/}AddMaterialResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Folders_1_RemoveMaterial_Atomic_input_parameters__http___aci.matweb.com__RemoveMaterial">
+    <process:parameterType>parameters:{http://aci.matweb.com/}RemoveMaterial</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Folders_1_RemoveMaterial_Atomic_output_parameters__http___aci.matweb.com__RemoveMaterialResponse">
+    <process:parameterType>parameters:{http://aci.matweb.com/}RemoveMaterialResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Folders_2_GetFolderList_Atomic_input_parameters__http___aci.matweb.com__GetFolderList">
+    <process:parameterType>parameters:{http://aci.matweb.com/}GetFolderList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Folders_2_GetFolderList_Atomic_output_parameters__http___aci.matweb.com__GetFolderListResponse">
+    <process:parameterType>parameters:{http://aci.matweb.com/}GetFolderListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Folders_3_SetSelectedFolder_Atomic_input_parameters__http___aci.matweb.com__SetSelectedFolder">
+    <process:parameterType>parameters:{http://aci.matweb.com/}SetSelectedFolder</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Folders_3_SetSelectedFolder_Atomic_output_parameters__http___aci.matweb.com__SetSelectedFolderResponse">
+    <process:parameterType>parameters:{http://aci.matweb.com/}SetSelectedFolderResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Folders_4_IsMatInFolder_Atomic_input_parameters__http___aci.matweb.com__IsMatInFolder">
+    <process:parameterType>parameters:{http://aci.matweb.com/}IsMatInFolder</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Folders_4_IsMatInFolder_Atomic_output_parameters__http___aci.matweb.com__IsMatInFolderResponse">
+    <process:parameterType>parameters:{http://aci.matweb.com/}IsMatInFolderResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Folders_5_AddFolder_Atomic_input_parameters__http___aci.matweb.com__AddFolder">
+    <process:parameterType>parameters:{http://aci.matweb.com/}AddFolder</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Folders_5_AddFolder_Atomic_output_parameters__http___aci.matweb.com__AddFolderResponse">
+    <process:parameterType>parameters:{http://aci.matweb.com/}AddFolderResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Folders_6_RenameFolder_Atomic_input_parameters__http___aci.matweb.com__RenameFolder">
+    <process:parameterType>parameters:{http://aci.matweb.com/}RenameFolder</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Folders_6_RenameFolder_Atomic_output_parameters__http___aci.matweb.com__RenameFolderResponse">
+    <process:parameterType>parameters:{http://aci.matweb.com/}RenameFolderResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Folders_7_EmptyFolder_Atomic_input_parameters__http___aci.matweb.com__EmptyFolder">
+    <process:parameterType>parameters:{http://aci.matweb.com/}EmptyFolder</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Folders_7_EmptyFolder_Atomic_output_parameters__http___aci.matweb.com__EmptyFolderResponse">
+    <process:parameterType>parameters:{http://aci.matweb.com/}EmptyFolderResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Folders_8_DeleteFolder_Atomic_input_parameters__http___aci.matweb.com__DeleteFolder">
+    <process:parameterType>parameters:{http://aci.matweb.com/}DeleteFolder</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Folders_8_DeleteFolder_Atomic_output_parameters__http___aci.matweb.com__DeleteFolderResponse">
+    <process:parameterType>parameters:{http://aci.matweb.com/}DeleteFolderResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Folders_0_AddMaterial_Atomic">
+    <process:hasName>AddMaterial</process:hasName>
+    <process:hasInput rdf:resource="#Folders_0_AddMaterial_Atomic_input_parameters__http___aci.matweb.com__AddMaterial"/>
+    <process:hasOutput rdf:resource="#Folders_0_AddMaterial_Atomic_output_parameters__http___aci.matweb.com__AddMaterialResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddMaterial(?mat) ^ swrlb:isInstanceOf(?mat, &lt;http://aci.matweb.com/AddMaterial&gt;)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddMaterialResponse(?response) ^ swrlb:isInstanceOf(?response, &lt;http://aci.matweb.com/AddMaterialResponse&gt;)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Folders_1_RemoveMaterial_Atomic">
+    <process:hasName>RemoveMaterial</process:hasName>
+    <process:hasInput rdf:resource="#Folders_1_RemoveMaterial_Atomic_input_parameters__http___aci.matweb.com__RemoveMaterial"/>
+    <process:hasOutput rdf:resource="#Folders_1_RemoveMaterial_Atomic_output_parameters__http___aci.matweb.com__RemoveMaterialResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RemoveMaterial(?x) ^ hasMaterial(?x, ?m)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not hasMaterial(?x, ?m)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Folders_2_GetFolderList_Atomic">
+    <process:hasName>GetFolderList</process:hasName>
+    <process:hasInput rdf:resource="#Folders_2_GetFolderList_Atomic_input_parameters__http___aci.matweb.com__GetFolderList"/>
+    <process:hasOutput rdf:resource="#Folders_2_GetFolderList_Atomic_output_parameters__http___aci.matweb.com__GetFolderListResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetFolderList(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetFolderListResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Folders_3_SetSelectedFolder_Atomic">
+    <process:hasName>SetSelectedFolder</process:hasName>
+    <process:hasInput rdf:resource="#Folders_3_SetSelectedFolder_Atomic_input_parameters__http___aci.matweb.com__SetSelectedFolder"/>
+    <process:hasOutput rdf:resource="#Folders_3_SetSelectedFolder_Atomic_output_parameters__http___aci.matweb.com__SetSelectedFolderResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SetSelectedFolder(?folder)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SetSelectedFolderResponse(?folder)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Folders_4_IsMatInFolder_Atomic">
+    <process:hasName>IsMatInFolder</process:hasName>
+    <process:hasInput rdf:resource="#Folders_4_IsMatInFolder_Atomic_input_parameters__http___aci.matweb.com__IsMatInFolder"/>
+    <process:hasOutput rdf:resource="#Folders_4_IsMatInFolder_Atomic_output_parameters__http___aci.matweb.com__IsMatInFolderResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsMatInFolder(?mat)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsMatInFolderResponse(?mat)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Folders_5_AddFolder_Atomic">
+    <process:hasName>AddFolder</process:hasName>
+    <process:hasInput rdf:resource="#Folders_5_AddFolder_Atomic_input_parameters__http___aci.matweb.com__AddFolder"/>
+    <process:hasOutput rdf:resource="#Folders_5_AddFolder_Atomic_output_parameters__http___aci.matweb.com__AddFolderResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddFolder(?folder)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddFolderResponse(?folder)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Folders_6_RenameFolder_Atomic">
+    <process:hasName>RenameFolder</process:hasName>
+    <process:hasInput rdf:resource="#Folders_6_RenameFolder_Atomic_input_parameters__http___aci.matweb.com__RenameFolder"/>
+    <process:hasOutput rdf:resource="#Folders_6_RenameFolder_Atomic_output_parameters__http___aci.matweb.com__RenameFolderResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RenameFolder(?folder)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RenameFolderResponse(?folder)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Folders_7_EmptyFolder_Atomic">
+    <process:hasName>EmptyFolder</process:hasName>
+    <process:hasInput rdf:resource="#Folders_7_EmptyFolder_Atomic_input_parameters__http___aci.matweb.com__EmptyFolder"/>
+    <process:hasOutput rdf:resource="#Folders_7_EmptyFolder_Atomic_output_parameters__http___aci.matweb.com__EmptyFolderResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmptyFolder(?folder)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmptyFolderResponse(?folder)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Folders_8_DeleteFolder_Atomic">
+    <process:hasName>DeleteFolder</process:hasName>
+    <process:hasInput rdf:resource="#Folders_8_DeleteFolder_Atomic_input_parameters__http___aci.matweb.com__DeleteFolder"/>
+    <process:hasOutput rdf:resource="#Folders_8_DeleteFolder_Atomic_output_parameters__http___aci.matweb.com__DeleteFolderResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteFolder(?folder)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not DeleteFolder(?folder)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Folders_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Folders_0_AddMaterial_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Folders_1_RemoveMaterial_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Folders_2_GetFolderList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Folders_3_SetSelectedFolder_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Folders_4_IsMatInFolder_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Folders_5_AddFolder_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Folders_6_RenameFolder_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Folders_7_EmptyFolder_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Folders_8_DeleteFolder_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Folders_0_AddMaterial_Grounding">
+    <grounding:owlsProcess rdf:resource="#Folders_0_AddMaterial_Atomic"/>
+    <grounding:wsdlOperationName>AddMaterial</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FoldersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FoldersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4343_4342.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddMaterialSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddMaterialSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Folders_1_RemoveMaterial_Grounding">
+    <grounding:owlsProcess rdf:resource="#Folders_1_RemoveMaterial_Atomic"/>
+    <grounding:wsdlOperationName>RemoveMaterial</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FoldersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FoldersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4343_4342.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RemoveMaterialSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RemoveMaterialSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Folders_2_GetFolderList_Grounding">
+    <grounding:owlsProcess rdf:resource="#Folders_2_GetFolderList_Atomic"/>
+    <grounding:wsdlOperationName>GetFolderList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FoldersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FoldersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4343_4342.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetFolderListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetFolderListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Folders_3_SetSelectedFolder_Grounding">
+    <grounding:owlsProcess rdf:resource="#Folders_3_SetSelectedFolder_Atomic"/>
+    <grounding:wsdlOperationName>SetSelectedFolder</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FoldersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FoldersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4343_4342.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SetSelectedFolderSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SetSelectedFolderSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Folders_4_IsMatInFolder_Grounding">
+    <grounding:owlsProcess rdf:resource="#Folders_4_IsMatInFolder_Atomic"/>
+    <grounding:wsdlOperationName>IsMatInFolder</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FoldersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FoldersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4343_4342.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsMatInFolderSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsMatInFolderSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Folders_5_AddFolder_Grounding">
+    <grounding:owlsProcess rdf:resource="#Folders_5_AddFolder_Atomic"/>
+    <grounding:wsdlOperationName>AddFolder</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FoldersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FoldersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4343_4342.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddFolderSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddFolderSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Folders_6_RenameFolder_Grounding">
+    <grounding:owlsProcess rdf:resource="#Folders_6_RenameFolder_Atomic"/>
+    <grounding:wsdlOperationName>RenameFolder</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FoldersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FoldersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4343_4342.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RenameFolderSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RenameFolderSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Folders_7_EmptyFolder_Grounding">
+    <grounding:owlsProcess rdf:resource="#Folders_7_EmptyFolder_Atomic"/>
+    <grounding:wsdlOperationName>EmptyFolder</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FoldersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FoldersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4343_4342.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>EmptyFolderSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>EmptyFolderSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Folders_8_DeleteFolder_Grounding">
+    <grounding:owlsProcess rdf:resource="#Folders_8_DeleteFolder_Atomic"/>
+    <grounding:wsdlOperationName>DeleteFolder</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FoldersSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FoldersSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4343_4342.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteFolderSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteFolderSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

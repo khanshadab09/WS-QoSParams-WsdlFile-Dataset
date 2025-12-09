@@ -1,0 +1,481 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="WS">
+    <service:presents rdf:resource="#WS_Profile"/>
+    <service:describedBy rdf:resource="#WS_Composite"/>
+    <service:supports rdf:resource="#WS_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="WS_Profile">
+    <profile:serviceName>WS</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#WS"/>
+    <profile:hasProcess rdf:resource="#WS_0_ReturnTime_Atomic"/>
+    <profile:hasInput rdf:resource="#WS_0_ReturnTime_Atomic_input_parameters__http___RyanRusson.com__ReturnTime"/>
+    <profile:hasOutput rdf:resource="#WS_0_ReturnTime_Atomic_output_parameters__http___RyanRusson.com__ReturnTimeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WS_1_UnProfanitizer_Atomic"/>
+    <profile:hasInput rdf:resource="#WS_1_UnProfanitizer_Atomic_input_parameters__http___RyanRusson.com__UnProfanitizer"/>
+    <profile:hasOutput rdf:resource="#WS_1_UnProfanitizer_Atomic_output_parameters__http___RyanRusson.com__UnProfanitizerResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnProfanitizer(?x) ^ hasText(?x, ?text) ^ swrlb:containsIgnoreCase(?text, "profanity")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnProfanitizerResponse(?x) ^ hasText(?x, ?text_clean) ^ swrlb:replaceIgnoreCase(?text, "profanity", "clean", ?text_clean)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WS_2_GetZipInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#WS_2_GetZipInfo_Atomic_input_parameters__http___RyanRusson.com__GetZipInfo"/>
+    <profile:hasOutput rdf:resource="#WS_2_GetZipInfo_Atomic_output_parameters__http___RyanRusson.com__GetZipInfoResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetZipInfo(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetZipInfoResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WS_3_ChimpOmatic_Atomic"/>
+    <profile:hasInput rdf:resource="#WS_3_ChimpOmatic_Atomic_input_parameters__http___RyanRusson.com__ChimpOmatic"/>
+    <profile:hasOutput rdf:resource="#WS_3_ChimpOmatic_Atomic_output_parameters__http___RyanRusson.com__ChimpOmaticResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChimpOmatic(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChimpOmaticResponse(?y) ^ hasOutput(?x, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WS_4_ChimpOmaticSimple_Atomic"/>
+    <profile:hasInput rdf:resource="#WS_4_ChimpOmaticSimple_Atomic_input_parameters__http___RyanRusson.com__ChimpOmaticSimple"/>
+    <profile:hasOutput rdf:resource="#WS_4_ChimpOmaticSimple_Atomic_output_parameters__http___RyanRusson.com__ChimpOmaticSimpleResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChimpOmaticSimple(?input)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChimpOmaticSimpleResponse(?output)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WS_5_ReturnTime_Atomic"/>
+    <profile:hasOutput rdf:resource="#WS_5_ReturnTime_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WS_6_UnProfanitizer_Atomic"/>
+    <profile:hasInput rdf:resource="#WS_6_UnProfanitizer_Atomic_input_strInput__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#WS_6_UnProfanitizer_Atomic_input_isWholesome__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#WS_6_UnProfanitizer_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?strInput, ?isWholesome)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?strInput, ?Body)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WS_7_GetZipInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#WS_7_GetZipInfo_Atomic_input_strZIP__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#WS_7_GetZipInfo_Atomic_output_Body__http___RyanRusson.com__DataSet"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(strZIP, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(Body, "http://RyanRusson.com#DataSet")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WS_8_ChimpOmatic_Atomic"/>
+    <profile:hasOutput rdf:resource="#WS_8_ChimpOmatic_Atomic_output_Body__http___RyanRusson.com__DataSet"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body:{http://RyanRusson.com/}DataSet</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WS_9_ChimpOmaticSimple_Atomic"/>
+    <profile:hasOutput rdf:resource="#WS_9_ChimpOmaticSimple_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(hasOutputValue ChimpOmaticSimple "http://RyanRusson.com/string")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WS_10_ReturnTime_Atomic"/>
+    <profile:hasOutput rdf:resource="#WS_10_ReturnTime_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WS_11_UnProfanitizer_Atomic"/>
+    <profile:hasInput rdf:resource="#WS_11_UnProfanitizer_Atomic_input_strInput__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#WS_11_UnProfanitizer_Atomic_input_isWholesome__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#WS_11_UnProfanitizer_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?strInput, ?isWholesome) ^ swrlb:equal(?isWholesome, "true")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?Body, ?strInput)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WS_12_GetZipInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#WS_12_GetZipInfo_Atomic_input_strZIP__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#WS_12_GetZipInfo_Atomic_output_Body__http___RyanRusson.com__DataSet"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?strZIP, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?Body, "http://RyanRusson.com#DataSet")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WS_13_ChimpOmatic_Atomic"/>
+    <profile:hasOutput rdf:resource="#WS_13_ChimpOmatic_Atomic_output_Body__http___RyanRusson.com__DataSet"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body:{http://RyanRusson.com/}DataSet</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WS_14_ChimpOmaticSimple_Atomic"/>
+    <profile:hasOutput rdf:resource="#WS_14_ChimpOmaticSimple_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(hasOutput ChimpOmaticSimple {http://RyanRusson.com/}string)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="WS_Composite">
+    <process:composedOf rdf:resource="#WS_0_ReturnTime_Atomic"/>
+    <process:composedOf rdf:resource="#WS_1_UnProfanitizer_Atomic"/>
+    <process:composedOf rdf:resource="#WS_2_GetZipInfo_Atomic"/>
+    <process:composedOf rdf:resource="#WS_3_ChimpOmatic_Atomic"/>
+    <process:composedOf rdf:resource="#WS_4_ChimpOmaticSimple_Atomic"/>
+    <process:composedOf rdf:resource="#WS_5_ReturnTime_Atomic"/>
+    <process:composedOf rdf:resource="#WS_6_UnProfanitizer_Atomic"/>
+    <process:composedOf rdf:resource="#WS_7_GetZipInfo_Atomic"/>
+    <process:composedOf rdf:resource="#WS_8_ChimpOmatic_Atomic"/>
+    <process:composedOf rdf:resource="#WS_9_ChimpOmaticSimple_Atomic"/>
+    <process:composedOf rdf:resource="#WS_10_ReturnTime_Atomic"/>
+    <process:composedOf rdf:resource="#WS_11_UnProfanitizer_Atomic"/>
+    <process:composedOf rdf:resource="#WS_12_GetZipInfo_Atomic"/>
+    <process:composedOf rdf:resource="#WS_13_ChimpOmatic_Atomic"/>
+    <process:composedOf rdf:resource="#WS_14_ChimpOmaticSimple_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="WS_0_ReturnTime_Atomic_input_parameters__http___RyanRusson.com__ReturnTime">
+    <process:parameterType>parameters:{http://RyanRusson.com/}ReturnTime</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WS_0_ReturnTime_Atomic_output_parameters__http___RyanRusson.com__ReturnTimeResponse">
+    <process:parameterType>parameters:{http://RyanRusson.com/}ReturnTimeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WS_1_UnProfanitizer_Atomic_input_parameters__http___RyanRusson.com__UnProfanitizer">
+    <process:parameterType>parameters:{http://RyanRusson.com/}UnProfanitizer</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WS_1_UnProfanitizer_Atomic_output_parameters__http___RyanRusson.com__UnProfanitizerResponse">
+    <process:parameterType>parameters:{http://RyanRusson.com/}UnProfanitizerResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WS_2_GetZipInfo_Atomic_input_parameters__http___RyanRusson.com__GetZipInfo">
+    <process:parameterType>parameters:{http://RyanRusson.com/}GetZipInfo</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WS_2_GetZipInfo_Atomic_output_parameters__http___RyanRusson.com__GetZipInfoResponse">
+    <process:parameterType>parameters:{http://RyanRusson.com/}GetZipInfoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WS_3_ChimpOmatic_Atomic_input_parameters__http___RyanRusson.com__ChimpOmatic">
+    <process:parameterType>parameters:{http://RyanRusson.com/}ChimpOmatic</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WS_3_ChimpOmatic_Atomic_output_parameters__http___RyanRusson.com__ChimpOmaticResponse">
+    <process:parameterType>parameters:{http://RyanRusson.com/}ChimpOmaticResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WS_4_ChimpOmaticSimple_Atomic_input_parameters__http___RyanRusson.com__ChimpOmaticSimple">
+    <process:parameterType>parameters:{http://RyanRusson.com/}ChimpOmaticSimple</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WS_4_ChimpOmaticSimple_Atomic_output_parameters__http___RyanRusson.com__ChimpOmaticSimpleResponse">
+    <process:parameterType>parameters:{http://RyanRusson.com/}ChimpOmaticSimpleResponse</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="WS_5_ReturnTime_Atomic_output_Body__http___RyanRusson.com__string">
+    <process:parameterType>Body:{http://RyanRusson.com/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WS_6_UnProfanitizer_Atomic_input_strInput__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strInput:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="WS_6_UnProfanitizer_Atomic_input_isWholesome__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>isWholesome:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WS_6_UnProfanitizer_Atomic_output_Body__http___RyanRusson.com__string">
+    <process:parameterType>Body:{http://RyanRusson.com/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WS_7_GetZipInfo_Atomic_input_strZIP__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strZIP:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WS_7_GetZipInfo_Atomic_output_Body__http___RyanRusson.com__DataSet">
+    <process:parameterType>Body:{http://RyanRusson.com/}DataSet</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="WS_8_ChimpOmatic_Atomic_output_Body__http___RyanRusson.com__DataSet">
+    <process:parameterType>Body:{http://RyanRusson.com/}DataSet</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="WS_9_ChimpOmaticSimple_Atomic_output_Body__http___RyanRusson.com__string">
+    <process:parameterType>Body:{http://RyanRusson.com/}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="WS_10_ReturnTime_Atomic_output_Body__http___RyanRusson.com__string">
+    <process:parameterType>Body:{http://RyanRusson.com/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WS_11_UnProfanitizer_Atomic_input_strInput__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strInput:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="WS_11_UnProfanitizer_Atomic_input_isWholesome__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>isWholesome:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WS_11_UnProfanitizer_Atomic_output_Body__http___RyanRusson.com__string">
+    <process:parameterType>Body:{http://RyanRusson.com/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WS_12_GetZipInfo_Atomic_input_strZIP__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strZIP:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WS_12_GetZipInfo_Atomic_output_Body__http___RyanRusson.com__DataSet">
+    <process:parameterType>Body:{http://RyanRusson.com/}DataSet</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="WS_13_ChimpOmatic_Atomic_output_Body__http___RyanRusson.com__DataSet">
+    <process:parameterType>Body:{http://RyanRusson.com/}DataSet</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="WS_14_ChimpOmaticSimple_Atomic_output_Body__http___RyanRusson.com__string">
+    <process:parameterType>Body:{http://RyanRusson.com/}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="WS_0_ReturnTime_Atomic">
+    <process:hasName>ReturnTime</process:hasName>
+    <process:hasInput rdf:resource="#WS_0_ReturnTime_Atomic_input_parameters__http___RyanRusson.com__ReturnTime"/>
+    <process:hasOutput rdf:resource="#WS_0_ReturnTime_Atomic_output_parameters__http___RyanRusson.com__ReturnTimeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WS_1_UnProfanitizer_Atomic">
+    <process:hasName>UnProfanitizer</process:hasName>
+    <process:hasInput rdf:resource="#WS_1_UnProfanitizer_Atomic_input_parameters__http___RyanRusson.com__UnProfanitizer"/>
+    <process:hasOutput rdf:resource="#WS_1_UnProfanitizer_Atomic_output_parameters__http___RyanRusson.com__UnProfanitizerResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnProfanitizer(?x) ^ hasText(?x, ?text) ^ swrlb:containsIgnoreCase(?text, "profanity")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnProfanitizerResponse(?x) ^ hasText(?x, ?text_clean) ^ swrlb:replaceIgnoreCase(?text, "profanity", "clean", ?text_clean)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WS_2_GetZipInfo_Atomic">
+    <process:hasName>GetZipInfo</process:hasName>
+    <process:hasInput rdf:resource="#WS_2_GetZipInfo_Atomic_input_parameters__http___RyanRusson.com__GetZipInfo"/>
+    <process:hasOutput rdf:resource="#WS_2_GetZipInfo_Atomic_output_parameters__http___RyanRusson.com__GetZipInfoResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetZipInfo(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetZipInfoResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WS_3_ChimpOmatic_Atomic">
+    <process:hasName>ChimpOmatic</process:hasName>
+    <process:hasInput rdf:resource="#WS_3_ChimpOmatic_Atomic_input_parameters__http___RyanRusson.com__ChimpOmatic"/>
+    <process:hasOutput rdf:resource="#WS_3_ChimpOmatic_Atomic_output_parameters__http___RyanRusson.com__ChimpOmaticResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChimpOmatic(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChimpOmaticResponse(?y) ^ hasOutput(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WS_4_ChimpOmaticSimple_Atomic">
+    <process:hasName>ChimpOmaticSimple</process:hasName>
+    <process:hasInput rdf:resource="#WS_4_ChimpOmaticSimple_Atomic_input_parameters__http___RyanRusson.com__ChimpOmaticSimple"/>
+    <process:hasOutput rdf:resource="#WS_4_ChimpOmaticSimple_Atomic_output_parameters__http___RyanRusson.com__ChimpOmaticSimpleResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChimpOmaticSimple(?input)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChimpOmaticSimpleResponse(?output)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WS_5_ReturnTime_Atomic">
+    <process:hasName>ReturnTime</process:hasName>
+    <process:hasOutput rdf:resource="#WS_5_ReturnTime_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WS_6_UnProfanitizer_Atomic">
+    <process:hasName>UnProfanitizer</process:hasName>
+    <process:hasInput rdf:resource="#WS_6_UnProfanitizer_Atomic_input_strInput__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#WS_6_UnProfanitizer_Atomic_input_isWholesome__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#WS_6_UnProfanitizer_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?strInput, ?isWholesome)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?strInput, ?Body)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WS_7_GetZipInfo_Atomic">
+    <process:hasName>GetZipInfo</process:hasName>
+    <process:hasInput rdf:resource="#WS_7_GetZipInfo_Atomic_input_strZIP__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#WS_7_GetZipInfo_Atomic_output_Body__http___RyanRusson.com__DataSet"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(strZIP, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(Body, "http://RyanRusson.com#DataSet")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WS_8_ChimpOmatic_Atomic">
+    <process:hasName>ChimpOmatic</process:hasName>
+    <process:hasOutput rdf:resource="#WS_8_ChimpOmatic_Atomic_output_Body__http___RyanRusson.com__DataSet"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body:{http://RyanRusson.com/}DataSet</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WS_9_ChimpOmaticSimple_Atomic">
+    <process:hasName>ChimpOmaticSimple</process:hasName>
+    <process:hasOutput rdf:resource="#WS_9_ChimpOmaticSimple_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(hasOutputValue ChimpOmaticSimple "http://RyanRusson.com/string")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WS_10_ReturnTime_Atomic">
+    <process:hasName>ReturnTime</process:hasName>
+    <process:hasOutput rdf:resource="#WS_10_ReturnTime_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WS_11_UnProfanitizer_Atomic">
+    <process:hasName>UnProfanitizer</process:hasName>
+    <process:hasInput rdf:resource="#WS_11_UnProfanitizer_Atomic_input_strInput__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#WS_11_UnProfanitizer_Atomic_input_isWholesome__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#WS_11_UnProfanitizer_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?strInput, ?isWholesome) ^ swrlb:equal(?isWholesome, "true")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?Body, ?strInput)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WS_12_GetZipInfo_Atomic">
+    <process:hasName>GetZipInfo</process:hasName>
+    <process:hasInput rdf:resource="#WS_12_GetZipInfo_Atomic_input_strZIP__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#WS_12_GetZipInfo_Atomic_output_Body__http___RyanRusson.com__DataSet"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?strZIP, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?Body, "http://RyanRusson.com#DataSet")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WS_13_ChimpOmatic_Atomic">
+    <process:hasName>ChimpOmatic</process:hasName>
+    <process:hasOutput rdf:resource="#WS_13_ChimpOmatic_Atomic_output_Body__http___RyanRusson.com__DataSet"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body:{http://RyanRusson.com/}DataSet</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WS_14_ChimpOmaticSimple_Atomic">
+    <process:hasName>ChimpOmaticSimple</process:hasName>
+    <process:hasOutput rdf:resource="#WS_14_ChimpOmaticSimple_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(hasOutput ChimpOmaticSimple {http://RyanRusson.com/}string)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="WS_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_0_ReturnTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_1_UnProfanitizer_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_2_GetZipInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_3_ChimpOmatic_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_4_ChimpOmaticSimple_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_5_ReturnTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_6_UnProfanitizer_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_7_GetZipInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_8_ChimpOmatic_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_9_ChimpOmaticSimple_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_10_ReturnTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_11_UnProfanitizer_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_12_GetZipInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_13_ChimpOmatic_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WS_14_ChimpOmaticSimple_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_0_ReturnTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_0_ReturnTime_Atomic"/>
+    <grounding:wsdlOperationName>ReturnTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReturnTimeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReturnTimeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_1_UnProfanitizer_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_1_UnProfanitizer_Atomic"/>
+    <grounding:wsdlOperationName>UnProfanitizer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UnProfanitizerSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UnProfanitizerSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_2_GetZipInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_2_GetZipInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetZipInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetZipInfoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetZipInfoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_3_ChimpOmatic_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_3_ChimpOmatic_Atomic"/>
+    <grounding:wsdlOperationName>ChimpOmatic</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ChimpOmaticSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ChimpOmaticSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_4_ChimpOmaticSimple_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_4_ChimpOmaticSimple_Atomic"/>
+    <grounding:wsdlOperationName>ChimpOmaticSimple</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ChimpOmaticSimpleSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ChimpOmaticSimpleSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_5_ReturnTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_5_ReturnTime_Atomic"/>
+    <grounding:wsdlOperationName>ReturnTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReturnTimeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReturnTimeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_6_UnProfanitizer_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_6_UnProfanitizer_Atomic"/>
+    <grounding:wsdlOperationName>UnProfanitizer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UnProfanitizerHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UnProfanitizerHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_7_GetZipInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_7_GetZipInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetZipInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetZipInfoHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetZipInfoHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_8_ChimpOmatic_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_8_ChimpOmatic_Atomic"/>
+    <grounding:wsdlOperationName>ChimpOmatic</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ChimpOmaticHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ChimpOmaticHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_9_ChimpOmaticSimple_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_9_ChimpOmaticSimple_Atomic"/>
+    <grounding:wsdlOperationName>ChimpOmaticSimple</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ChimpOmaticSimpleHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ChimpOmaticSimpleHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_10_ReturnTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_10_ReturnTime_Atomic"/>
+    <grounding:wsdlOperationName>ReturnTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReturnTimeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReturnTimeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_11_UnProfanitizer_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_11_UnProfanitizer_Atomic"/>
+    <grounding:wsdlOperationName>UnProfanitizer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UnProfanitizerHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UnProfanitizerHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_12_GetZipInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_12_GetZipInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetZipInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetZipInfoHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetZipInfoHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_13_ChimpOmatic_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_13_ChimpOmatic_Atomic"/>
+    <grounding:wsdlOperationName>ChimpOmatic</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ChimpOmaticHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ChimpOmaticHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WS_14_ChimpOmaticSimple_Grounding">
+    <grounding:owlsProcess rdf:resource="#WS_14_ChimpOmaticSimple_Atomic"/>
+    <grounding:wsdlOperationName>ChimpOmaticSimple</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5757_5756.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ChimpOmaticSimpleHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ChimpOmaticSimpleHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

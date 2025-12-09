@@ -1,0 +1,430 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="HocMaiWDSL">
+    <service:presents rdf:resource="#HocMaiWDSL_Profile"/>
+    <service:describedBy rdf:resource="#HocMaiWDSL_Composite"/>
+    <service:supports rdf:resource="#HocMaiWDSL_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="HocMaiWDSL_Profile">
+    <profile:serviceName>HocMaiWDSL</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#HocMaiWDSL"/>
+    <profile:hasProcess rdf:resource="#HocMaiWDSL_0_pushMoney_Atomic"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_0_pushMoney_Atomic_input_money__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_0_pushMoney_Atomic_input_accName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_0_pushMoney_Atomic_input_VTCTransactionCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#HocMaiWDSL_0_pushMoney_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Money(?money) ^ AccountName(?accName) ^ TransactionCode(?VTCTransactionCode)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PushedMoney(?money, ?accName, ?VTCTransactionCode)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_money__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_authPass__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_accName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_VTCTransactionCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_authUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pushMoneyFromVTC(?money, ?authPass, ?accName, ?VTCTransactionCode, ?authUser) ^ string(?money) ^ string(?authPass) ^ string(?accName) ^ string(?VTCTransactionCode) ^ string(?authUser)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?result) ^ string(?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic_input_Description__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic_input_phoneNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic_input_authPass__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic_input_authUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic_input_telcoNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SMSHandler(?handler) ^ hasInput(?handler, Description) ^ hasInput(?handler, phoneNumber) ^ hasInput(?handler, authPass) ^ hasInput(?handler, authUser) ^ hasInput(?handler, telcoNumber) ^ hasOutput(?handler, return)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sendSMS(?phoneNumber, ?telcoNumber) ^ authenticateUser(?authUser, ?authPass) ^ processSMS(?handler) ^ hasOutputValue(?handler, return, Description)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic_input_order_code__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic_input_payment_type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic_input_payment_id__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic_input_secure_code__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic_input_transaction_info__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Order with order_code must exist and be in a valid state.</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Update the payment details (payment_type, payment_id, secure_code, transaction_info) for the specified order.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#HocMaiWDSL_4_CheckAccountExist_Atomic"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_4_CheckAccountExist_Atomic_input_accName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#HocMaiWDSL_4_CheckAccountExist_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Account(?acc) ^ hasName(?acc, ?accName)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?accName)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#HocMaiWDSL_5_checkQuizGrade_Atomic"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_5_checkQuizGrade_Atomic_input_quizCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_5_checkQuizGrade_Atomic_input_authPass__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_5_checkQuizGrade_Atomic_input_accName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_5_checkQuizGrade_Atomic_input_authUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#HocMaiWDSL_5_checkQuizGrade_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">quizCode(?quizCode) ^ authPass(?authPass) ^ accName(?accName) ^ authUser(?authUser)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?quizGrade)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#HocMaiWDSL_6_CheckAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_6_CheckAccount_Atomic_input_accountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_6_CheckAccount_Atomic_input_hashValue__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#HocMaiWDSL_6_CheckAccount_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Account(?accountName) ^ HashValue(?accountName, ?hashValue)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Return(?accountName) ^ Return(?hashValue)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#HocMaiWDSL_7_BookOrder_Atomic"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_7_BookOrder_Atomic_input_totalAmount__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_7_BookOrder_Atomic_input_accountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_7_BookOrder_Atomic_input_hashValue__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#HocMaiWDSL_7_BookOrder_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:greaterThanOrEqual(?totalAmount, 0), swrlb:stringEqualIgnoreCase(?accountName, ?accountName), swrlb:stringEqualIgnoreCase(?hashValue, ?hashValue)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:stringEqualIgnoreCase(?return, "OrderPlaced")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#HocMaiWDSL_8_TopUp_Atomic"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_8_TopUp_Atomic_input_totalAmount__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_8_TopUp_Atomic_input_orderID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_8_TopUp_Atomic_input_accountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#HocMaiWDSL_8_TopUp_Atomic_input_hashValue__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#HocMaiWDSL_8_TopUp_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:greaterThanOrEqual(?totalAmount, 0), swrlb:equal(?orderID, ?accountName), swrlb:notEqual(?hashValue, "")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?return, "Success")</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="HocMaiWDSL_Composite">
+    <process:composedOf rdf:resource="#HocMaiWDSL_0_pushMoney_Atomic"/>
+    <process:composedOf rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic"/>
+    <process:composedOf rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic"/>
+    <process:composedOf rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic"/>
+    <process:composedOf rdf:resource="#HocMaiWDSL_4_CheckAccountExist_Atomic"/>
+    <process:composedOf rdf:resource="#HocMaiWDSL_5_checkQuizGrade_Atomic"/>
+    <process:composedOf rdf:resource="#HocMaiWDSL_6_CheckAccount_Atomic"/>
+    <process:composedOf rdf:resource="#HocMaiWDSL_7_BookOrder_Atomic"/>
+    <process:composedOf rdf:resource="#HocMaiWDSL_8_TopUp_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="HocMaiWDSL_0_pushMoney_Atomic_input_money__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>money:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_0_pushMoney_Atomic_input_accName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>accName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_0_pushMoney_Atomic_input_VTCTransactionCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>VTCTransactionCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="HocMaiWDSL_0_pushMoney_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_money__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>money:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_authPass__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>authPass:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_accName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>accName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_VTCTransactionCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>VTCTransactionCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_authUser__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>authUser:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="HocMaiWDSL_1_pushMoneyFromVTC_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="HocMaiWDSL_2_SMSHandler_Atomic_input_Description__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Description:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_2_SMSHandler_Atomic_input_phoneNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>phoneNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_2_SMSHandler_Atomic_input_authPass__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>authPass:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_2_SMSHandler_Atomic_input_authUser__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>authUser:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_2_SMSHandler_Atomic_input_telcoNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>telcoNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="HocMaiWDSL_2_SMSHandler_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="HocMaiWDSL_3_UpdateOrder_Atomic_input_order_code__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>order_code:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_3_UpdateOrder_Atomic_input_payment_type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>payment_type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_3_UpdateOrder_Atomic_input_payment_id__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>payment_id:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_3_UpdateOrder_Atomic_input_secure_code__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>secure_code:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_3_UpdateOrder_Atomic_input_transaction_info__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>transaction_info:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="HocMaiWDSL_3_UpdateOrder_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="HocMaiWDSL_4_CheckAccountExist_Atomic_input_accName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>accName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="HocMaiWDSL_4_CheckAccountExist_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="HocMaiWDSL_5_checkQuizGrade_Atomic_input_quizCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>quizCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_5_checkQuizGrade_Atomic_input_authPass__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>authPass:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_5_checkQuizGrade_Atomic_input_accName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>accName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_5_checkQuizGrade_Atomic_input_authUser__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>authUser:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="HocMaiWDSL_5_checkQuizGrade_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="HocMaiWDSL_6_CheckAccount_Atomic_input_accountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>accountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_6_CheckAccount_Atomic_input_hashValue__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>hashValue:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="HocMaiWDSL_6_CheckAccount_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="HocMaiWDSL_7_BookOrder_Atomic_input_totalAmount__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>totalAmount:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_7_BookOrder_Atomic_input_accountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>accountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_7_BookOrder_Atomic_input_hashValue__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>hashValue:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="HocMaiWDSL_7_BookOrder_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="HocMaiWDSL_8_TopUp_Atomic_input_totalAmount__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>totalAmount:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_8_TopUp_Atomic_input_orderID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>orderID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_8_TopUp_Atomic_input_accountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>accountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="HocMaiWDSL_8_TopUp_Atomic_input_hashValue__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>hashValue:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="HocMaiWDSL_8_TopUp_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="HocMaiWDSL_0_pushMoney_Atomic">
+    <process:hasName>pushMoney</process:hasName>
+    <process:hasInput rdf:resource="#HocMaiWDSL_0_pushMoney_Atomic_input_money__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_0_pushMoney_Atomic_input_accName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_0_pushMoney_Atomic_input_VTCTransactionCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#HocMaiWDSL_0_pushMoney_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Money(?money) ^ AccountName(?accName) ^ TransactionCode(?VTCTransactionCode)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PushedMoney(?money, ?accName, ?VTCTransactionCode)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="HocMaiWDSL_1_pushMoneyFromVTC_Atomic">
+    <process:hasName>pushMoneyFromVTC</process:hasName>
+    <process:hasInput rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_money__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_authPass__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_accName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_VTCTransactionCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic_input_authUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pushMoneyFromVTC(?money, ?authPass, ?accName, ?VTCTransactionCode, ?authUser) ^ string(?money) ^ string(?authPass) ^ string(?accName) ^ string(?VTCTransactionCode) ^ string(?authUser)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?result) ^ string(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="HocMaiWDSL_2_SMSHandler_Atomic">
+    <process:hasName>SMSHandler</process:hasName>
+    <process:hasInput rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic_input_Description__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic_input_phoneNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic_input_authPass__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic_input_authUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic_input_telcoNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SMSHandler(?handler) ^ hasInput(?handler, Description) ^ hasInput(?handler, phoneNumber) ^ hasInput(?handler, authPass) ^ hasInput(?handler, authUser) ^ hasInput(?handler, telcoNumber) ^ hasOutput(?handler, return)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sendSMS(?phoneNumber, ?telcoNumber) ^ authenticateUser(?authUser, ?authPass) ^ processSMS(?handler) ^ hasOutputValue(?handler, return, Description)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="HocMaiWDSL_3_UpdateOrder_Atomic">
+    <process:hasName>UpdateOrder</process:hasName>
+    <process:hasInput rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic_input_order_code__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic_input_payment_type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic_input_payment_id__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic_input_secure_code__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic_input_transaction_info__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Order with order_code must exist and be in a valid state.</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Update the payment details (payment_type, payment_id, secure_code, transaction_info) for the specified order.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="HocMaiWDSL_4_CheckAccountExist_Atomic">
+    <process:hasName>CheckAccountExist</process:hasName>
+    <process:hasInput rdf:resource="#HocMaiWDSL_4_CheckAccountExist_Atomic_input_accName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#HocMaiWDSL_4_CheckAccountExist_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Account(?acc) ^ hasName(?acc, ?accName)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?accName)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="HocMaiWDSL_5_checkQuizGrade_Atomic">
+    <process:hasName>checkQuizGrade</process:hasName>
+    <process:hasInput rdf:resource="#HocMaiWDSL_5_checkQuizGrade_Atomic_input_quizCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_5_checkQuizGrade_Atomic_input_authPass__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_5_checkQuizGrade_Atomic_input_accName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_5_checkQuizGrade_Atomic_input_authUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#HocMaiWDSL_5_checkQuizGrade_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">quizCode(?quizCode) ^ authPass(?authPass) ^ accName(?accName) ^ authUser(?authUser)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?quizGrade)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="HocMaiWDSL_6_CheckAccount_Atomic">
+    <process:hasName>CheckAccount</process:hasName>
+    <process:hasInput rdf:resource="#HocMaiWDSL_6_CheckAccount_Atomic_input_accountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_6_CheckAccount_Atomic_input_hashValue__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#HocMaiWDSL_6_CheckAccount_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Account(?accountName) ^ HashValue(?accountName, ?hashValue)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Return(?accountName) ^ Return(?hashValue)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="HocMaiWDSL_7_BookOrder_Atomic">
+    <process:hasName>BookOrder</process:hasName>
+    <process:hasInput rdf:resource="#HocMaiWDSL_7_BookOrder_Atomic_input_totalAmount__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_7_BookOrder_Atomic_input_accountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_7_BookOrder_Atomic_input_hashValue__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#HocMaiWDSL_7_BookOrder_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:greaterThanOrEqual(?totalAmount, 0), swrlb:stringEqualIgnoreCase(?accountName, ?accountName), swrlb:stringEqualIgnoreCase(?hashValue, ?hashValue)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:stringEqualIgnoreCase(?return, "OrderPlaced")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="HocMaiWDSL_8_TopUp_Atomic">
+    <process:hasName>TopUp</process:hasName>
+    <process:hasInput rdf:resource="#HocMaiWDSL_8_TopUp_Atomic_input_totalAmount__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_8_TopUp_Atomic_input_orderID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_8_TopUp_Atomic_input_accountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#HocMaiWDSL_8_TopUp_Atomic_input_hashValue__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#HocMaiWDSL_8_TopUp_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:greaterThanOrEqual(?totalAmount, 0), swrlb:equal(?orderID, ?accountName), swrlb:notEqual(?hashValue, "")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?return, "Success")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="HocMaiWDSL_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#HocMaiWDSL_0_pushMoney_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#HocMaiWDSL_2_SMSHandler_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#HocMaiWDSL_3_UpdateOrder_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#HocMaiWDSL_4_CheckAccountExist_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#HocMaiWDSL_5_checkQuizGrade_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#HocMaiWDSL_6_CheckAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#HocMaiWDSL_7_BookOrder_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#HocMaiWDSL_8_TopUp_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="HocMaiWDSL_0_pushMoney_Grounding">
+    <grounding:owlsProcess rdf:resource="#HocMaiWDSL_0_pushMoney_Atomic"/>
+    <grounding:wsdlOperationName>pushMoney</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>HocMaiWDSLBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>HocMaiWDSLPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5126_5125.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>pushMoneyRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>pushMoneyResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="HocMaiWDSL_1_pushMoneyFromVTC_Grounding">
+    <grounding:owlsProcess rdf:resource="#HocMaiWDSL_1_pushMoneyFromVTC_Atomic"/>
+    <grounding:wsdlOperationName>pushMoneyFromVTC</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>HocMaiWDSLBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>HocMaiWDSLPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5126_5125.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>pushMoneyFromVTCRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>pushMoneyFromVTCResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="HocMaiWDSL_2_SMSHandler_Grounding">
+    <grounding:owlsProcess rdf:resource="#HocMaiWDSL_2_SMSHandler_Atomic"/>
+    <grounding:wsdlOperationName>SMSHandler</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>HocMaiWDSLBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>HocMaiWDSLPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5126_5125.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SMSHandlerRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SMSHandlerResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="HocMaiWDSL_3_UpdateOrder_Grounding">
+    <grounding:owlsProcess rdf:resource="#HocMaiWDSL_3_UpdateOrder_Atomic"/>
+    <grounding:wsdlOperationName>UpdateOrder</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>HocMaiWDSLBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>HocMaiWDSLPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5126_5125.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateOrderRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateOrderResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="HocMaiWDSL_4_CheckAccountExist_Grounding">
+    <grounding:owlsProcess rdf:resource="#HocMaiWDSL_4_CheckAccountExist_Atomic"/>
+    <grounding:wsdlOperationName>CheckAccountExist</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>HocMaiWDSLBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>HocMaiWDSLPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5126_5125.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAccountExistRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAccountExistResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="HocMaiWDSL_5_checkQuizGrade_Grounding">
+    <grounding:owlsProcess rdf:resource="#HocMaiWDSL_5_checkQuizGrade_Atomic"/>
+    <grounding:wsdlOperationName>checkQuizGrade</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>HocMaiWDSLBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>HocMaiWDSLPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5126_5125.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>checkQuizGradeRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>checkQuizGradeResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="HocMaiWDSL_6_CheckAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#HocMaiWDSL_6_CheckAccount_Atomic"/>
+    <grounding:wsdlOperationName>CheckAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>HocMaiWDSLBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>HocMaiWDSLPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5126_5125.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAccountRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAccountResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="HocMaiWDSL_7_BookOrder_Grounding">
+    <grounding:owlsProcess rdf:resource="#HocMaiWDSL_7_BookOrder_Atomic"/>
+    <grounding:wsdlOperationName>BookOrder</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>HocMaiWDSLBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>HocMaiWDSLPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5126_5125.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BookOrderRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BookOrderResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="HocMaiWDSL_8_TopUp_Grounding">
+    <grounding:owlsProcess rdf:resource="#HocMaiWDSL_8_TopUp_Atomic"/>
+    <grounding:wsdlOperationName>TopUp</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>HocMaiWDSLBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>HocMaiWDSLPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5126_5125.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>TopUpRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>TopUpResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

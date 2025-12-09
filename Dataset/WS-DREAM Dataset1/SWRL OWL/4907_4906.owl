@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="BlogFeed">
+    <service:presents rdf:resource="#BlogFeed_Profile"/>
+    <service:describedBy rdf:resource="#BlogFeed_Composite"/>
+    <service:supports rdf:resource="#BlogFeed_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="BlogFeed_Profile">
+    <profile:serviceName>BlogFeed</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#BlogFeed"/>
+    <profile:hasProcess rdf:resource="#BlogFeed_0_GetRSS_Atomic"/>
+    <profile:hasInput rdf:resource="#BlogFeed_0_GetRSS_Atomic_input_parameters__http___www.mikepope.com_blog__GetRSS"/>
+    <profile:hasOutput rdf:resource="#BlogFeed_0_GetRSS_Atomic_output_parameters__http___www.mikepope.com_blog__GetRSSResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRSS(?x) ^ parameters(?x, &lt;http://www.mikepope.com/blog/}GetRSS)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRSSResponse(?y) ^ parameters(?y, &lt;http://www.mikepope.com/blog/}GetRSSResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BlogFeed_1_GetRSS_Atomic"/>
+    <profile:hasOutput rdf:resource="#BlogFeed_1_GetRSS_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRSS(?x) ^ Body(?x, unknown)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="BlogFeed_Composite">
+    <process:composedOf rdf:resource="#BlogFeed_0_GetRSS_Atomic"/>
+    <process:composedOf rdf:resource="#BlogFeed_1_GetRSS_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="BlogFeed_0_GetRSS_Atomic_input_parameters__http___www.mikepope.com_blog__GetRSS">
+    <process:parameterType>parameters:{http://www.mikepope.com/blog/}GetRSS</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BlogFeed_0_GetRSS_Atomic_output_parameters__http___www.mikepope.com_blog__GetRSSResponse">
+    <process:parameterType>parameters:{http://www.mikepope.com/blog/}GetRSSResponse</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="BlogFeed_1_GetRSS_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="BlogFeed_0_GetRSS_Atomic">
+    <process:hasName>GetRSS</process:hasName>
+    <process:hasInput rdf:resource="#BlogFeed_0_GetRSS_Atomic_input_parameters__http___www.mikepope.com_blog__GetRSS"/>
+    <process:hasOutput rdf:resource="#BlogFeed_0_GetRSS_Atomic_output_parameters__http___www.mikepope.com_blog__GetRSSResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRSS(?x) ^ parameters(?x, &lt;http://www.mikepope.com/blog/}GetRSS)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRSSResponse(?y) ^ parameters(?y, &lt;http://www.mikepope.com/blog/}GetRSSResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BlogFeed_1_GetRSS_Atomic">
+    <process:hasName>GetRSS</process:hasName>
+    <process:hasOutput rdf:resource="#BlogFeed_1_GetRSS_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRSS(?x) ^ Body(?x, unknown)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="BlogFeed_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BlogFeed_0_GetRSS_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BlogFeed_1_GetRSS_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BlogFeed_0_GetRSS_Grounding">
+    <grounding:owlsProcess rdf:resource="#BlogFeed_0_GetRSS_Atomic"/>
+    <grounding:wsdlOperationName>GetRSS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BlogFeedSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BlogFeedSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4907_4906.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRSSSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRSSSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BlogFeed_1_GetRSS_Grounding">
+    <grounding:owlsProcess rdf:resource="#BlogFeed_1_GetRSS_Atomic"/>
+    <grounding:wsdlOperationName>GetRSS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BlogFeedHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BlogFeedHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4907_4906.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRSSHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRSSHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

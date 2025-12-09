@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="DIRECTORY_SEARCHES">
+    <service:presents rdf:resource="#DIRECTORY_SEARCHES_Profile"/>
+    <service:describedBy rdf:resource="#DIRECTORY_SEARCHES_Composite"/>
+    <service:supports rdf:resource="#DIRECTORY_SEARCHES_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="DIRECTORY_SEARCHES_Profile">
+    <profile:serviceName>DIRECTORY_SEARCHES</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#DIRECTORY_SEARCHES"/>
+    <profile:hasProcess rdf:resource="#DIRECTORY_SEARCHES_0_EMPLOYEE_LOOKUP_BY_NAME_Atomic"/>
+    <profile:hasInput rdf:resource="#DIRECTORY_SEARCHES_0_EMPLOYEE_LOOKUP_BY_NAME_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_NAME"/>
+    <profile:hasOutput rdf:resource="#DIRECTORY_SEARCHES_0_EMPLOYEE_LOOKUP_BY_NAME_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_NAMEResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Employee(?employee) ^ hasName(?employee, ?name) ^ swrlb:containsIgnoreCase(?name, "EMPLOYEE_LOOKUP_BY_NAME")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmployeeLookupByName(?employee)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DIRECTORY_SEARCHES_1_PHONETIC_EMPLOYEE_NAME_LOOKUP_Atomic"/>
+    <profile:hasInput rdf:resource="#DIRECTORY_SEARCHES_1_PHONETIC_EMPLOYEE_NAME_LOOKUP_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_PHONETIC_EMPLOYEE_NAME_LOOKUP"/>
+    <profile:hasOutput rdf:resource="#DIRECTORY_SEARCHES_1_PHONETIC_EMPLOYEE_NAME_LOOKUP_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_PHONETIC_EMPLOYEE_NAME_LOOKUPResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DIRECTORY_SEARCHES_2_EMPLOYEE_LOOKUP_BY_PHONE_Atomic"/>
+    <profile:hasInput rdf:resource="#DIRECTORY_SEARCHES_2_EMPLOYEE_LOOKUP_BY_PHONE_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_PHONE"/>
+    <profile:hasOutput rdf:resource="#DIRECTORY_SEARCHES_2_EMPLOYEE_LOOKUP_BY_PHONE_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_PHONEResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Employee(?emp) ^ hasPhoneNumber(?emp, ?phone) ^ swrlb:equal(?phone, "EMPLOYEE_LOOKUP_BY_PHONE")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmployeeLookupByPhoneResponse(?emp)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DIRECTORY_SEARCHES_3_EMPLOYEE_LOOKUP_BY_AGENCY_ID_Atomic"/>
+    <profile:hasInput rdf:resource="#DIRECTORY_SEARCHES_3_EMPLOYEE_LOOKUP_BY_AGENCY_ID_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_AGENCY_ID"/>
+    <profile:hasOutput rdf:resource="#DIRECTORY_SEARCHES_3_EMPLOYEE_LOOKUP_BY_AGENCY_ID_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_AGENCY_IDResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Employee(?employee) ^ hasAgencyID(?employee, ?agencyID)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmployeeLookupByAgencyIDResponse(?employee) ^ hasAgencyID(?employee, ?agencyID)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DIRECTORY_SEARCHES_4_GET_CITY_AGENCY_LIST_Atomic"/>
+    <profile:hasInput rdf:resource="#DIRECTORY_SEARCHES_4_GET_CITY_AGENCY_LIST_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_GET_CITY_AGENCY_LIST"/>
+    <profile:hasOutput rdf:resource="#DIRECTORY_SEARCHES_4_GET_CITY_AGENCY_LIST_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_GET_CITY_AGENCY_LISTResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="DIRECTORY_SEARCHES_Composite">
+    <process:composedOf rdf:resource="#DIRECTORY_SEARCHES_0_EMPLOYEE_LOOKUP_BY_NAME_Atomic"/>
+    <process:composedOf rdf:resource="#DIRECTORY_SEARCHES_1_PHONETIC_EMPLOYEE_NAME_LOOKUP_Atomic"/>
+    <process:composedOf rdf:resource="#DIRECTORY_SEARCHES_2_EMPLOYEE_LOOKUP_BY_PHONE_Atomic"/>
+    <process:composedOf rdf:resource="#DIRECTORY_SEARCHES_3_EMPLOYEE_LOOKUP_BY_AGENCY_ID_Atomic"/>
+    <process:composedOf rdf:resource="#DIRECTORY_SEARCHES_4_GET_CITY_AGENCY_LIST_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="DIRECTORY_SEARCHES_0_EMPLOYEE_LOOKUP_BY_NAME_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_NAME">
+    <process:parameterType>parameters:{http://mission.sfgov.org/INtranetDirectory/DIRECTORY_SEARCHES}EMPLOYEE_LOOKUP_BY_NAME</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DIRECTORY_SEARCHES_0_EMPLOYEE_LOOKUP_BY_NAME_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_NAMEResponse">
+    <process:parameterType>parameters:{http://mission.sfgov.org/INtranetDirectory/DIRECTORY_SEARCHES}EMPLOYEE_LOOKUP_BY_NAMEResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DIRECTORY_SEARCHES_1_PHONETIC_EMPLOYEE_NAME_LOOKUP_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_PHONETIC_EMPLOYEE_NAME_LOOKUP">
+    <process:parameterType>parameters:{http://mission.sfgov.org/INtranetDirectory/DIRECTORY_SEARCHES}PHONETIC_EMPLOYEE_NAME_LOOKUP</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DIRECTORY_SEARCHES_1_PHONETIC_EMPLOYEE_NAME_LOOKUP_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_PHONETIC_EMPLOYEE_NAME_LOOKUPResponse">
+    <process:parameterType>parameters:{http://mission.sfgov.org/INtranetDirectory/DIRECTORY_SEARCHES}PHONETIC_EMPLOYEE_NAME_LOOKUPResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DIRECTORY_SEARCHES_2_EMPLOYEE_LOOKUP_BY_PHONE_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_PHONE">
+    <process:parameterType>parameters:{http://mission.sfgov.org/INtranetDirectory/DIRECTORY_SEARCHES}EMPLOYEE_LOOKUP_BY_PHONE</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DIRECTORY_SEARCHES_2_EMPLOYEE_LOOKUP_BY_PHONE_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_PHONEResponse">
+    <process:parameterType>parameters:{http://mission.sfgov.org/INtranetDirectory/DIRECTORY_SEARCHES}EMPLOYEE_LOOKUP_BY_PHONEResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DIRECTORY_SEARCHES_3_EMPLOYEE_LOOKUP_BY_AGENCY_ID_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_AGENCY_ID">
+    <process:parameterType>parameters:{http://mission.sfgov.org/INtranetDirectory/DIRECTORY_SEARCHES}EMPLOYEE_LOOKUP_BY_AGENCY_ID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DIRECTORY_SEARCHES_3_EMPLOYEE_LOOKUP_BY_AGENCY_ID_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_AGENCY_IDResponse">
+    <process:parameterType>parameters:{http://mission.sfgov.org/INtranetDirectory/DIRECTORY_SEARCHES}EMPLOYEE_LOOKUP_BY_AGENCY_IDResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DIRECTORY_SEARCHES_4_GET_CITY_AGENCY_LIST_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_GET_CITY_AGENCY_LIST">
+    <process:parameterType>parameters:{http://mission.sfgov.org/INtranetDirectory/DIRECTORY_SEARCHES}GET_CITY_AGENCY_LIST</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DIRECTORY_SEARCHES_4_GET_CITY_AGENCY_LIST_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_GET_CITY_AGENCY_LISTResponse">
+    <process:parameterType>parameters:{http://mission.sfgov.org/INtranetDirectory/DIRECTORY_SEARCHES}GET_CITY_AGENCY_LISTResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="DIRECTORY_SEARCHES_0_EMPLOYEE_LOOKUP_BY_NAME_Atomic">
+    <process:hasName>EMPLOYEE_LOOKUP_BY_NAME</process:hasName>
+    <process:hasInput rdf:resource="#DIRECTORY_SEARCHES_0_EMPLOYEE_LOOKUP_BY_NAME_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_NAME"/>
+    <process:hasOutput rdf:resource="#DIRECTORY_SEARCHES_0_EMPLOYEE_LOOKUP_BY_NAME_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_NAMEResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Employee(?employee) ^ hasName(?employee, ?name) ^ swrlb:containsIgnoreCase(?name, "EMPLOYEE_LOOKUP_BY_NAME")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmployeeLookupByName(?employee)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DIRECTORY_SEARCHES_1_PHONETIC_EMPLOYEE_NAME_LOOKUP_Atomic">
+    <process:hasName>PHONETIC_EMPLOYEE_NAME_LOOKUP</process:hasName>
+    <process:hasInput rdf:resource="#DIRECTORY_SEARCHES_1_PHONETIC_EMPLOYEE_NAME_LOOKUP_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_PHONETIC_EMPLOYEE_NAME_LOOKUP"/>
+    <process:hasOutput rdf:resource="#DIRECTORY_SEARCHES_1_PHONETIC_EMPLOYEE_NAME_LOOKUP_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_PHONETIC_EMPLOYEE_NAME_LOOKUPResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DIRECTORY_SEARCHES_2_EMPLOYEE_LOOKUP_BY_PHONE_Atomic">
+    <process:hasName>EMPLOYEE_LOOKUP_BY_PHONE</process:hasName>
+    <process:hasInput rdf:resource="#DIRECTORY_SEARCHES_2_EMPLOYEE_LOOKUP_BY_PHONE_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_PHONE"/>
+    <process:hasOutput rdf:resource="#DIRECTORY_SEARCHES_2_EMPLOYEE_LOOKUP_BY_PHONE_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_PHONEResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Employee(?emp) ^ hasPhoneNumber(?emp, ?phone) ^ swrlb:equal(?phone, "EMPLOYEE_LOOKUP_BY_PHONE")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmployeeLookupByPhoneResponse(?emp)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DIRECTORY_SEARCHES_3_EMPLOYEE_LOOKUP_BY_AGENCY_ID_Atomic">
+    <process:hasName>EMPLOYEE_LOOKUP_BY_AGENCY_ID</process:hasName>
+    <process:hasInput rdf:resource="#DIRECTORY_SEARCHES_3_EMPLOYEE_LOOKUP_BY_AGENCY_ID_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_AGENCY_ID"/>
+    <process:hasOutput rdf:resource="#DIRECTORY_SEARCHES_3_EMPLOYEE_LOOKUP_BY_AGENCY_ID_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_EMPLOYEE_LOOKUP_BY_AGENCY_IDResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Employee(?employee) ^ hasAgencyID(?employee, ?agencyID)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmployeeLookupByAgencyIDResponse(?employee) ^ hasAgencyID(?employee, ?agencyID)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DIRECTORY_SEARCHES_4_GET_CITY_AGENCY_LIST_Atomic">
+    <process:hasName>GET_CITY_AGENCY_LIST</process:hasName>
+    <process:hasInput rdf:resource="#DIRECTORY_SEARCHES_4_GET_CITY_AGENCY_LIST_Atomic_input_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_GET_CITY_AGENCY_LIST"/>
+    <process:hasOutput rdf:resource="#DIRECTORY_SEARCHES_4_GET_CITY_AGENCY_LIST_Atomic_output_parameters__http___mission.sfgov.org_INtranetDirectory_DIRECTORY_SEARCHES_GET_CITY_AGENCY_LISTResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="DIRECTORY_SEARCHES_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DIRECTORY_SEARCHES_0_EMPLOYEE_LOOKUP_BY_NAME_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DIRECTORY_SEARCHES_1_PHONETIC_EMPLOYEE_NAME_LOOKUP_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DIRECTORY_SEARCHES_2_EMPLOYEE_LOOKUP_BY_PHONE_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DIRECTORY_SEARCHES_3_EMPLOYEE_LOOKUP_BY_AGENCY_ID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DIRECTORY_SEARCHES_4_GET_CITY_AGENCY_LIST_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DIRECTORY_SEARCHES_0_EMPLOYEE_LOOKUP_BY_NAME_Grounding">
+    <grounding:owlsProcess rdf:resource="#DIRECTORY_SEARCHES_0_EMPLOYEE_LOOKUP_BY_NAME_Atomic"/>
+    <grounding:wsdlOperationName>EMPLOYEE_LOOKUP_BY_NAME</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DIRECTORY_SEARCHESSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DIRECTORY_SEARCHESSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4596_4595.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>EMPLOYEE_LOOKUP_BY_NAMESoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>EMPLOYEE_LOOKUP_BY_NAMESoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DIRECTORY_SEARCHES_1_PHONETIC_EMPLOYEE_NAME_LOOKUP_Grounding">
+    <grounding:owlsProcess rdf:resource="#DIRECTORY_SEARCHES_1_PHONETIC_EMPLOYEE_NAME_LOOKUP_Atomic"/>
+    <grounding:wsdlOperationName>PHONETIC_EMPLOYEE_NAME_LOOKUP</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DIRECTORY_SEARCHESSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DIRECTORY_SEARCHESSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4596_4595.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PHONETIC_EMPLOYEE_NAME_LOOKUPSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PHONETIC_EMPLOYEE_NAME_LOOKUPSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DIRECTORY_SEARCHES_2_EMPLOYEE_LOOKUP_BY_PHONE_Grounding">
+    <grounding:owlsProcess rdf:resource="#DIRECTORY_SEARCHES_2_EMPLOYEE_LOOKUP_BY_PHONE_Atomic"/>
+    <grounding:wsdlOperationName>EMPLOYEE_LOOKUP_BY_PHONE</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DIRECTORY_SEARCHESSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DIRECTORY_SEARCHESSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4596_4595.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>EMPLOYEE_LOOKUP_BY_PHONESoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>EMPLOYEE_LOOKUP_BY_PHONESoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DIRECTORY_SEARCHES_3_EMPLOYEE_LOOKUP_BY_AGENCY_ID_Grounding">
+    <grounding:owlsProcess rdf:resource="#DIRECTORY_SEARCHES_3_EMPLOYEE_LOOKUP_BY_AGENCY_ID_Atomic"/>
+    <grounding:wsdlOperationName>EMPLOYEE_LOOKUP_BY_AGENCY_ID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DIRECTORY_SEARCHESSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DIRECTORY_SEARCHESSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4596_4595.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>EMPLOYEE_LOOKUP_BY_AGENCY_IDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>EMPLOYEE_LOOKUP_BY_AGENCY_IDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DIRECTORY_SEARCHES_4_GET_CITY_AGENCY_LIST_Grounding">
+    <grounding:owlsProcess rdf:resource="#DIRECTORY_SEARCHES_4_GET_CITY_AGENCY_LIST_Atomic"/>
+    <grounding:wsdlOperationName>GET_CITY_AGENCY_LIST</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DIRECTORY_SEARCHESSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DIRECTORY_SEARCHESSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4596_4595.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GET_CITY_AGENCY_LISTSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GET_CITY_AGENCY_LISTSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

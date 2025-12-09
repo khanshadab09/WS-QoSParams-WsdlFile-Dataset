@@ -1,0 +1,325 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="CommitteeMeetingService">
+    <service:presents rdf:resource="#CommitteeMeetingService_Profile"/>
+    <service:describedBy rdf:resource="#CommitteeMeetingService_Composite"/>
+    <service:supports rdf:resource="#CommitteeMeetingService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="CommitteeMeetingService_Profile">
+    <profile:serviceName>CommitteeMeetingService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#CommitteeMeetingService"/>
+    <profile:hasProcess rdf:resource="#CommitteeMeetingService_0_GetCommitteeMeetings_Atomic"/>
+    <profile:hasInput rdf:resource="#CommitteeMeetingService_0_GetCommitteeMeetings_Atomic_input_beginDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CommitteeMeetingService_0_GetCommitteeMeetings_Atomic_input_endDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CommitteeMeetingService_0_GetCommitteeMeetings_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeeting"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">beginDate(?date) ^ endDate(?date) ^ string(?date)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?x, ?y) ^ ArrayOfCommitteeMeeting(?x) ^ CommitteeMeeting(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CommitteeMeetingService_1_GetRevisedCommitteeMeetings_Atomic"/>
+    <profile:hasInput rdf:resource="#CommitteeMeetingService_1_GetRevisedCommitteeMeetings_Atomic_input_changedSinceDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CommitteeMeetingService_1_GetRevisedCommitteeMeetings_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeeting"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">changedSinceDate(?date) ^ string(?date)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?operation, GetRevisedCommitteeMeetings) ^ hasInput(?operation, changedSinceDate) ^ hasOutput(?operation, ArrayOfCommitteeMeeting) ^ hasOutput(?operation, Body)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CommitteeMeetingService_2_GetCommitteeMeetingItems_Atomic"/>
+    <profile:hasInput rdf:resource="#CommitteeMeetingService_2_GetCommitteeMeetingItems_Atomic_input_agendaId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CommitteeMeetingService_2_GetCommitteeMeetingItems_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeetingItem"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">agendaId(?x) ^ string(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(ArrayOfCommitteeMeetingItem)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CommitteeMeetingService_3_GetCommitteeMeetings_Atomic"/>
+    <profile:hasInput rdf:resource="#CommitteeMeetingService_3_GetCommitteeMeetings_Atomic_input_parameters__http___WSLWebServices.leg.wa.gov__GetCommitteeMeetings"/>
+    <profile:hasOutput rdf:resource="#CommitteeMeetingService_3_GetCommitteeMeetings_Atomic_output_parameters__http___WSLWebServices.leg.wa.gov__GetCommitteeMeetingsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CommitteeMeetingService_4_GetRevisedCommitteeMeetings_Atomic"/>
+    <profile:hasInput rdf:resource="#CommitteeMeetingService_4_GetRevisedCommitteeMeetings_Atomic_input_parameters__http___WSLWebServices.leg.wa.gov__GetRevisedCommitteeMeetings"/>
+    <profile:hasOutput rdf:resource="#CommitteeMeetingService_4_GetRevisedCommitteeMeetings_Atomic_output_parameters__http___WSLWebServices.leg.wa.gov__GetRevisedCommitteeMeetingsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRevisedCommitteeMeetings(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRevisedCommitteeMeetingsResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CommitteeMeetingService_5_GetCommitteeMeetingItems_Atomic"/>
+    <profile:hasInput rdf:resource="#CommitteeMeetingService_5_GetCommitteeMeetingItems_Atomic_input_parameters__http___WSLWebServices.leg.wa.gov__GetCommitteeMeetingItems"/>
+    <profile:hasOutput rdf:resource="#CommitteeMeetingService_5_GetCommitteeMeetingItems_Atomic_output_parameters__http___WSLWebServices.leg.wa.gov__GetCommitteeMeetingItemsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetCommitteeMeetingItems(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetCommitteeMeetingItemsResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CommitteeMeetingService_6_GetCommitteeMeetings_Atomic"/>
+    <profile:hasInput rdf:resource="#CommitteeMeetingService_6_GetCommitteeMeetings_Atomic_input_beginDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CommitteeMeetingService_6_GetCommitteeMeetings_Atomic_input_endDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CommitteeMeetingService_6_GetCommitteeMeetings_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeeting"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">beginDate(?date) ^ endDate(?date)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?meeting) ^ ArrayOfCommitteeMeeting(?meeting)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CommitteeMeetingService_7_GetRevisedCommitteeMeetings_Atomic"/>
+    <profile:hasInput rdf:resource="#CommitteeMeetingService_7_GetRevisedCommitteeMeetings_Atomic_input_changedSinceDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CommitteeMeetingService_7_GetRevisedCommitteeMeetings_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeeting"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">changedSinceDate(?date) ^ swrlb:dateTime(?date, ?dateTime) ^ swrlb:dateTime(?dateTime, "2022-01-01T00:00:00Z"^^xsd:dateTime) newline</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?output, Body) ^ hasType(?output, ArrayOfCommitteeMeeting)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CommitteeMeetingService_8_GetCommitteeMeetingItems_Atomic"/>
+    <profile:hasInput rdf:resource="#CommitteeMeetingService_8_GetCommitteeMeetingItems_Atomic_input_agendaId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CommitteeMeetingService_8_GetCommitteeMeetingItems_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeetingItem"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">agendaId(?x) ^ string(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArrayOfCommitteeMeetingItem(?y) ^ Body(?y) ^ hasCommitteeMeetingItem(?y, ?z) ^ hasAgendaId(?z, ?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="CommitteeMeetingService_Composite">
+    <process:composedOf rdf:resource="#CommitteeMeetingService_0_GetCommitteeMeetings_Atomic"/>
+    <process:composedOf rdf:resource="#CommitteeMeetingService_1_GetRevisedCommitteeMeetings_Atomic"/>
+    <process:composedOf rdf:resource="#CommitteeMeetingService_2_GetCommitteeMeetingItems_Atomic"/>
+    <process:composedOf rdf:resource="#CommitteeMeetingService_3_GetCommitteeMeetings_Atomic"/>
+    <process:composedOf rdf:resource="#CommitteeMeetingService_4_GetRevisedCommitteeMeetings_Atomic"/>
+    <process:composedOf rdf:resource="#CommitteeMeetingService_5_GetCommitteeMeetingItems_Atomic"/>
+    <process:composedOf rdf:resource="#CommitteeMeetingService_6_GetCommitteeMeetings_Atomic"/>
+    <process:composedOf rdf:resource="#CommitteeMeetingService_7_GetRevisedCommitteeMeetings_Atomic"/>
+    <process:composedOf rdf:resource="#CommitteeMeetingService_8_GetCommitteeMeetingItems_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="CommitteeMeetingService_0_GetCommitteeMeetings_Atomic_input_beginDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>beginDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CommitteeMeetingService_0_GetCommitteeMeetings_Atomic_input_endDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>endDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CommitteeMeetingService_0_GetCommitteeMeetings_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeeting">
+    <process:parameterType>Body:{http://WSLWebServices.leg.wa.gov/}ArrayOfCommitteeMeeting</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CommitteeMeetingService_1_GetRevisedCommitteeMeetings_Atomic_input_changedSinceDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>changedSinceDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CommitteeMeetingService_1_GetRevisedCommitteeMeetings_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeeting">
+    <process:parameterType>Body:{http://WSLWebServices.leg.wa.gov/}ArrayOfCommitteeMeeting</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CommitteeMeetingService_2_GetCommitteeMeetingItems_Atomic_input_agendaId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>agendaId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CommitteeMeetingService_2_GetCommitteeMeetingItems_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeetingItem">
+    <process:parameterType>Body:{http://WSLWebServices.leg.wa.gov/}ArrayOfCommitteeMeetingItem</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CommitteeMeetingService_3_GetCommitteeMeetings_Atomic_input_parameters__http___WSLWebServices.leg.wa.gov__GetCommitteeMeetings">
+    <process:parameterType>parameters:{http://WSLWebServices.leg.wa.gov/}GetCommitteeMeetings</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CommitteeMeetingService_3_GetCommitteeMeetings_Atomic_output_parameters__http___WSLWebServices.leg.wa.gov__GetCommitteeMeetingsResponse">
+    <process:parameterType>parameters:{http://WSLWebServices.leg.wa.gov/}GetCommitteeMeetingsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CommitteeMeetingService_4_GetRevisedCommitteeMeetings_Atomic_input_parameters__http___WSLWebServices.leg.wa.gov__GetRevisedCommitteeMeetings">
+    <process:parameterType>parameters:{http://WSLWebServices.leg.wa.gov/}GetRevisedCommitteeMeetings</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CommitteeMeetingService_4_GetRevisedCommitteeMeetings_Atomic_output_parameters__http___WSLWebServices.leg.wa.gov__GetRevisedCommitteeMeetingsResponse">
+    <process:parameterType>parameters:{http://WSLWebServices.leg.wa.gov/}GetRevisedCommitteeMeetingsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CommitteeMeetingService_5_GetCommitteeMeetingItems_Atomic_input_parameters__http___WSLWebServices.leg.wa.gov__GetCommitteeMeetingItems">
+    <process:parameterType>parameters:{http://WSLWebServices.leg.wa.gov/}GetCommitteeMeetingItems</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CommitteeMeetingService_5_GetCommitteeMeetingItems_Atomic_output_parameters__http___WSLWebServices.leg.wa.gov__GetCommitteeMeetingItemsResponse">
+    <process:parameterType>parameters:{http://WSLWebServices.leg.wa.gov/}GetCommitteeMeetingItemsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CommitteeMeetingService_6_GetCommitteeMeetings_Atomic_input_beginDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>beginDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CommitteeMeetingService_6_GetCommitteeMeetings_Atomic_input_endDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>endDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CommitteeMeetingService_6_GetCommitteeMeetings_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeeting">
+    <process:parameterType>Body:{http://WSLWebServices.leg.wa.gov/}ArrayOfCommitteeMeeting</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CommitteeMeetingService_7_GetRevisedCommitteeMeetings_Atomic_input_changedSinceDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>changedSinceDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CommitteeMeetingService_7_GetRevisedCommitteeMeetings_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeeting">
+    <process:parameterType>Body:{http://WSLWebServices.leg.wa.gov/}ArrayOfCommitteeMeeting</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CommitteeMeetingService_8_GetCommitteeMeetingItems_Atomic_input_agendaId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>agendaId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CommitteeMeetingService_8_GetCommitteeMeetingItems_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeetingItem">
+    <process:parameterType>Body:{http://WSLWebServices.leg.wa.gov/}ArrayOfCommitteeMeetingItem</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="CommitteeMeetingService_0_GetCommitteeMeetings_Atomic">
+    <process:hasName>GetCommitteeMeetings</process:hasName>
+    <process:hasInput rdf:resource="#CommitteeMeetingService_0_GetCommitteeMeetings_Atomic_input_beginDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CommitteeMeetingService_0_GetCommitteeMeetings_Atomic_input_endDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CommitteeMeetingService_0_GetCommitteeMeetings_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeeting"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">beginDate(?date) ^ endDate(?date) ^ string(?date)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?x, ?y) ^ ArrayOfCommitteeMeeting(?x) ^ CommitteeMeeting(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CommitteeMeetingService_1_GetRevisedCommitteeMeetings_Atomic">
+    <process:hasName>GetRevisedCommitteeMeetings</process:hasName>
+    <process:hasInput rdf:resource="#CommitteeMeetingService_1_GetRevisedCommitteeMeetings_Atomic_input_changedSinceDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CommitteeMeetingService_1_GetRevisedCommitteeMeetings_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeeting"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">changedSinceDate(?date) ^ string(?date)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?operation, GetRevisedCommitteeMeetings) ^ hasInput(?operation, changedSinceDate) ^ hasOutput(?operation, ArrayOfCommitteeMeeting) ^ hasOutput(?operation, Body)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CommitteeMeetingService_2_GetCommitteeMeetingItems_Atomic">
+    <process:hasName>GetCommitteeMeetingItems</process:hasName>
+    <process:hasInput rdf:resource="#CommitteeMeetingService_2_GetCommitteeMeetingItems_Atomic_input_agendaId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CommitteeMeetingService_2_GetCommitteeMeetingItems_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeetingItem"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">agendaId(?x) ^ string(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(ArrayOfCommitteeMeetingItem)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CommitteeMeetingService_3_GetCommitteeMeetings_Atomic">
+    <process:hasName>GetCommitteeMeetings</process:hasName>
+    <process:hasInput rdf:resource="#CommitteeMeetingService_3_GetCommitteeMeetings_Atomic_input_parameters__http___WSLWebServices.leg.wa.gov__GetCommitteeMeetings"/>
+    <process:hasOutput rdf:resource="#CommitteeMeetingService_3_GetCommitteeMeetings_Atomic_output_parameters__http___WSLWebServices.leg.wa.gov__GetCommitteeMeetingsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CommitteeMeetingService_4_GetRevisedCommitteeMeetings_Atomic">
+    <process:hasName>GetRevisedCommitteeMeetings</process:hasName>
+    <process:hasInput rdf:resource="#CommitteeMeetingService_4_GetRevisedCommitteeMeetings_Atomic_input_parameters__http___WSLWebServices.leg.wa.gov__GetRevisedCommitteeMeetings"/>
+    <process:hasOutput rdf:resource="#CommitteeMeetingService_4_GetRevisedCommitteeMeetings_Atomic_output_parameters__http___WSLWebServices.leg.wa.gov__GetRevisedCommitteeMeetingsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRevisedCommitteeMeetings(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRevisedCommitteeMeetingsResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CommitteeMeetingService_5_GetCommitteeMeetingItems_Atomic">
+    <process:hasName>GetCommitteeMeetingItems</process:hasName>
+    <process:hasInput rdf:resource="#CommitteeMeetingService_5_GetCommitteeMeetingItems_Atomic_input_parameters__http___WSLWebServices.leg.wa.gov__GetCommitteeMeetingItems"/>
+    <process:hasOutput rdf:resource="#CommitteeMeetingService_5_GetCommitteeMeetingItems_Atomic_output_parameters__http___WSLWebServices.leg.wa.gov__GetCommitteeMeetingItemsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetCommitteeMeetingItems(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetCommitteeMeetingItemsResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CommitteeMeetingService_6_GetCommitteeMeetings_Atomic">
+    <process:hasName>GetCommitteeMeetings</process:hasName>
+    <process:hasInput rdf:resource="#CommitteeMeetingService_6_GetCommitteeMeetings_Atomic_input_beginDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CommitteeMeetingService_6_GetCommitteeMeetings_Atomic_input_endDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CommitteeMeetingService_6_GetCommitteeMeetings_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeeting"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">beginDate(?date) ^ endDate(?date)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?meeting) ^ ArrayOfCommitteeMeeting(?meeting)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CommitteeMeetingService_7_GetRevisedCommitteeMeetings_Atomic">
+    <process:hasName>GetRevisedCommitteeMeetings</process:hasName>
+    <process:hasInput rdf:resource="#CommitteeMeetingService_7_GetRevisedCommitteeMeetings_Atomic_input_changedSinceDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CommitteeMeetingService_7_GetRevisedCommitteeMeetings_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeeting"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">changedSinceDate(?date) ^ swrlb:dateTime(?date, ?dateTime) ^ swrlb:dateTime(?dateTime, "2022-01-01T00:00:00Z"^^xsd:dateTime) newline</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?output, Body) ^ hasType(?output, ArrayOfCommitteeMeeting)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CommitteeMeetingService_8_GetCommitteeMeetingItems_Atomic">
+    <process:hasName>GetCommitteeMeetingItems</process:hasName>
+    <process:hasInput rdf:resource="#CommitteeMeetingService_8_GetCommitteeMeetingItems_Atomic_input_agendaId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CommitteeMeetingService_8_GetCommitteeMeetingItems_Atomic_output_Body__http___WSLWebServices.leg.wa.gov__ArrayOfCommitteeMeetingItem"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">agendaId(?x) ^ string(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArrayOfCommitteeMeetingItem(?y) ^ Body(?y) ^ hasCommitteeMeetingItem(?y, ?z) ^ hasAgendaId(?z, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="CommitteeMeetingService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CommitteeMeetingService_0_GetCommitteeMeetings_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CommitteeMeetingService_1_GetRevisedCommitteeMeetings_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CommitteeMeetingService_2_GetCommitteeMeetingItems_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CommitteeMeetingService_3_GetCommitteeMeetings_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CommitteeMeetingService_4_GetRevisedCommitteeMeetings_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CommitteeMeetingService_5_GetCommitteeMeetingItems_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CommitteeMeetingService_6_GetCommitteeMeetings_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CommitteeMeetingService_7_GetRevisedCommitteeMeetings_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CommitteeMeetingService_8_GetCommitteeMeetingItems_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CommitteeMeetingService_0_GetCommitteeMeetings_Grounding">
+    <grounding:owlsProcess rdf:resource="#CommitteeMeetingService_0_GetCommitteeMeetings_Atomic"/>
+    <grounding:wsdlOperationName>GetCommitteeMeetings</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CommitteeMeetingServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CommitteeMeetingServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4005_4004.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCommitteeMeetingsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCommitteeMeetingsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CommitteeMeetingService_1_GetRevisedCommitteeMeetings_Grounding">
+    <grounding:owlsProcess rdf:resource="#CommitteeMeetingService_1_GetRevisedCommitteeMeetings_Atomic"/>
+    <grounding:wsdlOperationName>GetRevisedCommitteeMeetings</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CommitteeMeetingServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CommitteeMeetingServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4005_4004.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRevisedCommitteeMeetingsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRevisedCommitteeMeetingsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CommitteeMeetingService_2_GetCommitteeMeetingItems_Grounding">
+    <grounding:owlsProcess rdf:resource="#CommitteeMeetingService_2_GetCommitteeMeetingItems_Atomic"/>
+    <grounding:wsdlOperationName>GetCommitteeMeetingItems</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CommitteeMeetingServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CommitteeMeetingServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4005_4004.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCommitteeMeetingItemsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCommitteeMeetingItemsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CommitteeMeetingService_3_GetCommitteeMeetings_Grounding">
+    <grounding:owlsProcess rdf:resource="#CommitteeMeetingService_3_GetCommitteeMeetings_Atomic"/>
+    <grounding:wsdlOperationName>GetCommitteeMeetings</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CommitteeMeetingServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CommitteeMeetingServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4005_4004.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCommitteeMeetingsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCommitteeMeetingsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CommitteeMeetingService_4_GetRevisedCommitteeMeetings_Grounding">
+    <grounding:owlsProcess rdf:resource="#CommitteeMeetingService_4_GetRevisedCommitteeMeetings_Atomic"/>
+    <grounding:wsdlOperationName>GetRevisedCommitteeMeetings</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CommitteeMeetingServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CommitteeMeetingServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4005_4004.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRevisedCommitteeMeetingsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRevisedCommitteeMeetingsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CommitteeMeetingService_5_GetCommitteeMeetingItems_Grounding">
+    <grounding:owlsProcess rdf:resource="#CommitteeMeetingService_5_GetCommitteeMeetingItems_Atomic"/>
+    <grounding:wsdlOperationName>GetCommitteeMeetingItems</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CommitteeMeetingServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CommitteeMeetingServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4005_4004.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCommitteeMeetingItemsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCommitteeMeetingItemsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CommitteeMeetingService_6_GetCommitteeMeetings_Grounding">
+    <grounding:owlsProcess rdf:resource="#CommitteeMeetingService_6_GetCommitteeMeetings_Atomic"/>
+    <grounding:wsdlOperationName>GetCommitteeMeetings</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CommitteeMeetingServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CommitteeMeetingServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4005_4004.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCommitteeMeetingsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCommitteeMeetingsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CommitteeMeetingService_7_GetRevisedCommitteeMeetings_Grounding">
+    <grounding:owlsProcess rdf:resource="#CommitteeMeetingService_7_GetRevisedCommitteeMeetings_Atomic"/>
+    <grounding:wsdlOperationName>GetRevisedCommitteeMeetings</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CommitteeMeetingServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CommitteeMeetingServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4005_4004.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRevisedCommitteeMeetingsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRevisedCommitteeMeetingsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CommitteeMeetingService_8_GetCommitteeMeetingItems_Grounding">
+    <grounding:owlsProcess rdf:resource="#CommitteeMeetingService_8_GetCommitteeMeetingItems_Atomic"/>
+    <grounding:wsdlOperationName>GetCommitteeMeetingItems</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CommitteeMeetingServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CommitteeMeetingServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4005_4004.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCommitteeMeetingItemsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCommitteeMeetingItemsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

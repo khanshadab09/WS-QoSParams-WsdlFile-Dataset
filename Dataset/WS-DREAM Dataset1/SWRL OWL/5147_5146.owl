@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="DerniersDecesEPF">
+    <service:presents rdf:resource="#DerniersDecesEPF_Profile"/>
+    <service:describedBy rdf:resource="#DerniersDecesEPF_Composite"/>
+    <service:supports rdf:resource="#DerniersDecesEPF_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="DerniersDecesEPF_Profile">
+    <profile:serviceName>DerniersDecesEPF</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#DerniersDecesEPF"/>
+    <profile:hasProcess rdf:resource="#DerniersDecesEPF_0_DerniersDecesEPF_Atomic"/>
+    <profile:hasInput rdf:resource="#DerniersDecesEPF_0_DerniersDecesEPF_Atomic_input_MotDePasse__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DerniersDecesEPF_0_DerniersDecesEPF_Atomic_input_CodeAcces__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DerniersDecesEPF_0_DerniersDecesEPF_Atomic_input_Marge__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DerniersDecesEPF_0_DerniersDecesEPF_Atomic_output_Body__http___webservices.enaos.net__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(ask ?x (rdf:type ?x &lt;http://www.enaos.net/Ontology#Utilisateur&gt;) 
+(ask ?x &lt;http://www.enaos.net/Ontology#possedeMotDePasse&gt; ?MotDePasse) 
+(ask ?x &lt;http://www.enaos.net/Ontology#possedeCodeAcces&gt; ?CodeAcces) 
+(ask ?x &lt;http://www.enaos.net/Ontology#possedeMarge&gt; ?Marge))</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(ask ?x (rdf:type ?x &lt;http://www.enaos.net/Ontology#DerniersDecesEPF&gt;) 
+(ask ?x &lt;http://www.enaos.net/Ontology#possedeBody&gt; ?Body))</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DerniersDecesEPF_1_DerniersDecesEPF_Atomic"/>
+    <profile:hasInput rdf:resource="#DerniersDecesEPF_1_DerniersDecesEPF_Atomic_input_parameters__http___webservices.enaos.net__DerniersDecesEPF"/>
+    <profile:hasOutput rdf:resource="#DerniersDecesEPF_1_DerniersDecesEPF_Atomic_output_parameters__http___webservices.enaos.net__DerniersDecesEPFResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DerniersDecesEPF_2_DerniersDecesEPF_Atomic"/>
+    <profile:hasInput rdf:resource="#DerniersDecesEPF_2_DerniersDecesEPF_Atomic_input_MotDePasse__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DerniersDecesEPF_2_DerniersDecesEPF_Atomic_input_CodeAcces__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DerniersDecesEPF_2_DerniersDecesEPF_Atomic_input_Marge__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DerniersDecesEPF_2_DerniersDecesEPF_Atomic_output_Body__http___webservices.enaos.net__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotDePasse(?password) ^ CodeAcces(?accessCode) ^ Marge(?margin)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="DerniersDecesEPF_Composite">
+    <process:composedOf rdf:resource="#DerniersDecesEPF_0_DerniersDecesEPF_Atomic"/>
+    <process:composedOf rdf:resource="#DerniersDecesEPF_1_DerniersDecesEPF_Atomic"/>
+    <process:composedOf rdf:resource="#DerniersDecesEPF_2_DerniersDecesEPF_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="DerniersDecesEPF_0_DerniersDecesEPF_Atomic_input_MotDePasse__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MotDePasse:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DerniersDecesEPF_0_DerniersDecesEPF_Atomic_input_CodeAcces__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CodeAcces:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DerniersDecesEPF_0_DerniersDecesEPF_Atomic_input_Marge__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Marge:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DerniersDecesEPF_0_DerniersDecesEPF_Atomic_output_Body__http___webservices.enaos.net__string">
+    <process:parameterType>Body:{http://webservices.enaos.net/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DerniersDecesEPF_1_DerniersDecesEPF_Atomic_input_parameters__http___webservices.enaos.net__DerniersDecesEPF">
+    <process:parameterType>parameters:{http://webservices.enaos.net/}DerniersDecesEPF</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DerniersDecesEPF_1_DerniersDecesEPF_Atomic_output_parameters__http___webservices.enaos.net__DerniersDecesEPFResponse">
+    <process:parameterType>parameters:{http://webservices.enaos.net/}DerniersDecesEPFResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DerniersDecesEPF_2_DerniersDecesEPF_Atomic_input_MotDePasse__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MotDePasse:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DerniersDecesEPF_2_DerniersDecesEPF_Atomic_input_CodeAcces__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CodeAcces:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DerniersDecesEPF_2_DerniersDecesEPF_Atomic_input_Marge__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Marge:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DerniersDecesEPF_2_DerniersDecesEPF_Atomic_output_Body__http___webservices.enaos.net__string">
+    <process:parameterType>Body:{http://webservices.enaos.net/}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="DerniersDecesEPF_0_DerniersDecesEPF_Atomic">
+    <process:hasName>DerniersDecesEPF</process:hasName>
+    <process:hasInput rdf:resource="#DerniersDecesEPF_0_DerniersDecesEPF_Atomic_input_MotDePasse__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DerniersDecesEPF_0_DerniersDecesEPF_Atomic_input_CodeAcces__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DerniersDecesEPF_0_DerniersDecesEPF_Atomic_input_Marge__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DerniersDecesEPF_0_DerniersDecesEPF_Atomic_output_Body__http___webservices.enaos.net__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(ask ?x (rdf:type ?x &lt;http://www.enaos.net/Ontology#Utilisateur&gt;) 
+(ask ?x &lt;http://www.enaos.net/Ontology#possedeMotDePasse&gt; ?MotDePasse) 
+(ask ?x &lt;http://www.enaos.net/Ontology#possedeCodeAcces&gt; ?CodeAcces) 
+(ask ?x &lt;http://www.enaos.net/Ontology#possedeMarge&gt; ?Marge))</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(ask ?x (rdf:type ?x &lt;http://www.enaos.net/Ontology#DerniersDecesEPF&gt;) 
+(ask ?x &lt;http://www.enaos.net/Ontology#possedeBody&gt; ?Body))</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DerniersDecesEPF_1_DerniersDecesEPF_Atomic">
+    <process:hasName>DerniersDecesEPF</process:hasName>
+    <process:hasInput rdf:resource="#DerniersDecesEPF_1_DerniersDecesEPF_Atomic_input_parameters__http___webservices.enaos.net__DerniersDecesEPF"/>
+    <process:hasOutput rdf:resource="#DerniersDecesEPF_1_DerniersDecesEPF_Atomic_output_parameters__http___webservices.enaos.net__DerniersDecesEPFResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DerniersDecesEPF_2_DerniersDecesEPF_Atomic">
+    <process:hasName>DerniersDecesEPF</process:hasName>
+    <process:hasInput rdf:resource="#DerniersDecesEPF_2_DerniersDecesEPF_Atomic_input_MotDePasse__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DerniersDecesEPF_2_DerniersDecesEPF_Atomic_input_CodeAcces__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DerniersDecesEPF_2_DerniersDecesEPF_Atomic_input_Marge__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DerniersDecesEPF_2_DerniersDecesEPF_Atomic_output_Body__http___webservices.enaos.net__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotDePasse(?password) ^ CodeAcces(?accessCode) ^ Marge(?margin)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="DerniersDecesEPF_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DerniersDecesEPF_0_DerniersDecesEPF_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DerniersDecesEPF_1_DerniersDecesEPF_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DerniersDecesEPF_2_DerniersDecesEPF_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DerniersDecesEPF_0_DerniersDecesEPF_Grounding">
+    <grounding:owlsProcess rdf:resource="#DerniersDecesEPF_0_DerniersDecesEPF_Atomic"/>
+    <grounding:wsdlOperationName>DerniersDecesEPF</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DerniersDecesEPFHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DerniersDecesEPFHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5147_5146.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DerniersDecesEPFHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DerniersDecesEPFHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DerniersDecesEPF_1_DerniersDecesEPF_Grounding">
+    <grounding:owlsProcess rdf:resource="#DerniersDecesEPF_1_DerniersDecesEPF_Atomic"/>
+    <grounding:wsdlOperationName>DerniersDecesEPF</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DerniersDecesEPFSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DerniersDecesEPFSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5147_5146.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DerniersDecesEPFSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DerniersDecesEPFSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DerniersDecesEPF_2_DerniersDecesEPF_Grounding">
+    <grounding:owlsProcess rdf:resource="#DerniersDecesEPF_2_DerniersDecesEPF_Atomic"/>
+    <grounding:wsdlOperationName>DerniersDecesEPF</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DerniersDecesEPFHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DerniersDecesEPFHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5147_5146.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DerniersDecesEPFHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DerniersDecesEPFHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

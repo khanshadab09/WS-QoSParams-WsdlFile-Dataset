@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="RecipeService">
+    <service:presents rdf:resource="#RecipeService_Profile"/>
+    <service:describedBy rdf:resource="#RecipeService_Composite"/>
+    <service:supports rdf:resource="#RecipeService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="RecipeService_Profile">
+    <profile:serviceName>RecipeService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#RecipeService"/>
+    <profile:hasProcess rdf:resource="#RecipeService_0_LogOn_Atomic"/>
+    <profile:hasInput rdf:resource="#RecipeService_0_LogOn_Atomic_input_parameters__http___coglianese.org_recipes__LogOn"/>
+    <profile:hasOutput rdf:resource="#RecipeService_0_LogOn_Atomic_output_parameters__http___coglianese.org_recipes__LogOnResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LogOn(?x) ^ hasUsername(?x, ?username) ^ hasPassword(?x, ?password)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LogOnResponse(?y) ^ hasStatus(?y, "success") ^ hasMessage(?y, "Logged in successfully") ^ hasUser(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#RecipeService_1_GetRecipes_Atomic"/>
+    <profile:hasInput rdf:resource="#RecipeService_1_GetRecipes_Atomic_input_parameters__http___coglianese.org_recipes__GetRecipes"/>
+    <profile:hasOutput rdf:resource="#RecipeService_1_GetRecipes_Atomic_output_parameters__http___coglianese.org_recipes__GetRecipesResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#RecipeService_2_GetRecipesByID_Atomic"/>
+    <profile:hasInput rdf:resource="#RecipeService_2_GetRecipesByID_Atomic_input_parameters__http___coglianese.org_recipes__GetRecipesByID"/>
+    <profile:hasOutput rdf:resource="#RecipeService_2_GetRecipesByID_Atomic_output_parameters__http___coglianese.org_recipes__GetRecipesByIDResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRecipesByID(?x) ^ hasID(?x, ?id)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRecipesByIDResponse(?y) ^ hasID(?y, ?id) ^ hasRecipe(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#RecipeService_3_QueryRecipes_Atomic"/>
+    <profile:hasInput rdf:resource="#RecipeService_3_QueryRecipes_Atomic_input_parameters__http___coglianese.org_recipes__QueryRecipes"/>
+    <profile:hasOutput rdf:resource="#RecipeService_3_QueryRecipes_Atomic_output_parameters__http___coglianese.org_recipes__QueryRecipesResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QueryRecipes(?x) ^ hasParameter(?x, ?param) ^ hasNamespace(?param, "http://coglianese.org/recipes/")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QueryRecipesResponse(?y) ^ hasParameter(?y, ?param) ^ hasNamespace(?param, "http://coglianese.org/recipes/")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#RecipeService_4_AddRecipes_Atomic"/>
+    <profile:hasInput rdf:resource="#RecipeService_4_AddRecipes_Atomic_input_parameters__http___coglianese.org_recipes__AddRecipes"/>
+    <profile:hasOutput rdf:resource="#RecipeService_4_AddRecipes_Atomic_output_parameters__http___coglianese.org_recipes__AddRecipesResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddRecipes(?x) ^ swrlb:isInstanceOf(?x, http://coglianese.org/recipes/AddRecipes)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddRecipesResponse(?y) ^ swrlb:isInstanceOf(?y, http://coglianese.org/recipes/AddRecipesResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#RecipeService_5_ModifyRecipes_Atomic"/>
+    <profile:hasInput rdf:resource="#RecipeService_5_ModifyRecipes_Atomic_input_parameters__http___coglianese.org_recipes__ModifyRecipes"/>
+    <profile:hasOutput rdf:resource="#RecipeService_5_ModifyRecipes_Atomic_output_parameters__http___coglianese.org_recipes__ModifyRecipesResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModifyRecipes(?x) ^ hasPermission(?x, "admin")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModifyRecipesResponse(?y) ^ hasStatus(?y, "success") ^ hasMessage(?y, "Recipes modified successfully")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#RecipeService_6_DeleteRecipe_Atomic"/>
+    <profile:hasInput rdf:resource="#RecipeService_6_DeleteRecipe_Atomic_input_parameters__http___coglianese.org_recipes__DeleteRecipe"/>
+    <profile:hasOutput rdf:resource="#RecipeService_6_DeleteRecipe_Atomic_output_parameters__http___coglianese.org_recipes__DeleteRecipeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteRecipe(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not(Recipe(?x))</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="RecipeService_Composite">
+    <process:composedOf rdf:resource="#RecipeService_0_LogOn_Atomic"/>
+    <process:composedOf rdf:resource="#RecipeService_1_GetRecipes_Atomic"/>
+    <process:composedOf rdf:resource="#RecipeService_2_GetRecipesByID_Atomic"/>
+    <process:composedOf rdf:resource="#RecipeService_3_QueryRecipes_Atomic"/>
+    <process:composedOf rdf:resource="#RecipeService_4_AddRecipes_Atomic"/>
+    <process:composedOf rdf:resource="#RecipeService_5_ModifyRecipes_Atomic"/>
+    <process:composedOf rdf:resource="#RecipeService_6_DeleteRecipe_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="RecipeService_0_LogOn_Atomic_input_parameters__http___coglianese.org_recipes__LogOn">
+    <process:parameterType>parameters:{http://coglianese.org/recipes/}LogOn</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="RecipeService_0_LogOn_Atomic_output_parameters__http___coglianese.org_recipes__LogOnResponse">
+    <process:parameterType>parameters:{http://coglianese.org/recipes/}LogOnResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="RecipeService_1_GetRecipes_Atomic_input_parameters__http___coglianese.org_recipes__GetRecipes">
+    <process:parameterType>parameters:{http://coglianese.org/recipes/}GetRecipes</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="RecipeService_1_GetRecipes_Atomic_output_parameters__http___coglianese.org_recipes__GetRecipesResponse">
+    <process:parameterType>parameters:{http://coglianese.org/recipes/}GetRecipesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="RecipeService_2_GetRecipesByID_Atomic_input_parameters__http___coglianese.org_recipes__GetRecipesByID">
+    <process:parameterType>parameters:{http://coglianese.org/recipes/}GetRecipesByID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="RecipeService_2_GetRecipesByID_Atomic_output_parameters__http___coglianese.org_recipes__GetRecipesByIDResponse">
+    <process:parameterType>parameters:{http://coglianese.org/recipes/}GetRecipesByIDResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="RecipeService_3_QueryRecipes_Atomic_input_parameters__http___coglianese.org_recipes__QueryRecipes">
+    <process:parameterType>parameters:{http://coglianese.org/recipes/}QueryRecipes</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="RecipeService_3_QueryRecipes_Atomic_output_parameters__http___coglianese.org_recipes__QueryRecipesResponse">
+    <process:parameterType>parameters:{http://coglianese.org/recipes/}QueryRecipesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="RecipeService_4_AddRecipes_Atomic_input_parameters__http___coglianese.org_recipes__AddRecipes">
+    <process:parameterType>parameters:{http://coglianese.org/recipes/}AddRecipes</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="RecipeService_4_AddRecipes_Atomic_output_parameters__http___coglianese.org_recipes__AddRecipesResponse">
+    <process:parameterType>parameters:{http://coglianese.org/recipes/}AddRecipesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="RecipeService_5_ModifyRecipes_Atomic_input_parameters__http___coglianese.org_recipes__ModifyRecipes">
+    <process:parameterType>parameters:{http://coglianese.org/recipes/}ModifyRecipes</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="RecipeService_5_ModifyRecipes_Atomic_output_parameters__http___coglianese.org_recipes__ModifyRecipesResponse">
+    <process:parameterType>parameters:{http://coglianese.org/recipes/}ModifyRecipesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="RecipeService_6_DeleteRecipe_Atomic_input_parameters__http___coglianese.org_recipes__DeleteRecipe">
+    <process:parameterType>parameters:{http://coglianese.org/recipes/}DeleteRecipe</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="RecipeService_6_DeleteRecipe_Atomic_output_parameters__http___coglianese.org_recipes__DeleteRecipeResponse">
+    <process:parameterType>parameters:{http://coglianese.org/recipes/}DeleteRecipeResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="RecipeService_0_LogOn_Atomic">
+    <process:hasName>LogOn</process:hasName>
+    <process:hasInput rdf:resource="#RecipeService_0_LogOn_Atomic_input_parameters__http___coglianese.org_recipes__LogOn"/>
+    <process:hasOutput rdf:resource="#RecipeService_0_LogOn_Atomic_output_parameters__http___coglianese.org_recipes__LogOnResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LogOn(?x) ^ hasUsername(?x, ?username) ^ hasPassword(?x, ?password)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LogOnResponse(?y) ^ hasStatus(?y, "success") ^ hasMessage(?y, "Logged in successfully") ^ hasUser(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="RecipeService_1_GetRecipes_Atomic">
+    <process:hasName>GetRecipes</process:hasName>
+    <process:hasInput rdf:resource="#RecipeService_1_GetRecipes_Atomic_input_parameters__http___coglianese.org_recipes__GetRecipes"/>
+    <process:hasOutput rdf:resource="#RecipeService_1_GetRecipes_Atomic_output_parameters__http___coglianese.org_recipes__GetRecipesResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="RecipeService_2_GetRecipesByID_Atomic">
+    <process:hasName>GetRecipesByID</process:hasName>
+    <process:hasInput rdf:resource="#RecipeService_2_GetRecipesByID_Atomic_input_parameters__http___coglianese.org_recipes__GetRecipesByID"/>
+    <process:hasOutput rdf:resource="#RecipeService_2_GetRecipesByID_Atomic_output_parameters__http___coglianese.org_recipes__GetRecipesByIDResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRecipesByID(?x) ^ hasID(?x, ?id)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetRecipesByIDResponse(?y) ^ hasID(?y, ?id) ^ hasRecipe(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="RecipeService_3_QueryRecipes_Atomic">
+    <process:hasName>QueryRecipes</process:hasName>
+    <process:hasInput rdf:resource="#RecipeService_3_QueryRecipes_Atomic_input_parameters__http___coglianese.org_recipes__QueryRecipes"/>
+    <process:hasOutput rdf:resource="#RecipeService_3_QueryRecipes_Atomic_output_parameters__http___coglianese.org_recipes__QueryRecipesResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QueryRecipes(?x) ^ hasParameter(?x, ?param) ^ hasNamespace(?param, "http://coglianese.org/recipes/")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QueryRecipesResponse(?y) ^ hasParameter(?y, ?param) ^ hasNamespace(?param, "http://coglianese.org/recipes/")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="RecipeService_4_AddRecipes_Atomic">
+    <process:hasName>AddRecipes</process:hasName>
+    <process:hasInput rdf:resource="#RecipeService_4_AddRecipes_Atomic_input_parameters__http___coglianese.org_recipes__AddRecipes"/>
+    <process:hasOutput rdf:resource="#RecipeService_4_AddRecipes_Atomic_output_parameters__http___coglianese.org_recipes__AddRecipesResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddRecipes(?x) ^ swrlb:isInstanceOf(?x, http://coglianese.org/recipes/AddRecipes)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddRecipesResponse(?y) ^ swrlb:isInstanceOf(?y, http://coglianese.org/recipes/AddRecipesResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="RecipeService_5_ModifyRecipes_Atomic">
+    <process:hasName>ModifyRecipes</process:hasName>
+    <process:hasInput rdf:resource="#RecipeService_5_ModifyRecipes_Atomic_input_parameters__http___coglianese.org_recipes__ModifyRecipes"/>
+    <process:hasOutput rdf:resource="#RecipeService_5_ModifyRecipes_Atomic_output_parameters__http___coglianese.org_recipes__ModifyRecipesResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModifyRecipes(?x) ^ hasPermission(?x, "admin")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModifyRecipesResponse(?y) ^ hasStatus(?y, "success") ^ hasMessage(?y, "Recipes modified successfully")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="RecipeService_6_DeleteRecipe_Atomic">
+    <process:hasName>DeleteRecipe</process:hasName>
+    <process:hasInput rdf:resource="#RecipeService_6_DeleteRecipe_Atomic_input_parameters__http___coglianese.org_recipes__DeleteRecipe"/>
+    <process:hasOutput rdf:resource="#RecipeService_6_DeleteRecipe_Atomic_output_parameters__http___coglianese.org_recipes__DeleteRecipeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteRecipe(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not(Recipe(?x))</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="RecipeService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#RecipeService_0_LogOn_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#RecipeService_1_GetRecipes_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#RecipeService_2_GetRecipesByID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#RecipeService_3_QueryRecipes_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#RecipeService_4_AddRecipes_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#RecipeService_5_ModifyRecipes_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#RecipeService_6_DeleteRecipe_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="RecipeService_0_LogOn_Grounding">
+    <grounding:owlsProcess rdf:resource="#RecipeService_0_LogOn_Atomic"/>
+    <grounding:wsdlOperationName>LogOn</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>RecipeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>RecipeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4734_4733.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogOnSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogOnSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="RecipeService_1_GetRecipes_Grounding">
+    <grounding:owlsProcess rdf:resource="#RecipeService_1_GetRecipes_Atomic"/>
+    <grounding:wsdlOperationName>GetRecipes</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>RecipeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>RecipeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4734_4733.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRecipesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRecipesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="RecipeService_2_GetRecipesByID_Grounding">
+    <grounding:owlsProcess rdf:resource="#RecipeService_2_GetRecipesByID_Atomic"/>
+    <grounding:wsdlOperationName>GetRecipesByID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>RecipeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>RecipeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4734_4733.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRecipesByIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRecipesByIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="RecipeService_3_QueryRecipes_Grounding">
+    <grounding:owlsProcess rdf:resource="#RecipeService_3_QueryRecipes_Atomic"/>
+    <grounding:wsdlOperationName>QueryRecipes</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>RecipeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>RecipeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4734_4733.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>QueryRecipesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>QueryRecipesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="RecipeService_4_AddRecipes_Grounding">
+    <grounding:owlsProcess rdf:resource="#RecipeService_4_AddRecipes_Atomic"/>
+    <grounding:wsdlOperationName>AddRecipes</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>RecipeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>RecipeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4734_4733.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddRecipesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddRecipesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="RecipeService_5_ModifyRecipes_Grounding">
+    <grounding:owlsProcess rdf:resource="#RecipeService_5_ModifyRecipes_Atomic"/>
+    <grounding:wsdlOperationName>ModifyRecipes</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>RecipeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>RecipeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4734_4733.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ModifyRecipesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ModifyRecipesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="RecipeService_6_DeleteRecipe_Grounding">
+    <grounding:owlsProcess rdf:resource="#RecipeService_6_DeleteRecipe_Atomic"/>
+    <grounding:wsdlOperationName>DeleteRecipe</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>RecipeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>RecipeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4734_4733.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteRecipeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteRecipeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,405 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="StoreLocator">
+    <service:presents rdf:resource="#StoreLocator_Profile"/>
+    <service:describedBy rdf:resource="#StoreLocator_Composite"/>
+    <service:supports rdf:resource="#StoreLocator_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="StoreLocator_Profile">
+    <profile:serviceName>StoreLocator</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#StoreLocator"/>
+    <profile:hasProcess rdf:resource="#StoreLocator_0_FindLocations_Atomic"/>
+    <profile:hasInput rdf:resource="#StoreLocator_0_FindLocations_Atomic_input_Radius__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_0_FindLocations_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_0_FindLocations_Atomic_input_OrganizationID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_0_FindLocations_Atomic_input_CountryCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#StoreLocator_0_FindLocations_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?Radius, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?ZipCode, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?OrganizationID, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?CountryCode, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">?Body rdf:type :unknown</profile:hasResult>
+    <profile:hasProcess rdf:resource="#StoreLocator_1_GetLocations_Atomic"/>
+    <profile:hasInput rdf:resource="#StoreLocator_1_GetLocations_Atomic_input_Radius__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_1_GetLocations_Atomic_input_UseLocationZipCodeConfiguration__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_1_GetLocations_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_1_GetLocations_Atomic_input_OrganizationID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_1_GetLocations_Atomic_input_ISO2CountryCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#StoreLocator_1_GetLocations_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Radius(?r) ^ UseLocationZipCodeConfiguration(?u) ^ ZipCode(?z) ^ OrganizationID(?o) ^ ISO2CountryCode(?c)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?b)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#StoreLocator_2_GetSingleSite_Atomic"/>
+    <profile:hasInput rdf:resource="#StoreLocator_2_GetSingleSite_Atomic_input_strUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_2_GetSingleSite_Atomic_input_intWebsiteId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_2_GetSingleSite_Atomic_input_strPass__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#StoreLocator_2_GetSingleSite_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strUser(?user) ^ intWebsiteId(?websiteId) ^ strPass(?pass)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetSingleSite(?user, ?websiteId, ?pass)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#StoreLocator_3_FindLocations_Atomic"/>
+    <profile:hasInput rdf:resource="#StoreLocator_3_FindLocations_Atomic_input_parameters__http___admin.bigholler.com_storelocator_FindLocations"/>
+    <profile:hasOutput rdf:resource="#StoreLocator_3_FindLocations_Atomic_output_parameters__http___admin.bigholler.com_storelocator_FindLocationsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindLocations(?x) ^ hasParameter(?x, http://admin.bigholler.com/storelocator)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindLocationsResponse(?y) ^ hasParameter(?y, http://admin.bigholler.com/storelocator)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#StoreLocator_4_GetLocations_Atomic"/>
+    <profile:hasInput rdf:resource="#StoreLocator_4_GetLocations_Atomic_input_parameters__http___admin.bigholler.com_storelocator_GetLocations"/>
+    <profile:hasOutput rdf:resource="#StoreLocator_4_GetLocations_Atomic_output_parameters__http___admin.bigholler.com_storelocator_GetLocationsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#StoreLocator_5_GetSingleSite_Atomic"/>
+    <profile:hasInput rdf:resource="#StoreLocator_5_GetSingleSite_Atomic_input_parameters__http___admin.bigholler.com_storelocator_GetSingleSite"/>
+    <profile:hasOutput rdf:resource="#StoreLocator_5_GetSingleSite_Atomic_output_parameters__http___admin.bigholler.com_storelocator_GetSingleSiteResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?input rdf:type &lt;http://admin.bigholler.com/storelocator#GetSingleSite&gt;)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?output rdf:type &lt;http://admin.bigholler.com/storelocator#GetSingleSiteResponse&gt;)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#StoreLocator_6_FindLocations_Atomic"/>
+    <profile:hasInput rdf:resource="#StoreLocator_6_FindLocations_Atomic_input_Radius__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_6_FindLocations_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_6_FindLocations_Atomic_input_OrganizationID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_6_FindLocations_Atomic_input_CountryCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#StoreLocator_6_FindLocations_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Radius(?r) ^ ZipCode(?z) ^ OrganizationID(?o) ^ CountryCode(?c)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindLocations(?r, ?z, ?o, ?c)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#StoreLocator_7_GetLocations_Atomic"/>
+    <profile:hasInput rdf:resource="#StoreLocator_7_GetLocations_Atomic_input_Radius__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_7_GetLocations_Atomic_input_UseLocationZipCodeConfiguration__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_7_GetLocations_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_7_GetLocations_Atomic_input_OrganizationID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_7_GetLocations_Atomic_input_ISO2CountryCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#StoreLocator_7_GetLocations_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Radius(?r) ^ UseLocationZipCodeConfiguration(?u) ^ ZipCode(?z) ^ OrganizationID(?o) ^ ISO2CountryCode(?c)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?b)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#StoreLocator_8_GetSingleSite_Atomic"/>
+    <profile:hasInput rdf:resource="#StoreLocator_8_GetSingleSite_Atomic_input_strUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_8_GetSingleSite_Atomic_input_intWebsiteId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StoreLocator_8_GetSingleSite_Atomic_input_strPass__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#StoreLocator_8_GetSingleSite_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strUser(?user) ^ intWebsiteId(?websiteId) ^ strPass(?pass)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetSingleSite(?user, ?websiteId, ?pass)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="StoreLocator_Composite">
+    <process:composedOf rdf:resource="#StoreLocator_0_FindLocations_Atomic"/>
+    <process:composedOf rdf:resource="#StoreLocator_1_GetLocations_Atomic"/>
+    <process:composedOf rdf:resource="#StoreLocator_2_GetSingleSite_Atomic"/>
+    <process:composedOf rdf:resource="#StoreLocator_3_FindLocations_Atomic"/>
+    <process:composedOf rdf:resource="#StoreLocator_4_GetLocations_Atomic"/>
+    <process:composedOf rdf:resource="#StoreLocator_5_GetSingleSite_Atomic"/>
+    <process:composedOf rdf:resource="#StoreLocator_6_FindLocations_Atomic"/>
+    <process:composedOf rdf:resource="#StoreLocator_7_GetLocations_Atomic"/>
+    <process:composedOf rdf:resource="#StoreLocator_8_GetSingleSite_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="StoreLocator_0_FindLocations_Atomic_input_Radius__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Radius:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_0_FindLocations_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ZipCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_0_FindLocations_Atomic_input_OrganizationID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>OrganizationID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_0_FindLocations_Atomic_input_CountryCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CountryCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="StoreLocator_0_FindLocations_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="StoreLocator_1_GetLocations_Atomic_input_Radius__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Radius:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_1_GetLocations_Atomic_input_UseLocationZipCodeConfiguration__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UseLocationZipCodeConfiguration:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_1_GetLocations_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ZipCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_1_GetLocations_Atomic_input_OrganizationID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>OrganizationID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_1_GetLocations_Atomic_input_ISO2CountryCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ISO2CountryCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="StoreLocator_1_GetLocations_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="StoreLocator_2_GetSingleSite_Atomic_input_strUser__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUser:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_2_GetSingleSite_Atomic_input_intWebsiteId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>intWebsiteId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_2_GetSingleSite_Atomic_input_strPass__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPass:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="StoreLocator_2_GetSingleSite_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="StoreLocator_3_FindLocations_Atomic_input_parameters__http___admin.bigholler.com_storelocator_FindLocations">
+    <process:parameterType>parameters:{http://admin.bigholler.com/storelocator}FindLocations</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="StoreLocator_3_FindLocations_Atomic_output_parameters__http___admin.bigholler.com_storelocator_FindLocationsResponse">
+    <process:parameterType>parameters:{http://admin.bigholler.com/storelocator}FindLocationsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="StoreLocator_4_GetLocations_Atomic_input_parameters__http___admin.bigholler.com_storelocator_GetLocations">
+    <process:parameterType>parameters:{http://admin.bigholler.com/storelocator}GetLocations</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="StoreLocator_4_GetLocations_Atomic_output_parameters__http___admin.bigholler.com_storelocator_GetLocationsResponse">
+    <process:parameterType>parameters:{http://admin.bigholler.com/storelocator}GetLocationsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="StoreLocator_5_GetSingleSite_Atomic_input_parameters__http___admin.bigholler.com_storelocator_GetSingleSite">
+    <process:parameterType>parameters:{http://admin.bigholler.com/storelocator}GetSingleSite</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="StoreLocator_5_GetSingleSite_Atomic_output_parameters__http___admin.bigholler.com_storelocator_GetSingleSiteResponse">
+    <process:parameterType>parameters:{http://admin.bigholler.com/storelocator}GetSingleSiteResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="StoreLocator_6_FindLocations_Atomic_input_Radius__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Radius:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_6_FindLocations_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ZipCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_6_FindLocations_Atomic_input_OrganizationID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>OrganizationID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_6_FindLocations_Atomic_input_CountryCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CountryCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="StoreLocator_6_FindLocations_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="StoreLocator_7_GetLocations_Atomic_input_Radius__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Radius:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_7_GetLocations_Atomic_input_UseLocationZipCodeConfiguration__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UseLocationZipCodeConfiguration:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_7_GetLocations_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ZipCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_7_GetLocations_Atomic_input_OrganizationID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>OrganizationID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_7_GetLocations_Atomic_input_ISO2CountryCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ISO2CountryCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="StoreLocator_7_GetLocations_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="StoreLocator_8_GetSingleSite_Atomic_input_strUser__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUser:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_8_GetSingleSite_Atomic_input_intWebsiteId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>intWebsiteId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StoreLocator_8_GetSingleSite_Atomic_input_strPass__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPass:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="StoreLocator_8_GetSingleSite_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="StoreLocator_0_FindLocations_Atomic">
+    <process:hasName>FindLocations</process:hasName>
+    <process:hasInput rdf:resource="#StoreLocator_0_FindLocations_Atomic_input_Radius__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_0_FindLocations_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_0_FindLocations_Atomic_input_OrganizationID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_0_FindLocations_Atomic_input_CountryCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#StoreLocator_0_FindLocations_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?Radius, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?ZipCode, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?OrganizationID, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?CountryCode, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">?Body rdf:type :unknown</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="StoreLocator_1_GetLocations_Atomic">
+    <process:hasName>GetLocations</process:hasName>
+    <process:hasInput rdf:resource="#StoreLocator_1_GetLocations_Atomic_input_Radius__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_1_GetLocations_Atomic_input_UseLocationZipCodeConfiguration__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_1_GetLocations_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_1_GetLocations_Atomic_input_OrganizationID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_1_GetLocations_Atomic_input_ISO2CountryCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#StoreLocator_1_GetLocations_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Radius(?r) ^ UseLocationZipCodeConfiguration(?u) ^ ZipCode(?z) ^ OrganizationID(?o) ^ ISO2CountryCode(?c)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?b)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="StoreLocator_2_GetSingleSite_Atomic">
+    <process:hasName>GetSingleSite</process:hasName>
+    <process:hasInput rdf:resource="#StoreLocator_2_GetSingleSite_Atomic_input_strUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_2_GetSingleSite_Atomic_input_intWebsiteId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_2_GetSingleSite_Atomic_input_strPass__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#StoreLocator_2_GetSingleSite_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strUser(?user) ^ intWebsiteId(?websiteId) ^ strPass(?pass)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetSingleSite(?user, ?websiteId, ?pass)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="StoreLocator_3_FindLocations_Atomic">
+    <process:hasName>FindLocations</process:hasName>
+    <process:hasInput rdf:resource="#StoreLocator_3_FindLocations_Atomic_input_parameters__http___admin.bigholler.com_storelocator_FindLocations"/>
+    <process:hasOutput rdf:resource="#StoreLocator_3_FindLocations_Atomic_output_parameters__http___admin.bigholler.com_storelocator_FindLocationsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindLocations(?x) ^ hasParameter(?x, http://admin.bigholler.com/storelocator)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindLocationsResponse(?y) ^ hasParameter(?y, http://admin.bigholler.com/storelocator)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="StoreLocator_4_GetLocations_Atomic">
+    <process:hasName>GetLocations</process:hasName>
+    <process:hasInput rdf:resource="#StoreLocator_4_GetLocations_Atomic_input_parameters__http___admin.bigholler.com_storelocator_GetLocations"/>
+    <process:hasOutput rdf:resource="#StoreLocator_4_GetLocations_Atomic_output_parameters__http___admin.bigholler.com_storelocator_GetLocationsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="StoreLocator_5_GetSingleSite_Atomic">
+    <process:hasName>GetSingleSite</process:hasName>
+    <process:hasInput rdf:resource="#StoreLocator_5_GetSingleSite_Atomic_input_parameters__http___admin.bigholler.com_storelocator_GetSingleSite"/>
+    <process:hasOutput rdf:resource="#StoreLocator_5_GetSingleSite_Atomic_output_parameters__http___admin.bigholler.com_storelocator_GetSingleSiteResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?input rdf:type &lt;http://admin.bigholler.com/storelocator#GetSingleSite&gt;)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?output rdf:type &lt;http://admin.bigholler.com/storelocator#GetSingleSiteResponse&gt;)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="StoreLocator_6_FindLocations_Atomic">
+    <process:hasName>FindLocations</process:hasName>
+    <process:hasInput rdf:resource="#StoreLocator_6_FindLocations_Atomic_input_Radius__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_6_FindLocations_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_6_FindLocations_Atomic_input_OrganizationID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_6_FindLocations_Atomic_input_CountryCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#StoreLocator_6_FindLocations_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Radius(?r) ^ ZipCode(?z) ^ OrganizationID(?o) ^ CountryCode(?c)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindLocations(?r, ?z, ?o, ?c)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="StoreLocator_7_GetLocations_Atomic">
+    <process:hasName>GetLocations</process:hasName>
+    <process:hasInput rdf:resource="#StoreLocator_7_GetLocations_Atomic_input_Radius__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_7_GetLocations_Atomic_input_UseLocationZipCodeConfiguration__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_7_GetLocations_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_7_GetLocations_Atomic_input_OrganizationID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_7_GetLocations_Atomic_input_ISO2CountryCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#StoreLocator_7_GetLocations_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Radius(?r) ^ UseLocationZipCodeConfiguration(?u) ^ ZipCode(?z) ^ OrganizationID(?o) ^ ISO2CountryCode(?c)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?b)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="StoreLocator_8_GetSingleSite_Atomic">
+    <process:hasName>GetSingleSite</process:hasName>
+    <process:hasInput rdf:resource="#StoreLocator_8_GetSingleSite_Atomic_input_strUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_8_GetSingleSite_Atomic_input_intWebsiteId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StoreLocator_8_GetSingleSite_Atomic_input_strPass__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#StoreLocator_8_GetSingleSite_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strUser(?user) ^ intWebsiteId(?websiteId) ^ strPass(?pass)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetSingleSite(?user, ?websiteId, ?pass)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="StoreLocator_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#StoreLocator_0_FindLocations_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#StoreLocator_1_GetLocations_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#StoreLocator_2_GetSingleSite_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#StoreLocator_3_FindLocations_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#StoreLocator_4_GetLocations_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#StoreLocator_5_GetSingleSite_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#StoreLocator_6_FindLocations_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#StoreLocator_7_GetLocations_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#StoreLocator_8_GetSingleSite_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="StoreLocator_0_FindLocations_Grounding">
+    <grounding:owlsProcess rdf:resource="#StoreLocator_0_FindLocations_Atomic"/>
+    <grounding:wsdlOperationName>FindLocations</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>StoreLocatorHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>StoreLocatorHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4507_4506.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindLocationsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindLocationsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="StoreLocator_1_GetLocations_Grounding">
+    <grounding:owlsProcess rdf:resource="#StoreLocator_1_GetLocations_Atomic"/>
+    <grounding:wsdlOperationName>GetLocations</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>StoreLocatorHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>StoreLocatorHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4507_4506.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLocationsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLocationsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="StoreLocator_2_GetSingleSite_Grounding">
+    <grounding:owlsProcess rdf:resource="#StoreLocator_2_GetSingleSite_Atomic"/>
+    <grounding:wsdlOperationName>GetSingleSite</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>StoreLocatorHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>StoreLocatorHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4507_4506.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSingleSiteHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSingleSiteHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="StoreLocator_3_FindLocations_Grounding">
+    <grounding:owlsProcess rdf:resource="#StoreLocator_3_FindLocations_Atomic"/>
+    <grounding:wsdlOperationName>FindLocations</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>StoreLocatorSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>StoreLocatorSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4507_4506.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindLocationsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindLocationsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="StoreLocator_4_GetLocations_Grounding">
+    <grounding:owlsProcess rdf:resource="#StoreLocator_4_GetLocations_Atomic"/>
+    <grounding:wsdlOperationName>GetLocations</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>StoreLocatorSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>StoreLocatorSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4507_4506.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLocationsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLocationsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="StoreLocator_5_GetSingleSite_Grounding">
+    <grounding:owlsProcess rdf:resource="#StoreLocator_5_GetSingleSite_Atomic"/>
+    <grounding:wsdlOperationName>GetSingleSite</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>StoreLocatorSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>StoreLocatorSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4507_4506.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSingleSiteSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSingleSiteSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="StoreLocator_6_FindLocations_Grounding">
+    <grounding:owlsProcess rdf:resource="#StoreLocator_6_FindLocations_Atomic"/>
+    <grounding:wsdlOperationName>FindLocations</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>StoreLocatorHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>StoreLocatorHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4507_4506.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindLocationsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindLocationsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="StoreLocator_7_GetLocations_Grounding">
+    <grounding:owlsProcess rdf:resource="#StoreLocator_7_GetLocations_Atomic"/>
+    <grounding:wsdlOperationName>GetLocations</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>StoreLocatorHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>StoreLocatorHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4507_4506.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLocationsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLocationsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="StoreLocator_8_GetSingleSite_Grounding">
+    <grounding:owlsProcess rdf:resource="#StoreLocator_8_GetSingleSite_Atomic"/>
+    <grounding:wsdlOperationName>GetSingleSite</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>StoreLocatorHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>StoreLocatorHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4507_4506.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSingleSiteHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSingleSiteHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

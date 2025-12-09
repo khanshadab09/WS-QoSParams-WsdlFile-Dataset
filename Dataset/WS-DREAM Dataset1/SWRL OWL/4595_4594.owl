@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="TELUS_WEB_SERVICE">
+    <service:presents rdf:resource="#TELUS_WEB_SERVICE_Profile"/>
+    <service:describedBy rdf:resource="#TELUS_WEB_SERVICE_Composite"/>
+    <service:supports rdf:resource="#TELUS_WEB_SERVICE_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="TELUS_WEB_SERVICE_Profile">
+    <profile:serviceName>TELUS_WEB_SERVICE</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#TELUS_WEB_SERVICE"/>
+    <profile:hasProcess rdf:resource="#TELUS_WEB_SERVICE_0_TELUS_UPDATE_Atomic"/>
+    <profile:hasInput rdf:resource="#TELUS_WEB_SERVICE_0_TELUS_UPDATE_Atomic_input_parameters__http___tempuri.org__TELUS_UPDATE"/>
+    <profile:hasOutput rdf:resource="#TELUS_WEB_SERVICE_0_TELUS_UPDATE_Atomic_output_parameters__http___tempuri.org__TELUS_UPDATEResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TELUS_UPDATE(?x) ^ parameter(?x, "http://tempuri.org/TELUS_UPDATE")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TELUS_UPDATEResponse(?y) ^ parameter(?y, "http://tempuri.org/TELUS_UPDATEResponse") ^ hasOutput(?x, ?y)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="TELUS_WEB_SERVICE_Composite">
+    <process:composedOf rdf:resource="#TELUS_WEB_SERVICE_0_TELUS_UPDATE_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="TELUS_WEB_SERVICE_0_TELUS_UPDATE_Atomic_input_parameters__http___tempuri.org__TELUS_UPDATE">
+    <process:parameterType>parameters:{http://tempuri.org/}TELUS_UPDATE</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TELUS_WEB_SERVICE_0_TELUS_UPDATE_Atomic_output_parameters__http___tempuri.org__TELUS_UPDATEResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}TELUS_UPDATEResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="TELUS_WEB_SERVICE_0_TELUS_UPDATE_Atomic">
+    <process:hasName>TELUS_UPDATE</process:hasName>
+    <process:hasInput rdf:resource="#TELUS_WEB_SERVICE_0_TELUS_UPDATE_Atomic_input_parameters__http___tempuri.org__TELUS_UPDATE"/>
+    <process:hasOutput rdf:resource="#TELUS_WEB_SERVICE_0_TELUS_UPDATE_Atomic_output_parameters__http___tempuri.org__TELUS_UPDATEResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TELUS_UPDATE(?x) ^ parameter(?x, "http://tempuri.org/TELUS_UPDATE")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TELUS_UPDATEResponse(?y) ^ parameter(?y, "http://tempuri.org/TELUS_UPDATEResponse") ^ hasOutput(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="TELUS_WEB_SERVICE_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TELUS_WEB_SERVICE_0_TELUS_UPDATE_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TELUS_WEB_SERVICE_0_TELUS_UPDATE_Grounding">
+    <grounding:owlsProcess rdf:resource="#TELUS_WEB_SERVICE_0_TELUS_UPDATE_Atomic"/>
+    <grounding:wsdlOperationName>TELUS_UPDATE</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TELUS_WEB_SERVICESoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TELUS_WEB_SERVICESoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4595_4594.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>TELUS_UPDATESoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>TELUS_UPDATESoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

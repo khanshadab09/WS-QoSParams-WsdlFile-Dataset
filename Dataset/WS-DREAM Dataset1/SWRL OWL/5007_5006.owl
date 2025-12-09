@@ -1,0 +1,1245 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="svcUserAdmin">
+    <service:presents rdf:resource="#svcUserAdmin_Profile"/>
+    <service:describedBy rdf:resource="#svcUserAdmin_Composite"/>
+    <service:supports rdf:resource="#svcUserAdmin_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="svcUserAdmin_Profile">
+    <profile:serviceName>svcUserAdmin</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#svcUserAdmin"/>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_0_QueueMailBoxMigration_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_0_QueueMailBoxMigration_Atomic_input_parameters__http___tempuri.org__QueueMailBoxMigration"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_0_QueueMailBoxMigration_Atomic_output_parameters__http___tempuri.org__QueueMailBoxMigrationResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QueueMailBoxMigration(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QueueMailBoxMigrationResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_1_RemoveFromMigrationQueue_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_1_RemoveFromMigrationQueue_Atomic_input_parameters__http___tempuri.org__RemoveFromMigrationQueue"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_1_RemoveFromMigrationQueue_Atomic_output_parameters__http___tempuri.org__RemoveFromMigrationQueueResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RemoveFromMigrationQueue(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬ RemoveFromMigrationQueue(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_2_GetMigrationStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_2_GetMigrationStatus_Atomic_input_parameters__http___tempuri.org__GetMigrationStatus"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_2_GetMigrationStatus_Atomic_output_parameters__http___tempuri.org__GetMigrationStatusResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetMigrationStatus(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetMigrationStatusResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_3_AddUser_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_3_AddUser_Atomic_input_parameters__http___tempuri.org__AddUser"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_3_AddUser_Atomic_output_parameters__http___tempuri.org__AddUserResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddUser(?user) ^ not(ExistsUser(?user))</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddUserResponse(?user) ^ ExistsUser(?user) ^ hasPermission(?user, "addUser")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_4_AddUser2_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_4_AddUser2_Atomic_input_parameters__http___tempuri.org__AddUser2"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_4_AddUser2_Atomic_output_parameters__http___tempuri.org__AddUser2Response"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_5_AuthenticateUser_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_5_AuthenticateUser_Atomic_input_parameters__http___tempuri.org__AuthenticateUser"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_5_AuthenticateUser_Atomic_output_parameters__http___tempuri.org__AuthenticateUserResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthenticateUser(?user)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthenticateUserResponse(?user)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_6_UpdateUser_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_6_UpdateUser_Atomic_input_parameters__http___tempuri.org__UpdateUser"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_6_UpdateUser_Atomic_output_parameters__http___tempuri.org__UpdateUserResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUser(?user) ^ hasPermission(?user, "update")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserResponse(?response) ^ hasStatus(?response, "success") ^ hasMessage(?response, "User updated successfully")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_7_UpdateUser2_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_7_UpdateUser2_Atomic_input_parameters__http___tempuri.org__UpdateUser2"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_7_UpdateUser2_Atomic_output_parameters__http___tempuri.org__UpdateUser2Response"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUser2(?x) ^ hasParameter(?x, http://tempuri.org/UpdateUser2)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUser2Response(?y) ^ hasParameter(?y, http://tempuri.org/UpdateUser2Response)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_8_UpdateUserForwardingInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_8_UpdateUserForwardingInfo_Atomic_input_parameters__http___tempuri.org__UpdateUserForwardingInfo"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_8_UpdateUserForwardingInfo_Atomic_output_parameters__http___tempuri.org__UpdateUserForwardingInfoResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserForwardingInfo(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserForwardingInfoResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_9_UpdateUserForwardingInfo2_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_9_UpdateUserForwardingInfo2_Atomic_input_parameters__http___tempuri.org__UpdateUserForwardingInfo2"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_9_UpdateUserForwardingInfo2_Atomic_output_parameters__http___tempuri.org__UpdateUserForwardingInfo2Response"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserForwardingInfo2(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserForwardingInfo2Response(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_10_UpdateUserAutoResponseInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_10_UpdateUserAutoResponseInfo_Atomic_input_parameters__http___tempuri.org__UpdateUserAutoResponseInfo"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_10_UpdateUserAutoResponseInfo_Atomic_output_parameters__http___tempuri.org__UpdateUserAutoResponseInfoResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserAutoResponseInfo(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserAutoResponseInfoResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_11_UpdateUserAutoResponseInfo2_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_11_UpdateUserAutoResponseInfo2_Atomic_input_parameters__http___tempuri.org__UpdateUserAutoResponseInfo2"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_11_UpdateUserAutoResponseInfo2_Atomic_output_parameters__http___tempuri.org__UpdateUserAutoResponseInfo2Response"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserAutoResponseInfo2(?x) ^ hasParameter(?x, ?param) ^ hasNamespace(?param, "http://tempuri.org/") ^ hasName(?param, "UpdateUserAutoResponseInfo2")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserAutoResponseInfo2Response(?y) ^ hasParameter(?y, ?output) ^ hasNamespace(?output, "http://tempuri.org/") ^ hasName(?output, "UpdateUserAutoResponseInfo2Response")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_12_DeleteUser_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_12_DeleteUser_Atomic_input_parameters__http___tempuri.org__DeleteUser"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_12_DeleteUser_Atomic_output_parameters__http___tempuri.org__DeleteUserResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteUser(?user)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not(DeleteUser(?user))</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_13_GetUser_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_13_GetUser_Atomic_input_parameters__http___tempuri.org__GetUser"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_13_GetUser_Atomic_output_parameters__http___tempuri.org__GetUserResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input(parameters, http://tempuri.org/GetUser)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output(parameters, http://tempuri.org/GetUserResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_14_GetLastLoginTimes_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_14_GetLastLoginTimes_Atomic_input_parameters__http___tempuri.org__GetLastLoginTimes"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_14_GetLastLoginTimes_Atomic_output_parameters__http___tempuri.org__GetLastLoginTimesResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_15_GetRequestedUserSettings_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_15_GetRequestedUserSettings_Atomic_input_parameters__http___tempuri.org__GetRequestedUserSettings"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_15_GetRequestedUserSettings_Atomic_output_parameters__http___tempuri.org__GetRequestedUserSettingsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_16_SetRequestedUserSettings_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_16_SetRequestedUserSettings_Atomic_input_parameters__http___tempuri.org__SetRequestedUserSettings"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_16_SetRequestedUserSettings_Atomic_output_parameters__http___tempuri.org__SetRequestedUserSettingsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SetRequestedUserSettings(?x) ^ hasNamespace(?x, "http://tempuri.org/")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SetRequestedUserSettingsResponse(?y) ^ hasNamespace(?y, "http://tempuri.org/") ^ hasInput(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_17_GetInactiveUsers_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_17_GetInactiveUsers_Atomic_input_parameters__http___tempuri.org__GetInactiveUsers"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_17_GetInactiveUsers_Atomic_output_parameters__http___tempuri.org__GetInactiveUsersResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_18_GetUserForwardingInfo2_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_18_GetUserForwardingInfo2_Atomic_input_parameters__http___tempuri.org__GetUserForwardingInfo2"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_18_GetUserForwardingInfo2_Atomic_output_parameters__http___tempuri.org__GetUserForwardingInfo2Response"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserForwardingInfo2(?x) ^ hasInput(?x, ?input) ^ hasNamespace(?input, "http://tempuri.org/") ^ hasName(?input, "GetUserForwardingInfo2")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, ?output) ^ hasNamespace(?output, "http://tempuri.org/") ^ hasName(?output, "GetUserForwardingInfo2Response")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_19_GetUserForwardingInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_19_GetUserForwardingInfo_Atomic_input_parameters__http___tempuri.org__GetUserForwardingInfo"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_19_GetUserForwardingInfo_Atomic_output_parameters__http___tempuri.org__GetUserForwardingInfoResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserForwardingInfo(?x) ^ hasInput(?x, ?input) ^ hasNamespace(?input, "http://tempuri.org/")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserForwardingInfoResponse(?y) ^ hasOutput(?y, ?output) ^ hasNamespace(?output, "http://tempuri.org/")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_20_GetUserAutoResponseInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_20_GetUserAutoResponseInfo_Atomic_input_parameters__http___tempuri.org__GetUserAutoResponseInfo"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_20_GetUserAutoResponseInfo_Atomic_output_parameters__http___tempuri.org__GetUserAutoResponseInfoResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_21_GetUserAutoResponseInfo2_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_21_GetUserAutoResponseInfo2_Atomic_input_parameters__http___tempuri.org__GetUserAutoResponseInfo2"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_21_GetUserAutoResponseInfo2_Atomic_output_parameters__http___tempuri.org__GetUserAutoResponseInfo2Response"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserAutoResponseInfo2(?x) ^ hasInput(?x, ?input) ^ hasNamespace(?input, "http://tempuri.org/") ^ hasName(?input, "GetUserAutoResponseInfo2")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserAutoResponseInfo2Response(?y) ^ hasOutput(?y, ?output) ^ hasNamespace(?output, "http://tempuri.org/") ^ hasName(?output, "GetUserAutoResponseInfo2Response")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_22_GetUserQuotas_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_22_GetUserQuotas_Atomic_input_parameters__http___tempuri.org__GetUserQuotas"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_22_GetUserQuotas_Atomic_output_parameters__http___tempuri.org__GetUserQuotasResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserQuotas(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserQuotasResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_23_GetUsers_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_23_GetUsers_Atomic_input_parameters__http___tempuri.org__GetUsers"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_23_GetUsers_Atomic_output_parameters__http___tempuri.org__GetUsersResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_24_LoginValidated_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_24_LoginValidated_Atomic_input_parameters__http___tempuri.org__LoginValidated"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_24_LoginValidated_Atomic_output_parameters__http___tempuri.org__LoginValidatedResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoginValidated(?x) ^ hasUsername(?x, ?username) ^ hasPassword(?x, ?password)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoginValidatedResponse(?y) ^ hasResponseMessage(?y, "Login successful") ^ hasResponseStatus(?y, "200")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_25_GetUserStats_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_25_GetUserStats_Atomic_input_parameters__http___tempuri.org__GetUserStats"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_25_GetUserStats_Atomic_output_parameters__http___tempuri.org__GetUserStatsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserStats(?x) ^ hasInput(?x, ?input) ^ hasNamespace(?input, "http://tempuri.org/") ^ hasName(?input, "GetUserStats")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserStatsResponse(?y) ^ hasOutput(?y, ?output) ^ hasNamespace(?output, "http://tempuri.org/") ^ hasName(?output, "GetUserStatsResponse")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_26_ToggleActiveSync_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_26_ToggleActiveSync_Atomic_input_parameters__http___tempuri.org__ToggleActiveSync"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_26_ToggleActiveSync_Atomic_output_parameters__http___tempuri.org__ToggleActiveSyncResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveSyncStatus(?status) ^ swrlb:notEqual(?status, "active")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveSyncStatus("active")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_27_IsUserEnabledForActiveSync_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_27_IsUserEnabledForActiveSync_Atomic_input_parameters__http___tempuri.org__IsUserEnabledForActiveSync"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_27_IsUserEnabledForActiveSync_Atomic_output_parameters__http___tempuri.org__IsUserEnabledForActiveSyncResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsUserEnabledForActiveSync(?user)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsUserEnabledForActiveSyncResponse(?user)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_28_GetActiveSyncUsers_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_28_GetActiveSyncUsers_Atomic_input_parameters__http___tempuri.org__GetActiveSyncUsers"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_28_GetActiveSyncUsers_Atomic_output_parameters__http___tempuri.org__GetActiveSyncUsersResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetActiveSyncUsers(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetActiveSyncUsersResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_29_GetActiveSyncUsers2_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_29_GetActiveSyncUsers2_Atomic_input_parameters__http___tempuri.org__GetActiveSyncUsers2"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_29_GetActiveSyncUsers2_Atomic_output_parameters__http___tempuri.org__GetActiveSyncUsers2Response"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operation(GetActiveSyncUsers2) ^ hasInput(parameters, GetActiveSyncUsers2)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(parameters, GetActiveSyncUsers2Response)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_30_AddRSSFeed_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_30_AddRSSFeed_Atomic_input_parameters__http___tempuri.org__AddRSSFeed"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_30_AddRSSFeed_Atomic_output_parameters__http___tempuri.org__AddRSSFeedResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_31_ListRSSFeeds_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_31_ListRSSFeeds_Atomic_input_parameters__http___tempuri.org__ListRSSFeeds"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_31_ListRSSFeeds_Atomic_output_parameters__http___tempuri.org__ListRSSFeedsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_32_DeleteRSSFeed_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_32_DeleteRSSFeed_Atomic_input_parameters__http___tempuri.org__DeleteRSSFeed"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_32_DeleteRSSFeed_Atomic_output_parameters__http___tempuri.org__DeleteRSSFeedResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteRSSFeed(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not(DeleteRSSFeed(?x))</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_33_AddUserGroup_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_33_AddUserGroup_Atomic_input_parameters__http___tempuri.org__AddUserGroup"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_33_AddUserGroup_Atomic_output_parameters__http___tempuri.org__AddUserGroupResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddUserGroup(?userGroup)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddUserGroupResponse(?userGroupResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_34_RemoveUserGroup_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_34_RemoveUserGroup_Atomic_input_parameters__http___tempuri.org__RemoveUserGroup"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_34_RemoveUserGroup_Atomic_output_parameters__http___tempuri.org__RemoveUserGroupResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RemoveUserGroup(?x) ^ hasPermission(?x, "admin")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬memberOf(?x, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_35_UpdateUserGroup_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_35_UpdateUserGroup_Atomic_input_parameters__http___tempuri.org__UpdateUserGroup"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_35_UpdateUserGroup_Atomic_output_parameters__http___tempuri.org__UpdateUserGroupResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserGroup(?x) ^ hasParameter(?x, ?param) ^ hasValue(?param, "http://tempuri.org/UpdateUserGroup")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserGroupResponse(?y) ^ hasParameter(?y, ?output) ^ hasValue(?output, "http://tempuri.org/UpdateUserGroupResponse")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_36_GetUserGroup_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_36_GetUserGroup_Atomic_input_parameters__http___tempuri.org__GetUserGroup"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_36_GetUserGroup_Atomic_output_parameters__http___tempuri.org__GetUserGroupResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserGroup(?x) ^ hasParameter(?x, ?param) ^ hasNamespace(?param, "http://tempuri.org/") ^ hasName(?param, "GetUserGroup")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserGroupResponse(?y) ^ hasParameter(?y, ?output) ^ hasNamespace(?output, "http://tempuri.org/") ^ hasName(?output, "GetUserGroupResponse")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_37_GetUserGroupsByUser_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_37_GetUserGroupsByUser_Atomic_input_parameters__http___tempuri.org__GetUserGroupsByUser"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_37_GetUserGroupsByUser_Atomic_output_parameters__http___tempuri.org__GetUserGroupsByUserResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserGroupsByUser(?user)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserGroupsByUserResponse(?user)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#svcUserAdmin_38_GetUserGroupsByDomain_Atomic"/>
+    <profile:hasInput rdf:resource="#svcUserAdmin_38_GetUserGroupsByDomain_Atomic_input_parameters__http___tempuri.org__GetUserGroupsByDomain"/>
+    <profile:hasOutput rdf:resource="#svcUserAdmin_38_GetUserGroupsByDomain_Atomic_output_parameters__http___tempuri.org__GetUserGroupsByDomainResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserGroupsByDomain(?x) ^ hasNamespace(?x, "http://tempuri.org/")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserGroupsByDomainResponse(?y) ^ hasNamespace(?y, "http://tempuri.org/") ^ hasOutput(?y, ?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="svcUserAdmin_Composite">
+    <process:composedOf rdf:resource="#svcUserAdmin_0_QueueMailBoxMigration_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_1_RemoveFromMigrationQueue_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_2_GetMigrationStatus_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_3_AddUser_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_4_AddUser2_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_5_AuthenticateUser_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_6_UpdateUser_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_7_UpdateUser2_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_8_UpdateUserForwardingInfo_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_9_UpdateUserForwardingInfo2_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_10_UpdateUserAutoResponseInfo_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_11_UpdateUserAutoResponseInfo2_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_12_DeleteUser_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_13_GetUser_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_14_GetLastLoginTimes_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_15_GetRequestedUserSettings_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_16_SetRequestedUserSettings_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_17_GetInactiveUsers_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_18_GetUserForwardingInfo2_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_19_GetUserForwardingInfo_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_20_GetUserAutoResponseInfo_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_21_GetUserAutoResponseInfo2_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_22_GetUserQuotas_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_23_GetUsers_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_24_LoginValidated_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_25_GetUserStats_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_26_ToggleActiveSync_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_27_IsUserEnabledForActiveSync_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_28_GetActiveSyncUsers_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_29_GetActiveSyncUsers2_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_30_AddRSSFeed_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_31_ListRSSFeeds_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_32_DeleteRSSFeed_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_33_AddUserGroup_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_34_RemoveUserGroup_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_35_UpdateUserGroup_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_36_GetUserGroup_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_37_GetUserGroupsByUser_Atomic"/>
+    <process:composedOf rdf:resource="#svcUserAdmin_38_GetUserGroupsByDomain_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="svcUserAdmin_0_QueueMailBoxMigration_Atomic_input_parameters__http___tempuri.org__QueueMailBoxMigration">
+    <process:parameterType>parameters:{http://tempuri.org/}QueueMailBoxMigration</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_0_QueueMailBoxMigration_Atomic_output_parameters__http___tempuri.org__QueueMailBoxMigrationResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}QueueMailBoxMigrationResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_1_RemoveFromMigrationQueue_Atomic_input_parameters__http___tempuri.org__RemoveFromMigrationQueue">
+    <process:parameterType>parameters:{http://tempuri.org/}RemoveFromMigrationQueue</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_1_RemoveFromMigrationQueue_Atomic_output_parameters__http___tempuri.org__RemoveFromMigrationQueueResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}RemoveFromMigrationQueueResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_2_GetMigrationStatus_Atomic_input_parameters__http___tempuri.org__GetMigrationStatus">
+    <process:parameterType>parameters:{http://tempuri.org/}GetMigrationStatus</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_2_GetMigrationStatus_Atomic_output_parameters__http___tempuri.org__GetMigrationStatusResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetMigrationStatusResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_3_AddUser_Atomic_input_parameters__http___tempuri.org__AddUser">
+    <process:parameterType>parameters:{http://tempuri.org/}AddUser</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_3_AddUser_Atomic_output_parameters__http___tempuri.org__AddUserResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}AddUserResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_4_AddUser2_Atomic_input_parameters__http___tempuri.org__AddUser2">
+    <process:parameterType>parameters:{http://tempuri.org/}AddUser2</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_4_AddUser2_Atomic_output_parameters__http___tempuri.org__AddUser2Response">
+    <process:parameterType>parameters:{http://tempuri.org/}AddUser2Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_5_AuthenticateUser_Atomic_input_parameters__http___tempuri.org__AuthenticateUser">
+    <process:parameterType>parameters:{http://tempuri.org/}AuthenticateUser</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_5_AuthenticateUser_Atomic_output_parameters__http___tempuri.org__AuthenticateUserResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}AuthenticateUserResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_6_UpdateUser_Atomic_input_parameters__http___tempuri.org__UpdateUser">
+    <process:parameterType>parameters:{http://tempuri.org/}UpdateUser</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_6_UpdateUser_Atomic_output_parameters__http___tempuri.org__UpdateUserResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}UpdateUserResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_7_UpdateUser2_Atomic_input_parameters__http___tempuri.org__UpdateUser2">
+    <process:parameterType>parameters:{http://tempuri.org/}UpdateUser2</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_7_UpdateUser2_Atomic_output_parameters__http___tempuri.org__UpdateUser2Response">
+    <process:parameterType>parameters:{http://tempuri.org/}UpdateUser2Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_8_UpdateUserForwardingInfo_Atomic_input_parameters__http___tempuri.org__UpdateUserForwardingInfo">
+    <process:parameterType>parameters:{http://tempuri.org/}UpdateUserForwardingInfo</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_8_UpdateUserForwardingInfo_Atomic_output_parameters__http___tempuri.org__UpdateUserForwardingInfoResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}UpdateUserForwardingInfoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_9_UpdateUserForwardingInfo2_Atomic_input_parameters__http___tempuri.org__UpdateUserForwardingInfo2">
+    <process:parameterType>parameters:{http://tempuri.org/}UpdateUserForwardingInfo2</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_9_UpdateUserForwardingInfo2_Atomic_output_parameters__http___tempuri.org__UpdateUserForwardingInfo2Response">
+    <process:parameterType>parameters:{http://tempuri.org/}UpdateUserForwardingInfo2Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_10_UpdateUserAutoResponseInfo_Atomic_input_parameters__http___tempuri.org__UpdateUserAutoResponseInfo">
+    <process:parameterType>parameters:{http://tempuri.org/}UpdateUserAutoResponseInfo</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_10_UpdateUserAutoResponseInfo_Atomic_output_parameters__http___tempuri.org__UpdateUserAutoResponseInfoResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}UpdateUserAutoResponseInfoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_11_UpdateUserAutoResponseInfo2_Atomic_input_parameters__http___tempuri.org__UpdateUserAutoResponseInfo2">
+    <process:parameterType>parameters:{http://tempuri.org/}UpdateUserAutoResponseInfo2</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_11_UpdateUserAutoResponseInfo2_Atomic_output_parameters__http___tempuri.org__UpdateUserAutoResponseInfo2Response">
+    <process:parameterType>parameters:{http://tempuri.org/}UpdateUserAutoResponseInfo2Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_12_DeleteUser_Atomic_input_parameters__http___tempuri.org__DeleteUser">
+    <process:parameterType>parameters:{http://tempuri.org/}DeleteUser</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_12_DeleteUser_Atomic_output_parameters__http___tempuri.org__DeleteUserResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}DeleteUserResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_13_GetUser_Atomic_input_parameters__http___tempuri.org__GetUser">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUser</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_13_GetUser_Atomic_output_parameters__http___tempuri.org__GetUserResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_14_GetLastLoginTimes_Atomic_input_parameters__http___tempuri.org__GetLastLoginTimes">
+    <process:parameterType>parameters:{http://tempuri.org/}GetLastLoginTimes</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_14_GetLastLoginTimes_Atomic_output_parameters__http___tempuri.org__GetLastLoginTimesResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetLastLoginTimesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_15_GetRequestedUserSettings_Atomic_input_parameters__http___tempuri.org__GetRequestedUserSettings">
+    <process:parameterType>parameters:{http://tempuri.org/}GetRequestedUserSettings</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_15_GetRequestedUserSettings_Atomic_output_parameters__http___tempuri.org__GetRequestedUserSettingsResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetRequestedUserSettingsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_16_SetRequestedUserSettings_Atomic_input_parameters__http___tempuri.org__SetRequestedUserSettings">
+    <process:parameterType>parameters:{http://tempuri.org/}SetRequestedUserSettings</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_16_SetRequestedUserSettings_Atomic_output_parameters__http___tempuri.org__SetRequestedUserSettingsResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}SetRequestedUserSettingsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_17_GetInactiveUsers_Atomic_input_parameters__http___tempuri.org__GetInactiveUsers">
+    <process:parameterType>parameters:{http://tempuri.org/}GetInactiveUsers</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_17_GetInactiveUsers_Atomic_output_parameters__http___tempuri.org__GetInactiveUsersResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetInactiveUsersResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_18_GetUserForwardingInfo2_Atomic_input_parameters__http___tempuri.org__GetUserForwardingInfo2">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserForwardingInfo2</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_18_GetUserForwardingInfo2_Atomic_output_parameters__http___tempuri.org__GetUserForwardingInfo2Response">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserForwardingInfo2Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_19_GetUserForwardingInfo_Atomic_input_parameters__http___tempuri.org__GetUserForwardingInfo">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserForwardingInfo</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_19_GetUserForwardingInfo_Atomic_output_parameters__http___tempuri.org__GetUserForwardingInfoResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserForwardingInfoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_20_GetUserAutoResponseInfo_Atomic_input_parameters__http___tempuri.org__GetUserAutoResponseInfo">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserAutoResponseInfo</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_20_GetUserAutoResponseInfo_Atomic_output_parameters__http___tempuri.org__GetUserAutoResponseInfoResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserAutoResponseInfoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_21_GetUserAutoResponseInfo2_Atomic_input_parameters__http___tempuri.org__GetUserAutoResponseInfo2">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserAutoResponseInfo2</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_21_GetUserAutoResponseInfo2_Atomic_output_parameters__http___tempuri.org__GetUserAutoResponseInfo2Response">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserAutoResponseInfo2Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_22_GetUserQuotas_Atomic_input_parameters__http___tempuri.org__GetUserQuotas">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserQuotas</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_22_GetUserQuotas_Atomic_output_parameters__http___tempuri.org__GetUserQuotasResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserQuotasResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_23_GetUsers_Atomic_input_parameters__http___tempuri.org__GetUsers">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUsers</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_23_GetUsers_Atomic_output_parameters__http___tempuri.org__GetUsersResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUsersResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_24_LoginValidated_Atomic_input_parameters__http___tempuri.org__LoginValidated">
+    <process:parameterType>parameters:{http://tempuri.org/}LoginValidated</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_24_LoginValidated_Atomic_output_parameters__http___tempuri.org__LoginValidatedResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}LoginValidatedResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_25_GetUserStats_Atomic_input_parameters__http___tempuri.org__GetUserStats">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserStats</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_25_GetUserStats_Atomic_output_parameters__http___tempuri.org__GetUserStatsResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserStatsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_26_ToggleActiveSync_Atomic_input_parameters__http___tempuri.org__ToggleActiveSync">
+    <process:parameterType>parameters:{http://tempuri.org/}ToggleActiveSync</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_26_ToggleActiveSync_Atomic_output_parameters__http___tempuri.org__ToggleActiveSyncResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}ToggleActiveSyncResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_27_IsUserEnabledForActiveSync_Atomic_input_parameters__http___tempuri.org__IsUserEnabledForActiveSync">
+    <process:parameterType>parameters:{http://tempuri.org/}IsUserEnabledForActiveSync</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_27_IsUserEnabledForActiveSync_Atomic_output_parameters__http___tempuri.org__IsUserEnabledForActiveSyncResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}IsUserEnabledForActiveSyncResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_28_GetActiveSyncUsers_Atomic_input_parameters__http___tempuri.org__GetActiveSyncUsers">
+    <process:parameterType>parameters:{http://tempuri.org/}GetActiveSyncUsers</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_28_GetActiveSyncUsers_Atomic_output_parameters__http___tempuri.org__GetActiveSyncUsersResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetActiveSyncUsersResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_29_GetActiveSyncUsers2_Atomic_input_parameters__http___tempuri.org__GetActiveSyncUsers2">
+    <process:parameterType>parameters:{http://tempuri.org/}GetActiveSyncUsers2</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_29_GetActiveSyncUsers2_Atomic_output_parameters__http___tempuri.org__GetActiveSyncUsers2Response">
+    <process:parameterType>parameters:{http://tempuri.org/}GetActiveSyncUsers2Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_30_AddRSSFeed_Atomic_input_parameters__http___tempuri.org__AddRSSFeed">
+    <process:parameterType>parameters:{http://tempuri.org/}AddRSSFeed</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_30_AddRSSFeed_Atomic_output_parameters__http___tempuri.org__AddRSSFeedResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}AddRSSFeedResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_31_ListRSSFeeds_Atomic_input_parameters__http___tempuri.org__ListRSSFeeds">
+    <process:parameterType>parameters:{http://tempuri.org/}ListRSSFeeds</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_31_ListRSSFeeds_Atomic_output_parameters__http___tempuri.org__ListRSSFeedsResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}ListRSSFeedsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_32_DeleteRSSFeed_Atomic_input_parameters__http___tempuri.org__DeleteRSSFeed">
+    <process:parameterType>parameters:{http://tempuri.org/}DeleteRSSFeed</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_32_DeleteRSSFeed_Atomic_output_parameters__http___tempuri.org__DeleteRSSFeedResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}DeleteRSSFeedResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_33_AddUserGroup_Atomic_input_parameters__http___tempuri.org__AddUserGroup">
+    <process:parameterType>parameters:{http://tempuri.org/}AddUserGroup</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_33_AddUserGroup_Atomic_output_parameters__http___tempuri.org__AddUserGroupResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}AddUserGroupResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_34_RemoveUserGroup_Atomic_input_parameters__http___tempuri.org__RemoveUserGroup">
+    <process:parameterType>parameters:{http://tempuri.org/}RemoveUserGroup</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_34_RemoveUserGroup_Atomic_output_parameters__http___tempuri.org__RemoveUserGroupResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}RemoveUserGroupResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_35_UpdateUserGroup_Atomic_input_parameters__http___tempuri.org__UpdateUserGroup">
+    <process:parameterType>parameters:{http://tempuri.org/}UpdateUserGroup</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_35_UpdateUserGroup_Atomic_output_parameters__http___tempuri.org__UpdateUserGroupResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}UpdateUserGroupResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_36_GetUserGroup_Atomic_input_parameters__http___tempuri.org__GetUserGroup">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserGroup</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_36_GetUserGroup_Atomic_output_parameters__http___tempuri.org__GetUserGroupResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserGroupResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_37_GetUserGroupsByUser_Atomic_input_parameters__http___tempuri.org__GetUserGroupsByUser">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserGroupsByUser</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_37_GetUserGroupsByUser_Atomic_output_parameters__http___tempuri.org__GetUserGroupsByUserResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserGroupsByUserResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="svcUserAdmin_38_GetUserGroupsByDomain_Atomic_input_parameters__http___tempuri.org__GetUserGroupsByDomain">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserGroupsByDomain</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="svcUserAdmin_38_GetUserGroupsByDomain_Atomic_output_parameters__http___tempuri.org__GetUserGroupsByDomainResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUserGroupsByDomainResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_0_QueueMailBoxMigration_Atomic">
+    <process:hasName>QueueMailBoxMigration</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_0_QueueMailBoxMigration_Atomic_input_parameters__http___tempuri.org__QueueMailBoxMigration"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_0_QueueMailBoxMigration_Atomic_output_parameters__http___tempuri.org__QueueMailBoxMigrationResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QueueMailBoxMigration(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QueueMailBoxMigrationResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_1_RemoveFromMigrationQueue_Atomic">
+    <process:hasName>RemoveFromMigrationQueue</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_1_RemoveFromMigrationQueue_Atomic_input_parameters__http___tempuri.org__RemoveFromMigrationQueue"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_1_RemoveFromMigrationQueue_Atomic_output_parameters__http___tempuri.org__RemoveFromMigrationQueueResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RemoveFromMigrationQueue(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬ RemoveFromMigrationQueue(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_2_GetMigrationStatus_Atomic">
+    <process:hasName>GetMigrationStatus</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_2_GetMigrationStatus_Atomic_input_parameters__http___tempuri.org__GetMigrationStatus"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_2_GetMigrationStatus_Atomic_output_parameters__http___tempuri.org__GetMigrationStatusResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetMigrationStatus(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetMigrationStatusResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_3_AddUser_Atomic">
+    <process:hasName>AddUser</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_3_AddUser_Atomic_input_parameters__http___tempuri.org__AddUser"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_3_AddUser_Atomic_output_parameters__http___tempuri.org__AddUserResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddUser(?user) ^ not(ExistsUser(?user))</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddUserResponse(?user) ^ ExistsUser(?user) ^ hasPermission(?user, "addUser")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_4_AddUser2_Atomic">
+    <process:hasName>AddUser2</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_4_AddUser2_Atomic_input_parameters__http___tempuri.org__AddUser2"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_4_AddUser2_Atomic_output_parameters__http___tempuri.org__AddUser2Response"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_5_AuthenticateUser_Atomic">
+    <process:hasName>AuthenticateUser</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_5_AuthenticateUser_Atomic_input_parameters__http___tempuri.org__AuthenticateUser"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_5_AuthenticateUser_Atomic_output_parameters__http___tempuri.org__AuthenticateUserResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthenticateUser(?user)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthenticateUserResponse(?user)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_6_UpdateUser_Atomic">
+    <process:hasName>UpdateUser</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_6_UpdateUser_Atomic_input_parameters__http___tempuri.org__UpdateUser"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_6_UpdateUser_Atomic_output_parameters__http___tempuri.org__UpdateUserResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUser(?user) ^ hasPermission(?user, "update")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserResponse(?response) ^ hasStatus(?response, "success") ^ hasMessage(?response, "User updated successfully")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_7_UpdateUser2_Atomic">
+    <process:hasName>UpdateUser2</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_7_UpdateUser2_Atomic_input_parameters__http___tempuri.org__UpdateUser2"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_7_UpdateUser2_Atomic_output_parameters__http___tempuri.org__UpdateUser2Response"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUser2(?x) ^ hasParameter(?x, http://tempuri.org/UpdateUser2)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUser2Response(?y) ^ hasParameter(?y, http://tempuri.org/UpdateUser2Response)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_8_UpdateUserForwardingInfo_Atomic">
+    <process:hasName>UpdateUserForwardingInfo</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_8_UpdateUserForwardingInfo_Atomic_input_parameters__http___tempuri.org__UpdateUserForwardingInfo"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_8_UpdateUserForwardingInfo_Atomic_output_parameters__http___tempuri.org__UpdateUserForwardingInfoResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserForwardingInfo(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserForwardingInfoResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_9_UpdateUserForwardingInfo2_Atomic">
+    <process:hasName>UpdateUserForwardingInfo2</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_9_UpdateUserForwardingInfo2_Atomic_input_parameters__http___tempuri.org__UpdateUserForwardingInfo2"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_9_UpdateUserForwardingInfo2_Atomic_output_parameters__http___tempuri.org__UpdateUserForwardingInfo2Response"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserForwardingInfo2(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserForwardingInfo2Response(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_10_UpdateUserAutoResponseInfo_Atomic">
+    <process:hasName>UpdateUserAutoResponseInfo</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_10_UpdateUserAutoResponseInfo_Atomic_input_parameters__http___tempuri.org__UpdateUserAutoResponseInfo"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_10_UpdateUserAutoResponseInfo_Atomic_output_parameters__http___tempuri.org__UpdateUserAutoResponseInfoResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserAutoResponseInfo(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserAutoResponseInfoResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_11_UpdateUserAutoResponseInfo2_Atomic">
+    <process:hasName>UpdateUserAutoResponseInfo2</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_11_UpdateUserAutoResponseInfo2_Atomic_input_parameters__http___tempuri.org__UpdateUserAutoResponseInfo2"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_11_UpdateUserAutoResponseInfo2_Atomic_output_parameters__http___tempuri.org__UpdateUserAutoResponseInfo2Response"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserAutoResponseInfo2(?x) ^ hasParameter(?x, ?param) ^ hasNamespace(?param, "http://tempuri.org/") ^ hasName(?param, "UpdateUserAutoResponseInfo2")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserAutoResponseInfo2Response(?y) ^ hasParameter(?y, ?output) ^ hasNamespace(?output, "http://tempuri.org/") ^ hasName(?output, "UpdateUserAutoResponseInfo2Response")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_12_DeleteUser_Atomic">
+    <process:hasName>DeleteUser</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_12_DeleteUser_Atomic_input_parameters__http___tempuri.org__DeleteUser"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_12_DeleteUser_Atomic_output_parameters__http___tempuri.org__DeleteUserResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteUser(?user)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not(DeleteUser(?user))</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_13_GetUser_Atomic">
+    <process:hasName>GetUser</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_13_GetUser_Atomic_input_parameters__http___tempuri.org__GetUser"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_13_GetUser_Atomic_output_parameters__http___tempuri.org__GetUserResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input(parameters, http://tempuri.org/GetUser)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output(parameters, http://tempuri.org/GetUserResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_14_GetLastLoginTimes_Atomic">
+    <process:hasName>GetLastLoginTimes</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_14_GetLastLoginTimes_Atomic_input_parameters__http___tempuri.org__GetLastLoginTimes"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_14_GetLastLoginTimes_Atomic_output_parameters__http___tempuri.org__GetLastLoginTimesResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_15_GetRequestedUserSettings_Atomic">
+    <process:hasName>GetRequestedUserSettings</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_15_GetRequestedUserSettings_Atomic_input_parameters__http___tempuri.org__GetRequestedUserSettings"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_15_GetRequestedUserSettings_Atomic_output_parameters__http___tempuri.org__GetRequestedUserSettingsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_16_SetRequestedUserSettings_Atomic">
+    <process:hasName>SetRequestedUserSettings</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_16_SetRequestedUserSettings_Atomic_input_parameters__http___tempuri.org__SetRequestedUserSettings"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_16_SetRequestedUserSettings_Atomic_output_parameters__http___tempuri.org__SetRequestedUserSettingsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SetRequestedUserSettings(?x) ^ hasNamespace(?x, "http://tempuri.org/")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SetRequestedUserSettingsResponse(?y) ^ hasNamespace(?y, "http://tempuri.org/") ^ hasInput(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_17_GetInactiveUsers_Atomic">
+    <process:hasName>GetInactiveUsers</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_17_GetInactiveUsers_Atomic_input_parameters__http___tempuri.org__GetInactiveUsers"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_17_GetInactiveUsers_Atomic_output_parameters__http___tempuri.org__GetInactiveUsersResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_18_GetUserForwardingInfo2_Atomic">
+    <process:hasName>GetUserForwardingInfo2</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_18_GetUserForwardingInfo2_Atomic_input_parameters__http___tempuri.org__GetUserForwardingInfo2"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_18_GetUserForwardingInfo2_Atomic_output_parameters__http___tempuri.org__GetUserForwardingInfo2Response"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserForwardingInfo2(?x) ^ hasInput(?x, ?input) ^ hasNamespace(?input, "http://tempuri.org/") ^ hasName(?input, "GetUserForwardingInfo2")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, ?output) ^ hasNamespace(?output, "http://tempuri.org/") ^ hasName(?output, "GetUserForwardingInfo2Response")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_19_GetUserForwardingInfo_Atomic">
+    <process:hasName>GetUserForwardingInfo</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_19_GetUserForwardingInfo_Atomic_input_parameters__http___tempuri.org__GetUserForwardingInfo"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_19_GetUserForwardingInfo_Atomic_output_parameters__http___tempuri.org__GetUserForwardingInfoResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserForwardingInfo(?x) ^ hasInput(?x, ?input) ^ hasNamespace(?input, "http://tempuri.org/")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserForwardingInfoResponse(?y) ^ hasOutput(?y, ?output) ^ hasNamespace(?output, "http://tempuri.org/")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_20_GetUserAutoResponseInfo_Atomic">
+    <process:hasName>GetUserAutoResponseInfo</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_20_GetUserAutoResponseInfo_Atomic_input_parameters__http___tempuri.org__GetUserAutoResponseInfo"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_20_GetUserAutoResponseInfo_Atomic_output_parameters__http___tempuri.org__GetUserAutoResponseInfoResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_21_GetUserAutoResponseInfo2_Atomic">
+    <process:hasName>GetUserAutoResponseInfo2</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_21_GetUserAutoResponseInfo2_Atomic_input_parameters__http___tempuri.org__GetUserAutoResponseInfo2"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_21_GetUserAutoResponseInfo2_Atomic_output_parameters__http___tempuri.org__GetUserAutoResponseInfo2Response"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserAutoResponseInfo2(?x) ^ hasInput(?x, ?input) ^ hasNamespace(?input, "http://tempuri.org/") ^ hasName(?input, "GetUserAutoResponseInfo2")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserAutoResponseInfo2Response(?y) ^ hasOutput(?y, ?output) ^ hasNamespace(?output, "http://tempuri.org/") ^ hasName(?output, "GetUserAutoResponseInfo2Response")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_22_GetUserQuotas_Atomic">
+    <process:hasName>GetUserQuotas</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_22_GetUserQuotas_Atomic_input_parameters__http___tempuri.org__GetUserQuotas"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_22_GetUserQuotas_Atomic_output_parameters__http___tempuri.org__GetUserQuotasResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserQuotas(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserQuotasResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_23_GetUsers_Atomic">
+    <process:hasName>GetUsers</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_23_GetUsers_Atomic_input_parameters__http___tempuri.org__GetUsers"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_23_GetUsers_Atomic_output_parameters__http___tempuri.org__GetUsersResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_24_LoginValidated_Atomic">
+    <process:hasName>LoginValidated</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_24_LoginValidated_Atomic_input_parameters__http___tempuri.org__LoginValidated"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_24_LoginValidated_Atomic_output_parameters__http___tempuri.org__LoginValidatedResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoginValidated(?x) ^ hasUsername(?x, ?username) ^ hasPassword(?x, ?password)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoginValidatedResponse(?y) ^ hasResponseMessage(?y, "Login successful") ^ hasResponseStatus(?y, "200")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_25_GetUserStats_Atomic">
+    <process:hasName>GetUserStats</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_25_GetUserStats_Atomic_input_parameters__http___tempuri.org__GetUserStats"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_25_GetUserStats_Atomic_output_parameters__http___tempuri.org__GetUserStatsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserStats(?x) ^ hasInput(?x, ?input) ^ hasNamespace(?input, "http://tempuri.org/") ^ hasName(?input, "GetUserStats")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserStatsResponse(?y) ^ hasOutput(?y, ?output) ^ hasNamespace(?output, "http://tempuri.org/") ^ hasName(?output, "GetUserStatsResponse")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_26_ToggleActiveSync_Atomic">
+    <process:hasName>ToggleActiveSync</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_26_ToggleActiveSync_Atomic_input_parameters__http___tempuri.org__ToggleActiveSync"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_26_ToggleActiveSync_Atomic_output_parameters__http___tempuri.org__ToggleActiveSyncResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveSyncStatus(?status) ^ swrlb:notEqual(?status, "active")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveSyncStatus("active")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_27_IsUserEnabledForActiveSync_Atomic">
+    <process:hasName>IsUserEnabledForActiveSync</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_27_IsUserEnabledForActiveSync_Atomic_input_parameters__http___tempuri.org__IsUserEnabledForActiveSync"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_27_IsUserEnabledForActiveSync_Atomic_output_parameters__http___tempuri.org__IsUserEnabledForActiveSyncResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsUserEnabledForActiveSync(?user)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsUserEnabledForActiveSyncResponse(?user)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_28_GetActiveSyncUsers_Atomic">
+    <process:hasName>GetActiveSyncUsers</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_28_GetActiveSyncUsers_Atomic_input_parameters__http___tempuri.org__GetActiveSyncUsers"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_28_GetActiveSyncUsers_Atomic_output_parameters__http___tempuri.org__GetActiveSyncUsersResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetActiveSyncUsers(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetActiveSyncUsersResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_29_GetActiveSyncUsers2_Atomic">
+    <process:hasName>GetActiveSyncUsers2</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_29_GetActiveSyncUsers2_Atomic_input_parameters__http___tempuri.org__GetActiveSyncUsers2"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_29_GetActiveSyncUsers2_Atomic_output_parameters__http___tempuri.org__GetActiveSyncUsers2Response"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operation(GetActiveSyncUsers2) ^ hasInput(parameters, GetActiveSyncUsers2)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(parameters, GetActiveSyncUsers2Response)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_30_AddRSSFeed_Atomic">
+    <process:hasName>AddRSSFeed</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_30_AddRSSFeed_Atomic_input_parameters__http___tempuri.org__AddRSSFeed"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_30_AddRSSFeed_Atomic_output_parameters__http___tempuri.org__AddRSSFeedResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_31_ListRSSFeeds_Atomic">
+    <process:hasName>ListRSSFeeds</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_31_ListRSSFeeds_Atomic_input_parameters__http___tempuri.org__ListRSSFeeds"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_31_ListRSSFeeds_Atomic_output_parameters__http___tempuri.org__ListRSSFeedsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_32_DeleteRSSFeed_Atomic">
+    <process:hasName>DeleteRSSFeed</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_32_DeleteRSSFeed_Atomic_input_parameters__http___tempuri.org__DeleteRSSFeed"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_32_DeleteRSSFeed_Atomic_output_parameters__http___tempuri.org__DeleteRSSFeedResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteRSSFeed(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not(DeleteRSSFeed(?x))</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_33_AddUserGroup_Atomic">
+    <process:hasName>AddUserGroup</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_33_AddUserGroup_Atomic_input_parameters__http___tempuri.org__AddUserGroup"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_33_AddUserGroup_Atomic_output_parameters__http___tempuri.org__AddUserGroupResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddUserGroup(?userGroup)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddUserGroupResponse(?userGroupResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_34_RemoveUserGroup_Atomic">
+    <process:hasName>RemoveUserGroup</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_34_RemoveUserGroup_Atomic_input_parameters__http___tempuri.org__RemoveUserGroup"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_34_RemoveUserGroup_Atomic_output_parameters__http___tempuri.org__RemoveUserGroupResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RemoveUserGroup(?x) ^ hasPermission(?x, "admin")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬memberOf(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_35_UpdateUserGroup_Atomic">
+    <process:hasName>UpdateUserGroup</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_35_UpdateUserGroup_Atomic_input_parameters__http___tempuri.org__UpdateUserGroup"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_35_UpdateUserGroup_Atomic_output_parameters__http___tempuri.org__UpdateUserGroupResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserGroup(?x) ^ hasParameter(?x, ?param) ^ hasValue(?param, "http://tempuri.org/UpdateUserGroup")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateUserGroupResponse(?y) ^ hasParameter(?y, ?output) ^ hasValue(?output, "http://tempuri.org/UpdateUserGroupResponse")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_36_GetUserGroup_Atomic">
+    <process:hasName>GetUserGroup</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_36_GetUserGroup_Atomic_input_parameters__http___tempuri.org__GetUserGroup"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_36_GetUserGroup_Atomic_output_parameters__http___tempuri.org__GetUserGroupResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserGroup(?x) ^ hasParameter(?x, ?param) ^ hasNamespace(?param, "http://tempuri.org/") ^ hasName(?param, "GetUserGroup")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserGroupResponse(?y) ^ hasParameter(?y, ?output) ^ hasNamespace(?output, "http://tempuri.org/") ^ hasName(?output, "GetUserGroupResponse")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_37_GetUserGroupsByUser_Atomic">
+    <process:hasName>GetUserGroupsByUser</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_37_GetUserGroupsByUser_Atomic_input_parameters__http___tempuri.org__GetUserGroupsByUser"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_37_GetUserGroupsByUser_Atomic_output_parameters__http___tempuri.org__GetUserGroupsByUserResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserGroupsByUser(?user)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserGroupsByUserResponse(?user)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="svcUserAdmin_38_GetUserGroupsByDomain_Atomic">
+    <process:hasName>GetUserGroupsByDomain</process:hasName>
+    <process:hasInput rdf:resource="#svcUserAdmin_38_GetUserGroupsByDomain_Atomic_input_parameters__http___tempuri.org__GetUserGroupsByDomain"/>
+    <process:hasOutput rdf:resource="#svcUserAdmin_38_GetUserGroupsByDomain_Atomic_output_parameters__http___tempuri.org__GetUserGroupsByDomainResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserGroupsByDomain(?x) ^ hasNamespace(?x, "http://tempuri.org/")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserGroupsByDomainResponse(?y) ^ hasNamespace(?y, "http://tempuri.org/") ^ hasOutput(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="svcUserAdmin_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_0_QueueMailBoxMigration_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_1_RemoveFromMigrationQueue_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_2_GetMigrationStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_3_AddUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_4_AddUser2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_5_AuthenticateUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_6_UpdateUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_7_UpdateUser2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_8_UpdateUserForwardingInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_9_UpdateUserForwardingInfo2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_10_UpdateUserAutoResponseInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_11_UpdateUserAutoResponseInfo2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_12_DeleteUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_13_GetUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_14_GetLastLoginTimes_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_15_GetRequestedUserSettings_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_16_SetRequestedUserSettings_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_17_GetInactiveUsers_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_18_GetUserForwardingInfo2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_19_GetUserForwardingInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_20_GetUserAutoResponseInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_21_GetUserAutoResponseInfo2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_22_GetUserQuotas_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_23_GetUsers_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_24_LoginValidated_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_25_GetUserStats_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_26_ToggleActiveSync_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_27_IsUserEnabledForActiveSync_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_28_GetActiveSyncUsers_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_29_GetActiveSyncUsers2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_30_AddRSSFeed_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_31_ListRSSFeeds_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_32_DeleteRSSFeed_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_33_AddUserGroup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_34_RemoveUserGroup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_35_UpdateUserGroup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_36_GetUserGroup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_37_GetUserGroupsByUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#svcUserAdmin_38_GetUserGroupsByDomain_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_0_QueueMailBoxMigration_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_0_QueueMailBoxMigration_Atomic"/>
+    <grounding:wsdlOperationName>QueueMailBoxMigration</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>QueueMailBoxMigrationSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>QueueMailBoxMigrationSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_1_RemoveFromMigrationQueue_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_1_RemoveFromMigrationQueue_Atomic"/>
+    <grounding:wsdlOperationName>RemoveFromMigrationQueue</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RemoveFromMigrationQueueSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RemoveFromMigrationQueueSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_2_GetMigrationStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_2_GetMigrationStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetMigrationStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetMigrationStatusSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetMigrationStatusSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_3_AddUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_3_AddUser_Atomic"/>
+    <grounding:wsdlOperationName>AddUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddUserSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddUserSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_4_AddUser2_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_4_AddUser2_Atomic"/>
+    <grounding:wsdlOperationName>AddUser2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddUser2SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddUser2SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_5_AuthenticateUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_5_AuthenticateUser_Atomic"/>
+    <grounding:wsdlOperationName>AuthenticateUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AuthenticateUserSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AuthenticateUserSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_6_UpdateUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_6_UpdateUser_Atomic"/>
+    <grounding:wsdlOperationName>UpdateUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateUserSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateUserSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_7_UpdateUser2_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_7_UpdateUser2_Atomic"/>
+    <grounding:wsdlOperationName>UpdateUser2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateUser2SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateUser2SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_8_UpdateUserForwardingInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_8_UpdateUserForwardingInfo_Atomic"/>
+    <grounding:wsdlOperationName>UpdateUserForwardingInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateUserForwardingInfoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateUserForwardingInfoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_9_UpdateUserForwardingInfo2_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_9_UpdateUserForwardingInfo2_Atomic"/>
+    <grounding:wsdlOperationName>UpdateUserForwardingInfo2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateUserForwardingInfo2SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateUserForwardingInfo2SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_10_UpdateUserAutoResponseInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_10_UpdateUserAutoResponseInfo_Atomic"/>
+    <grounding:wsdlOperationName>UpdateUserAutoResponseInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateUserAutoResponseInfoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateUserAutoResponseInfoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_11_UpdateUserAutoResponseInfo2_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_11_UpdateUserAutoResponseInfo2_Atomic"/>
+    <grounding:wsdlOperationName>UpdateUserAutoResponseInfo2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateUserAutoResponseInfo2SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateUserAutoResponseInfo2SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_12_DeleteUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_12_DeleteUser_Atomic"/>
+    <grounding:wsdlOperationName>DeleteUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteUserSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteUserSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_13_GetUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_13_GetUser_Atomic"/>
+    <grounding:wsdlOperationName>GetUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_14_GetLastLoginTimes_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_14_GetLastLoginTimes_Atomic"/>
+    <grounding:wsdlOperationName>GetLastLoginTimes</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastLoginTimesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastLoginTimesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_15_GetRequestedUserSettings_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_15_GetRequestedUserSettings_Atomic"/>
+    <grounding:wsdlOperationName>GetRequestedUserSettings</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRequestedUserSettingsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRequestedUserSettingsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_16_SetRequestedUserSettings_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_16_SetRequestedUserSettings_Atomic"/>
+    <grounding:wsdlOperationName>SetRequestedUserSettings</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SetRequestedUserSettingsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SetRequestedUserSettingsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_17_GetInactiveUsers_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_17_GetInactiveUsers_Atomic"/>
+    <grounding:wsdlOperationName>GetInactiveUsers</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetInactiveUsersSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetInactiveUsersSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_18_GetUserForwardingInfo2_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_18_GetUserForwardingInfo2_Atomic"/>
+    <grounding:wsdlOperationName>GetUserForwardingInfo2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserForwardingInfo2SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserForwardingInfo2SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_19_GetUserForwardingInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_19_GetUserForwardingInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetUserForwardingInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserForwardingInfoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserForwardingInfoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_20_GetUserAutoResponseInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_20_GetUserAutoResponseInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetUserAutoResponseInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserAutoResponseInfoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserAutoResponseInfoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_21_GetUserAutoResponseInfo2_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_21_GetUserAutoResponseInfo2_Atomic"/>
+    <grounding:wsdlOperationName>GetUserAutoResponseInfo2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserAutoResponseInfo2SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserAutoResponseInfo2SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_22_GetUserQuotas_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_22_GetUserQuotas_Atomic"/>
+    <grounding:wsdlOperationName>GetUserQuotas</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserQuotasSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserQuotasSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_23_GetUsers_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_23_GetUsers_Atomic"/>
+    <grounding:wsdlOperationName>GetUsers</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUsersSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUsersSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_24_LoginValidated_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_24_LoginValidated_Atomic"/>
+    <grounding:wsdlOperationName>LoginValidated</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LoginValidatedSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LoginValidatedSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_25_GetUserStats_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_25_GetUserStats_Atomic"/>
+    <grounding:wsdlOperationName>GetUserStats</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserStatsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserStatsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_26_ToggleActiveSync_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_26_ToggleActiveSync_Atomic"/>
+    <grounding:wsdlOperationName>ToggleActiveSync</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ToggleActiveSyncSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ToggleActiveSyncSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_27_IsUserEnabledForActiveSync_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_27_IsUserEnabledForActiveSync_Atomic"/>
+    <grounding:wsdlOperationName>IsUserEnabledForActiveSync</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsUserEnabledForActiveSyncSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsUserEnabledForActiveSyncSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_28_GetActiveSyncUsers_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_28_GetActiveSyncUsers_Atomic"/>
+    <grounding:wsdlOperationName>GetActiveSyncUsers</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetActiveSyncUsersSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetActiveSyncUsersSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_29_GetActiveSyncUsers2_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_29_GetActiveSyncUsers2_Atomic"/>
+    <grounding:wsdlOperationName>GetActiveSyncUsers2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetActiveSyncUsers2SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetActiveSyncUsers2SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_30_AddRSSFeed_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_30_AddRSSFeed_Atomic"/>
+    <grounding:wsdlOperationName>AddRSSFeed</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddRSSFeedSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddRSSFeedSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_31_ListRSSFeeds_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_31_ListRSSFeeds_Atomic"/>
+    <grounding:wsdlOperationName>ListRSSFeeds</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListRSSFeedsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListRSSFeedsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_32_DeleteRSSFeed_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_32_DeleteRSSFeed_Atomic"/>
+    <grounding:wsdlOperationName>DeleteRSSFeed</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteRSSFeedSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteRSSFeedSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_33_AddUserGroup_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_33_AddUserGroup_Atomic"/>
+    <grounding:wsdlOperationName>AddUserGroup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddUserGroupSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddUserGroupSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_34_RemoveUserGroup_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_34_RemoveUserGroup_Atomic"/>
+    <grounding:wsdlOperationName>RemoveUserGroup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RemoveUserGroupSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RemoveUserGroupSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_35_UpdateUserGroup_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_35_UpdateUserGroup_Atomic"/>
+    <grounding:wsdlOperationName>UpdateUserGroup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateUserGroupSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateUserGroupSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_36_GetUserGroup_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_36_GetUserGroup_Atomic"/>
+    <grounding:wsdlOperationName>GetUserGroup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserGroupSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserGroupSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_37_GetUserGroupsByUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_37_GetUserGroupsByUser_Atomic"/>
+    <grounding:wsdlOperationName>GetUserGroupsByUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserGroupsByUserSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserGroupsByUserSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="svcUserAdmin_38_GetUserGroupsByDomain_Grounding">
+    <grounding:owlsProcess rdf:resource="#svcUserAdmin_38_GetUserGroupsByDomain_Atomic"/>
+    <grounding:wsdlOperationName>GetUserGroupsByDomain</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>svcUserAdminSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>svcUserAdminSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5007_5006.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserGroupsByDomainSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserGroupsByDomainSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

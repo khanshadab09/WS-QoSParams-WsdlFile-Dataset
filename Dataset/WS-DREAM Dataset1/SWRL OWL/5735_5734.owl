@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Lookup_Service">
+    <service:presents rdf:resource="#Lookup_Service_Profile"/>
+    <service:describedBy rdf:resource="#Lookup_Service_Composite"/>
+    <service:supports rdf:resource="#Lookup_Service_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Lookup_Service_Profile">
+    <profile:serviceName>Lookup_Service</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Lookup_Service"/>
+    <profile:hasProcess rdf:resource="#Lookup_Service_0_run_Atomic"/>
+    <profile:hasInput rdf:resource="#Lookup_Service_0_run_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Lookup_Service_0_run_Atomic_input_type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Lookup_Service_0_run_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">type(?x, "http://www.w3.org/2001/XMLSchema#string") ^ query(?x, ?y)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?y) ^ type(?y, "http://www.w3.org/2001/XMLSchema#string")</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Lookup_Service_Composite">
+    <process:composedOf rdf:resource="#Lookup_Service_0_run_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Lookup_Service_0_run_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>query:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Lookup_Service_0_run_Atomic_input_type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lookup_Service_0_run_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Lookup_Service_0_run_Atomic">
+    <process:hasName>run</process:hasName>
+    <process:hasInput rdf:resource="#Lookup_Service_0_run_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Lookup_Service_0_run_Atomic_input_type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Lookup_Service_0_run_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">type(?x, "http://www.w3.org/2001/XMLSchema#string") ^ query(?x, ?y)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?y) ^ type(?y, "http://www.w3.org/2001/XMLSchema#string")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Lookup_Service_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lookup_Service_0_run_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lookup_Service_0_run_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lookup_Service_0_run_Atomic"/>
+    <grounding:wsdlOperationName>run</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Lookup_Binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Lookup_PortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5735_5734.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LookupRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LookupResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
