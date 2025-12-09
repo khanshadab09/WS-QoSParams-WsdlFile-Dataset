@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="AuthService">
+    <service:presents rdf:resource="#AuthService_Profile"/>
+    <service:describedBy rdf:resource="#AuthService_Composite"/>
+    <service:supports rdf:resource="#AuthService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="AuthService_Profile">
+    <profile:serviceName>AuthService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#AuthService"/>
+    <profile:hasProcess rdf:resource="#AuthService_0_ValidateUser_Atomic"/>
+    <profile:hasInput rdf:resource="#AuthService_0_ValidateUser_Atomic_input_parameters__http___tempuri.org__ValidateUser"/>
+    <profile:hasOutput rdf:resource="#AuthService_0_ValidateUser_Atomic_output_parameters__http___tempuri.org__ValidateUserResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateUser(?user) ^ hasUsername(?user, ?username) ^ hasPassword(?user, ?password)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateUserResponse(?response) ^ hasValidationStatus(?response, ?status) ^ hasMessage(?response, ?message) ^ hasUser(?response, ?user)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AuthService_1_ExportToSIMS_Atomic"/>
+    <profile:hasInput rdf:resource="#AuthService_1_ExportToSIMS_Atomic_input_parameters__http___tempuri.org__ExportToSIMS"/>
+    <profile:hasOutput rdf:resource="#AuthService_1_ExportToSIMS_Atomic_output_parameters__http___tempuri.org__ExportToSIMSResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExportToSIMS(?x) ^ parameter(?x, "http://tempuri.org/ExportToSIMS")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExportToSIMSResponse(?y) ^ parameter(?y, "http://tempuri.org/ExportToSIMSResponse") ^ hasOutput(?x, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AuthService_2_TrackGame_Atomic"/>
+    <profile:hasInput rdf:resource="#AuthService_2_TrackGame_Atomic_input_parameters__http___tempuri.org__TrackGame"/>
+    <profile:hasOutput rdf:resource="#AuthService_2_TrackGame_Atomic_output_parameters__http___tempuri.org__TrackGameResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrackGame(?game)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrackGameResponse(?game)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AuthService_3_Shedule_Atomic"/>
+    <profile:hasInput rdf:resource="#AuthService_3_Shedule_Atomic_input_parameters__http___tempuri.org__Shedule"/>
+    <profile:hasOutput rdf:resource="#AuthService_3_Shedule_Atomic_output_parameters__http___tempuri.org__SheduleResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="AuthService_Composite">
+    <process:composedOf rdf:resource="#AuthService_0_ValidateUser_Atomic"/>
+    <process:composedOf rdf:resource="#AuthService_1_ExportToSIMS_Atomic"/>
+    <process:composedOf rdf:resource="#AuthService_2_TrackGame_Atomic"/>
+    <process:composedOf rdf:resource="#AuthService_3_Shedule_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="AuthService_0_ValidateUser_Atomic_input_parameters__http___tempuri.org__ValidateUser">
+    <process:parameterType>parameters:{http://tempuri.org/}ValidateUser</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AuthService_0_ValidateUser_Atomic_output_parameters__http___tempuri.org__ValidateUserResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}ValidateUserResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AuthService_1_ExportToSIMS_Atomic_input_parameters__http___tempuri.org__ExportToSIMS">
+    <process:parameterType>parameters:{http://tempuri.org/}ExportToSIMS</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AuthService_1_ExportToSIMS_Atomic_output_parameters__http___tempuri.org__ExportToSIMSResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}ExportToSIMSResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AuthService_2_TrackGame_Atomic_input_parameters__http___tempuri.org__TrackGame">
+    <process:parameterType>parameters:{http://tempuri.org/}TrackGame</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AuthService_2_TrackGame_Atomic_output_parameters__http___tempuri.org__TrackGameResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}TrackGameResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AuthService_3_Shedule_Atomic_input_parameters__http___tempuri.org__Shedule">
+    <process:parameterType>parameters:{http://tempuri.org/}Shedule</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AuthService_3_Shedule_Atomic_output_parameters__http___tempuri.org__SheduleResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}SheduleResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="AuthService_0_ValidateUser_Atomic">
+    <process:hasName>ValidateUser</process:hasName>
+    <process:hasInput rdf:resource="#AuthService_0_ValidateUser_Atomic_input_parameters__http___tempuri.org__ValidateUser"/>
+    <process:hasOutput rdf:resource="#AuthService_0_ValidateUser_Atomic_output_parameters__http___tempuri.org__ValidateUserResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateUser(?user) ^ hasUsername(?user, ?username) ^ hasPassword(?user, ?password)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateUserResponse(?response) ^ hasValidationStatus(?response, ?status) ^ hasMessage(?response, ?message) ^ hasUser(?response, ?user)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AuthService_1_ExportToSIMS_Atomic">
+    <process:hasName>ExportToSIMS</process:hasName>
+    <process:hasInput rdf:resource="#AuthService_1_ExportToSIMS_Atomic_input_parameters__http___tempuri.org__ExportToSIMS"/>
+    <process:hasOutput rdf:resource="#AuthService_1_ExportToSIMS_Atomic_output_parameters__http___tempuri.org__ExportToSIMSResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExportToSIMS(?x) ^ parameter(?x, "http://tempuri.org/ExportToSIMS")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExportToSIMSResponse(?y) ^ parameter(?y, "http://tempuri.org/ExportToSIMSResponse") ^ hasOutput(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AuthService_2_TrackGame_Atomic">
+    <process:hasName>TrackGame</process:hasName>
+    <process:hasInput rdf:resource="#AuthService_2_TrackGame_Atomic_input_parameters__http___tempuri.org__TrackGame"/>
+    <process:hasOutput rdf:resource="#AuthService_2_TrackGame_Atomic_output_parameters__http___tempuri.org__TrackGameResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrackGame(?game)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrackGameResponse(?game)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AuthService_3_Shedule_Atomic">
+    <process:hasName>Shedule</process:hasName>
+    <process:hasInput rdf:resource="#AuthService_3_Shedule_Atomic_input_parameters__http___tempuri.org__Shedule"/>
+    <process:hasOutput rdf:resource="#AuthService_3_Shedule_Atomic_output_parameters__http___tempuri.org__SheduleResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="AuthService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AuthService_0_ValidateUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AuthService_1_ExportToSIMS_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AuthService_2_TrackGame_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AuthService_3_Shedule_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AuthService_0_ValidateUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#AuthService_0_ValidateUser_Atomic"/>
+    <grounding:wsdlOperationName>ValidateUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AuthServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AuthServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2440_2439.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateUserSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateUserSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AuthService_1_ExportToSIMS_Grounding">
+    <grounding:owlsProcess rdf:resource="#AuthService_1_ExportToSIMS_Atomic"/>
+    <grounding:wsdlOperationName>ExportToSIMS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AuthServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AuthServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2440_2439.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ExportToSIMSSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ExportToSIMSSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AuthService_2_TrackGame_Grounding">
+    <grounding:owlsProcess rdf:resource="#AuthService_2_TrackGame_Atomic"/>
+    <grounding:wsdlOperationName>TrackGame</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AuthServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AuthServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2440_2439.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>TrackGameSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>TrackGameSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AuthService_3_Shedule_Grounding">
+    <grounding:owlsProcess rdf:resource="#AuthService_3_Shedule_Atomic"/>
+    <grounding:wsdlOperationName>Shedule</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AuthServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AuthServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2440_2439.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SheduleSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SheduleSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

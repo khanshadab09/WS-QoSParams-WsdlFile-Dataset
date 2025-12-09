@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Iskalnik">
+    <service:presents rdf:resource="#Iskalnik_Profile"/>
+    <service:describedBy rdf:resource="#Iskalnik_Composite"/>
+    <service:supports rdf:resource="#Iskalnik_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Iskalnik_Profile">
+    <profile:serviceName>Iskalnik</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Iskalnik"/>
+    <profile:hasProcess rdf:resource="#Iskalnik_0_Isci_Atomic"/>
+    <profile:hasInput rdf:resource="#Iskalnik_0_Isci_Atomic_input_parameters__http___ddv.inetis.com__Isci"/>
+    <profile:hasOutput rdf:resource="#Iskalnik_0_Isci_Atomic_output_parameters__http___ddv.inetis.com__IsciResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Isci(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsciResponse(?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Iskalnik_Composite">
+    <process:composedOf rdf:resource="#Iskalnik_0_Isci_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Iskalnik_0_Isci_Atomic_input_parameters__http___ddv.inetis.com__Isci">
+    <process:parameterType>parameters:{http://ddv.inetis.com/}Isci</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Iskalnik_0_Isci_Atomic_output_parameters__http___ddv.inetis.com__IsciResponse">
+    <process:parameterType>parameters:{http://ddv.inetis.com/}IsciResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Iskalnik_0_Isci_Atomic">
+    <process:hasName>Isci</process:hasName>
+    <process:hasInput rdf:resource="#Iskalnik_0_Isci_Atomic_input_parameters__http___ddv.inetis.com__Isci"/>
+    <process:hasOutput rdf:resource="#Iskalnik_0_Isci_Atomic_output_parameters__http___ddv.inetis.com__IsciResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Isci(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsciResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Iskalnik_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Iskalnik_0_Isci_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Iskalnik_0_Isci_Grounding">
+    <grounding:owlsProcess rdf:resource="#Iskalnik_0_Isci_Atomic"/>
+    <grounding:wsdlOperationName>Isci</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IskalnikSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IskalnikSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2349_2348.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsciSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsciSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

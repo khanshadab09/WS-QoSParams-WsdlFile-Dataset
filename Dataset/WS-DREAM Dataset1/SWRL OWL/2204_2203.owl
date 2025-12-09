@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="DerivedSearch">
+    <service:presents rdf:resource="#DerivedSearch_Profile"/>
+    <service:describedBy rdf:resource="#DerivedSearch_Composite"/>
+    <service:supports rdf:resource="#DerivedSearch_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="DerivedSearch_Profile">
+    <profile:serviceName>DerivedSearch</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#DerivedSearch"/>
+    <profile:hasProcess rdf:resource="#DerivedSearch_0_TextSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#DerivedSearch_0_TextSearch_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DerivedSearch_0_TextSearch_Atomic_output_result__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextSearch(?query) ^ swrlb:datatype(?query, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextSearch(?query) ^ TextSearchResult(?result) ^ swrlb:datatype(?result, "http://www.w3.org/2001/XMLSchema#string")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DerivedSearch_1_TaxonomySearch_Atomic"/>
+    <profile:hasInput rdf:resource="#DerivedSearch_1_TaxonomySearch_Atomic_input_category__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DerivedSearch_1_TaxonomySearch_Atomic_output_result__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">category(?x) ^ string(?x) ^ hasNamespace(?x, "http://www.w3.org/2001/XMLSchema")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">result(?y) ^ string(?y) ^ hasNamespace(?y, "http://www.w3.org/2001/XMLSchema")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DerivedSearch_2_KeywordSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#DerivedSearch_2_KeywordSearch_Atomic_input_keyword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DerivedSearch_2_KeywordSearch_Atomic_output_result__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSearch(?keyword) ^ swrlb:isString(?keyword)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSearch(?keyword) ^ result(?keyword)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="DerivedSearch_Composite">
+    <process:composedOf rdf:resource="#DerivedSearch_0_TextSearch_Atomic"/>
+    <process:composedOf rdf:resource="#DerivedSearch_1_TaxonomySearch_Atomic"/>
+    <process:composedOf rdf:resource="#DerivedSearch_2_KeywordSearch_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="DerivedSearch_0_TextSearch_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>query:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DerivedSearch_0_TextSearch_Atomic_output_result__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>result:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DerivedSearch_1_TaxonomySearch_Atomic_input_category__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>category:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DerivedSearch_1_TaxonomySearch_Atomic_output_result__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>result:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DerivedSearch_2_KeywordSearch_Atomic_input_keyword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keyword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DerivedSearch_2_KeywordSearch_Atomic_output_result__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>result:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="DerivedSearch_0_TextSearch_Atomic">
+    <process:hasName>TextSearch</process:hasName>
+    <process:hasInput rdf:resource="#DerivedSearch_0_TextSearch_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DerivedSearch_0_TextSearch_Atomic_output_result__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextSearch(?query) ^ swrlb:datatype(?query, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextSearch(?query) ^ TextSearchResult(?result) ^ swrlb:datatype(?result, "http://www.w3.org/2001/XMLSchema#string")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DerivedSearch_1_TaxonomySearch_Atomic">
+    <process:hasName>TaxonomySearch</process:hasName>
+    <process:hasInput rdf:resource="#DerivedSearch_1_TaxonomySearch_Atomic_input_category__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DerivedSearch_1_TaxonomySearch_Atomic_output_result__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">category(?x) ^ string(?x) ^ hasNamespace(?x, "http://www.w3.org/2001/XMLSchema")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">result(?y) ^ string(?y) ^ hasNamespace(?y, "http://www.w3.org/2001/XMLSchema")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DerivedSearch_2_KeywordSearch_Atomic">
+    <process:hasName>KeywordSearch</process:hasName>
+    <process:hasInput rdf:resource="#DerivedSearch_2_KeywordSearch_Atomic_input_keyword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DerivedSearch_2_KeywordSearch_Atomic_output_result__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSearch(?keyword) ^ swrlb:isString(?keyword)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSearch(?keyword) ^ result(?keyword)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="DerivedSearch_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DerivedSearch_0_TextSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DerivedSearch_1_TaxonomySearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DerivedSearch_2_KeywordSearch_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DerivedSearch_0_TextSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#DerivedSearch_0_TextSearch_Atomic"/>
+    <grounding:wsdlOperationName>TextSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DerivedSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DerivedSearchPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2204_2203.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>TextSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>TextSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DerivedSearch_1_TaxonomySearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#DerivedSearch_1_TaxonomySearch_Atomic"/>
+    <grounding:wsdlOperationName>TaxonomySearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DerivedSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DerivedSearchPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2204_2203.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>TaxonomySearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>TaxonomySearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DerivedSearch_2_KeywordSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#DerivedSearch_2_KeywordSearch_Atomic"/>
+    <grounding:wsdlOperationName>KeywordSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DerivedSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DerivedSearchPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2204_2203.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>KeywordSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>KeywordSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="BteiPpiService">
+    <service:presents rdf:resource="#BteiPpiService_Profile"/>
+    <service:describedBy rdf:resource="#BteiPpiService_Composite"/>
+    <service:supports rdf:resource="#BteiPpiService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="BteiPpiService_Profile">
+    <profile:serviceName>BteiPpiService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#BteiPpiService"/>
+    <profile:hasProcess rdf:resource="#BteiPpiService_0_getBteiPpi_Atomic"/>
+    <profile:hasInput rdf:resource="#BteiPpiService_0_getBteiPpi_Atomic_input_parameters__http___www.price.moc.go.th__getBteiPpi"/>
+    <profile:hasOutput rdf:resource="#BteiPpiService_0_getBteiPpi_Atomic_output_parameters__http___www.price.moc.go.th__getBteiPpiResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="BteiPpiService_Composite">
+    <process:composedOf rdf:resource="#BteiPpiService_0_getBteiPpi_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="BteiPpiService_0_getBteiPpi_Atomic_input_parameters__http___www.price.moc.go.th__getBteiPpi">
+    <process:parameterType>parameters:{http://www.price.moc.go.th/}getBteiPpi</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BteiPpiService_0_getBteiPpi_Atomic_output_parameters__http___www.price.moc.go.th__getBteiPpiResponse">
+    <process:parameterType>parameters:{http://www.price.moc.go.th/}getBteiPpiResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="BteiPpiService_0_getBteiPpi_Atomic">
+    <process:hasName>getBteiPpi</process:hasName>
+    <process:hasInput rdf:resource="#BteiPpiService_0_getBteiPpi_Atomic_input_parameters__http___www.price.moc.go.th__getBteiPpi"/>
+    <process:hasOutput rdf:resource="#BteiPpiService_0_getBteiPpi_Atomic_output_parameters__http___www.price.moc.go.th__getBteiPpiResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="BteiPpiService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BteiPpiService_0_getBteiPpi_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BteiPpiService_0_getBteiPpi_Grounding">
+    <grounding:owlsProcess rdf:resource="#BteiPpiService_0_getBteiPpi_Atomic"/>
+    <grounding:wsdlOperationName>getBteiPpi</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BteiPpiServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BteiPpiServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2613_2612.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getBteiPpiSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getBteiPpiSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

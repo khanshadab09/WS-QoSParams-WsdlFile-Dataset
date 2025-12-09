@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="SMS_Process">
+    <service:presents rdf:resource="#SMS_Process_Profile"/>
+    <service:describedBy rdf:resource="#SMS_Process_Composite"/>
+    <service:supports rdf:resource="#SMS_Process_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="SMS_Process_Profile">
+    <profile:serviceName>SMS_Process</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#SMS_Process"/>
+    <profile:hasProcess rdf:resource="#SMS_Process_0_SingleSMS_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Process_0_SingleSMS_Atomic_input_parameters__http___tempuri.org__SingleSMS"/>
+    <profile:hasOutput rdf:resource="#SMS_Process_0_SingleSMS_Atomic_output_parameters__http___tempuri.org__SingleSMSResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Process_1_SingleSMSReserve_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Process_1_SingleSMSReserve_Atomic_input_parameters__http___tempuri.org__SingleSMSReserve"/>
+    <profile:hasOutput rdf:resource="#SMS_Process_1_SingleSMSReserve_Atomic_output_parameters__http___tempuri.org__SingleSMSReserveResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingleSMSReserve(?x) ^ hasNamespace(?x, "http://tempuri.org/")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingleSMSReserveResponse(?y) ^ hasNamespace(?y, "http://tempuri.org/") ^ hasOutput(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Process_2_MultiSMS_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Process_2_MultiSMS_Atomic_input_parameters__http___tempuri.org__MultiSMS"/>
+    <profile:hasOutput rdf:resource="#SMS_Process_2_MultiSMS_Atomic_output_parameters__http___tempuri.org__MultiSMSResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Process_3_MultiSMSReserve_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Process_3_MultiSMSReserve_Atomic_input_parameters__http___tempuri.org__MultiSMSReserve"/>
+    <profile:hasOutput rdf:resource="#SMS_Process_3_MultiSMSReserve_Atomic_output_parameters__http___tempuri.org__MultiSMSReserveResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MultiSMSReserve(?x) ^ hasInput(?x, ?input) ^ hasParameterNamespace(?input, "http://tempuri.org/") ^ hasParameterName(?input, "MultiSMSReserve")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MultiSMSReserveResponse(?y) ^ hasOutput(?y, ?output) ^ hasParameterNamespace(?output, "http://tempuri.org/") ^ hasParameterName(?output, "MultiSMSReserveResponse")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Process_4_GetRemainCount_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Process_4_GetRemainCount_Atomic_input_parameters__http___tempuri.org__GetRemainCount"/>
+    <profile:hasOutput rdf:resource="#SMS_Process_4_GetRemainCount_Atomic_output_parameters__http___tempuri.org__GetRemainCountResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Process_5_GetWeeklyLimit_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Process_5_GetWeeklyLimit_Atomic_input_parameters__http___tempuri.org__GetWeeklyLimit"/>
+    <profile:hasOutput rdf:resource="#SMS_Process_5_GetWeeklyLimit_Atomic_output_parameters__http___tempuri.org__GetWeeklyLimitResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="SMS_Process_Composite">
+    <process:composedOf rdf:resource="#SMS_Process_0_SingleSMS_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Process_1_SingleSMSReserve_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Process_2_MultiSMS_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Process_3_MultiSMSReserve_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Process_4_GetRemainCount_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Process_5_GetWeeklyLimit_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="SMS_Process_0_SingleSMS_Atomic_input_parameters__http___tempuri.org__SingleSMS">
+    <process:parameterType>parameters:{http://tempuri.org/}SingleSMS</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Process_0_SingleSMS_Atomic_output_parameters__http___tempuri.org__SingleSMSResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}SingleSMSResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Process_1_SingleSMSReserve_Atomic_input_parameters__http___tempuri.org__SingleSMSReserve">
+    <process:parameterType>parameters:{http://tempuri.org/}SingleSMSReserve</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Process_1_SingleSMSReserve_Atomic_output_parameters__http___tempuri.org__SingleSMSReserveResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}SingleSMSReserveResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Process_2_MultiSMS_Atomic_input_parameters__http___tempuri.org__MultiSMS">
+    <process:parameterType>parameters:{http://tempuri.org/}MultiSMS</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Process_2_MultiSMS_Atomic_output_parameters__http___tempuri.org__MultiSMSResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}MultiSMSResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Process_3_MultiSMSReserve_Atomic_input_parameters__http___tempuri.org__MultiSMSReserve">
+    <process:parameterType>parameters:{http://tempuri.org/}MultiSMSReserve</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Process_3_MultiSMSReserve_Atomic_output_parameters__http___tempuri.org__MultiSMSReserveResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}MultiSMSReserveResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Process_4_GetRemainCount_Atomic_input_parameters__http___tempuri.org__GetRemainCount">
+    <process:parameterType>parameters:{http://tempuri.org/}GetRemainCount</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Process_4_GetRemainCount_Atomic_output_parameters__http___tempuri.org__GetRemainCountResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetRemainCountResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Process_5_GetWeeklyLimit_Atomic_input_parameters__http___tempuri.org__GetWeeklyLimit">
+    <process:parameterType>parameters:{http://tempuri.org/}GetWeeklyLimit</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Process_5_GetWeeklyLimit_Atomic_output_parameters__http___tempuri.org__GetWeeklyLimitResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetWeeklyLimitResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="SMS_Process_0_SingleSMS_Atomic">
+    <process:hasName>SingleSMS</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Process_0_SingleSMS_Atomic_input_parameters__http___tempuri.org__SingleSMS"/>
+    <process:hasOutput rdf:resource="#SMS_Process_0_SingleSMS_Atomic_output_parameters__http___tempuri.org__SingleSMSResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Process_1_SingleSMSReserve_Atomic">
+    <process:hasName>SingleSMSReserve</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Process_1_SingleSMSReserve_Atomic_input_parameters__http___tempuri.org__SingleSMSReserve"/>
+    <process:hasOutput rdf:resource="#SMS_Process_1_SingleSMSReserve_Atomic_output_parameters__http___tempuri.org__SingleSMSReserveResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingleSMSReserve(?x) ^ hasNamespace(?x, "http://tempuri.org/")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingleSMSReserveResponse(?y) ^ hasNamespace(?y, "http://tempuri.org/") ^ hasOutput(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Process_2_MultiSMS_Atomic">
+    <process:hasName>MultiSMS</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Process_2_MultiSMS_Atomic_input_parameters__http___tempuri.org__MultiSMS"/>
+    <process:hasOutput rdf:resource="#SMS_Process_2_MultiSMS_Atomic_output_parameters__http___tempuri.org__MultiSMSResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Process_3_MultiSMSReserve_Atomic">
+    <process:hasName>MultiSMSReserve</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Process_3_MultiSMSReserve_Atomic_input_parameters__http___tempuri.org__MultiSMSReserve"/>
+    <process:hasOutput rdf:resource="#SMS_Process_3_MultiSMSReserve_Atomic_output_parameters__http___tempuri.org__MultiSMSReserveResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MultiSMSReserve(?x) ^ hasInput(?x, ?input) ^ hasParameterNamespace(?input, "http://tempuri.org/") ^ hasParameterName(?input, "MultiSMSReserve")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MultiSMSReserveResponse(?y) ^ hasOutput(?y, ?output) ^ hasParameterNamespace(?output, "http://tempuri.org/") ^ hasParameterName(?output, "MultiSMSReserveResponse")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Process_4_GetRemainCount_Atomic">
+    <process:hasName>GetRemainCount</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Process_4_GetRemainCount_Atomic_input_parameters__http___tempuri.org__GetRemainCount"/>
+    <process:hasOutput rdf:resource="#SMS_Process_4_GetRemainCount_Atomic_output_parameters__http___tempuri.org__GetRemainCountResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Process_5_GetWeeklyLimit_Atomic">
+    <process:hasName>GetWeeklyLimit</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Process_5_GetWeeklyLimit_Atomic_input_parameters__http___tempuri.org__GetWeeklyLimit"/>
+    <process:hasOutput rdf:resource="#SMS_Process_5_GetWeeklyLimit_Atomic_output_parameters__http___tempuri.org__GetWeeklyLimitResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="SMS_Process_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Process_0_SingleSMS_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Process_1_SingleSMSReserve_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Process_2_MultiSMS_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Process_3_MultiSMSReserve_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Process_4_GetRemainCount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Process_5_GetWeeklyLimit_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Process_0_SingleSMS_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Process_0_SingleSMS_Atomic"/>
+    <grounding:wsdlOperationName>SingleSMS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ProcessSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ProcessSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2231_2230.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SingleSMSSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SingleSMSSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Process_1_SingleSMSReserve_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Process_1_SingleSMSReserve_Atomic"/>
+    <grounding:wsdlOperationName>SingleSMSReserve</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ProcessSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ProcessSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2231_2230.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SingleSMSReserveSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SingleSMSReserveSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Process_2_MultiSMS_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Process_2_MultiSMS_Atomic"/>
+    <grounding:wsdlOperationName>MultiSMS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ProcessSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ProcessSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2231_2230.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>MultiSMSSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>MultiSMSSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Process_3_MultiSMSReserve_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Process_3_MultiSMSReserve_Atomic"/>
+    <grounding:wsdlOperationName>MultiSMSReserve</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ProcessSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ProcessSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2231_2230.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>MultiSMSReserveSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>MultiSMSReserveSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Process_4_GetRemainCount_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Process_4_GetRemainCount_Atomic"/>
+    <grounding:wsdlOperationName>GetRemainCount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ProcessSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ProcessSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2231_2230.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRemainCountSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRemainCountSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Process_5_GetWeeklyLimit_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Process_5_GetWeeklyLimit_Atomic"/>
+    <grounding:wsdlOperationName>GetWeeklyLimit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ProcessSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ProcessSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2231_2230.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWeeklyLimitSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWeeklyLimitSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

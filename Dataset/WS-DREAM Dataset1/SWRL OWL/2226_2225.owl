@@ -1,0 +1,1338 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="SuggestWebService">
+    <service:presents rdf:resource="#SuggestWebService_Profile"/>
+    <service:describedBy rdf:resource="#SuggestWebService_Composite"/>
+    <service:supports rdf:resource="#SuggestWebService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="SuggestWebService_Profile">
+    <profile:serviceName>SuggestWebService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#SuggestWebService"/>
+    <profile:hasProcess rdf:resource="#SuggestWebService_0_GetKeywordsByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_0_GetKeywordsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_0_GetKeywordsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, xsd:string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:ArrayOfKSDataT(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_1_GetSuggestionKeywordsByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_1_GetSuggestionKeywordsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_1_GetSuggestionKeywordsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:ArrayOfKSDataT(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_2_GetNicknamesByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_2_GetNicknamesByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_2_GetNicknamesByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:hasKSData(?y) ^ ns:hasNickname(?y, ?z) ^ ns:containsKeyword(?z, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_3_GetKeywordByTopCategoryList_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_3_GetKeywordByTopCategoryList_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_3_GetKeywordByTopCategoryList_Atomic_output_Body__ns_ArrayOfKSTopCategoryDataT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:ArrayOfKSTopCategoryDataT(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_4_GetBooksKeywordByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_4_GetBooksKeywordByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_4_GetBooksKeywordByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?keywordHint) ^ string(?keywordHint)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?ArrayOfKSDataT) ^ ArrayOfKSDataT(?ArrayOfKSDataT) ^ hasKeywordHint(?ArrayOfKSDataT, ?keywordHint) ^ hasBooks(?ArrayOfKSDataT, ?books) ^ Books(?books)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_5_GetTicketKeywordByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_5_GetTicketKeywordByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_5_GetTicketKeywordByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:hasKeyword(?y, ?x) ^ ns:isArrayOfKSDataT(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_6_GetSuggestionNotice_Atomic"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_6_GetSuggestionNotice_Atomic_output_Body__ns_ArrayOfSearchNoticeT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(ns, ArrayOfSearchNoticeT)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_7_GetBrandShopSuggestionBrandsByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_7_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_7_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataBrandT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:hasKSDataBrand(?y) ^ ns:hasKSDataBrandT(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_8_GetKeywordSuggest_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_8_GetKeywordSuggest_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_8_GetKeywordSuggest_Atomic_output_Body__ns_KeywordSuggestT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSuggest(?x) ^ hasKeywordHint(?x, ?hint) ^ swrlb:datatype(?hint, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ hasType(?y, ns:KeywordSuggestT)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_9_GetKeywordSuggestJsonp_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_9_GetKeywordSuggestJsonp_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_9_GetKeywordSuggestJsonp_Atomic_input_callback__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSuggestJsonp(?x), hasInput(?x, ?keywordHint), hasInput(?x, ?callback), datatype(?keywordHint, "http://www.w3.org/2001/XMLSchema#string"), datatype(?callback, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoOutput(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_10_GetADItems_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_10_GetADItems_Atomic_input_bidSeqNos__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_10_GetADItems_Atomic_input_itemNos__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_10_GetADItems_Atomic_output_Body__ns_ArrayOfSuggestAdItemT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetADItems(?bidSeqNos, ?itemNos)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:ArrayOfSuggestAdItemT(?Body)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_11_GetBrandPlusItems_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_11_GetBrandPlusItems_Atomic_input_brandId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_11_GetBrandPlusItems_Atomic_output_Body__ns_ArrayOfSuggestItemT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">brandId(?brandId) ^ swrlb:isString(?brandId)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?x) ^ ns:ArrayOfSuggestItemT(?x) ^ hasBrand(?x, ?brandId) ^ hasItem(?x, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_12_GetBook_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_12_GetBook_Atomic_input_bookItemNo__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_12_GetBook_Atomic_output_Body__ns_ArrayOfSuggestBookItemT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bookItemNo(?x) ^ string(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ArrayOfSuggestBookItemT(?y) ^ hasSuggestedBookItem(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_13_GetCatalog_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_13_GetCatalog_Atomic_input_catalogId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_13_GetCatalog_Atomic_output_Body__ns_ArrayOfSuggestOSCatalogT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">catalogId(?x) ^ string(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArrayOfSuggestOSCatalogT(?y) ^ Body(?y) ^ hasCatalog(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_14_GetKeywordsByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_14_GetKeywordsByKeywordHint_Atomic_input_parameters__ns_GetKeywordsByKeywordHint"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_14_GetKeywordsByKeywordHint_Atomic_output_parameters__ns_GetKeywordsByKeywordHintResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetKeywordsByKeywordHint</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetKeywordsByKeywordHintResponse</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_15_GetSuggestionKeywordsByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_15_GetSuggestionKeywordsByKeywordHint_Atomic_input_parameters__ns_GetSuggestionKeywordsByKeywordHint"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_15_GetSuggestionKeywordsByKeywordHint_Atomic_output_parameters__ns_GetSuggestionKeywordsByKeywordHintResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetSuggestionKeywordsByKeywordHint</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetSuggestionKeywordsByKeywordHintResponse</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_16_GetNicknamesByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_16_GetNicknamesByKeywordHint_Atomic_input_parameters__ns_GetNicknamesByKeywordHint"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_16_GetNicknamesByKeywordHint_Atomic_output_parameters__ns_GetNicknamesByKeywordHintResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetNicknamesByKeywordHint</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetNicknamesByKeywordHintResponse</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_17_GetKeywordByTopCategoryList_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_17_GetKeywordByTopCategoryList_Atomic_input_parameters__ns_GetKeywordByTopCategoryList"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_17_GetKeywordByTopCategoryList_Atomic_output_parameters__ns_GetKeywordByTopCategoryListResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_18_GetBooksKeywordByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_18_GetBooksKeywordByKeywordHint_Atomic_input_parameters__ns_GetBooksKeywordByKeywordHint"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_18_GetBooksKeywordByKeywordHint_Atomic_output_parameters__ns_GetBooksKeywordByKeywordHintResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetBooksKeywordByKeywordHint</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetBooksKeywordByKeywordHintResponse</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_19_GetTicketKeywordByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_19_GetTicketKeywordByKeywordHint_Atomic_input_parameters__ns_GetTicketKeywordByKeywordHint"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_19_GetTicketKeywordByKeywordHint_Atomic_output_parameters__ns_GetTicketKeywordByKeywordHintResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetTicketKeywordByKeywordHint</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetTicketKeywordByKeywordHintResponse</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_20_GetSuggestionNotice_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_20_GetSuggestionNotice_Atomic_input_parameters__ns_GetSuggestionNotice"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_20_GetSuggestionNotice_Atomic_output_parameters__ns_GetSuggestionNoticeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetSuggestionNotice</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetSuggestionNoticeResponse</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_21_GetBrandShopSuggestionBrandsByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_21_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_input_parameters__ns_GetBrandShopSuggestionBrandsByKeywordHint"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_21_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_output_parameters__ns_GetBrandShopSuggestionBrandsByKeywordHintResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_22_GetKeywordSuggest_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_22_GetKeywordSuggest_Atomic_input_parameters__ns_GetKeywordSuggest"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_22_GetKeywordSuggest_Atomic_output_parameters__ns_GetKeywordSuggestResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_23_GetKeywordSuggestJsonp_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_23_GetKeywordSuggestJsonp_Atomic_input_parameters__ns_GetKeywordSuggestJsonp"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_23_GetKeywordSuggestJsonp_Atomic_output_parameters__ns_GetKeywordSuggestJsonpResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameters:{ns}GetKeywordSuggestJsonp</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameters:{ns}GetKeywordSuggestJsonpResponse</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_24_GetADItems_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_24_GetADItems_Atomic_input_parameters__ns_GetADItems"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_24_GetADItems_Atomic_output_parameters__ns_GetADItemsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_25_GetBrandPlusItems_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_25_GetBrandPlusItems_Atomic_input_parameters__ns_GetBrandPlusItems"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_25_GetBrandPlusItems_Atomic_output_parameters__ns_GetBrandPlusItemsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetBrandPlusItems</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetBrandPlusItemsResponse</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_26_GetBook_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_26_GetBook_Atomic_input_parameters__ns_GetBook"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_26_GetBook_Atomic_output_parameters__ns_GetBookResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetBook(?book)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetBookResponse(?book)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_27_GetCatalog_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_27_GetCatalog_Atomic_input_parameters__ns_GetCatalog"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_27_GetCatalog_Atomic_output_parameters__ns_GetCatalogResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_28_GetKeywordsByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_28_GetKeywordsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_28_GetKeywordsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:hasKeyword(?y, ?x) ^ ns:isArrayOfKSDataT(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_29_GetSuggestionKeywordsByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_29_GetSuggestionKeywordsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_29_GetSuggestionKeywordsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?keywordHint) ^ swrlb:isString(?keywordHint)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ ns:hasKeywordHint(?result, ?keywordHint) ^ ns:GetSuggestionKeywordsByKeywordHint(?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_30_GetNicknamesByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_30_GetNicknamesByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_30_GetNicknamesByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ rdf:type(?y, ns:ArrayOfKSDataT)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_31_GetKeywordByTopCategoryList_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_31_GetKeywordByTopCategoryList_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_31_GetKeywordByTopCategoryList_Atomic_output_Body__ns_ArrayOfKSTopCategoryDataT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:ArrayOfKSTopCategoryDataT(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_32_GetBooksKeywordByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_32_GetBooksKeywordByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_32_GetBooksKeywordByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordHint(?keywordHint) ^ swrlb:datatype(?keywordHint, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ ArrayOfKSDataT(?result) ^ hasKeyword(?result, ?keywordHint)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_33_GetTicketKeywordByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_33_GetTicketKeywordByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_33_GetTicketKeywordByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:hasKeyword(?y, ?x) ^ ns:isArrayOfKSDataT(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_34_GetSuggestionNotice_Atomic"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_34_GetSuggestionNotice_Atomic_output_Body__ns_ArrayOfSearchNoticeT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(ns, ArrayOfSearchNoticeT)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_35_GetBrandShopSuggestionBrandsByKeywordHint_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_35_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_35_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataBrandT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:hasKSDataBrand(?y) ^ ns:hasKSDataBrandT(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_36_GetKeywordSuggest_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_36_GetKeywordSuggest_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_36_GetKeywordSuggest_Atomic_output_Body__ns_KeywordSuggestT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSuggest(?x) ^ hasKeywordHint(?x, ?hint) ^ swrlb:equal(?hint, "http://www.w3.org/2001/XMLSchema"^^xsd:string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ hasType(?y, ns:KeywordSuggestT)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_37_GetKeywordSuggestJsonp_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_37_GetKeywordSuggestJsonp_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_37_GetKeywordSuggestJsonp_Atomic_input_callback__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSuggestJsonp(?x), string(?x, ?keywordHint), string(?y, ?callback)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">True</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_38_GetADItems_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_38_GetADItems_Atomic_input_bidSeqNos__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_38_GetADItems_Atomic_input_itemNos__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_38_GetADItems_Atomic_output_Body__ns_ArrayOfSuggestAdItemT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(bidSeqNos rdf:type xsd:string) ∧ (itemNos rdf:type xsd:string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body rdf:type ns:ArrayOfSuggestAdItemT</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_39_GetBrandPlusItems_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_39_GetBrandPlusItems_Atomic_input_brandId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_39_GetBrandPlusItems_Atomic_output_Body__ns_ArrayOfSuggestItemT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">brandId(?brandId) ^ string(?brandId)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?x) ^ ArrayOfSuggestItemT(?x) ^ GetBrandPlusItems(?x) ^ hasBrand(?x, ?brandId)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_40_GetBook_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_40_GetBook_Atomic_input_bookItemNo__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_40_GetBook_Atomic_output_Body__ns_ArrayOfSuggestBookItemT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bookItemNo(?x) ^ swrlb:isString(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:ArrayOfSuggestBookItemT(?y) ^ ns:hasSuggestBookItem(?y, ?z) ^ ns:bookItemNo(?z, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SuggestWebService_41_GetCatalog_Atomic"/>
+    <profile:hasInput rdf:resource="#SuggestWebService_41_GetCatalog_Atomic_input_catalogId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SuggestWebService_41_GetCatalog_Atomic_output_Body__ns_ArrayOfSuggestOSCatalogT"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">catalogId(?x) ^ datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ type(?y, ns:ArrayOfSuggestOSCatalogT)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="SuggestWebService_Composite">
+    <process:composedOf rdf:resource="#SuggestWebService_0_GetKeywordsByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_1_GetSuggestionKeywordsByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_2_GetNicknamesByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_3_GetKeywordByTopCategoryList_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_4_GetBooksKeywordByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_5_GetTicketKeywordByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_6_GetSuggestionNotice_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_7_GetBrandShopSuggestionBrandsByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_8_GetKeywordSuggest_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_9_GetKeywordSuggestJsonp_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_10_GetADItems_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_11_GetBrandPlusItems_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_12_GetBook_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_13_GetCatalog_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_14_GetKeywordsByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_15_GetSuggestionKeywordsByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_16_GetNicknamesByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_17_GetKeywordByTopCategoryList_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_18_GetBooksKeywordByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_19_GetTicketKeywordByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_20_GetSuggestionNotice_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_21_GetBrandShopSuggestionBrandsByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_22_GetKeywordSuggest_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_23_GetKeywordSuggestJsonp_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_24_GetADItems_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_25_GetBrandPlusItems_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_26_GetBook_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_27_GetCatalog_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_28_GetKeywordsByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_29_GetSuggestionKeywordsByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_30_GetNicknamesByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_31_GetKeywordByTopCategoryList_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_32_GetBooksKeywordByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_33_GetTicketKeywordByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_34_GetSuggestionNotice_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_35_GetBrandShopSuggestionBrandsByKeywordHint_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_36_GetKeywordSuggest_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_37_GetKeywordSuggestJsonp_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_38_GetADItems_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_39_GetBrandPlusItems_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_40_GetBook_Atomic"/>
+    <process:composedOf rdf:resource="#SuggestWebService_41_GetCatalog_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="SuggestWebService_0_GetKeywordsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_0_GetKeywordsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT">
+    <process:parameterType>Body:{ns}ArrayOfKSDataT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_1_GetSuggestionKeywordsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_1_GetSuggestionKeywordsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT">
+    <process:parameterType>Body:{ns}ArrayOfKSDataT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_2_GetNicknamesByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_2_GetNicknamesByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT">
+    <process:parameterType>Body:{ns}ArrayOfKSDataT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_3_GetKeywordByTopCategoryList_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_3_GetKeywordByTopCategoryList_Atomic_output_Body__ns_ArrayOfKSTopCategoryDataT">
+    <process:parameterType>Body:{ns}ArrayOfKSTopCategoryDataT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_4_GetBooksKeywordByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_4_GetBooksKeywordByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT">
+    <process:parameterType>Body:{ns}ArrayOfKSDataT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_5_GetTicketKeywordByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_5_GetTicketKeywordByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT">
+    <process:parameterType>Body:{ns}ArrayOfKSDataT</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="SuggestWebService_6_GetSuggestionNotice_Atomic_output_Body__ns_ArrayOfSearchNoticeT">
+    <process:parameterType>Body:{ns}ArrayOfSearchNoticeT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_7_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_7_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataBrandT">
+    <process:parameterType>Body:{ns}ArrayOfKSDataBrandT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_8_GetKeywordSuggest_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_8_GetKeywordSuggest_Atomic_output_Body__ns_KeywordSuggestT">
+    <process:parameterType>Body:{ns}KeywordSuggestT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_9_GetKeywordSuggestJsonp_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SuggestWebService_9_GetKeywordSuggestJsonp_Atomic_input_callback__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>callback:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SuggestWebService_10_GetADItems_Atomic_input_bidSeqNos__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>bidSeqNos:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SuggestWebService_10_GetADItems_Atomic_input_itemNos__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>itemNos:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_10_GetADItems_Atomic_output_Body__ns_ArrayOfSuggestAdItemT">
+    <process:parameterType>Body:{ns}ArrayOfSuggestAdItemT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_11_GetBrandPlusItems_Atomic_input_brandId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>brandId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_11_GetBrandPlusItems_Atomic_output_Body__ns_ArrayOfSuggestItemT">
+    <process:parameterType>Body:{ns}ArrayOfSuggestItemT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_12_GetBook_Atomic_input_bookItemNo__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>bookItemNo:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_12_GetBook_Atomic_output_Body__ns_ArrayOfSuggestBookItemT">
+    <process:parameterType>Body:{ns}ArrayOfSuggestBookItemT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_13_GetCatalog_Atomic_input_catalogId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>catalogId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_13_GetCatalog_Atomic_output_Body__ns_ArrayOfSuggestOSCatalogT">
+    <process:parameterType>Body:{ns}ArrayOfSuggestOSCatalogT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_14_GetKeywordsByKeywordHint_Atomic_input_parameters__ns_GetKeywordsByKeywordHint">
+    <process:parameterType>parameters:{ns}GetKeywordsByKeywordHint</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_14_GetKeywordsByKeywordHint_Atomic_output_parameters__ns_GetKeywordsByKeywordHintResponse">
+    <process:parameterType>parameters:{ns}GetKeywordsByKeywordHintResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_15_GetSuggestionKeywordsByKeywordHint_Atomic_input_parameters__ns_GetSuggestionKeywordsByKeywordHint">
+    <process:parameterType>parameters:{ns}GetSuggestionKeywordsByKeywordHint</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_15_GetSuggestionKeywordsByKeywordHint_Atomic_output_parameters__ns_GetSuggestionKeywordsByKeywordHintResponse">
+    <process:parameterType>parameters:{ns}GetSuggestionKeywordsByKeywordHintResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_16_GetNicknamesByKeywordHint_Atomic_input_parameters__ns_GetNicknamesByKeywordHint">
+    <process:parameterType>parameters:{ns}GetNicknamesByKeywordHint</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_16_GetNicknamesByKeywordHint_Atomic_output_parameters__ns_GetNicknamesByKeywordHintResponse">
+    <process:parameterType>parameters:{ns}GetNicknamesByKeywordHintResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_17_GetKeywordByTopCategoryList_Atomic_input_parameters__ns_GetKeywordByTopCategoryList">
+    <process:parameterType>parameters:{ns}GetKeywordByTopCategoryList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_17_GetKeywordByTopCategoryList_Atomic_output_parameters__ns_GetKeywordByTopCategoryListResponse">
+    <process:parameterType>parameters:{ns}GetKeywordByTopCategoryListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_18_GetBooksKeywordByKeywordHint_Atomic_input_parameters__ns_GetBooksKeywordByKeywordHint">
+    <process:parameterType>parameters:{ns}GetBooksKeywordByKeywordHint</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_18_GetBooksKeywordByKeywordHint_Atomic_output_parameters__ns_GetBooksKeywordByKeywordHintResponse">
+    <process:parameterType>parameters:{ns}GetBooksKeywordByKeywordHintResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_19_GetTicketKeywordByKeywordHint_Atomic_input_parameters__ns_GetTicketKeywordByKeywordHint">
+    <process:parameterType>parameters:{ns}GetTicketKeywordByKeywordHint</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_19_GetTicketKeywordByKeywordHint_Atomic_output_parameters__ns_GetTicketKeywordByKeywordHintResponse">
+    <process:parameterType>parameters:{ns}GetTicketKeywordByKeywordHintResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_20_GetSuggestionNotice_Atomic_input_parameters__ns_GetSuggestionNotice">
+    <process:parameterType>parameters:{ns}GetSuggestionNotice</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_20_GetSuggestionNotice_Atomic_output_parameters__ns_GetSuggestionNoticeResponse">
+    <process:parameterType>parameters:{ns}GetSuggestionNoticeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_21_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_input_parameters__ns_GetBrandShopSuggestionBrandsByKeywordHint">
+    <process:parameterType>parameters:{ns}GetBrandShopSuggestionBrandsByKeywordHint</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_21_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_output_parameters__ns_GetBrandShopSuggestionBrandsByKeywordHintResponse">
+    <process:parameterType>parameters:{ns}GetBrandShopSuggestionBrandsByKeywordHintResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_22_GetKeywordSuggest_Atomic_input_parameters__ns_GetKeywordSuggest">
+    <process:parameterType>parameters:{ns}GetKeywordSuggest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_22_GetKeywordSuggest_Atomic_output_parameters__ns_GetKeywordSuggestResponse">
+    <process:parameterType>parameters:{ns}GetKeywordSuggestResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_23_GetKeywordSuggestJsonp_Atomic_input_parameters__ns_GetKeywordSuggestJsonp">
+    <process:parameterType>parameters:{ns}GetKeywordSuggestJsonp</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_23_GetKeywordSuggestJsonp_Atomic_output_parameters__ns_GetKeywordSuggestJsonpResponse">
+    <process:parameterType>parameters:{ns}GetKeywordSuggestJsonpResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_24_GetADItems_Atomic_input_parameters__ns_GetADItems">
+    <process:parameterType>parameters:{ns}GetADItems</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_24_GetADItems_Atomic_output_parameters__ns_GetADItemsResponse">
+    <process:parameterType>parameters:{ns}GetADItemsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_25_GetBrandPlusItems_Atomic_input_parameters__ns_GetBrandPlusItems">
+    <process:parameterType>parameters:{ns}GetBrandPlusItems</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_25_GetBrandPlusItems_Atomic_output_parameters__ns_GetBrandPlusItemsResponse">
+    <process:parameterType>parameters:{ns}GetBrandPlusItemsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_26_GetBook_Atomic_input_parameters__ns_GetBook">
+    <process:parameterType>parameters:{ns}GetBook</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_26_GetBook_Atomic_output_parameters__ns_GetBookResponse">
+    <process:parameterType>parameters:{ns}GetBookResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_27_GetCatalog_Atomic_input_parameters__ns_GetCatalog">
+    <process:parameterType>parameters:{ns}GetCatalog</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_27_GetCatalog_Atomic_output_parameters__ns_GetCatalogResponse">
+    <process:parameterType>parameters:{ns}GetCatalogResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_28_GetKeywordsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_28_GetKeywordsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT">
+    <process:parameterType>Body:{ns}ArrayOfKSDataT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_29_GetSuggestionKeywordsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_29_GetSuggestionKeywordsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT">
+    <process:parameterType>Body:{ns}ArrayOfKSDataT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_30_GetNicknamesByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_30_GetNicknamesByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT">
+    <process:parameterType>Body:{ns}ArrayOfKSDataT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_31_GetKeywordByTopCategoryList_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_31_GetKeywordByTopCategoryList_Atomic_output_Body__ns_ArrayOfKSTopCategoryDataT">
+    <process:parameterType>Body:{ns}ArrayOfKSTopCategoryDataT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_32_GetBooksKeywordByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_32_GetBooksKeywordByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT">
+    <process:parameterType>Body:{ns}ArrayOfKSDataT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_33_GetTicketKeywordByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_33_GetTicketKeywordByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT">
+    <process:parameterType>Body:{ns}ArrayOfKSDataT</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="SuggestWebService_34_GetSuggestionNotice_Atomic_output_Body__ns_ArrayOfSearchNoticeT">
+    <process:parameterType>Body:{ns}ArrayOfSearchNoticeT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_35_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_35_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataBrandT">
+    <process:parameterType>Body:{ns}ArrayOfKSDataBrandT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_36_GetKeywordSuggest_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_36_GetKeywordSuggest_Atomic_output_Body__ns_KeywordSuggestT">
+    <process:parameterType>Body:{ns}KeywordSuggestT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_37_GetKeywordSuggestJsonp_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>keywordHint:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SuggestWebService_37_GetKeywordSuggestJsonp_Atomic_input_callback__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>callback:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SuggestWebService_38_GetADItems_Atomic_input_bidSeqNos__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>bidSeqNos:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SuggestWebService_38_GetADItems_Atomic_input_itemNos__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>itemNos:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_38_GetADItems_Atomic_output_Body__ns_ArrayOfSuggestAdItemT">
+    <process:parameterType>Body:{ns}ArrayOfSuggestAdItemT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_39_GetBrandPlusItems_Atomic_input_brandId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>brandId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_39_GetBrandPlusItems_Atomic_output_Body__ns_ArrayOfSuggestItemT">
+    <process:parameterType>Body:{ns}ArrayOfSuggestItemT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_40_GetBook_Atomic_input_bookItemNo__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>bookItemNo:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_40_GetBook_Atomic_output_Body__ns_ArrayOfSuggestBookItemT">
+    <process:parameterType>Body:{ns}ArrayOfSuggestBookItemT</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SuggestWebService_41_GetCatalog_Atomic_input_catalogId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>catalogId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SuggestWebService_41_GetCatalog_Atomic_output_Body__ns_ArrayOfSuggestOSCatalogT">
+    <process:parameterType>Body:{ns}ArrayOfSuggestOSCatalogT</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_0_GetKeywordsByKeywordHint_Atomic">
+    <process:hasName>GetKeywordsByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_0_GetKeywordsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_0_GetKeywordsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, xsd:string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:ArrayOfKSDataT(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_1_GetSuggestionKeywordsByKeywordHint_Atomic">
+    <process:hasName>GetSuggestionKeywordsByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_1_GetSuggestionKeywordsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_1_GetSuggestionKeywordsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:ArrayOfKSDataT(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_2_GetNicknamesByKeywordHint_Atomic">
+    <process:hasName>GetNicknamesByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_2_GetNicknamesByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_2_GetNicknamesByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:hasKSData(?y) ^ ns:hasNickname(?y, ?z) ^ ns:containsKeyword(?z, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_3_GetKeywordByTopCategoryList_Atomic">
+    <process:hasName>GetKeywordByTopCategoryList</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_3_GetKeywordByTopCategoryList_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_3_GetKeywordByTopCategoryList_Atomic_output_Body__ns_ArrayOfKSTopCategoryDataT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:ArrayOfKSTopCategoryDataT(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_4_GetBooksKeywordByKeywordHint_Atomic">
+    <process:hasName>GetBooksKeywordByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_4_GetBooksKeywordByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_4_GetBooksKeywordByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?keywordHint) ^ string(?keywordHint)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?ArrayOfKSDataT) ^ ArrayOfKSDataT(?ArrayOfKSDataT) ^ hasKeywordHint(?ArrayOfKSDataT, ?keywordHint) ^ hasBooks(?ArrayOfKSDataT, ?books) ^ Books(?books)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_5_GetTicketKeywordByKeywordHint_Atomic">
+    <process:hasName>GetTicketKeywordByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_5_GetTicketKeywordByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_5_GetTicketKeywordByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:hasKeyword(?y, ?x) ^ ns:isArrayOfKSDataT(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_6_GetSuggestionNotice_Atomic">
+    <process:hasName>GetSuggestionNotice</process:hasName>
+    <process:hasOutput rdf:resource="#SuggestWebService_6_GetSuggestionNotice_Atomic_output_Body__ns_ArrayOfSearchNoticeT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(ns, ArrayOfSearchNoticeT)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_7_GetBrandShopSuggestionBrandsByKeywordHint_Atomic">
+    <process:hasName>GetBrandShopSuggestionBrandsByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_7_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_7_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataBrandT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:hasKSDataBrand(?y) ^ ns:hasKSDataBrandT(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_8_GetKeywordSuggest_Atomic">
+    <process:hasName>GetKeywordSuggest</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_8_GetKeywordSuggest_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_8_GetKeywordSuggest_Atomic_output_Body__ns_KeywordSuggestT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSuggest(?x) ^ hasKeywordHint(?x, ?hint) ^ swrlb:datatype(?hint, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ hasType(?y, ns:KeywordSuggestT)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_9_GetKeywordSuggestJsonp_Atomic">
+    <process:hasName>GetKeywordSuggestJsonp</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_9_GetKeywordSuggestJsonp_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SuggestWebService_9_GetKeywordSuggestJsonp_Atomic_input_callback__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSuggestJsonp(?x), hasInput(?x, ?keywordHint), hasInput(?x, ?callback), datatype(?keywordHint, "http://www.w3.org/2001/XMLSchema#string"), datatype(?callback, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoOutput(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_10_GetADItems_Atomic">
+    <process:hasName>GetADItems</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_10_GetADItems_Atomic_input_bidSeqNos__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SuggestWebService_10_GetADItems_Atomic_input_itemNos__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_10_GetADItems_Atomic_output_Body__ns_ArrayOfSuggestAdItemT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetADItems(?bidSeqNos, ?itemNos)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:ArrayOfSuggestAdItemT(?Body)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_11_GetBrandPlusItems_Atomic">
+    <process:hasName>GetBrandPlusItems</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_11_GetBrandPlusItems_Atomic_input_brandId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_11_GetBrandPlusItems_Atomic_output_Body__ns_ArrayOfSuggestItemT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">brandId(?brandId) ^ swrlb:isString(?brandId)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?x) ^ ns:ArrayOfSuggestItemT(?x) ^ hasBrand(?x, ?brandId) ^ hasItem(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_12_GetBook_Atomic">
+    <process:hasName>GetBook</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_12_GetBook_Atomic_input_bookItemNo__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_12_GetBook_Atomic_output_Body__ns_ArrayOfSuggestBookItemT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bookItemNo(?x) ^ string(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ArrayOfSuggestBookItemT(?y) ^ hasSuggestedBookItem(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_13_GetCatalog_Atomic">
+    <process:hasName>GetCatalog</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_13_GetCatalog_Atomic_input_catalogId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_13_GetCatalog_Atomic_output_Body__ns_ArrayOfSuggestOSCatalogT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">catalogId(?x) ^ string(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArrayOfSuggestOSCatalogT(?y) ^ Body(?y) ^ hasCatalog(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_14_GetKeywordsByKeywordHint_Atomic">
+    <process:hasName>GetKeywordsByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_14_GetKeywordsByKeywordHint_Atomic_input_parameters__ns_GetKeywordsByKeywordHint"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_14_GetKeywordsByKeywordHint_Atomic_output_parameters__ns_GetKeywordsByKeywordHintResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetKeywordsByKeywordHint</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetKeywordsByKeywordHintResponse</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_15_GetSuggestionKeywordsByKeywordHint_Atomic">
+    <process:hasName>GetSuggestionKeywordsByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_15_GetSuggestionKeywordsByKeywordHint_Atomic_input_parameters__ns_GetSuggestionKeywordsByKeywordHint"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_15_GetSuggestionKeywordsByKeywordHint_Atomic_output_parameters__ns_GetSuggestionKeywordsByKeywordHintResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetSuggestionKeywordsByKeywordHint</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetSuggestionKeywordsByKeywordHintResponse</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_16_GetNicknamesByKeywordHint_Atomic">
+    <process:hasName>GetNicknamesByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_16_GetNicknamesByKeywordHint_Atomic_input_parameters__ns_GetNicknamesByKeywordHint"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_16_GetNicknamesByKeywordHint_Atomic_output_parameters__ns_GetNicknamesByKeywordHintResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetNicknamesByKeywordHint</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetNicknamesByKeywordHintResponse</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_17_GetKeywordByTopCategoryList_Atomic">
+    <process:hasName>GetKeywordByTopCategoryList</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_17_GetKeywordByTopCategoryList_Atomic_input_parameters__ns_GetKeywordByTopCategoryList"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_17_GetKeywordByTopCategoryList_Atomic_output_parameters__ns_GetKeywordByTopCategoryListResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_18_GetBooksKeywordByKeywordHint_Atomic">
+    <process:hasName>GetBooksKeywordByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_18_GetBooksKeywordByKeywordHint_Atomic_input_parameters__ns_GetBooksKeywordByKeywordHint"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_18_GetBooksKeywordByKeywordHint_Atomic_output_parameters__ns_GetBooksKeywordByKeywordHintResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetBooksKeywordByKeywordHint</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetBooksKeywordByKeywordHintResponse</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_19_GetTicketKeywordByKeywordHint_Atomic">
+    <process:hasName>GetTicketKeywordByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_19_GetTicketKeywordByKeywordHint_Atomic_input_parameters__ns_GetTicketKeywordByKeywordHint"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_19_GetTicketKeywordByKeywordHint_Atomic_output_parameters__ns_GetTicketKeywordByKeywordHintResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetTicketKeywordByKeywordHint</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetTicketKeywordByKeywordHintResponse</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_20_GetSuggestionNotice_Atomic">
+    <process:hasName>GetSuggestionNotice</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_20_GetSuggestionNotice_Atomic_input_parameters__ns_GetSuggestionNotice"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_20_GetSuggestionNotice_Atomic_output_parameters__ns_GetSuggestionNoticeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetSuggestionNotice</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetSuggestionNoticeResponse</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_21_GetBrandShopSuggestionBrandsByKeywordHint_Atomic">
+    <process:hasName>GetBrandShopSuggestionBrandsByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_21_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_input_parameters__ns_GetBrandShopSuggestionBrandsByKeywordHint"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_21_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_output_parameters__ns_GetBrandShopSuggestionBrandsByKeywordHintResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_22_GetKeywordSuggest_Atomic">
+    <process:hasName>GetKeywordSuggest</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_22_GetKeywordSuggest_Atomic_input_parameters__ns_GetKeywordSuggest"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_22_GetKeywordSuggest_Atomic_output_parameters__ns_GetKeywordSuggestResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_23_GetKeywordSuggestJsonp_Atomic">
+    <process:hasName>GetKeywordSuggestJsonp</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_23_GetKeywordSuggestJsonp_Atomic_input_parameters__ns_GetKeywordSuggestJsonp"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_23_GetKeywordSuggestJsonp_Atomic_output_parameters__ns_GetKeywordSuggestJsonpResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameters:{ns}GetKeywordSuggestJsonp</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameters:{ns}GetKeywordSuggestJsonpResponse</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_24_GetADItems_Atomic">
+    <process:hasName>GetADItems</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_24_GetADItems_Atomic_input_parameters__ns_GetADItems"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_24_GetADItems_Atomic_output_parameters__ns_GetADItemsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_25_GetBrandPlusItems_Atomic">
+    <process:hasName>GetBrandPlusItems</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_25_GetBrandPlusItems_Atomic_input_parameters__ns_GetBrandPlusItems"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_25_GetBrandPlusItems_Atomic_output_parameters__ns_GetBrandPlusItemsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetBrandPlusItems</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetBrandPlusItemsResponse</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_26_GetBook_Atomic">
+    <process:hasName>GetBook</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_26_GetBook_Atomic_input_parameters__ns_GetBook"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_26_GetBook_Atomic_output_parameters__ns_GetBookResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetBook(?book)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:GetBookResponse(?book)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_27_GetCatalog_Atomic">
+    <process:hasName>GetCatalog</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_27_GetCatalog_Atomic_input_parameters__ns_GetCatalog"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_27_GetCatalog_Atomic_output_parameters__ns_GetCatalogResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_28_GetKeywordsByKeywordHint_Atomic">
+    <process:hasName>GetKeywordsByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_28_GetKeywordsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_28_GetKeywordsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:hasKeyword(?y, ?x) ^ ns:isArrayOfKSDataT(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_29_GetSuggestionKeywordsByKeywordHint_Atomic">
+    <process:hasName>GetSuggestionKeywordsByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_29_GetSuggestionKeywordsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_29_GetSuggestionKeywordsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?keywordHint) ^ swrlb:isString(?keywordHint)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ ns:hasKeywordHint(?result, ?keywordHint) ^ ns:GetSuggestionKeywordsByKeywordHint(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_30_GetNicknamesByKeywordHint_Atomic">
+    <process:hasName>GetNicknamesByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_30_GetNicknamesByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_30_GetNicknamesByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ rdf:type(?y, ns:ArrayOfKSDataT)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_31_GetKeywordByTopCategoryList_Atomic">
+    <process:hasName>GetKeywordByTopCategoryList</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_31_GetKeywordByTopCategoryList_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_31_GetKeywordByTopCategoryList_Atomic_output_Body__ns_ArrayOfKSTopCategoryDataT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:ArrayOfKSTopCategoryDataT(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_32_GetBooksKeywordByKeywordHint_Atomic">
+    <process:hasName>GetBooksKeywordByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_32_GetBooksKeywordByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_32_GetBooksKeywordByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordHint(?keywordHint) ^ swrlb:datatype(?keywordHint, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ ArrayOfKSDataT(?result) ^ hasKeyword(?result, ?keywordHint)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_33_GetTicketKeywordByKeywordHint_Atomic">
+    <process:hasName>GetTicketKeywordByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_33_GetTicketKeywordByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_33_GetTicketKeywordByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:hasKeyword(?y, ?x) ^ ns:isArrayOfKSDataT(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_34_GetSuggestionNotice_Atomic">
+    <process:hasName>GetSuggestionNotice</process:hasName>
+    <process:hasOutput rdf:resource="#SuggestWebService_34_GetSuggestionNotice_Atomic_output_Body__ns_ArrayOfSearchNoticeT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(ns, ArrayOfSearchNoticeT)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_35_GetBrandShopSuggestionBrandsByKeywordHint_Atomic">
+    <process:hasName>GetBrandShopSuggestionBrandsByKeywordHint</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_35_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_35_GetBrandShopSuggestionBrandsByKeywordHint_Atomic_output_Body__ns_ArrayOfKSDataBrandT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keywordHint(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ ns:hasKSDataBrand(?y) ^ ns:hasKSDataBrandT(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_36_GetKeywordSuggest_Atomic">
+    <process:hasName>GetKeywordSuggest</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_36_GetKeywordSuggest_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_36_GetKeywordSuggest_Atomic_output_Body__ns_KeywordSuggestT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSuggest(?x) ^ hasKeywordHint(?x, ?hint) ^ swrlb:equal(?hint, "http://www.w3.org/2001/XMLSchema"^^xsd:string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ hasType(?y, ns:KeywordSuggestT)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_37_GetKeywordSuggestJsonp_Atomic">
+    <process:hasName>GetKeywordSuggestJsonp</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_37_GetKeywordSuggestJsonp_Atomic_input_keywordHint__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SuggestWebService_37_GetKeywordSuggestJsonp_Atomic_input_callback__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSuggestJsonp(?x), string(?x, ?keywordHint), string(?y, ?callback)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">True</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_38_GetADItems_Atomic">
+    <process:hasName>GetADItems</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_38_GetADItems_Atomic_input_bidSeqNos__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SuggestWebService_38_GetADItems_Atomic_input_itemNos__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_38_GetADItems_Atomic_output_Body__ns_ArrayOfSuggestAdItemT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(bidSeqNos rdf:type xsd:string) ∧ (itemNos rdf:type xsd:string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body rdf:type ns:ArrayOfSuggestAdItemT</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_39_GetBrandPlusItems_Atomic">
+    <process:hasName>GetBrandPlusItems</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_39_GetBrandPlusItems_Atomic_input_brandId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_39_GetBrandPlusItems_Atomic_output_Body__ns_ArrayOfSuggestItemT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">brandId(?brandId) ^ string(?brandId)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?x) ^ ArrayOfSuggestItemT(?x) ^ GetBrandPlusItems(?x) ^ hasBrand(?x, ?brandId)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_40_GetBook_Atomic">
+    <process:hasName>GetBook</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_40_GetBook_Atomic_input_bookItemNo__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_40_GetBook_Atomic_output_Body__ns_ArrayOfSuggestBookItemT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bookItemNo(?x) ^ swrlb:isString(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ns:ArrayOfSuggestBookItemT(?y) ^ ns:hasSuggestBookItem(?y, ?z) ^ ns:bookItemNo(?z, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SuggestWebService_41_GetCatalog_Atomic">
+    <process:hasName>GetCatalog</process:hasName>
+    <process:hasInput rdf:resource="#SuggestWebService_41_GetCatalog_Atomic_input_catalogId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SuggestWebService_41_GetCatalog_Atomic_output_Body__ns_ArrayOfSuggestOSCatalogT"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">catalogId(?x) ^ datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ type(?y, ns:ArrayOfSuggestOSCatalogT)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="SuggestWebService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_0_GetKeywordsByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_1_GetSuggestionKeywordsByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_2_GetNicknamesByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_3_GetKeywordByTopCategoryList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_4_GetBooksKeywordByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_5_GetTicketKeywordByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_6_GetSuggestionNotice_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_7_GetBrandShopSuggestionBrandsByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_8_GetKeywordSuggest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_9_GetKeywordSuggestJsonp_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_10_GetADItems_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_11_GetBrandPlusItems_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_12_GetBook_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_13_GetCatalog_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_14_GetKeywordsByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_15_GetSuggestionKeywordsByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_16_GetNicknamesByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_17_GetKeywordByTopCategoryList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_18_GetBooksKeywordByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_19_GetTicketKeywordByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_20_GetSuggestionNotice_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_21_GetBrandShopSuggestionBrandsByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_22_GetKeywordSuggest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_23_GetKeywordSuggestJsonp_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_24_GetADItems_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_25_GetBrandPlusItems_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_26_GetBook_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_27_GetCatalog_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_28_GetKeywordsByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_29_GetSuggestionKeywordsByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_30_GetNicknamesByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_31_GetKeywordByTopCategoryList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_32_GetBooksKeywordByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_33_GetTicketKeywordByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_34_GetSuggestionNotice_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_35_GetBrandShopSuggestionBrandsByKeywordHint_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_36_GetKeywordSuggest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_37_GetKeywordSuggestJsonp_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_38_GetADItems_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_39_GetBrandPlusItems_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_40_GetBook_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SuggestWebService_41_GetCatalog_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_0_GetKeywordsByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_0_GetKeywordsByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetKeywordsByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeywordsByKeywordHintHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeywordsByKeywordHintHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_1_GetSuggestionKeywordsByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_1_GetSuggestionKeywordsByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetSuggestionKeywordsByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSuggestionKeywordsByKeywordHintHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSuggestionKeywordsByKeywordHintHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_2_GetNicknamesByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_2_GetNicknamesByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetNicknamesByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetNicknamesByKeywordHintHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetNicknamesByKeywordHintHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_3_GetKeywordByTopCategoryList_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_3_GetKeywordByTopCategoryList_Atomic"/>
+    <grounding:wsdlOperationName>GetKeywordByTopCategoryList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeywordByTopCategoryListHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeywordByTopCategoryListHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_4_GetBooksKeywordByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_4_GetBooksKeywordByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetBooksKeywordByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBooksKeywordByKeywordHintHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBooksKeywordByKeywordHintHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_5_GetTicketKeywordByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_5_GetTicketKeywordByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetTicketKeywordByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTicketKeywordByKeywordHintHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTicketKeywordByKeywordHintHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_6_GetSuggestionNotice_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_6_GetSuggestionNotice_Atomic"/>
+    <grounding:wsdlOperationName>GetSuggestionNotice</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSuggestionNoticeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSuggestionNoticeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_7_GetBrandShopSuggestionBrandsByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_7_GetBrandShopSuggestionBrandsByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetBrandShopSuggestionBrandsByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBrandShopSuggestionBrandsByKeywordHintHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBrandShopSuggestionBrandsByKeywordHintHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_8_GetKeywordSuggest_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_8_GetKeywordSuggest_Atomic"/>
+    <grounding:wsdlOperationName>GetKeywordSuggest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeywordSuggestHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeywordSuggestHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_9_GetKeywordSuggestJsonp_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_9_GetKeywordSuggestJsonp_Atomic"/>
+    <grounding:wsdlOperationName>GetKeywordSuggestJsonp</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeywordSuggestJsonpHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeywordSuggestJsonpHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_10_GetADItems_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_10_GetADItems_Atomic"/>
+    <grounding:wsdlOperationName>GetADItems</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetADItemsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetADItemsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_11_GetBrandPlusItems_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_11_GetBrandPlusItems_Atomic"/>
+    <grounding:wsdlOperationName>GetBrandPlusItems</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBrandPlusItemsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBrandPlusItemsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_12_GetBook_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_12_GetBook_Atomic"/>
+    <grounding:wsdlOperationName>GetBook</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBookHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBookHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_13_GetCatalog_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_13_GetCatalog_Atomic"/>
+    <grounding:wsdlOperationName>GetCatalog</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCatalogHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCatalogHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_14_GetKeywordsByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_14_GetKeywordsByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetKeywordsByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeywordsByKeywordHintSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeywordsByKeywordHintSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_15_GetSuggestionKeywordsByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_15_GetSuggestionKeywordsByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetSuggestionKeywordsByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSuggestionKeywordsByKeywordHintSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSuggestionKeywordsByKeywordHintSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_16_GetNicknamesByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_16_GetNicknamesByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetNicknamesByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetNicknamesByKeywordHintSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetNicknamesByKeywordHintSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_17_GetKeywordByTopCategoryList_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_17_GetKeywordByTopCategoryList_Atomic"/>
+    <grounding:wsdlOperationName>GetKeywordByTopCategoryList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeywordByTopCategoryListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeywordByTopCategoryListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_18_GetBooksKeywordByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_18_GetBooksKeywordByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetBooksKeywordByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBooksKeywordByKeywordHintSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBooksKeywordByKeywordHintSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_19_GetTicketKeywordByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_19_GetTicketKeywordByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetTicketKeywordByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTicketKeywordByKeywordHintSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTicketKeywordByKeywordHintSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_20_GetSuggestionNotice_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_20_GetSuggestionNotice_Atomic"/>
+    <grounding:wsdlOperationName>GetSuggestionNotice</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSuggestionNoticeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSuggestionNoticeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_21_GetBrandShopSuggestionBrandsByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_21_GetBrandShopSuggestionBrandsByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetBrandShopSuggestionBrandsByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBrandShopSuggestionBrandsByKeywordHintSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBrandShopSuggestionBrandsByKeywordHintSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_22_GetKeywordSuggest_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_22_GetKeywordSuggest_Atomic"/>
+    <grounding:wsdlOperationName>GetKeywordSuggest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeywordSuggestSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeywordSuggestSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_23_GetKeywordSuggestJsonp_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_23_GetKeywordSuggestJsonp_Atomic"/>
+    <grounding:wsdlOperationName>GetKeywordSuggestJsonp</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeywordSuggestJsonpSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeywordSuggestJsonpSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_24_GetADItems_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_24_GetADItems_Atomic"/>
+    <grounding:wsdlOperationName>GetADItems</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetADItemsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetADItemsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_25_GetBrandPlusItems_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_25_GetBrandPlusItems_Atomic"/>
+    <grounding:wsdlOperationName>GetBrandPlusItems</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBrandPlusItemsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBrandPlusItemsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_26_GetBook_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_26_GetBook_Atomic"/>
+    <grounding:wsdlOperationName>GetBook</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBookSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBookSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_27_GetCatalog_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_27_GetCatalog_Atomic"/>
+    <grounding:wsdlOperationName>GetCatalog</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCatalogSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCatalogSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_28_GetKeywordsByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_28_GetKeywordsByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetKeywordsByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeywordsByKeywordHintHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeywordsByKeywordHintHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_29_GetSuggestionKeywordsByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_29_GetSuggestionKeywordsByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetSuggestionKeywordsByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSuggestionKeywordsByKeywordHintHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSuggestionKeywordsByKeywordHintHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_30_GetNicknamesByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_30_GetNicknamesByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetNicknamesByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetNicknamesByKeywordHintHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetNicknamesByKeywordHintHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_31_GetKeywordByTopCategoryList_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_31_GetKeywordByTopCategoryList_Atomic"/>
+    <grounding:wsdlOperationName>GetKeywordByTopCategoryList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeywordByTopCategoryListHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeywordByTopCategoryListHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_32_GetBooksKeywordByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_32_GetBooksKeywordByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetBooksKeywordByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBooksKeywordByKeywordHintHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBooksKeywordByKeywordHintHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_33_GetTicketKeywordByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_33_GetTicketKeywordByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetTicketKeywordByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTicketKeywordByKeywordHintHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTicketKeywordByKeywordHintHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_34_GetSuggestionNotice_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_34_GetSuggestionNotice_Atomic"/>
+    <grounding:wsdlOperationName>GetSuggestionNotice</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSuggestionNoticeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSuggestionNoticeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_35_GetBrandShopSuggestionBrandsByKeywordHint_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_35_GetBrandShopSuggestionBrandsByKeywordHint_Atomic"/>
+    <grounding:wsdlOperationName>GetBrandShopSuggestionBrandsByKeywordHint</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBrandShopSuggestionBrandsByKeywordHintHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBrandShopSuggestionBrandsByKeywordHintHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_36_GetKeywordSuggest_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_36_GetKeywordSuggest_Atomic"/>
+    <grounding:wsdlOperationName>GetKeywordSuggest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeywordSuggestHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeywordSuggestHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_37_GetKeywordSuggestJsonp_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_37_GetKeywordSuggestJsonp_Atomic"/>
+    <grounding:wsdlOperationName>GetKeywordSuggestJsonp</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeywordSuggestJsonpHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeywordSuggestJsonpHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_38_GetADItems_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_38_GetADItems_Atomic"/>
+    <grounding:wsdlOperationName>GetADItems</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetADItemsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetADItemsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_39_GetBrandPlusItems_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_39_GetBrandPlusItems_Atomic"/>
+    <grounding:wsdlOperationName>GetBrandPlusItems</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBrandPlusItemsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBrandPlusItemsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_40_GetBook_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_40_GetBook_Atomic"/>
+    <grounding:wsdlOperationName>GetBook</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBookHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBookHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SuggestWebService_41_GetCatalog_Grounding">
+    <grounding:owlsProcess rdf:resource="#SuggestWebService_41_GetCatalog_Atomic"/>
+    <grounding:wsdlOperationName>GetCatalog</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SuggestWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SuggestWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2226_2225.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCatalogHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCatalogHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,325 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Services">
+    <service:presents rdf:resource="#Services_Profile"/>
+    <service:describedBy rdf:resource="#Services_Composite"/>
+    <service:supports rdf:resource="#Services_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Services_Profile">
+    <profile:serviceName>Services</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Services"/>
+    <profile:hasProcess rdf:resource="#Services_0_Login_Atomic"/>
+    <profile:hasInput rdf:resource="#Services_0_Login_Atomic_input_parameters__http___ws.eoddata.com_Services_Login"/>
+    <profile:hasOutput rdf:resource="#Services_0_Login_Atomic_output_parameters__http___ws.eoddata.com_Services_LoginResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Login(?x) ^ hasUsername(?x, ?username) ^ hasPassword(?x, ?password)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoginResponse(?y) ^ hasSessionToken(?y, ?token) ^ hasExpiryDate(?y, ?date) ^ hasStatus(?y, "Success")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Services_1_List_Atomic"/>
+    <profile:hasInput rdf:resource="#Services_1_List_Atomic_input_parameters__http___ws.eoddata.com_Services_List"/>
+    <profile:hasOutput rdf:resource="#Services_1_List_Atomic_output_parameters__http___ws.eoddata.com_Services_ListResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class(http://ws.eoddata.com/Services,List) ^ hasParameter(parameters, http://ws.eoddata.com/Services,List)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class(http://ws.eoddata.com/Services,ListResponse) ^ hasParameter(parameters, http://ws.eoddata.com/Services,ListResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Services_2_GetDefault_Atomic"/>
+    <profile:hasInput rdf:resource="#Services_2_GetDefault_Atomic_input_parameters__http___ws.eoddata.com_Services_GetDefault"/>
+    <profile:hasOutput rdf:resource="#Services_2_GetDefault_Atomic_output_parameters__http___ws.eoddata.com_Services_GetDefaultResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output(parameters, http://ws.eoddata.com/Services, GetDefaultResponse)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input(parameters, http://ws.eoddata.com/Services, GetDefault)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Services_3_Login_Atomic"/>
+    <profile:hasInput rdf:resource="#Services_3_Login_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Services_3_Login_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Services_3_Login_Atomic_output_Body__http___ws.eoddata.com_Services_LOGINRESPONSE"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(Login, Username) ^ hasInputParameter(Login, Password)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(Login, Body) ^ hasOutputParameterType(Login, Body, LOGINRESPONSE)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Services_4_List_Atomic"/>
+    <profile:hasInput rdf:resource="#Services_4_List_Atomic_input_Token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Services_4_List_Atomic_output_Body__http___ws.eoddata.com_Services_RESPONSE"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Services_5_GetDefault_Atomic"/>
+    <profile:hasInput rdf:resource="#Services_5_GetDefault_Atomic_input_Token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Services_5_GetDefault_Atomic_output_Body__http___ws.eoddata.com_Services_RESPONSE"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Token:{http://www.w3.org/2001/XMLSchema}string</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Outputs: Body:{http://ws.eoddata.com/Services}RESPONSE</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Services_6_Login_Atomic"/>
+    <profile:hasInput rdf:resource="#Services_6_Login_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Services_6_Login_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Services_6_Login_Atomic_output_Body__http___ws.eoddata.com_Services_LOGINRESPONSE"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(Login, Username) ^ hasInputParameter(Login, Password)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(Login, Body) ^ hasOutputParameterType(Login, Body, LOGINRESPONSE)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Services_7_List_Atomic"/>
+    <profile:hasInput rdf:resource="#Services_7_List_Atomic_input_Token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Services_7_List_Atomic_output_Body__http___ws.eoddata.com_Services_RESPONSE"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Token:{http://www.w3.org/2001/XMLSchema}string</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body:{http://ws.eoddata.com/Services}RESPONSE</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Services_8_GetDefault_Atomic"/>
+    <profile:hasInput rdf:resource="#Services_8_GetDefault_Atomic_input_Token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Services_8_GetDefault_Atomic_output_Body__http___ws.eoddata.com_Services_RESPONSE"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Token(?x) ^ type(?x, &lt;http://www.w3.org/2001/XMLSchema#string&gt;)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ type(?y, &lt;http://ws.eoddata.com/Services#RESPONSE&gt;)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Services_Composite">
+    <process:composedOf rdf:resource="#Services_0_Login_Atomic"/>
+    <process:composedOf rdf:resource="#Services_1_List_Atomic"/>
+    <process:composedOf rdf:resource="#Services_2_GetDefault_Atomic"/>
+    <process:composedOf rdf:resource="#Services_3_Login_Atomic"/>
+    <process:composedOf rdf:resource="#Services_4_List_Atomic"/>
+    <process:composedOf rdf:resource="#Services_5_GetDefault_Atomic"/>
+    <process:composedOf rdf:resource="#Services_6_Login_Atomic"/>
+    <process:composedOf rdf:resource="#Services_7_List_Atomic"/>
+    <process:composedOf rdf:resource="#Services_8_GetDefault_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Services_0_Login_Atomic_input_parameters__http___ws.eoddata.com_Services_Login">
+    <process:parameterType>parameters:{http://ws.eoddata.com/Services}Login</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Services_0_Login_Atomic_output_parameters__http___ws.eoddata.com_Services_LoginResponse">
+    <process:parameterType>parameters:{http://ws.eoddata.com/Services}LoginResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Services_1_List_Atomic_input_parameters__http___ws.eoddata.com_Services_List">
+    <process:parameterType>parameters:{http://ws.eoddata.com/Services}List</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Services_1_List_Atomic_output_parameters__http___ws.eoddata.com_Services_ListResponse">
+    <process:parameterType>parameters:{http://ws.eoddata.com/Services}ListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Services_2_GetDefault_Atomic_input_parameters__http___ws.eoddata.com_Services_GetDefault">
+    <process:parameterType>parameters:{http://ws.eoddata.com/Services}GetDefault</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Services_2_GetDefault_Atomic_output_parameters__http___ws.eoddata.com_Services_GetDefaultResponse">
+    <process:parameterType>parameters:{http://ws.eoddata.com/Services}GetDefaultResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Services_3_Login_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Services_3_Login_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Services_3_Login_Atomic_output_Body__http___ws.eoddata.com_Services_LOGINRESPONSE">
+    <process:parameterType>Body:{http://ws.eoddata.com/Services}LOGINRESPONSE</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Services_4_List_Atomic_input_Token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Services_4_List_Atomic_output_Body__http___ws.eoddata.com_Services_RESPONSE">
+    <process:parameterType>Body:{http://ws.eoddata.com/Services}RESPONSE</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Services_5_GetDefault_Atomic_input_Token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Services_5_GetDefault_Atomic_output_Body__http___ws.eoddata.com_Services_RESPONSE">
+    <process:parameterType>Body:{http://ws.eoddata.com/Services}RESPONSE</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Services_6_Login_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Services_6_Login_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Services_6_Login_Atomic_output_Body__http___ws.eoddata.com_Services_LOGINRESPONSE">
+    <process:parameterType>Body:{http://ws.eoddata.com/Services}LOGINRESPONSE</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Services_7_List_Atomic_input_Token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Services_7_List_Atomic_output_Body__http___ws.eoddata.com_Services_RESPONSE">
+    <process:parameterType>Body:{http://ws.eoddata.com/Services}RESPONSE</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Services_8_GetDefault_Atomic_input_Token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Services_8_GetDefault_Atomic_output_Body__http___ws.eoddata.com_Services_RESPONSE">
+    <process:parameterType>Body:{http://ws.eoddata.com/Services}RESPONSE</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Services_0_Login_Atomic">
+    <process:hasName>Login</process:hasName>
+    <process:hasInput rdf:resource="#Services_0_Login_Atomic_input_parameters__http___ws.eoddata.com_Services_Login"/>
+    <process:hasOutput rdf:resource="#Services_0_Login_Atomic_output_parameters__http___ws.eoddata.com_Services_LoginResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Login(?x) ^ hasUsername(?x, ?username) ^ hasPassword(?x, ?password)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoginResponse(?y) ^ hasSessionToken(?y, ?token) ^ hasExpiryDate(?y, ?date) ^ hasStatus(?y, "Success")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Services_1_List_Atomic">
+    <process:hasName>List</process:hasName>
+    <process:hasInput rdf:resource="#Services_1_List_Atomic_input_parameters__http___ws.eoddata.com_Services_List"/>
+    <process:hasOutput rdf:resource="#Services_1_List_Atomic_output_parameters__http___ws.eoddata.com_Services_ListResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class(http://ws.eoddata.com/Services,List) ^ hasParameter(parameters, http://ws.eoddata.com/Services,List)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class(http://ws.eoddata.com/Services,ListResponse) ^ hasParameter(parameters, http://ws.eoddata.com/Services,ListResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Services_2_GetDefault_Atomic">
+    <process:hasName>GetDefault</process:hasName>
+    <process:hasInput rdf:resource="#Services_2_GetDefault_Atomic_input_parameters__http___ws.eoddata.com_Services_GetDefault"/>
+    <process:hasOutput rdf:resource="#Services_2_GetDefault_Atomic_output_parameters__http___ws.eoddata.com_Services_GetDefaultResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output(parameters, http://ws.eoddata.com/Services, GetDefaultResponse)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input(parameters, http://ws.eoddata.com/Services, GetDefault)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Services_3_Login_Atomic">
+    <process:hasName>Login</process:hasName>
+    <process:hasInput rdf:resource="#Services_3_Login_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Services_3_Login_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Services_3_Login_Atomic_output_Body__http___ws.eoddata.com_Services_LOGINRESPONSE"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(Login, Username) ^ hasInputParameter(Login, Password)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(Login, Body) ^ hasOutputParameterType(Login, Body, LOGINRESPONSE)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Services_4_List_Atomic">
+    <process:hasName>List</process:hasName>
+    <process:hasInput rdf:resource="#Services_4_List_Atomic_input_Token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Services_4_List_Atomic_output_Body__http___ws.eoddata.com_Services_RESPONSE"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Services_5_GetDefault_Atomic">
+    <process:hasName>GetDefault</process:hasName>
+    <process:hasInput rdf:resource="#Services_5_GetDefault_Atomic_input_Token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Services_5_GetDefault_Atomic_output_Body__http___ws.eoddata.com_Services_RESPONSE"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Token:{http://www.w3.org/2001/XMLSchema}string</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Outputs: Body:{http://ws.eoddata.com/Services}RESPONSE</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Services_6_Login_Atomic">
+    <process:hasName>Login</process:hasName>
+    <process:hasInput rdf:resource="#Services_6_Login_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Services_6_Login_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Services_6_Login_Atomic_output_Body__http___ws.eoddata.com_Services_LOGINRESPONSE"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(Login, Username) ^ hasInputParameter(Login, Password)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(Login, Body) ^ hasOutputParameterType(Login, Body, LOGINRESPONSE)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Services_7_List_Atomic">
+    <process:hasName>List</process:hasName>
+    <process:hasInput rdf:resource="#Services_7_List_Atomic_input_Token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Services_7_List_Atomic_output_Body__http___ws.eoddata.com_Services_RESPONSE"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Token:{http://www.w3.org/2001/XMLSchema}string</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body:{http://ws.eoddata.com/Services}RESPONSE</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Services_8_GetDefault_Atomic">
+    <process:hasName>GetDefault</process:hasName>
+    <process:hasInput rdf:resource="#Services_8_GetDefault_Atomic_input_Token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Services_8_GetDefault_Atomic_output_Body__http___ws.eoddata.com_Services_RESPONSE"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Token(?x) ^ type(?x, &lt;http://www.w3.org/2001/XMLSchema#string&gt;)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ type(?y, &lt;http://ws.eoddata.com/Services#RESPONSE&gt;)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Services_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Services_0_Login_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Services_1_List_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Services_2_GetDefault_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Services_3_Login_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Services_4_List_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Services_5_GetDefault_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Services_6_Login_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Services_7_List_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Services_8_GetDefault_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Services_0_Login_Grounding">
+    <grounding:owlsProcess rdf:resource="#Services_0_Login_Atomic"/>
+    <grounding:wsdlOperationName>Login</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2053_2052.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LoginSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LoginSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Services_1_List_Grounding">
+    <grounding:owlsProcess rdf:resource="#Services_1_List_Atomic"/>
+    <grounding:wsdlOperationName>List</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2053_2052.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Services_2_GetDefault_Grounding">
+    <grounding:owlsProcess rdf:resource="#Services_2_GetDefault_Atomic"/>
+    <grounding:wsdlOperationName>GetDefault</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2053_2052.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDefaultSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDefaultSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Services_3_Login_Grounding">
+    <grounding:owlsProcess rdf:resource="#Services_3_Login_Atomic"/>
+    <grounding:wsdlOperationName>Login</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServicesHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServicesHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2053_2052.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LoginHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LoginHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Services_4_List_Grounding">
+    <grounding:owlsProcess rdf:resource="#Services_4_List_Atomic"/>
+    <grounding:wsdlOperationName>List</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServicesHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServicesHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2053_2052.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Services_5_GetDefault_Grounding">
+    <grounding:owlsProcess rdf:resource="#Services_5_GetDefault_Atomic"/>
+    <grounding:wsdlOperationName>GetDefault</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServicesHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServicesHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2053_2052.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDefaultHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDefaultHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Services_6_Login_Grounding">
+    <grounding:owlsProcess rdf:resource="#Services_6_Login_Atomic"/>
+    <grounding:wsdlOperationName>Login</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServicesHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServicesHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2053_2052.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LoginHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LoginHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Services_7_List_Grounding">
+    <grounding:owlsProcess rdf:resource="#Services_7_List_Atomic"/>
+    <grounding:wsdlOperationName>List</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServicesHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServicesHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2053_2052.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Services_8_GetDefault_Grounding">
+    <grounding:owlsProcess rdf:resource="#Services_8_GetDefault_Atomic"/>
+    <grounding:wsdlOperationName>GetDefault</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServicesHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServicesHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2053_2052.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDefaultHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDefaultHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

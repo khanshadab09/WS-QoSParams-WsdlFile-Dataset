@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Pesquisas">
+    <service:presents rdf:resource="#Pesquisas_Profile"/>
+    <service:describedBy rdf:resource="#Pesquisas_Composite"/>
+    <service:supports rdf:resource="#Pesquisas_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Pesquisas_Profile">
+    <profile:serviceName>Pesquisas</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Pesquisas"/>
+    <profile:hasProcess rdf:resource="#Pesquisas_0_KeywordSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#Pesquisas_0_KeywordSearch_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Pesquisas_0_KeywordSearch_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSearch(?query) ^ string(?query)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?query) ^ string(?query)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Pesquisas_1_TaxonomySearch_Atomic"/>
+    <profile:hasInput rdf:resource="#Pesquisas_1_TaxonomySearch_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Pesquisas_1_TaxonomySearch_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxonomySearch(?query) ^ string(?query)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?query) ^ string(?query)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Pesquisas_2_TextSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#Pesquisas_2_TextSearch_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Pesquisas_2_TextSearch_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextSearch(?query) ^ swrlb:stringEqualIgnoreCase(?query, "search term")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextSearch(?query) ^ return("Results for search term")</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Pesquisas_Composite">
+    <process:composedOf rdf:resource="#Pesquisas_0_KeywordSearch_Atomic"/>
+    <process:composedOf rdf:resource="#Pesquisas_1_TaxonomySearch_Atomic"/>
+    <process:composedOf rdf:resource="#Pesquisas_2_TextSearch_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Pesquisas_0_KeywordSearch_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>query:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Pesquisas_0_KeywordSearch_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Pesquisas_1_TaxonomySearch_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>query:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Pesquisas_1_TaxonomySearch_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Pesquisas_2_TextSearch_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>query:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Pesquisas_2_TextSearch_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Pesquisas_0_KeywordSearch_Atomic">
+    <process:hasName>KeywordSearch</process:hasName>
+    <process:hasInput rdf:resource="#Pesquisas_0_KeywordSearch_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Pesquisas_0_KeywordSearch_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSearch(?query) ^ string(?query)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?query) ^ string(?query)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Pesquisas_1_TaxonomySearch_Atomic">
+    <process:hasName>TaxonomySearch</process:hasName>
+    <process:hasInput rdf:resource="#Pesquisas_1_TaxonomySearch_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Pesquisas_1_TaxonomySearch_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxonomySearch(?query) ^ string(?query)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?query) ^ string(?query)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Pesquisas_2_TextSearch_Atomic">
+    <process:hasName>TextSearch</process:hasName>
+    <process:hasInput rdf:resource="#Pesquisas_2_TextSearch_Atomic_input_query__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Pesquisas_2_TextSearch_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextSearch(?query) ^ swrlb:stringEqualIgnoreCase(?query, "search term")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextSearch(?query) ^ return("Results for search term")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Pesquisas_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Pesquisas_0_KeywordSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Pesquisas_1_TaxonomySearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Pesquisas_2_TextSearch_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Pesquisas_0_KeywordSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#Pesquisas_0_KeywordSearch_Atomic"/>
+    <grounding:wsdlOperationName>KeywordSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PesquisasBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PesquisasPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2203_2202.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>KeywordSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>KeywordSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Pesquisas_1_TaxonomySearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#Pesquisas_1_TaxonomySearch_Atomic"/>
+    <grounding:wsdlOperationName>TaxonomySearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PesquisasBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PesquisasPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2203_2202.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>TaxonomySearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>TaxonomySearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Pesquisas_2_TextSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#Pesquisas_2_TextSearch_Atomic"/>
+    <grounding:wsdlOperationName>TextSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PesquisasBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PesquisasPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2203_2202.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>TextSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>TextSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,1077 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="SMS_Service">
+    <service:presents rdf:resource="#SMS_Service_Profile"/>
+    <service:describedBy rdf:resource="#SMS_Service_Composite"/>
+    <service:supports rdf:resource="#SMS_Service_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="SMS_Service_Profile">
+    <profile:serviceName>SMS_Service</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#SMS_Service"/>
+    <profile:hasProcess rdf:resource="#SMS_Service_0_checkPrefix_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_0_checkPrefix_Atomic_input_CountryID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_0_checkPrefix_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_0_checkPrefix_Atomic_input_AccessNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_0_checkPrefix_Atomic_input_Prefix__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_0_checkPrefix_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_0_checkPrefix_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CountryID(?x) ^ UserName(?y) ^ AccessNumber(?z) ^ Prefix(?p) ^ PassWord(?w) ^ checkPrefix(?x, ?y, ?z, ?p, ?w)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasOutput(?result, ?x) ^ hasOutput(?result, ?y) ^ hasOutput(?result, ?z) ^ hasOutput(?result, ?p) ^ hasOutput(?result, ?w) ^ hasOutput(?result, ?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_1_createPrefix_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_1_createPrefix_Atomic_input_CountryID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_1_createPrefix_Atomic_input_TypeID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_1_createPrefix_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_1_createPrefix_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_1_createPrefix_Atomic_input_AccessNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_1_createPrefix_Atomic_input_Prefix__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_1_createPrefix_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_1_createPrefix_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CountryID(?x) ^ TypeID(?y) ^ UserName(?z) ^ CampaignID(?w) ^ AccessNumber(?v) ^ Prefix(?u) ^ PassWord(?t) ^ createPrefix(?x, ?y, ?z, ?w, ?v, ?u, ?t)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasOutput(?result, ?output) ^ string(?output) ^ createPrefix(?x, ?y, ?z, ?w, ?v, ?u, ?t) ^ string(?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_2_createCampaign_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_2_createCampaign_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_2_createCampaign_Atomic_input_CampaignName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_2_createCampaign_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_2_createCampaign_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?user rdf:type :User) ^ (?user :hasUserName ?UserName) ^ (?user :hasPassword ?PassWord) ^ notExists(?campaign :hasName ?CampaignName)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?campaign rdf:type :Campaign) ^ (?campaign :hasName ?CampaignName) ^ (?campaign :belongsToUser ?user) ^ (?campaign :hasStatus :Created) ^ (?response :hasBody ?Body) ^ (?response :belongsToCampaign ?campaign)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_3_bindCampaignToConnection_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_3_bindCampaignToConnection_Atomic_input_ConnectionID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_3_bindCampaignToConnection_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_3_bindCampaignToConnection_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_3_bindCampaignToConnection_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_3_bindCampaignToConnection_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConnectionID(?x) ^ UserName(?y) ^ CampaignID(?z) ^ PassWord(?w) ^ string(?x) ^ string(?y) ^ string(?z) ^ string(?w)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ string(?result) ^ bindCampaignToConnection(?x, ?y, ?z, ?w, ?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_FromNr__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_FromAlpha__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_TeleOp__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_Nrq__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_MsgID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_PriceGroup__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced1(Msg, UserName, FromNr, FromAlpha, TeleOp, CampaignID, Tel, Nrq, PassWord, MsgID, PriceGroup)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body = string</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_FromNr__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_FromAlpha__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_TeleOp__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_Nrq__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_MsgID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_PriceGroup__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_DeliveryEmailAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced2(Msg, UserName, FromNr, FromAlpha, TeleOp, CampaignID, Tel, Nrq, PassWord, MsgID, PriceGroup, DeliveryEmailAddress)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body = string</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_6_SendSMS_Simple1_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_6_SendSMS_Simple1_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_6_SendSMS_Simple1_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_6_SendSMS_Simple1_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_6_SendSMS_Simple1_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_6_SendSMS_Simple1_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Msg(Msg) ^ UserName(UserName) ^ Tel(Tel) ^ PassWord(PassWord)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(SendSMS_Simple1, "string")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_7_checkPrefix_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_7_checkPrefix_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__checkPrefix"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_7_checkPrefix_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__checkPrefixResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasParameter(checkPrefix, parameters, "http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=checkPrefix")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasParameter(checkPrefixResponse, parameters, "http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=checkPrefixResponse")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_8_createPrefix_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_8_createPrefix_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__createPrefix"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_8_createPrefix_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__createPrefixResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasParameter(http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=createPrefix, parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}createPrefix)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasParameter(http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=createPrefixResponse, parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}createPrefixResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_9_createCampaign_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_9_createCampaign_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__createCampaign"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_9_createCampaign_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__createCampaignResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">createCampaign(parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}createCampaign)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">createCampaignResponse(parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}createCampaignResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_10_bindCampaignToConnection_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_10_bindCampaignToConnection_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__bindCampaignToConnection"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_10_bindCampaignToConnection_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__bindCampaignToConnectionResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bindCampaignToConnection(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bindCampaignToConnectionResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_11_SendSMS_Advanced1_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_11_SendSMS_Advanced1_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Advanced1"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_11_SendSMS_Advanced1_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Advanced1Response"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced1(parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}SendSMS_Advanced1)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced1Response(parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}SendSMS_Advanced1Response)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_12_SendSMS_Advanced2_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_12_SendSMS_Advanced2_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Advanced2"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_12_SendSMS_Advanced2_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Advanced2Response"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced2(parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}SendSMS_Advanced2)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced2Response(parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}SendSMS_Advanced2Response)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_13_SendSMS_Simple1_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_13_SendSMS_Simple1_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Simple1"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_13_SendSMS_Simple1_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Simple1Response"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Simple1(parameters)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Simple1Response(parameters)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_14_checkPrefix_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_14_checkPrefix_Atomic_input_CountryID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_14_checkPrefix_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_14_checkPrefix_Atomic_input_AccessNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_14_checkPrefix_Atomic_input_Prefix__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_14_checkPrefix_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_14_checkPrefix_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CountryID(?x) ^ UserName(?y) ^ AccessNumber(?z) ^ Prefix(?p) ^ PassWord(?w) ^ checkPrefix(?x, ?y, ?z, ?p, ?w)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasValue(?result, "string") ^ checkPrefix(?x, ?y, ?z, ?p, ?w) ^ hasOutput(?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_15_createPrefix_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_15_createPrefix_Atomic_input_CountryID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_15_createPrefix_Atomic_input_TypeID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_15_createPrefix_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_15_createPrefix_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_15_createPrefix_Atomic_input_AccessNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_15_createPrefix_Atomic_input_Prefix__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_15_createPrefix_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_15_createPrefix_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CountryID:{http://www.w3.org/2001/XMLSchema}string and TypeID:{http://www.w3.org/2001/XMLSchema}string and UserName:{http://www.w3.org/2001/XMLSchema}string and CampaignID:{http://www.w3.org/2001/XMLSchema}string and AccessNumber:{http://www.w3.org/2001/XMLSchema}string and Prefix:{http://www.w3.org/2001/XMLSchema}string and PassWord:{http://www.w3.org/2001/XMLSchema}string</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_16_createCampaign_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_16_createCampaign_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_16_createCampaign_Atomic_input_CampaignName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_16_createCampaign_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_16_createCampaign_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(hasDataType UserName {http://www.w3.org/2001/XMLSchema}string) ^ (hasDataType CampaignName {http://www.w3.org/2001/XMLSchema}string) ^ (hasDataType PassWord {http://www.w3.org/2001/XMLSchema}string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(hasDataType Body {http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_17_bindCampaignToConnection_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_17_bindCampaignToConnection_Atomic_input_ConnectionID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_17_bindCampaignToConnection_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_17_bindCampaignToConnection_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_17_bindCampaignToConnection_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_17_bindCampaignToConnection_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConnectionID(?ConnectionID) ^ UserName(?UserName) ^ CampaignID(?CampaignID) ^ PassWord(?PassWord)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?Body)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_FromNr__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_FromAlpha__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_TeleOp__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_Nrq__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_MsgID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_PriceGroup__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced1(Msg, UserName, FromNr, FromAlpha, TeleOp, CampaignID, Tel, Nrq, PassWord, MsgID, PriceGroup)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body = string</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_FromNr__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_FromAlpha__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_TeleOp__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_Nrq__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_MsgID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_PriceGroup__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_DeliveryEmailAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced2(Msg, UserName, FromNr, FromAlpha, TeleOp, CampaignID, Tel, Nrq, PassWord, MsgID, PriceGroup, DeliveryEmailAddress)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body = string</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_Service_20_SendSMS_Simple1_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_Service_20_SendSMS_Simple1_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_20_SendSMS_Simple1_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_20_SendSMS_Simple1_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_Service_20_SendSMS_Simple1_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_Service_20_SendSMS_Simple1_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Msg(Msg) ^ UserName(UserName) ^ Tel(Tel) ^ PassWord(PassWord)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(SendSMS_Simple1, "string")</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="SMS_Service_Composite">
+    <process:composedOf rdf:resource="#SMS_Service_0_checkPrefix_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_1_createPrefix_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_2_createCampaign_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_3_bindCampaignToConnection_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_6_SendSMS_Simple1_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_7_checkPrefix_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_8_createPrefix_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_9_createCampaign_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_10_bindCampaignToConnection_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_11_SendSMS_Advanced1_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_12_SendSMS_Advanced2_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_13_SendSMS_Simple1_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_14_checkPrefix_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_15_createPrefix_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_16_createCampaign_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_17_bindCampaignToConnection_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_Service_20_SendSMS_Simple1_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="SMS_Service_0_checkPrefix_Atomic_input_CountryID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CountryID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_0_checkPrefix_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_0_checkPrefix_Atomic_input_AccessNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AccessNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_0_checkPrefix_Atomic_input_Prefix__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Prefix:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_0_checkPrefix_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PassWord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_0_checkPrefix_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string">
+    <process:parameterType>Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_1_createPrefix_Atomic_input_CountryID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CountryID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_1_createPrefix_Atomic_input_TypeID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TypeID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_1_createPrefix_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_1_createPrefix_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CampaignID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_1_createPrefix_Atomic_input_AccessNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AccessNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_1_createPrefix_Atomic_input_Prefix__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Prefix:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_1_createPrefix_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PassWord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_1_createPrefix_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string">
+    <process:parameterType>Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_2_createCampaign_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_2_createCampaign_Atomic_input_CampaignName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CampaignName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_2_createCampaign_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PassWord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_2_createCampaign_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string">
+    <process:parameterType>Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_3_bindCampaignToConnection_Atomic_input_ConnectionID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ConnectionID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_3_bindCampaignToConnection_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_3_bindCampaignToConnection_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CampaignID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_3_bindCampaignToConnection_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PassWord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_3_bindCampaignToConnection_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string">
+    <process:parameterType>Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_4_SendSMS_Advanced1_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Msg:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_4_SendSMS_Advanced1_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_4_SendSMS_Advanced1_Atomic_input_FromNr__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FromNr:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_4_SendSMS_Advanced1_Atomic_input_FromAlpha__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FromAlpha:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_4_SendSMS_Advanced1_Atomic_input_TeleOp__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TeleOp:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_4_SendSMS_Advanced1_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CampaignID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_4_SendSMS_Advanced1_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Tel:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_4_SendSMS_Advanced1_Atomic_input_Nrq__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Nrq:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_4_SendSMS_Advanced1_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PassWord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_4_SendSMS_Advanced1_Atomic_input_MsgID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MsgID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_4_SendSMS_Advanced1_Atomic_input_PriceGroup__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PriceGroup:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_4_SendSMS_Advanced1_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string">
+    <process:parameterType>Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_5_SendSMS_Advanced2_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Msg:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_5_SendSMS_Advanced2_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_5_SendSMS_Advanced2_Atomic_input_FromNr__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FromNr:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_5_SendSMS_Advanced2_Atomic_input_FromAlpha__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FromAlpha:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_5_SendSMS_Advanced2_Atomic_input_TeleOp__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TeleOp:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_5_SendSMS_Advanced2_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CampaignID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_5_SendSMS_Advanced2_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Tel:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_5_SendSMS_Advanced2_Atomic_input_Nrq__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Nrq:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_5_SendSMS_Advanced2_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PassWord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_5_SendSMS_Advanced2_Atomic_input_MsgID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MsgID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_5_SendSMS_Advanced2_Atomic_input_PriceGroup__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PriceGroup:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_5_SendSMS_Advanced2_Atomic_input_DeliveryEmailAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>DeliveryEmailAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_5_SendSMS_Advanced2_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string">
+    <process:parameterType>Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_6_SendSMS_Simple1_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Msg:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_6_SendSMS_Simple1_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_6_SendSMS_Simple1_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Tel:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_6_SendSMS_Simple1_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PassWord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_6_SendSMS_Simple1_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string">
+    <process:parameterType>Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_7_checkPrefix_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__checkPrefix">
+    <process:parameterType>parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}checkPrefix</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_7_checkPrefix_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__checkPrefixResponse">
+    <process:parameterType>parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}checkPrefixResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_8_createPrefix_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__createPrefix">
+    <process:parameterType>parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}createPrefix</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_8_createPrefix_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__createPrefixResponse">
+    <process:parameterType>parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}createPrefixResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_9_createCampaign_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__createCampaign">
+    <process:parameterType>parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}createCampaign</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_9_createCampaign_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__createCampaignResponse">
+    <process:parameterType>parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}createCampaignResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_10_bindCampaignToConnection_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__bindCampaignToConnection">
+    <process:parameterType>parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}bindCampaignToConnection</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_10_bindCampaignToConnection_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__bindCampaignToConnectionResponse">
+    <process:parameterType>parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}bindCampaignToConnectionResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_11_SendSMS_Advanced1_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Advanced1">
+    <process:parameterType>parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}SendSMS_Advanced1</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_11_SendSMS_Advanced1_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Advanced1Response">
+    <process:parameterType>parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}SendSMS_Advanced1Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_12_SendSMS_Advanced2_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Advanced2">
+    <process:parameterType>parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}SendSMS_Advanced2</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_12_SendSMS_Advanced2_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Advanced2Response">
+    <process:parameterType>parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}SendSMS_Advanced2Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_13_SendSMS_Simple1_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Simple1">
+    <process:parameterType>parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}SendSMS_Simple1</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_13_SendSMS_Simple1_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Simple1Response">
+    <process:parameterType>parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}SendSMS_Simple1Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_14_checkPrefix_Atomic_input_CountryID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CountryID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_14_checkPrefix_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_14_checkPrefix_Atomic_input_AccessNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AccessNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_14_checkPrefix_Atomic_input_Prefix__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Prefix:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_14_checkPrefix_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PassWord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_14_checkPrefix_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string">
+    <process:parameterType>Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_15_createPrefix_Atomic_input_CountryID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CountryID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_15_createPrefix_Atomic_input_TypeID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TypeID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_15_createPrefix_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_15_createPrefix_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CampaignID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_15_createPrefix_Atomic_input_AccessNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AccessNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_15_createPrefix_Atomic_input_Prefix__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Prefix:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_15_createPrefix_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PassWord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_15_createPrefix_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string">
+    <process:parameterType>Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_16_createCampaign_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_16_createCampaign_Atomic_input_CampaignName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CampaignName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_16_createCampaign_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PassWord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_16_createCampaign_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string">
+    <process:parameterType>Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_17_bindCampaignToConnection_Atomic_input_ConnectionID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ConnectionID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_17_bindCampaignToConnection_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_17_bindCampaignToConnection_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CampaignID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_17_bindCampaignToConnection_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PassWord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_17_bindCampaignToConnection_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string">
+    <process:parameterType>Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_18_SendSMS_Advanced1_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Msg:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_18_SendSMS_Advanced1_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_18_SendSMS_Advanced1_Atomic_input_FromNr__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FromNr:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_18_SendSMS_Advanced1_Atomic_input_FromAlpha__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FromAlpha:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_18_SendSMS_Advanced1_Atomic_input_TeleOp__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TeleOp:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_18_SendSMS_Advanced1_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CampaignID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_18_SendSMS_Advanced1_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Tel:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_18_SendSMS_Advanced1_Atomic_input_Nrq__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Nrq:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_18_SendSMS_Advanced1_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PassWord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_18_SendSMS_Advanced1_Atomic_input_MsgID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MsgID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_18_SendSMS_Advanced1_Atomic_input_PriceGroup__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PriceGroup:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_18_SendSMS_Advanced1_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string">
+    <process:parameterType>Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_19_SendSMS_Advanced2_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Msg:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_19_SendSMS_Advanced2_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_19_SendSMS_Advanced2_Atomic_input_FromNr__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FromNr:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_19_SendSMS_Advanced2_Atomic_input_FromAlpha__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FromAlpha:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_19_SendSMS_Advanced2_Atomic_input_TeleOp__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TeleOp:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_19_SendSMS_Advanced2_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CampaignID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_19_SendSMS_Advanced2_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Tel:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_19_SendSMS_Advanced2_Atomic_input_Nrq__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Nrq:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_19_SendSMS_Advanced2_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PassWord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_19_SendSMS_Advanced2_Atomic_input_MsgID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MsgID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_19_SendSMS_Advanced2_Atomic_input_PriceGroup__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PriceGroup:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_19_SendSMS_Advanced2_Atomic_input_DeliveryEmailAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>DeliveryEmailAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_19_SendSMS_Advanced2_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string">
+    <process:parameterType>Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_Service_20_SendSMS_Simple1_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Msg:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_20_SendSMS_Simple1_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_20_SendSMS_Simple1_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Tel:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_Service_20_SendSMS_Simple1_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PassWord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_Service_20_SendSMS_Simple1_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string">
+    <process:parameterType>Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_0_checkPrefix_Atomic">
+    <process:hasName>checkPrefix</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_0_checkPrefix_Atomic_input_CountryID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_0_checkPrefix_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_0_checkPrefix_Atomic_input_AccessNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_0_checkPrefix_Atomic_input_Prefix__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_0_checkPrefix_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_Service_0_checkPrefix_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CountryID(?x) ^ UserName(?y) ^ AccessNumber(?z) ^ Prefix(?p) ^ PassWord(?w) ^ checkPrefix(?x, ?y, ?z, ?p, ?w)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasOutput(?result, ?x) ^ hasOutput(?result, ?y) ^ hasOutput(?result, ?z) ^ hasOutput(?result, ?p) ^ hasOutput(?result, ?w) ^ hasOutput(?result, ?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_1_createPrefix_Atomic">
+    <process:hasName>createPrefix</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_1_createPrefix_Atomic_input_CountryID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_1_createPrefix_Atomic_input_TypeID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_1_createPrefix_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_1_createPrefix_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_1_createPrefix_Atomic_input_AccessNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_1_createPrefix_Atomic_input_Prefix__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_1_createPrefix_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_Service_1_createPrefix_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CountryID(?x) ^ TypeID(?y) ^ UserName(?z) ^ CampaignID(?w) ^ AccessNumber(?v) ^ Prefix(?u) ^ PassWord(?t) ^ createPrefix(?x, ?y, ?z, ?w, ?v, ?u, ?t)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasOutput(?result, ?output) ^ string(?output) ^ createPrefix(?x, ?y, ?z, ?w, ?v, ?u, ?t) ^ string(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_2_createCampaign_Atomic">
+    <process:hasName>createCampaign</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_2_createCampaign_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_2_createCampaign_Atomic_input_CampaignName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_2_createCampaign_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_Service_2_createCampaign_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?user rdf:type :User) ^ (?user :hasUserName ?UserName) ^ (?user :hasPassword ?PassWord) ^ notExists(?campaign :hasName ?CampaignName)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?campaign rdf:type :Campaign) ^ (?campaign :hasName ?CampaignName) ^ (?campaign :belongsToUser ?user) ^ (?campaign :hasStatus :Created) ^ (?response :hasBody ?Body) ^ (?response :belongsToCampaign ?campaign)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_3_bindCampaignToConnection_Atomic">
+    <process:hasName>bindCampaignToConnection</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_3_bindCampaignToConnection_Atomic_input_ConnectionID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_3_bindCampaignToConnection_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_3_bindCampaignToConnection_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_3_bindCampaignToConnection_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_Service_3_bindCampaignToConnection_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConnectionID(?x) ^ UserName(?y) ^ CampaignID(?z) ^ PassWord(?w) ^ string(?x) ^ string(?y) ^ string(?z) ^ string(?w)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ string(?result) ^ bindCampaignToConnection(?x, ?y, ?z, ?w, ?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_4_SendSMS_Advanced1_Atomic">
+    <process:hasName>SendSMS_Advanced1</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_FromNr__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_FromAlpha__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_TeleOp__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_Nrq__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_MsgID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_input_PriceGroup__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced1(Msg, UserName, FromNr, FromAlpha, TeleOp, CampaignID, Tel, Nrq, PassWord, MsgID, PriceGroup)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body = string</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_5_SendSMS_Advanced2_Atomic">
+    <process:hasName>SendSMS_Advanced2</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_FromNr__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_FromAlpha__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_TeleOp__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_Nrq__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_MsgID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_PriceGroup__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_input_DeliveryEmailAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced2(Msg, UserName, FromNr, FromAlpha, TeleOp, CampaignID, Tel, Nrq, PassWord, MsgID, PriceGroup, DeliveryEmailAddress)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body = string</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_6_SendSMS_Simple1_Atomic">
+    <process:hasName>SendSMS_Simple1</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_6_SendSMS_Simple1_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_6_SendSMS_Simple1_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_6_SendSMS_Simple1_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_6_SendSMS_Simple1_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_Service_6_SendSMS_Simple1_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Msg(Msg) ^ UserName(UserName) ^ Tel(Tel) ^ PassWord(PassWord)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(SendSMS_Simple1, "string")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_7_checkPrefix_Atomic">
+    <process:hasName>checkPrefix</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_7_checkPrefix_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__checkPrefix"/>
+    <process:hasOutput rdf:resource="#SMS_Service_7_checkPrefix_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__checkPrefixResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasParameter(checkPrefix, parameters, "http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=checkPrefix")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasParameter(checkPrefixResponse, parameters, "http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=checkPrefixResponse")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_8_createPrefix_Atomic">
+    <process:hasName>createPrefix</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_8_createPrefix_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__createPrefix"/>
+    <process:hasOutput rdf:resource="#SMS_Service_8_createPrefix_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__createPrefixResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasParameter(http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=createPrefix, parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}createPrefix)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasParameter(http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=createPrefixResponse, parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}createPrefixResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_9_createCampaign_Atomic">
+    <process:hasName>createCampaign</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_9_createCampaign_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__createCampaign"/>
+    <process:hasOutput rdf:resource="#SMS_Service_9_createCampaign_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__createCampaignResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">createCampaign(parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}createCampaign)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">createCampaignResponse(parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}createCampaignResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_10_bindCampaignToConnection_Atomic">
+    <process:hasName>bindCampaignToConnection</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_10_bindCampaignToConnection_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__bindCampaignToConnection"/>
+    <process:hasOutput rdf:resource="#SMS_Service_10_bindCampaignToConnection_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__bindCampaignToConnectionResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bindCampaignToConnection(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bindCampaignToConnectionResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_11_SendSMS_Advanced1_Atomic">
+    <process:hasName>SendSMS_Advanced1</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_11_SendSMS_Advanced1_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Advanced1"/>
+    <process:hasOutput rdf:resource="#SMS_Service_11_SendSMS_Advanced1_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Advanced1Response"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced1(parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}SendSMS_Advanced1)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced1Response(parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}SendSMS_Advanced1Response)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_12_SendSMS_Advanced2_Atomic">
+    <process:hasName>SendSMS_Advanced2</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_12_SendSMS_Advanced2_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Advanced2"/>
+    <process:hasOutput rdf:resource="#SMS_Service_12_SendSMS_Advanced2_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Advanced2Response"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced2(parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}SendSMS_Advanced2)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced2Response(parameters:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}SendSMS_Advanced2Response)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_13_SendSMS_Simple1_Atomic">
+    <process:hasName>SendSMS_Simple1</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_13_SendSMS_Simple1_Atomic_input_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Simple1"/>
+    <process:hasOutput rdf:resource="#SMS_Service_13_SendSMS_Simple1_Atomic_output_parameters__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__SendSMS_Simple1Response"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Simple1(parameters)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Simple1Response(parameters)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_14_checkPrefix_Atomic">
+    <process:hasName>checkPrefix</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_14_checkPrefix_Atomic_input_CountryID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_14_checkPrefix_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_14_checkPrefix_Atomic_input_AccessNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_14_checkPrefix_Atomic_input_Prefix__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_14_checkPrefix_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_Service_14_checkPrefix_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CountryID(?x) ^ UserName(?y) ^ AccessNumber(?z) ^ Prefix(?p) ^ PassWord(?w) ^ checkPrefix(?x, ?y, ?z, ?p, ?w)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasValue(?result, "string") ^ checkPrefix(?x, ?y, ?z, ?p, ?w) ^ hasOutput(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_15_createPrefix_Atomic">
+    <process:hasName>createPrefix</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_15_createPrefix_Atomic_input_CountryID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_15_createPrefix_Atomic_input_TypeID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_15_createPrefix_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_15_createPrefix_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_15_createPrefix_Atomic_input_AccessNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_15_createPrefix_Atomic_input_Prefix__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_15_createPrefix_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_Service_15_createPrefix_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CountryID:{http://www.w3.org/2001/XMLSchema}string and TypeID:{http://www.w3.org/2001/XMLSchema}string and UserName:{http://www.w3.org/2001/XMLSchema}string and CampaignID:{http://www.w3.org/2001/XMLSchema}string and AccessNumber:{http://www.w3.org/2001/XMLSchema}string and Prefix:{http://www.w3.org/2001/XMLSchema}string and PassWord:{http://www.w3.org/2001/XMLSchema}string</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body:{http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_16_createCampaign_Atomic">
+    <process:hasName>createCampaign</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_16_createCampaign_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_16_createCampaign_Atomic_input_CampaignName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_16_createCampaign_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_Service_16_createCampaign_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(hasDataType UserName {http://www.w3.org/2001/XMLSchema}string) ^ (hasDataType CampaignName {http://www.w3.org/2001/XMLSchema}string) ^ (hasDataType PassWord {http://www.w3.org/2001/XMLSchema}string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(hasDataType Body {http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=}string)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_17_bindCampaignToConnection_Atomic">
+    <process:hasName>bindCampaignToConnection</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_17_bindCampaignToConnection_Atomic_input_ConnectionID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_17_bindCampaignToConnection_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_17_bindCampaignToConnection_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_17_bindCampaignToConnection_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_Service_17_bindCampaignToConnection_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConnectionID(?ConnectionID) ^ UserName(?UserName) ^ CampaignID(?CampaignID) ^ PassWord(?PassWord)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?Body)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_18_SendSMS_Advanced1_Atomic">
+    <process:hasName>SendSMS_Advanced1</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_FromNr__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_FromAlpha__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_TeleOp__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_Nrq__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_MsgID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_input_PriceGroup__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced1(Msg, UserName, FromNr, FromAlpha, TeleOp, CampaignID, Tel, Nrq, PassWord, MsgID, PriceGroup)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body = string</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_19_SendSMS_Advanced2_Atomic">
+    <process:hasName>SendSMS_Advanced2</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_FromNr__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_FromAlpha__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_TeleOp__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_Nrq__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_MsgID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_PriceGroup__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_input_DeliveryEmailAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendSMS_Advanced2(Msg, UserName, FromNr, FromAlpha, TeleOp, CampaignID, Tel, Nrq, PassWord, MsgID, PriceGroup, DeliveryEmailAddress)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body = string</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_Service_20_SendSMS_Simple1_Atomic">
+    <process:hasName>SendSMS_Simple1</process:hasName>
+    <process:hasInput rdf:resource="#SMS_Service_20_SendSMS_Simple1_Atomic_input_Msg__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_20_SendSMS_Simple1_Atomic_input_UserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_20_SendSMS_Simple1_Atomic_input_Tel__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_Service_20_SendSMS_Simple1_Atomic_input_PassWord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_Service_20_SendSMS_Simple1_Atomic_output_Body__http___extra.vianett.no_webservices_vianett_sms_service_SMS_Service.asmx_op__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Msg(Msg) ^ UserName(UserName) ^ Tel(Tel) ^ PassWord(PassWord)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(SendSMS_Simple1, "string")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="SMS_Service_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_0_checkPrefix_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_1_createPrefix_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_2_createCampaign_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_3_bindCampaignToConnection_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_6_SendSMS_Simple1_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_7_checkPrefix_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_8_createPrefix_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_9_createCampaign_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_10_bindCampaignToConnection_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_11_SendSMS_Advanced1_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_12_SendSMS_Advanced2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_13_SendSMS_Simple1_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_14_checkPrefix_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_15_createPrefix_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_16_createCampaign_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_17_bindCampaignToConnection_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_Service_20_SendSMS_Simple1_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_0_checkPrefix_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_0_checkPrefix_Atomic"/>
+    <grounding:wsdlOperationName>checkPrefix</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>checkPrefixHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>checkPrefixHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_1_createPrefix_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_1_createPrefix_Atomic"/>
+    <grounding:wsdlOperationName>createPrefix</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>createPrefixHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>createPrefixHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_2_createCampaign_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_2_createCampaign_Atomic"/>
+    <grounding:wsdlOperationName>createCampaign</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>createCampaignHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>createCampaignHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_3_bindCampaignToConnection_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_3_bindCampaignToConnection_Atomic"/>
+    <grounding:wsdlOperationName>bindCampaignToConnection</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>bindCampaignToConnectionHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>bindCampaignToConnectionHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_4_SendSMS_Advanced1_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_4_SendSMS_Advanced1_Atomic"/>
+    <grounding:wsdlOperationName>SendSMS_Advanced1</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMS_Advanced1HttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMS_Advanced1HttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_5_SendSMS_Advanced2_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_5_SendSMS_Advanced2_Atomic"/>
+    <grounding:wsdlOperationName>SendSMS_Advanced2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMS_Advanced2HttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMS_Advanced2HttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_6_SendSMS_Simple1_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_6_SendSMS_Simple1_Atomic"/>
+    <grounding:wsdlOperationName>SendSMS_Simple1</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMS_Simple1HttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMS_Simple1HttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_7_checkPrefix_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_7_checkPrefix_Atomic"/>
+    <grounding:wsdlOperationName>checkPrefix</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>checkPrefixSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>checkPrefixSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_8_createPrefix_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_8_createPrefix_Atomic"/>
+    <grounding:wsdlOperationName>createPrefix</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>createPrefixSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>createPrefixSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_9_createCampaign_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_9_createCampaign_Atomic"/>
+    <grounding:wsdlOperationName>createCampaign</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>createCampaignSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>createCampaignSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_10_bindCampaignToConnection_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_10_bindCampaignToConnection_Atomic"/>
+    <grounding:wsdlOperationName>bindCampaignToConnection</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>bindCampaignToConnectionSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>bindCampaignToConnectionSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_11_SendSMS_Advanced1_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_11_SendSMS_Advanced1_Atomic"/>
+    <grounding:wsdlOperationName>SendSMS_Advanced1</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMS_Advanced1SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMS_Advanced1SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_12_SendSMS_Advanced2_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_12_SendSMS_Advanced2_Atomic"/>
+    <grounding:wsdlOperationName>SendSMS_Advanced2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMS_Advanced2SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMS_Advanced2SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_13_SendSMS_Simple1_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_13_SendSMS_Simple1_Atomic"/>
+    <grounding:wsdlOperationName>SendSMS_Simple1</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMS_Simple1SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMS_Simple1SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_14_checkPrefix_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_14_checkPrefix_Atomic"/>
+    <grounding:wsdlOperationName>checkPrefix</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>checkPrefixHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>checkPrefixHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_15_createPrefix_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_15_createPrefix_Atomic"/>
+    <grounding:wsdlOperationName>createPrefix</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>createPrefixHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>createPrefixHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_16_createCampaign_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_16_createCampaign_Atomic"/>
+    <grounding:wsdlOperationName>createCampaign</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>createCampaignHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>createCampaignHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_17_bindCampaignToConnection_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_17_bindCampaignToConnection_Atomic"/>
+    <grounding:wsdlOperationName>bindCampaignToConnection</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>bindCampaignToConnectionHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>bindCampaignToConnectionHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_18_SendSMS_Advanced1_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_18_SendSMS_Advanced1_Atomic"/>
+    <grounding:wsdlOperationName>SendSMS_Advanced1</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMS_Advanced1HttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMS_Advanced1HttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_19_SendSMS_Advanced2_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_19_SendSMS_Advanced2_Atomic"/>
+    <grounding:wsdlOperationName>SendSMS_Advanced2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMS_Advanced2HttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMS_Advanced2HttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_Service_20_SendSMS_Simple1_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_Service_20_SendSMS_Simple1_Atomic"/>
+    <grounding:wsdlOperationName>SendSMS_Simple1</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMS_ServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMS_ServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2093_2092.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMS_Simple1HttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMS_Simple1HttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
