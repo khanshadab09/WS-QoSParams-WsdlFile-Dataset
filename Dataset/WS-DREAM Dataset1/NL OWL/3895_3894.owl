@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="StockServices">
+    <service:presents rdf:resource="#StockServices_Profile"/>
+    <service:describedBy rdf:resource="#StockServices_Composite"/>
+    <service:supports rdf:resource="#StockServices_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="StockServices_Profile">
+    <profile:serviceName>StockServices</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#StockServices"/>
+    <profile:hasProcess rdf:resource="#StockServices_0_StockPriceRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#StockServices_0_StockPriceRequest_Atomic_input_CustID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StockServices_0_StockPriceRequest_Atomic_input_SystemID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StockServices_0_StockPriceRequest_Atomic_input_Quantity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StockServices_0_StockPriceRequest_Atomic_input_ItemID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StockServices_0_StockPriceRequest_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#StockServices_0_StockPriceRequest_Atomic_output_Body__http___edi.btol.com_StockCheck"/>
+    <profile:hasPrecondition>The customer must be authenticated and authorized to request stock price information.</profile:hasPrecondition>
+    <profile:hasResult>The system will provide a response containing the stock availability and pricing information for the requested item.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#StockServices_1_StockPriceRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#StockServices_1_StockPriceRequest_Atomic_input_parameters__http___edi.btol.com_StockPriceRequest"/>
+    <profile:hasOutput rdf:resource="#StockServices_1_StockPriceRequest_Atomic_output_parameters__http___edi.btol.com_StockPriceRequestResponse"/>
+    <profile:hasPrecondition>The client sends a request for stock price information in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The server responds with the requested stock price information in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#StockServices_2_StockPriceRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#StockServices_2_StockPriceRequest_Atomic_input_CustID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StockServices_2_StockPriceRequest_Atomic_input_SystemID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StockServices_2_StockPriceRequest_Atomic_input_Quantity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StockServices_2_StockPriceRequest_Atomic_input_ItemID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#StockServices_2_StockPriceRequest_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#StockServices_2_StockPriceRequest_Atomic_output_Body__http___edi.btol.com_StockCheck"/>
+    <profile:hasPrecondition>The customer must provide valid credentials and item details to request a stock price check.</profile:hasPrecondition>
+    <profile:hasResult>The system will return the stock availability and price information for the requested item.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="StockServices_Composite">
+    <process:composedOf rdf:resource="#StockServices_0_StockPriceRequest_Atomic"/>
+    <process:composedOf rdf:resource="#StockServices_1_StockPriceRequest_Atomic"/>
+    <process:composedOf rdf:resource="#StockServices_2_StockPriceRequest_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="StockServices_0_StockPriceRequest_Atomic_input_CustID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CustID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StockServices_0_StockPriceRequest_Atomic_input_SystemID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>SystemID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StockServices_0_StockPriceRequest_Atomic_input_Quantity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Quantity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StockServices_0_StockPriceRequest_Atomic_input_ItemID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ItemID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StockServices_0_StockPriceRequest_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="StockServices_0_StockPriceRequest_Atomic_output_Body__http___edi.btol.com_StockCheck">
+    <process:parameterType>Body:{http://edi.btol.com}StockCheck</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="StockServices_1_StockPriceRequest_Atomic_input_parameters__http___edi.btol.com_StockPriceRequest">
+    <process:parameterType>parameters:{http://edi.btol.com}StockPriceRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="StockServices_1_StockPriceRequest_Atomic_output_parameters__http___edi.btol.com_StockPriceRequestResponse">
+    <process:parameterType>parameters:{http://edi.btol.com}StockPriceRequestResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="StockServices_2_StockPriceRequest_Atomic_input_CustID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CustID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StockServices_2_StockPriceRequest_Atomic_input_SystemID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>SystemID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StockServices_2_StockPriceRequest_Atomic_input_Quantity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Quantity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StockServices_2_StockPriceRequest_Atomic_input_ItemID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ItemID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="StockServices_2_StockPriceRequest_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="StockServices_2_StockPriceRequest_Atomic_output_Body__http___edi.btol.com_StockCheck">
+    <process:parameterType>Body:{http://edi.btol.com}StockCheck</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="StockServices_0_StockPriceRequest_Atomic">
+    <process:hasName>StockPriceRequest</process:hasName>
+    <process:hasInput rdf:resource="#StockServices_0_StockPriceRequest_Atomic_input_CustID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StockServices_0_StockPriceRequest_Atomic_input_SystemID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StockServices_0_StockPriceRequest_Atomic_input_Quantity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StockServices_0_StockPriceRequest_Atomic_input_ItemID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StockServices_0_StockPriceRequest_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#StockServices_0_StockPriceRequest_Atomic_output_Body__http___edi.btol.com_StockCheck"/>
+    <process:hasPrecondition>The customer must be authenticated and authorized to request stock price information.</process:hasPrecondition>
+    <process:hasEffect>The system will provide a response containing the stock availability and pricing information for the requested item.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="StockServices_1_StockPriceRequest_Atomic">
+    <process:hasName>StockPriceRequest</process:hasName>
+    <process:hasInput rdf:resource="#StockServices_1_StockPriceRequest_Atomic_input_parameters__http___edi.btol.com_StockPriceRequest"/>
+    <process:hasOutput rdf:resource="#StockServices_1_StockPriceRequest_Atomic_output_parameters__http___edi.btol.com_StockPriceRequestResponse"/>
+    <process:hasPrecondition>The client sends a request for stock price information in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The server responds with the requested stock price information in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="StockServices_2_StockPriceRequest_Atomic">
+    <process:hasName>StockPriceRequest</process:hasName>
+    <process:hasInput rdf:resource="#StockServices_2_StockPriceRequest_Atomic_input_CustID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StockServices_2_StockPriceRequest_Atomic_input_SystemID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StockServices_2_StockPriceRequest_Atomic_input_Quantity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StockServices_2_StockPriceRequest_Atomic_input_ItemID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#StockServices_2_StockPriceRequest_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#StockServices_2_StockPriceRequest_Atomic_output_Body__http___edi.btol.com_StockCheck"/>
+    <process:hasPrecondition>The customer must provide valid credentials and item details to request a stock price check.</process:hasPrecondition>
+    <process:hasEffect>The system will return the stock availability and price information for the requested item.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="StockServices_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#StockServices_0_StockPriceRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#StockServices_1_StockPriceRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#StockServices_2_StockPriceRequest_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="StockServices_0_StockPriceRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#StockServices_0_StockPriceRequest_Atomic"/>
+    <grounding:wsdlOperationName>StockPriceRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>StockServicesHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>StockServicesHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3895_3894.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>StockPriceRequestHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>StockPriceRequestHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="StockServices_1_StockPriceRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#StockServices_1_StockPriceRequest_Atomic"/>
+    <grounding:wsdlOperationName>StockPriceRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>StockServicesSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>StockServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3895_3894.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>StockPriceRequestSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>StockPriceRequestSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="StockServices_2_StockPriceRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#StockServices_2_StockPriceRequest_Atomic"/>
+    <grounding:wsdlOperationName>StockPriceRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>StockServicesHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>StockServicesHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3895_3894.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>StockPriceRequestHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>StockPriceRequestHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

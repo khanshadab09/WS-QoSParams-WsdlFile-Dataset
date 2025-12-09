@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Account">
+    <service:presents rdf:resource="#Account_Profile"/>
+    <service:describedBy rdf:resource="#Account_Composite"/>
+    <service:supports rdf:resource="#Account_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Account_Profile">
+    <profile:serviceName>Account</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Account"/>
+    <profile:hasProcess rdf:resource="#Account_0_GetBalance_Atomic"/>
+    <profile:hasInput rdf:resource="#Account_0_GetBalance_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__GetBalance"/>
+    <profile:hasOutput rdf:resource="#Account_0_GetBalance_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__GetBalanceResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to access the GetBalance operation.</profile:hasPrecondition>
+    <profile:hasResult>The GetBalance operation will return the current balance associated with the user's account.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Account_1_Verify_Atomic"/>
+    <profile:hasInput rdf:resource="#Account_1_Verify_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__Verify"/>
+    <profile:hasOutput rdf:resource="#Account_1_Verify_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__VerifyResponse"/>
+    <profile:hasPrecondition>The input parameters must conform to the specified structure defined by the http://www.2sms.com/WebServices/2.0/Simple/Verify schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response conforming to the structure defined by the http://www.2sms.com/WebServices/2.0/Simple/VerifyResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Account_2_Validate_Atomic"/>
+    <profile:hasInput rdf:resource="#Account_2_Validate_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__Validate"/>
+    <profile:hasOutput rdf:resource="#Account_2_Validate_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__ValidateResponse"/>
+    <profile:hasPrecondition>The input parameters must conform to the specified structure defined by the http://www.2sms.com/WebServices/2.0/Simple/Validate schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response conforming to the structure defined by the http://www.2sms.com/WebServices/2.0/Simple/ValidateResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Account_3_Open_Atomic"/>
+    <profile:hasInput rdf:resource="#Account_3_Open_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__Open"/>
+    <profile:hasOutput rdf:resource="#Account_3_Open_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__OpenResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the necessary authentication credentials must be provided.</profile:hasPrecondition>
+    <profile:hasResult>Initiates the process of opening a connection or resource specified by the input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Account_4_Modify_Atomic"/>
+    <profile:hasInput rdf:resource="#Account_4_Modify_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__Modify"/>
+    <profile:hasOutput rdf:resource="#Account_4_Modify_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__ModifyResponse"/>
+    <profile:hasPrecondition>The input parameters for the Modify operation must conform to the specified structure defined by the http://www.2sms.com/WebServices/2.0/Simple/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The Modify operation will return a response conforming to the structure defined by the http://www.2sms.com/WebServices/2.0/Simple/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Account_5_ListSubAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#Account_5_ListSubAccount_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__ListSubAccount"/>
+    <profile:hasOutput rdf:resource="#Account_5_ListSubAccount_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__ListSubAccountResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to access sub-account information.</profile:hasPrecondition>
+    <profile:hasResult>Returns a list of sub-accounts associated with the authenticated user.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Account_6_SubAccountGiveCredit_Atomic"/>
+    <profile:hasInput rdf:resource="#Account_6_SubAccountGiveCredit_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__SubAccountGiveCredit"/>
+    <profile:hasOutput rdf:resource="#Account_6_SubAccountGiveCredit_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__SubAccountGiveCreditResponse"/>
+    <profile:hasPrecondition>The user must have the necessary permissions to modify the credit balance of a subaccount.</profile:hasPrecondition>
+    <profile:hasResult>The credit balance of the specified subaccount is updated with the given amount.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Account_Composite">
+    <process:composedOf rdf:resource="#Account_0_GetBalance_Atomic"/>
+    <process:composedOf rdf:resource="#Account_1_Verify_Atomic"/>
+    <process:composedOf rdf:resource="#Account_2_Validate_Atomic"/>
+    <process:composedOf rdf:resource="#Account_3_Open_Atomic"/>
+    <process:composedOf rdf:resource="#Account_4_Modify_Atomic"/>
+    <process:composedOf rdf:resource="#Account_5_ListSubAccount_Atomic"/>
+    <process:composedOf rdf:resource="#Account_6_SubAccountGiveCredit_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Account_0_GetBalance_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__GetBalance">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/}GetBalance</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Account_0_GetBalance_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__GetBalanceResponse">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/}GetBalanceResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Account_1_Verify_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__Verify">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/}Verify</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Account_1_Verify_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__VerifyResponse">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/}VerifyResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Account_2_Validate_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__Validate">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/}Validate</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Account_2_Validate_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__ValidateResponse">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/}ValidateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Account_3_Open_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__Open">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/}Open</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Account_3_Open_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__OpenResponse">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/}OpenResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Account_4_Modify_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__Modify">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/}Modify</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Account_4_Modify_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__ModifyResponse">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/}ModifyResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Account_5_ListSubAccount_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__ListSubAccount">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/}ListSubAccount</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Account_5_ListSubAccount_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__ListSubAccountResponse">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/}ListSubAccountResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Account_6_SubAccountGiveCredit_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__SubAccountGiveCredit">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/}SubAccountGiveCredit</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Account_6_SubAccountGiveCredit_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__SubAccountGiveCreditResponse">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/}SubAccountGiveCreditResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Account_0_GetBalance_Atomic">
+    <process:hasName>GetBalance</process:hasName>
+    <process:hasInput rdf:resource="#Account_0_GetBalance_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__GetBalance"/>
+    <process:hasOutput rdf:resource="#Account_0_GetBalance_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__GetBalanceResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to access the GetBalance operation.</process:hasPrecondition>
+    <process:hasEffect>The GetBalance operation will return the current balance associated with the user's account.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Account_1_Verify_Atomic">
+    <process:hasName>Verify</process:hasName>
+    <process:hasInput rdf:resource="#Account_1_Verify_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__Verify"/>
+    <process:hasOutput rdf:resource="#Account_1_Verify_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__VerifyResponse"/>
+    <process:hasPrecondition>The input parameters must conform to the specified structure defined by the http://www.2sms.com/WebServices/2.0/Simple/Verify schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response conforming to the structure defined by the http://www.2sms.com/WebServices/2.0/Simple/VerifyResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Account_2_Validate_Atomic">
+    <process:hasName>Validate</process:hasName>
+    <process:hasInput rdf:resource="#Account_2_Validate_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__Validate"/>
+    <process:hasOutput rdf:resource="#Account_2_Validate_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__ValidateResponse"/>
+    <process:hasPrecondition>The input parameters must conform to the specified structure defined by the http://www.2sms.com/WebServices/2.0/Simple/Validate schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response conforming to the structure defined by the http://www.2sms.com/WebServices/2.0/Simple/ValidateResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Account_3_Open_Atomic">
+    <process:hasName>Open</process:hasName>
+    <process:hasInput rdf:resource="#Account_3_Open_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__Open"/>
+    <process:hasOutput rdf:resource="#Account_3_Open_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__OpenResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the necessary authentication credentials must be provided.</process:hasPrecondition>
+    <process:hasEffect>Initiates the process of opening a connection or resource specified by the input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Account_4_Modify_Atomic">
+    <process:hasName>Modify</process:hasName>
+    <process:hasInput rdf:resource="#Account_4_Modify_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__Modify"/>
+    <process:hasOutput rdf:resource="#Account_4_Modify_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__ModifyResponse"/>
+    <process:hasPrecondition>The input parameters for the Modify operation must conform to the specified structure defined by the http://www.2sms.com/WebServices/2.0/Simple/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The Modify operation will return a response conforming to the structure defined by the http://www.2sms.com/WebServices/2.0/Simple/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Account_5_ListSubAccount_Atomic">
+    <process:hasName>ListSubAccount</process:hasName>
+    <process:hasInput rdf:resource="#Account_5_ListSubAccount_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__ListSubAccount"/>
+    <process:hasOutput rdf:resource="#Account_5_ListSubAccount_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__ListSubAccountResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to access sub-account information.</process:hasPrecondition>
+    <process:hasEffect>Returns a list of sub-accounts associated with the authenticated user.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Account_6_SubAccountGiveCredit_Atomic">
+    <process:hasName>SubAccountGiveCredit</process:hasName>
+    <process:hasInput rdf:resource="#Account_6_SubAccountGiveCredit_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple__SubAccountGiveCredit"/>
+    <process:hasOutput rdf:resource="#Account_6_SubAccountGiveCredit_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple__SubAccountGiveCreditResponse"/>
+    <process:hasPrecondition>The user must have the necessary permissions to modify the credit balance of a subaccount.</process:hasPrecondition>
+    <process:hasEffect>The credit balance of the specified subaccount is updated with the given amount.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Account_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Account_0_GetBalance_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Account_1_Verify_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Account_2_Validate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Account_3_Open_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Account_4_Modify_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Account_5_ListSubAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Account_6_SubAccountGiveCredit_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Account_0_GetBalance_Grounding">
+    <grounding:owlsProcess rdf:resource="#Account_0_GetBalance_Atomic"/>
+    <grounding:wsdlOperationName>GetBalance</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AccountSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AccountSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3925_3924.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBalanceSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBalanceSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Account_1_Verify_Grounding">
+    <grounding:owlsProcess rdf:resource="#Account_1_Verify_Atomic"/>
+    <grounding:wsdlOperationName>Verify</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AccountSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AccountSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3925_3924.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VerifySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VerifySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Account_2_Validate_Grounding">
+    <grounding:owlsProcess rdf:resource="#Account_2_Validate_Atomic"/>
+    <grounding:wsdlOperationName>Validate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AccountSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AccountSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3925_3924.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Account_3_Open_Grounding">
+    <grounding:owlsProcess rdf:resource="#Account_3_Open_Atomic"/>
+    <grounding:wsdlOperationName>Open</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AccountSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AccountSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3925_3924.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OpenSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OpenSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Account_4_Modify_Grounding">
+    <grounding:owlsProcess rdf:resource="#Account_4_Modify_Atomic"/>
+    <grounding:wsdlOperationName>Modify</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AccountSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AccountSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3925_3924.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ModifySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ModifySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Account_5_ListSubAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#Account_5_ListSubAccount_Atomic"/>
+    <grounding:wsdlOperationName>ListSubAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AccountSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AccountSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3925_3924.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListSubAccountSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListSubAccountSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Account_6_SubAccountGiveCredit_Grounding">
+    <grounding:owlsProcess rdf:resource="#Account_6_SubAccountGiveCredit_Atomic"/>
+    <grounding:wsdlOperationName>SubAccountGiveCredit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AccountSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AccountSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3925_3924.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SubAccountGiveCreditSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SubAccountGiveCreditSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,1605 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="DOTSGeoCoder">
+    <service:presents rdf:resource="#DOTSGeoCoder_Profile"/>
+    <service:describedBy rdf:resource="#DOTSGeoCoder_Composite"/>
+    <service:supports rdf:resource="#DOTSGeoCoder_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="DOTSGeoCoder_Profile">
+    <profile:serviceName>DOTSGeoCoder</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#DOTSGeoCoder"/>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_0_GetGeoLocation_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_0_GetGeoLocation_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocation"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_0_GetGeoLocation_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationResponse"/>
+    <profile:hasPrecondition>The input parameters must include valid location information in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the geographic location details corresponding to the input location information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_1_GetGeoLocationByZipPlusFour_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_1_GetGeoLocationByZipPlusFour_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocationByZipPlusFour"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_1_GetGeoLocationByZipPlusFour_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationByZipPlusFourResponse"/>
+    <profile:hasPrecondition>The input parameter must contain a valid ZIP+4 code for the desired location.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the geographic location information corresponding to the provided ZIP+4 code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_2_GetGeoLocationByZipPlusTwo_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_2_GetGeoLocationByZipPlusTwo_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocationByZipPlusTwo"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_2_GetGeoLocationByZipPlusTwo_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationByZipPlusTwoResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid ZIP+2 code.</profile:hasPrecondition>
+    <profile:hasResult>The operation returns the geographic location corresponding to the provided ZIP+2 code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_3_GetGeoLocationByCityState_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_3_GetGeoLocationByCityState_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocationByCityState"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_3_GetGeoLocationByCityState_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationByCityStateResponse"/>
+    <profile:hasPrecondition>The input parameters must include a valid city and state combination.</profile:hasPrecondition>
+    <profile:hasResult>The output will provide the geographic location coordinates for the specified city and state.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_4_GetBestMatch_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_4_GetBestMatch_Atomic_input_parameters__http___www.serviceobjects.com__GetBestMatch"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_4_GetBestMatch_Atomic_output_parameters__http___www.serviceobjects.com__GetBestMatchResponse"/>
+    <profile:hasPrecondition>The input parameters for GetBestMatch must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters in GetBestMatchResponse will be returned according to the input provided.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_5_GetBestMatch_V2_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_5_GetBestMatch_V2_Atomic_input_parameters__http___www.serviceobjects.com__GetBestMatch_V2"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_5_GetBestMatch_V2_Atomic_output_parameters__http___www.serviceobjects.com__GetBestMatch_V2Response"/>
+    <profile:hasPrecondition>The input parameters for GetBestMatch_V2 must be provided in the specified format from http://www.serviceobjects.com/.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for GetBestMatch_V2Response will be returned in the specified format from http://www.serviceobjects.com/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_6_GetBestMatch_V3_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_6_GetBestMatch_V3_Atomic_input_parameters__http___www.serviceobjects.com__GetBestMatch_V3"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_6_GetBestMatch_V3_Atomic_output_parameters__http___www.serviceobjects.com__GetBestMatch_V3Response"/>
+    <profile:hasPrecondition>The input parameters for GetBestMatch_V3 must be provided in the specified format from the http://www.serviceobjects.com/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for GetBestMatch_V3Response will be returned in the specified format from the http://www.serviceobjects.com/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_7_GetZipInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_7_GetZipInfo_Atomic_input_parameters__http___www.serviceobjects.com__GetZipInfo"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_7_GetZipInfo_Atomic_output_parameters__http___www.serviceobjects.com__GetZipInfoResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid ZIP code.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter will contain information related to the specified ZIP code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_8_GetGeoLocationWorldwide_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_8_GetGeoLocationWorldwide_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocationWorldwide"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_8_GetGeoLocationWorldwide_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationWorldwideResponse"/>
+    <profile:hasPrecondition>The user must provide valid input parameters for the GetGeoLocationWorldwide operation.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the geographical location information for the specified worldwide location.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_9_GetReverseLocation_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_9_GetReverseLocation_Atomic_input_parameters__http___www.serviceobjects.com__GetReverseLocation"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_9_GetReverseLocation_Atomic_output_parameters__http___www.serviceobjects.com__GetReverseLocationResponse"/>
+    <profile:hasPrecondition>The input parameter for GetReverseLocation must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter for GetReverseLocationResponse will be returned in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_10_GetDistanceToWater_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_10_GetDistanceToWater_Atomic_input_parameters__http___www.serviceobjects.com__GetDistanceToWater"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_10_GetDistanceToWater_Atomic_output_parameters__http___www.serviceobjects.com__GetDistanceToWaterResponse"/>
+    <profile:hasPrecondition>The input parameters must be in the format specified by the GetDistanceToWater service from http://www.serviceobjects.com/.</profile:hasPrecondition>
+    <profile:hasResult>The output will be in the format specified by the GetDistanceToWaterResponse service from http://www.serviceobjects.com/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_11_GetDistanceToWaterByAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_11_GetDistanceToWaterByAddress_Atomic_input_parameters__http___www.serviceobjects.com__GetDistanceToWaterByAddress"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_11_GetDistanceToWaterByAddress_Atomic_output_parameters__http___www.serviceobjects.com__GetDistanceToWaterByAddressResponse"/>
+    <profile:hasPrecondition>The address must be valid and accurately formatted.</profile:hasPrecondition>
+    <profile:hasResult>Returns the distance to the nearest body of water from the specified address.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_12_GetDistance_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_12_GetDistance_Atomic_input_parameters__http___www.serviceobjects.com__GetDistance"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_12_GetDistance_Atomic_output_parameters__http___www.serviceobjects.com__GetDistanceResponse"/>
+    <profile:hasPrecondition>The input parameters must be in the format specified by the http://www.serviceobjects.com/GetDistance schema.</profile:hasPrecondition>
+    <profile:hasResult>The output will be in the format specified by the http://www.serviceobjects.com/GetDistanceResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <profile:hasPrecondition>The user must provide a valid Address, State, PostalCode, City, and LicenseKey inputs.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the geographic location information for the provided address.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <profile:hasPrecondition>The PostalCode and LicenseKey inputs must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the geographic location associated with the provided PostalCode and LicenseKey.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <profile:hasPrecondition>The PostalCode and LicenseKey parameters must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the geographic location associated with the provided PostalCode and LicenseKey.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <profile:hasPrecondition>The user must provide a valid State, City, and LicenseKey as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the geographical location information for the specified City and State using the provided LicenseKey.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <profile:hasPrecondition>The user must provide a valid Address, State, PostalCode, City, and LicenseKey inputs.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the best match Location based on the provided inputs.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <profile:hasPrecondition>The input Address, State, PostalCode, City, and LicenseKey must be provided in the specified data format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the best match location based on the provided input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic_output_Body__http___www.serviceobjects.com__Location_V3"/>
+    <profile:hasPrecondition>The input parameters must include a valid Address, State, PostalCode, City, and LicenseKey.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the best match for the provided location details in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_20_GetZipInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_20_GetZipInfo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_20_GetZipInfo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_20_GetZipInfo_Atomic_output_Body__http___www.serviceobjects.com__ZipCodeInfo"/>
+    <profile:hasPrecondition>The user must provide a valid PostalCode and a valid LicenseKey in order to access the GetZipInfo operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return detailed information about the specified PostalCode in the form of ZipCodeInfo.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_input_Region__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_output_Body__http___www.serviceobjects.com__ArrayOfGeocodeCityWorldwideInfo"/>
+    <profile:hasPrecondition>The user must provide valid values for Region, Country, City, and LicenseKey parameters.</profile:hasPrecondition>
+    <profile:hasResult>The service will return an array of geolocation information for cities worldwide based on the provided input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_22_GetReverseLocation_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_22_GetReverseLocation_Atomic_input_Latitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_22_GetReverseLocation_Atomic_input_Longitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_22_GetReverseLocation_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_22_GetReverseLocation_Atomic_output_Body__http___www.serviceobjects.com__ReverseAddress"/>
+    <profile:hasPrecondition>The Latitude and Longitude values must be valid strings and the LicenseKey must be a valid string provided by the service provider.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a ReverseAddress object containing the reverse geocoded location information based on the provided Latitude and Longitude values.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_23_GetDistanceToWater_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_23_GetDistanceToWater_Atomic_input_Latitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_23_GetDistanceToWater_Atomic_input_Longitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_23_GetDistanceToWater_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_23_GetDistanceToWater_Atomic_output_Body__http___www.serviceobjects.com__DistanceToWaterInfo"/>
+    <profile:hasPrecondition>The user must provide valid latitude, longitude, and a valid license key for the operation to execute successfully.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return information about the distance to the nearest body of water based on the provided latitude and longitude.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_output_Body__http___www.serviceobjects.com__DistanceToWaterInfo"/>
+    <profile:hasPrecondition>The user must provide a valid address, state, postal code, city, and a valid license key for the service.</profile:hasPrecondition>
+    <profile:hasResult>The service will return information about the distance to the nearest body of water based on the provided address.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic_input_ToLongitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic_input_FromLongitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic_input_FromLatitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic_input_ToLatitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic_output_Body__http___www.serviceobjects.com__DistanceBetweenInfo"/>
+    <profile:hasPrecondition>The user must provide valid longitude and latitude coordinates, as well as a valid license key for the service.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the distance between the specified coordinates in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <profile:hasPrecondition>The user must provide a valid Address, State, PostalCode, City, and LicenseKey inputs.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the geographic location information associated with the provided address.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <profile:hasPrecondition>The user must provide a valid PostalCode and a valid LicenseKey in the request.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the geographic location associated with the provided PostalCode and LicenseKey.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <profile:hasPrecondition>The PostalCode and LicenseKey must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the geographic location corresponding to the given PostalCode and LicenseKey.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <profile:hasPrecondition>The user must provide a valid State, City, and LicenseKey inputs in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the geographic location information for the specified City and State using the provided LicenseKey.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <profile:hasPrecondition>The user must provide a valid Address, State, PostalCode, City, and LicenseKey inputs.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the best matching Location based on the provided address information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <profile:hasPrecondition>The input Address, State, PostalCode, City, and LicenseKey must be provided in the specified data format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the best match for the provided location details in the form of a Location object.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic_output_Body__http___www.serviceobjects.com__Location_V3"/>
+    <profile:hasPrecondition>The input parameters Address, State, PostalCode, City, and LicenseKey must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the best match location based on the provided address information in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_33_GetZipInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_33_GetZipInfo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_33_GetZipInfo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_33_GetZipInfo_Atomic_output_Body__http___www.serviceobjects.com__ZipCodeInfo"/>
+    <profile:hasPrecondition>The user must provide a valid PostalCode and a valid LicenseKey in order to access the GetZipInfo operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return detailed information about the specified PostalCode in the form of ZipCodeInfo.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_input_Region__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_output_Body__http___www.serviceobjects.com__ArrayOfGeocodeCityWorldwideInfo"/>
+    <profile:hasPrecondition>The user must provide valid values for Region, Country, City, and LicenseKey parameters.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of geolocation information for cities worldwide based on the provided input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_35_GetReverseLocation_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_35_GetReverseLocation_Atomic_input_Latitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_35_GetReverseLocation_Atomic_input_Longitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_35_GetReverseLocation_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_35_GetReverseLocation_Atomic_output_Body__http___www.serviceobjects.com__ReverseAddress"/>
+    <profile:hasPrecondition>The Latitude and Longitude values must be valid strings, and a valid LicenseKey must be provided.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a ReverseAddress object containing the reverse geocoded location information based on the provided Latitude and Longitude.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_36_GetDistanceToWater_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_36_GetDistanceToWater_Atomic_input_Latitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_36_GetDistanceToWater_Atomic_input_Longitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_36_GetDistanceToWater_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_36_GetDistanceToWater_Atomic_output_Body__http___www.serviceobjects.com__DistanceToWaterInfo"/>
+    <profile:hasPrecondition>The user must provide valid latitude, longitude, and a valid license key in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The service will return information about the distance to the nearest body of water based on the provided latitude and longitude.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_output_Body__http___www.serviceobjects.com__DistanceToWaterInfo"/>
+    <profile:hasPrecondition>The user must provide a valid address, state, postal code, city, and a valid license key for the request to be processed.</profile:hasPrecondition>
+    <profile:hasResult>The service will return information about the distance to the nearest body of water based on the provided address.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic_input_ToLongitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic_input_FromLongitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic_input_FromLatitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic_input_ToLatitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic_output_Body__http___www.serviceobjects.com__DistanceBetweenInfo"/>
+    <profile:hasPrecondition>The user must provide valid longitude and latitude coordinates for both the starting and ending locations, along with a valid license key.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the distance between the two locations in the specified format.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="DOTSGeoCoder_Composite">
+    <process:composedOf rdf:resource="#DOTSGeoCoder_0_GetGeoLocation_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_1_GetGeoLocationByZipPlusFour_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_2_GetGeoLocationByZipPlusTwo_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_3_GetGeoLocationByCityState_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_4_GetBestMatch_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_5_GetBestMatch_V2_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_6_GetBestMatch_V3_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_7_GetZipInfo_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_8_GetGeoLocationWorldwide_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_9_GetReverseLocation_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_10_GetDistanceToWater_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_11_GetDistanceToWaterByAddress_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_12_GetDistance_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_20_GetZipInfo_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_22_GetReverseLocation_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_23_GetDistanceToWater_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_33_GetZipInfo_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_35_GetReverseLocation_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_36_GetDistanceToWater_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="DOTSGeoCoder_0_GetGeoLocation_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocation">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetGeoLocation</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_0_GetGeoLocation_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetGeoLocationResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_1_GetGeoLocationByZipPlusFour_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocationByZipPlusFour">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetGeoLocationByZipPlusFour</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_1_GetGeoLocationByZipPlusFour_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationByZipPlusFourResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetGeoLocationByZipPlusFourResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_2_GetGeoLocationByZipPlusTwo_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocationByZipPlusTwo">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetGeoLocationByZipPlusTwo</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_2_GetGeoLocationByZipPlusTwo_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationByZipPlusTwoResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetGeoLocationByZipPlusTwoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_3_GetGeoLocationByCityState_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocationByCityState">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetGeoLocationByCityState</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_3_GetGeoLocationByCityState_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationByCityStateResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetGeoLocationByCityStateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_4_GetBestMatch_Atomic_input_parameters__http___www.serviceobjects.com__GetBestMatch">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetBestMatch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_4_GetBestMatch_Atomic_output_parameters__http___www.serviceobjects.com__GetBestMatchResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetBestMatchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_5_GetBestMatch_V2_Atomic_input_parameters__http___www.serviceobjects.com__GetBestMatch_V2">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetBestMatch_V2</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_5_GetBestMatch_V2_Atomic_output_parameters__http___www.serviceobjects.com__GetBestMatch_V2Response">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetBestMatch_V2Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_6_GetBestMatch_V3_Atomic_input_parameters__http___www.serviceobjects.com__GetBestMatch_V3">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetBestMatch_V3</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_6_GetBestMatch_V3_Atomic_output_parameters__http___www.serviceobjects.com__GetBestMatch_V3Response">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetBestMatch_V3Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_7_GetZipInfo_Atomic_input_parameters__http___www.serviceobjects.com__GetZipInfo">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetZipInfo</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_7_GetZipInfo_Atomic_output_parameters__http___www.serviceobjects.com__GetZipInfoResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetZipInfoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_8_GetGeoLocationWorldwide_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocationWorldwide">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetGeoLocationWorldwide</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_8_GetGeoLocationWorldwide_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationWorldwideResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetGeoLocationWorldwideResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_9_GetReverseLocation_Atomic_input_parameters__http___www.serviceobjects.com__GetReverseLocation">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetReverseLocation</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_9_GetReverseLocation_Atomic_output_parameters__http___www.serviceobjects.com__GetReverseLocationResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetReverseLocationResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_10_GetDistanceToWater_Atomic_input_parameters__http___www.serviceobjects.com__GetDistanceToWater">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetDistanceToWater</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_10_GetDistanceToWater_Atomic_output_parameters__http___www.serviceobjects.com__GetDistanceToWaterResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetDistanceToWaterResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_11_GetDistanceToWaterByAddress_Atomic_input_parameters__http___www.serviceobjects.com__GetDistanceToWaterByAddress">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetDistanceToWaterByAddress</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_11_GetDistanceToWaterByAddress_Atomic_output_parameters__http___www.serviceobjects.com__GetDistanceToWaterByAddressResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetDistanceToWaterByAddressResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_12_GetDistance_Atomic_input_parameters__http___www.serviceobjects.com__GetDistance">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetDistance</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_12_GetDistance_Atomic_output_parameters__http___www.serviceobjects.com__GetDistanceResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetDistanceResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_13_GetGeoLocation_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_13_GetGeoLocation_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_13_GetGeoLocation_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_13_GetGeoLocation_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_13_GetGeoLocation_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_13_GetGeoLocation_Atomic_output_Body__http___www.serviceobjects.com__Location">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}Location</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Atomic_output_Body__http___www.serviceobjects.com__Location">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}Location</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Atomic_output_Body__http___www.serviceobjects.com__Location">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}Location</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic_output_Body__http___www.serviceobjects.com__Location">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}Location</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_17_GetBestMatch_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_17_GetBestMatch_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_17_GetBestMatch_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_17_GetBestMatch_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_17_GetBestMatch_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_17_GetBestMatch_Atomic_output_Body__http___www.serviceobjects.com__Location">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}Location</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_18_GetBestMatch_V2_Atomic_output_Body__http___www.serviceobjects.com__Location">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}Location</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_19_GetBestMatch_V3_Atomic_output_Body__http___www.serviceobjects.com__Location_V3">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}Location_V3</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_20_GetZipInfo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_20_GetZipInfo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_20_GetZipInfo_Atomic_output_Body__http___www.serviceobjects.com__ZipCodeInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}ZipCodeInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_input_Region__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Region:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_output_Body__http___www.serviceobjects.com__ArrayOfGeocodeCityWorldwideInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}ArrayOfGeocodeCityWorldwideInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_22_GetReverseLocation_Atomic_input_Latitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Latitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_22_GetReverseLocation_Atomic_input_Longitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Longitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_22_GetReverseLocation_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_22_GetReverseLocation_Atomic_output_Body__http___www.serviceobjects.com__ReverseAddress">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}ReverseAddress</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_23_GetDistanceToWater_Atomic_input_Latitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Latitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_23_GetDistanceToWater_Atomic_input_Longitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Longitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_23_GetDistanceToWater_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_23_GetDistanceToWater_Atomic_output_Body__http___www.serviceobjects.com__DistanceToWaterInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}DistanceToWaterInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_output_Body__http___www.serviceobjects.com__DistanceToWaterInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}DistanceToWaterInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_25_GetDistance_Atomic_input_ToLongitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ToLongitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_25_GetDistance_Atomic_input_FromLongitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FromLongitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_25_GetDistance_Atomic_input_FromLatitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FromLatitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_25_GetDistance_Atomic_input_ToLatitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ToLatitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_25_GetDistance_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_25_GetDistance_Atomic_output_Body__http___www.serviceobjects.com__DistanceBetweenInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}DistanceBetweenInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_26_GetGeoLocation_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_26_GetGeoLocation_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_26_GetGeoLocation_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_26_GetGeoLocation_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_26_GetGeoLocation_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_26_GetGeoLocation_Atomic_output_Body__http___www.serviceobjects.com__Location">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}Location</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Atomic_output_Body__http___www.serviceobjects.com__Location">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}Location</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Atomic_output_Body__http___www.serviceobjects.com__Location">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}Location</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic_output_Body__http___www.serviceobjects.com__Location">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}Location</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_30_GetBestMatch_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_30_GetBestMatch_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_30_GetBestMatch_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_30_GetBestMatch_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_30_GetBestMatch_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_30_GetBestMatch_Atomic_output_Body__http___www.serviceobjects.com__Location">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}Location</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_31_GetBestMatch_V2_Atomic_output_Body__http___www.serviceobjects.com__Location">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}Location</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_32_GetBestMatch_V3_Atomic_output_Body__http___www.serviceobjects.com__Location_V3">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}Location_V3</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_33_GetZipInfo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_33_GetZipInfo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_33_GetZipInfo_Atomic_output_Body__http___www.serviceobjects.com__ZipCodeInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}ZipCodeInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_input_Region__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Region:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_output_Body__http___www.serviceobjects.com__ArrayOfGeocodeCityWorldwideInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}ArrayOfGeocodeCityWorldwideInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_35_GetReverseLocation_Atomic_input_Latitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Latitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_35_GetReverseLocation_Atomic_input_Longitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Longitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_35_GetReverseLocation_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_35_GetReverseLocation_Atomic_output_Body__http___www.serviceobjects.com__ReverseAddress">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}ReverseAddress</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_36_GetDistanceToWater_Atomic_input_Latitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Latitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_36_GetDistanceToWater_Atomic_input_Longitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Longitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_36_GetDistanceToWater_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_36_GetDistanceToWater_Atomic_output_Body__http___www.serviceobjects.com__DistanceToWaterInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}DistanceToWaterInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_output_Body__http___www.serviceobjects.com__DistanceToWaterInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}DistanceToWaterInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSGeoCoder_38_GetDistance_Atomic_input_ToLongitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ToLongitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_38_GetDistance_Atomic_input_FromLongitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FromLongitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_38_GetDistance_Atomic_input_FromLatitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FromLatitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_38_GetDistance_Atomic_input_ToLatitude__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ToLatitude:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSGeoCoder_38_GetDistance_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSGeoCoder_38_GetDistance_Atomic_output_Body__http___www.serviceobjects.com__DistanceBetweenInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}DistanceBetweenInfo</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_0_GetGeoLocation_Atomic">
+    <process:hasName>GetGeoLocation</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_0_GetGeoLocation_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocation"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_0_GetGeoLocation_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationResponse"/>
+    <process:hasPrecondition>The input parameters must include valid location information in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the geographic location details corresponding to the input location information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_1_GetGeoLocationByZipPlusFour_Atomic">
+    <process:hasName>GetGeoLocationByZipPlusFour</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_1_GetGeoLocationByZipPlusFour_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocationByZipPlusFour"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_1_GetGeoLocationByZipPlusFour_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationByZipPlusFourResponse"/>
+    <process:hasPrecondition>The input parameter must contain a valid ZIP+4 code for the desired location.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the geographic location information corresponding to the provided ZIP+4 code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_2_GetGeoLocationByZipPlusTwo_Atomic">
+    <process:hasName>GetGeoLocationByZipPlusTwo</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_2_GetGeoLocationByZipPlusTwo_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocationByZipPlusTwo"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_2_GetGeoLocationByZipPlusTwo_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationByZipPlusTwoResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid ZIP+2 code.</process:hasPrecondition>
+    <process:hasEffect>The operation returns the geographic location corresponding to the provided ZIP+2 code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_3_GetGeoLocationByCityState_Atomic">
+    <process:hasName>GetGeoLocationByCityState</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_3_GetGeoLocationByCityState_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocationByCityState"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_3_GetGeoLocationByCityState_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationByCityStateResponse"/>
+    <process:hasPrecondition>The input parameters must include a valid city and state combination.</process:hasPrecondition>
+    <process:hasEffect>The output will provide the geographic location coordinates for the specified city and state.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_4_GetBestMatch_Atomic">
+    <process:hasName>GetBestMatch</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_4_GetBestMatch_Atomic_input_parameters__http___www.serviceobjects.com__GetBestMatch"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_4_GetBestMatch_Atomic_output_parameters__http___www.serviceobjects.com__GetBestMatchResponse"/>
+    <process:hasPrecondition>The input parameters for GetBestMatch must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The output parameters in GetBestMatchResponse will be returned according to the input provided.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_5_GetBestMatch_V2_Atomic">
+    <process:hasName>GetBestMatch_V2</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_5_GetBestMatch_V2_Atomic_input_parameters__http___www.serviceobjects.com__GetBestMatch_V2"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_5_GetBestMatch_V2_Atomic_output_parameters__http___www.serviceobjects.com__GetBestMatch_V2Response"/>
+    <process:hasPrecondition>The input parameters for GetBestMatch_V2 must be provided in the specified format from http://www.serviceobjects.com/.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for GetBestMatch_V2Response will be returned in the specified format from http://www.serviceobjects.com/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_6_GetBestMatch_V3_Atomic">
+    <process:hasName>GetBestMatch_V3</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_6_GetBestMatch_V3_Atomic_input_parameters__http___www.serviceobjects.com__GetBestMatch_V3"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_6_GetBestMatch_V3_Atomic_output_parameters__http___www.serviceobjects.com__GetBestMatch_V3Response"/>
+    <process:hasPrecondition>The input parameters for GetBestMatch_V3 must be provided in the specified format from the http://www.serviceobjects.com/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for GetBestMatch_V3Response will be returned in the specified format from the http://www.serviceobjects.com/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_7_GetZipInfo_Atomic">
+    <process:hasName>GetZipInfo</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_7_GetZipInfo_Atomic_input_parameters__http___www.serviceobjects.com__GetZipInfo"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_7_GetZipInfo_Atomic_output_parameters__http___www.serviceobjects.com__GetZipInfoResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid ZIP code.</process:hasPrecondition>
+    <process:hasEffect>The output parameter will contain information related to the specified ZIP code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_8_GetGeoLocationWorldwide_Atomic">
+    <process:hasName>GetGeoLocationWorldwide</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_8_GetGeoLocationWorldwide_Atomic_input_parameters__http___www.serviceobjects.com__GetGeoLocationWorldwide"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_8_GetGeoLocationWorldwide_Atomic_output_parameters__http___www.serviceobjects.com__GetGeoLocationWorldwideResponse"/>
+    <process:hasPrecondition>The user must provide valid input parameters for the GetGeoLocationWorldwide operation.</process:hasPrecondition>
+    <process:hasEffect>The service will return the geographical location information for the specified worldwide location.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_9_GetReverseLocation_Atomic">
+    <process:hasName>GetReverseLocation</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_9_GetReverseLocation_Atomic_input_parameters__http___www.serviceobjects.com__GetReverseLocation"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_9_GetReverseLocation_Atomic_output_parameters__http___www.serviceobjects.com__GetReverseLocationResponse"/>
+    <process:hasPrecondition>The input parameter for GetReverseLocation must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The output parameter for GetReverseLocationResponse will be returned in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_10_GetDistanceToWater_Atomic">
+    <process:hasName>GetDistanceToWater</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_10_GetDistanceToWater_Atomic_input_parameters__http___www.serviceobjects.com__GetDistanceToWater"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_10_GetDistanceToWater_Atomic_output_parameters__http___www.serviceobjects.com__GetDistanceToWaterResponse"/>
+    <process:hasPrecondition>The input parameters must be in the format specified by the GetDistanceToWater service from http://www.serviceobjects.com/.</process:hasPrecondition>
+    <process:hasEffect>The output will be in the format specified by the GetDistanceToWaterResponse service from http://www.serviceobjects.com/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_11_GetDistanceToWaterByAddress_Atomic">
+    <process:hasName>GetDistanceToWaterByAddress</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_11_GetDistanceToWaterByAddress_Atomic_input_parameters__http___www.serviceobjects.com__GetDistanceToWaterByAddress"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_11_GetDistanceToWaterByAddress_Atomic_output_parameters__http___www.serviceobjects.com__GetDistanceToWaterByAddressResponse"/>
+    <process:hasPrecondition>The address must be valid and accurately formatted.</process:hasPrecondition>
+    <process:hasEffect>Returns the distance to the nearest body of water from the specified address.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_12_GetDistance_Atomic">
+    <process:hasName>GetDistance</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_12_GetDistance_Atomic_input_parameters__http___www.serviceobjects.com__GetDistance"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_12_GetDistance_Atomic_output_parameters__http___www.serviceobjects.com__GetDistanceResponse"/>
+    <process:hasPrecondition>The input parameters must be in the format specified by the http://www.serviceobjects.com/GetDistance schema.</process:hasPrecondition>
+    <process:hasEffect>The output will be in the format specified by the http://www.serviceobjects.com/GetDistanceResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_13_GetGeoLocation_Atomic">
+    <process:hasName>GetGeoLocation</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <process:hasPrecondition>The user must provide a valid Address, State, PostalCode, City, and LicenseKey inputs.</process:hasPrecondition>
+    <process:hasEffect>The service will return the geographic location information for the provided address.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Atomic">
+    <process:hasName>GetGeoLocationByZipPlusFour</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <process:hasPrecondition>The PostalCode and LicenseKey inputs must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The service will return the geographic location associated with the provided PostalCode and LicenseKey.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Atomic">
+    <process:hasName>GetGeoLocationByZipPlusTwo</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <process:hasPrecondition>The PostalCode and LicenseKey parameters must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The service will return the geographic location associated with the provided PostalCode and LicenseKey.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic">
+    <process:hasName>GetGeoLocationByCityState</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <process:hasPrecondition>The user must provide a valid State, City, and LicenseKey as input parameters.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the geographical location information for the specified City and State using the provided LicenseKey.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_17_GetBestMatch_Atomic">
+    <process:hasName>GetBestMatch</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <process:hasPrecondition>The user must provide a valid Address, State, PostalCode, City, and LicenseKey inputs.</process:hasPrecondition>
+    <process:hasEffect>The service will return the best match Location based on the provided inputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_18_GetBestMatch_V2_Atomic">
+    <process:hasName>GetBestMatch_V2</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <process:hasPrecondition>The input Address, State, PostalCode, City, and LicenseKey must be provided in the specified data format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the best match location based on the provided input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_19_GetBestMatch_V3_Atomic">
+    <process:hasName>GetBestMatch_V3</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic_output_Body__http___www.serviceobjects.com__Location_V3"/>
+    <process:hasPrecondition>The input parameters must include a valid Address, State, PostalCode, City, and LicenseKey.</process:hasPrecondition>
+    <process:hasEffect>The service will return the best match for the provided location details in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_20_GetZipInfo_Atomic">
+    <process:hasName>GetZipInfo</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_20_GetZipInfo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_20_GetZipInfo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_20_GetZipInfo_Atomic_output_Body__http___www.serviceobjects.com__ZipCodeInfo"/>
+    <process:hasPrecondition>The user must provide a valid PostalCode and a valid LicenseKey in order to access the GetZipInfo operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return detailed information about the specified PostalCode in the form of ZipCodeInfo.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic">
+    <process:hasName>GetGeoLocationWorldwide</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_input_Region__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic_output_Body__http___www.serviceobjects.com__ArrayOfGeocodeCityWorldwideInfo"/>
+    <process:hasPrecondition>The user must provide valid values for Region, Country, City, and LicenseKey parameters.</process:hasPrecondition>
+    <process:hasEffect>The service will return an array of geolocation information for cities worldwide based on the provided input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_22_GetReverseLocation_Atomic">
+    <process:hasName>GetReverseLocation</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_22_GetReverseLocation_Atomic_input_Latitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_22_GetReverseLocation_Atomic_input_Longitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_22_GetReverseLocation_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_22_GetReverseLocation_Atomic_output_Body__http___www.serviceobjects.com__ReverseAddress"/>
+    <process:hasPrecondition>The Latitude and Longitude values must be valid strings and the LicenseKey must be a valid string provided by the service provider.</process:hasPrecondition>
+    <process:hasEffect>The service will return a ReverseAddress object containing the reverse geocoded location information based on the provided Latitude and Longitude values.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_23_GetDistanceToWater_Atomic">
+    <process:hasName>GetDistanceToWater</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_23_GetDistanceToWater_Atomic_input_Latitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_23_GetDistanceToWater_Atomic_input_Longitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_23_GetDistanceToWater_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_23_GetDistanceToWater_Atomic_output_Body__http___www.serviceobjects.com__DistanceToWaterInfo"/>
+    <process:hasPrecondition>The user must provide valid latitude, longitude, and a valid license key for the operation to execute successfully.</process:hasPrecondition>
+    <process:hasEffect>The operation will return information about the distance to the nearest body of water based on the provided latitude and longitude.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic">
+    <process:hasName>GetDistanceToWaterByAddress</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic_output_Body__http___www.serviceobjects.com__DistanceToWaterInfo"/>
+    <process:hasPrecondition>The user must provide a valid address, state, postal code, city, and a valid license key for the service.</process:hasPrecondition>
+    <process:hasEffect>The service will return information about the distance to the nearest body of water based on the provided address.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_25_GetDistance_Atomic">
+    <process:hasName>GetDistance</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic_input_ToLongitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic_input_FromLongitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic_input_FromLatitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic_input_ToLatitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic_output_Body__http___www.serviceobjects.com__DistanceBetweenInfo"/>
+    <process:hasPrecondition>The user must provide valid longitude and latitude coordinates, as well as a valid license key for the service.</process:hasPrecondition>
+    <process:hasEffect>The service will return the distance between the specified coordinates in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_26_GetGeoLocation_Atomic">
+    <process:hasName>GetGeoLocation</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <process:hasPrecondition>The user must provide a valid Address, State, PostalCode, City, and LicenseKey inputs.</process:hasPrecondition>
+    <process:hasEffect>The service will return the geographic location information associated with the provided address.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Atomic">
+    <process:hasName>GetGeoLocationByZipPlusFour</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <process:hasPrecondition>The user must provide a valid PostalCode and a valid LicenseKey in the request.</process:hasPrecondition>
+    <process:hasEffect>The service will return the geographic location associated with the provided PostalCode and LicenseKey.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Atomic">
+    <process:hasName>GetGeoLocationByZipPlusTwo</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <process:hasPrecondition>The PostalCode and LicenseKey must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The service will return the geographic location corresponding to the given PostalCode and LicenseKey.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic">
+    <process:hasName>GetGeoLocationByCityState</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <process:hasPrecondition>The user must provide a valid State, City, and LicenseKey inputs in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The service will return the geographic location information for the specified City and State using the provided LicenseKey.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_30_GetBestMatch_Atomic">
+    <process:hasName>GetBestMatch</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <process:hasPrecondition>The user must provide a valid Address, State, PostalCode, City, and LicenseKey inputs.</process:hasPrecondition>
+    <process:hasEffect>The service will return the best matching Location based on the provided address information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_31_GetBestMatch_V2_Atomic">
+    <process:hasName>GetBestMatch_V2</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic_output_Body__http___www.serviceobjects.com__Location"/>
+    <process:hasPrecondition>The input Address, State, PostalCode, City, and LicenseKey must be provided in the specified data format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the best match for the provided location details in the form of a Location object.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_32_GetBestMatch_V3_Atomic">
+    <process:hasName>GetBestMatch_V3</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic_output_Body__http___www.serviceobjects.com__Location_V3"/>
+    <process:hasPrecondition>The input parameters Address, State, PostalCode, City, and LicenseKey must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the best match location based on the provided address information in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_33_GetZipInfo_Atomic">
+    <process:hasName>GetZipInfo</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_33_GetZipInfo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_33_GetZipInfo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_33_GetZipInfo_Atomic_output_Body__http___www.serviceobjects.com__ZipCodeInfo"/>
+    <process:hasPrecondition>The user must provide a valid PostalCode and a valid LicenseKey in order to access the GetZipInfo operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return detailed information about the specified PostalCode in the form of ZipCodeInfo.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic">
+    <process:hasName>GetGeoLocationWorldwide</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_input_Region__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic_output_Body__http___www.serviceobjects.com__ArrayOfGeocodeCityWorldwideInfo"/>
+    <process:hasPrecondition>The user must provide valid values for Region, Country, City, and LicenseKey parameters.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of geolocation information for cities worldwide based on the provided input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_35_GetReverseLocation_Atomic">
+    <process:hasName>GetReverseLocation</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_35_GetReverseLocation_Atomic_input_Latitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_35_GetReverseLocation_Atomic_input_Longitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_35_GetReverseLocation_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_35_GetReverseLocation_Atomic_output_Body__http___www.serviceobjects.com__ReverseAddress"/>
+    <process:hasPrecondition>The Latitude and Longitude values must be valid strings, and a valid LicenseKey must be provided.</process:hasPrecondition>
+    <process:hasEffect>The service will return a ReverseAddress object containing the reverse geocoded location information based on the provided Latitude and Longitude.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_36_GetDistanceToWater_Atomic">
+    <process:hasName>GetDistanceToWater</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_36_GetDistanceToWater_Atomic_input_Latitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_36_GetDistanceToWater_Atomic_input_Longitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_36_GetDistanceToWater_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_36_GetDistanceToWater_Atomic_output_Body__http___www.serviceobjects.com__DistanceToWaterInfo"/>
+    <process:hasPrecondition>The user must provide valid latitude, longitude, and a valid license key in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The service will return information about the distance to the nearest body of water based on the provided latitude and longitude.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic">
+    <process:hasName>GetDistanceToWaterByAddress</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic_output_Body__http___www.serviceobjects.com__DistanceToWaterInfo"/>
+    <process:hasPrecondition>The user must provide a valid address, state, postal code, city, and a valid license key for the request to be processed.</process:hasPrecondition>
+    <process:hasEffect>The service will return information about the distance to the nearest body of water based on the provided address.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSGeoCoder_38_GetDistance_Atomic">
+    <process:hasName>GetDistance</process:hasName>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic_input_ToLongitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic_input_FromLongitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic_input_FromLatitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic_input_ToLatitude__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic_output_Body__http___www.serviceobjects.com__DistanceBetweenInfo"/>
+    <process:hasPrecondition>The user must provide valid longitude and latitude coordinates for both the starting and ending locations, along with a valid license key.</process:hasPrecondition>
+    <process:hasEffect>The service will return the distance between the two locations in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="DOTSGeoCoder_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_0_GetGeoLocation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_1_GetGeoLocationByZipPlusFour_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_2_GetGeoLocationByZipPlusTwo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_3_GetGeoLocationByCityState_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_4_GetBestMatch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_5_GetBestMatch_V2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_6_GetBestMatch_V3_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_7_GetZipInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_8_GetGeoLocationWorldwide_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_9_GetReverseLocation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_10_GetDistanceToWater_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_11_GetDistanceToWaterByAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_12_GetDistance_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_16_GetGeoLocationByCityState_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_20_GetZipInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_21_GetGeoLocationWorldwide_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_22_GetReverseLocation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_23_GetDistanceToWater_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_25_GetDistance_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_29_GetGeoLocationByCityState_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_33_GetZipInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_34_GetGeoLocationWorldwide_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_35_GetReverseLocation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_36_GetDistanceToWater_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSGeoCoder_38_GetDistance_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_0_GetGeoLocation_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_0_GetGeoLocation_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_1_GetGeoLocationByZipPlusFour_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_1_GetGeoLocationByZipPlusFour_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocationByZipPlusFour</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationByZipPlusFourSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationByZipPlusFourSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_2_GetGeoLocationByZipPlusTwo_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_2_GetGeoLocationByZipPlusTwo_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocationByZipPlusTwo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationByZipPlusTwoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationByZipPlusTwoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_3_GetGeoLocationByCityState_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_3_GetGeoLocationByCityState_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocationByCityState</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationByCityStateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationByCityStateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_4_GetBestMatch_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_4_GetBestMatch_Atomic"/>
+    <grounding:wsdlOperationName>GetBestMatch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBestMatchSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBestMatchSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_5_GetBestMatch_V2_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_5_GetBestMatch_V2_Atomic"/>
+    <grounding:wsdlOperationName>GetBestMatch_V2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBestMatch_V2SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBestMatch_V2SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_6_GetBestMatch_V3_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_6_GetBestMatch_V3_Atomic"/>
+    <grounding:wsdlOperationName>GetBestMatch_V3</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBestMatch_V3SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBestMatch_V3SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_7_GetZipInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_7_GetZipInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetZipInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetZipInfoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetZipInfoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_8_GetGeoLocationWorldwide_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_8_GetGeoLocationWorldwide_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocationWorldwide</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationWorldwideSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationWorldwideSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_9_GetReverseLocation_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_9_GetReverseLocation_Atomic"/>
+    <grounding:wsdlOperationName>GetReverseLocation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetReverseLocationSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetReverseLocationSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_10_GetDistanceToWater_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_10_GetDistanceToWater_Atomic"/>
+    <grounding:wsdlOperationName>GetDistanceToWater</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDistanceToWaterSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDistanceToWaterSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_11_GetDistanceToWaterByAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_11_GetDistanceToWaterByAddress_Atomic"/>
+    <grounding:wsdlOperationName>GetDistanceToWaterByAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDistanceToWaterByAddressSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDistanceToWaterByAddressSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_12_GetDistance_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_12_GetDistance_Atomic"/>
+    <grounding:wsdlOperationName>GetDistance</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDistanceSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDistanceSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_13_GetGeoLocation_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_13_GetGeoLocation_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_14_GetGeoLocationByZipPlusFour_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocationByZipPlusFour</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationByZipPlusFourHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationByZipPlusFourHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_15_GetGeoLocationByZipPlusTwo_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocationByZipPlusTwo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationByZipPlusTwoHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationByZipPlusTwoHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_16_GetGeoLocationByCityState_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_16_GetGeoLocationByCityState_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocationByCityState</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationByCityStateHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationByCityStateHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_17_GetBestMatch_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_17_GetBestMatch_Atomic"/>
+    <grounding:wsdlOperationName>GetBestMatch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBestMatchHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBestMatchHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_18_GetBestMatch_V2_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_18_GetBestMatch_V2_Atomic"/>
+    <grounding:wsdlOperationName>GetBestMatch_V2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBestMatch_V2HttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBestMatch_V2HttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_19_GetBestMatch_V3_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_19_GetBestMatch_V3_Atomic"/>
+    <grounding:wsdlOperationName>GetBestMatch_V3</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBestMatch_V3HttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBestMatch_V3HttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_20_GetZipInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_20_GetZipInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetZipInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetZipInfoHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetZipInfoHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_21_GetGeoLocationWorldwide_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_21_GetGeoLocationWorldwide_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocationWorldwide</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationWorldwideHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationWorldwideHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_22_GetReverseLocation_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_22_GetReverseLocation_Atomic"/>
+    <grounding:wsdlOperationName>GetReverseLocation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetReverseLocationHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetReverseLocationHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_23_GetDistanceToWater_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_23_GetDistanceToWater_Atomic"/>
+    <grounding:wsdlOperationName>GetDistanceToWater</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDistanceToWaterHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDistanceToWaterHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_24_GetDistanceToWaterByAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_24_GetDistanceToWaterByAddress_Atomic"/>
+    <grounding:wsdlOperationName>GetDistanceToWaterByAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDistanceToWaterByAddressHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDistanceToWaterByAddressHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_25_GetDistance_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_25_GetDistance_Atomic"/>
+    <grounding:wsdlOperationName>GetDistance</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDistanceHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDistanceHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_26_GetGeoLocation_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_26_GetGeoLocation_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_27_GetGeoLocationByZipPlusFour_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocationByZipPlusFour</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationByZipPlusFourHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationByZipPlusFourHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_28_GetGeoLocationByZipPlusTwo_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocationByZipPlusTwo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationByZipPlusTwoHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationByZipPlusTwoHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_29_GetGeoLocationByCityState_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_29_GetGeoLocationByCityState_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocationByCityState</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationByCityStateHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationByCityStateHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_30_GetBestMatch_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_30_GetBestMatch_Atomic"/>
+    <grounding:wsdlOperationName>GetBestMatch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBestMatchHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBestMatchHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_31_GetBestMatch_V2_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_31_GetBestMatch_V2_Atomic"/>
+    <grounding:wsdlOperationName>GetBestMatch_V2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBestMatch_V2HttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBestMatch_V2HttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_32_GetBestMatch_V3_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_32_GetBestMatch_V3_Atomic"/>
+    <grounding:wsdlOperationName>GetBestMatch_V3</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBestMatch_V3HttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBestMatch_V3HttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_33_GetZipInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_33_GetZipInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetZipInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetZipInfoHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetZipInfoHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_34_GetGeoLocationWorldwide_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_34_GetGeoLocationWorldwide_Atomic"/>
+    <grounding:wsdlOperationName>GetGeoLocationWorldwide</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetGeoLocationWorldwideHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetGeoLocationWorldwideHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_35_GetReverseLocation_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_35_GetReverseLocation_Atomic"/>
+    <grounding:wsdlOperationName>GetReverseLocation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetReverseLocationHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetReverseLocationHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_36_GetDistanceToWater_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_36_GetDistanceToWater_Atomic"/>
+    <grounding:wsdlOperationName>GetDistanceToWater</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDistanceToWaterHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDistanceToWaterHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_37_GetDistanceToWaterByAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_37_GetDistanceToWaterByAddress_Atomic"/>
+    <grounding:wsdlOperationName>GetDistanceToWaterByAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDistanceToWaterByAddressHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDistanceToWaterByAddressHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSGeoCoder_38_GetDistance_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSGeoCoder_38_GetDistance_Atomic"/>
+    <grounding:wsdlOperationName>GetDistance</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSGeoCoderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSGeoCoderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3441_3440.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDistanceHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDistanceHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

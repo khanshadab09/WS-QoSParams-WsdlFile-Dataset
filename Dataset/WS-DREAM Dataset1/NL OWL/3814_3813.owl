@@ -1,0 +1,777 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ResellerInterface">
+    <service:presents rdf:resource="#ResellerInterface_Profile"/>
+    <service:describedBy rdf:resource="#ResellerInterface_Composite"/>
+    <service:supports rdf:resource="#ResellerInterface_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ResellerInterface_Profile">
+    <profile:serviceName>ResellerInterface</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ResellerInterface"/>
+    <profile:hasProcess rdf:resource="#ResellerInterface_0_GetServiceDataset_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_0_GetServiceDataset_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_0_GetServiceDataset_Atomic_output_Body__http___ws.cdyne.com_resellerws_DataSet"/>
+    <profile:hasPrecondition>The ResellerLicenseKey must be provided in the request as a string data type according to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a DataSet in the response body conforming to the specified namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_1_GetNewKeyForService_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_1_GetNewKeyForService_Atomic_input_ProductGroupID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_1_GetNewKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_1_GetNewKeyForService_Atomic_input_KeyAlias__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_1_GetNewKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_guid"/>
+    <profile:hasPrecondition>The ProductGroupID, ResellerLicenseKey, and KeyAlias must be provided as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>A new unique GUID key is generated and returned as the output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_input_ProductGroupID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_input_TransactionLimit__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_input_KeyAlias__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_output_Body__http___ws.cdyne.com_resellerws_guid"/>
+    <profile:hasPrecondition>The ResellerLicenseKey provided must be valid and have the necessary permissions to generate a new key for the specified ProductGroupID with the given TransactionLimit.</profile:hasPrecondition>
+    <profile:hasResult>A new unique key associated with the specified ProductGroupID and TransactionLimit is generated and returned as a GUID in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_3_DisableKeyForService_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_3_DisableKeyForService_Atomic_input_LicenseKeyToDisable__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_3_DisableKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_3_DisableKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_boolean"/>
+    <profile:hasPrecondition>The LicenseKeyToDisable and ResellerLicenseKey must be valid strings.</profile:hasPrecondition>
+    <profile:hasResult>The specified LicenseKey will be disabled for the service associated with the ResellerLicenseKey.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_4_ReEnableKeyForService_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_4_ReEnableKeyForService_Atomic_input_LicenseKeyToEnable__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_4_ReEnableKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_4_ReEnableKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_boolean"/>
+    <profile:hasPrecondition>The LicenseKeyToEnable and ResellerLicenseKey must be valid strings.</profile:hasPrecondition>
+    <profile:hasResult>The specified license key will be re-enabled for the service, and a boolean value indicating success will be returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic_input_StartDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic_input_EndDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic_output_Body__http___ws.cdyne.com_resellerws_long"/>
+    <profile:hasPrecondition>The user must provide valid StartDate, EndDate, and LicenseKey inputs in string format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the total count of transactions associated with the provided LicenseKey within the specified StartDate and EndDate range.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_6_GetAliasForKey_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_6_GetAliasForKey_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_6_GetAliasForKey_Atomic_output_Body__http___ws.cdyne.com_resellerws_string"/>
+    <profile:hasPrecondition>The user must provide a valid LicenseKey in the format of a string.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the corresponding alias for the provided LicenseKey as a string.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_7_GetServiceDataset_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_7_GetServiceDataset_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetServiceDataset"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_7_GetServiceDataset_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetServiceDatasetResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetServiceDataset must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the dataset requested in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_8_GetNewKeyForService_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_8_GetNewKeyForService_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetNewKeyForService"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_8_GetNewKeyForService_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetNewKeyForServiceResponse"/>
+    <profile:hasPrecondition>The user must have valid authentication credentials to access the GetNewKeyForService operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will generate a new key for the specified service and return it in the GetNewKeyForServiceResponse.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_9_GetNewKeyForServiceWithTransLimit_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_9_GetNewKeyForServiceWithTransLimit_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetNewKeyForServiceWithTransLimit"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_9_GetNewKeyForServiceWithTransLimit_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetNewKeyForServiceWithTransLimitResponse"/>
+    <profile:hasPrecondition>The user must have a valid authentication token to access the web service for generating a new key with transaction limit.</profile:hasPrecondition>
+    <profile:hasResult>The web service will provide a new key for the specified service with transaction limit based on the input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_10_DisableKeyForService_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_10_DisableKeyForService_Atomic_input_parameters__http___ws.cdyne.com_resellerws_DisableKeyForService"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_10_DisableKeyForService_Atomic_output_parameters__http___ws.cdyne.com_resellerws_DisableKeyForServiceResponse"/>
+    <profile:hasPrecondition>The key for the specified service must be currently enabled.</profile:hasPrecondition>
+    <profile:hasResult>Disables the key for the specified service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_11_ReEnableKeyForService_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_11_ReEnableKeyForService_Atomic_input_parameters__http___ws.cdyne.com_resellerws_ReEnableKeyForService"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_11_ReEnableKeyForService_Atomic_output_parameters__http___ws.cdyne.com_resellerws_ReEnableKeyForServiceResponse"/>
+    <profile:hasPrecondition>The key for the specified service must be disabled.</profile:hasPrecondition>
+    <profile:hasResult>The key for the specified service is re-enabled.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_12_GetTransactionCountForLicenseKey_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_12_GetTransactionCountForLicenseKey_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetTransactionCountForLicenseKey"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_12_GetTransactionCountForLicenseKey_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetTransactionCountForLicenseKeyResponse"/>
+    <profile:hasPrecondition>The user must provide a valid license key to retrieve transaction count information.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the transaction count associated with the provided license key.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_13_GetAliasForKey_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_13_GetAliasForKey_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetAliasForKey"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_13_GetAliasForKey_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetAliasForKeyResponse"/>
+    <profile:hasPrecondition>The web service must support the operation GetAliasForKey with the input parameters from the namespace http://ws.cdyne.com/resellerws.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the alias associated with the provided key from the namespace http://ws.cdyne.com/resellerws.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_14_GetServiceDataset_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_14_GetServiceDataset_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_14_GetServiceDataset_Atomic_output_Body__http___ws.cdyne.com_resellerws_DataSet"/>
+    <profile:hasPrecondition>The ResellerLicenseKey must be provided in the request as a valid string.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a DataSet in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_15_GetNewKeyForService_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_15_GetNewKeyForService_Atomic_input_ProductGroupID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_15_GetNewKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_15_GetNewKeyForService_Atomic_input_KeyAlias__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_15_GetNewKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_guid"/>
+    <profile:hasPrecondition>The ProductGroupID, ResellerLicenseKey, and KeyAlias must be provided as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>Generates a new unique key for the specified service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_input_ProductGroupID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_input_TransactionLimit__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_input_KeyAlias__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_output_Body__http___ws.cdyne.com_resellerws_guid"/>
+    <profile:hasPrecondition>The ResellerLicenseKey provided must be valid and authorized to request a new key for the specified service with a transaction limit.</profile:hasPrecondition>
+    <profile:hasResult>Generates a new unique key for the specified service with the provided transaction limit and associates it with the ResellerLicenseKey.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_17_DisableKeyForService_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_17_DisableKeyForService_Atomic_input_LicenseKeyToDisable__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_17_DisableKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_17_DisableKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_boolean"/>
+    <profile:hasPrecondition>The LicenseKeyToDisable and ResellerLicenseKey must be valid strings.</profile:hasPrecondition>
+    <profile:hasResult>Disables the specified license key for the service and returns a boolean indicating the success of the operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_18_ReEnableKeyForService_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_18_ReEnableKeyForService_Atomic_input_LicenseKeyToEnable__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_18_ReEnableKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_18_ReEnableKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_boolean"/>
+    <profile:hasPrecondition>The LicenseKeyToEnable and ResellerLicenseKey must be valid strings.</profile:hasPrecondition>
+    <profile:hasResult>The specified license key is re-enabled for the service, and a boolean value indicating success is returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic_input_StartDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic_input_EndDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic_output_Body__http___ws.cdyne.com_resellerws_long"/>
+    <profile:hasPrecondition>The StartDate, EndDate, and LicenseKey must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>Returns the total count of transactions associated with the provided LicenseKey within the specified date range.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ResellerInterface_20_GetAliasForKey_Atomic"/>
+    <profile:hasInput rdf:resource="#ResellerInterface_20_GetAliasForKey_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ResellerInterface_20_GetAliasForKey_Atomic_output_Body__http___ws.cdyne.com_resellerws_string"/>
+    <profile:hasPrecondition>The user must provide a valid LicenseKey in the form of a string.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the corresponding alias for the provided LicenseKey as a string.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ResellerInterface_Composite">
+    <process:composedOf rdf:resource="#ResellerInterface_0_GetServiceDataset_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_1_GetNewKeyForService_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_3_DisableKeyForService_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_4_ReEnableKeyForService_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_6_GetAliasForKey_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_7_GetServiceDataset_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_8_GetNewKeyForService_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_9_GetNewKeyForServiceWithTransLimit_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_10_DisableKeyForService_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_11_ReEnableKeyForService_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_12_GetTransactionCountForLicenseKey_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_13_GetAliasForKey_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_14_GetServiceDataset_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_15_GetNewKeyForService_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_17_DisableKeyForService_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_18_ReEnableKeyForService_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic"/>
+    <process:composedOf rdf:resource="#ResellerInterface_20_GetAliasForKey_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ResellerInterface_0_GetServiceDataset_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ResellerLicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_0_GetServiceDataset_Atomic_output_Body__http___ws.cdyne.com_resellerws_DataSet">
+    <process:parameterType>Body:{http://ws.cdyne.com/resellerws}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_1_GetNewKeyForService_Atomic_input_ProductGroupID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ProductGroupID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_1_GetNewKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ResellerLicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_1_GetNewKeyForService_Atomic_input_KeyAlias__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>KeyAlias:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_1_GetNewKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_guid">
+    <process:parameterType>Body:{http://ws.cdyne.com/resellerws}guid</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_input_ProductGroupID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ProductGroupID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_input_TransactionLimit__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TransactionLimit:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ResellerLicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_input_KeyAlias__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>KeyAlias:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_output_Body__http___ws.cdyne.com_resellerws_guid">
+    <process:parameterType>Body:{http://ws.cdyne.com/resellerws}guid</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_3_DisableKeyForService_Atomic_input_LicenseKeyToDisable__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKeyToDisable:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_3_DisableKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ResellerLicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_3_DisableKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_boolean">
+    <process:parameterType>Body:{http://ws.cdyne.com/resellerws}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_4_ReEnableKeyForService_Atomic_input_LicenseKeyToEnable__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKeyToEnable:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_4_ReEnableKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ResellerLicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_4_ReEnableKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_boolean">
+    <process:parameterType>Body:{http://ws.cdyne.com/resellerws}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic_input_StartDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>StartDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic_input_EndDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>EndDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic_output_Body__http___ws.cdyne.com_resellerws_long">
+    <process:parameterType>Body:{http://ws.cdyne.com/resellerws}long</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_6_GetAliasForKey_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_6_GetAliasForKey_Atomic_output_Body__http___ws.cdyne.com_resellerws_string">
+    <process:parameterType>Body:{http://ws.cdyne.com/resellerws}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_7_GetServiceDataset_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetServiceDataset">
+    <process:parameterType>parameters:{http://ws.cdyne.com/resellerws}GetServiceDataset</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_7_GetServiceDataset_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetServiceDatasetResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/resellerws}GetServiceDatasetResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_8_GetNewKeyForService_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetNewKeyForService">
+    <process:parameterType>parameters:{http://ws.cdyne.com/resellerws}GetNewKeyForService</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_8_GetNewKeyForService_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetNewKeyForServiceResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/resellerws}GetNewKeyForServiceResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_9_GetNewKeyForServiceWithTransLimit_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetNewKeyForServiceWithTransLimit">
+    <process:parameterType>parameters:{http://ws.cdyne.com/resellerws}GetNewKeyForServiceWithTransLimit</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_9_GetNewKeyForServiceWithTransLimit_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetNewKeyForServiceWithTransLimitResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/resellerws}GetNewKeyForServiceWithTransLimitResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_10_DisableKeyForService_Atomic_input_parameters__http___ws.cdyne.com_resellerws_DisableKeyForService">
+    <process:parameterType>parameters:{http://ws.cdyne.com/resellerws}DisableKeyForService</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_10_DisableKeyForService_Atomic_output_parameters__http___ws.cdyne.com_resellerws_DisableKeyForServiceResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/resellerws}DisableKeyForServiceResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_11_ReEnableKeyForService_Atomic_input_parameters__http___ws.cdyne.com_resellerws_ReEnableKeyForService">
+    <process:parameterType>parameters:{http://ws.cdyne.com/resellerws}ReEnableKeyForService</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_11_ReEnableKeyForService_Atomic_output_parameters__http___ws.cdyne.com_resellerws_ReEnableKeyForServiceResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/resellerws}ReEnableKeyForServiceResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_12_GetTransactionCountForLicenseKey_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetTransactionCountForLicenseKey">
+    <process:parameterType>parameters:{http://ws.cdyne.com/resellerws}GetTransactionCountForLicenseKey</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_12_GetTransactionCountForLicenseKey_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetTransactionCountForLicenseKeyResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/resellerws}GetTransactionCountForLicenseKeyResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_13_GetAliasForKey_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetAliasForKey">
+    <process:parameterType>parameters:{http://ws.cdyne.com/resellerws}GetAliasForKey</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_13_GetAliasForKey_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetAliasForKeyResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/resellerws}GetAliasForKeyResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_14_GetServiceDataset_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ResellerLicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_14_GetServiceDataset_Atomic_output_Body__http___ws.cdyne.com_resellerws_DataSet">
+    <process:parameterType>Body:{http://ws.cdyne.com/resellerws}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_15_GetNewKeyForService_Atomic_input_ProductGroupID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ProductGroupID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_15_GetNewKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ResellerLicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_15_GetNewKeyForService_Atomic_input_KeyAlias__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>KeyAlias:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_15_GetNewKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_guid">
+    <process:parameterType>Body:{http://ws.cdyne.com/resellerws}guid</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_input_ProductGroupID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ProductGroupID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_input_TransactionLimit__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TransactionLimit:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ResellerLicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_input_KeyAlias__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>KeyAlias:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_output_Body__http___ws.cdyne.com_resellerws_guid">
+    <process:parameterType>Body:{http://ws.cdyne.com/resellerws}guid</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_17_DisableKeyForService_Atomic_input_LicenseKeyToDisable__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKeyToDisable:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_17_DisableKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ResellerLicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_17_DisableKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_boolean">
+    <process:parameterType>Body:{http://ws.cdyne.com/resellerws}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_18_ReEnableKeyForService_Atomic_input_LicenseKeyToEnable__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKeyToEnable:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_18_ReEnableKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ResellerLicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_18_ReEnableKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_boolean">
+    <process:parameterType>Body:{http://ws.cdyne.com/resellerws}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic_input_StartDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>StartDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic_input_EndDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>EndDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic_output_Body__http___ws.cdyne.com_resellerws_long">
+    <process:parameterType>Body:{http://ws.cdyne.com/resellerws}long</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ResellerInterface_20_GetAliasForKey_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ResellerInterface_20_GetAliasForKey_Atomic_output_Body__http___ws.cdyne.com_resellerws_string">
+    <process:parameterType>Body:{http://ws.cdyne.com/resellerws}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_0_GetServiceDataset_Atomic">
+    <process:hasName>GetServiceDataset</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_0_GetServiceDataset_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_0_GetServiceDataset_Atomic_output_Body__http___ws.cdyne.com_resellerws_DataSet"/>
+    <process:hasPrecondition>The ResellerLicenseKey must be provided in the request as a string data type according to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a DataSet in the response body conforming to the specified namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_1_GetNewKeyForService_Atomic">
+    <process:hasName>GetNewKeyForService</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_1_GetNewKeyForService_Atomic_input_ProductGroupID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_1_GetNewKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_1_GetNewKeyForService_Atomic_input_KeyAlias__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_1_GetNewKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_guid"/>
+    <process:hasPrecondition>The ProductGroupID, ResellerLicenseKey, and KeyAlias must be provided as input parameters.</process:hasPrecondition>
+    <process:hasEffect>A new unique GUID key is generated and returned as the output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic">
+    <process:hasName>GetNewKeyForServiceWithTransLimit</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_input_ProductGroupID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_input_TransactionLimit__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_input_KeyAlias__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic_output_Body__http___ws.cdyne.com_resellerws_guid"/>
+    <process:hasPrecondition>The ResellerLicenseKey provided must be valid and have the necessary permissions to generate a new key for the specified ProductGroupID with the given TransactionLimit.</process:hasPrecondition>
+    <process:hasEffect>A new unique key associated with the specified ProductGroupID and TransactionLimit is generated and returned as a GUID in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_3_DisableKeyForService_Atomic">
+    <process:hasName>DisableKeyForService</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_3_DisableKeyForService_Atomic_input_LicenseKeyToDisable__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_3_DisableKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_3_DisableKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_boolean"/>
+    <process:hasPrecondition>The LicenseKeyToDisable and ResellerLicenseKey must be valid strings.</process:hasPrecondition>
+    <process:hasEffect>The specified LicenseKey will be disabled for the service associated with the ResellerLicenseKey.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_4_ReEnableKeyForService_Atomic">
+    <process:hasName>ReEnableKeyForService</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_4_ReEnableKeyForService_Atomic_input_LicenseKeyToEnable__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_4_ReEnableKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_4_ReEnableKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_boolean"/>
+    <process:hasPrecondition>The LicenseKeyToEnable and ResellerLicenseKey must be valid strings.</process:hasPrecondition>
+    <process:hasEffect>The specified license key will be re-enabled for the service, and a boolean value indicating success will be returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic">
+    <process:hasName>GetTransactionCountForLicenseKey</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic_input_StartDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic_input_EndDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic_output_Body__http___ws.cdyne.com_resellerws_long"/>
+    <process:hasPrecondition>The user must provide valid StartDate, EndDate, and LicenseKey inputs in string format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the total count of transactions associated with the provided LicenseKey within the specified StartDate and EndDate range.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_6_GetAliasForKey_Atomic">
+    <process:hasName>GetAliasForKey</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_6_GetAliasForKey_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_6_GetAliasForKey_Atomic_output_Body__http___ws.cdyne.com_resellerws_string"/>
+    <process:hasPrecondition>The user must provide a valid LicenseKey in the format of a string.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the corresponding alias for the provided LicenseKey as a string.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_7_GetServiceDataset_Atomic">
+    <process:hasName>GetServiceDataset</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_7_GetServiceDataset_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetServiceDataset"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_7_GetServiceDataset_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetServiceDatasetResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetServiceDataset must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the dataset requested in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_8_GetNewKeyForService_Atomic">
+    <process:hasName>GetNewKeyForService</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_8_GetNewKeyForService_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetNewKeyForService"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_8_GetNewKeyForService_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetNewKeyForServiceResponse"/>
+    <process:hasPrecondition>The user must have valid authentication credentials to access the GetNewKeyForService operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will generate a new key for the specified service and return it in the GetNewKeyForServiceResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_9_GetNewKeyForServiceWithTransLimit_Atomic">
+    <process:hasName>GetNewKeyForServiceWithTransLimit</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_9_GetNewKeyForServiceWithTransLimit_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetNewKeyForServiceWithTransLimit"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_9_GetNewKeyForServiceWithTransLimit_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetNewKeyForServiceWithTransLimitResponse"/>
+    <process:hasPrecondition>The user must have a valid authentication token to access the web service for generating a new key with transaction limit.</process:hasPrecondition>
+    <process:hasEffect>The web service will provide a new key for the specified service with transaction limit based on the input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_10_DisableKeyForService_Atomic">
+    <process:hasName>DisableKeyForService</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_10_DisableKeyForService_Atomic_input_parameters__http___ws.cdyne.com_resellerws_DisableKeyForService"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_10_DisableKeyForService_Atomic_output_parameters__http___ws.cdyne.com_resellerws_DisableKeyForServiceResponse"/>
+    <process:hasPrecondition>The key for the specified service must be currently enabled.</process:hasPrecondition>
+    <process:hasEffect>Disables the key for the specified service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_11_ReEnableKeyForService_Atomic">
+    <process:hasName>ReEnableKeyForService</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_11_ReEnableKeyForService_Atomic_input_parameters__http___ws.cdyne.com_resellerws_ReEnableKeyForService"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_11_ReEnableKeyForService_Atomic_output_parameters__http___ws.cdyne.com_resellerws_ReEnableKeyForServiceResponse"/>
+    <process:hasPrecondition>The key for the specified service must be disabled.</process:hasPrecondition>
+    <process:hasEffect>The key for the specified service is re-enabled.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_12_GetTransactionCountForLicenseKey_Atomic">
+    <process:hasName>GetTransactionCountForLicenseKey</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_12_GetTransactionCountForLicenseKey_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetTransactionCountForLicenseKey"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_12_GetTransactionCountForLicenseKey_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetTransactionCountForLicenseKeyResponse"/>
+    <process:hasPrecondition>The user must provide a valid license key to retrieve transaction count information.</process:hasPrecondition>
+    <process:hasEffect>The service will return the transaction count associated with the provided license key.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_13_GetAliasForKey_Atomic">
+    <process:hasName>GetAliasForKey</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_13_GetAliasForKey_Atomic_input_parameters__http___ws.cdyne.com_resellerws_GetAliasForKey"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_13_GetAliasForKey_Atomic_output_parameters__http___ws.cdyne.com_resellerws_GetAliasForKeyResponse"/>
+    <process:hasPrecondition>The web service must support the operation GetAliasForKey with the input parameters from the namespace http://ws.cdyne.com/resellerws.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the alias associated with the provided key from the namespace http://ws.cdyne.com/resellerws.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_14_GetServiceDataset_Atomic">
+    <process:hasName>GetServiceDataset</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_14_GetServiceDataset_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_14_GetServiceDataset_Atomic_output_Body__http___ws.cdyne.com_resellerws_DataSet"/>
+    <process:hasPrecondition>The ResellerLicenseKey must be provided in the request as a valid string.</process:hasPrecondition>
+    <process:hasEffect>The service will return a DataSet in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_15_GetNewKeyForService_Atomic">
+    <process:hasName>GetNewKeyForService</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_15_GetNewKeyForService_Atomic_input_ProductGroupID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_15_GetNewKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_15_GetNewKeyForService_Atomic_input_KeyAlias__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_15_GetNewKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_guid"/>
+    <process:hasPrecondition>The ProductGroupID, ResellerLicenseKey, and KeyAlias must be provided as input parameters.</process:hasPrecondition>
+    <process:hasEffect>Generates a new unique key for the specified service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic">
+    <process:hasName>GetNewKeyForServiceWithTransLimit</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_input_ProductGroupID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_input_TransactionLimit__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_input_KeyAlias__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic_output_Body__http___ws.cdyne.com_resellerws_guid"/>
+    <process:hasPrecondition>The ResellerLicenseKey provided must be valid and authorized to request a new key for the specified service with a transaction limit.</process:hasPrecondition>
+    <process:hasEffect>Generates a new unique key for the specified service with the provided transaction limit and associates it with the ResellerLicenseKey.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_17_DisableKeyForService_Atomic">
+    <process:hasName>DisableKeyForService</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_17_DisableKeyForService_Atomic_input_LicenseKeyToDisable__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_17_DisableKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_17_DisableKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_boolean"/>
+    <process:hasPrecondition>The LicenseKeyToDisable and ResellerLicenseKey must be valid strings.</process:hasPrecondition>
+    <process:hasEffect>Disables the specified license key for the service and returns a boolean indicating the success of the operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_18_ReEnableKeyForService_Atomic">
+    <process:hasName>ReEnableKeyForService</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_18_ReEnableKeyForService_Atomic_input_LicenseKeyToEnable__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_18_ReEnableKeyForService_Atomic_input_ResellerLicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_18_ReEnableKeyForService_Atomic_output_Body__http___ws.cdyne.com_resellerws_boolean"/>
+    <process:hasPrecondition>The LicenseKeyToEnable and ResellerLicenseKey must be valid strings.</process:hasPrecondition>
+    <process:hasEffect>The specified license key is re-enabled for the service, and a boolean value indicating success is returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic">
+    <process:hasName>GetTransactionCountForLicenseKey</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic_input_StartDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic_input_EndDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic_output_Body__http___ws.cdyne.com_resellerws_long"/>
+    <process:hasPrecondition>The StartDate, EndDate, and LicenseKey must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>Returns the total count of transactions associated with the provided LicenseKey within the specified date range.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ResellerInterface_20_GetAliasForKey_Atomic">
+    <process:hasName>GetAliasForKey</process:hasName>
+    <process:hasInput rdf:resource="#ResellerInterface_20_GetAliasForKey_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ResellerInterface_20_GetAliasForKey_Atomic_output_Body__http___ws.cdyne.com_resellerws_string"/>
+    <process:hasPrecondition>The user must provide a valid LicenseKey in the form of a string.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the corresponding alias for the provided LicenseKey as a string.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ResellerInterface_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_0_GetServiceDataset_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_1_GetNewKeyForService_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_3_DisableKeyForService_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_4_ReEnableKeyForService_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_5_GetTransactionCountForLicenseKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_6_GetAliasForKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_7_GetServiceDataset_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_8_GetNewKeyForService_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_9_GetNewKeyForServiceWithTransLimit_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_10_DisableKeyForService_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_11_ReEnableKeyForService_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_12_GetTransactionCountForLicenseKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_13_GetAliasForKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_14_GetServiceDataset_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_15_GetNewKeyForService_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_17_DisableKeyForService_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_18_ReEnableKeyForService_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_19_GetTransactionCountForLicenseKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ResellerInterface_20_GetAliasForKey_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_0_GetServiceDataset_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_0_GetServiceDataset_Atomic"/>
+    <grounding:wsdlOperationName>GetServiceDataset</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetServiceDatasetHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetServiceDatasetHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_1_GetNewKeyForService_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_1_GetNewKeyForService_Atomic"/>
+    <grounding:wsdlOperationName>GetNewKeyForService</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetNewKeyForServiceHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetNewKeyForServiceHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_2_GetNewKeyForServiceWithTransLimit_Atomic"/>
+    <grounding:wsdlOperationName>GetNewKeyForServiceWithTransLimit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetNewKeyForServiceWithTransLimitHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetNewKeyForServiceWithTransLimitHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_3_DisableKeyForService_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_3_DisableKeyForService_Atomic"/>
+    <grounding:wsdlOperationName>DisableKeyForService</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DisableKeyForServiceHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DisableKeyForServiceHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_4_ReEnableKeyForService_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_4_ReEnableKeyForService_Atomic"/>
+    <grounding:wsdlOperationName>ReEnableKeyForService</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReEnableKeyForServiceHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReEnableKeyForServiceHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_5_GetTransactionCountForLicenseKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_5_GetTransactionCountForLicenseKey_Atomic"/>
+    <grounding:wsdlOperationName>GetTransactionCountForLicenseKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTransactionCountForLicenseKeyHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTransactionCountForLicenseKeyHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_6_GetAliasForKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_6_GetAliasForKey_Atomic"/>
+    <grounding:wsdlOperationName>GetAliasForKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAliasForKeyHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAliasForKeyHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_7_GetServiceDataset_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_7_GetServiceDataset_Atomic"/>
+    <grounding:wsdlOperationName>GetServiceDataset</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetServiceDatasetSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetServiceDatasetSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_8_GetNewKeyForService_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_8_GetNewKeyForService_Atomic"/>
+    <grounding:wsdlOperationName>GetNewKeyForService</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetNewKeyForServiceSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetNewKeyForServiceSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_9_GetNewKeyForServiceWithTransLimit_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_9_GetNewKeyForServiceWithTransLimit_Atomic"/>
+    <grounding:wsdlOperationName>GetNewKeyForServiceWithTransLimit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetNewKeyForServiceWithTransLimitSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetNewKeyForServiceWithTransLimitSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_10_DisableKeyForService_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_10_DisableKeyForService_Atomic"/>
+    <grounding:wsdlOperationName>DisableKeyForService</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DisableKeyForServiceSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DisableKeyForServiceSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_11_ReEnableKeyForService_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_11_ReEnableKeyForService_Atomic"/>
+    <grounding:wsdlOperationName>ReEnableKeyForService</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReEnableKeyForServiceSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReEnableKeyForServiceSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_12_GetTransactionCountForLicenseKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_12_GetTransactionCountForLicenseKey_Atomic"/>
+    <grounding:wsdlOperationName>GetTransactionCountForLicenseKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTransactionCountForLicenseKeySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTransactionCountForLicenseKeySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_13_GetAliasForKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_13_GetAliasForKey_Atomic"/>
+    <grounding:wsdlOperationName>GetAliasForKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAliasForKeySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAliasForKeySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_14_GetServiceDataset_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_14_GetServiceDataset_Atomic"/>
+    <grounding:wsdlOperationName>GetServiceDataset</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetServiceDatasetHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetServiceDatasetHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_15_GetNewKeyForService_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_15_GetNewKeyForService_Atomic"/>
+    <grounding:wsdlOperationName>GetNewKeyForService</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetNewKeyForServiceHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetNewKeyForServiceHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_16_GetNewKeyForServiceWithTransLimit_Atomic"/>
+    <grounding:wsdlOperationName>GetNewKeyForServiceWithTransLimit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetNewKeyForServiceWithTransLimitHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetNewKeyForServiceWithTransLimitHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_17_DisableKeyForService_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_17_DisableKeyForService_Atomic"/>
+    <grounding:wsdlOperationName>DisableKeyForService</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DisableKeyForServiceHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DisableKeyForServiceHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_18_ReEnableKeyForService_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_18_ReEnableKeyForService_Atomic"/>
+    <grounding:wsdlOperationName>ReEnableKeyForService</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReEnableKeyForServiceHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReEnableKeyForServiceHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_19_GetTransactionCountForLicenseKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_19_GetTransactionCountForLicenseKey_Atomic"/>
+    <grounding:wsdlOperationName>GetTransactionCountForLicenseKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTransactionCountForLicenseKeyHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTransactionCountForLicenseKeyHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ResellerInterface_20_GetAliasForKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#ResellerInterface_20_GetAliasForKey_Atomic"/>
+    <grounding:wsdlOperationName>GetAliasForKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ResellerInterfaceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ResellerInterfaceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3814_3813.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAliasForKeyHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAliasForKeyHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

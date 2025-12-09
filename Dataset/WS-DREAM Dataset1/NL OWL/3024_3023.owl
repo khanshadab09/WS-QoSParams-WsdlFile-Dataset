@@ -1,0 +1,578 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="AddressFinder">
+    <service:presents rdf:resource="#AddressFinder_Profile"/>
+    <service:describedBy rdf:resource="#AddressFinder_Composite"/>
+    <service:supports rdf:resource="#AddressFinder_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="AddressFinder_Profile">
+    <profile:serviceName>AddressFinder</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#AddressFinder"/>
+    <profile:hasProcess rdf:resource="#AddressFinder_0_SearchMulti_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sStreet__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sLocality__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sTownOrCity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sCompany__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses"/>
+    <profile:hasPrecondition>The input parameters must include valid values for sStreet, sAccountName, sLocality, sTownOrCity, sIPAddress, sNumber, sGUID, sCompany, and sPostcode.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a summary of addresses matching the search criteria in the Body output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressFinder_1_AdvancedSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressFinder_1_AdvancedSearch_Atomic_input_strSearchExpression__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_1_AdvancedSearch_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_1_AdvancedSearch_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_1_AdvancedSearch_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressFinder_1_AdvancedSearch_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses"/>
+    <profile:hasPrecondition>The user must provide a search expression, account name, IP address, and GUID in the specified data types.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a summary of addresses based on the search criteria provided.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressFinder_2_SearchPostcode_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressFinder_2_SearchPostcode_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_2_SearchPostcode_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_2_SearchPostcode_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_2_SearchPostcode_Atomic_input_sPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressFinder_2_SearchPostcode_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses"/>
+    <profile:hasPrecondition>The user must provide valid account credentials, IP address, GUID, and a valid postcode to search for.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a summary of addresses associated with the provided postcode.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressFinder_3_GetAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressFinder_3_GetAddress_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_3_GetAddress_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_3_GetAddress_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_3_GetAddress_Atomic_input_sAbsRecNum__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressFinder_3_GetAddress_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddress"/>
+    <profile:hasPrecondition>The user must provide a valid account name, IP address, GUID, and abstract record number as input parameters for the GetAddress operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a summary address in the specified format from the web service endpoint.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressFinder_4_SearchMulti_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressFinder_4_SearchMulti_Atomic_input_parameters__http___ws.epostcode.com_uk__SearchMulti"/>
+    <profile:hasOutput rdf:resource="#AddressFinder_4_SearchMulti_Atomic_output_parameters__http___ws.epostcode.com_uk__SearchMultiResponse"/>
+    <profile:hasPrecondition>The input parameters for the SearchMulti operation must adhere to the specified structure defined by the http://ws.epostcode.com/uk/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for the SearchMulti operation will be structured according to the defined format specified by the http://ws.epostcode.com/uk/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressFinder_5_AdvancedSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressFinder_5_AdvancedSearch_Atomic_input_parameters__http___ws.epostcode.com_uk__AdvancedSearch"/>
+    <profile:hasOutput rdf:resource="#AddressFinder_5_AdvancedSearch_Atomic_output_parameters__http___ws.epostcode.com_uk__AdvancedSearchResponse"/>
+    <profile:hasPrecondition>The input parameters for the AdvancedSearch operation must be provided in the specified format from the epostode UK web service.</profile:hasPrecondition>
+    <profile:hasResult>The AdvancedSearch operation will return a response in the specified format from the epostode UK web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressFinder_6_SearchPostcode_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressFinder_6_SearchPostcode_Atomic_input_parameters__http___ws.epostcode.com_uk__SearchPostcode"/>
+    <profile:hasOutput rdf:resource="#AddressFinder_6_SearchPostcode_Atomic_output_parameters__http___ws.epostcode.com_uk__SearchPostcodeResponse"/>
+    <profile:hasPrecondition>The input parameter for the SearchPostcode operation must be provided in the format specified by the http://ws.epostcode.com/uk/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter for the SearchPostcode operation will be returned in the format specified by the http://ws.epostcode.com/uk/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressFinder_7_GetAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressFinder_7_GetAddress_Atomic_input_parameters__http___ws.epostcode.com_uk__GetAddress"/>
+    <profile:hasOutput rdf:resource="#AddressFinder_7_GetAddress_Atomic_output_parameters__http___ws.epostcode.com_uk__GetAddressResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid UK address for the GetAddress operation to successfully retrieve the address details.</profile:hasPrecondition>
+    <profile:hasResult>The GetAddress operation will return the address details corresponding to the input UK address in the GetAddressResponse output parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressFinder_8_SearchMulti_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sStreet__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sLocality__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sTownOrCity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sCompany__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses"/>
+    <profile:hasPrecondition>The input parameters must include valid values for at least one of the search criteria fields (sStreet, sAccountName, sLocality, sTownOrCity, sIPAddress, sNumber, sGUID, sCompany, sPostcode).</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a summary of addresses matching the provided search criteria.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressFinder_9_AdvancedSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressFinder_9_AdvancedSearch_Atomic_input_strSearchExpression__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_9_AdvancedSearch_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_9_AdvancedSearch_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_9_AdvancedSearch_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressFinder_9_AdvancedSearch_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses"/>
+    <profile:hasPrecondition>The user must provide a search expression, account name, IP address, and GUID in the specified XML format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a summary of addresses based on the search criteria provided.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressFinder_10_SearchPostcode_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressFinder_10_SearchPostcode_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_10_SearchPostcode_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_10_SearchPostcode_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_10_SearchPostcode_Atomic_input_sPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressFinder_10_SearchPostcode_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses"/>
+    <profile:hasPrecondition>The user must provide a valid account name, IP address, GUID, and postcode as input parameters for the search operation.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a summary of addresses associated with the provided postcode.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressFinder_11_GetAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressFinder_11_GetAddress_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_11_GetAddress_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_11_GetAddress_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressFinder_11_GetAddress_Atomic_input_sAbsRecNum__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressFinder_11_GetAddress_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddress"/>
+    <profile:hasPrecondition>The user must provide a valid account name, IP address, GUID, and abstract record number as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a summary address in the specified format from the epostcode web service.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="AddressFinder_Composite">
+    <process:composedOf rdf:resource="#AddressFinder_0_SearchMulti_Atomic"/>
+    <process:composedOf rdf:resource="#AddressFinder_1_AdvancedSearch_Atomic"/>
+    <process:composedOf rdf:resource="#AddressFinder_2_SearchPostcode_Atomic"/>
+    <process:composedOf rdf:resource="#AddressFinder_3_GetAddress_Atomic"/>
+    <process:composedOf rdf:resource="#AddressFinder_4_SearchMulti_Atomic"/>
+    <process:composedOf rdf:resource="#AddressFinder_5_AdvancedSearch_Atomic"/>
+    <process:composedOf rdf:resource="#AddressFinder_6_SearchPostcode_Atomic"/>
+    <process:composedOf rdf:resource="#AddressFinder_7_GetAddress_Atomic"/>
+    <process:composedOf rdf:resource="#AddressFinder_8_SearchMulti_Atomic"/>
+    <process:composedOf rdf:resource="#AddressFinder_9_AdvancedSearch_Atomic"/>
+    <process:composedOf rdf:resource="#AddressFinder_10_SearchPostcode_Atomic"/>
+    <process:composedOf rdf:resource="#AddressFinder_11_GetAddress_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="AddressFinder_0_SearchMulti_Atomic_input_sStreet__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sStreet:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_0_SearchMulti_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_0_SearchMulti_Atomic_input_sLocality__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sLocality:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_0_SearchMulti_Atomic_input_sTownOrCity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sTownOrCity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_0_SearchMulti_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_0_SearchMulti_Atomic_input_sNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_0_SearchMulti_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_0_SearchMulti_Atomic_input_sCompany__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sCompany:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_0_SearchMulti_Atomic_input_sPostcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sPostcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressFinder_0_SearchMulti_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses">
+    <process:parameterType>Body:{http://ws.epostcode.com/uk/}SummaryAddresses</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressFinder_1_AdvancedSearch_Atomic_input_strSearchExpression__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSearchExpression:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_1_AdvancedSearch_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_1_AdvancedSearch_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_1_AdvancedSearch_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressFinder_1_AdvancedSearch_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses">
+    <process:parameterType>Body:{http://ws.epostcode.com/uk/}SummaryAddresses</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressFinder_2_SearchPostcode_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_2_SearchPostcode_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_2_SearchPostcode_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_2_SearchPostcode_Atomic_input_sPostcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sPostcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressFinder_2_SearchPostcode_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses">
+    <process:parameterType>Body:{http://ws.epostcode.com/uk/}SummaryAddresses</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressFinder_3_GetAddress_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_3_GetAddress_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_3_GetAddress_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_3_GetAddress_Atomic_input_sAbsRecNum__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAbsRecNum:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressFinder_3_GetAddress_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddress">
+    <process:parameterType>Body:{http://ws.epostcode.com/uk/}SummaryAddress</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressFinder_4_SearchMulti_Atomic_input_parameters__http___ws.epostcode.com_uk__SearchMulti">
+    <process:parameterType>parameters:{http://ws.epostcode.com/uk/}SearchMulti</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressFinder_4_SearchMulti_Atomic_output_parameters__http___ws.epostcode.com_uk__SearchMultiResponse">
+    <process:parameterType>parameters:{http://ws.epostcode.com/uk/}SearchMultiResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressFinder_5_AdvancedSearch_Atomic_input_parameters__http___ws.epostcode.com_uk__AdvancedSearch">
+    <process:parameterType>parameters:{http://ws.epostcode.com/uk/}AdvancedSearch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressFinder_5_AdvancedSearch_Atomic_output_parameters__http___ws.epostcode.com_uk__AdvancedSearchResponse">
+    <process:parameterType>parameters:{http://ws.epostcode.com/uk/}AdvancedSearchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressFinder_6_SearchPostcode_Atomic_input_parameters__http___ws.epostcode.com_uk__SearchPostcode">
+    <process:parameterType>parameters:{http://ws.epostcode.com/uk/}SearchPostcode</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressFinder_6_SearchPostcode_Atomic_output_parameters__http___ws.epostcode.com_uk__SearchPostcodeResponse">
+    <process:parameterType>parameters:{http://ws.epostcode.com/uk/}SearchPostcodeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressFinder_7_GetAddress_Atomic_input_parameters__http___ws.epostcode.com_uk__GetAddress">
+    <process:parameterType>parameters:{http://ws.epostcode.com/uk/}GetAddress</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressFinder_7_GetAddress_Atomic_output_parameters__http___ws.epostcode.com_uk__GetAddressResponse">
+    <process:parameterType>parameters:{http://ws.epostcode.com/uk/}GetAddressResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressFinder_8_SearchMulti_Atomic_input_sStreet__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sStreet:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_8_SearchMulti_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_8_SearchMulti_Atomic_input_sLocality__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sLocality:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_8_SearchMulti_Atomic_input_sTownOrCity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sTownOrCity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_8_SearchMulti_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_8_SearchMulti_Atomic_input_sNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_8_SearchMulti_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_8_SearchMulti_Atomic_input_sCompany__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sCompany:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_8_SearchMulti_Atomic_input_sPostcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sPostcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressFinder_8_SearchMulti_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses">
+    <process:parameterType>Body:{http://ws.epostcode.com/uk/}SummaryAddresses</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressFinder_9_AdvancedSearch_Atomic_input_strSearchExpression__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSearchExpression:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_9_AdvancedSearch_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_9_AdvancedSearch_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_9_AdvancedSearch_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressFinder_9_AdvancedSearch_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses">
+    <process:parameterType>Body:{http://ws.epostcode.com/uk/}SummaryAddresses</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressFinder_10_SearchPostcode_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_10_SearchPostcode_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_10_SearchPostcode_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_10_SearchPostcode_Atomic_input_sPostcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sPostcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressFinder_10_SearchPostcode_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses">
+    <process:parameterType>Body:{http://ws.epostcode.com/uk/}SummaryAddresses</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressFinder_11_GetAddress_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_11_GetAddress_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_11_GetAddress_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressFinder_11_GetAddress_Atomic_input_sAbsRecNum__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAbsRecNum:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressFinder_11_GetAddress_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddress">
+    <process:parameterType>Body:{http://ws.epostcode.com/uk/}SummaryAddress</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="AddressFinder_0_SearchMulti_Atomic">
+    <process:hasName>SearchMulti</process:hasName>
+    <process:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sStreet__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sLocality__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sTownOrCity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sCompany__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_input_sPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressFinder_0_SearchMulti_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses"/>
+    <process:hasPrecondition>The input parameters must include valid values for sStreet, sAccountName, sLocality, sTownOrCity, sIPAddress, sNumber, sGUID, sCompany, and sPostcode.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a summary of addresses matching the search criteria in the Body output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressFinder_1_AdvancedSearch_Atomic">
+    <process:hasName>AdvancedSearch</process:hasName>
+    <process:hasInput rdf:resource="#AddressFinder_1_AdvancedSearch_Atomic_input_strSearchExpression__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_1_AdvancedSearch_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_1_AdvancedSearch_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_1_AdvancedSearch_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressFinder_1_AdvancedSearch_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses"/>
+    <process:hasPrecondition>The user must provide a search expression, account name, IP address, and GUID in the specified data types.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a summary of addresses based on the search criteria provided.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressFinder_2_SearchPostcode_Atomic">
+    <process:hasName>SearchPostcode</process:hasName>
+    <process:hasInput rdf:resource="#AddressFinder_2_SearchPostcode_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_2_SearchPostcode_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_2_SearchPostcode_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_2_SearchPostcode_Atomic_input_sPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressFinder_2_SearchPostcode_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses"/>
+    <process:hasPrecondition>The user must provide valid account credentials, IP address, GUID, and a valid postcode to search for.</process:hasPrecondition>
+    <process:hasEffect>The service will return a summary of addresses associated with the provided postcode.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressFinder_3_GetAddress_Atomic">
+    <process:hasName>GetAddress</process:hasName>
+    <process:hasInput rdf:resource="#AddressFinder_3_GetAddress_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_3_GetAddress_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_3_GetAddress_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_3_GetAddress_Atomic_input_sAbsRecNum__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressFinder_3_GetAddress_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddress"/>
+    <process:hasPrecondition>The user must provide a valid account name, IP address, GUID, and abstract record number as input parameters for the GetAddress operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a summary address in the specified format from the web service endpoint.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressFinder_4_SearchMulti_Atomic">
+    <process:hasName>SearchMulti</process:hasName>
+    <process:hasInput rdf:resource="#AddressFinder_4_SearchMulti_Atomic_input_parameters__http___ws.epostcode.com_uk__SearchMulti"/>
+    <process:hasOutput rdf:resource="#AddressFinder_4_SearchMulti_Atomic_output_parameters__http___ws.epostcode.com_uk__SearchMultiResponse"/>
+    <process:hasPrecondition>The input parameters for the SearchMulti operation must adhere to the specified structure defined by the http://ws.epostcode.com/uk/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for the SearchMulti operation will be structured according to the defined format specified by the http://ws.epostcode.com/uk/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressFinder_5_AdvancedSearch_Atomic">
+    <process:hasName>AdvancedSearch</process:hasName>
+    <process:hasInput rdf:resource="#AddressFinder_5_AdvancedSearch_Atomic_input_parameters__http___ws.epostcode.com_uk__AdvancedSearch"/>
+    <process:hasOutput rdf:resource="#AddressFinder_5_AdvancedSearch_Atomic_output_parameters__http___ws.epostcode.com_uk__AdvancedSearchResponse"/>
+    <process:hasPrecondition>The input parameters for the AdvancedSearch operation must be provided in the specified format from the epostode UK web service.</process:hasPrecondition>
+    <process:hasEffect>The AdvancedSearch operation will return a response in the specified format from the epostode UK web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressFinder_6_SearchPostcode_Atomic">
+    <process:hasName>SearchPostcode</process:hasName>
+    <process:hasInput rdf:resource="#AddressFinder_6_SearchPostcode_Atomic_input_parameters__http___ws.epostcode.com_uk__SearchPostcode"/>
+    <process:hasOutput rdf:resource="#AddressFinder_6_SearchPostcode_Atomic_output_parameters__http___ws.epostcode.com_uk__SearchPostcodeResponse"/>
+    <process:hasPrecondition>The input parameter for the SearchPostcode operation must be provided in the format specified by the http://ws.epostcode.com/uk/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The output parameter for the SearchPostcode operation will be returned in the format specified by the http://ws.epostcode.com/uk/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressFinder_7_GetAddress_Atomic">
+    <process:hasName>GetAddress</process:hasName>
+    <process:hasInput rdf:resource="#AddressFinder_7_GetAddress_Atomic_input_parameters__http___ws.epostcode.com_uk__GetAddress"/>
+    <process:hasOutput rdf:resource="#AddressFinder_7_GetAddress_Atomic_output_parameters__http___ws.epostcode.com_uk__GetAddressResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid UK address for the GetAddress operation to successfully retrieve the address details.</process:hasPrecondition>
+    <process:hasEffect>The GetAddress operation will return the address details corresponding to the input UK address in the GetAddressResponse output parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressFinder_8_SearchMulti_Atomic">
+    <process:hasName>SearchMulti</process:hasName>
+    <process:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sStreet__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sLocality__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sTownOrCity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sCompany__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_input_sPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressFinder_8_SearchMulti_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses"/>
+    <process:hasPrecondition>The input parameters must include valid values for at least one of the search criteria fields (sStreet, sAccountName, sLocality, sTownOrCity, sIPAddress, sNumber, sGUID, sCompany, sPostcode).</process:hasPrecondition>
+    <process:hasEffect>The operation will return a summary of addresses matching the provided search criteria.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressFinder_9_AdvancedSearch_Atomic">
+    <process:hasName>AdvancedSearch</process:hasName>
+    <process:hasInput rdf:resource="#AddressFinder_9_AdvancedSearch_Atomic_input_strSearchExpression__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_9_AdvancedSearch_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_9_AdvancedSearch_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_9_AdvancedSearch_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressFinder_9_AdvancedSearch_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses"/>
+    <process:hasPrecondition>The user must provide a search expression, account name, IP address, and GUID in the specified XML format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a summary of addresses based on the search criteria provided.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressFinder_10_SearchPostcode_Atomic">
+    <process:hasName>SearchPostcode</process:hasName>
+    <process:hasInput rdf:resource="#AddressFinder_10_SearchPostcode_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_10_SearchPostcode_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_10_SearchPostcode_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_10_SearchPostcode_Atomic_input_sPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressFinder_10_SearchPostcode_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddresses"/>
+    <process:hasPrecondition>The user must provide a valid account name, IP address, GUID, and postcode as input parameters for the search operation.</process:hasPrecondition>
+    <process:hasEffect>The service will return a summary of addresses associated with the provided postcode.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressFinder_11_GetAddress_Atomic">
+    <process:hasName>GetAddress</process:hasName>
+    <process:hasInput rdf:resource="#AddressFinder_11_GetAddress_Atomic_input_sAccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_11_GetAddress_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_11_GetAddress_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressFinder_11_GetAddress_Atomic_input_sAbsRecNum__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressFinder_11_GetAddress_Atomic_output_Body__http___ws.epostcode.com_uk__SummaryAddress"/>
+    <process:hasPrecondition>The user must provide a valid account name, IP address, GUID, and abstract record number as input parameters.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a summary address in the specified format from the epostcode web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="AddressFinder_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressFinder_0_SearchMulti_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressFinder_1_AdvancedSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressFinder_2_SearchPostcode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressFinder_3_GetAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressFinder_4_SearchMulti_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressFinder_5_AdvancedSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressFinder_6_SearchPostcode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressFinder_7_GetAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressFinder_8_SearchMulti_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressFinder_9_AdvancedSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressFinder_10_SearchPostcode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressFinder_11_GetAddress_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressFinder_0_SearchMulti_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressFinder_0_SearchMulti_Atomic"/>
+    <grounding:wsdlOperationName>SearchMulti</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressFinderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressFinderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3024_3023.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SearchMultiHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SearchMultiHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressFinder_1_AdvancedSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressFinder_1_AdvancedSearch_Atomic"/>
+    <grounding:wsdlOperationName>AdvancedSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressFinderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressFinderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3024_3023.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AdvancedSearchHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AdvancedSearchHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressFinder_2_SearchPostcode_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressFinder_2_SearchPostcode_Atomic"/>
+    <grounding:wsdlOperationName>SearchPostcode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressFinderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressFinderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3024_3023.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SearchPostcodeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SearchPostcodeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressFinder_3_GetAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressFinder_3_GetAddress_Atomic"/>
+    <grounding:wsdlOperationName>GetAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressFinderHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressFinderHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3024_3023.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAddressHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAddressHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressFinder_4_SearchMulti_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressFinder_4_SearchMulti_Atomic"/>
+    <grounding:wsdlOperationName>SearchMulti</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressFinderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressFinderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3024_3023.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SearchMultiSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SearchMultiSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressFinder_5_AdvancedSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressFinder_5_AdvancedSearch_Atomic"/>
+    <grounding:wsdlOperationName>AdvancedSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressFinderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressFinderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3024_3023.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AdvancedSearchSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AdvancedSearchSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressFinder_6_SearchPostcode_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressFinder_6_SearchPostcode_Atomic"/>
+    <grounding:wsdlOperationName>SearchPostcode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressFinderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressFinderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3024_3023.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SearchPostcodeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SearchPostcodeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressFinder_7_GetAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressFinder_7_GetAddress_Atomic"/>
+    <grounding:wsdlOperationName>GetAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressFinderSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressFinderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3024_3023.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAddressSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAddressSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressFinder_8_SearchMulti_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressFinder_8_SearchMulti_Atomic"/>
+    <grounding:wsdlOperationName>SearchMulti</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressFinderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressFinderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3024_3023.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SearchMultiHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SearchMultiHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressFinder_9_AdvancedSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressFinder_9_AdvancedSearch_Atomic"/>
+    <grounding:wsdlOperationName>AdvancedSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressFinderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressFinderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3024_3023.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AdvancedSearchHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AdvancedSearchHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressFinder_10_SearchPostcode_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressFinder_10_SearchPostcode_Atomic"/>
+    <grounding:wsdlOperationName>SearchPostcode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressFinderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressFinderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3024_3023.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SearchPostcodeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SearchPostcodeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressFinder_11_GetAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressFinder_11_GetAddress_Atomic"/>
+    <grounding:wsdlOperationName>GetAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressFinderHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressFinderHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3024_3023.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAddressHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAddressHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

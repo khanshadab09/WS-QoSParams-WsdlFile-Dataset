@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Group">
+    <service:presents rdf:resource="#Group_Profile"/>
+    <service:describedBy rdf:resource="#Group_Composite"/>
+    <service:supports rdf:resource="#Group_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Group_Profile">
+    <profile:serviceName>Group</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Group"/>
+    <profile:hasProcess rdf:resource="#Group_0_Add_Atomic"/>
+    <profile:hasInput rdf:resource="#Group_0_Add_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__Add"/>
+    <profile:hasOutput rdf:resource="#Group_0_Add_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__AddResponse"/>
+    <profile:hasPrecondition>The input parameters for the Add operation must conform to the specified structure defined in the AddressBook schema.</profile:hasPrecondition>
+    <profile:hasResult>The Add operation will return a response conforming to the structure defined in the AddressBook schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Group_1_Modify_Atomic"/>
+    <profile:hasInput rdf:resource="#Group_1_Modify_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__Modify"/>
+    <profile:hasOutput rdf:resource="#Group_1_Modify_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__ModifyResponse"/>
+    <profile:hasPrecondition>The user must have valid authentication credentials to access the Modify operation.</profile:hasPrecondition>
+    <profile:hasResult>The Modify operation will update the specified address book entry with the new information provided.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Group_2_Delete_Atomic"/>
+    <profile:hasInput rdf:resource="#Group_2_Delete_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__Delete"/>
+    <profile:hasOutput rdf:resource="#Group_2_Delete_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__DeleteResponse"/>
+    <profile:hasPrecondition>The user must have the necessary permissions to delete entries from the address book.</profile:hasPrecondition>
+    <profile:hasResult>Deletes the specified entry from the address book.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Group_3_AddContact_Atomic"/>
+    <profile:hasInput rdf:resource="#Group_3_AddContact_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__AddContact"/>
+    <profile:hasOutput rdf:resource="#Group_3_AddContact_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__AddContactResponse"/>
+    <profile:hasPrecondition>The user must provide valid contact information to be added to the address book.</profile:hasPrecondition>
+    <profile:hasResult>A new contact is successfully added to the address book.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Group_4_RemoveContact_Atomic"/>
+    <profile:hasInput rdf:resource="#Group_4_RemoveContact_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__RemoveContact"/>
+    <profile:hasOutput rdf:resource="#Group_4_RemoveContact_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__RemoveContactResponse"/>
+    <profile:hasPrecondition>The contact specified in the RemoveContact request must exist in the address book.</profile:hasPrecondition>
+    <profile:hasResult>The specified contact will be successfully removed from the address book.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Group_5_List_Atomic"/>
+    <profile:hasInput rdf:resource="#Group_5_List_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__List"/>
+    <profile:hasOutput rdf:resource="#Group_5_List_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__ListResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid list of contacts in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response containing the list of contacts in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Group_6_ListContact_Atomic"/>
+    <profile:hasInput rdf:resource="#Group_6_ListContact_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__ListContact"/>
+    <profile:hasOutput rdf:resource="#Group_6_ListContact_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__ListContactResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to access the contact list.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a list of contacts from the address book based on the specified parameters.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Group_Composite">
+    <process:composedOf rdf:resource="#Group_0_Add_Atomic"/>
+    <process:composedOf rdf:resource="#Group_1_Modify_Atomic"/>
+    <process:composedOf rdf:resource="#Group_2_Delete_Atomic"/>
+    <process:composedOf rdf:resource="#Group_3_AddContact_Atomic"/>
+    <process:composedOf rdf:resource="#Group_4_RemoveContact_Atomic"/>
+    <process:composedOf rdf:resource="#Group_5_List_Atomic"/>
+    <process:composedOf rdf:resource="#Group_6_ListContact_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Group_0_Add_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__Add">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/AddressBook/}Add</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Group_0_Add_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__AddResponse">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/AddressBook/}AddResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Group_1_Modify_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__Modify">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/AddressBook/}Modify</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Group_1_Modify_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__ModifyResponse">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/AddressBook/}ModifyResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Group_2_Delete_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__Delete">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/AddressBook/}Delete</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Group_2_Delete_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__DeleteResponse">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/AddressBook/}DeleteResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Group_3_AddContact_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__AddContact">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/AddressBook/}AddContact</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Group_3_AddContact_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__AddContactResponse">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/AddressBook/}AddContactResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Group_4_RemoveContact_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__RemoveContact">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/AddressBook/}RemoveContact</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Group_4_RemoveContact_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__RemoveContactResponse">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/AddressBook/}RemoveContactResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Group_5_List_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__List">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/AddressBook/}List</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Group_5_List_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__ListResponse">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/AddressBook/}ListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Group_6_ListContact_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__ListContact">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/AddressBook/}ListContact</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Group_6_ListContact_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__ListContactResponse">
+    <process:parameterType>parameters:{http://www.2sms.com/WebServices/2.0/Simple/AddressBook/}ListContactResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Group_0_Add_Atomic">
+    <process:hasName>Add</process:hasName>
+    <process:hasInput rdf:resource="#Group_0_Add_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__Add"/>
+    <process:hasOutput rdf:resource="#Group_0_Add_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__AddResponse"/>
+    <process:hasPrecondition>The input parameters for the Add operation must conform to the specified structure defined in the AddressBook schema.</process:hasPrecondition>
+    <process:hasEffect>The Add operation will return a response conforming to the structure defined in the AddressBook schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Group_1_Modify_Atomic">
+    <process:hasName>Modify</process:hasName>
+    <process:hasInput rdf:resource="#Group_1_Modify_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__Modify"/>
+    <process:hasOutput rdf:resource="#Group_1_Modify_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__ModifyResponse"/>
+    <process:hasPrecondition>The user must have valid authentication credentials to access the Modify operation.</process:hasPrecondition>
+    <process:hasEffect>The Modify operation will update the specified address book entry with the new information provided.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Group_2_Delete_Atomic">
+    <process:hasName>Delete</process:hasName>
+    <process:hasInput rdf:resource="#Group_2_Delete_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__Delete"/>
+    <process:hasOutput rdf:resource="#Group_2_Delete_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__DeleteResponse"/>
+    <process:hasPrecondition>The user must have the necessary permissions to delete entries from the address book.</process:hasPrecondition>
+    <process:hasEffect>Deletes the specified entry from the address book.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Group_3_AddContact_Atomic">
+    <process:hasName>AddContact</process:hasName>
+    <process:hasInput rdf:resource="#Group_3_AddContact_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__AddContact"/>
+    <process:hasOutput rdf:resource="#Group_3_AddContact_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__AddContactResponse"/>
+    <process:hasPrecondition>The user must provide valid contact information to be added to the address book.</process:hasPrecondition>
+    <process:hasEffect>A new contact is successfully added to the address book.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Group_4_RemoveContact_Atomic">
+    <process:hasName>RemoveContact</process:hasName>
+    <process:hasInput rdf:resource="#Group_4_RemoveContact_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__RemoveContact"/>
+    <process:hasOutput rdf:resource="#Group_4_RemoveContact_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__RemoveContactResponse"/>
+    <process:hasPrecondition>The contact specified in the RemoveContact request must exist in the address book.</process:hasPrecondition>
+    <process:hasEffect>The specified contact will be successfully removed from the address book.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Group_5_List_Atomic">
+    <process:hasName>List</process:hasName>
+    <process:hasInput rdf:resource="#Group_5_List_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__List"/>
+    <process:hasOutput rdf:resource="#Group_5_List_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__ListResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid list of contacts in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response containing the list of contacts in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Group_6_ListContact_Atomic">
+    <process:hasName>ListContact</process:hasName>
+    <process:hasInput rdf:resource="#Group_6_ListContact_Atomic_input_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__ListContact"/>
+    <process:hasOutput rdf:resource="#Group_6_ListContact_Atomic_output_parameters__http___www.2sms.com_WebServices_2.0_Simple_AddressBook__ListContactResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to access the contact list.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a list of contacts from the address book based on the specified parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Group_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Group_0_Add_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Group_1_Modify_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Group_2_Delete_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Group_3_AddContact_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Group_4_RemoveContact_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Group_5_List_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Group_6_ListContact_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Group_0_Add_Grounding">
+    <grounding:owlsProcess rdf:resource="#Group_0_Add_Atomic"/>
+    <grounding:wsdlOperationName>Add</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>GroupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>GroupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3929_3928.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Group_1_Modify_Grounding">
+    <grounding:owlsProcess rdf:resource="#Group_1_Modify_Atomic"/>
+    <grounding:wsdlOperationName>Modify</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>GroupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>GroupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3929_3928.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ModifySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ModifySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Group_2_Delete_Grounding">
+    <grounding:owlsProcess rdf:resource="#Group_2_Delete_Atomic"/>
+    <grounding:wsdlOperationName>Delete</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>GroupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>GroupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3929_3928.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Group_3_AddContact_Grounding">
+    <grounding:owlsProcess rdf:resource="#Group_3_AddContact_Atomic"/>
+    <grounding:wsdlOperationName>AddContact</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>GroupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>GroupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3929_3928.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddContactSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddContactSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Group_4_RemoveContact_Grounding">
+    <grounding:owlsProcess rdf:resource="#Group_4_RemoveContact_Atomic"/>
+    <grounding:wsdlOperationName>RemoveContact</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>GroupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>GroupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3929_3928.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RemoveContactSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RemoveContactSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Group_5_List_Grounding">
+    <grounding:owlsProcess rdf:resource="#Group_5_List_Atomic"/>
+    <grounding:wsdlOperationName>List</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>GroupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>GroupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3929_3928.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Group_6_ListContact_Grounding">
+    <grounding:owlsProcess rdf:resource="#Group_6_ListContact_Atomic"/>
+    <grounding:wsdlOperationName>ListContact</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>GroupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>GroupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3929_3928.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListContactSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListContactSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

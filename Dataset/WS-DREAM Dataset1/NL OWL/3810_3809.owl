@@ -1,0 +1,520 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="SMS">
+    <service:presents rdf:resource="#SMS_Profile"/>
+    <service:describedBy rdf:resource="#SMS_Composite"/>
+    <service:supports rdf:resource="#SMS_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="SMS_Profile">
+    <profile:serviceName>SMS</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#SMS"/>
+    <profile:hasProcess rdf:resource="#SMS_0_SendSMSBasic_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_0_SendSMSBasic_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_0_SendSMSBasic_Atomic_input_PhoneNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_0_SendSMSBasic_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_0_SendSMSBasic_Atomic_output_Body__http___ws.cdyne.com_SmsWS__SmsReturn"/>
+    <profile:hasPrecondition>The user must provide a valid LicenseKey in order to send an SMS message.</profile:hasPrecondition>
+    <profile:hasResult>The system will send the specified Message to the given PhoneNumber and return a response in the form of a SmsReturn object.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_1_SendMultipleSMSBasic_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_1_SendMultipleSMSBasic_Atomic_input_PhoneNumbers__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_1_SendMultipleSMSBasic_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_1_SendMultipleSMSBasic_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_1_SendMultipleSMSBasic_Atomic_output_Body__http___ws.cdyne.com_SmsWS__ArrayOfSmsReturn"/>
+    <profile:hasPrecondition>The user must provide valid phone numbers, a message, and a valid license key for sending multiple SMS messages.</profile:hasPrecondition>
+    <profile:hasResult>The operation will send the specified message to the provided phone numbers using the given license key and return an array of SMS delivery status.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_2_GetSMSStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_2_GetSMSStatus_Atomic_input_TextID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_2_GetSMSStatus_Atomic_output_Body__http___ws.cdyne.com_SmsWS__SmsReturn"/>
+    <profile:hasPrecondition>The TextID parameter must be a valid string value.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the status of the SMS message corresponding to the provided TextID.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_3_GetSMSResponse_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_3_GetSMSResponse_Atomic_input_TextID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_3_GetSMSResponse_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_3_GetSMSResponse_Atomic_output_Body__http___ws.cdyne.com_SmsWS__ArrayOfSmsResponse"/>
+    <profile:hasPrecondition>The user must provide a valid TextID and LicenseKey in order to make the GetSMSResponse request.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an ArrayOfSmsResponse containing the SMS response data associated with the provided TextID and LicenseKey.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_4_SendSMSBasic_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_4_SendSMSBasic_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__SendSMSBasic"/>
+    <profile:hasOutput rdf:resource="#SMS_4_SendSMSBasic_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__SendSMSBasicResponse"/>
+    <profile:hasPrecondition>The SendSMSBasic operation requires a valid input message conforming to the specified structure in the http://ws.cdyne.com/SmsWS/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The SendSMSBasic operation returns a response message conforming to the specified structure in the http://ws.cdyne.com/SmsWS/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_5_SendMultipleSMSBasic_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_5_SendMultipleSMSBasic_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__SendMultipleSMSBasic"/>
+    <profile:hasOutput rdf:resource="#SMS_5_SendMultipleSMSBasic_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__SendMultipleSMSBasicResponse"/>
+    <profile:hasPrecondition>The user must provide the necessary parameters for sending multiple SMS messages using the SendMultipleSMSBasic operation from the CDYNE SMS web service.</profile:hasPrecondition>
+    <profile:hasResult>The system will send multiple SMS messages based on the provided parameters and return a response confirming the successful delivery of the messages.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_6_SendSMSAdvanced_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_6_SendSMSAdvanced_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__SendSMSAdvanced"/>
+    <profile:hasOutput rdf:resource="#SMS_6_SendSMSAdvanced_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__SendSMSAdvancedResponse"/>
+    <profile:hasPrecondition>The input parameters for SendSMSAdvanced operation must adhere to the structure defined in the http://ws.cdyne.com/SmsWS/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for SendSMSAdvanced operation will be in the structure defined in the http://ws.cdyne.com/SmsWS/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_7_SendMultipleSMSAdvanced_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_7_SendMultipleSMSAdvanced_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__SendMultipleSMSAdvanced"/>
+    <profile:hasOutput rdf:resource="#SMS_7_SendMultipleSMSAdvanced_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__SendMultipleSMSAdvancedResponse"/>
+    <profile:hasPrecondition>The user must have valid authentication credentials to access the SendMultipleSMSAdvanced operation.</profile:hasPrecondition>
+    <profile:hasResult>The SendMultipleSMSAdvanced operation will send multiple SMS messages using advanced settings as specified in the input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_8_GetSMSStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_8_GetSMSStatus_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__GetSMSStatus"/>
+    <profile:hasOutput rdf:resource="#SMS_8_GetSMSStatus_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__GetSMSStatusResponse"/>
+    <profile:hasPrecondition>The user must have a valid authentication token to access the GetSMSStatus operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the status of the SMS message specified in the input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_9_GetSMSResponse_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_9_GetSMSResponse_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__GetSMSResponse"/>
+    <profile:hasOutput rdf:resource="#SMS_9_GetSMSResponse_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__GetSMSResponseResponse"/>
+    <profile:hasPrecondition>The input parameters for GetSMSResponse must be in the format specified by the http://ws.cdyne.com/SmsWS/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for GetSMSResponseResponse will be returned in the format specified by the http://ws.cdyne.com/SmsWS/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_10_SendSMSBasic_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_10_SendSMSBasic_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_10_SendSMSBasic_Atomic_input_PhoneNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_10_SendSMSBasic_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_10_SendSMSBasic_Atomic_output_Body__http___ws.cdyne.com_SmsWS__SmsReturn"/>
+    <profile:hasPrecondition>The user must provide a valid LicenseKey to authenticate the request.</profile:hasPrecondition>
+    <profile:hasResult>The system sends a basic SMS message containing the specified Message to the PhoneNumber provided, and returns a response in the SmsReturn format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_11_SendMultipleSMSBasic_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_11_SendMultipleSMSBasic_Atomic_input_PhoneNumbers__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_11_SendMultipleSMSBasic_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_11_SendMultipleSMSBasic_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_11_SendMultipleSMSBasic_Atomic_output_Body__http___ws.cdyne.com_SmsWS__ArrayOfSmsReturn"/>
+    <profile:hasPrecondition>The user must have a valid LicenseKey to access the SendMultipleSMSBasic operation.</profile:hasPrecondition>
+    <profile:hasResult>Sends SMS messages containing the specified Message to the PhoneNumbers provided, returning an array of SMS delivery statuses in the Body output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_12_GetSMSStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_12_GetSMSStatus_Atomic_input_TextID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_12_GetSMSStatus_Atomic_output_Body__http___ws.cdyne.com_SmsWS__SmsReturn"/>
+    <profile:hasPrecondition>The TextID parameter must be a valid string conforming to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the status of the SMS message specified by the TextID.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_13_GetSMSResponse_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_13_GetSMSResponse_Atomic_input_TextID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SMS_13_GetSMSResponse_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SMS_13_GetSMSResponse_Atomic_output_Body__http___ws.cdyne.com_SmsWS__ArrayOfSmsResponse"/>
+    <profile:hasPrecondition>The user must provide a valid TextID and LicenseKey in order to access the SMS response.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of SMS responses based on the provided TextID and LicenseKey.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="SMS_Composite">
+    <process:composedOf rdf:resource="#SMS_0_SendSMSBasic_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_1_SendMultipleSMSBasic_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_2_GetSMSStatus_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_3_GetSMSResponse_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_4_SendSMSBasic_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_5_SendMultipleSMSBasic_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_6_SendSMSAdvanced_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_7_SendMultipleSMSAdvanced_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_8_GetSMSStatus_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_9_GetSMSResponse_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_10_SendSMSBasic_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_11_SendMultipleSMSBasic_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_12_GetSMSStatus_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_13_GetSMSResponse_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="SMS_0_SendSMSBasic_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Message:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_0_SendSMSBasic_Atomic_input_PhoneNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PhoneNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_0_SendSMSBasic_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_0_SendSMSBasic_Atomic_output_Body__http___ws.cdyne.com_SmsWS__SmsReturn">
+    <process:parameterType>Body:{http://ws.cdyne.com/SmsWS/}SmsReturn</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_1_SendMultipleSMSBasic_Atomic_input_PhoneNumbers__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PhoneNumbers:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_1_SendMultipleSMSBasic_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Message:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_1_SendMultipleSMSBasic_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_1_SendMultipleSMSBasic_Atomic_output_Body__http___ws.cdyne.com_SmsWS__ArrayOfSmsReturn">
+    <process:parameterType>Body:{http://ws.cdyne.com/SmsWS/}ArrayOfSmsReturn</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_2_GetSMSStatus_Atomic_input_TextID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TextID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_2_GetSMSStatus_Atomic_output_Body__http___ws.cdyne.com_SmsWS__SmsReturn">
+    <process:parameterType>Body:{http://ws.cdyne.com/SmsWS/}SmsReturn</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_3_GetSMSResponse_Atomic_input_TextID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TextID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_3_GetSMSResponse_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_3_GetSMSResponse_Atomic_output_Body__http___ws.cdyne.com_SmsWS__ArrayOfSmsResponse">
+    <process:parameterType>Body:{http://ws.cdyne.com/SmsWS/}ArrayOfSmsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_4_SendSMSBasic_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__SendSMSBasic">
+    <process:parameterType>parameters:{http://ws.cdyne.com/SmsWS/}SendSMSBasic</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_4_SendSMSBasic_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__SendSMSBasicResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/SmsWS/}SendSMSBasicResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_5_SendMultipleSMSBasic_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__SendMultipleSMSBasic">
+    <process:parameterType>parameters:{http://ws.cdyne.com/SmsWS/}SendMultipleSMSBasic</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_5_SendMultipleSMSBasic_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__SendMultipleSMSBasicResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/SmsWS/}SendMultipleSMSBasicResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_6_SendSMSAdvanced_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__SendSMSAdvanced">
+    <process:parameterType>parameters:{http://ws.cdyne.com/SmsWS/}SendSMSAdvanced</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_6_SendSMSAdvanced_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__SendSMSAdvancedResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/SmsWS/}SendSMSAdvancedResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_7_SendMultipleSMSAdvanced_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__SendMultipleSMSAdvanced">
+    <process:parameterType>parameters:{http://ws.cdyne.com/SmsWS/}SendMultipleSMSAdvanced</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_7_SendMultipleSMSAdvanced_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__SendMultipleSMSAdvancedResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/SmsWS/}SendMultipleSMSAdvancedResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_8_GetSMSStatus_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__GetSMSStatus">
+    <process:parameterType>parameters:{http://ws.cdyne.com/SmsWS/}GetSMSStatus</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_8_GetSMSStatus_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__GetSMSStatusResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/SmsWS/}GetSMSStatusResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_9_GetSMSResponse_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__GetSMSResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/SmsWS/}GetSMSResponse</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_9_GetSMSResponse_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__GetSMSResponseResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/SmsWS/}GetSMSResponseResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_10_SendSMSBasic_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Message:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_10_SendSMSBasic_Atomic_input_PhoneNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PhoneNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_10_SendSMSBasic_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_10_SendSMSBasic_Atomic_output_Body__http___ws.cdyne.com_SmsWS__SmsReturn">
+    <process:parameterType>Body:{http://ws.cdyne.com/SmsWS/}SmsReturn</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_11_SendMultipleSMSBasic_Atomic_input_PhoneNumbers__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PhoneNumbers:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_11_SendMultipleSMSBasic_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Message:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_11_SendMultipleSMSBasic_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_11_SendMultipleSMSBasic_Atomic_output_Body__http___ws.cdyne.com_SmsWS__ArrayOfSmsReturn">
+    <process:parameterType>Body:{http://ws.cdyne.com/SmsWS/}ArrayOfSmsReturn</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_12_GetSMSStatus_Atomic_input_TextID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TextID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_12_GetSMSStatus_Atomic_output_Body__http___ws.cdyne.com_SmsWS__SmsReturn">
+    <process:parameterType>Body:{http://ws.cdyne.com/SmsWS/}SmsReturn</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_13_GetSMSResponse_Atomic_input_TextID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TextID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SMS_13_GetSMSResponse_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_13_GetSMSResponse_Atomic_output_Body__http___ws.cdyne.com_SmsWS__ArrayOfSmsResponse">
+    <process:parameterType>Body:{http://ws.cdyne.com/SmsWS/}ArrayOfSmsResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="SMS_0_SendSMSBasic_Atomic">
+    <process:hasName>SendSMSBasic</process:hasName>
+    <process:hasInput rdf:resource="#SMS_0_SendSMSBasic_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_0_SendSMSBasic_Atomic_input_PhoneNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_0_SendSMSBasic_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_0_SendSMSBasic_Atomic_output_Body__http___ws.cdyne.com_SmsWS__SmsReturn"/>
+    <process:hasPrecondition>The user must provide a valid LicenseKey in order to send an SMS message.</process:hasPrecondition>
+    <process:hasEffect>The system will send the specified Message to the given PhoneNumber and return a response in the form of a SmsReturn object.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_1_SendMultipleSMSBasic_Atomic">
+    <process:hasName>SendMultipleSMSBasic</process:hasName>
+    <process:hasInput rdf:resource="#SMS_1_SendMultipleSMSBasic_Atomic_input_PhoneNumbers__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_1_SendMultipleSMSBasic_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_1_SendMultipleSMSBasic_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_1_SendMultipleSMSBasic_Atomic_output_Body__http___ws.cdyne.com_SmsWS__ArrayOfSmsReturn"/>
+    <process:hasPrecondition>The user must provide valid phone numbers, a message, and a valid license key for sending multiple SMS messages.</process:hasPrecondition>
+    <process:hasEffect>The operation will send the specified message to the provided phone numbers using the given license key and return an array of SMS delivery status.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_2_GetSMSStatus_Atomic">
+    <process:hasName>GetSMSStatus</process:hasName>
+    <process:hasInput rdf:resource="#SMS_2_GetSMSStatus_Atomic_input_TextID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_2_GetSMSStatus_Atomic_output_Body__http___ws.cdyne.com_SmsWS__SmsReturn"/>
+    <process:hasPrecondition>The TextID parameter must be a valid string value.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the status of the SMS message corresponding to the provided TextID.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_3_GetSMSResponse_Atomic">
+    <process:hasName>GetSMSResponse</process:hasName>
+    <process:hasInput rdf:resource="#SMS_3_GetSMSResponse_Atomic_input_TextID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_3_GetSMSResponse_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_3_GetSMSResponse_Atomic_output_Body__http___ws.cdyne.com_SmsWS__ArrayOfSmsResponse"/>
+    <process:hasPrecondition>The user must provide a valid TextID and LicenseKey in order to make the GetSMSResponse request.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an ArrayOfSmsResponse containing the SMS response data associated with the provided TextID and LicenseKey.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_4_SendSMSBasic_Atomic">
+    <process:hasName>SendSMSBasic</process:hasName>
+    <process:hasInput rdf:resource="#SMS_4_SendSMSBasic_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__SendSMSBasic"/>
+    <process:hasOutput rdf:resource="#SMS_4_SendSMSBasic_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__SendSMSBasicResponse"/>
+    <process:hasPrecondition>The SendSMSBasic operation requires a valid input message conforming to the specified structure in the http://ws.cdyne.com/SmsWS/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The SendSMSBasic operation returns a response message conforming to the specified structure in the http://ws.cdyne.com/SmsWS/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_5_SendMultipleSMSBasic_Atomic">
+    <process:hasName>SendMultipleSMSBasic</process:hasName>
+    <process:hasInput rdf:resource="#SMS_5_SendMultipleSMSBasic_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__SendMultipleSMSBasic"/>
+    <process:hasOutput rdf:resource="#SMS_5_SendMultipleSMSBasic_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__SendMultipleSMSBasicResponse"/>
+    <process:hasPrecondition>The user must provide the necessary parameters for sending multiple SMS messages using the SendMultipleSMSBasic operation from the CDYNE SMS web service.</process:hasPrecondition>
+    <process:hasEffect>The system will send multiple SMS messages based on the provided parameters and return a response confirming the successful delivery of the messages.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_6_SendSMSAdvanced_Atomic">
+    <process:hasName>SendSMSAdvanced</process:hasName>
+    <process:hasInput rdf:resource="#SMS_6_SendSMSAdvanced_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__SendSMSAdvanced"/>
+    <process:hasOutput rdf:resource="#SMS_6_SendSMSAdvanced_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__SendSMSAdvancedResponse"/>
+    <process:hasPrecondition>The input parameters for SendSMSAdvanced operation must adhere to the structure defined in the http://ws.cdyne.com/SmsWS/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for SendSMSAdvanced operation will be in the structure defined in the http://ws.cdyne.com/SmsWS/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_7_SendMultipleSMSAdvanced_Atomic">
+    <process:hasName>SendMultipleSMSAdvanced</process:hasName>
+    <process:hasInput rdf:resource="#SMS_7_SendMultipleSMSAdvanced_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__SendMultipleSMSAdvanced"/>
+    <process:hasOutput rdf:resource="#SMS_7_SendMultipleSMSAdvanced_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__SendMultipleSMSAdvancedResponse"/>
+    <process:hasPrecondition>The user must have valid authentication credentials to access the SendMultipleSMSAdvanced operation.</process:hasPrecondition>
+    <process:hasEffect>The SendMultipleSMSAdvanced operation will send multiple SMS messages using advanced settings as specified in the input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_8_GetSMSStatus_Atomic">
+    <process:hasName>GetSMSStatus</process:hasName>
+    <process:hasInput rdf:resource="#SMS_8_GetSMSStatus_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__GetSMSStatus"/>
+    <process:hasOutput rdf:resource="#SMS_8_GetSMSStatus_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__GetSMSStatusResponse"/>
+    <process:hasPrecondition>The user must have a valid authentication token to access the GetSMSStatus operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the status of the SMS message specified in the input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_9_GetSMSResponse_Atomic">
+    <process:hasName>GetSMSResponse</process:hasName>
+    <process:hasInput rdf:resource="#SMS_9_GetSMSResponse_Atomic_input_parameters__http___ws.cdyne.com_SmsWS__GetSMSResponse"/>
+    <process:hasOutput rdf:resource="#SMS_9_GetSMSResponse_Atomic_output_parameters__http___ws.cdyne.com_SmsWS__GetSMSResponseResponse"/>
+    <process:hasPrecondition>The input parameters for GetSMSResponse must be in the format specified by the http://ws.cdyne.com/SmsWS/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for GetSMSResponseResponse will be returned in the format specified by the http://ws.cdyne.com/SmsWS/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_10_SendSMSBasic_Atomic">
+    <process:hasName>SendSMSBasic</process:hasName>
+    <process:hasInput rdf:resource="#SMS_10_SendSMSBasic_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_10_SendSMSBasic_Atomic_input_PhoneNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_10_SendSMSBasic_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_10_SendSMSBasic_Atomic_output_Body__http___ws.cdyne.com_SmsWS__SmsReturn"/>
+    <process:hasPrecondition>The user must provide a valid LicenseKey to authenticate the request.</process:hasPrecondition>
+    <process:hasEffect>The system sends a basic SMS message containing the specified Message to the PhoneNumber provided, and returns a response in the SmsReturn format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_11_SendMultipleSMSBasic_Atomic">
+    <process:hasName>SendMultipleSMSBasic</process:hasName>
+    <process:hasInput rdf:resource="#SMS_11_SendMultipleSMSBasic_Atomic_input_PhoneNumbers__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_11_SendMultipleSMSBasic_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_11_SendMultipleSMSBasic_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_11_SendMultipleSMSBasic_Atomic_output_Body__http___ws.cdyne.com_SmsWS__ArrayOfSmsReturn"/>
+    <process:hasPrecondition>The user must have a valid LicenseKey to access the SendMultipleSMSBasic operation.</process:hasPrecondition>
+    <process:hasEffect>Sends SMS messages containing the specified Message to the PhoneNumbers provided, returning an array of SMS delivery statuses in the Body output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_12_GetSMSStatus_Atomic">
+    <process:hasName>GetSMSStatus</process:hasName>
+    <process:hasInput rdf:resource="#SMS_12_GetSMSStatus_Atomic_input_TextID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_12_GetSMSStatus_Atomic_output_Body__http___ws.cdyne.com_SmsWS__SmsReturn"/>
+    <process:hasPrecondition>The TextID parameter must be a valid string conforming to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the status of the SMS message specified by the TextID.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_13_GetSMSResponse_Atomic">
+    <process:hasName>GetSMSResponse</process:hasName>
+    <process:hasInput rdf:resource="#SMS_13_GetSMSResponse_Atomic_input_TextID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SMS_13_GetSMSResponse_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SMS_13_GetSMSResponse_Atomic_output_Body__http___ws.cdyne.com_SmsWS__ArrayOfSmsResponse"/>
+    <process:hasPrecondition>The user must provide a valid TextID and LicenseKey in order to access the SMS response.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of SMS responses based on the provided TextID and LicenseKey.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="SMS_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_0_SendSMSBasic_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_1_SendMultipleSMSBasic_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_2_GetSMSStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_3_GetSMSResponse_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_4_SendSMSBasic_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_5_SendMultipleSMSBasic_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_6_SendSMSAdvanced_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_7_SendMultipleSMSAdvanced_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_8_GetSMSStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_9_GetSMSResponse_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_10_SendSMSBasic_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_11_SendMultipleSMSBasic_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_12_GetSMSStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_13_GetSMSResponse_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_0_SendSMSBasic_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_0_SendSMSBasic_Atomic"/>
+    <grounding:wsdlOperationName>SendSMSBasic</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3810_3809.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMSBasicHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMSBasicHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_1_SendMultipleSMSBasic_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_1_SendMultipleSMSBasic_Atomic"/>
+    <grounding:wsdlOperationName>SendMultipleSMSBasic</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3810_3809.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendMultipleSMSBasicHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendMultipleSMSBasicHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_2_GetSMSStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_2_GetSMSStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetSMSStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3810_3809.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSMSStatusHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSMSStatusHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_3_GetSMSResponse_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_3_GetSMSResponse_Atomic"/>
+    <grounding:wsdlOperationName>GetSMSResponse</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3810_3809.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSMSResponseHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSMSResponseHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_4_SendSMSBasic_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_4_SendSMSBasic_Atomic"/>
+    <grounding:wsdlOperationName>SendSMSBasic</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3810_3809.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMSBasicSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMSBasicSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_5_SendMultipleSMSBasic_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_5_SendMultipleSMSBasic_Atomic"/>
+    <grounding:wsdlOperationName>SendMultipleSMSBasic</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3810_3809.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendMultipleSMSBasicSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendMultipleSMSBasicSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_6_SendSMSAdvanced_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_6_SendSMSAdvanced_Atomic"/>
+    <grounding:wsdlOperationName>SendSMSAdvanced</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3810_3809.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMSAdvancedSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMSAdvancedSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_7_SendMultipleSMSAdvanced_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_7_SendMultipleSMSAdvanced_Atomic"/>
+    <grounding:wsdlOperationName>SendMultipleSMSAdvanced</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3810_3809.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendMultipleSMSAdvancedSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendMultipleSMSAdvancedSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_8_GetSMSStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_8_GetSMSStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetSMSStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3810_3809.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSMSStatusSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSMSStatusSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_9_GetSMSResponse_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_9_GetSMSResponse_Atomic"/>
+    <grounding:wsdlOperationName>GetSMSResponse</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3810_3809.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSMSResponseSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSMSResponseSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_10_SendSMSBasic_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_10_SendSMSBasic_Atomic"/>
+    <grounding:wsdlOperationName>SendSMSBasic</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3810_3809.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMSBasicHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMSBasicHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_11_SendMultipleSMSBasic_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_11_SendMultipleSMSBasic_Atomic"/>
+    <grounding:wsdlOperationName>SendMultipleSMSBasic</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3810_3809.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendMultipleSMSBasicHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendMultipleSMSBasicHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_12_GetSMSStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_12_GetSMSStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetSMSStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3810_3809.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSMSStatusHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSMSStatusHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_13_GetSMSResponse_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_13_GetSMSResponse_Atomic"/>
+    <grounding:wsdlOperationName>GetSMSResponse</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3810_3809.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSMSResponseHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSMSResponseHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

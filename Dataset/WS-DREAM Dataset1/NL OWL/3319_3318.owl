@@ -1,0 +1,1979 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="XigniteHelp">
+    <service:presents rdf:resource="#XigniteHelp_Profile"/>
+    <service:describedBy rdf:resource="#XigniteHelp_Composite"/>
+    <service:supports rdf:resource="#XigniteHelp_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="XigniteHelp_Profile">
+    <profile:serviceName>XigniteHelp</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#XigniteHelp"/>
+    <profile:hasProcess rdf:resource="#XigniteHelp_0_IsHealthy_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_0_IsHealthy_Atomic_input_SimulateTimeout__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_0_IsHealthy_Atomic_output_Body__http___www.xignite.com_services__boolean"/>
+    <profile:hasPrecondition>The service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>Returns a boolean value indicating whether the service is healthy or not.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_1_IsHealthyNoParams_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_1_IsHealthyNoParams_Atomic_output_Body__http___www.xignite.com_services__boolean"/>
+    <profile:hasPrecondition>The web service IsHealthyNoParams is available and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The web service returns a boolean value indicating whether it is healthy or not.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_2_Login_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_2_Login_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_2_Login_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_2_Login_Atomic_output_Body__http___www.xignite.com_services__Session"/>
+    <profile:hasPrecondition>The user must provide a valid username and password for authentication.</profile:hasPrecondition>
+    <profile:hasResult>Upon successful authentication, a session token will be generated and returned in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_3_Logout_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_3_Logout_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_3_Logout_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_3_Logout_Atomic_output_Body__http___www.xignite.com_services__BooleanResult"/>
+    <profile:hasPrecondition>The user must be currently logged in with valid credentials.</profile:hasPrecondition>
+    <profile:hasResult>The user is successfully logged out of the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_4_GetWebServiceAsCSVFile_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_4_GetWebServiceAsCSVFile_Atomic_input_Parameters__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_4_GetWebServiceAsCSVFile_Atomic_input_ServiceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_4_GetWebServiceAsCSVFile_Atomic_input_OperationName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_4_GetWebServiceAsCSVFile_Atomic_output_Body__http___www.xignite.com_services__CSVFile"/>
+    <profile:hasPrecondition>The web service must support CSV file format for data retrieval.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves the specified web service data in CSV file format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_5_GetMyServiceStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_5_GetMyServiceStatus_Atomic_input_ServiceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_5_GetMyServiceStatus_Atomic_output_Body__http___www.xignite.com_services__UserRegistration"/>
+    <profile:hasPrecondition>The user must provide a valid ServiceName in the input request.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the status of the specified service in the UserRegistration format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_6_GetMyStatus_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_6_GetMyStatus_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to access the GetMyStatus operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the UserSummary information for the authenticated user.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_7_GetUserStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_7_GetUserStatus_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_7_GetUserStatus_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <profile:hasPrecondition>The user must provide a valid username in order to retrieve the status information.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a summary of the user's status.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_8_GetBuildNum_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_8_GetBuildNum_Atomic_output_Body__http___www.xignite.com_services__string"/>
+    <profile:hasPrecondition>The web service for retrieving the build number is accessible and functioning properly.</profile:hasPrecondition>
+    <profile:hasResult>The build number is returned in the specified format as a string.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_9_AddIPAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_9_AddIPAddress_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_9_AddIPAddress_Atomic_input_NewIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_9_AddIPAddress_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <profile:hasPrecondition>The user must be authenticated with a valid username.</profile:hasPrecondition>
+    <profile:hasResult>The new IP address will be added to the user's account and a summary of the user's information will be returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_10_DeleteIPAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_10_DeleteIPAddress_Atomic_input_IPAddressToDelete__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_10_DeleteIPAddress_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_10_DeleteIPAddress_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <profile:hasPrecondition>The provided Username must have the necessary permissions to delete the specified IPAddressToDelete.</profile:hasPrecondition>
+    <profile:hasResult>The specified IPAddressToDelete will be deleted from the system, and a UserSummary will be returned as confirmation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_11_WhatsMyIP_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_11_WhatsMyIP_Atomic_output_Body__http___www.xignite.com_services__RequestInformation"/>
+    <profile:hasPrecondition>The client must send a request to the WhatsMyIP operation without any input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The server will respond with the body containing the RequestInformation from the specified Xignite web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_12_ListServices_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_12_ListServices_Atomic_output_Body__http___www.xignite.com_services__ArrayOfService"/>
+    <profile:hasPrecondition>The web service must be accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The list of available services will be returned in the response body in the format of an ArrayOfService.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_13_ListServicesAndOperations_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_13_ListServicesAndOperations_Atomic_output_Body__http___www.xignite.com_services__ArrayOfServiceExtended"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>Returns a list of available services and their operations in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_14_GetOperationDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_14_GetOperationDetails_Atomic_input_Service__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_14_GetOperationDetails_Atomic_input_Operation__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_14_GetOperationDetails_Atomic_output_Body__http___www.xignite.com_services__ExtendedOperation"/>
+    <profile:hasPrecondition>The service and operation parameters must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>Returns the extended details of the specified operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_15_ListOperations_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_15_ListOperations_Atomic_input_Service__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_15_ListOperations_Atomic_output_Body__http___www.xignite.com_services__ArrayOfOperation"/>
+    <profile:hasPrecondition>The input Service parameter must be a valid string representing a web service.</profile:hasPrecondition>
+    <profile:hasResult>The operation ListOperations will return an array of operations available for the specified web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_16_Search_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_16_Search_Atomic_input_Pattern__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_16_Search_Atomic_output_Body__http___www.xignite.com_services__ArrayOfServiceExtended"/>
+    <profile:hasPrecondition>The search operation requires a valid string pattern input conforming to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The search operation returns an array of service extended information based on the provided input pattern.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_17_GetCorporateData_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_17_GetCorporateData_Atomic_output_Body__http___www.xignite.com_services__CorporateData"/>
+    <profile:hasPrecondition>The web service for retrieving corporate data is accessible and properly configured.</profile:hasPrecondition>
+    <profile:hasResult>The response will contain the requested corporate data in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_18_AddCookie_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_18_AddCookie_Atomic_input_EmailAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_18_AddCookie_Atomic_output_Body__http___www.xignite.com_services__BooleanResult"/>
+    <profile:hasPrecondition>The user must provide a valid email address in order to add a cookie.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a Boolean result indicating whether the cookie was successfully added.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_19_DeleteCookie_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_19_DeleteCookie_Atomic_output_Body__http___www.xignite.com_services__BooleanResult"/>
+    <profile:hasPrecondition>The web service must have a valid session with the necessary permissions to delete a cookie.</profile:hasPrecondition>
+    <profile:hasResult>The specified cookie will be deleted, and the web service will return a Boolean result indicating the success of the operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_20_ViewTrace_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_20_ViewTrace_Atomic_input_Tracer__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_20_ViewTrace_Atomic_output_Body__http___www.xignite.com_services__Trace"/>
+    <profile:hasPrecondition>The Tracer input must be a valid string conforming to the XML Schema definition from http://www.w3.org/2001/XMLSchema.</profile:hasPrecondition>
+    <profile:hasResult>The ViewTrace operation will return the Trace body from http://www.xignite.com/services/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_21_IsHealthy_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_21_IsHealthy_Atomic_input_parameters__http___www.xignite.com_services__IsHealthy"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_21_IsHealthy_Atomic_output_parameters__http___www.xignite.com_services__IsHealthyResponse"/>
+    <profile:hasPrecondition>The web service endpoint is accessible and able to receive requests.</profile:hasPrecondition>
+    <profile:hasResult>The IsHealthy operation returns a response indicating the health status of the web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_22_IsHealthyNoParams_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_22_IsHealthyNoParams_Atomic_input_parameters__http___www.xignite.com_services__IsHealthyNoParams"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_22_IsHealthyNoParams_Atomic_output_parameters__http___www.xignite.com_services__IsHealthyNoParamsResponse"/>
+    <profile:hasPrecondition>The web service endpoint is accessible and able to receive requests.</profile:hasPrecondition>
+    <profile:hasResult>The web service responds with a confirmation of its healthy status without requiring any input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_23_Login_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_23_Login_Atomic_input_parameters__http___www.xignite.com_services__Login"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_23_Login_Atomic_output_parameters__http___www.xignite.com_services__LoginResponse"/>
+    <profile:hasPrecondition>The user must provide valid login credentials.</profile:hasPrecondition>
+    <profile:hasResult>The system will authenticate the user and provide access to the requested resources.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_24_Logout_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_24_Logout_Atomic_input_parameters__http___www.xignite.com_services__Logout"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_24_Logout_Atomic_output_parameters__http___www.xignite.com_services__LogoutResponse"/>
+    <profile:hasPrecondition>The user must be currently logged in to the system.</profile:hasPrecondition>
+    <profile:hasResult>The user is successfully logged out of the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_25_GetWebServiceAsCSVFile_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_25_GetWebServiceAsCSVFile_Atomic_input_parameters__http___www.xignite.com_services__GetWebServiceAsCSVFile"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_25_GetWebServiceAsCSVFile_Atomic_output_parameters__http___www.xignite.com_services__GetWebServiceAsCSVFileResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and provide a response in CSV format.</profile:hasPrecondition>
+    <profile:hasResult>The response from the web service will be returned as a CSV file.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_26_GetMyServiceStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_26_GetMyServiceStatus_Atomic_input_parameters__http___www.xignite.com_services__GetMyServiceStatus"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_26_GetMyServiceStatus_Atomic_output_parameters__http___www.xignite.com_services__GetMyServiceStatusResponse"/>
+    <profile:hasPrecondition>The client must provide valid authentication credentials to access the GetMyServiceStatus operation.</profile:hasPrecondition>
+    <profile:hasResult>The server will respond with the current status of the service in the GetMyServiceStatusResponse.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_27_GetMyStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_27_GetMyStatus_Atomic_input_parameters__http___www.xignite.com_services__GetMyStatus"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_27_GetMyStatus_Atomic_output_parameters__http___www.xignite.com_services__GetMyStatusResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to access the GetMyStatus operation.</profile:hasPrecondition>
+    <profile:hasResult>The GetMyStatus operation will return the current status information for the user.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_28_GetUserStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_28_GetUserStatus_Atomic_input_parameters__http___www.xignite.com_services__GetUserStatus"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_28_GetUserStatus_Atomic_output_parameters__http___www.xignite.com_services__GetUserStatusResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to access the GetUserStatus operation.</profile:hasPrecondition>
+    <profile:hasResult>The GetUserStatus operation will return the status of the specified user.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_29_GetBuildNum_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_29_GetBuildNum_Atomic_input_parameters__http___www.xignite.com_services__GetBuildNum"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_29_GetBuildNum_Atomic_output_parameters__http___www.xignite.com_services__GetBuildNumResponse"/>
+    <profile:hasPrecondition>The input parameter must be of type GetBuildNum from the Xignite web service.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response parameter of type GetBuildNumResponse from the Xignite web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_30_AddIPAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_30_AddIPAddress_Atomic_input_parameters__http___www.xignite.com_services__AddIPAddress"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_30_AddIPAddress_Atomic_output_parameters__http___www.xignite.com_services__AddIPAddressResponse"/>
+    <profile:hasPrecondition>The user must provide the necessary parameters for adding an IP address in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will add the provided IP address and return a response confirming the action.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_31_DeleteIPAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_31_DeleteIPAddress_Atomic_input_parameters__http___www.xignite.com_services__DeleteIPAddress"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_31_DeleteIPAddress_Atomic_output_parameters__http___www.xignite.com_services__DeleteIPAddressResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and authorized to delete an IP address.</profile:hasPrecondition>
+    <profile:hasResult>The specified IP address will be successfully deleted from the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_32_WhatsMyIP_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_32_WhatsMyIP_Atomic_input_parameters__http___www.xignite.com_services__WhatsMyIP"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_32_WhatsMyIP_Atomic_output_parameters__http___www.xignite.com_services__WhatsMyIPResponse"/>
+    <profile:hasPrecondition>The client must provide a valid request to the web service endpoint http://www.xignite.com/services/WhatsMyIP.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the client's IP address in the response format specified at http://www.xignite.com/services/WhatsMyIPResponse.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_33_ListServices_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_33_ListServices_Atomic_input_parameters__http___www.xignite.com_services__ListServices"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_33_ListServices_Atomic_output_parameters__http___www.xignite.com_services__ListServicesResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the ListServices parameters must be correctly formatted according to the specified namespace.</profile:hasPrecondition>
+    <profile:hasResult>The ListServices operation will be executed and a ListServicesResponse will be returned with the relevant information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_34_ListServicesAndOperations_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_34_ListServicesAndOperations_Atomic_input_parameters__http___www.xignite.com_services__ListServicesAndOperations"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_34_ListServicesAndOperations_Atomic_output_parameters__http___www.xignite.com_services__ListServicesAndOperationsResponse"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The list of available services and operations will be returned in the response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_35_GetOperationDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_35_GetOperationDetails_Atomic_input_parameters__http___www.xignite.com_services__GetOperationDetails"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_35_GetOperationDetails_Atomic_output_parameters__http___www.xignite.com_services__GetOperationDetailsResponse"/>
+    <profile:hasPrecondition>The web service must support the operation GetOperationDetails with input parameters defined in the namespace http://www.xignite.com/services/.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing output parameters defined in the namespace http://www.xignite.com/services/ for the GetOperationDetails operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_36_ListOperations_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_36_ListOperations_Atomic_input_parameters__http___www.xignite.com_services__ListOperations"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_36_ListOperations_Atomic_output_parameters__http___www.xignite.com_services__ListOperationsResponse"/>
+    <profile:hasPrecondition>The web service must support the operation ListOperations with input parameters from the namespace http://www.xignite.com/services/.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the list of available operations in the namespace http://www.xignite.com/services/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_37_Search_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_37_Search_Atomic_input_parameters__http___www.xignite.com_services__Search"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_37_Search_Atomic_output_parameters__http___www.xignite.com_services__SearchResponse"/>
+    <profile:hasPrecondition>The search parameters must be provided in the specified format from http://www.xignite.com/services/.</profile:hasPrecondition>
+    <profile:hasResult>The search operation will return a response in the specified format from http://www.xignite.com/services/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_38_GetCorporateData_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_38_GetCorporateData_Atomic_input_parameters__http___www.xignite.com_services__GetCorporateData"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_38_GetCorporateData_Atomic_output_parameters__http___www.xignite.com_services__GetCorporateDataResponse"/>
+    <profile:hasPrecondition>The user must provide valid parameters for the GetCorporateData operation in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response containing the requested corporate data in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_39_AddCookie_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_39_AddCookie_Atomic_input_parameters__http___www.xignite.com_services__AddCookie"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_39_AddCookie_Atomic_output_parameters__http___www.xignite.com_services__AddCookieResponse"/>
+    <profile:hasPrecondition>The AddCookie operation requires the input parameters conforming to the structure defined in the http://www.xignite.com/services/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The AddCookie operation returns a response containing parameters structured according to the http://www.xignite.com/services/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_40_DeleteCookie_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_40_DeleteCookie_Atomic_input_parameters__http___www.xignite.com_services__DeleteCookie"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_40_DeleteCookie_Atomic_output_parameters__http___www.xignite.com_services__DeleteCookieResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to delete a cookie.</profile:hasPrecondition>
+    <profile:hasResult>The specified cookie will be successfully deleted from the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_41_ViewTrace_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_41_ViewTrace_Atomic_input_parameters__http___www.xignite.com_services__ViewTrace"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_41_ViewTrace_Atomic_output_parameters__http___www.xignite.com_services__ViewTraceResponse"/>
+    <profile:hasPrecondition>The user must have valid authentication credentials to access the ViewTrace operation.</profile:hasPrecondition>
+    <profile:hasResult>The ViewTrace operation will return a response containing trace information based on the provided input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_42_IsHealthy_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_42_IsHealthy_Atomic_input_SimulateTimeout__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_42_IsHealthy_Atomic_output_Body__http___www.xignite.com_services__boolean"/>
+    <profile:hasPrecondition>The web service must be accessible and responsive.</profile:hasPrecondition>
+    <profile:hasResult>Returns a boolean value indicating whether the service is healthy or not.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_43_IsHealthyNoParams_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_43_IsHealthyNoParams_Atomic_output_Body__http___www.xignite.com_services__boolean"/>
+    <profile:hasPrecondition>The system is running and able to process requests.</profile:hasPrecondition>
+    <profile:hasResult>Returns a boolean value indicating the health status of the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_44_Login_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_44_Login_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_44_Login_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_44_Login_Atomic_output_Body__http___www.xignite.com_services__Session"/>
+    <profile:hasPrecondition>The user must provide a valid username and password for authentication.</profile:hasPrecondition>
+    <profile:hasResult>Upon successful authentication, a session token will be generated and returned in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_45_Logout_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_45_Logout_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_45_Logout_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_45_Logout_Atomic_output_Body__http___www.xignite.com_services__BooleanResult"/>
+    <profile:hasPrecondition>The user must be currently logged in with valid credentials.</profile:hasPrecondition>
+    <profile:hasResult>The user is successfully logged out of the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_46_GetWebServiceAsCSVFile_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_46_GetWebServiceAsCSVFile_Atomic_input_Parameters__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_46_GetWebServiceAsCSVFile_Atomic_input_ServiceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_46_GetWebServiceAsCSVFile_Atomic_input_OperationName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_46_GetWebServiceAsCSVFile_Atomic_output_Body__http___www.xignite.com_services__CSVFile"/>
+    <profile:hasPrecondition>The web service must be accessible and support the specified parameters, service name, and operation name.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a CSV file containing the requested data.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_47_GetMyServiceStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_47_GetMyServiceStatus_Atomic_input_ServiceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_47_GetMyServiceStatus_Atomic_output_Body__http___www.xignite.com_services__UserRegistration"/>
+    <profile:hasPrecondition>The user must provide a valid ServiceName in the request.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the status of the specified service along with user registration details.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_48_GetMyStatus_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_48_GetMyStatus_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <profile:hasPrecondition>The user must be authenticated and authorized to access their account information.</profile:hasPrecondition>
+    <profile:hasResult>Returns the user's summary information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_49_GetUserStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_49_GetUserStatus_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_49_GetUserStatus_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <profile:hasPrecondition>The system must have a valid username in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The system will return a summary of the user's status.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_50_GetBuildNum_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_50_GetBuildNum_Atomic_output_Body__http___www.xignite.com_services__string"/>
+    <profile:hasPrecondition>The web service must be accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a string containing the build number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_51_AddIPAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_51_AddIPAddress_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_51_AddIPAddress_Atomic_input_NewIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_51_AddIPAddress_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to add a new IP address.</profile:hasPrecondition>
+    <profile:hasResult>The user's IP address is successfully added to their account, and a summary of the user's information is returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_52_DeleteIPAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_52_DeleteIPAddress_Atomic_input_IPAddressToDelete__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_52_DeleteIPAddress_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_52_DeleteIPAddress_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <profile:hasPrecondition>The user must be authenticated with the provided Username in order to delete the specified IPAddress.</profile:hasPrecondition>
+    <profile:hasResult>The specified IPAddress will be deleted from the system and the UserSummary will be returned as a response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_53_WhatsMyIP_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_53_WhatsMyIP_Atomic_output_Body__http___www.xignite.com_services__RequestInformation"/>
+    <profile:hasPrecondition>The client must send a request to the WhatsMyIP operation without any input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The server will respond with the body containing the RequestInformation from the http://www.xignite.com/services/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_54_ListServices_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_54_ListServices_Atomic_output_Body__http___www.xignite.com_services__ArrayOfService"/>
+    <profile:hasPrecondition>The web service must be accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The list of services available from the Xignite website will be returned in an array format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_55_ListServicesAndOperations_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_55_ListServicesAndOperations_Atomic_output_Body__http___www.xignite.com_services__ArrayOfServiceExtended"/>
+    <profile:hasPrecondition>The web service must be accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The list of available services and operations will be returned in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_56_GetOperationDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_56_GetOperationDetails_Atomic_input_Service__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_56_GetOperationDetails_Atomic_input_Operation__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_56_GetOperationDetails_Atomic_output_Body__http___www.xignite.com_services__ExtendedOperation"/>
+    <profile:hasPrecondition>The Service and Operation inputs must be valid strings conforming to the specified XML schema.</profile:hasPrecondition>
+    <profile:hasResult>The detailed information of the specified operation, including extended properties, will be returned in the Body output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_57_ListOperations_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_57_ListOperations_Atomic_input_Service__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_57_ListOperations_Atomic_output_Body__http___www.xignite.com_services__ArrayOfOperation"/>
+    <profile:hasPrecondition>The web service must support the ListOperations operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of available operations for the specified service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_58_Search_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_58_Search_Atomic_input_Pattern__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_58_Search_Atomic_output_Body__http___www.xignite.com_services__ArrayOfServiceExtended"/>
+    <profile:hasPrecondition>The search operation requires a valid string pattern input conforming to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The search operation returns an array of service extended objects based on the provided pattern.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_59_GetCorporateData_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_59_GetCorporateData_Atomic_output_Body__http___www.xignite.com_services__CorporateData"/>
+    <profile:hasPrecondition>The web service must be accessible and authorized to retrieve corporate data.</profile:hasPrecondition>
+    <profile:hasResult>The corporate data will be returned in the specified format from the web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_60_AddCookie_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_60_AddCookie_Atomic_input_EmailAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_60_AddCookie_Atomic_output_Body__http___www.xignite.com_services__BooleanResult"/>
+    <profile:hasPrecondition>The user must provide a valid email address in order to add a cookie.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a Boolean result indicating whether the cookie was successfully added.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_61_DeleteCookie_Atomic"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_61_DeleteCookie_Atomic_output_Body__http___www.xignite.com_services__BooleanResult"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to delete a cookie.</profile:hasPrecondition>
+    <profile:hasResult>The specified cookie is successfully deleted and a boolean result indicating the success of the operation is returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteHelp_62_ViewTrace_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteHelp_62_ViewTrace_Atomic_input_Tracer__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteHelp_62_ViewTrace_Atomic_output_Body__http___www.xignite.com_services__Trace"/>
+    <profile:hasPrecondition>The Tracer input must be a valid string conforming to the XML Schema definition from http://www.w3.org/2001/XMLSchema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a Trace object in the Body output conforming to the semantic description from http://www.xignite.com/services/.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="XigniteHelp_Composite">
+    <process:composedOf rdf:resource="#XigniteHelp_0_IsHealthy_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_1_IsHealthyNoParams_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_2_Login_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_3_Logout_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_4_GetWebServiceAsCSVFile_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_5_GetMyServiceStatus_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_6_GetMyStatus_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_7_GetUserStatus_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_8_GetBuildNum_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_9_AddIPAddress_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_10_DeleteIPAddress_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_11_WhatsMyIP_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_12_ListServices_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_13_ListServicesAndOperations_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_14_GetOperationDetails_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_15_ListOperations_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_16_Search_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_17_GetCorporateData_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_18_AddCookie_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_19_DeleteCookie_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_20_ViewTrace_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_21_IsHealthy_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_22_IsHealthyNoParams_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_23_Login_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_24_Logout_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_25_GetWebServiceAsCSVFile_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_26_GetMyServiceStatus_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_27_GetMyStatus_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_28_GetUserStatus_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_29_GetBuildNum_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_30_AddIPAddress_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_31_DeleteIPAddress_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_32_WhatsMyIP_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_33_ListServices_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_34_ListServicesAndOperations_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_35_GetOperationDetails_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_36_ListOperations_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_37_Search_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_38_GetCorporateData_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_39_AddCookie_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_40_DeleteCookie_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_41_ViewTrace_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_42_IsHealthy_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_43_IsHealthyNoParams_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_44_Login_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_45_Logout_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_46_GetWebServiceAsCSVFile_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_47_GetMyServiceStatus_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_48_GetMyStatus_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_49_GetUserStatus_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_50_GetBuildNum_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_51_AddIPAddress_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_52_DeleteIPAddress_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_53_WhatsMyIP_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_54_ListServices_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_55_ListServicesAndOperations_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_56_GetOperationDetails_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_57_ListOperations_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_58_Search_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_59_GetCorporateData_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_60_AddCookie_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_61_DeleteCookie_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteHelp_62_ViewTrace_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="XigniteHelp_0_IsHealthy_Atomic_input_SimulateTimeout__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>SimulateTimeout:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_0_IsHealthy_Atomic_output_Body__http___www.xignite.com_services__boolean">
+    <process:parameterType>Body:{http://www.xignite.com/services/}boolean</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_1_IsHealthyNoParams_Atomic_output_Body__http___www.xignite.com_services__boolean">
+    <process:parameterType>Body:{http://www.xignite.com/services/}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_2_Login_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteHelp_2_Login_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_2_Login_Atomic_output_Body__http___www.xignite.com_services__Session">
+    <process:parameterType>Body:{http://www.xignite.com/services/}Session</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_3_Logout_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteHelp_3_Logout_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_3_Logout_Atomic_output_Body__http___www.xignite.com_services__BooleanResult">
+    <process:parameterType>Body:{http://www.xignite.com/services/}BooleanResult</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_4_GetWebServiceAsCSVFile_Atomic_input_Parameters__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Parameters:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteHelp_4_GetWebServiceAsCSVFile_Atomic_input_ServiceName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ServiceName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteHelp_4_GetWebServiceAsCSVFile_Atomic_input_OperationName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>OperationName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_4_GetWebServiceAsCSVFile_Atomic_output_Body__http___www.xignite.com_services__CSVFile">
+    <process:parameterType>Body:{http://www.xignite.com/services/}CSVFile</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_5_GetMyServiceStatus_Atomic_input_ServiceName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ServiceName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_5_GetMyServiceStatus_Atomic_output_Body__http___www.xignite.com_services__UserRegistration">
+    <process:parameterType>Body:{http://www.xignite.com/services/}UserRegistration</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_6_GetMyStatus_Atomic_output_Body__http___www.xignite.com_services__UserSummary">
+    <process:parameterType>Body:{http://www.xignite.com/services/}UserSummary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_7_GetUserStatus_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_7_GetUserStatus_Atomic_output_Body__http___www.xignite.com_services__UserSummary">
+    <process:parameterType>Body:{http://www.xignite.com/services/}UserSummary</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_8_GetBuildNum_Atomic_output_Body__http___www.xignite.com_services__string">
+    <process:parameterType>Body:{http://www.xignite.com/services/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_9_AddIPAddress_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteHelp_9_AddIPAddress_Atomic_input_NewIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>NewIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_9_AddIPAddress_Atomic_output_Body__http___www.xignite.com_services__UserSummary">
+    <process:parameterType>Body:{http://www.xignite.com/services/}UserSummary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_10_DeleteIPAddress_Atomic_input_IPAddressToDelete__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IPAddressToDelete:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteHelp_10_DeleteIPAddress_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_10_DeleteIPAddress_Atomic_output_Body__http___www.xignite.com_services__UserSummary">
+    <process:parameterType>Body:{http://www.xignite.com/services/}UserSummary</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_11_WhatsMyIP_Atomic_output_Body__http___www.xignite.com_services__RequestInformation">
+    <process:parameterType>Body:{http://www.xignite.com/services/}RequestInformation</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_12_ListServices_Atomic_output_Body__http___www.xignite.com_services__ArrayOfService">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfService</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_13_ListServicesAndOperations_Atomic_output_Body__http___www.xignite.com_services__ArrayOfServiceExtended">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfServiceExtended</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_14_GetOperationDetails_Atomic_input_Service__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Service:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteHelp_14_GetOperationDetails_Atomic_input_Operation__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Operation:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_14_GetOperationDetails_Atomic_output_Body__http___www.xignite.com_services__ExtendedOperation">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ExtendedOperation</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_15_ListOperations_Atomic_input_Service__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Service:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_15_ListOperations_Atomic_output_Body__http___www.xignite.com_services__ArrayOfOperation">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfOperation</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_16_Search_Atomic_input_Pattern__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Pattern:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_16_Search_Atomic_output_Body__http___www.xignite.com_services__ArrayOfServiceExtended">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfServiceExtended</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_17_GetCorporateData_Atomic_output_Body__http___www.xignite.com_services__CorporateData">
+    <process:parameterType>Body:{http://www.xignite.com/services/}CorporateData</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_18_AddCookie_Atomic_input_EmailAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>EmailAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_18_AddCookie_Atomic_output_Body__http___www.xignite.com_services__BooleanResult">
+    <process:parameterType>Body:{http://www.xignite.com/services/}BooleanResult</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_19_DeleteCookie_Atomic_output_Body__http___www.xignite.com_services__BooleanResult">
+    <process:parameterType>Body:{http://www.xignite.com/services/}BooleanResult</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_20_ViewTrace_Atomic_input_Tracer__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Tracer:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_20_ViewTrace_Atomic_output_Body__http___www.xignite.com_services__Trace">
+    <process:parameterType>Body:{http://www.xignite.com/services/}Trace</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_21_IsHealthy_Atomic_input_parameters__http___www.xignite.com_services__IsHealthy">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}IsHealthy</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_21_IsHealthy_Atomic_output_parameters__http___www.xignite.com_services__IsHealthyResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}IsHealthyResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_22_IsHealthyNoParams_Atomic_input_parameters__http___www.xignite.com_services__IsHealthyNoParams">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}IsHealthyNoParams</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_22_IsHealthyNoParams_Atomic_output_parameters__http___www.xignite.com_services__IsHealthyNoParamsResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}IsHealthyNoParamsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_23_Login_Atomic_input_parameters__http___www.xignite.com_services__Login">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}Login</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_23_Login_Atomic_output_parameters__http___www.xignite.com_services__LoginResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}LoginResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_24_Logout_Atomic_input_parameters__http___www.xignite.com_services__Logout">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}Logout</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_24_Logout_Atomic_output_parameters__http___www.xignite.com_services__LogoutResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}LogoutResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_25_GetWebServiceAsCSVFile_Atomic_input_parameters__http___www.xignite.com_services__GetWebServiceAsCSVFile">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetWebServiceAsCSVFile</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_25_GetWebServiceAsCSVFile_Atomic_output_parameters__http___www.xignite.com_services__GetWebServiceAsCSVFileResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetWebServiceAsCSVFileResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_26_GetMyServiceStatus_Atomic_input_parameters__http___www.xignite.com_services__GetMyServiceStatus">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetMyServiceStatus</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_26_GetMyServiceStatus_Atomic_output_parameters__http___www.xignite.com_services__GetMyServiceStatusResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetMyServiceStatusResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_27_GetMyStatus_Atomic_input_parameters__http___www.xignite.com_services__GetMyStatus">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetMyStatus</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_27_GetMyStatus_Atomic_output_parameters__http___www.xignite.com_services__GetMyStatusResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetMyStatusResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_28_GetUserStatus_Atomic_input_parameters__http___www.xignite.com_services__GetUserStatus">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetUserStatus</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_28_GetUserStatus_Atomic_output_parameters__http___www.xignite.com_services__GetUserStatusResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetUserStatusResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_29_GetBuildNum_Atomic_input_parameters__http___www.xignite.com_services__GetBuildNum">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetBuildNum</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_29_GetBuildNum_Atomic_output_parameters__http___www.xignite.com_services__GetBuildNumResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetBuildNumResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_30_AddIPAddress_Atomic_input_parameters__http___www.xignite.com_services__AddIPAddress">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}AddIPAddress</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_30_AddIPAddress_Atomic_output_parameters__http___www.xignite.com_services__AddIPAddressResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}AddIPAddressResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_31_DeleteIPAddress_Atomic_input_parameters__http___www.xignite.com_services__DeleteIPAddress">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}DeleteIPAddress</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_31_DeleteIPAddress_Atomic_output_parameters__http___www.xignite.com_services__DeleteIPAddressResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}DeleteIPAddressResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_32_WhatsMyIP_Atomic_input_parameters__http___www.xignite.com_services__WhatsMyIP">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}WhatsMyIP</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_32_WhatsMyIP_Atomic_output_parameters__http___www.xignite.com_services__WhatsMyIPResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}WhatsMyIPResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_33_ListServices_Atomic_input_parameters__http___www.xignite.com_services__ListServices">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}ListServices</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_33_ListServices_Atomic_output_parameters__http___www.xignite.com_services__ListServicesResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}ListServicesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_34_ListServicesAndOperations_Atomic_input_parameters__http___www.xignite.com_services__ListServicesAndOperations">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}ListServicesAndOperations</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_34_ListServicesAndOperations_Atomic_output_parameters__http___www.xignite.com_services__ListServicesAndOperationsResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}ListServicesAndOperationsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_35_GetOperationDetails_Atomic_input_parameters__http___www.xignite.com_services__GetOperationDetails">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetOperationDetails</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_35_GetOperationDetails_Atomic_output_parameters__http___www.xignite.com_services__GetOperationDetailsResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetOperationDetailsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_36_ListOperations_Atomic_input_parameters__http___www.xignite.com_services__ListOperations">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}ListOperations</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_36_ListOperations_Atomic_output_parameters__http___www.xignite.com_services__ListOperationsResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}ListOperationsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_37_Search_Atomic_input_parameters__http___www.xignite.com_services__Search">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}Search</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_37_Search_Atomic_output_parameters__http___www.xignite.com_services__SearchResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}SearchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_38_GetCorporateData_Atomic_input_parameters__http___www.xignite.com_services__GetCorporateData">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetCorporateData</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_38_GetCorporateData_Atomic_output_parameters__http___www.xignite.com_services__GetCorporateDataResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetCorporateDataResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_39_AddCookie_Atomic_input_parameters__http___www.xignite.com_services__AddCookie">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}AddCookie</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_39_AddCookie_Atomic_output_parameters__http___www.xignite.com_services__AddCookieResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}AddCookieResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_40_DeleteCookie_Atomic_input_parameters__http___www.xignite.com_services__DeleteCookie">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}DeleteCookie</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_40_DeleteCookie_Atomic_output_parameters__http___www.xignite.com_services__DeleteCookieResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}DeleteCookieResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_41_ViewTrace_Atomic_input_parameters__http___www.xignite.com_services__ViewTrace">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}ViewTrace</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_41_ViewTrace_Atomic_output_parameters__http___www.xignite.com_services__ViewTraceResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}ViewTraceResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_42_IsHealthy_Atomic_input_SimulateTimeout__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>SimulateTimeout:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_42_IsHealthy_Atomic_output_Body__http___www.xignite.com_services__boolean">
+    <process:parameterType>Body:{http://www.xignite.com/services/}boolean</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_43_IsHealthyNoParams_Atomic_output_Body__http___www.xignite.com_services__boolean">
+    <process:parameterType>Body:{http://www.xignite.com/services/}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_44_Login_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteHelp_44_Login_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_44_Login_Atomic_output_Body__http___www.xignite.com_services__Session">
+    <process:parameterType>Body:{http://www.xignite.com/services/}Session</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_45_Logout_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteHelp_45_Logout_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_45_Logout_Atomic_output_Body__http___www.xignite.com_services__BooleanResult">
+    <process:parameterType>Body:{http://www.xignite.com/services/}BooleanResult</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_46_GetWebServiceAsCSVFile_Atomic_input_Parameters__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Parameters:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteHelp_46_GetWebServiceAsCSVFile_Atomic_input_ServiceName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ServiceName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteHelp_46_GetWebServiceAsCSVFile_Atomic_input_OperationName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>OperationName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_46_GetWebServiceAsCSVFile_Atomic_output_Body__http___www.xignite.com_services__CSVFile">
+    <process:parameterType>Body:{http://www.xignite.com/services/}CSVFile</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_47_GetMyServiceStatus_Atomic_input_ServiceName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ServiceName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_47_GetMyServiceStatus_Atomic_output_Body__http___www.xignite.com_services__UserRegistration">
+    <process:parameterType>Body:{http://www.xignite.com/services/}UserRegistration</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_48_GetMyStatus_Atomic_output_Body__http___www.xignite.com_services__UserSummary">
+    <process:parameterType>Body:{http://www.xignite.com/services/}UserSummary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_49_GetUserStatus_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_49_GetUserStatus_Atomic_output_Body__http___www.xignite.com_services__UserSummary">
+    <process:parameterType>Body:{http://www.xignite.com/services/}UserSummary</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_50_GetBuildNum_Atomic_output_Body__http___www.xignite.com_services__string">
+    <process:parameterType>Body:{http://www.xignite.com/services/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_51_AddIPAddress_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteHelp_51_AddIPAddress_Atomic_input_NewIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>NewIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_51_AddIPAddress_Atomic_output_Body__http___www.xignite.com_services__UserSummary">
+    <process:parameterType>Body:{http://www.xignite.com/services/}UserSummary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_52_DeleteIPAddress_Atomic_input_IPAddressToDelete__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IPAddressToDelete:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteHelp_52_DeleteIPAddress_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_52_DeleteIPAddress_Atomic_output_Body__http___www.xignite.com_services__UserSummary">
+    <process:parameterType>Body:{http://www.xignite.com/services/}UserSummary</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_53_WhatsMyIP_Atomic_output_Body__http___www.xignite.com_services__RequestInformation">
+    <process:parameterType>Body:{http://www.xignite.com/services/}RequestInformation</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_54_ListServices_Atomic_output_Body__http___www.xignite.com_services__ArrayOfService">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfService</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_55_ListServicesAndOperations_Atomic_output_Body__http___www.xignite.com_services__ArrayOfServiceExtended">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfServiceExtended</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_56_GetOperationDetails_Atomic_input_Service__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Service:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteHelp_56_GetOperationDetails_Atomic_input_Operation__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Operation:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_56_GetOperationDetails_Atomic_output_Body__http___www.xignite.com_services__ExtendedOperation">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ExtendedOperation</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_57_ListOperations_Atomic_input_Service__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Service:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_57_ListOperations_Atomic_output_Body__http___www.xignite.com_services__ArrayOfOperation">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfOperation</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_58_Search_Atomic_input_Pattern__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Pattern:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_58_Search_Atomic_output_Body__http___www.xignite.com_services__ArrayOfServiceExtended">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfServiceExtended</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_59_GetCorporateData_Atomic_output_Body__http___www.xignite.com_services__CorporateData">
+    <process:parameterType>Body:{http://www.xignite.com/services/}CorporateData</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_60_AddCookie_Atomic_input_EmailAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>EmailAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_60_AddCookie_Atomic_output_Body__http___www.xignite.com_services__BooleanResult">
+    <process:parameterType>Body:{http://www.xignite.com/services/}BooleanResult</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="XigniteHelp_61_DeleteCookie_Atomic_output_Body__http___www.xignite.com_services__BooleanResult">
+    <process:parameterType>Body:{http://www.xignite.com/services/}BooleanResult</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteHelp_62_ViewTrace_Atomic_input_Tracer__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Tracer:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteHelp_62_ViewTrace_Atomic_output_Body__http___www.xignite.com_services__Trace">
+    <process:parameterType>Body:{http://www.xignite.com/services/}Trace</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_0_IsHealthy_Atomic">
+    <process:hasName>IsHealthy</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_0_IsHealthy_Atomic_input_SimulateTimeout__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_0_IsHealthy_Atomic_output_Body__http___www.xignite.com_services__boolean"/>
+    <process:hasPrecondition>The service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>Returns a boolean value indicating whether the service is healthy or not.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_1_IsHealthyNoParams_Atomic">
+    <process:hasName>IsHealthyNoParams</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_1_IsHealthyNoParams_Atomic_output_Body__http___www.xignite.com_services__boolean"/>
+    <process:hasPrecondition>The web service IsHealthyNoParams is available and accessible.</process:hasPrecondition>
+    <process:hasEffect>The web service returns a boolean value indicating whether it is healthy or not.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_2_Login_Atomic">
+    <process:hasName>Login</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_2_Login_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteHelp_2_Login_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_2_Login_Atomic_output_Body__http___www.xignite.com_services__Session"/>
+    <process:hasPrecondition>The user must provide a valid username and password for authentication.</process:hasPrecondition>
+    <process:hasEffect>Upon successful authentication, a session token will be generated and returned in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_3_Logout_Atomic">
+    <process:hasName>Logout</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_3_Logout_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteHelp_3_Logout_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_3_Logout_Atomic_output_Body__http___www.xignite.com_services__BooleanResult"/>
+    <process:hasPrecondition>The user must be currently logged in with valid credentials.</process:hasPrecondition>
+    <process:hasEffect>The user is successfully logged out of the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_4_GetWebServiceAsCSVFile_Atomic">
+    <process:hasName>GetWebServiceAsCSVFile</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_4_GetWebServiceAsCSVFile_Atomic_input_Parameters__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteHelp_4_GetWebServiceAsCSVFile_Atomic_input_ServiceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteHelp_4_GetWebServiceAsCSVFile_Atomic_input_OperationName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_4_GetWebServiceAsCSVFile_Atomic_output_Body__http___www.xignite.com_services__CSVFile"/>
+    <process:hasPrecondition>The web service must support CSV file format for data retrieval.</process:hasPrecondition>
+    <process:hasEffect>Retrieves the specified web service data in CSV file format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_5_GetMyServiceStatus_Atomic">
+    <process:hasName>GetMyServiceStatus</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_5_GetMyServiceStatus_Atomic_input_ServiceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_5_GetMyServiceStatus_Atomic_output_Body__http___www.xignite.com_services__UserRegistration"/>
+    <process:hasPrecondition>The user must provide a valid ServiceName in the input request.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the status of the specified service in the UserRegistration format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_6_GetMyStatus_Atomic">
+    <process:hasName>GetMyStatus</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_6_GetMyStatus_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to access the GetMyStatus operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the UserSummary information for the authenticated user.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_7_GetUserStatus_Atomic">
+    <process:hasName>GetUserStatus</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_7_GetUserStatus_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_7_GetUserStatus_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <process:hasPrecondition>The user must provide a valid username in order to retrieve the status information.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a summary of the user's status.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_8_GetBuildNum_Atomic">
+    <process:hasName>GetBuildNum</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_8_GetBuildNum_Atomic_output_Body__http___www.xignite.com_services__string"/>
+    <process:hasPrecondition>The web service for retrieving the build number is accessible and functioning properly.</process:hasPrecondition>
+    <process:hasEffect>The build number is returned in the specified format as a string.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_9_AddIPAddress_Atomic">
+    <process:hasName>AddIPAddress</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_9_AddIPAddress_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteHelp_9_AddIPAddress_Atomic_input_NewIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_9_AddIPAddress_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <process:hasPrecondition>The user must be authenticated with a valid username.</process:hasPrecondition>
+    <process:hasEffect>The new IP address will be added to the user's account and a summary of the user's information will be returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_10_DeleteIPAddress_Atomic">
+    <process:hasName>DeleteIPAddress</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_10_DeleteIPAddress_Atomic_input_IPAddressToDelete__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteHelp_10_DeleteIPAddress_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_10_DeleteIPAddress_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <process:hasPrecondition>The provided Username must have the necessary permissions to delete the specified IPAddressToDelete.</process:hasPrecondition>
+    <process:hasEffect>The specified IPAddressToDelete will be deleted from the system, and a UserSummary will be returned as confirmation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_11_WhatsMyIP_Atomic">
+    <process:hasName>WhatsMyIP</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_11_WhatsMyIP_Atomic_output_Body__http___www.xignite.com_services__RequestInformation"/>
+    <process:hasPrecondition>The client must send a request to the WhatsMyIP operation without any input parameters.</process:hasPrecondition>
+    <process:hasEffect>The server will respond with the body containing the RequestInformation from the specified Xignite web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_12_ListServices_Atomic">
+    <process:hasName>ListServices</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_12_ListServices_Atomic_output_Body__http___www.xignite.com_services__ArrayOfService"/>
+    <process:hasPrecondition>The web service must be accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The list of available services will be returned in the response body in the format of an ArrayOfService.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_13_ListServicesAndOperations_Atomic">
+    <process:hasName>ListServicesAndOperations</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_13_ListServicesAndOperations_Atomic_output_Body__http___www.xignite.com_services__ArrayOfServiceExtended"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>Returns a list of available services and their operations in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_14_GetOperationDetails_Atomic">
+    <process:hasName>GetOperationDetails</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_14_GetOperationDetails_Atomic_input_Service__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteHelp_14_GetOperationDetails_Atomic_input_Operation__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_14_GetOperationDetails_Atomic_output_Body__http___www.xignite.com_services__ExtendedOperation"/>
+    <process:hasPrecondition>The service and operation parameters must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>Returns the extended details of the specified operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_15_ListOperations_Atomic">
+    <process:hasName>ListOperations</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_15_ListOperations_Atomic_input_Service__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_15_ListOperations_Atomic_output_Body__http___www.xignite.com_services__ArrayOfOperation"/>
+    <process:hasPrecondition>The input Service parameter must be a valid string representing a web service.</process:hasPrecondition>
+    <process:hasEffect>The operation ListOperations will return an array of operations available for the specified web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_16_Search_Atomic">
+    <process:hasName>Search</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_16_Search_Atomic_input_Pattern__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_16_Search_Atomic_output_Body__http___www.xignite.com_services__ArrayOfServiceExtended"/>
+    <process:hasPrecondition>The search operation requires a valid string pattern input conforming to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The search operation returns an array of service extended information based on the provided input pattern.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_17_GetCorporateData_Atomic">
+    <process:hasName>GetCorporateData</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_17_GetCorporateData_Atomic_output_Body__http___www.xignite.com_services__CorporateData"/>
+    <process:hasPrecondition>The web service for retrieving corporate data is accessible and properly configured.</process:hasPrecondition>
+    <process:hasEffect>The response will contain the requested corporate data in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_18_AddCookie_Atomic">
+    <process:hasName>AddCookie</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_18_AddCookie_Atomic_input_EmailAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_18_AddCookie_Atomic_output_Body__http___www.xignite.com_services__BooleanResult"/>
+    <process:hasPrecondition>The user must provide a valid email address in order to add a cookie.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a Boolean result indicating whether the cookie was successfully added.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_19_DeleteCookie_Atomic">
+    <process:hasName>DeleteCookie</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_19_DeleteCookie_Atomic_output_Body__http___www.xignite.com_services__BooleanResult"/>
+    <process:hasPrecondition>The web service must have a valid session with the necessary permissions to delete a cookie.</process:hasPrecondition>
+    <process:hasEffect>The specified cookie will be deleted, and the web service will return a Boolean result indicating the success of the operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_20_ViewTrace_Atomic">
+    <process:hasName>ViewTrace</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_20_ViewTrace_Atomic_input_Tracer__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_20_ViewTrace_Atomic_output_Body__http___www.xignite.com_services__Trace"/>
+    <process:hasPrecondition>The Tracer input must be a valid string conforming to the XML Schema definition from http://www.w3.org/2001/XMLSchema.</process:hasPrecondition>
+    <process:hasEffect>The ViewTrace operation will return the Trace body from http://www.xignite.com/services/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_21_IsHealthy_Atomic">
+    <process:hasName>IsHealthy</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_21_IsHealthy_Atomic_input_parameters__http___www.xignite.com_services__IsHealthy"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_21_IsHealthy_Atomic_output_parameters__http___www.xignite.com_services__IsHealthyResponse"/>
+    <process:hasPrecondition>The web service endpoint is accessible and able to receive requests.</process:hasPrecondition>
+    <process:hasEffect>The IsHealthy operation returns a response indicating the health status of the web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_22_IsHealthyNoParams_Atomic">
+    <process:hasName>IsHealthyNoParams</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_22_IsHealthyNoParams_Atomic_input_parameters__http___www.xignite.com_services__IsHealthyNoParams"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_22_IsHealthyNoParams_Atomic_output_parameters__http___www.xignite.com_services__IsHealthyNoParamsResponse"/>
+    <process:hasPrecondition>The web service endpoint is accessible and able to receive requests.</process:hasPrecondition>
+    <process:hasEffect>The web service responds with a confirmation of its healthy status without requiring any input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_23_Login_Atomic">
+    <process:hasName>Login</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_23_Login_Atomic_input_parameters__http___www.xignite.com_services__Login"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_23_Login_Atomic_output_parameters__http___www.xignite.com_services__LoginResponse"/>
+    <process:hasPrecondition>The user must provide valid login credentials.</process:hasPrecondition>
+    <process:hasEffect>The system will authenticate the user and provide access to the requested resources.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_24_Logout_Atomic">
+    <process:hasName>Logout</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_24_Logout_Atomic_input_parameters__http___www.xignite.com_services__Logout"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_24_Logout_Atomic_output_parameters__http___www.xignite.com_services__LogoutResponse"/>
+    <process:hasPrecondition>The user must be currently logged in to the system.</process:hasPrecondition>
+    <process:hasEffect>The user is successfully logged out of the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_25_GetWebServiceAsCSVFile_Atomic">
+    <process:hasName>GetWebServiceAsCSVFile</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_25_GetWebServiceAsCSVFile_Atomic_input_parameters__http___www.xignite.com_services__GetWebServiceAsCSVFile"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_25_GetWebServiceAsCSVFile_Atomic_output_parameters__http___www.xignite.com_services__GetWebServiceAsCSVFileResponse"/>
+    <process:hasPrecondition>The web service must be accessible and provide a response in CSV format.</process:hasPrecondition>
+    <process:hasEffect>The response from the web service will be returned as a CSV file.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_26_GetMyServiceStatus_Atomic">
+    <process:hasName>GetMyServiceStatus</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_26_GetMyServiceStatus_Atomic_input_parameters__http___www.xignite.com_services__GetMyServiceStatus"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_26_GetMyServiceStatus_Atomic_output_parameters__http___www.xignite.com_services__GetMyServiceStatusResponse"/>
+    <process:hasPrecondition>The client must provide valid authentication credentials to access the GetMyServiceStatus operation.</process:hasPrecondition>
+    <process:hasEffect>The server will respond with the current status of the service in the GetMyServiceStatusResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_27_GetMyStatus_Atomic">
+    <process:hasName>GetMyStatus</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_27_GetMyStatus_Atomic_input_parameters__http___www.xignite.com_services__GetMyStatus"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_27_GetMyStatus_Atomic_output_parameters__http___www.xignite.com_services__GetMyStatusResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to access the GetMyStatus operation.</process:hasPrecondition>
+    <process:hasEffect>The GetMyStatus operation will return the current status information for the user.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_28_GetUserStatus_Atomic">
+    <process:hasName>GetUserStatus</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_28_GetUserStatus_Atomic_input_parameters__http___www.xignite.com_services__GetUserStatus"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_28_GetUserStatus_Atomic_output_parameters__http___www.xignite.com_services__GetUserStatusResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to access the GetUserStatus operation.</process:hasPrecondition>
+    <process:hasEffect>The GetUserStatus operation will return the status of the specified user.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_29_GetBuildNum_Atomic">
+    <process:hasName>GetBuildNum</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_29_GetBuildNum_Atomic_input_parameters__http___www.xignite.com_services__GetBuildNum"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_29_GetBuildNum_Atomic_output_parameters__http___www.xignite.com_services__GetBuildNumResponse"/>
+    <process:hasPrecondition>The input parameter must be of type GetBuildNum from the Xignite web service.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response parameter of type GetBuildNumResponse from the Xignite web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_30_AddIPAddress_Atomic">
+    <process:hasName>AddIPAddress</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_30_AddIPAddress_Atomic_input_parameters__http___www.xignite.com_services__AddIPAddress"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_30_AddIPAddress_Atomic_output_parameters__http___www.xignite.com_services__AddIPAddressResponse"/>
+    <process:hasPrecondition>The user must provide the necessary parameters for adding an IP address in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will add the provided IP address and return a response confirming the action.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_31_DeleteIPAddress_Atomic">
+    <process:hasName>DeleteIPAddress</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_31_DeleteIPAddress_Atomic_input_parameters__http___www.xignite.com_services__DeleteIPAddress"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_31_DeleteIPAddress_Atomic_output_parameters__http___www.xignite.com_services__DeleteIPAddressResponse"/>
+    <process:hasPrecondition>The user must be authenticated and authorized to delete an IP address.</process:hasPrecondition>
+    <process:hasEffect>The specified IP address will be successfully deleted from the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_32_WhatsMyIP_Atomic">
+    <process:hasName>WhatsMyIP</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_32_WhatsMyIP_Atomic_input_parameters__http___www.xignite.com_services__WhatsMyIP"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_32_WhatsMyIP_Atomic_output_parameters__http___www.xignite.com_services__WhatsMyIPResponse"/>
+    <process:hasPrecondition>The client must provide a valid request to the web service endpoint http://www.xignite.com/services/WhatsMyIP.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the client's IP address in the response format specified at http://www.xignite.com/services/WhatsMyIPResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_33_ListServices_Atomic">
+    <process:hasName>ListServices</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_33_ListServices_Atomic_input_parameters__http___www.xignite.com_services__ListServices"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_33_ListServices_Atomic_output_parameters__http___www.xignite.com_services__ListServicesResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the ListServices parameters must be correctly formatted according to the specified namespace.</process:hasPrecondition>
+    <process:hasEffect>The ListServices operation will be executed and a ListServicesResponse will be returned with the relevant information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_34_ListServicesAndOperations_Atomic">
+    <process:hasName>ListServicesAndOperations</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_34_ListServicesAndOperations_Atomic_input_parameters__http___www.xignite.com_services__ListServicesAndOperations"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_34_ListServicesAndOperations_Atomic_output_parameters__http___www.xignite.com_services__ListServicesAndOperationsResponse"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The list of available services and operations will be returned in the response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_35_GetOperationDetails_Atomic">
+    <process:hasName>GetOperationDetails</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_35_GetOperationDetails_Atomic_input_parameters__http___www.xignite.com_services__GetOperationDetails"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_35_GetOperationDetails_Atomic_output_parameters__http___www.xignite.com_services__GetOperationDetailsResponse"/>
+    <process:hasPrecondition>The web service must support the operation GetOperationDetails with input parameters defined in the namespace http://www.xignite.com/services/.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing output parameters defined in the namespace http://www.xignite.com/services/ for the GetOperationDetails operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_36_ListOperations_Atomic">
+    <process:hasName>ListOperations</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_36_ListOperations_Atomic_input_parameters__http___www.xignite.com_services__ListOperations"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_36_ListOperations_Atomic_output_parameters__http___www.xignite.com_services__ListOperationsResponse"/>
+    <process:hasPrecondition>The web service must support the operation ListOperations with input parameters from the namespace http://www.xignite.com/services/.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the list of available operations in the namespace http://www.xignite.com/services/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_37_Search_Atomic">
+    <process:hasName>Search</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_37_Search_Atomic_input_parameters__http___www.xignite.com_services__Search"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_37_Search_Atomic_output_parameters__http___www.xignite.com_services__SearchResponse"/>
+    <process:hasPrecondition>The search parameters must be provided in the specified format from http://www.xignite.com/services/.</process:hasPrecondition>
+    <process:hasEffect>The search operation will return a response in the specified format from http://www.xignite.com/services/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_38_GetCorporateData_Atomic">
+    <process:hasName>GetCorporateData</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_38_GetCorporateData_Atomic_input_parameters__http___www.xignite.com_services__GetCorporateData"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_38_GetCorporateData_Atomic_output_parameters__http___www.xignite.com_services__GetCorporateDataResponse"/>
+    <process:hasPrecondition>The user must provide valid parameters for the GetCorporateData operation in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response containing the requested corporate data in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_39_AddCookie_Atomic">
+    <process:hasName>AddCookie</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_39_AddCookie_Atomic_input_parameters__http___www.xignite.com_services__AddCookie"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_39_AddCookie_Atomic_output_parameters__http___www.xignite.com_services__AddCookieResponse"/>
+    <process:hasPrecondition>The AddCookie operation requires the input parameters conforming to the structure defined in the http://www.xignite.com/services/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The AddCookie operation returns a response containing parameters structured according to the http://www.xignite.com/services/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_40_DeleteCookie_Atomic">
+    <process:hasName>DeleteCookie</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_40_DeleteCookie_Atomic_input_parameters__http___www.xignite.com_services__DeleteCookie"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_40_DeleteCookie_Atomic_output_parameters__http___www.xignite.com_services__DeleteCookieResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to delete a cookie.</process:hasPrecondition>
+    <process:hasEffect>The specified cookie will be successfully deleted from the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_41_ViewTrace_Atomic">
+    <process:hasName>ViewTrace</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_41_ViewTrace_Atomic_input_parameters__http___www.xignite.com_services__ViewTrace"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_41_ViewTrace_Atomic_output_parameters__http___www.xignite.com_services__ViewTraceResponse"/>
+    <process:hasPrecondition>The user must have valid authentication credentials to access the ViewTrace operation.</process:hasPrecondition>
+    <process:hasEffect>The ViewTrace operation will return a response containing trace information based on the provided input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_42_IsHealthy_Atomic">
+    <process:hasName>IsHealthy</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_42_IsHealthy_Atomic_input_SimulateTimeout__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_42_IsHealthy_Atomic_output_Body__http___www.xignite.com_services__boolean"/>
+    <process:hasPrecondition>The web service must be accessible and responsive.</process:hasPrecondition>
+    <process:hasEffect>Returns a boolean value indicating whether the service is healthy or not.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_43_IsHealthyNoParams_Atomic">
+    <process:hasName>IsHealthyNoParams</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_43_IsHealthyNoParams_Atomic_output_Body__http___www.xignite.com_services__boolean"/>
+    <process:hasPrecondition>The system is running and able to process requests.</process:hasPrecondition>
+    <process:hasEffect>Returns a boolean value indicating the health status of the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_44_Login_Atomic">
+    <process:hasName>Login</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_44_Login_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteHelp_44_Login_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_44_Login_Atomic_output_Body__http___www.xignite.com_services__Session"/>
+    <process:hasPrecondition>The user must provide a valid username and password for authentication.</process:hasPrecondition>
+    <process:hasEffect>Upon successful authentication, a session token will be generated and returned in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_45_Logout_Atomic">
+    <process:hasName>Logout</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_45_Logout_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteHelp_45_Logout_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_45_Logout_Atomic_output_Body__http___www.xignite.com_services__BooleanResult"/>
+    <process:hasPrecondition>The user must be currently logged in with valid credentials.</process:hasPrecondition>
+    <process:hasEffect>The user is successfully logged out of the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_46_GetWebServiceAsCSVFile_Atomic">
+    <process:hasName>GetWebServiceAsCSVFile</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_46_GetWebServiceAsCSVFile_Atomic_input_Parameters__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteHelp_46_GetWebServiceAsCSVFile_Atomic_input_ServiceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteHelp_46_GetWebServiceAsCSVFile_Atomic_input_OperationName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_46_GetWebServiceAsCSVFile_Atomic_output_Body__http___www.xignite.com_services__CSVFile"/>
+    <process:hasPrecondition>The web service must be accessible and support the specified parameters, service name, and operation name.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a CSV file containing the requested data.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_47_GetMyServiceStatus_Atomic">
+    <process:hasName>GetMyServiceStatus</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_47_GetMyServiceStatus_Atomic_input_ServiceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_47_GetMyServiceStatus_Atomic_output_Body__http___www.xignite.com_services__UserRegistration"/>
+    <process:hasPrecondition>The user must provide a valid ServiceName in the request.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the status of the specified service along with user registration details.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_48_GetMyStatus_Atomic">
+    <process:hasName>GetMyStatus</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_48_GetMyStatus_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <process:hasPrecondition>The user must be authenticated and authorized to access their account information.</process:hasPrecondition>
+    <process:hasEffect>Returns the user's summary information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_49_GetUserStatus_Atomic">
+    <process:hasName>GetUserStatus</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_49_GetUserStatus_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_49_GetUserStatus_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <process:hasPrecondition>The system must have a valid username in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The system will return a summary of the user's status.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_50_GetBuildNum_Atomic">
+    <process:hasName>GetBuildNum</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_50_GetBuildNum_Atomic_output_Body__http___www.xignite.com_services__string"/>
+    <process:hasPrecondition>The web service must be accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a string containing the build number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_51_AddIPAddress_Atomic">
+    <process:hasName>AddIPAddress</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_51_AddIPAddress_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteHelp_51_AddIPAddress_Atomic_input_NewIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_51_AddIPAddress_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to add a new IP address.</process:hasPrecondition>
+    <process:hasEffect>The user's IP address is successfully added to their account, and a summary of the user's information is returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_52_DeleteIPAddress_Atomic">
+    <process:hasName>DeleteIPAddress</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_52_DeleteIPAddress_Atomic_input_IPAddressToDelete__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteHelp_52_DeleteIPAddress_Atomic_input_Username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_52_DeleteIPAddress_Atomic_output_Body__http___www.xignite.com_services__UserSummary"/>
+    <process:hasPrecondition>The user must be authenticated with the provided Username in order to delete the specified IPAddress.</process:hasPrecondition>
+    <process:hasEffect>The specified IPAddress will be deleted from the system and the UserSummary will be returned as a response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_53_WhatsMyIP_Atomic">
+    <process:hasName>WhatsMyIP</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_53_WhatsMyIP_Atomic_output_Body__http___www.xignite.com_services__RequestInformation"/>
+    <process:hasPrecondition>The client must send a request to the WhatsMyIP operation without any input parameters.</process:hasPrecondition>
+    <process:hasEffect>The server will respond with the body containing the RequestInformation from the http://www.xignite.com/services/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_54_ListServices_Atomic">
+    <process:hasName>ListServices</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_54_ListServices_Atomic_output_Body__http___www.xignite.com_services__ArrayOfService"/>
+    <process:hasPrecondition>The web service must be accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The list of services available from the Xignite website will be returned in an array format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_55_ListServicesAndOperations_Atomic">
+    <process:hasName>ListServicesAndOperations</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_55_ListServicesAndOperations_Atomic_output_Body__http___www.xignite.com_services__ArrayOfServiceExtended"/>
+    <process:hasPrecondition>The web service must be accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The list of available services and operations will be returned in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_56_GetOperationDetails_Atomic">
+    <process:hasName>GetOperationDetails</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_56_GetOperationDetails_Atomic_input_Service__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteHelp_56_GetOperationDetails_Atomic_input_Operation__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_56_GetOperationDetails_Atomic_output_Body__http___www.xignite.com_services__ExtendedOperation"/>
+    <process:hasPrecondition>The Service and Operation inputs must be valid strings conforming to the specified XML schema.</process:hasPrecondition>
+    <process:hasEffect>The detailed information of the specified operation, including extended properties, will be returned in the Body output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_57_ListOperations_Atomic">
+    <process:hasName>ListOperations</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_57_ListOperations_Atomic_input_Service__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_57_ListOperations_Atomic_output_Body__http___www.xignite.com_services__ArrayOfOperation"/>
+    <process:hasPrecondition>The web service must support the ListOperations operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of available operations for the specified service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_58_Search_Atomic">
+    <process:hasName>Search</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_58_Search_Atomic_input_Pattern__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_58_Search_Atomic_output_Body__http___www.xignite.com_services__ArrayOfServiceExtended"/>
+    <process:hasPrecondition>The search operation requires a valid string pattern input conforming to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The search operation returns an array of service extended objects based on the provided pattern.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_59_GetCorporateData_Atomic">
+    <process:hasName>GetCorporateData</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_59_GetCorporateData_Atomic_output_Body__http___www.xignite.com_services__CorporateData"/>
+    <process:hasPrecondition>The web service must be accessible and authorized to retrieve corporate data.</process:hasPrecondition>
+    <process:hasEffect>The corporate data will be returned in the specified format from the web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_60_AddCookie_Atomic">
+    <process:hasName>AddCookie</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_60_AddCookie_Atomic_input_EmailAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_60_AddCookie_Atomic_output_Body__http___www.xignite.com_services__BooleanResult"/>
+    <process:hasPrecondition>The user must provide a valid email address in order to add a cookie.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a Boolean result indicating whether the cookie was successfully added.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_61_DeleteCookie_Atomic">
+    <process:hasName>DeleteCookie</process:hasName>
+    <process:hasOutput rdf:resource="#XigniteHelp_61_DeleteCookie_Atomic_output_Body__http___www.xignite.com_services__BooleanResult"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to delete a cookie.</process:hasPrecondition>
+    <process:hasEffect>The specified cookie is successfully deleted and a boolean result indicating the success of the operation is returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteHelp_62_ViewTrace_Atomic">
+    <process:hasName>ViewTrace</process:hasName>
+    <process:hasInput rdf:resource="#XigniteHelp_62_ViewTrace_Atomic_input_Tracer__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteHelp_62_ViewTrace_Atomic_output_Body__http___www.xignite.com_services__Trace"/>
+    <process:hasPrecondition>The Tracer input must be a valid string conforming to the XML Schema definition from http://www.w3.org/2001/XMLSchema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a Trace object in the Body output conforming to the semantic description from http://www.xignite.com/services/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="XigniteHelp_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_0_IsHealthy_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_1_IsHealthyNoParams_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_2_Login_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_3_Logout_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_4_GetWebServiceAsCSVFile_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_5_GetMyServiceStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_6_GetMyStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_7_GetUserStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_8_GetBuildNum_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_9_AddIPAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_10_DeleteIPAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_11_WhatsMyIP_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_12_ListServices_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_13_ListServicesAndOperations_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_14_GetOperationDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_15_ListOperations_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_16_Search_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_17_GetCorporateData_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_18_AddCookie_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_19_DeleteCookie_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_20_ViewTrace_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_21_IsHealthy_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_22_IsHealthyNoParams_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_23_Login_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_24_Logout_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_25_GetWebServiceAsCSVFile_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_26_GetMyServiceStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_27_GetMyStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_28_GetUserStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_29_GetBuildNum_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_30_AddIPAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_31_DeleteIPAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_32_WhatsMyIP_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_33_ListServices_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_34_ListServicesAndOperations_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_35_GetOperationDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_36_ListOperations_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_37_Search_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_38_GetCorporateData_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_39_AddCookie_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_40_DeleteCookie_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_41_ViewTrace_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_42_IsHealthy_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_43_IsHealthyNoParams_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_44_Login_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_45_Logout_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_46_GetWebServiceAsCSVFile_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_47_GetMyServiceStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_48_GetMyStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_49_GetUserStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_50_GetBuildNum_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_51_AddIPAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_52_DeleteIPAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_53_WhatsMyIP_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_54_ListServices_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_55_ListServicesAndOperations_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_56_GetOperationDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_57_ListOperations_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_58_Search_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_59_GetCorporateData_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_60_AddCookie_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_61_DeleteCookie_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteHelp_62_ViewTrace_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_0_IsHealthy_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_0_IsHealthy_Atomic"/>
+    <grounding:wsdlOperationName>IsHealthy</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsHealthyHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsHealthyHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_1_IsHealthyNoParams_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_1_IsHealthyNoParams_Atomic"/>
+    <grounding:wsdlOperationName>IsHealthyNoParams</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsHealthyNoParamsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsHealthyNoParamsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_2_Login_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_2_Login_Atomic"/>
+    <grounding:wsdlOperationName>Login</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LoginHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LoginHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_3_Logout_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_3_Logout_Atomic"/>
+    <grounding:wsdlOperationName>Logout</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoutHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoutHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_4_GetWebServiceAsCSVFile_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_4_GetWebServiceAsCSVFile_Atomic"/>
+    <grounding:wsdlOperationName>GetWebServiceAsCSVFile</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWebServiceAsCSVFileHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWebServiceAsCSVFileHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_5_GetMyServiceStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_5_GetMyServiceStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetMyServiceStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetMyServiceStatusHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetMyServiceStatusHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_6_GetMyStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_6_GetMyStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetMyStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetMyStatusHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetMyStatusHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_7_GetUserStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_7_GetUserStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetUserStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserStatusHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserStatusHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_8_GetBuildNum_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_8_GetBuildNum_Atomic"/>
+    <grounding:wsdlOperationName>GetBuildNum</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBuildNumHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBuildNumHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_9_AddIPAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_9_AddIPAddress_Atomic"/>
+    <grounding:wsdlOperationName>AddIPAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddIPAddressHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddIPAddressHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_10_DeleteIPAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_10_DeleteIPAddress_Atomic"/>
+    <grounding:wsdlOperationName>DeleteIPAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteIPAddressHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteIPAddressHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_11_WhatsMyIP_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_11_WhatsMyIP_Atomic"/>
+    <grounding:wsdlOperationName>WhatsMyIP</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>WhatsMyIPHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>WhatsMyIPHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_12_ListServices_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_12_ListServices_Atomic"/>
+    <grounding:wsdlOperationName>ListServices</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListServicesHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListServicesHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_13_ListServicesAndOperations_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_13_ListServicesAndOperations_Atomic"/>
+    <grounding:wsdlOperationName>ListServicesAndOperations</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListServicesAndOperationsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListServicesAndOperationsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_14_GetOperationDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_14_GetOperationDetails_Atomic"/>
+    <grounding:wsdlOperationName>GetOperationDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetOperationDetailsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetOperationDetailsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_15_ListOperations_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_15_ListOperations_Atomic"/>
+    <grounding:wsdlOperationName>ListOperations</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListOperationsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListOperationsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_16_Search_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_16_Search_Atomic"/>
+    <grounding:wsdlOperationName>Search</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SearchHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SearchHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_17_GetCorporateData_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_17_GetCorporateData_Atomic"/>
+    <grounding:wsdlOperationName>GetCorporateData</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCorporateDataHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCorporateDataHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_18_AddCookie_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_18_AddCookie_Atomic"/>
+    <grounding:wsdlOperationName>AddCookie</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddCookieHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddCookieHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_19_DeleteCookie_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_19_DeleteCookie_Atomic"/>
+    <grounding:wsdlOperationName>DeleteCookie</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteCookieHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteCookieHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_20_ViewTrace_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_20_ViewTrace_Atomic"/>
+    <grounding:wsdlOperationName>ViewTrace</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ViewTraceHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ViewTraceHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_21_IsHealthy_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_21_IsHealthy_Atomic"/>
+    <grounding:wsdlOperationName>IsHealthy</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsHealthySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsHealthySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_22_IsHealthyNoParams_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_22_IsHealthyNoParams_Atomic"/>
+    <grounding:wsdlOperationName>IsHealthyNoParams</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsHealthyNoParamsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsHealthyNoParamsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_23_Login_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_23_Login_Atomic"/>
+    <grounding:wsdlOperationName>Login</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LoginSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LoginSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_24_Logout_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_24_Logout_Atomic"/>
+    <grounding:wsdlOperationName>Logout</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoutSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoutSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_25_GetWebServiceAsCSVFile_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_25_GetWebServiceAsCSVFile_Atomic"/>
+    <grounding:wsdlOperationName>GetWebServiceAsCSVFile</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWebServiceAsCSVFileSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWebServiceAsCSVFileSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_26_GetMyServiceStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_26_GetMyServiceStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetMyServiceStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetMyServiceStatusSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetMyServiceStatusSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_27_GetMyStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_27_GetMyStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetMyStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetMyStatusSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetMyStatusSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_28_GetUserStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_28_GetUserStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetUserStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserStatusSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserStatusSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_29_GetBuildNum_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_29_GetBuildNum_Atomic"/>
+    <grounding:wsdlOperationName>GetBuildNum</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBuildNumSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBuildNumSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_30_AddIPAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_30_AddIPAddress_Atomic"/>
+    <grounding:wsdlOperationName>AddIPAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddIPAddressSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddIPAddressSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_31_DeleteIPAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_31_DeleteIPAddress_Atomic"/>
+    <grounding:wsdlOperationName>DeleteIPAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteIPAddressSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteIPAddressSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_32_WhatsMyIP_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_32_WhatsMyIP_Atomic"/>
+    <grounding:wsdlOperationName>WhatsMyIP</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>WhatsMyIPSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>WhatsMyIPSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_33_ListServices_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_33_ListServices_Atomic"/>
+    <grounding:wsdlOperationName>ListServices</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListServicesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListServicesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_34_ListServicesAndOperations_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_34_ListServicesAndOperations_Atomic"/>
+    <grounding:wsdlOperationName>ListServicesAndOperations</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListServicesAndOperationsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListServicesAndOperationsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_35_GetOperationDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_35_GetOperationDetails_Atomic"/>
+    <grounding:wsdlOperationName>GetOperationDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetOperationDetailsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetOperationDetailsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_36_ListOperations_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_36_ListOperations_Atomic"/>
+    <grounding:wsdlOperationName>ListOperations</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListOperationsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListOperationsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_37_Search_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_37_Search_Atomic"/>
+    <grounding:wsdlOperationName>Search</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SearchSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SearchSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_38_GetCorporateData_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_38_GetCorporateData_Atomic"/>
+    <grounding:wsdlOperationName>GetCorporateData</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCorporateDataSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCorporateDataSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_39_AddCookie_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_39_AddCookie_Atomic"/>
+    <grounding:wsdlOperationName>AddCookie</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddCookieSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddCookieSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_40_DeleteCookie_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_40_DeleteCookie_Atomic"/>
+    <grounding:wsdlOperationName>DeleteCookie</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteCookieSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteCookieSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_41_ViewTrace_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_41_ViewTrace_Atomic"/>
+    <grounding:wsdlOperationName>ViewTrace</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ViewTraceSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ViewTraceSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_42_IsHealthy_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_42_IsHealthy_Atomic"/>
+    <grounding:wsdlOperationName>IsHealthy</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsHealthyHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsHealthyHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_43_IsHealthyNoParams_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_43_IsHealthyNoParams_Atomic"/>
+    <grounding:wsdlOperationName>IsHealthyNoParams</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsHealthyNoParamsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsHealthyNoParamsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_44_Login_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_44_Login_Atomic"/>
+    <grounding:wsdlOperationName>Login</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LoginHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LoginHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_45_Logout_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_45_Logout_Atomic"/>
+    <grounding:wsdlOperationName>Logout</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoutHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoutHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_46_GetWebServiceAsCSVFile_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_46_GetWebServiceAsCSVFile_Atomic"/>
+    <grounding:wsdlOperationName>GetWebServiceAsCSVFile</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWebServiceAsCSVFileHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWebServiceAsCSVFileHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_47_GetMyServiceStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_47_GetMyServiceStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetMyServiceStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetMyServiceStatusHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetMyServiceStatusHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_48_GetMyStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_48_GetMyStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetMyStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetMyStatusHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetMyStatusHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_49_GetUserStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_49_GetUserStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetUserStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserStatusHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserStatusHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_50_GetBuildNum_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_50_GetBuildNum_Atomic"/>
+    <grounding:wsdlOperationName>GetBuildNum</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBuildNumHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBuildNumHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_51_AddIPAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_51_AddIPAddress_Atomic"/>
+    <grounding:wsdlOperationName>AddIPAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddIPAddressHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddIPAddressHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_52_DeleteIPAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_52_DeleteIPAddress_Atomic"/>
+    <grounding:wsdlOperationName>DeleteIPAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteIPAddressHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteIPAddressHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_53_WhatsMyIP_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_53_WhatsMyIP_Atomic"/>
+    <grounding:wsdlOperationName>WhatsMyIP</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>WhatsMyIPHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>WhatsMyIPHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_54_ListServices_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_54_ListServices_Atomic"/>
+    <grounding:wsdlOperationName>ListServices</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListServicesHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListServicesHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_55_ListServicesAndOperations_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_55_ListServicesAndOperations_Atomic"/>
+    <grounding:wsdlOperationName>ListServicesAndOperations</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListServicesAndOperationsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListServicesAndOperationsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_56_GetOperationDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_56_GetOperationDetails_Atomic"/>
+    <grounding:wsdlOperationName>GetOperationDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetOperationDetailsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetOperationDetailsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_57_ListOperations_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_57_ListOperations_Atomic"/>
+    <grounding:wsdlOperationName>ListOperations</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListOperationsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListOperationsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_58_Search_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_58_Search_Atomic"/>
+    <grounding:wsdlOperationName>Search</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SearchHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SearchHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_59_GetCorporateData_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_59_GetCorporateData_Atomic"/>
+    <grounding:wsdlOperationName>GetCorporateData</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCorporateDataHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCorporateDataHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_60_AddCookie_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_60_AddCookie_Atomic"/>
+    <grounding:wsdlOperationName>AddCookie</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddCookieHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddCookieHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_61_DeleteCookie_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_61_DeleteCookie_Atomic"/>
+    <grounding:wsdlOperationName>DeleteCookie</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteCookieHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteCookieHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteHelp_62_ViewTrace_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteHelp_62_ViewTrace_Atomic"/>
+    <grounding:wsdlOperationName>ViewTrace</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteHelpHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteHelpHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3319_3318.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ViewTraceHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ViewTraceHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

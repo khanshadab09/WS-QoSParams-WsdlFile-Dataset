@@ -1,0 +1,365 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Lookup">
+    <service:presents rdf:resource="#Lookup_Profile"/>
+    <service:describedBy rdf:resource="#Lookup_Composite"/>
+    <service:supports rdf:resource="#Lookup_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Lookup_Profile">
+    <profile:serviceName>Lookup</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Lookup"/>
+    <profile:hasProcess rdf:resource="#Lookup_0_getAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#Lookup_0_getAddress_Atomic_input_parameters__http___postcodesoftware.co.uk__getAddress"/>
+    <profile:hasOutput rdf:resource="#Lookup_0_getAddress_Atomic_output_parameters__http___postcodesoftware.co.uk__getAddressResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid address for the getAddress operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the corresponding address response based on the input parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lookup_1_getGeoData_Atomic"/>
+    <profile:hasInput rdf:resource="#Lookup_1_getGeoData_Atomic_input_parameters__http___postcodesoftware.co.uk__getGeoData"/>
+    <profile:hasOutput rdf:resource="#Lookup_1_getGeoData_Atomic_output_parameters__http___postcodesoftware.co.uk__getGeoDataResponse"/>
+    <profile:hasPrecondition>The input parameters must adhere to the structure defined by the {http://postcodesoftware.co.uk/}getGeoData schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return output parameters following the structure defined by the {http://postcodesoftware.co.uk/}getGeoDataResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lookup_2_getCredits_Atomic"/>
+    <profile:hasInput rdf:resource="#Lookup_2_getCredits_Atomic_input_parameters__http___postcodesoftware.co.uk__getCredits"/>
+    <profile:hasOutput rdf:resource="#Lookup_2_getCredits_Atomic_output_parameters__http___postcodesoftware.co.uk__getCreditsResponse"/>
+    <profile:hasPrecondition>The user must provide valid authentication credentials to access the getCredits operation.</profile:hasPrecondition>
+    <profile:hasResult>The getCredits operation will return the current credit balance associated with the user's account.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lookup_3_getAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#Lookup_3_getAddress_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Lookup_3_getAddress_Atomic_input_postcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Lookup_3_getAddress_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Lookup_3_getAddress_Atomic_output_Body__http___postcodesoftware.co.uk__Address"/>
+    <profile:hasPrecondition>The user must provide a valid password, postcode, and account information.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the address associated with the provided postcode and account.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lookup_4_getGeoData_Atomic"/>
+    <profile:hasInput rdf:resource="#Lookup_4_getGeoData_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Lookup_4_getGeoData_Atomic_input_postcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Lookup_4_getGeoData_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Lookup_4_getGeoData_Atomic_output_Body__http___postcodesoftware.co.uk__GeoData"/>
+    <profile:hasPrecondition>The user must provide a valid password, postcode, and account information to access the getGeoData operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the geographical data associated with the provided postcode.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lookup_5_getCredits_Atomic"/>
+    <profile:hasInput rdf:resource="#Lookup_5_getCredits_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Lookup_5_getCredits_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Lookup_5_getCredits_Atomic_output_Body__http___postcodesoftware.co.uk__Account"/>
+    <profile:hasPrecondition>The user must provide a valid password and account identifier in order to access the credits information.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the account details, including the credits, in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lookup_6_getAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#Lookup_6_getAddress_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Lookup_6_getAddress_Atomic_input_postcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Lookup_6_getAddress_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Lookup_6_getAddress_Atomic_output_Body__http___postcodesoftware.co.uk__Address"/>
+    <profile:hasPrecondition>The user must provide a valid password, postcode, and account information to access the getAddress operation.</profile:hasPrecondition>
+    <profile:hasResult>The getAddress operation will return the address associated with the provided postcode and account information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lookup_7_getGeoData_Atomic"/>
+    <profile:hasInput rdf:resource="#Lookup_7_getGeoData_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Lookup_7_getGeoData_Atomic_input_postcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Lookup_7_getGeoData_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Lookup_7_getGeoData_Atomic_output_Body__http___postcodesoftware.co.uk__GeoData"/>
+    <profile:hasPrecondition>The user must provide a valid password, postcode, and account information in the specified data types.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return geographical data related to the provided postcode.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lookup_8_getCredits_Atomic"/>
+    <profile:hasInput rdf:resource="#Lookup_8_getCredits_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Lookup_8_getCredits_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Lookup_8_getCredits_Atomic_output_Body__http___postcodesoftware.co.uk__Account"/>
+    <profile:hasPrecondition>The user must provide a valid password and account identifier in order to access the credits information.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the account details including the credits associated with the provided account.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Lookup_Composite">
+    <process:composedOf rdf:resource="#Lookup_0_getAddress_Atomic"/>
+    <process:composedOf rdf:resource="#Lookup_1_getGeoData_Atomic"/>
+    <process:composedOf rdf:resource="#Lookup_2_getCredits_Atomic"/>
+    <process:composedOf rdf:resource="#Lookup_3_getAddress_Atomic"/>
+    <process:composedOf rdf:resource="#Lookup_4_getGeoData_Atomic"/>
+    <process:composedOf rdf:resource="#Lookup_5_getCredits_Atomic"/>
+    <process:composedOf rdf:resource="#Lookup_6_getAddress_Atomic"/>
+    <process:composedOf rdf:resource="#Lookup_7_getGeoData_Atomic"/>
+    <process:composedOf rdf:resource="#Lookup_8_getCredits_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Lookup_0_getAddress_Atomic_input_parameters__http___postcodesoftware.co.uk__getAddress">
+    <process:parameterType>parameters:{http://postcodesoftware.co.uk/}getAddress</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lookup_0_getAddress_Atomic_output_parameters__http___postcodesoftware.co.uk__getAddressResponse">
+    <process:parameterType>parameters:{http://postcodesoftware.co.uk/}getAddressResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lookup_1_getGeoData_Atomic_input_parameters__http___postcodesoftware.co.uk__getGeoData">
+    <process:parameterType>parameters:{http://postcodesoftware.co.uk/}getGeoData</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lookup_1_getGeoData_Atomic_output_parameters__http___postcodesoftware.co.uk__getGeoDataResponse">
+    <process:parameterType>parameters:{http://postcodesoftware.co.uk/}getGeoDataResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lookup_2_getCredits_Atomic_input_parameters__http___postcodesoftware.co.uk__getCredits">
+    <process:parameterType>parameters:{http://postcodesoftware.co.uk/}getCredits</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lookup_2_getCredits_Atomic_output_parameters__http___postcodesoftware.co.uk__getCreditsResponse">
+    <process:parameterType>parameters:{http://postcodesoftware.co.uk/}getCreditsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lookup_3_getAddress_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Lookup_3_getAddress_Atomic_input_postcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>postcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Lookup_3_getAddress_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lookup_3_getAddress_Atomic_output_Body__http___postcodesoftware.co.uk__Address">
+    <process:parameterType>Body:{http://postcodesoftware.co.uk/}Address</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lookup_4_getGeoData_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Lookup_4_getGeoData_Atomic_input_postcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>postcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Lookup_4_getGeoData_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lookup_4_getGeoData_Atomic_output_Body__http___postcodesoftware.co.uk__GeoData">
+    <process:parameterType>Body:{http://postcodesoftware.co.uk/}GeoData</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lookup_5_getCredits_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Lookup_5_getCredits_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lookup_5_getCredits_Atomic_output_Body__http___postcodesoftware.co.uk__Account">
+    <process:parameterType>Body:{http://postcodesoftware.co.uk/}Account</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lookup_6_getAddress_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Lookup_6_getAddress_Atomic_input_postcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>postcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Lookup_6_getAddress_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lookup_6_getAddress_Atomic_output_Body__http___postcodesoftware.co.uk__Address">
+    <process:parameterType>Body:{http://postcodesoftware.co.uk/}Address</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lookup_7_getGeoData_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Lookup_7_getGeoData_Atomic_input_postcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>postcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Lookup_7_getGeoData_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lookup_7_getGeoData_Atomic_output_Body__http___postcodesoftware.co.uk__GeoData">
+    <process:parameterType>Body:{http://postcodesoftware.co.uk/}GeoData</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lookup_8_getCredits_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Lookup_8_getCredits_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lookup_8_getCredits_Atomic_output_Body__http___postcodesoftware.co.uk__Account">
+    <process:parameterType>Body:{http://postcodesoftware.co.uk/}Account</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Lookup_0_getAddress_Atomic">
+    <process:hasName>getAddress</process:hasName>
+    <process:hasInput rdf:resource="#Lookup_0_getAddress_Atomic_input_parameters__http___postcodesoftware.co.uk__getAddress"/>
+    <process:hasOutput rdf:resource="#Lookup_0_getAddress_Atomic_output_parameters__http___postcodesoftware.co.uk__getAddressResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid address for the getAddress operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the corresponding address response based on the input parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lookup_1_getGeoData_Atomic">
+    <process:hasName>getGeoData</process:hasName>
+    <process:hasInput rdf:resource="#Lookup_1_getGeoData_Atomic_input_parameters__http___postcodesoftware.co.uk__getGeoData"/>
+    <process:hasOutput rdf:resource="#Lookup_1_getGeoData_Atomic_output_parameters__http___postcodesoftware.co.uk__getGeoDataResponse"/>
+    <process:hasPrecondition>The input parameters must adhere to the structure defined by the {http://postcodesoftware.co.uk/}getGeoData schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return output parameters following the structure defined by the {http://postcodesoftware.co.uk/}getGeoDataResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lookup_2_getCredits_Atomic">
+    <process:hasName>getCredits</process:hasName>
+    <process:hasInput rdf:resource="#Lookup_2_getCredits_Atomic_input_parameters__http___postcodesoftware.co.uk__getCredits"/>
+    <process:hasOutput rdf:resource="#Lookup_2_getCredits_Atomic_output_parameters__http___postcodesoftware.co.uk__getCreditsResponse"/>
+    <process:hasPrecondition>The user must provide valid authentication credentials to access the getCredits operation.</process:hasPrecondition>
+    <process:hasEffect>The getCredits operation will return the current credit balance associated with the user's account.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lookup_3_getAddress_Atomic">
+    <process:hasName>getAddress</process:hasName>
+    <process:hasInput rdf:resource="#Lookup_3_getAddress_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Lookup_3_getAddress_Atomic_input_postcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Lookup_3_getAddress_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Lookup_3_getAddress_Atomic_output_Body__http___postcodesoftware.co.uk__Address"/>
+    <process:hasPrecondition>The user must provide a valid password, postcode, and account information.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the address associated with the provided postcode and account.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lookup_4_getGeoData_Atomic">
+    <process:hasName>getGeoData</process:hasName>
+    <process:hasInput rdf:resource="#Lookup_4_getGeoData_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Lookup_4_getGeoData_Atomic_input_postcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Lookup_4_getGeoData_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Lookup_4_getGeoData_Atomic_output_Body__http___postcodesoftware.co.uk__GeoData"/>
+    <process:hasPrecondition>The user must provide a valid password, postcode, and account information to access the getGeoData operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the geographical data associated with the provided postcode.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lookup_5_getCredits_Atomic">
+    <process:hasName>getCredits</process:hasName>
+    <process:hasInput rdf:resource="#Lookup_5_getCredits_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Lookup_5_getCredits_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Lookup_5_getCredits_Atomic_output_Body__http___postcodesoftware.co.uk__Account"/>
+    <process:hasPrecondition>The user must provide a valid password and account identifier in order to access the credits information.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the account details, including the credits, in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lookup_6_getAddress_Atomic">
+    <process:hasName>getAddress</process:hasName>
+    <process:hasInput rdf:resource="#Lookup_6_getAddress_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Lookup_6_getAddress_Atomic_input_postcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Lookup_6_getAddress_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Lookup_6_getAddress_Atomic_output_Body__http___postcodesoftware.co.uk__Address"/>
+    <process:hasPrecondition>The user must provide a valid password, postcode, and account information to access the getAddress operation.</process:hasPrecondition>
+    <process:hasEffect>The getAddress operation will return the address associated with the provided postcode and account information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lookup_7_getGeoData_Atomic">
+    <process:hasName>getGeoData</process:hasName>
+    <process:hasInput rdf:resource="#Lookup_7_getGeoData_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Lookup_7_getGeoData_Atomic_input_postcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Lookup_7_getGeoData_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Lookup_7_getGeoData_Atomic_output_Body__http___postcodesoftware.co.uk__GeoData"/>
+    <process:hasPrecondition>The user must provide a valid password, postcode, and account information in the specified data types.</process:hasPrecondition>
+    <process:hasEffect>The operation will return geographical data related to the provided postcode.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lookup_8_getCredits_Atomic">
+    <process:hasName>getCredits</process:hasName>
+    <process:hasInput rdf:resource="#Lookup_8_getCredits_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Lookup_8_getCredits_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Lookup_8_getCredits_Atomic_output_Body__http___postcodesoftware.co.uk__Account"/>
+    <process:hasPrecondition>The user must provide a valid password and account identifier in order to access the credits information.</process:hasPrecondition>
+    <process:hasEffect>The service will return the account details including the credits associated with the provided account.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Lookup_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lookup_0_getAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lookup_1_getGeoData_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lookup_2_getCredits_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lookup_3_getAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lookup_4_getGeoData_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lookup_5_getCredits_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lookup_6_getAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lookup_7_getGeoData_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lookup_8_getCredits_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lookup_0_getAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lookup_0_getAddress_Atomic"/>
+    <grounding:wsdlOperationName>getAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3112_3111.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAddressSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAddressSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lookup_1_getGeoData_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lookup_1_getGeoData_Atomic"/>
+    <grounding:wsdlOperationName>getGeoData</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3112_3111.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getGeoDataSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getGeoDataSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lookup_2_getCredits_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lookup_2_getCredits_Atomic"/>
+    <grounding:wsdlOperationName>getCredits</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3112_3111.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getCreditsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getCreditsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lookup_3_getAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lookup_3_getAddress_Atomic"/>
+    <grounding:wsdlOperationName>getAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3112_3111.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAddressHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAddressHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lookup_4_getGeoData_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lookup_4_getGeoData_Atomic"/>
+    <grounding:wsdlOperationName>getGeoData</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3112_3111.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getGeoDataHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getGeoDataHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lookup_5_getCredits_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lookup_5_getCredits_Atomic"/>
+    <grounding:wsdlOperationName>getCredits</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3112_3111.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getCreditsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getCreditsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lookup_6_getAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lookup_6_getAddress_Atomic"/>
+    <grounding:wsdlOperationName>getAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3112_3111.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAddressHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAddressHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lookup_7_getGeoData_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lookup_7_getGeoData_Atomic"/>
+    <grounding:wsdlOperationName>getGeoData</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3112_3111.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getGeoDataHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getGeoDataHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lookup_8_getCredits_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lookup_8_getCredits_Atomic"/>
+    <grounding:wsdlOperationName>getCredits</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3112_3111.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getCreditsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getCreditsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

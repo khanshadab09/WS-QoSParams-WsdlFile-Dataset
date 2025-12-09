@@ -1,0 +1,1321 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="AddressLookup">
+    <service:presents rdf:resource="#AddressLookup_Profile"/>
+    <service:describedBy rdf:resource="#AddressLookup_Composite"/>
+    <service:supports rdf:resource="#AddressLookup_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="AddressLookup_Profile">
+    <profile:serviceName>AddressLookup</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#AddressLookup"/>
+    <profile:hasProcess rdf:resource="#AddressLookup_0_StandardizedAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_0_StandardizedAddress_Atomic_input_parameters__http___ws.cdyne.com__StandardizedAddress"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_0_StandardizedAddress_Atomic_output_parameters__http___ws.cdyne.com__StandardizedAddressResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid address in order to be standardized.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a standardized version of the input address.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_1_AdvancedStandardization_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_1_AdvancedStandardization_Atomic_input_parameters__http___ws.cdyne.com__AdvancedStandardization"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_1_AdvancedStandardization_Atomic_output_parameters__http___ws.cdyne.com__AdvancedStandardizationResponse"/>
+    <profile:hasPrecondition>The input parameters must conform to the structure defined by the {http://ws.cdyne.com/}AdvancedStandardization schema.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters will adhere to the structure specified by the {http://ws.cdyne.com/}AdvancedStandardizationResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_2_ReturnCityState_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_2_ReturnCityState_Atomic_input_parameters__http___ws.cdyne.com__ReturnCityState"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_2_ReturnCityState_Atomic_output_parameters__http___ws.cdyne.com__ReturnCityStateResponse"/>
+    <profile:hasPrecondition>The input parameter for ReturnCityState must be in the format specified by http://ws.cdyne.com/.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter for ReturnCityStateResponse will be in the format specified by http://ws.cdyne.com/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_3_BarcodeFontURL_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_3_BarcodeFontURL_Atomic_input_parameters__http___ws.cdyne.com__BarcodeFontURL"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_3_BarcodeFontURL_Atomic_output_parameters__http___ws.cdyne.com__BarcodeFontURLResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid URL pointing to a barcode font on the http://ws.cdyne.com/ website.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response parameter containing a URL pointing to the generated barcode font on the http://ws.cdyne.com/ website.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_4_CCServerCheck_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_4_CCServerCheck_Atomic_input_parameters__http___ws.cdyne.com__CCServerCheck"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_4_CCServerCheck_Atomic_output_parameters__http___ws.cdyne.com__CCServerCheckResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters must conform to the {http://ws.cdyne.com/}CCServerCheck schema.</profile:hasPrecondition>
+    <profile:hasResult>The web service will validate the credit card information and return a response conforming to the {http://ws.cdyne.com/}CCServerCheckResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_5_CheckAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_5_CheckAddress_Atomic_input_parameters__http___ws.cdyne.com__CheckAddress"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_5_CheckAddress_Atomic_output_parameters__http___ws.cdyne.com__CheckAddressResponse"/>
+    <profile:hasPrecondition>The input must conform to the structure defined by the {http://ws.cdyne.com/}CheckAddress schema.</profile:hasPrecondition>
+    <profile:hasResult>The output will adhere to the structure defined by the {http://ws.cdyne.com/}CheckAddressResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_6_CheckAddressW2lines_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_6_CheckAddressW2lines_Atomic_input_parameters__http___ws.cdyne.com__CheckAddressW2lines"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_6_CheckAddressW2lines_Atomic_output_parameters__http___ws.cdyne.com__CheckAddressW2linesResponse"/>
+    <profile:hasPrecondition>The input parameters for the CheckAddressW2lines operation must conform to the structure defined by the http://ws.cdyne.com/CheckAddressW2lines schema.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters of the operation CheckAddressW2linesResponse will adhere to the structure specified by the http://ws.cdyne.com/CheckAddressW2linesResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_7_AdvancedCheckAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_7_AdvancedCheckAddress_Atomic_input_parameters__http___ws.cdyne.com__AdvancedCheckAddress"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_7_AdvancedCheckAddress_Atomic_output_parameters__http___ws.cdyne.com__AdvancedCheckAddressResponse"/>
+    <profile:hasPrecondition>The input parameters must adhere to the structure defined by the {http://ws.cdyne.com/}AdvancedCheckAddress schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response conforming to the {http://ws.cdyne.com/}AdvancedCheckAddressResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_8_VersionInformation_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_8_VersionInformation_Atomic_input_parameters__http___ws.cdyne.com__VersionInformation"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_8_VersionInformation_Atomic_output_parameters__http___ws.cdyne.com__VersionInformationResponse"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The VersionInformation request will be processed and a VersionInformationResponse will be returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_9_CalculateDistanceInMiles_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_9_CalculateDistanceInMiles_Atomic_input_parameters__http___ws.cdyne.com__CalculateDistanceInMiles"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_9_CalculateDistanceInMiles_Atomic_output_parameters__http___ws.cdyne.com__CalculateDistanceInMilesResponse"/>
+    <profile:hasPrecondition>The input parameters for the CalculateDistanceInMiles operation must adhere to the schema defined by the http://ws.cdyne.com/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The CalculateDistanceInMiles operation will return a response conforming to the schema specified by the http://ws.cdyne.com/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_10_AlternateCities_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_10_AlternateCities_Atomic_input_parameters__http___ws.cdyne.com__AlternateCities"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_10_AlternateCities_Atomic_output_parameters__http___ws.cdyne.com__AlternateCitiesResponse"/>
+    <profile:hasPrecondition>The input parameters must conform to the {http://ws.cdyne.com/}AlternateCities schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return output parameters following the {http://ws.cdyne.com/}AlternateCitiesResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_11_CityStateToZipCodeMatcher_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_11_CityStateToZipCodeMatcher_Atomic_input_parameters__http___ws.cdyne.com__CityStateToZipCodeMatcher"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_11_CityStateToZipCodeMatcher_Atomic_output_parameters__http___ws.cdyne.com__CityStateToZipCodeMatcherResponse"/>
+    <profile:hasPrecondition>The input CityStateToZipCodeMatcher must be a valid city and state combination.</profile:hasPrecondition>
+    <profile:hasResult>The output CityStateToZipCodeMatcherResponse will provide the corresponding zip code for the input city and state.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_12_GetCongressionalDistrictByZip_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_12_GetCongressionalDistrictByZip_Atomic_input_parameters__http___ws.cdyne.com__GetCongressionalDistrictByZip"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_12_GetCongressionalDistrictByZip_Atomic_output_parameters__http___ws.cdyne.com__GetCongressionalDistrictByZipResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid zip code.</profile:hasPrecondition>
+    <profile:hasResult>Returns the congressional district associated with the provided zip code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_13_ReturnCityState_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_13_ReturnCityState_Atomic_input_zipcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_13_ReturnCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_13_ReturnCityState_Atomic_output_Body__http___ws.cdyne.com__Address"/>
+    <profile:hasPrecondition>The user must provide a valid zipcode and a valid LicenseKey in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the city and state information associated with the provided zipcode.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_14_BarcodeFontURL_Atomic"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_14_BarcodeFontURL_Atomic_output_Body__http___ws.cdyne.com__string"/>
+    <profile:hasPrecondition>The web service must be accessible and the BarcodeFontURL operation must be available.</profile:hasPrecondition>
+    <profile:hasResult>The response will contain a string representing the URL for a barcode font.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_15_CCServerCheck_Atomic"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_15_CCServerCheck_Atomic_output_Body__http___ws.cdyne.com__string"/>
+    <profile:hasPrecondition>The CCServerCheck operation is initiated by sending a request to the web service endpoint.</profile:hasPrecondition>
+    <profile:hasResult>The web service responds with a string containing information about the status of the CCServer.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_16_CheckAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_16_CheckAddress_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_16_CheckAddress_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_16_CheckAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_16_CheckAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_16_CheckAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_16_CheckAddress_Atomic_output_Body__http___ws.cdyne.com__Address"/>
+    <profile:hasPrecondition>The user must provide a valid StateAbbrev, AddressLine, ZipCode, City, and LicenseKey inputs.</profile:hasPrecondition>
+    <profile:hasResult>The CheckAddress operation will return the Address information associated with the provided inputs.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic_input_AddressLine2__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic_output_Body__http___ws.cdyne.com__Address"/>
+    <profile:hasPrecondition>The user must provide a valid LicenseKey for authentication purposes.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the address details based on the input provided, including AddressLine2, StateAbbrev, AddressLine, ZipCode, City, and LicenseKey.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic_input_AddressLine2__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <profile:hasPrecondition>The LicenseKey provided must be valid and active for the service to be accessed.</profile:hasPrecondition>
+    <profile:hasResult>The service will return an array of any type of data related to the advanced check of the provided address information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_19_VersionInformation_Atomic"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_19_VersionInformation_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <profile:hasPrecondition>The web service must be accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The response will contain an array of any type of version information from the CDYNE web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_20_CalculateDistanceInMiles_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_20_CalculateDistanceInMiles_Atomic_input_longitude2__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_20_CalculateDistanceInMiles_Atomic_input_longitude1__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_20_CalculateDistanceInMiles_Atomic_input_latitude1__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_20_CalculateDistanceInMiles_Atomic_input_latitude2__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_20_CalculateDistanceInMiles_Atomic_output_Body__http___ws.cdyne.com__double"/>
+    <profile:hasPrecondition>The input parameters longitude1, longitude2, latitude1, and latitude2 must be valid string representations of longitude and latitude coordinates.</profile:hasPrecondition>
+    <profile:hasResult>The service will calculate and return the distance in miles between the two sets of coordinates.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_21_AlternateCities_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_21_AlternateCities_Atomic_input_zipcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_21_AlternateCities_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_21_AlternateCities_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <profile:hasPrecondition>The user must provide a valid zipcode and a valid LicenseKey in order to access the service.</profile:hasPrecondition>
+    <profile:hasResult>The service will return an array of alternate cities corresponding to the provided zipcode.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_22_CityStateToZipCodeMatcher_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_22_CityStateToZipCodeMatcher_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_22_CityStateToZipCodeMatcher_Atomic_input_IgnoreBadCitySpelling__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_22_CityStateToZipCodeMatcher_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_22_CityStateToZipCodeMatcher_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_22_CityStateToZipCodeMatcher_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <profile:hasPrecondition>The user must provide a valid StateAbbrev, City, and LicenseKey inputs for the operation to execute successfully.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an ArrayOfAnyType containing the matching zip codes based on the provided StateAbbrev and City inputs.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_23_GetCongressionalDistrictByZip_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_23_GetCongressionalDistrictByZip_Atomic_input_Zipcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_23_GetCongressionalDistrictByZip_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_23_GetCongressionalDistrictByZip_Atomic_output_Body__http___ws.cdyne.com__string"/>
+    <profile:hasPrecondition>The user must provide a valid Zipcode and a valid LicenseKey in order to access the GetCongressionalDistrictByZip operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the Congressional District associated with the provided Zipcode as a string in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_24_ReturnCityState_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_24_ReturnCityState_Atomic_input_zipcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_24_ReturnCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_24_ReturnCityState_Atomic_output_Body__http___ws.cdyne.com__Address"/>
+    <profile:hasPrecondition>The user must provide a valid zipcode and a valid LicenseKey in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the city and state information corresponding to the provided zipcode.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_25_BarcodeFontURL_Atomic"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_25_BarcodeFontURL_Atomic_output_Body__http___ws.cdyne.com__string"/>
+    <profile:hasPrecondition>The web service must be accessible and the user must have the necessary permissions to retrieve the BarcodeFontURL.</profile:hasPrecondition>
+    <profile:hasResult>The BarcodeFontURL will be returned as a string in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_26_CCServerCheck_Atomic"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_26_CCServerCheck_Atomic_output_Body__http___ws.cdyne.com__string"/>
+    <profile:hasPrecondition>The CCServerCheck operation is triggered.</profile:hasPrecondition>
+    <profile:hasResult>The operation returns a string response from the http://ws.cdyne.com/ web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_27_CheckAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_27_CheckAddress_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_27_CheckAddress_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_27_CheckAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_27_CheckAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_27_CheckAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_27_CheckAddress_Atomic_output_Body__http___ws.cdyne.com__Address"/>
+    <profile:hasPrecondition>The user must provide a valid StateAbbrev, AddressLine, ZipCode, City, and LicenseKey inputs.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the address details in the Body output based on the provided inputs.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic_input_AddressLine2__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic_output_Body__http___ws.cdyne.com__Address"/>
+    <profile:hasPrecondition>The user must provide valid input values for AddressLine2, StateAbbrev, AddressLine, ZipCode, City, and LicenseKey parameters.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the address information in the specified format from the web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic_input_AddressLine2__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <profile:hasPrecondition>The input parameters must include a valid AddressLine, City, StateAbbrev, ZipCode, and LicenseKey.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of any type of data related to the advanced check of the provided address.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_30_VersionInformation_Atomic"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_30_VersionInformation_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <profile:hasPrecondition>The web service must be accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The response will contain an array of any type of version information from the CDYNE web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_31_CalculateDistanceInMiles_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_31_CalculateDistanceInMiles_Atomic_input_longitude2__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_31_CalculateDistanceInMiles_Atomic_input_longitude1__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_31_CalculateDistanceInMiles_Atomic_input_latitude1__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_31_CalculateDistanceInMiles_Atomic_input_latitude2__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_31_CalculateDistanceInMiles_Atomic_output_Body__http___ws.cdyne.com__double"/>
+    <profile:hasPrecondition>The input parameters longitude1, latitude1, longitude2, and latitude2 must be valid string representations of geographical coordinates.</profile:hasPrecondition>
+    <profile:hasResult>The operation will calculate and return the distance in miles between the two sets of coordinates.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_32_AlternateCities_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_32_AlternateCities_Atomic_input_zipcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_32_AlternateCities_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_32_AlternateCities_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <profile:hasPrecondition>The user must provide a valid zipcode and a valid LicenseKey in order to access the service.</profile:hasPrecondition>
+    <profile:hasResult>The service will return an array of alternative cities corresponding to the provided zipcode.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_33_CityStateToZipCodeMatcher_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_33_CityStateToZipCodeMatcher_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_33_CityStateToZipCodeMatcher_Atomic_input_IgnoreBadCitySpelling__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_33_CityStateToZipCodeMatcher_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_33_CityStateToZipCodeMatcher_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_33_CityStateToZipCodeMatcher_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <profile:hasPrecondition>The input StateAbbrev must be a valid two-letter state abbreviation, and LicenseKey must be a valid license key for the service.</profile:hasPrecondition>
+    <profile:hasResult>The output Body will contain an array of any matching zip codes corresponding to the provided City and StateAbbrev, considering the IgnoreBadCitySpelling flag if set.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AddressLookup_34_GetCongressionalDistrictByZip_Atomic"/>
+    <profile:hasInput rdf:resource="#AddressLookup_34_GetCongressionalDistrictByZip_Atomic_input_Zipcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AddressLookup_34_GetCongressionalDistrictByZip_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AddressLookup_34_GetCongressionalDistrictByZip_Atomic_output_Body__http___ws.cdyne.com__string"/>
+    <profile:hasPrecondition>The user must provide a valid Zipcode and a valid LicenseKey in order to access the service.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the Congressional District associated with the provided Zipcode.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="AddressLookup_Composite">
+    <process:composedOf rdf:resource="#AddressLookup_0_StandardizedAddress_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_1_AdvancedStandardization_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_2_ReturnCityState_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_3_BarcodeFontURL_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_4_CCServerCheck_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_5_CheckAddress_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_6_CheckAddressW2lines_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_7_AdvancedCheckAddress_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_8_VersionInformation_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_9_CalculateDistanceInMiles_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_10_AlternateCities_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_11_CityStateToZipCodeMatcher_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_12_GetCongressionalDistrictByZip_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_13_ReturnCityState_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_14_BarcodeFontURL_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_15_CCServerCheck_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_16_CheckAddress_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_19_VersionInformation_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_20_CalculateDistanceInMiles_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_21_AlternateCities_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_22_CityStateToZipCodeMatcher_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_23_GetCongressionalDistrictByZip_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_24_ReturnCityState_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_25_BarcodeFontURL_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_26_CCServerCheck_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_27_CheckAddress_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_30_VersionInformation_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_31_CalculateDistanceInMiles_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_32_AlternateCities_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_33_CityStateToZipCodeMatcher_Atomic"/>
+    <process:composedOf rdf:resource="#AddressLookup_34_GetCongressionalDistrictByZip_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="AddressLookup_0_StandardizedAddress_Atomic_input_parameters__http___ws.cdyne.com__StandardizedAddress">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}StandardizedAddress</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_0_StandardizedAddress_Atomic_output_parameters__http___ws.cdyne.com__StandardizedAddressResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}StandardizedAddressResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_1_AdvancedStandardization_Atomic_input_parameters__http___ws.cdyne.com__AdvancedStandardization">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}AdvancedStandardization</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_1_AdvancedStandardization_Atomic_output_parameters__http___ws.cdyne.com__AdvancedStandardizationResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}AdvancedStandardizationResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_2_ReturnCityState_Atomic_input_parameters__http___ws.cdyne.com__ReturnCityState">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}ReturnCityState</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_2_ReturnCityState_Atomic_output_parameters__http___ws.cdyne.com__ReturnCityStateResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}ReturnCityStateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_3_BarcodeFontURL_Atomic_input_parameters__http___ws.cdyne.com__BarcodeFontURL">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}BarcodeFontURL</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_3_BarcodeFontURL_Atomic_output_parameters__http___ws.cdyne.com__BarcodeFontURLResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}BarcodeFontURLResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_4_CCServerCheck_Atomic_input_parameters__http___ws.cdyne.com__CCServerCheck">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}CCServerCheck</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_4_CCServerCheck_Atomic_output_parameters__http___ws.cdyne.com__CCServerCheckResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}CCServerCheckResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_5_CheckAddress_Atomic_input_parameters__http___ws.cdyne.com__CheckAddress">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}CheckAddress</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_5_CheckAddress_Atomic_output_parameters__http___ws.cdyne.com__CheckAddressResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}CheckAddressResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_6_CheckAddressW2lines_Atomic_input_parameters__http___ws.cdyne.com__CheckAddressW2lines">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}CheckAddressW2lines</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_6_CheckAddressW2lines_Atomic_output_parameters__http___ws.cdyne.com__CheckAddressW2linesResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}CheckAddressW2linesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_7_AdvancedCheckAddress_Atomic_input_parameters__http___ws.cdyne.com__AdvancedCheckAddress">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}AdvancedCheckAddress</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_7_AdvancedCheckAddress_Atomic_output_parameters__http___ws.cdyne.com__AdvancedCheckAddressResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}AdvancedCheckAddressResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_8_VersionInformation_Atomic_input_parameters__http___ws.cdyne.com__VersionInformation">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}VersionInformation</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_8_VersionInformation_Atomic_output_parameters__http___ws.cdyne.com__VersionInformationResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}VersionInformationResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_9_CalculateDistanceInMiles_Atomic_input_parameters__http___ws.cdyne.com__CalculateDistanceInMiles">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}CalculateDistanceInMiles</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_9_CalculateDistanceInMiles_Atomic_output_parameters__http___ws.cdyne.com__CalculateDistanceInMilesResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}CalculateDistanceInMilesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_10_AlternateCities_Atomic_input_parameters__http___ws.cdyne.com__AlternateCities">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}AlternateCities</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_10_AlternateCities_Atomic_output_parameters__http___ws.cdyne.com__AlternateCitiesResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}AlternateCitiesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_11_CityStateToZipCodeMatcher_Atomic_input_parameters__http___ws.cdyne.com__CityStateToZipCodeMatcher">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}CityStateToZipCodeMatcher</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_11_CityStateToZipCodeMatcher_Atomic_output_parameters__http___ws.cdyne.com__CityStateToZipCodeMatcherResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}CityStateToZipCodeMatcherResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_12_GetCongressionalDistrictByZip_Atomic_input_parameters__http___ws.cdyne.com__GetCongressionalDistrictByZip">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}GetCongressionalDistrictByZip</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_12_GetCongressionalDistrictByZip_Atomic_output_parameters__http___ws.cdyne.com__GetCongressionalDistrictByZipResponse">
+    <process:parameterType>parameters:{http://ws.cdyne.com/}GetCongressionalDistrictByZipResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_13_ReturnCityState_Atomic_input_zipcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>zipcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_13_ReturnCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_13_ReturnCityState_Atomic_output_Body__http___ws.cdyne.com__Address">
+    <process:parameterType>Body:{http://ws.cdyne.com/}Address</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="AddressLookup_14_BarcodeFontURL_Atomic_output_Body__http___ws.cdyne.com__string">
+    <process:parameterType>Body:{http://ws.cdyne.com/}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="AddressLookup_15_CCServerCheck_Atomic_output_Body__http___ws.cdyne.com__string">
+    <process:parameterType>Body:{http://ws.cdyne.com/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_16_CheckAddress_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>StateAbbrev:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_16_CheckAddress_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AddressLine:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_16_CheckAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ZipCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_16_CheckAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_16_CheckAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_16_CheckAddress_Atomic_output_Body__http___ws.cdyne.com__Address">
+    <process:parameterType>Body:{http://ws.cdyne.com/}Address</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_17_CheckAddressW2lines_Atomic_input_AddressLine2__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AddressLine2:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_17_CheckAddressW2lines_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>StateAbbrev:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_17_CheckAddressW2lines_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AddressLine:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_17_CheckAddressW2lines_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ZipCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_17_CheckAddressW2lines_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_17_CheckAddressW2lines_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_17_CheckAddressW2lines_Atomic_output_Body__http___ws.cdyne.com__Address">
+    <process:parameterType>Body:{http://ws.cdyne.com/}Address</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_18_AdvancedCheckAddress_Atomic_input_AddressLine2__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AddressLine2:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_18_AdvancedCheckAddress_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>StateAbbrev:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_18_AdvancedCheckAddress_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AddressLine:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_18_AdvancedCheckAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ZipCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_18_AdvancedCheckAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_18_AdvancedCheckAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_18_AdvancedCheckAddress_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType">
+    <process:parameterType>Body:{http://ws.cdyne.com/}ArrayOfAnyType</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="AddressLookup_19_VersionInformation_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType">
+    <process:parameterType>Body:{http://ws.cdyne.com/}ArrayOfAnyType</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_20_CalculateDistanceInMiles_Atomic_input_longitude2__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>longitude2:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_20_CalculateDistanceInMiles_Atomic_input_longitude1__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>longitude1:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_20_CalculateDistanceInMiles_Atomic_input_latitude1__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>latitude1:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_20_CalculateDistanceInMiles_Atomic_input_latitude2__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>latitude2:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_20_CalculateDistanceInMiles_Atomic_output_Body__http___ws.cdyne.com__double">
+    <process:parameterType>Body:{http://ws.cdyne.com/}double</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_21_AlternateCities_Atomic_input_zipcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>zipcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_21_AlternateCities_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_21_AlternateCities_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType">
+    <process:parameterType>Body:{http://ws.cdyne.com/}ArrayOfAnyType</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_22_CityStateToZipCodeMatcher_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>StateAbbrev:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_22_CityStateToZipCodeMatcher_Atomic_input_IgnoreBadCitySpelling__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IgnoreBadCitySpelling:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_22_CityStateToZipCodeMatcher_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_22_CityStateToZipCodeMatcher_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_22_CityStateToZipCodeMatcher_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType">
+    <process:parameterType>Body:{http://ws.cdyne.com/}ArrayOfAnyType</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_23_GetCongressionalDistrictByZip_Atomic_input_Zipcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Zipcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_23_GetCongressionalDistrictByZip_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_23_GetCongressionalDistrictByZip_Atomic_output_Body__http___ws.cdyne.com__string">
+    <process:parameterType>Body:{http://ws.cdyne.com/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_24_ReturnCityState_Atomic_input_zipcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>zipcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_24_ReturnCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_24_ReturnCityState_Atomic_output_Body__http___ws.cdyne.com__Address">
+    <process:parameterType>Body:{http://ws.cdyne.com/}Address</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="AddressLookup_25_BarcodeFontURL_Atomic_output_Body__http___ws.cdyne.com__string">
+    <process:parameterType>Body:{http://ws.cdyne.com/}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="AddressLookup_26_CCServerCheck_Atomic_output_Body__http___ws.cdyne.com__string">
+    <process:parameterType>Body:{http://ws.cdyne.com/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_27_CheckAddress_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>StateAbbrev:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_27_CheckAddress_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AddressLine:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_27_CheckAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ZipCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_27_CheckAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_27_CheckAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_27_CheckAddress_Atomic_output_Body__http___ws.cdyne.com__Address">
+    <process:parameterType>Body:{http://ws.cdyne.com/}Address</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_28_CheckAddressW2lines_Atomic_input_AddressLine2__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AddressLine2:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_28_CheckAddressW2lines_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>StateAbbrev:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_28_CheckAddressW2lines_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AddressLine:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_28_CheckAddressW2lines_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ZipCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_28_CheckAddressW2lines_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_28_CheckAddressW2lines_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_28_CheckAddressW2lines_Atomic_output_Body__http___ws.cdyne.com__Address">
+    <process:parameterType>Body:{http://ws.cdyne.com/}Address</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_29_AdvancedCheckAddress_Atomic_input_AddressLine2__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AddressLine2:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_29_AdvancedCheckAddress_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>StateAbbrev:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_29_AdvancedCheckAddress_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AddressLine:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_29_AdvancedCheckAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ZipCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_29_AdvancedCheckAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_29_AdvancedCheckAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_29_AdvancedCheckAddress_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType">
+    <process:parameterType>Body:{http://ws.cdyne.com/}ArrayOfAnyType</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="AddressLookup_30_VersionInformation_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType">
+    <process:parameterType>Body:{http://ws.cdyne.com/}ArrayOfAnyType</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_31_CalculateDistanceInMiles_Atomic_input_longitude2__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>longitude2:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_31_CalculateDistanceInMiles_Atomic_input_longitude1__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>longitude1:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_31_CalculateDistanceInMiles_Atomic_input_latitude1__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>latitude1:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_31_CalculateDistanceInMiles_Atomic_input_latitude2__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>latitude2:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_31_CalculateDistanceInMiles_Atomic_output_Body__http___ws.cdyne.com__double">
+    <process:parameterType>Body:{http://ws.cdyne.com/}double</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_32_AlternateCities_Atomic_input_zipcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>zipcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_32_AlternateCities_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_32_AlternateCities_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType">
+    <process:parameterType>Body:{http://ws.cdyne.com/}ArrayOfAnyType</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_33_CityStateToZipCodeMatcher_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>StateAbbrev:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_33_CityStateToZipCodeMatcher_Atomic_input_IgnoreBadCitySpelling__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IgnoreBadCitySpelling:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_33_CityStateToZipCodeMatcher_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_33_CityStateToZipCodeMatcher_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_33_CityStateToZipCodeMatcher_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType">
+    <process:parameterType>Body:{http://ws.cdyne.com/}ArrayOfAnyType</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AddressLookup_34_GetCongressionalDistrictByZip_Atomic_input_Zipcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Zipcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AddressLookup_34_GetCongressionalDistrictByZip_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AddressLookup_34_GetCongressionalDistrictByZip_Atomic_output_Body__http___ws.cdyne.com__string">
+    <process:parameterType>Body:{http://ws.cdyne.com/}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_0_StandardizedAddress_Atomic">
+    <process:hasName>StandardizedAddress</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_0_StandardizedAddress_Atomic_input_parameters__http___ws.cdyne.com__StandardizedAddress"/>
+    <process:hasOutput rdf:resource="#AddressLookup_0_StandardizedAddress_Atomic_output_parameters__http___ws.cdyne.com__StandardizedAddressResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid address in order to be standardized.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a standardized version of the input address.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_1_AdvancedStandardization_Atomic">
+    <process:hasName>AdvancedStandardization</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_1_AdvancedStandardization_Atomic_input_parameters__http___ws.cdyne.com__AdvancedStandardization"/>
+    <process:hasOutput rdf:resource="#AddressLookup_1_AdvancedStandardization_Atomic_output_parameters__http___ws.cdyne.com__AdvancedStandardizationResponse"/>
+    <process:hasPrecondition>The input parameters must conform to the structure defined by the {http://ws.cdyne.com/}AdvancedStandardization schema.</process:hasPrecondition>
+    <process:hasEffect>The output parameters will adhere to the structure specified by the {http://ws.cdyne.com/}AdvancedStandardizationResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_2_ReturnCityState_Atomic">
+    <process:hasName>ReturnCityState</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_2_ReturnCityState_Atomic_input_parameters__http___ws.cdyne.com__ReturnCityState"/>
+    <process:hasOutput rdf:resource="#AddressLookup_2_ReturnCityState_Atomic_output_parameters__http___ws.cdyne.com__ReturnCityStateResponse"/>
+    <process:hasPrecondition>The input parameter for ReturnCityState must be in the format specified by http://ws.cdyne.com/.</process:hasPrecondition>
+    <process:hasEffect>The output parameter for ReturnCityStateResponse will be in the format specified by http://ws.cdyne.com/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_3_BarcodeFontURL_Atomic">
+    <process:hasName>BarcodeFontURL</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_3_BarcodeFontURL_Atomic_input_parameters__http___ws.cdyne.com__BarcodeFontURL"/>
+    <process:hasOutput rdf:resource="#AddressLookup_3_BarcodeFontURL_Atomic_output_parameters__http___ws.cdyne.com__BarcodeFontURLResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid URL pointing to a barcode font on the http://ws.cdyne.com/ website.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response parameter containing a URL pointing to the generated barcode font on the http://ws.cdyne.com/ website.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_4_CCServerCheck_Atomic">
+    <process:hasName>CCServerCheck</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_4_CCServerCheck_Atomic_input_parameters__http___ws.cdyne.com__CCServerCheck"/>
+    <process:hasOutput rdf:resource="#AddressLookup_4_CCServerCheck_Atomic_output_parameters__http___ws.cdyne.com__CCServerCheckResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters must conform to the {http://ws.cdyne.com/}CCServerCheck schema.</process:hasPrecondition>
+    <process:hasEffect>The web service will validate the credit card information and return a response conforming to the {http://ws.cdyne.com/}CCServerCheckResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_5_CheckAddress_Atomic">
+    <process:hasName>CheckAddress</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_5_CheckAddress_Atomic_input_parameters__http___ws.cdyne.com__CheckAddress"/>
+    <process:hasOutput rdf:resource="#AddressLookup_5_CheckAddress_Atomic_output_parameters__http___ws.cdyne.com__CheckAddressResponse"/>
+    <process:hasPrecondition>The input must conform to the structure defined by the {http://ws.cdyne.com/}CheckAddress schema.</process:hasPrecondition>
+    <process:hasEffect>The output will adhere to the structure defined by the {http://ws.cdyne.com/}CheckAddressResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_6_CheckAddressW2lines_Atomic">
+    <process:hasName>CheckAddressW2lines</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_6_CheckAddressW2lines_Atomic_input_parameters__http___ws.cdyne.com__CheckAddressW2lines"/>
+    <process:hasOutput rdf:resource="#AddressLookup_6_CheckAddressW2lines_Atomic_output_parameters__http___ws.cdyne.com__CheckAddressW2linesResponse"/>
+    <process:hasPrecondition>The input parameters for the CheckAddressW2lines operation must conform to the structure defined by the http://ws.cdyne.com/CheckAddressW2lines schema.</process:hasPrecondition>
+    <process:hasEffect>The output parameters of the operation CheckAddressW2linesResponse will adhere to the structure specified by the http://ws.cdyne.com/CheckAddressW2linesResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_7_AdvancedCheckAddress_Atomic">
+    <process:hasName>AdvancedCheckAddress</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_7_AdvancedCheckAddress_Atomic_input_parameters__http___ws.cdyne.com__AdvancedCheckAddress"/>
+    <process:hasOutput rdf:resource="#AddressLookup_7_AdvancedCheckAddress_Atomic_output_parameters__http___ws.cdyne.com__AdvancedCheckAddressResponse"/>
+    <process:hasPrecondition>The input parameters must adhere to the structure defined by the {http://ws.cdyne.com/}AdvancedCheckAddress schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response conforming to the {http://ws.cdyne.com/}AdvancedCheckAddressResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_8_VersionInformation_Atomic">
+    <process:hasName>VersionInformation</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_8_VersionInformation_Atomic_input_parameters__http___ws.cdyne.com__VersionInformation"/>
+    <process:hasOutput rdf:resource="#AddressLookup_8_VersionInformation_Atomic_output_parameters__http___ws.cdyne.com__VersionInformationResponse"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The VersionInformation request will be processed and a VersionInformationResponse will be returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_9_CalculateDistanceInMiles_Atomic">
+    <process:hasName>CalculateDistanceInMiles</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_9_CalculateDistanceInMiles_Atomic_input_parameters__http___ws.cdyne.com__CalculateDistanceInMiles"/>
+    <process:hasOutput rdf:resource="#AddressLookup_9_CalculateDistanceInMiles_Atomic_output_parameters__http___ws.cdyne.com__CalculateDistanceInMilesResponse"/>
+    <process:hasPrecondition>The input parameters for the CalculateDistanceInMiles operation must adhere to the schema defined by the http://ws.cdyne.com/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The CalculateDistanceInMiles operation will return a response conforming to the schema specified by the http://ws.cdyne.com/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_10_AlternateCities_Atomic">
+    <process:hasName>AlternateCities</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_10_AlternateCities_Atomic_input_parameters__http___ws.cdyne.com__AlternateCities"/>
+    <process:hasOutput rdf:resource="#AddressLookup_10_AlternateCities_Atomic_output_parameters__http___ws.cdyne.com__AlternateCitiesResponse"/>
+    <process:hasPrecondition>The input parameters must conform to the {http://ws.cdyne.com/}AlternateCities schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return output parameters following the {http://ws.cdyne.com/}AlternateCitiesResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_11_CityStateToZipCodeMatcher_Atomic">
+    <process:hasName>CityStateToZipCodeMatcher</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_11_CityStateToZipCodeMatcher_Atomic_input_parameters__http___ws.cdyne.com__CityStateToZipCodeMatcher"/>
+    <process:hasOutput rdf:resource="#AddressLookup_11_CityStateToZipCodeMatcher_Atomic_output_parameters__http___ws.cdyne.com__CityStateToZipCodeMatcherResponse"/>
+    <process:hasPrecondition>The input CityStateToZipCodeMatcher must be a valid city and state combination.</process:hasPrecondition>
+    <process:hasEffect>The output CityStateToZipCodeMatcherResponse will provide the corresponding zip code for the input city and state.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_12_GetCongressionalDistrictByZip_Atomic">
+    <process:hasName>GetCongressionalDistrictByZip</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_12_GetCongressionalDistrictByZip_Atomic_input_parameters__http___ws.cdyne.com__GetCongressionalDistrictByZip"/>
+    <process:hasOutput rdf:resource="#AddressLookup_12_GetCongressionalDistrictByZip_Atomic_output_parameters__http___ws.cdyne.com__GetCongressionalDistrictByZipResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid zip code.</process:hasPrecondition>
+    <process:hasEffect>Returns the congressional district associated with the provided zip code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_13_ReturnCityState_Atomic">
+    <process:hasName>ReturnCityState</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_13_ReturnCityState_Atomic_input_zipcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_13_ReturnCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_13_ReturnCityState_Atomic_output_Body__http___ws.cdyne.com__Address"/>
+    <process:hasPrecondition>The user must provide a valid zipcode and a valid LicenseKey in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the city and state information associated with the provided zipcode.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_14_BarcodeFontURL_Atomic">
+    <process:hasName>BarcodeFontURL</process:hasName>
+    <process:hasOutput rdf:resource="#AddressLookup_14_BarcodeFontURL_Atomic_output_Body__http___ws.cdyne.com__string"/>
+    <process:hasPrecondition>The web service must be accessible and the BarcodeFontURL operation must be available.</process:hasPrecondition>
+    <process:hasEffect>The response will contain a string representing the URL for a barcode font.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_15_CCServerCheck_Atomic">
+    <process:hasName>CCServerCheck</process:hasName>
+    <process:hasOutput rdf:resource="#AddressLookup_15_CCServerCheck_Atomic_output_Body__http___ws.cdyne.com__string"/>
+    <process:hasPrecondition>The CCServerCheck operation is initiated by sending a request to the web service endpoint.</process:hasPrecondition>
+    <process:hasEffect>The web service responds with a string containing information about the status of the CCServer.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_16_CheckAddress_Atomic">
+    <process:hasName>CheckAddress</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_16_CheckAddress_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_16_CheckAddress_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_16_CheckAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_16_CheckAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_16_CheckAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_16_CheckAddress_Atomic_output_Body__http___ws.cdyne.com__Address"/>
+    <process:hasPrecondition>The user must provide a valid StateAbbrev, AddressLine, ZipCode, City, and LicenseKey inputs.</process:hasPrecondition>
+    <process:hasEffect>The CheckAddress operation will return the Address information associated with the provided inputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_17_CheckAddressW2lines_Atomic">
+    <process:hasName>CheckAddressW2lines</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic_input_AddressLine2__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic_output_Body__http___ws.cdyne.com__Address"/>
+    <process:hasPrecondition>The user must provide a valid LicenseKey for authentication purposes.</process:hasPrecondition>
+    <process:hasEffect>The service will return the address details based on the input provided, including AddressLine2, StateAbbrev, AddressLine, ZipCode, City, and LicenseKey.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_18_AdvancedCheckAddress_Atomic">
+    <process:hasName>AdvancedCheckAddress</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic_input_AddressLine2__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <process:hasPrecondition>The LicenseKey provided must be valid and active for the service to be accessed.</process:hasPrecondition>
+    <process:hasEffect>The service will return an array of any type of data related to the advanced check of the provided address information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_19_VersionInformation_Atomic">
+    <process:hasName>VersionInformation</process:hasName>
+    <process:hasOutput rdf:resource="#AddressLookup_19_VersionInformation_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <process:hasPrecondition>The web service must be accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The response will contain an array of any type of version information from the CDYNE web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_20_CalculateDistanceInMiles_Atomic">
+    <process:hasName>CalculateDistanceInMiles</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_20_CalculateDistanceInMiles_Atomic_input_longitude2__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_20_CalculateDistanceInMiles_Atomic_input_longitude1__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_20_CalculateDistanceInMiles_Atomic_input_latitude1__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_20_CalculateDistanceInMiles_Atomic_input_latitude2__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_20_CalculateDistanceInMiles_Atomic_output_Body__http___ws.cdyne.com__double"/>
+    <process:hasPrecondition>The input parameters longitude1, longitude2, latitude1, and latitude2 must be valid string representations of longitude and latitude coordinates.</process:hasPrecondition>
+    <process:hasEffect>The service will calculate and return the distance in miles between the two sets of coordinates.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_21_AlternateCities_Atomic">
+    <process:hasName>AlternateCities</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_21_AlternateCities_Atomic_input_zipcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_21_AlternateCities_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_21_AlternateCities_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <process:hasPrecondition>The user must provide a valid zipcode and a valid LicenseKey in order to access the service.</process:hasPrecondition>
+    <process:hasEffect>The service will return an array of alternate cities corresponding to the provided zipcode.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_22_CityStateToZipCodeMatcher_Atomic">
+    <process:hasName>CityStateToZipCodeMatcher</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_22_CityStateToZipCodeMatcher_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_22_CityStateToZipCodeMatcher_Atomic_input_IgnoreBadCitySpelling__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_22_CityStateToZipCodeMatcher_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_22_CityStateToZipCodeMatcher_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_22_CityStateToZipCodeMatcher_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <process:hasPrecondition>The user must provide a valid StateAbbrev, City, and LicenseKey inputs for the operation to execute successfully.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an ArrayOfAnyType containing the matching zip codes based on the provided StateAbbrev and City inputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_23_GetCongressionalDistrictByZip_Atomic">
+    <process:hasName>GetCongressionalDistrictByZip</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_23_GetCongressionalDistrictByZip_Atomic_input_Zipcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_23_GetCongressionalDistrictByZip_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_23_GetCongressionalDistrictByZip_Atomic_output_Body__http___ws.cdyne.com__string"/>
+    <process:hasPrecondition>The user must provide a valid Zipcode and a valid LicenseKey in order to access the GetCongressionalDistrictByZip operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the Congressional District associated with the provided Zipcode as a string in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_24_ReturnCityState_Atomic">
+    <process:hasName>ReturnCityState</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_24_ReturnCityState_Atomic_input_zipcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_24_ReturnCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_24_ReturnCityState_Atomic_output_Body__http___ws.cdyne.com__Address"/>
+    <process:hasPrecondition>The user must provide a valid zipcode and a valid LicenseKey in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the city and state information corresponding to the provided zipcode.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_25_BarcodeFontURL_Atomic">
+    <process:hasName>BarcodeFontURL</process:hasName>
+    <process:hasOutput rdf:resource="#AddressLookup_25_BarcodeFontURL_Atomic_output_Body__http___ws.cdyne.com__string"/>
+    <process:hasPrecondition>The web service must be accessible and the user must have the necessary permissions to retrieve the BarcodeFontURL.</process:hasPrecondition>
+    <process:hasEffect>The BarcodeFontURL will be returned as a string in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_26_CCServerCheck_Atomic">
+    <process:hasName>CCServerCheck</process:hasName>
+    <process:hasOutput rdf:resource="#AddressLookup_26_CCServerCheck_Atomic_output_Body__http___ws.cdyne.com__string"/>
+    <process:hasPrecondition>The CCServerCheck operation is triggered.</process:hasPrecondition>
+    <process:hasEffect>The operation returns a string response from the http://ws.cdyne.com/ web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_27_CheckAddress_Atomic">
+    <process:hasName>CheckAddress</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_27_CheckAddress_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_27_CheckAddress_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_27_CheckAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_27_CheckAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_27_CheckAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_27_CheckAddress_Atomic_output_Body__http___ws.cdyne.com__Address"/>
+    <process:hasPrecondition>The user must provide a valid StateAbbrev, AddressLine, ZipCode, City, and LicenseKey inputs.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the address details in the Body output based on the provided inputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_28_CheckAddressW2lines_Atomic">
+    <process:hasName>CheckAddressW2lines</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic_input_AddressLine2__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic_output_Body__http___ws.cdyne.com__Address"/>
+    <process:hasPrecondition>The user must provide valid input values for AddressLine2, StateAbbrev, AddressLine, ZipCode, City, and LicenseKey parameters.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the address information in the specified format from the web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_29_AdvancedCheckAddress_Atomic">
+    <process:hasName>AdvancedCheckAddress</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic_input_AddressLine2__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic_input_AddressLine__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <process:hasPrecondition>The input parameters must include a valid AddressLine, City, StateAbbrev, ZipCode, and LicenseKey.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of any type of data related to the advanced check of the provided address.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_30_VersionInformation_Atomic">
+    <process:hasName>VersionInformation</process:hasName>
+    <process:hasOutput rdf:resource="#AddressLookup_30_VersionInformation_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <process:hasPrecondition>The web service must be accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The response will contain an array of any type of version information from the CDYNE web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_31_CalculateDistanceInMiles_Atomic">
+    <process:hasName>CalculateDistanceInMiles</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_31_CalculateDistanceInMiles_Atomic_input_longitude2__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_31_CalculateDistanceInMiles_Atomic_input_longitude1__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_31_CalculateDistanceInMiles_Atomic_input_latitude1__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_31_CalculateDistanceInMiles_Atomic_input_latitude2__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_31_CalculateDistanceInMiles_Atomic_output_Body__http___ws.cdyne.com__double"/>
+    <process:hasPrecondition>The input parameters longitude1, latitude1, longitude2, and latitude2 must be valid string representations of geographical coordinates.</process:hasPrecondition>
+    <process:hasEffect>The operation will calculate and return the distance in miles between the two sets of coordinates.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_32_AlternateCities_Atomic">
+    <process:hasName>AlternateCities</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_32_AlternateCities_Atomic_input_zipcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_32_AlternateCities_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_32_AlternateCities_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <process:hasPrecondition>The user must provide a valid zipcode and a valid LicenseKey in order to access the service.</process:hasPrecondition>
+    <process:hasEffect>The service will return an array of alternative cities corresponding to the provided zipcode.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_33_CityStateToZipCodeMatcher_Atomic">
+    <process:hasName>CityStateToZipCodeMatcher</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_33_CityStateToZipCodeMatcher_Atomic_input_StateAbbrev__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_33_CityStateToZipCodeMatcher_Atomic_input_IgnoreBadCitySpelling__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_33_CityStateToZipCodeMatcher_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_33_CityStateToZipCodeMatcher_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_33_CityStateToZipCodeMatcher_Atomic_output_Body__http___ws.cdyne.com__ArrayOfAnyType"/>
+    <process:hasPrecondition>The input StateAbbrev must be a valid two-letter state abbreviation, and LicenseKey must be a valid license key for the service.</process:hasPrecondition>
+    <process:hasEffect>The output Body will contain an array of any matching zip codes corresponding to the provided City and StateAbbrev, considering the IgnoreBadCitySpelling flag if set.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AddressLookup_34_GetCongressionalDistrictByZip_Atomic">
+    <process:hasName>GetCongressionalDistrictByZip</process:hasName>
+    <process:hasInput rdf:resource="#AddressLookup_34_GetCongressionalDistrictByZip_Atomic_input_Zipcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AddressLookup_34_GetCongressionalDistrictByZip_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AddressLookup_34_GetCongressionalDistrictByZip_Atomic_output_Body__http___ws.cdyne.com__string"/>
+    <process:hasPrecondition>The user must provide a valid Zipcode and a valid LicenseKey in order to access the service.</process:hasPrecondition>
+    <process:hasEffect>The service will return the Congressional District associated with the provided Zipcode.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="AddressLookup_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_0_StandardizedAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_1_AdvancedStandardization_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_2_ReturnCityState_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_3_BarcodeFontURL_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_4_CCServerCheck_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_5_CheckAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_6_CheckAddressW2lines_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_7_AdvancedCheckAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_8_VersionInformation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_9_CalculateDistanceInMiles_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_10_AlternateCities_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_11_CityStateToZipCodeMatcher_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_12_GetCongressionalDistrictByZip_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_13_ReturnCityState_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_14_BarcodeFontURL_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_15_CCServerCheck_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_16_CheckAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_17_CheckAddressW2lines_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_19_VersionInformation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_20_CalculateDistanceInMiles_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_21_AlternateCities_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_22_CityStateToZipCodeMatcher_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_23_GetCongressionalDistrictByZip_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_24_ReturnCityState_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_25_BarcodeFontURL_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_26_CCServerCheck_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_27_CheckAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_28_CheckAddressW2lines_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_30_VersionInformation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_31_CalculateDistanceInMiles_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_32_AlternateCities_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_33_CityStateToZipCodeMatcher_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AddressLookup_34_GetCongressionalDistrictByZip_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_0_StandardizedAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_0_StandardizedAddress_Atomic"/>
+    <grounding:wsdlOperationName>StandardizedAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>StandardizedAddressSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>StandardizedAddressSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_1_AdvancedStandardization_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_1_AdvancedStandardization_Atomic"/>
+    <grounding:wsdlOperationName>AdvancedStandardization</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AdvancedStandardizationSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AdvancedStandardizationSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_2_ReturnCityState_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_2_ReturnCityState_Atomic"/>
+    <grounding:wsdlOperationName>ReturnCityState</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReturnCityStateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReturnCityStateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_3_BarcodeFontURL_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_3_BarcodeFontURL_Atomic"/>
+    <grounding:wsdlOperationName>BarcodeFontURL</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BarcodeFontURLSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BarcodeFontURLSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_4_CCServerCheck_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_4_CCServerCheck_Atomic"/>
+    <grounding:wsdlOperationName>CCServerCheck</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CCServerCheckSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CCServerCheckSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_5_CheckAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_5_CheckAddress_Atomic"/>
+    <grounding:wsdlOperationName>CheckAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAddressSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAddressSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_6_CheckAddressW2lines_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_6_CheckAddressW2lines_Atomic"/>
+    <grounding:wsdlOperationName>CheckAddressW2lines</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAddressW2linesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAddressW2linesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_7_AdvancedCheckAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_7_AdvancedCheckAddress_Atomic"/>
+    <grounding:wsdlOperationName>AdvancedCheckAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AdvancedCheckAddressSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AdvancedCheckAddressSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_8_VersionInformation_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_8_VersionInformation_Atomic"/>
+    <grounding:wsdlOperationName>VersionInformation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VersionInformationSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VersionInformationSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_9_CalculateDistanceInMiles_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_9_CalculateDistanceInMiles_Atomic"/>
+    <grounding:wsdlOperationName>CalculateDistanceInMiles</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CalculateDistanceInMilesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CalculateDistanceInMilesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_10_AlternateCities_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_10_AlternateCities_Atomic"/>
+    <grounding:wsdlOperationName>AlternateCities</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AlternateCitiesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AlternateCitiesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_11_CityStateToZipCodeMatcher_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_11_CityStateToZipCodeMatcher_Atomic"/>
+    <grounding:wsdlOperationName>CityStateToZipCodeMatcher</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CityStateToZipCodeMatcherSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CityStateToZipCodeMatcherSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_12_GetCongressionalDistrictByZip_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_12_GetCongressionalDistrictByZip_Atomic"/>
+    <grounding:wsdlOperationName>GetCongressionalDistrictByZip</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCongressionalDistrictByZipSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCongressionalDistrictByZipSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_13_ReturnCityState_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_13_ReturnCityState_Atomic"/>
+    <grounding:wsdlOperationName>ReturnCityState</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReturnCityStateHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReturnCityStateHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_14_BarcodeFontURL_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_14_BarcodeFontURL_Atomic"/>
+    <grounding:wsdlOperationName>BarcodeFontURL</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BarcodeFontURLHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BarcodeFontURLHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_15_CCServerCheck_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_15_CCServerCheck_Atomic"/>
+    <grounding:wsdlOperationName>CCServerCheck</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CCServerCheckHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CCServerCheckHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_16_CheckAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_16_CheckAddress_Atomic"/>
+    <grounding:wsdlOperationName>CheckAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAddressHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAddressHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_17_CheckAddressW2lines_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_17_CheckAddressW2lines_Atomic"/>
+    <grounding:wsdlOperationName>CheckAddressW2lines</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAddressW2linesHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAddressW2linesHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_18_AdvancedCheckAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_18_AdvancedCheckAddress_Atomic"/>
+    <grounding:wsdlOperationName>AdvancedCheckAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AdvancedCheckAddressHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AdvancedCheckAddressHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_19_VersionInformation_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_19_VersionInformation_Atomic"/>
+    <grounding:wsdlOperationName>VersionInformation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VersionInformationHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VersionInformationHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_20_CalculateDistanceInMiles_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_20_CalculateDistanceInMiles_Atomic"/>
+    <grounding:wsdlOperationName>CalculateDistanceInMiles</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CalculateDistanceInMilesHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CalculateDistanceInMilesHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_21_AlternateCities_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_21_AlternateCities_Atomic"/>
+    <grounding:wsdlOperationName>AlternateCities</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AlternateCitiesHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AlternateCitiesHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_22_CityStateToZipCodeMatcher_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_22_CityStateToZipCodeMatcher_Atomic"/>
+    <grounding:wsdlOperationName>CityStateToZipCodeMatcher</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CityStateToZipCodeMatcherHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CityStateToZipCodeMatcherHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_23_GetCongressionalDistrictByZip_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_23_GetCongressionalDistrictByZip_Atomic"/>
+    <grounding:wsdlOperationName>GetCongressionalDistrictByZip</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCongressionalDistrictByZipHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCongressionalDistrictByZipHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_24_ReturnCityState_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_24_ReturnCityState_Atomic"/>
+    <grounding:wsdlOperationName>ReturnCityState</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReturnCityStateHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReturnCityStateHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_25_BarcodeFontURL_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_25_BarcodeFontURL_Atomic"/>
+    <grounding:wsdlOperationName>BarcodeFontURL</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BarcodeFontURLHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BarcodeFontURLHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_26_CCServerCheck_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_26_CCServerCheck_Atomic"/>
+    <grounding:wsdlOperationName>CCServerCheck</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CCServerCheckHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CCServerCheckHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_27_CheckAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_27_CheckAddress_Atomic"/>
+    <grounding:wsdlOperationName>CheckAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAddressHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAddressHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_28_CheckAddressW2lines_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_28_CheckAddressW2lines_Atomic"/>
+    <grounding:wsdlOperationName>CheckAddressW2lines</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAddressW2linesHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAddressW2linesHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_29_AdvancedCheckAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_29_AdvancedCheckAddress_Atomic"/>
+    <grounding:wsdlOperationName>AdvancedCheckAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AdvancedCheckAddressHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AdvancedCheckAddressHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_30_VersionInformation_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_30_VersionInformation_Atomic"/>
+    <grounding:wsdlOperationName>VersionInformation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VersionInformationHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VersionInformationHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_31_CalculateDistanceInMiles_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_31_CalculateDistanceInMiles_Atomic"/>
+    <grounding:wsdlOperationName>CalculateDistanceInMiles</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CalculateDistanceInMilesHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CalculateDistanceInMilesHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_32_AlternateCities_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_32_AlternateCities_Atomic"/>
+    <grounding:wsdlOperationName>AlternateCities</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AlternateCitiesHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AlternateCitiesHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_33_CityStateToZipCodeMatcher_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_33_CityStateToZipCodeMatcher_Atomic"/>
+    <grounding:wsdlOperationName>CityStateToZipCodeMatcher</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CityStateToZipCodeMatcherHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CityStateToZipCodeMatcherHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AddressLookup_34_GetCongressionalDistrictByZip_Grounding">
+    <grounding:owlsProcess rdf:resource="#AddressLookup_34_GetCongressionalDistrictByZip_Atomic"/>
+    <grounding:wsdlOperationName>GetCongressionalDistrictByZip</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AddressLookupHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AddressLookupHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3809_3808.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCongressionalDistrictByZipHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCongressionalDistrictByZipHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

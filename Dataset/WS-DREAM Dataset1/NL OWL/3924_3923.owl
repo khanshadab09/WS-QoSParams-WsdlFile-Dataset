@@ -1,0 +1,501 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="WebServices">
+    <service:presents rdf:resource="#WebServices_Profile"/>
+    <service:describedBy rdf:resource="#WebServices_Composite"/>
+    <service:supports rdf:resource="#WebServices_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="WebServices_Profile">
+    <profile:serviceName>WebServices</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#WebServices"/>
+    <profile:hasProcess rdf:resource="#WebServices_0_AddressBookList_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_0_AddressBookList_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookList"/>
+    <profile:hasOutput rdf:resource="#WebServices_0_AddressBookList_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookListResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to access the address book list.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a list of addresses from the address book.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WebServices_1_AddressBookAddEntry_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_1_AddressBookAddEntry_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookAddEntry"/>
+    <profile:hasOutput rdf:resource="#WebServices_1_AddressBookAddEntry_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookAddEntryResponse"/>
+    <profile:hasPrecondition>The user must provide valid input data for adding an entry to the address book.</profile:hasPrecondition>
+    <profile:hasResult>The address book will be updated with the new entry upon successful execution of the operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WebServices_2_AddressBookRemoveEntry_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_2_AddressBookRemoveEntry_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookRemoveEntry"/>
+    <profile:hasOutput rdf:resource="#WebServices_2_AddressBookRemoveEntry_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookRemoveEntryResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to remove an entry from the address book.</profile:hasPrecondition>
+    <profile:hasResult>The specified entry will be successfully removed from the address book.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WebServices_3_AddressBookGroupList_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_3_AddressBookGroupList_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupList"/>
+    <profile:hasOutput rdf:resource="#WebServices_3_AddressBookGroupList_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupListResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have permission to access the Address Book Group List service.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves a list of address book groups from the web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WebServices_4_AddressBookGroupCreate_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_4_AddressBookGroupCreate_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupCreate"/>
+    <profile:hasOutput rdf:resource="#WebServices_4_AddressBookGroupCreate_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupCreateResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to create an address book group.</profile:hasPrecondition>
+    <profile:hasResult>A new address book group is successfully created in the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WebServices_5_AddressBookGroupRemove_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_5_AddressBookGroupRemove_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupRemove"/>
+    <profile:hasOutput rdf:resource="#WebServices_5_AddressBookGroupRemove_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupRemoveResponse"/>
+    <profile:hasPrecondition>The address book group specified in the input exists in the address book.</profile:hasPrecondition>
+    <profile:hasResult>The specified address book group is removed from the address book.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WebServices_6_AddressBookGroupAddEntry_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_6_AddressBookGroupAddEntry_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupAddEntry"/>
+    <profile:hasOutput rdf:resource="#WebServices_6_AddressBookGroupAddEntry_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupAddEntryResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have permission to add entries to the address book group.</profile:hasPrecondition>
+    <profile:hasResult>An entry is successfully added to the specified address book group.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WebServices_7_AddressBookGroupRemoveEntry_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_7_AddressBookGroupRemoveEntry_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupRemoveEntry"/>
+    <profile:hasOutput rdf:resource="#WebServices_7_AddressBookGroupRemoveEntry_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupRemoveEntryResponse"/>
+    <profile:hasPrecondition>The specified entry exists in the address book group.</profile:hasPrecondition>
+    <profile:hasResult>The specified entry is removed from the address book group.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WebServices_8_ReportStandard_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_8_ReportStandard_Atomic_input_parameters__http___2sms.com_WebServices__ReportStandard"/>
+    <profile:hasOutput rdf:resource="#WebServices_8_ReportStandard_Atomic_output_parameters__http___2sms.com_WebServices__ReportStandardResponse"/>
+    <profile:hasPrecondition>The input parameters for the ReportStandard operation must adhere to the specified structure defined by the http://2sms.com/WebServices/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for the ReportStandard operation will conform to the structure defined by the http://2sms.com/WebServices/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WebServices_9_ReportStandardReference_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_9_ReportStandardReference_Atomic_input_parameters__http___2sms.com_WebServices__ReportStandardReference"/>
+    <profile:hasOutput rdf:resource="#WebServices_9_ReportStandardReference_Atomic_output_parameters__http___2sms.com_WebServices__ReportStandardReferenceResponse"/>
+    <profile:hasPrecondition>The input parameters for the ReportStandardReference operation must adhere to the specified format defined by the http://2sms.com/WebServices/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for the ReportStandardReference operation will be in the format specified by the http://2sms.com/WebServices/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WebServices_10_ReportStandardBetweenDates_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_10_ReportStandardBetweenDates_Atomic_input_parameters__http___2sms.com_WebServices__ReportStandardBetweenDates"/>
+    <profile:hasOutput rdf:resource="#WebServices_10_ReportStandardBetweenDates_Atomic_output_parameters__http___2sms.com_WebServices__ReportStandardBetweenDatesResponse"/>
+    <profile:hasPrecondition>The user must provide valid start and end dates for the report in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The system will generate a report containing standard information between the provided dates.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WebServices_11_Report2way_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_11_Report2way_Atomic_input_parameters__http___2sms.com_WebServices__Report2way"/>
+    <profile:hasOutput rdf:resource="#WebServices_11_Report2way_Atomic_output_parameters__http___2sms.com_WebServices__Report2wayResponse"/>
+    <profile:hasPrecondition>The client must provide the necessary parameters for the Report2way operation in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The server will process the input parameters and generate a response in the specified format for the Report2way operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WebServices_12_SendMessage_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_12_SendMessage_Atomic_input_parameters__http___2sms.com_WebServices__SendMessage"/>
+    <profile:hasOutput rdf:resource="#WebServices_12_SendMessage_Atomic_output_parameters__http___2sms.com_WebServices__SendMessageResponse"/>
+    <profile:hasPrecondition>The user must provide the necessary parameters for sending a message using the 2sms web service.</profile:hasPrecondition>
+    <profile:hasResult>The system will process the message and return a response confirming that the message has been sent successfully.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WebServices_13_SubAccountList_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_13_SubAccountList_Atomic_input_parameters__http___2sms.com_WebServices__SubAccountList"/>
+    <profile:hasOutput rdf:resource="#WebServices_13_SubAccountList_Atomic_output_parameters__http___2sms.com_WebServices__SubAccountListResponse"/>
+    <profile:hasPrecondition>The user must have valid authentication credentials to access the SubAccountList operation.</profile:hasPrecondition>
+    <profile:hasResult>The SubAccountList operation will return a list of sub-accounts associated with the user's account.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WebServices_14_SubAccountGiveCredits_Atomic"/>
+    <profile:hasInput rdf:resource="#WebServices_14_SubAccountGiveCredits_Atomic_input_parameters__http___2sms.com_WebServices__SubAccountGiveCredits"/>
+    <profile:hasOutput rdf:resource="#WebServices_14_SubAccountGiveCredits_Atomic_output_parameters__http___2sms.com_WebServices__SubAccountGiveCreditsResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to access the SubAccountGiveCredits operation.</profile:hasPrecondition>
+    <profile:hasResult>The SubAccount's credits are successfully updated as per the specified amount in the request.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="WebServices_Composite">
+    <process:composedOf rdf:resource="#WebServices_0_AddressBookList_Atomic"/>
+    <process:composedOf rdf:resource="#WebServices_1_AddressBookAddEntry_Atomic"/>
+    <process:composedOf rdf:resource="#WebServices_2_AddressBookRemoveEntry_Atomic"/>
+    <process:composedOf rdf:resource="#WebServices_3_AddressBookGroupList_Atomic"/>
+    <process:composedOf rdf:resource="#WebServices_4_AddressBookGroupCreate_Atomic"/>
+    <process:composedOf rdf:resource="#WebServices_5_AddressBookGroupRemove_Atomic"/>
+    <process:composedOf rdf:resource="#WebServices_6_AddressBookGroupAddEntry_Atomic"/>
+    <process:composedOf rdf:resource="#WebServices_7_AddressBookGroupRemoveEntry_Atomic"/>
+    <process:composedOf rdf:resource="#WebServices_8_ReportStandard_Atomic"/>
+    <process:composedOf rdf:resource="#WebServices_9_ReportStandardReference_Atomic"/>
+    <process:composedOf rdf:resource="#WebServices_10_ReportStandardBetweenDates_Atomic"/>
+    <process:composedOf rdf:resource="#WebServices_11_Report2way_Atomic"/>
+    <process:composedOf rdf:resource="#WebServices_12_SendMessage_Atomic"/>
+    <process:composedOf rdf:resource="#WebServices_13_SubAccountList_Atomic"/>
+    <process:composedOf rdf:resource="#WebServices_14_SubAccountGiveCredits_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="WebServices_0_AddressBookList_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookList">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_0_AddressBookList_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookListResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WebServices_1_AddressBookAddEntry_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookAddEntry">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookAddEntry</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_1_AddressBookAddEntry_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookAddEntryResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookAddEntryResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WebServices_2_AddressBookRemoveEntry_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookRemoveEntry">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookRemoveEntry</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_2_AddressBookRemoveEntry_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookRemoveEntryResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookRemoveEntryResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WebServices_3_AddressBookGroupList_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupList">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookGroupList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_3_AddressBookGroupList_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupListResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookGroupListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WebServices_4_AddressBookGroupCreate_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupCreate">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookGroupCreate</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_4_AddressBookGroupCreate_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupCreateResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookGroupCreateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WebServices_5_AddressBookGroupRemove_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupRemove">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookGroupRemove</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_5_AddressBookGroupRemove_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupRemoveResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookGroupRemoveResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WebServices_6_AddressBookGroupAddEntry_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupAddEntry">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookGroupAddEntry</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_6_AddressBookGroupAddEntry_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupAddEntryResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookGroupAddEntryResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WebServices_7_AddressBookGroupRemoveEntry_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupRemoveEntry">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookGroupRemoveEntry</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_7_AddressBookGroupRemoveEntry_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupRemoveEntryResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}AddressBookGroupRemoveEntryResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WebServices_8_ReportStandard_Atomic_input_parameters__http___2sms.com_WebServices__ReportStandard">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}ReportStandard</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_8_ReportStandard_Atomic_output_parameters__http___2sms.com_WebServices__ReportStandardResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}ReportStandardResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WebServices_9_ReportStandardReference_Atomic_input_parameters__http___2sms.com_WebServices__ReportStandardReference">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}ReportStandardReference</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_9_ReportStandardReference_Atomic_output_parameters__http___2sms.com_WebServices__ReportStandardReferenceResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}ReportStandardReferenceResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WebServices_10_ReportStandardBetweenDates_Atomic_input_parameters__http___2sms.com_WebServices__ReportStandardBetweenDates">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}ReportStandardBetweenDates</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_10_ReportStandardBetweenDates_Atomic_output_parameters__http___2sms.com_WebServices__ReportStandardBetweenDatesResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}ReportStandardBetweenDatesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WebServices_11_Report2way_Atomic_input_parameters__http___2sms.com_WebServices__Report2way">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}Report2way</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_11_Report2way_Atomic_output_parameters__http___2sms.com_WebServices__Report2wayResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}Report2wayResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WebServices_12_SendMessage_Atomic_input_parameters__http___2sms.com_WebServices__SendMessage">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}SendMessage</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_12_SendMessage_Atomic_output_parameters__http___2sms.com_WebServices__SendMessageResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}SendMessageResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WebServices_13_SubAccountList_Atomic_input_parameters__http___2sms.com_WebServices__SubAccountList">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}SubAccountList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_13_SubAccountList_Atomic_output_parameters__http___2sms.com_WebServices__SubAccountListResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}SubAccountListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WebServices_14_SubAccountGiveCredits_Atomic_input_parameters__http___2sms.com_WebServices__SubAccountGiveCredits">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}SubAccountGiveCredits</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WebServices_14_SubAccountGiveCredits_Atomic_output_parameters__http___2sms.com_WebServices__SubAccountGiveCreditsResponse">
+    <process:parameterType>parameters:{http://2sms.com/WebServices/}SubAccountGiveCreditsResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="WebServices_0_AddressBookList_Atomic">
+    <process:hasName>AddressBookList</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_0_AddressBookList_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookList"/>
+    <process:hasOutput rdf:resource="#WebServices_0_AddressBookList_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookListResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to access the address book list.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a list of addresses from the address book.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WebServices_1_AddressBookAddEntry_Atomic">
+    <process:hasName>AddressBookAddEntry</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_1_AddressBookAddEntry_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookAddEntry"/>
+    <process:hasOutput rdf:resource="#WebServices_1_AddressBookAddEntry_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookAddEntryResponse"/>
+    <process:hasPrecondition>The user must provide valid input data for adding an entry to the address book.</process:hasPrecondition>
+    <process:hasEffect>The address book will be updated with the new entry upon successful execution of the operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WebServices_2_AddressBookRemoveEntry_Atomic">
+    <process:hasName>AddressBookRemoveEntry</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_2_AddressBookRemoveEntry_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookRemoveEntry"/>
+    <process:hasOutput rdf:resource="#WebServices_2_AddressBookRemoveEntry_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookRemoveEntryResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to remove an entry from the address book.</process:hasPrecondition>
+    <process:hasEffect>The specified entry will be successfully removed from the address book.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WebServices_3_AddressBookGroupList_Atomic">
+    <process:hasName>AddressBookGroupList</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_3_AddressBookGroupList_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupList"/>
+    <process:hasOutput rdf:resource="#WebServices_3_AddressBookGroupList_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupListResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have permission to access the Address Book Group List service.</process:hasPrecondition>
+    <process:hasEffect>Retrieves a list of address book groups from the web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WebServices_4_AddressBookGroupCreate_Atomic">
+    <process:hasName>AddressBookGroupCreate</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_4_AddressBookGroupCreate_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupCreate"/>
+    <process:hasOutput rdf:resource="#WebServices_4_AddressBookGroupCreate_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupCreateResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to create an address book group.</process:hasPrecondition>
+    <process:hasEffect>A new address book group is successfully created in the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WebServices_5_AddressBookGroupRemove_Atomic">
+    <process:hasName>AddressBookGroupRemove</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_5_AddressBookGroupRemove_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupRemove"/>
+    <process:hasOutput rdf:resource="#WebServices_5_AddressBookGroupRemove_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupRemoveResponse"/>
+    <process:hasPrecondition>The address book group specified in the input exists in the address book.</process:hasPrecondition>
+    <process:hasEffect>The specified address book group is removed from the address book.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WebServices_6_AddressBookGroupAddEntry_Atomic">
+    <process:hasName>AddressBookGroupAddEntry</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_6_AddressBookGroupAddEntry_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupAddEntry"/>
+    <process:hasOutput rdf:resource="#WebServices_6_AddressBookGroupAddEntry_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupAddEntryResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have permission to add entries to the address book group.</process:hasPrecondition>
+    <process:hasEffect>An entry is successfully added to the specified address book group.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WebServices_7_AddressBookGroupRemoveEntry_Atomic">
+    <process:hasName>AddressBookGroupRemoveEntry</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_7_AddressBookGroupRemoveEntry_Atomic_input_parameters__http___2sms.com_WebServices__AddressBookGroupRemoveEntry"/>
+    <process:hasOutput rdf:resource="#WebServices_7_AddressBookGroupRemoveEntry_Atomic_output_parameters__http___2sms.com_WebServices__AddressBookGroupRemoveEntryResponse"/>
+    <process:hasPrecondition>The specified entry exists in the address book group.</process:hasPrecondition>
+    <process:hasEffect>The specified entry is removed from the address book group.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WebServices_8_ReportStandard_Atomic">
+    <process:hasName>ReportStandard</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_8_ReportStandard_Atomic_input_parameters__http___2sms.com_WebServices__ReportStandard"/>
+    <process:hasOutput rdf:resource="#WebServices_8_ReportStandard_Atomic_output_parameters__http___2sms.com_WebServices__ReportStandardResponse"/>
+    <process:hasPrecondition>The input parameters for the ReportStandard operation must adhere to the specified structure defined by the http://2sms.com/WebServices/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for the ReportStandard operation will conform to the structure defined by the http://2sms.com/WebServices/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WebServices_9_ReportStandardReference_Atomic">
+    <process:hasName>ReportStandardReference</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_9_ReportStandardReference_Atomic_input_parameters__http___2sms.com_WebServices__ReportStandardReference"/>
+    <process:hasOutput rdf:resource="#WebServices_9_ReportStandardReference_Atomic_output_parameters__http___2sms.com_WebServices__ReportStandardReferenceResponse"/>
+    <process:hasPrecondition>The input parameters for the ReportStandardReference operation must adhere to the specified format defined by the http://2sms.com/WebServices/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for the ReportStandardReference operation will be in the format specified by the http://2sms.com/WebServices/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WebServices_10_ReportStandardBetweenDates_Atomic">
+    <process:hasName>ReportStandardBetweenDates</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_10_ReportStandardBetweenDates_Atomic_input_parameters__http___2sms.com_WebServices__ReportStandardBetweenDates"/>
+    <process:hasOutput rdf:resource="#WebServices_10_ReportStandardBetweenDates_Atomic_output_parameters__http___2sms.com_WebServices__ReportStandardBetweenDatesResponse"/>
+    <process:hasPrecondition>The user must provide valid start and end dates for the report in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The system will generate a report containing standard information between the provided dates.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WebServices_11_Report2way_Atomic">
+    <process:hasName>Report2way</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_11_Report2way_Atomic_input_parameters__http___2sms.com_WebServices__Report2way"/>
+    <process:hasOutput rdf:resource="#WebServices_11_Report2way_Atomic_output_parameters__http___2sms.com_WebServices__Report2wayResponse"/>
+    <process:hasPrecondition>The client must provide the necessary parameters for the Report2way operation in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The server will process the input parameters and generate a response in the specified format for the Report2way operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WebServices_12_SendMessage_Atomic">
+    <process:hasName>SendMessage</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_12_SendMessage_Atomic_input_parameters__http___2sms.com_WebServices__SendMessage"/>
+    <process:hasOutput rdf:resource="#WebServices_12_SendMessage_Atomic_output_parameters__http___2sms.com_WebServices__SendMessageResponse"/>
+    <process:hasPrecondition>The user must provide the necessary parameters for sending a message using the 2sms web service.</process:hasPrecondition>
+    <process:hasEffect>The system will process the message and return a response confirming that the message has been sent successfully.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WebServices_13_SubAccountList_Atomic">
+    <process:hasName>SubAccountList</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_13_SubAccountList_Atomic_input_parameters__http___2sms.com_WebServices__SubAccountList"/>
+    <process:hasOutput rdf:resource="#WebServices_13_SubAccountList_Atomic_output_parameters__http___2sms.com_WebServices__SubAccountListResponse"/>
+    <process:hasPrecondition>The user must have valid authentication credentials to access the SubAccountList operation.</process:hasPrecondition>
+    <process:hasEffect>The SubAccountList operation will return a list of sub-accounts associated with the user's account.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WebServices_14_SubAccountGiveCredits_Atomic">
+    <process:hasName>SubAccountGiveCredits</process:hasName>
+    <process:hasInput rdf:resource="#WebServices_14_SubAccountGiveCredits_Atomic_input_parameters__http___2sms.com_WebServices__SubAccountGiveCredits"/>
+    <process:hasOutput rdf:resource="#WebServices_14_SubAccountGiveCredits_Atomic_output_parameters__http___2sms.com_WebServices__SubAccountGiveCreditsResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to access the SubAccountGiveCredits operation.</process:hasPrecondition>
+    <process:hasEffect>The SubAccount's credits are successfully updated as per the specified amount in the request.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="WebServices_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_0_AddressBookList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_1_AddressBookAddEntry_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_2_AddressBookRemoveEntry_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_3_AddressBookGroupList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_4_AddressBookGroupCreate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_5_AddressBookGroupRemove_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_6_AddressBookGroupAddEntry_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_7_AddressBookGroupRemoveEntry_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_8_ReportStandard_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_9_ReportStandardReference_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_10_ReportStandardBetweenDates_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_11_Report2way_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_12_SendMessage_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_13_SubAccountList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WebServices_14_SubAccountGiveCredits_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_0_AddressBookList_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_0_AddressBookList_Atomic"/>
+    <grounding:wsdlOperationName>AddressBookList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressBookListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressBookListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_1_AddressBookAddEntry_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_1_AddressBookAddEntry_Atomic"/>
+    <grounding:wsdlOperationName>AddressBookAddEntry</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressBookAddEntrySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressBookAddEntrySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_2_AddressBookRemoveEntry_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_2_AddressBookRemoveEntry_Atomic"/>
+    <grounding:wsdlOperationName>AddressBookRemoveEntry</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressBookRemoveEntrySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressBookRemoveEntrySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_3_AddressBookGroupList_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_3_AddressBookGroupList_Atomic"/>
+    <grounding:wsdlOperationName>AddressBookGroupList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressBookGroupListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressBookGroupListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_4_AddressBookGroupCreate_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_4_AddressBookGroupCreate_Atomic"/>
+    <grounding:wsdlOperationName>AddressBookGroupCreate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressBookGroupCreateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressBookGroupCreateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_5_AddressBookGroupRemove_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_5_AddressBookGroupRemove_Atomic"/>
+    <grounding:wsdlOperationName>AddressBookGroupRemove</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressBookGroupRemoveSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressBookGroupRemoveSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_6_AddressBookGroupAddEntry_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_6_AddressBookGroupAddEntry_Atomic"/>
+    <grounding:wsdlOperationName>AddressBookGroupAddEntry</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressBookGroupAddEntrySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressBookGroupAddEntrySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_7_AddressBookGroupRemoveEntry_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_7_AddressBookGroupRemoveEntry_Atomic"/>
+    <grounding:wsdlOperationName>AddressBookGroupRemoveEntry</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressBookGroupRemoveEntrySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressBookGroupRemoveEntrySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_8_ReportStandard_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_8_ReportStandard_Atomic"/>
+    <grounding:wsdlOperationName>ReportStandard</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReportStandardSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReportStandardSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_9_ReportStandardReference_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_9_ReportStandardReference_Atomic"/>
+    <grounding:wsdlOperationName>ReportStandardReference</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReportStandardReferenceSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReportStandardReferenceSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_10_ReportStandardBetweenDates_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_10_ReportStandardBetweenDates_Atomic"/>
+    <grounding:wsdlOperationName>ReportStandardBetweenDates</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReportStandardBetweenDatesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReportStandardBetweenDatesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_11_Report2way_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_11_Report2way_Atomic"/>
+    <grounding:wsdlOperationName>Report2way</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Report2waySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>Report2waySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_12_SendMessage_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_12_SendMessage_Atomic"/>
+    <grounding:wsdlOperationName>SendMessage</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendMessageSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendMessageSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_13_SubAccountList_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_13_SubAccountList_Atomic"/>
+    <grounding:wsdlOperationName>SubAccountList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SubAccountListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SubAccountListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WebServices_14_SubAccountGiveCredits_Grounding">
+    <grounding:owlsProcess rdf:resource="#WebServices_14_SubAccountGiveCredits_Atomic"/>
+    <grounding:wsdlOperationName>SubAccountGiveCredits</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3924_3923.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SubAccountGiveCreditsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SubAccountGiveCreditsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
