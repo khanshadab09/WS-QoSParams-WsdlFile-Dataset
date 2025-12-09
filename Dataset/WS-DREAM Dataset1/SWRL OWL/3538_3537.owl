@@ -1,0 +1,1030 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Lists">
+    <service:presents rdf:resource="#Lists_Profile"/>
+    <service:describedBy rdf:resource="#Lists_Composite"/>
+    <service:supports rdf:resource="#Lists_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Lists_Profile">
+    <profile:serviceName>Lists</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Lists"/>
+    <profile:hasProcess rdf:resource="#Lists_0_GetList_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_0_GetList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetList"/>
+    <profile:hasOutput rdf:resource="#Lists_0_GetList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?operation rdf:type :GetList)
+(?input rdf:type :GetList)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?output rdf:type :GetListResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_1_GetListAndView_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_1_GetListAndView_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListAndView"/>
+    <profile:hasOutput rdf:resource="#Lists_1_GetListAndView_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListAndViewResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListAndView(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListAndViewResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_2_DeleteList_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_2_DeleteList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteList"/>
+    <profile:hasOutput rdf:resource="#Lists_2_DeleteList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteListResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteList(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteListResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_3_AddList_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_3_AddList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddList"/>
+    <profile:hasOutput rdf:resource="#Lists_3_AddList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddListResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddList(?x) ^ parameters(?x, http://schemas.microsoft.com/sharepoint/soap/AddList)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddListResponse(?y) ^ parameters(?y, http://schemas.microsoft.com/sharepoint/soap/AddListResponse) ^ hasOutput(?x, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_4_AddListFromFeature_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_4_AddListFromFeature_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddListFromFeature"/>
+    <profile:hasOutput rdf:resource="#Lists_4_AddListFromFeature_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddListFromFeatureResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddListFromFeature(?x) ^ parameters(?x, http://schemas.microsoft.com/sharepoint/soap/AddListFromFeature)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameters(http://schemas.microsoft.com/sharepoint/soap/AddListFromFeatureResponse, ?y) ^ AddListFromFeatureResponse(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_5_UpdateList_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_5_UpdateList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateList"/>
+    <profile:hasOutput rdf:resource="#Lists_5_UpdateList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateList(?x) ^ hasNamespace(?x, "http://schemas.microsoft.com/sharepoint/soap/")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateListResponse(?y) ^ hasNamespace(?y, "http://schemas.microsoft.com/sharepoint/soap/") ^ hasOutput(?x, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_6_GetListCollection_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_6_GetListCollection_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListCollection"/>
+    <profile:hasOutput rdf:resource="#Lists_6_GetListCollection_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListCollectionResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input parameters include the namespace http://schemas.microsoft.com/sharepoint/soap/ and the operation GetListCollection.</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output parameters include the namespace http://schemas.microsoft.com/sharepoint/soap/ and the operation GetListCollectionResponse.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_7_GetListItems_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_7_GetListItems_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItems"/>
+    <profile:hasOutput rdf:resource="#Lists_7_GetListItems_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input parameters must be of type {http://schemas.microsoft.com/sharepoint/soap/}GetListItems.</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output parameters will be of type {http://schemas.microsoft.com/sharepoint/soap/}GetListItemsResponse.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_8_GetListItemChanges_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_8_GetListItemChanges_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChanges"/>
+    <profile:hasOutput rdf:resource="#Lists_8_GetListItemChanges_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListItemChanges(?x) ^ hasNamespace(?x, "http://schemas.microsoft.com/sharepoint/soap/")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListItemChangesResponse(?y) ^ hasNamespace(?y, "http://schemas.microsoft.com/sharepoint/soap/") ^ hasOutput(?x, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_9_GetListItemChangesWithKnowledge_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_9_GetListItemChangesWithKnowledge_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesWithKnowledge"/>
+    <profile:hasOutput rdf:resource="#Lists_9_GetListItemChangesWithKnowledge_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesWithKnowledgeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListItemChangesWithKnowledge(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListItemChangesWithKnowledgeResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_10_GetListItemChangesSinceToken_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_10_GetListItemChangesSinceToken_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesSinceToken"/>
+    <profile:hasOutput rdf:resource="#Lists_10_GetListItemChangesSinceToken_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesSinceTokenResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListItemChangesSinceToken(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListItemChangesSinceTokenResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_11_UpdateListItems_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_11_UpdateListItems_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListItems"/>
+    <profile:hasOutput rdf:resource="#Lists_11_UpdateListItems_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListItemsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateListItems(?x) ^ hasInput(?x, ?input) ^ hasOutput(?x, ?output) ^ hasNamespace(?input, "http://schemas.microsoft.com/sharepoint/soap/") ^ hasNamespace(?output, "http://schemas.microsoft.com/sharepoint/soap/")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateListItemsResponse(?y) ^ hasInput(?y, ?output) ^ hasNamespace(?output, "http://schemas.microsoft.com/sharepoint/soap/")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_12_UpdateListItemsWithKnowledge_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_12_UpdateListItemsWithKnowledge_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListItemsWithKnowledge"/>
+    <profile:hasOutput rdf:resource="#Lists_12_UpdateListItemsWithKnowledge_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListItemsWithKnowledgeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_13_AddDiscussionBoardItem_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_13_AddDiscussionBoardItem_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddDiscussionBoardItem"/>
+    <profile:hasOutput rdf:resource="#Lists_13_AddDiscussionBoardItem_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddDiscussionBoardItemResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddDiscussionBoardItem(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddDiscussionBoardItemResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_14_AddWikiPage_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_14_AddWikiPage_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddWikiPage"/>
+    <profile:hasOutput rdf:resource="#Lists_14_AddWikiPage_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddWikiPageResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddWikiPage(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddWikiPageResponse(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_15_GetVersionCollection_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_15_GetVersionCollection_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetVersionCollection"/>
+    <profile:hasOutput rdf:resource="#Lists_15_GetVersionCollection_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetVersionCollectionResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_16_AddAttachment_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_16_AddAttachment_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddAttachment"/>
+    <profile:hasOutput rdf:resource="#Lists_16_AddAttachment_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddAttachmentResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddAttachment(?x) ^ hasParameter(?x, http://schemas.microsoft.com/sharepoint/soap/AddAttachment)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddAttachmentResponse(?y) ^ hasParameter(?y, http://schemas.microsoft.com/sharepoint/soap/AddAttachmentResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_17_GetAttachmentCollection_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_17_GetAttachmentCollection_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetAttachmentCollection"/>
+    <profile:hasOutput rdf:resource="#Lists_17_GetAttachmentCollection_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetAttachmentCollectionResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input parameters include the namespace http://schemas.microsoft.com/sharepoint/soap/ and the operation GetAttachmentCollection.</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output parameters include the namespace http://schemas.microsoft.com/sharepoint/soap/ and the operation GetAttachmentCollectionResponse.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_18_DeleteAttachment_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_18_DeleteAttachment_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteAttachment"/>
+    <profile:hasOutput rdf:resource="#Lists_18_DeleteAttachment_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteAttachmentResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteAttachment(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteAttachmentResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_19_CheckOutFile_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_19_CheckOutFile_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__CheckOutFile"/>
+    <profile:hasOutput rdf:resource="#Lists_19_CheckOutFile_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__CheckOutFileResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CheckOutFile(?file) ^ hasParameter(?file, http://schemas.microsoft.com/sharepoint/soap/CheckOutFile)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CheckOutFileResponse(?response) ^ hasParameter(?response, http://schemas.microsoft.com/sharepoint/soap/CheckOutFileResponse) ^ hasOutput(?response, ?file)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_20_UndoCheckOut_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_20_UndoCheckOut_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UndoCheckOut"/>
+    <profile:hasOutput rdf:resource="#Lists_20_UndoCheckOut_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UndoCheckOutResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UndoCheckOut(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UndoCheckOutResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_21_CheckInFile_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_21_CheckInFile_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__CheckInFile"/>
+    <profile:hasOutput rdf:resource="#Lists_21_CheckInFile_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__CheckInFileResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CheckInFile(?file) ^ hasNamespace(?file, "http://schemas.microsoft.com/sharepoint/soap/")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CheckInFileResponse(?response) ^ hasNamespace(?response, "http://schemas.microsoft.com/sharepoint/soap/")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_22_GetListContentTypes_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_22_GetListContentTypes_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypes"/>
+    <profile:hasOutput rdf:resource="#Lists_22_GetListContentTypes_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypesResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_23_GetListContentTypesAndProperties_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_23_GetListContentTypesAndProperties_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypesAndProperties"/>
+    <profile:hasOutput rdf:resource="#Lists_23_GetListContentTypesAndProperties_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypesAndPropertiesResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_24_GetListContentType_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_24_GetListContentType_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentType"/>
+    <profile:hasOutput rdf:resource="#Lists_24_GetListContentType_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input parameters contain the URI http://schemas.microsoft.com/sharepoint/soap/GetListContentType</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output parameters contain the URI http://schemas.microsoft.com/sharepoint/soap/GetListContentTypeResponse</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_25_CreateContentType_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_25_CreateContentType_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__CreateContentType"/>
+    <profile:hasOutput rdf:resource="#Lists_25_CreateContentType_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__CreateContentTypeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input parameters contain the CreateContentType request from the specified namespace.</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output parameters contain the CreateContentTypeResponse from the specified namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_26_UpdateContentType_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_26_UpdateContentType_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentType"/>
+    <profile:hasOutput rdf:resource="#Lists_26_UpdateContentType_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateContentType(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateContentTypeResponse(?y) ^ hasOutput(?x, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_27_DeleteContentType_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_27_DeleteContentType_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteContentType"/>
+    <profile:hasOutput rdf:resource="#Lists_27_DeleteContentType_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteContentTypeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(DeleteContentType, http://schemas.microsoft.com/sharepoint/soap/)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(DeleteContentTypeResponse, http://schemas.microsoft.com/sharepoint/soap/)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_28_UpdateContentTypeXmlDocument_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_28_UpdateContentTypeXmlDocument_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypeXmlDocument"/>
+    <profile:hasOutput rdf:resource="#Lists_28_UpdateContentTypeXmlDocument_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypeXmlDocumentResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInput(parameters, {http://schemas.microsoft.com/sharepoint/soap/}UpdateContentTypeXmlDocument)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(parameters, {http://schemas.microsoft.com/sharepoint/soap/}UpdateContentTypeXmlDocumentResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_29_UpdateContentTypesXmlDocument_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_29_UpdateContentTypesXmlDocument_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypesXmlDocument"/>
+    <profile:hasOutput rdf:resource="#Lists_29_UpdateContentTypesXmlDocument_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypesXmlDocumentResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInput(parameters, {http://schemas.microsoft.com/sharepoint/soap/}UpdateContentTypesXmlDocument)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(parameters, {http://schemas.microsoft.com/sharepoint/soap/}UpdateContentTypesXmlDocumentResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_30_DeleteContentTypeXmlDocument_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_30_DeleteContentTypeXmlDocument_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteContentTypeXmlDocument"/>
+    <profile:hasOutput rdf:resource="#Lists_30_DeleteContentTypeXmlDocument_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteContentTypeXmlDocumentResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?operation rdf:type :DeleteContentTypeXmlDocument)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?input rdf:type :DeleteContentTypeXmlDocument)  -&gt;  (?output rdf:type :DeleteContentTypeXmlDocumentResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Lists_31_ApplyContentTypeToList_Atomic"/>
+    <profile:hasInput rdf:resource="#Lists_31_ApplyContentTypeToList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__ApplyContentTypeToList"/>
+    <profile:hasOutput rdf:resource="#Lists_31_ApplyContentTypeToList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__ApplyContentTypeToListResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApplyContentTypeToList(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApplyContentTypeToListResponse(?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Lists_Composite">
+    <process:composedOf rdf:resource="#Lists_0_GetList_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_1_GetListAndView_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_2_DeleteList_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_3_AddList_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_4_AddListFromFeature_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_5_UpdateList_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_6_GetListCollection_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_7_GetListItems_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_8_GetListItemChanges_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_9_GetListItemChangesWithKnowledge_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_10_GetListItemChangesSinceToken_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_11_UpdateListItems_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_12_UpdateListItemsWithKnowledge_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_13_AddDiscussionBoardItem_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_14_AddWikiPage_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_15_GetVersionCollection_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_16_AddAttachment_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_17_GetAttachmentCollection_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_18_DeleteAttachment_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_19_CheckOutFile_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_20_UndoCheckOut_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_21_CheckInFile_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_22_GetListContentTypes_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_23_GetListContentTypesAndProperties_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_24_GetListContentType_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_25_CreateContentType_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_26_UpdateContentType_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_27_DeleteContentType_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_28_UpdateContentTypeXmlDocument_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_29_UpdateContentTypesXmlDocument_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_30_DeleteContentTypeXmlDocument_Atomic"/>
+    <process:composedOf rdf:resource="#Lists_31_ApplyContentTypeToList_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Lists_0_GetList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetList">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_0_GetList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_1_GetListAndView_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListAndView">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListAndView</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_1_GetListAndView_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListAndViewResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListAndViewResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_2_DeleteList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteList">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}DeleteList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_2_DeleteList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteListResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}DeleteListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_3_AddList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddList">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}AddList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_3_AddList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddListResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}AddListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_4_AddListFromFeature_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddListFromFeature">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}AddListFromFeature</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_4_AddListFromFeature_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddListFromFeatureResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}AddListFromFeatureResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_5_UpdateList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateList">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}UpdateList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_5_UpdateList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}UpdateListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_6_GetListCollection_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListCollection">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListCollection</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_6_GetListCollection_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListCollectionResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListCollectionResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_7_GetListItems_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItems">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListItems</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_7_GetListItems_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemsResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListItemsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_8_GetListItemChanges_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChanges">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListItemChanges</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_8_GetListItemChanges_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListItemChangesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_9_GetListItemChangesWithKnowledge_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesWithKnowledge">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListItemChangesWithKnowledge</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_9_GetListItemChangesWithKnowledge_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesWithKnowledgeResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListItemChangesWithKnowledgeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_10_GetListItemChangesSinceToken_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesSinceToken">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListItemChangesSinceToken</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_10_GetListItemChangesSinceToken_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesSinceTokenResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListItemChangesSinceTokenResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_11_UpdateListItems_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListItems">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}UpdateListItems</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_11_UpdateListItems_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListItemsResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}UpdateListItemsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_12_UpdateListItemsWithKnowledge_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListItemsWithKnowledge">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}UpdateListItemsWithKnowledge</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_12_UpdateListItemsWithKnowledge_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListItemsWithKnowledgeResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}UpdateListItemsWithKnowledgeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_13_AddDiscussionBoardItem_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddDiscussionBoardItem">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}AddDiscussionBoardItem</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_13_AddDiscussionBoardItem_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddDiscussionBoardItemResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}AddDiscussionBoardItemResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_14_AddWikiPage_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddWikiPage">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}AddWikiPage</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_14_AddWikiPage_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddWikiPageResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}AddWikiPageResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_15_GetVersionCollection_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetVersionCollection">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetVersionCollection</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_15_GetVersionCollection_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetVersionCollectionResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetVersionCollectionResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_16_AddAttachment_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddAttachment">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}AddAttachment</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_16_AddAttachment_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddAttachmentResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}AddAttachmentResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_17_GetAttachmentCollection_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetAttachmentCollection">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetAttachmentCollection</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_17_GetAttachmentCollection_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetAttachmentCollectionResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetAttachmentCollectionResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_18_DeleteAttachment_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteAttachment">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}DeleteAttachment</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_18_DeleteAttachment_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteAttachmentResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}DeleteAttachmentResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_19_CheckOutFile_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__CheckOutFile">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}CheckOutFile</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_19_CheckOutFile_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__CheckOutFileResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}CheckOutFileResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_20_UndoCheckOut_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UndoCheckOut">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}UndoCheckOut</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_20_UndoCheckOut_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UndoCheckOutResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}UndoCheckOutResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_21_CheckInFile_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__CheckInFile">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}CheckInFile</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_21_CheckInFile_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__CheckInFileResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}CheckInFileResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_22_GetListContentTypes_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypes">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListContentTypes</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_22_GetListContentTypes_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypesResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListContentTypesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_23_GetListContentTypesAndProperties_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypesAndProperties">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListContentTypesAndProperties</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_23_GetListContentTypesAndProperties_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypesAndPropertiesResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListContentTypesAndPropertiesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_24_GetListContentType_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentType">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListContentType</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_24_GetListContentType_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypeResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}GetListContentTypeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_25_CreateContentType_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__CreateContentType">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}CreateContentType</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_25_CreateContentType_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__CreateContentTypeResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}CreateContentTypeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_26_UpdateContentType_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentType">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}UpdateContentType</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_26_UpdateContentType_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypeResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}UpdateContentTypeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_27_DeleteContentType_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteContentType">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}DeleteContentType</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_27_DeleteContentType_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteContentTypeResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}DeleteContentTypeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_28_UpdateContentTypeXmlDocument_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypeXmlDocument">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}UpdateContentTypeXmlDocument</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_28_UpdateContentTypeXmlDocument_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypeXmlDocumentResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}UpdateContentTypeXmlDocumentResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_29_UpdateContentTypesXmlDocument_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypesXmlDocument">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}UpdateContentTypesXmlDocument</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_29_UpdateContentTypesXmlDocument_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypesXmlDocumentResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}UpdateContentTypesXmlDocumentResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_30_DeleteContentTypeXmlDocument_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteContentTypeXmlDocument">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}DeleteContentTypeXmlDocument</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_30_DeleteContentTypeXmlDocument_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteContentTypeXmlDocumentResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}DeleteContentTypeXmlDocumentResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Lists_31_ApplyContentTypeToList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__ApplyContentTypeToList">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}ApplyContentTypeToList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Lists_31_ApplyContentTypeToList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__ApplyContentTypeToListResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}ApplyContentTypeToListResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Lists_0_GetList_Atomic">
+    <process:hasName>GetList</process:hasName>
+    <process:hasInput rdf:resource="#Lists_0_GetList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetList"/>
+    <process:hasOutput rdf:resource="#Lists_0_GetList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?operation rdf:type :GetList)
+(?input rdf:type :GetList)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?output rdf:type :GetListResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_1_GetListAndView_Atomic">
+    <process:hasName>GetListAndView</process:hasName>
+    <process:hasInput rdf:resource="#Lists_1_GetListAndView_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListAndView"/>
+    <process:hasOutput rdf:resource="#Lists_1_GetListAndView_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListAndViewResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListAndView(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListAndViewResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_2_DeleteList_Atomic">
+    <process:hasName>DeleteList</process:hasName>
+    <process:hasInput rdf:resource="#Lists_2_DeleteList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteList"/>
+    <process:hasOutput rdf:resource="#Lists_2_DeleteList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteListResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteList(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteListResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_3_AddList_Atomic">
+    <process:hasName>AddList</process:hasName>
+    <process:hasInput rdf:resource="#Lists_3_AddList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddList"/>
+    <process:hasOutput rdf:resource="#Lists_3_AddList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddListResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddList(?x) ^ parameters(?x, http://schemas.microsoft.com/sharepoint/soap/AddList)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddListResponse(?y) ^ parameters(?y, http://schemas.microsoft.com/sharepoint/soap/AddListResponse) ^ hasOutput(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_4_AddListFromFeature_Atomic">
+    <process:hasName>AddListFromFeature</process:hasName>
+    <process:hasInput rdf:resource="#Lists_4_AddListFromFeature_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddListFromFeature"/>
+    <process:hasOutput rdf:resource="#Lists_4_AddListFromFeature_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddListFromFeatureResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddListFromFeature(?x) ^ parameters(?x, http://schemas.microsoft.com/sharepoint/soap/AddListFromFeature)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameters(http://schemas.microsoft.com/sharepoint/soap/AddListFromFeatureResponse, ?y) ^ AddListFromFeatureResponse(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_5_UpdateList_Atomic">
+    <process:hasName>UpdateList</process:hasName>
+    <process:hasInput rdf:resource="#Lists_5_UpdateList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateList"/>
+    <process:hasOutput rdf:resource="#Lists_5_UpdateList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateList(?x) ^ hasNamespace(?x, "http://schemas.microsoft.com/sharepoint/soap/")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateListResponse(?y) ^ hasNamespace(?y, "http://schemas.microsoft.com/sharepoint/soap/") ^ hasOutput(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_6_GetListCollection_Atomic">
+    <process:hasName>GetListCollection</process:hasName>
+    <process:hasInput rdf:resource="#Lists_6_GetListCollection_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListCollection"/>
+    <process:hasOutput rdf:resource="#Lists_6_GetListCollection_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListCollectionResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input parameters include the namespace http://schemas.microsoft.com/sharepoint/soap/ and the operation GetListCollection.</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output parameters include the namespace http://schemas.microsoft.com/sharepoint/soap/ and the operation GetListCollectionResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_7_GetListItems_Atomic">
+    <process:hasName>GetListItems</process:hasName>
+    <process:hasInput rdf:resource="#Lists_7_GetListItems_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItems"/>
+    <process:hasOutput rdf:resource="#Lists_7_GetListItems_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input parameters must be of type {http://schemas.microsoft.com/sharepoint/soap/}GetListItems.</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output parameters will be of type {http://schemas.microsoft.com/sharepoint/soap/}GetListItemsResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_8_GetListItemChanges_Atomic">
+    <process:hasName>GetListItemChanges</process:hasName>
+    <process:hasInput rdf:resource="#Lists_8_GetListItemChanges_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChanges"/>
+    <process:hasOutput rdf:resource="#Lists_8_GetListItemChanges_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListItemChanges(?x) ^ hasNamespace(?x, "http://schemas.microsoft.com/sharepoint/soap/")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListItemChangesResponse(?y) ^ hasNamespace(?y, "http://schemas.microsoft.com/sharepoint/soap/") ^ hasOutput(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_9_GetListItemChangesWithKnowledge_Atomic">
+    <process:hasName>GetListItemChangesWithKnowledge</process:hasName>
+    <process:hasInput rdf:resource="#Lists_9_GetListItemChangesWithKnowledge_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesWithKnowledge"/>
+    <process:hasOutput rdf:resource="#Lists_9_GetListItemChangesWithKnowledge_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesWithKnowledgeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListItemChangesWithKnowledge(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListItemChangesWithKnowledgeResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_10_GetListItemChangesSinceToken_Atomic">
+    <process:hasName>GetListItemChangesSinceToken</process:hasName>
+    <process:hasInput rdf:resource="#Lists_10_GetListItemChangesSinceToken_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesSinceToken"/>
+    <process:hasOutput rdf:resource="#Lists_10_GetListItemChangesSinceToken_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListItemChangesSinceTokenResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListItemChangesSinceToken(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetListItemChangesSinceTokenResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_11_UpdateListItems_Atomic">
+    <process:hasName>UpdateListItems</process:hasName>
+    <process:hasInput rdf:resource="#Lists_11_UpdateListItems_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListItems"/>
+    <process:hasOutput rdf:resource="#Lists_11_UpdateListItems_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListItemsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateListItems(?x) ^ hasInput(?x, ?input) ^ hasOutput(?x, ?output) ^ hasNamespace(?input, "http://schemas.microsoft.com/sharepoint/soap/") ^ hasNamespace(?output, "http://schemas.microsoft.com/sharepoint/soap/")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateListItemsResponse(?y) ^ hasInput(?y, ?output) ^ hasNamespace(?output, "http://schemas.microsoft.com/sharepoint/soap/")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_12_UpdateListItemsWithKnowledge_Atomic">
+    <process:hasName>UpdateListItemsWithKnowledge</process:hasName>
+    <process:hasInput rdf:resource="#Lists_12_UpdateListItemsWithKnowledge_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListItemsWithKnowledge"/>
+    <process:hasOutput rdf:resource="#Lists_12_UpdateListItemsWithKnowledge_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateListItemsWithKnowledgeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_13_AddDiscussionBoardItem_Atomic">
+    <process:hasName>AddDiscussionBoardItem</process:hasName>
+    <process:hasInput rdf:resource="#Lists_13_AddDiscussionBoardItem_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddDiscussionBoardItem"/>
+    <process:hasOutput rdf:resource="#Lists_13_AddDiscussionBoardItem_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddDiscussionBoardItemResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddDiscussionBoardItem(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddDiscussionBoardItemResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_14_AddWikiPage_Atomic">
+    <process:hasName>AddWikiPage</process:hasName>
+    <process:hasInput rdf:resource="#Lists_14_AddWikiPage_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddWikiPage"/>
+    <process:hasOutput rdf:resource="#Lists_14_AddWikiPage_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddWikiPageResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddWikiPage(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddWikiPageResponse(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_15_GetVersionCollection_Atomic">
+    <process:hasName>GetVersionCollection</process:hasName>
+    <process:hasInput rdf:resource="#Lists_15_GetVersionCollection_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetVersionCollection"/>
+    <process:hasOutput rdf:resource="#Lists_15_GetVersionCollection_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetVersionCollectionResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_16_AddAttachment_Atomic">
+    <process:hasName>AddAttachment</process:hasName>
+    <process:hasInput rdf:resource="#Lists_16_AddAttachment_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__AddAttachment"/>
+    <process:hasOutput rdf:resource="#Lists_16_AddAttachment_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__AddAttachmentResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddAttachment(?x) ^ hasParameter(?x, http://schemas.microsoft.com/sharepoint/soap/AddAttachment)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddAttachmentResponse(?y) ^ hasParameter(?y, http://schemas.microsoft.com/sharepoint/soap/AddAttachmentResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_17_GetAttachmentCollection_Atomic">
+    <process:hasName>GetAttachmentCollection</process:hasName>
+    <process:hasInput rdf:resource="#Lists_17_GetAttachmentCollection_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetAttachmentCollection"/>
+    <process:hasOutput rdf:resource="#Lists_17_GetAttachmentCollection_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetAttachmentCollectionResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input parameters include the namespace http://schemas.microsoft.com/sharepoint/soap/ and the operation GetAttachmentCollection.</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output parameters include the namespace http://schemas.microsoft.com/sharepoint/soap/ and the operation GetAttachmentCollectionResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_18_DeleteAttachment_Atomic">
+    <process:hasName>DeleteAttachment</process:hasName>
+    <process:hasInput rdf:resource="#Lists_18_DeleteAttachment_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteAttachment"/>
+    <process:hasOutput rdf:resource="#Lists_18_DeleteAttachment_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteAttachmentResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteAttachment(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteAttachmentResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_19_CheckOutFile_Atomic">
+    <process:hasName>CheckOutFile</process:hasName>
+    <process:hasInput rdf:resource="#Lists_19_CheckOutFile_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__CheckOutFile"/>
+    <process:hasOutput rdf:resource="#Lists_19_CheckOutFile_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__CheckOutFileResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CheckOutFile(?file) ^ hasParameter(?file, http://schemas.microsoft.com/sharepoint/soap/CheckOutFile)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CheckOutFileResponse(?response) ^ hasParameter(?response, http://schemas.microsoft.com/sharepoint/soap/CheckOutFileResponse) ^ hasOutput(?response, ?file)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_20_UndoCheckOut_Atomic">
+    <process:hasName>UndoCheckOut</process:hasName>
+    <process:hasInput rdf:resource="#Lists_20_UndoCheckOut_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UndoCheckOut"/>
+    <process:hasOutput rdf:resource="#Lists_20_UndoCheckOut_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UndoCheckOutResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UndoCheckOut(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UndoCheckOutResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_21_CheckInFile_Atomic">
+    <process:hasName>CheckInFile</process:hasName>
+    <process:hasInput rdf:resource="#Lists_21_CheckInFile_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__CheckInFile"/>
+    <process:hasOutput rdf:resource="#Lists_21_CheckInFile_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__CheckInFileResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CheckInFile(?file) ^ hasNamespace(?file, "http://schemas.microsoft.com/sharepoint/soap/")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CheckInFileResponse(?response) ^ hasNamespace(?response, "http://schemas.microsoft.com/sharepoint/soap/")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_22_GetListContentTypes_Atomic">
+    <process:hasName>GetListContentTypes</process:hasName>
+    <process:hasInput rdf:resource="#Lists_22_GetListContentTypes_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypes"/>
+    <process:hasOutput rdf:resource="#Lists_22_GetListContentTypes_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypesResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_23_GetListContentTypesAndProperties_Atomic">
+    <process:hasName>GetListContentTypesAndProperties</process:hasName>
+    <process:hasInput rdf:resource="#Lists_23_GetListContentTypesAndProperties_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypesAndProperties"/>
+    <process:hasOutput rdf:resource="#Lists_23_GetListContentTypesAndProperties_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypesAndPropertiesResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_24_GetListContentType_Atomic">
+    <process:hasName>GetListContentType</process:hasName>
+    <process:hasInput rdf:resource="#Lists_24_GetListContentType_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentType"/>
+    <process:hasOutput rdf:resource="#Lists_24_GetListContentType_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__GetListContentTypeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input parameters contain the URI http://schemas.microsoft.com/sharepoint/soap/GetListContentType</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output parameters contain the URI http://schemas.microsoft.com/sharepoint/soap/GetListContentTypeResponse</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_25_CreateContentType_Atomic">
+    <process:hasName>CreateContentType</process:hasName>
+    <process:hasInput rdf:resource="#Lists_25_CreateContentType_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__CreateContentType"/>
+    <process:hasOutput rdf:resource="#Lists_25_CreateContentType_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__CreateContentTypeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input parameters contain the CreateContentType request from the specified namespace.</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output parameters contain the CreateContentTypeResponse from the specified namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_26_UpdateContentType_Atomic">
+    <process:hasName>UpdateContentType</process:hasName>
+    <process:hasInput rdf:resource="#Lists_26_UpdateContentType_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentType"/>
+    <process:hasOutput rdf:resource="#Lists_26_UpdateContentType_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateContentType(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpdateContentTypeResponse(?y) ^ hasOutput(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_27_DeleteContentType_Atomic">
+    <process:hasName>DeleteContentType</process:hasName>
+    <process:hasInput rdf:resource="#Lists_27_DeleteContentType_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteContentType"/>
+    <process:hasOutput rdf:resource="#Lists_27_DeleteContentType_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteContentTypeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(DeleteContentType, http://schemas.microsoft.com/sharepoint/soap/)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(DeleteContentTypeResponse, http://schemas.microsoft.com/sharepoint/soap/)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_28_UpdateContentTypeXmlDocument_Atomic">
+    <process:hasName>UpdateContentTypeXmlDocument</process:hasName>
+    <process:hasInput rdf:resource="#Lists_28_UpdateContentTypeXmlDocument_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypeXmlDocument"/>
+    <process:hasOutput rdf:resource="#Lists_28_UpdateContentTypeXmlDocument_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypeXmlDocumentResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInput(parameters, {http://schemas.microsoft.com/sharepoint/soap/}UpdateContentTypeXmlDocument)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(parameters, {http://schemas.microsoft.com/sharepoint/soap/}UpdateContentTypeXmlDocumentResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_29_UpdateContentTypesXmlDocument_Atomic">
+    <process:hasName>UpdateContentTypesXmlDocument</process:hasName>
+    <process:hasInput rdf:resource="#Lists_29_UpdateContentTypesXmlDocument_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypesXmlDocument"/>
+    <process:hasOutput rdf:resource="#Lists_29_UpdateContentTypesXmlDocument_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__UpdateContentTypesXmlDocumentResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInput(parameters, {http://schemas.microsoft.com/sharepoint/soap/}UpdateContentTypesXmlDocument)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(parameters, {http://schemas.microsoft.com/sharepoint/soap/}UpdateContentTypesXmlDocumentResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_30_DeleteContentTypeXmlDocument_Atomic">
+    <process:hasName>DeleteContentTypeXmlDocument</process:hasName>
+    <process:hasInput rdf:resource="#Lists_30_DeleteContentTypeXmlDocument_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteContentTypeXmlDocument"/>
+    <process:hasOutput rdf:resource="#Lists_30_DeleteContentTypeXmlDocument_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__DeleteContentTypeXmlDocumentResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?operation rdf:type :DeleteContentTypeXmlDocument)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?input rdf:type :DeleteContentTypeXmlDocument)  -&gt;  (?output rdf:type :DeleteContentTypeXmlDocumentResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Lists_31_ApplyContentTypeToList_Atomic">
+    <process:hasName>ApplyContentTypeToList</process:hasName>
+    <process:hasInput rdf:resource="#Lists_31_ApplyContentTypeToList_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__ApplyContentTypeToList"/>
+    <process:hasOutput rdf:resource="#Lists_31_ApplyContentTypeToList_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__ApplyContentTypeToListResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApplyContentTypeToList(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApplyContentTypeToListResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Lists_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_0_GetList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_1_GetListAndView_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_2_DeleteList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_3_AddList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_4_AddListFromFeature_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_5_UpdateList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_6_GetListCollection_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_7_GetListItems_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_8_GetListItemChanges_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_9_GetListItemChangesWithKnowledge_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_10_GetListItemChangesSinceToken_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_11_UpdateListItems_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_12_UpdateListItemsWithKnowledge_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_13_AddDiscussionBoardItem_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_14_AddWikiPage_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_15_GetVersionCollection_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_16_AddAttachment_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_17_GetAttachmentCollection_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_18_DeleteAttachment_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_19_CheckOutFile_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_20_UndoCheckOut_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_21_CheckInFile_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_22_GetListContentTypes_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_23_GetListContentTypesAndProperties_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_24_GetListContentType_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_25_CreateContentType_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_26_UpdateContentType_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_27_DeleteContentType_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_28_UpdateContentTypeXmlDocument_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_29_UpdateContentTypesXmlDocument_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_30_DeleteContentTypeXmlDocument_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Lists_31_ApplyContentTypeToList_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_0_GetList_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_0_GetList_Atomic"/>
+    <grounding:wsdlOperationName>GetList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_1_GetListAndView_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_1_GetListAndView_Atomic"/>
+    <grounding:wsdlOperationName>GetListAndView</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetListAndViewSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetListAndViewSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_2_DeleteList_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_2_DeleteList_Atomic"/>
+    <grounding:wsdlOperationName>DeleteList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_3_AddList_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_3_AddList_Atomic"/>
+    <grounding:wsdlOperationName>AddList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_4_AddListFromFeature_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_4_AddListFromFeature_Atomic"/>
+    <grounding:wsdlOperationName>AddListFromFeature</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddListFromFeatureSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddListFromFeatureSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_5_UpdateList_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_5_UpdateList_Atomic"/>
+    <grounding:wsdlOperationName>UpdateList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_6_GetListCollection_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_6_GetListCollection_Atomic"/>
+    <grounding:wsdlOperationName>GetListCollection</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetListCollectionSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetListCollectionSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_7_GetListItems_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_7_GetListItems_Atomic"/>
+    <grounding:wsdlOperationName>GetListItems</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetListItemsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetListItemsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_8_GetListItemChanges_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_8_GetListItemChanges_Atomic"/>
+    <grounding:wsdlOperationName>GetListItemChanges</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetListItemChangesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetListItemChangesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_9_GetListItemChangesWithKnowledge_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_9_GetListItemChangesWithKnowledge_Atomic"/>
+    <grounding:wsdlOperationName>GetListItemChangesWithKnowledge</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetListItemChangesWithKnowledgeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetListItemChangesWithKnowledgeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_10_GetListItemChangesSinceToken_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_10_GetListItemChangesSinceToken_Atomic"/>
+    <grounding:wsdlOperationName>GetListItemChangesSinceToken</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetListItemChangesSinceTokenSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetListItemChangesSinceTokenSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_11_UpdateListItems_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_11_UpdateListItems_Atomic"/>
+    <grounding:wsdlOperationName>UpdateListItems</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateListItemsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateListItemsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_12_UpdateListItemsWithKnowledge_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_12_UpdateListItemsWithKnowledge_Atomic"/>
+    <grounding:wsdlOperationName>UpdateListItemsWithKnowledge</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateListItemsWithKnowledgeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateListItemsWithKnowledgeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_13_AddDiscussionBoardItem_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_13_AddDiscussionBoardItem_Atomic"/>
+    <grounding:wsdlOperationName>AddDiscussionBoardItem</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddDiscussionBoardItemSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddDiscussionBoardItemSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_14_AddWikiPage_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_14_AddWikiPage_Atomic"/>
+    <grounding:wsdlOperationName>AddWikiPage</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddWikiPageSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddWikiPageSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_15_GetVersionCollection_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_15_GetVersionCollection_Atomic"/>
+    <grounding:wsdlOperationName>GetVersionCollection</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetVersionCollectionSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetVersionCollectionSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_16_AddAttachment_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_16_AddAttachment_Atomic"/>
+    <grounding:wsdlOperationName>AddAttachment</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddAttachmentSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddAttachmentSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_17_GetAttachmentCollection_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_17_GetAttachmentCollection_Atomic"/>
+    <grounding:wsdlOperationName>GetAttachmentCollection</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAttachmentCollectionSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAttachmentCollectionSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_18_DeleteAttachment_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_18_DeleteAttachment_Atomic"/>
+    <grounding:wsdlOperationName>DeleteAttachment</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteAttachmentSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteAttachmentSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_19_CheckOutFile_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_19_CheckOutFile_Atomic"/>
+    <grounding:wsdlOperationName>CheckOutFile</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckOutFileSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckOutFileSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_20_UndoCheckOut_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_20_UndoCheckOut_Atomic"/>
+    <grounding:wsdlOperationName>UndoCheckOut</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UndoCheckOutSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UndoCheckOutSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_21_CheckInFile_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_21_CheckInFile_Atomic"/>
+    <grounding:wsdlOperationName>CheckInFile</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckInFileSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckInFileSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_22_GetListContentTypes_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_22_GetListContentTypes_Atomic"/>
+    <grounding:wsdlOperationName>GetListContentTypes</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetListContentTypesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetListContentTypesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_23_GetListContentTypesAndProperties_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_23_GetListContentTypesAndProperties_Atomic"/>
+    <grounding:wsdlOperationName>GetListContentTypesAndProperties</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetListContentTypesAndPropertiesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetListContentTypesAndPropertiesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_24_GetListContentType_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_24_GetListContentType_Atomic"/>
+    <grounding:wsdlOperationName>GetListContentType</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetListContentTypeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetListContentTypeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_25_CreateContentType_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_25_CreateContentType_Atomic"/>
+    <grounding:wsdlOperationName>CreateContentType</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CreateContentTypeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CreateContentTypeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_26_UpdateContentType_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_26_UpdateContentType_Atomic"/>
+    <grounding:wsdlOperationName>UpdateContentType</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateContentTypeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateContentTypeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_27_DeleteContentType_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_27_DeleteContentType_Atomic"/>
+    <grounding:wsdlOperationName>DeleteContentType</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteContentTypeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteContentTypeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_28_UpdateContentTypeXmlDocument_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_28_UpdateContentTypeXmlDocument_Atomic"/>
+    <grounding:wsdlOperationName>UpdateContentTypeXmlDocument</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateContentTypeXmlDocumentSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateContentTypeXmlDocumentSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_29_UpdateContentTypesXmlDocument_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_29_UpdateContentTypesXmlDocument_Atomic"/>
+    <grounding:wsdlOperationName>UpdateContentTypesXmlDocument</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateContentTypesXmlDocumentSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateContentTypesXmlDocumentSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_30_DeleteContentTypeXmlDocument_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_30_DeleteContentTypeXmlDocument_Atomic"/>
+    <grounding:wsdlOperationName>DeleteContentTypeXmlDocument</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteContentTypeXmlDocumentSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteContentTypeXmlDocumentSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Lists_31_ApplyContentTypeToList_Grounding">
+    <grounding:owlsProcess rdf:resource="#Lists_31_ApplyContentTypeToList_Atomic"/>
+    <grounding:wsdlOperationName>ApplyContentTypeToList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ListsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ListsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3538_3537.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ApplyContentTypeToListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ApplyContentTypeToListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

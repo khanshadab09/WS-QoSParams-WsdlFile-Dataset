@@ -1,0 +1,1602 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="PostcodeEverywhere">
+    <service:presents rdf:resource="#PostcodeEverywhere_Profile"/>
+    <service:describedBy rdf:resource="#PostcodeEverywhere_Composite"/>
+    <service:supports rdf:resource="#PostcodeEverywhere_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="PostcodeEverywhere_Profile">
+    <profile:serviceName>PostcodeEverywhere</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#PostcodeEverywhere"/>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_0_AddressList_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_0_AddressList_Atomic_input_parameters__http___ws.afd.co.uk__AddressList"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_0_AddressList_Atomic_output_parameters__http___ws.afd.co.uk__AddressListResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_1_AddressLookup_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_1_AddressLookup_Atomic_input_parameters__http___ws.afd.co.uk__AddressLookup"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_1_AddressLookup_Atomic_output_parameters__http___ws.afd.co.uk__AddressLookupResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddressLookup(?input) ^ hasNamespace(?input, "http://ws.afd.co.uk/")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddressLookupResponse(?output) ^ hasNamespace(?output, "http://ws.afd.co.uk/") ^ hasInput(?output, ?input)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_2_AddressLookupRaw_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_2_AddressLookupRaw_Atomic_input_parameters__http___ws.afd.co.uk__AddressLookupRaw"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_2_AddressLookupRaw_Atomic_output_parameters__http___ws.afd.co.uk__AddressLookupRawResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddressLookupRaw(?input)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddressLookupRawResponse(?output)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_3_AddressFastFind_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_3_AddressFastFind_Atomic_input_parameters__http___ws.afd.co.uk__AddressFastFind"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_3_AddressFastFind_Atomic_output_parameters__http___ws.afd.co.uk__AddressFastFindResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_4_AddressSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_4_AddressSearch_Atomic_input_parameters__http___ws.afd.co.uk__AddressSearch"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_4_AddressSearch_Atomic_output_parameters__http___ws.afd.co.uk__AddressSearchResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddressSearch(?x) ^ hasInput(?x, ?input) ^ hasNamespace(?input, "http://ws.afd.co.uk/") ^ hasType(?input, "AddressSearch")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddressSearchResponse(?y) ^ hasOutput(?y, ?output) ^ hasNamespace(?output, "http://ws.afd.co.uk/") ^ hasType(?output, "AddressSearchResponse")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_5_BankLookup_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_5_BankLookup_Atomic_input_parameters__http___ws.afd.co.uk__BankLookup"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_5_BankLookup_Atomic_output_parameters__http___ws.afd.co.uk__BankLookupResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankLookup(?x) ^ hasNamespace(?x, "http://ws.afd.co.uk/")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankLookupResponse(?y) ^ hasNamespace(?y, "http://ws.afd.co.uk/") ^ hasOutput(?x, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_6_BankFastFind_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_6_BankFastFind_Atomic_input_parameters__http___ws.afd.co.uk__BankFastFind"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_6_BankFastFind_Atomic_output_parameters__http___ws.afd.co.uk__BankFastFindResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankFastFind(?x) ^ hasInput(?x, ?input) ^ hasParameter(?input, {http://ws.afd.co.uk/}BankFastFind)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankFastFindResponse(?y) ^ hasOutput(?y, ?output) ^ hasParameter(?output, {http://ws.afd.co.uk/}BankFastFindResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_7_BankSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_7_BankSearch_Atomic_input_parameters__http___ws.afd.co.uk__BankSearch"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_7_BankSearch_Atomic_output_parameters__http___ws.afd.co.uk__BankSearchResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankSearch(?x) ^ hasParameter(?x, ?param) ^ hasNamespace(?param, "http://ws.afd.co.uk/") ^ hasName(?param, "BankSearch")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankSearchResponse(?y) ^ hasParameter(?y, ?param) ^ hasNamespace(?param, "http://ws.afd.co.uk/") ^ hasName(?param, "BankSearchResponse")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_8_BankCardValidate_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_8_BankCardValidate_Atomic_input_parameters__http___ws.afd.co.uk__BankCardValidate"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_8_BankCardValidate_Atomic_output_parameters__http___ws.afd.co.uk__BankCardValidateResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankCardValidate(?x) ^ hasCardNumber(?x, ?cardNumber) ^ hasExpirationDate(?x, ?expirationDate) ^ hasCVV(?x, ?cvv) ^ hasCardHolderName(?x, ?cardHolderName)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankCardValidateResponse(?y) ^ hasValidationResult(?y, "Valid") ^ hasCardNumber(?y, ?cardNumber) ^ hasExpirationDate(?y, ?expirationDate) ^ hasCVV(?y, ?cvv) ^ hasCardHolderName(?y, ?cardHolderName)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_9_BankAccountValidate_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_9_BankAccountValidate_Atomic_input_parameters__http___ws.afd.co.uk__BankAccountValidate"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_9_BankAccountValidate_Atomic_output_parameters__http___ws.afd.co.uk__BankAccountValidateResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankAccountValidate(?x) ^ swrlb:isInteger(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankAccountValidateResponse(?x) ^ swrlb:isBoolean(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strPostcode(?postcode) ^ strProperty(?property) ^ strCountyType(?countyType) ^ strUserID(?userID) ^ strSerialNumber(?serialNumber) ^ strPassword(?password)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ AddressResultsList(?result) ^ hasPostcode(?result, ?postcode) ^ hasProperty(?result, ?property) ^ hasCountyType(?result, ?countyType) ^ hasUserID(?result, ?userID) ^ hasSerialNumber(?result, ?serialNumber) ^ hasPassword(?result, ?password)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_input_strPostkey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_output_Body__http___ws.afd.co.uk__Address"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strPostcode(?postcode) ^ strProperty(?property) ^ strPostkey(?postkey) ^ strCountyType(?countyType) ^ strUserID(?userID) ^ strSerialNumber(?serialNumber) ^ strPassword(?password)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?address) ^ hasPostcode(?address, ?postcode) ^ hasProperty(?address, ?property) ^ hasPostkey(?address, ?postkey) ^ hasCountyType(?address, ?countyType) ^ hasUserID(?address, ?userID) ^ hasSerialNumber(?address, ?serialNumber) ^ hasPassword(?address, ?password) ^ AddressLookup(?address)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strPostkey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_output_Body__http___ws.afd.co.uk__AddressRaw"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(strPostcode type xsd:string) and 
+(strProperty type xsd:string) and 
+(strPostkey type xsd:string) and 
+(strCountyType type xsd:string) and 
+(strUserID type xsd:string) and 
+(strSerialNumber type xsd:string) and 
+(strPassword type xsd:string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body type AddressRaw and 
+AddressLookupRaw(strPostcode, strProperty, strPostkey, strCountyType, strUserID, strSerialNumber, strPassword, Body)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_input_strFastFind__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_input_strSkip__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_input_strMaxQuantity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strCountyType(?countyType) ^ strUserID(?userID) ^ strFastFind(?fastFind) ^ strSerialNumber(?serialNumber) ^ strSkip(?skip) ^ strPassword(?password) ^ strMaxQuantity(?maxQuantity)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?addressResultsList) ^ hasNamespace(?addressResultsList, http://ws.afd.co.uk/) ^ hasType(?addressResultsList, AddressResultsList)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strStreet__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strLocality__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strPostcodeFrom__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strOrganisation__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strTown__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strPostcodeTo__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strCounty__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strStreet(?strStreet) ^ strProperty(?strProperty) ^ strCountyType(?strCountyType) ^ strLocality(?strLocality) ^ strUserID(?strUserID) ^ strPostcodeFrom(?strPostcodeFrom) ^ strSerialNumber(?strSerialNumber) ^ strOrganisation(?strOrganisation) ^ strPassword(?strPassword) ^ strTown(?strTown) ^ strPostcodeTo(?strPostcodeTo) ^ strCounty(?strCounty)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?AddressResultsList) ^ hasResult(?AddressResultsList, ?result) ^ hasAddress(?result, ?address) ^ hasStreet(?address, ?strStreet) ^ hasProperty(?address, ?strProperty) ^ hasCountyType(?address, ?strCountyType) ^ hasLocality(?address, ?strLocality) ^ hasUserID(?address, ?strUserID) ^ hasPostcodeFrom(?address, ?strPostcodeFrom)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_15_BankLookup_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_15_BankLookup_Atomic_input_strRecord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_15_BankLookup_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_15_BankLookup_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_15_BankLookup_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_15_BankLookup_Atomic_output_Body__http___ws.afd.co.uk__Bank"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(strRecord, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(strUserID, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(strSerialNumber, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(strPassword, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(Body, "http://ws.afd.co.uk#Bank")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_16_BankFastFind_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_16_BankFastFind_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_16_BankFastFind_Atomic_input_strFastFind__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_16_BankFastFind_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_16_BankFastFind_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_16_BankFastFind_Atomic_output_Body__http___ws.afd.co.uk__BankResultsList"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankFastFind(?x) ^ hasInput(?x, strUserID) ^ hasInput(?x, strFastFind) ^ hasInput(?x, strSerialNumber) ^ hasInput(?x, strPassword)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, Body) ^ hasOutput(?x, BankResultsList)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strphone__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strbankBIC__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strbranch__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strbranchBIC__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strpostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strsortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strbank__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strTown__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_output_Body__http___ws.afd.co.uk__BankResultsList"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankSearch(?strphone, ?strbankBIC, ?strbranch, ?strbranchBIC, ?strUserID, ?strSerialNumber, ?strpostcode, ?strPassword, ?strsortcode, ?strbank, ?strTown)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ BankResultsList(?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_input_strCardNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_input_strExpiryMonth__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_input_strIssuenumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_input_strExpiryYear__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_output_Body__http___ws.afd.co.uk__BankValCard"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankCardValidate(?strCardNumber, ?strExpiryMonth, ?strIssuenumber, ?strUserID, ?strSerialNumber, ?strPassword, ?strExpiryYear)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?BankValCard) ^ BankValCard(?BankValCard) ^ hasCardNumber(?BankValCard, ?strCardNumber) ^ hasExpiryMonth(?BankValCard, ?strExpiryMonth) ^ hasIssueNumber(?BankValCard, ?strIssuenumber) ^ hasUserID(?BankValCard, ?strUserID) ^ hasSerialNumber(?BankValCard, ?strSerialNumber) ^ hasPassword(?BankValCard, ?strPassword) ^ hasExpiryYear(?BankValCard, ?strExpiryYear)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic_output_Body__http___ws.afd.co.uk__BankValAccount"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankAccountValidate(?strSortcode, ?strAccountNumber, ?strUserID, ?strSerialNumber, ?strPassword)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankValAccount(?Body) ^ hasSortcode(?Body, ?strSortcode) ^ hasAccountNumber(?Body, ?strAccountNumber) ^ hasUserID(?Body, ?strUserID) ^ hasSerialNumber(?Body, ?strSerialNumber) ^ hasPassword(?Body, ?strPassword)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strPostcode type http://www.w3.org/2001/XMLSchema#string
+strProperty type http://www.w3.org/2001/XMLSchema#string
+strCountyType type http://www.w3.org/2001/XMLSchema#string
+strUserID type http://www.w3.org/2001/XMLSchema#string
+strSerialNumber type http://www.w3.org/2001/XMLSchema#string
+strPassword type http://www.w3.org/2001/XMLSchema#string</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body type http://ws.afd.co.uk#AddressResultsList</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_input_strPostkey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_output_Body__http___ws.afd.co.uk__Address"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strPostcode typeOf xsd:string
+strProperty typeOf xsd:string
+strPostkey typeOf xsd:string
+strCountyType typeOf xsd:string
+strUserID typeOf xsd:string
+strSerialNumber typeOf xsd:string
+strPassword typeOf xsd:string</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddressLookup(?strPostcode, ?strProperty, ?strPostkey, ?strCountyType, ?strUserID, ?strSerialNumber, ?strPassword) -&gt; Body(?Address)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strPostkey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_output_Body__http___ws.afd.co.uk__AddressRaw"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strPostcode(?postcode) ^ strProperty(?property) ^ strPostkey(?postkey) ^ strCountyType(?countyType) ^ strUserID(?userID) ^ strSerialNumber(?serialNumber) ^ strPassword(?password)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?addressRaw) ^ hasPostcode(?addressRaw, ?postcode) ^ hasProperty(?addressRaw, ?property) ^ hasPostkey(?addressRaw, ?postkey) ^ hasCountyType(?addressRaw, ?countyType) ^ hasUserID(?addressRaw, ?userID) ^ hasSerialNumber(?addressRaw, ?serialNumber) ^ hasPassword(?addressRaw, ?password) ^ AddressLookupRaw(?addressRaw)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_input_strFastFind__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_input_strSkip__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_input_strMaxQuantity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strCountyType(?x), strUserID(?y), strFastFind(?z), strSerialNumber(?w), strSkip(?v), strPassword(?u), strMaxQuantity(?t)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ AddressResultsList(?result) ^ hasAttribute(?result, ?x) ^ hasAttribute(?result, ?y) ^ hasAttribute(?result, ?z) ^ hasAttribute(?result, ?w) ^ hasAttribute(?result, ?v) ^ hasAttribute(?result, ?u) ^ hasAttribute(?result, ?t)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strStreet__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strLocality__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strPostcodeFrom__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strOrganisation__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strTown__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strPostcodeTo__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strCounty__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strStreet(?strStreet) ^ strProperty(?strProperty) ^ strCountyType(?strCountyType) ^ strLocality(?strLocality) ^ strUserID(?strUserID) ^ strPostcodeFrom(?strPostcodeFrom) ^ strSerialNumber(?strSerialNumber) ^ strOrganisation(?strOrganisation) ^ strPassword(?strPassword) ^ strTown(?strTown) ^ strPostcodeTo(?strPostcodeTo) ^ strCounty(?strCounty)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?AddressResultsList) ^ hasResult(?AddressResultsList, ?result) ^ hasAddress(?result, ?address) ^ hasStreet(?address, ?strStreet) ^ hasProperty(?address, ?strProperty) ^ hasCountyType(?address, ?strCountyType) ^ hasLocality(?address, ?strLocality) ^ hasUserID(?address, ?strUserID) ^ hasPostcodeFrom(?address, ?strPostcodeFrom)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_25_BankLookup_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_25_BankLookup_Atomic_input_strRecord__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_25_BankLookup_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_25_BankLookup_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_25_BankLookup_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_25_BankLookup_Atomic_output_Body__http___ws.afd.co.uk__Bank"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(strRecord, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(strUserID, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(strSerialNumber, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(strPassword, "http://www.w3.org/2001/XMLSchema"^^xsd:string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(Body, "http://ws.afd.co.uk/"^^xsd:string ^ Bank)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_26_BankFastFind_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_26_BankFastFind_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_26_BankFastFind_Atomic_input_strFastFind__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_26_BankFastFind_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_26_BankFastFind_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_26_BankFastFind_Atomic_output_Body__http___ws.afd.co.uk__BankResultsList"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankFastFind(?x) ^ hasInput(?x, strUserID) ^ hasInput(?x, strFastFind) ^ hasInput(?x, strSerialNumber) ^ hasInput(?x, strPassword)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, Body) ^ hasOutput(?x, BankResultsList)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strphone__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strbankBIC__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strbranch__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strbranchBIC__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strpostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strsortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strbank__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strTown__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_output_Body__http___ws.afd.co.uk__BankResultsList"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankSearch(?strphone, ?strbankBIC, ?strbranch, ?strbranchBIC, ?strUserID, ?strSerialNumber, ?strpostcode, ?strPassword, ?strsortcode, ?strbank, ?strTown)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ BankResultsList(?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_input_strCardNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_input_strExpiryMonth__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_input_strIssuenumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_input_strExpiryYear__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_output_Body__http___ws.afd.co.uk__BankValCard"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankCardValidate(?strCardNumber, ?strExpiryMonth, ?strIssuenumber, ?strUserID, ?strSerialNumber, ?strPassword, ?strExpiryYear)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?BankValCard) ^ hasValidation(?BankValCard, ?strCardNumber, ?strExpiryMonth, ?strIssuenumber, ?strUserID, ?strSerialNumber, ?strPassword, ?strExpiryYear)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic_output_Body__http___ws.afd.co.uk__BankValAccount"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankAccountValidate(?strSortcode, ?strAccountNumber, ?strUserID, ?strSerialNumber, ?strPassword)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankValAccount(?strSortcode, ?strAccountNumber, ?strUserID, ?strSerialNumber, ?strPassword)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="PostcodeEverywhere_Composite">
+    <process:composedOf rdf:resource="#PostcodeEverywhere_0_AddressList_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_1_AddressLookup_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_2_AddressLookupRaw_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_3_AddressFastFind_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_4_AddressSearch_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_5_BankLookup_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_6_BankFastFind_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_7_BankSearch_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_8_BankCardValidate_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_9_BankAccountValidate_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_15_BankLookup_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_16_BankFastFind_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_25_BankLookup_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_26_BankFastFind_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic"/>
+    <process:composedOf rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="PostcodeEverywhere_0_AddressList_Atomic_input_parameters__http___ws.afd.co.uk__AddressList">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}AddressList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_0_AddressList_Atomic_output_parameters__http___ws.afd.co.uk__AddressListResponse">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}AddressListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_1_AddressLookup_Atomic_input_parameters__http___ws.afd.co.uk__AddressLookup">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}AddressLookup</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_1_AddressLookup_Atomic_output_parameters__http___ws.afd.co.uk__AddressLookupResponse">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}AddressLookupResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_2_AddressLookupRaw_Atomic_input_parameters__http___ws.afd.co.uk__AddressLookupRaw">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}AddressLookupRaw</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_2_AddressLookupRaw_Atomic_output_parameters__http___ws.afd.co.uk__AddressLookupRawResponse">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}AddressLookupRawResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_3_AddressFastFind_Atomic_input_parameters__http___ws.afd.co.uk__AddressFastFind">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}AddressFastFind</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_3_AddressFastFind_Atomic_output_parameters__http___ws.afd.co.uk__AddressFastFindResponse">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}AddressFastFindResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_4_AddressSearch_Atomic_input_parameters__http___ws.afd.co.uk__AddressSearch">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}AddressSearch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_4_AddressSearch_Atomic_output_parameters__http___ws.afd.co.uk__AddressSearchResponse">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}AddressSearchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_5_BankLookup_Atomic_input_parameters__http___ws.afd.co.uk__BankLookup">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}BankLookup</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_5_BankLookup_Atomic_output_parameters__http___ws.afd.co.uk__BankLookupResponse">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}BankLookupResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_6_BankFastFind_Atomic_input_parameters__http___ws.afd.co.uk__BankFastFind">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}BankFastFind</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_6_BankFastFind_Atomic_output_parameters__http___ws.afd.co.uk__BankFastFindResponse">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}BankFastFindResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_7_BankSearch_Atomic_input_parameters__http___ws.afd.co.uk__BankSearch">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}BankSearch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_7_BankSearch_Atomic_output_parameters__http___ws.afd.co.uk__BankSearchResponse">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}BankSearchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_8_BankCardValidate_Atomic_input_parameters__http___ws.afd.co.uk__BankCardValidate">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}BankCardValidate</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_8_BankCardValidate_Atomic_output_parameters__http___ws.afd.co.uk__BankCardValidateResponse">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}BankCardValidateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_9_BankAccountValidate_Atomic_input_parameters__http___ws.afd.co.uk__BankAccountValidate">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}BankAccountValidate</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_9_BankAccountValidate_Atomic_output_parameters__http___ws.afd.co.uk__BankAccountValidateResponse">
+    <process:parameterType>parameters:{http://ws.afd.co.uk/}BankAccountValidateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_10_AddressList_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPostcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_10_AddressList_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strProperty:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_10_AddressList_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strCountyType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_10_AddressList_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_10_AddressList_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_10_AddressList_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_10_AddressList_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}AddressResultsList</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_11_AddressLookup_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPostcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_11_AddressLookup_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strProperty:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_11_AddressLookup_Atomic_input_strPostkey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPostkey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_11_AddressLookup_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strCountyType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_11_AddressLookup_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_11_AddressLookup_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_11_AddressLookup_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_11_AddressLookup_Atomic_output_Body__http___ws.afd.co.uk__Address">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}Address</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPostcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strProperty:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strPostkey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPostkey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strCountyType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_12_AddressLookupRaw_Atomic_output_Body__http___ws.afd.co.uk__AddressRaw">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}AddressRaw</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_13_AddressFastFind_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strCountyType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_13_AddressFastFind_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_13_AddressFastFind_Atomic_input_strFastFind__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strFastFind:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_13_AddressFastFind_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_13_AddressFastFind_Atomic_input_strSkip__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSkip:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_13_AddressFastFind_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_13_AddressFastFind_Atomic_input_strMaxQuantity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strMaxQuantity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_13_AddressFastFind_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}AddressResultsList</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_14_AddressSearch_Atomic_input_strStreet__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strStreet:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_14_AddressSearch_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strProperty:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_14_AddressSearch_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strCountyType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_14_AddressSearch_Atomic_input_strLocality__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strLocality:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_14_AddressSearch_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_14_AddressSearch_Atomic_input_strPostcodeFrom__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPostcodeFrom:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_14_AddressSearch_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_14_AddressSearch_Atomic_input_strOrganisation__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strOrganisation:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_14_AddressSearch_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_14_AddressSearch_Atomic_input_strTown__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strTown:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_14_AddressSearch_Atomic_input_strPostcodeTo__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPostcodeTo:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_14_AddressSearch_Atomic_input_strCounty__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strCounty:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_14_AddressSearch_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}AddressResultsList</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_15_BankLookup_Atomic_input_strRecord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strRecord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_15_BankLookup_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_15_BankLookup_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_15_BankLookup_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_15_BankLookup_Atomic_output_Body__http___ws.afd.co.uk__Bank">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}Bank</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_16_BankFastFind_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_16_BankFastFind_Atomic_input_strFastFind__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strFastFind:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_16_BankFastFind_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_16_BankFastFind_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_16_BankFastFind_Atomic_output_Body__http___ws.afd.co.uk__BankResultsList">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}BankResultsList</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_17_BankSearch_Atomic_input_strphone__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strphone:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_17_BankSearch_Atomic_input_strbankBIC__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strbankBIC:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_17_BankSearch_Atomic_input_strbranch__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strbranch:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_17_BankSearch_Atomic_input_strbranchBIC__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strbranchBIC:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_17_BankSearch_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_17_BankSearch_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_17_BankSearch_Atomic_input_strpostcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strpostcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_17_BankSearch_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_17_BankSearch_Atomic_input_strsortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strsortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_17_BankSearch_Atomic_input_strbank__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strbank:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_17_BankSearch_Atomic_input_strTown__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strTown:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_17_BankSearch_Atomic_output_Body__http___ws.afd.co.uk__BankResultsList">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}BankResultsList</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_18_BankCardValidate_Atomic_input_strCardNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strCardNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_18_BankCardValidate_Atomic_input_strExpiryMonth__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strExpiryMonth:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_18_BankCardValidate_Atomic_input_strIssuenumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strIssuenumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_18_BankCardValidate_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_18_BankCardValidate_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_18_BankCardValidate_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_18_BankCardValidate_Atomic_input_strExpiryYear__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strExpiryYear:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_18_BankCardValidate_Atomic_output_Body__http___ws.afd.co.uk__BankValCard">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}BankValCard</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strAccountNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strAccountNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_19_BankAccountValidate_Atomic_output_Body__http___ws.afd.co.uk__BankValAccount">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}BankValAccount</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_20_AddressList_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPostcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_20_AddressList_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strProperty:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_20_AddressList_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strCountyType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_20_AddressList_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_20_AddressList_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_20_AddressList_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_20_AddressList_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}AddressResultsList</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_21_AddressLookup_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPostcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_21_AddressLookup_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strProperty:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_21_AddressLookup_Atomic_input_strPostkey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPostkey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_21_AddressLookup_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strCountyType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_21_AddressLookup_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_21_AddressLookup_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_21_AddressLookup_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_21_AddressLookup_Atomic_output_Body__http___ws.afd.co.uk__Address">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}Address</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPostcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strProperty:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strPostkey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPostkey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strCountyType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_22_AddressLookupRaw_Atomic_output_Body__http___ws.afd.co.uk__AddressRaw">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}AddressRaw</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_23_AddressFastFind_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strCountyType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_23_AddressFastFind_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_23_AddressFastFind_Atomic_input_strFastFind__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strFastFind:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_23_AddressFastFind_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_23_AddressFastFind_Atomic_input_strSkip__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSkip:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_23_AddressFastFind_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_23_AddressFastFind_Atomic_input_strMaxQuantity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strMaxQuantity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_23_AddressFastFind_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}AddressResultsList</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_24_AddressSearch_Atomic_input_strStreet__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strStreet:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_24_AddressSearch_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strProperty:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_24_AddressSearch_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strCountyType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_24_AddressSearch_Atomic_input_strLocality__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strLocality:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_24_AddressSearch_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_24_AddressSearch_Atomic_input_strPostcodeFrom__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPostcodeFrom:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_24_AddressSearch_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_24_AddressSearch_Atomic_input_strOrganisation__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strOrganisation:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_24_AddressSearch_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_24_AddressSearch_Atomic_input_strTown__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strTown:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_24_AddressSearch_Atomic_input_strPostcodeTo__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPostcodeTo:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_24_AddressSearch_Atomic_input_strCounty__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strCounty:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_24_AddressSearch_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}AddressResultsList</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_25_BankLookup_Atomic_input_strRecord__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strRecord:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_25_BankLookup_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_25_BankLookup_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_25_BankLookup_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_25_BankLookup_Atomic_output_Body__http___ws.afd.co.uk__Bank">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}Bank</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_26_BankFastFind_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_26_BankFastFind_Atomic_input_strFastFind__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strFastFind:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_26_BankFastFind_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_26_BankFastFind_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_26_BankFastFind_Atomic_output_Body__http___ws.afd.co.uk__BankResultsList">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}BankResultsList</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_27_BankSearch_Atomic_input_strphone__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strphone:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_27_BankSearch_Atomic_input_strbankBIC__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strbankBIC:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_27_BankSearch_Atomic_input_strbranch__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strbranch:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_27_BankSearch_Atomic_input_strbranchBIC__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strbranchBIC:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_27_BankSearch_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_27_BankSearch_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_27_BankSearch_Atomic_input_strpostcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strpostcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_27_BankSearch_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_27_BankSearch_Atomic_input_strsortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strsortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_27_BankSearch_Atomic_input_strbank__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strbank:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_27_BankSearch_Atomic_input_strTown__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strTown:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_27_BankSearch_Atomic_output_Body__http___ws.afd.co.uk__BankResultsList">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}BankResultsList</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_28_BankCardValidate_Atomic_input_strCardNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strCardNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_28_BankCardValidate_Atomic_input_strExpiryMonth__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strExpiryMonth:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_28_BankCardValidate_Atomic_input_strIssuenumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strIssuenumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_28_BankCardValidate_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_28_BankCardValidate_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_28_BankCardValidate_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_28_BankCardValidate_Atomic_input_strExpiryYear__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strExpiryYear:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_28_BankCardValidate_Atomic_output_Body__http___ws.afd.co.uk__BankValCard">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}BankValCard</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strAccountNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strAccountNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strSerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PostcodeEverywhere_29_BankAccountValidate_Atomic_output_Body__http___ws.afd.co.uk__BankValAccount">
+    <process:parameterType>Body:{http://ws.afd.co.uk/}BankValAccount</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_0_AddressList_Atomic">
+    <process:hasName>AddressList</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_0_AddressList_Atomic_input_parameters__http___ws.afd.co.uk__AddressList"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_0_AddressList_Atomic_output_parameters__http___ws.afd.co.uk__AddressListResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_1_AddressLookup_Atomic">
+    <process:hasName>AddressLookup</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_1_AddressLookup_Atomic_input_parameters__http___ws.afd.co.uk__AddressLookup"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_1_AddressLookup_Atomic_output_parameters__http___ws.afd.co.uk__AddressLookupResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddressLookup(?input) ^ hasNamespace(?input, "http://ws.afd.co.uk/")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddressLookupResponse(?output) ^ hasNamespace(?output, "http://ws.afd.co.uk/") ^ hasInput(?output, ?input)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_2_AddressLookupRaw_Atomic">
+    <process:hasName>AddressLookupRaw</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_2_AddressLookupRaw_Atomic_input_parameters__http___ws.afd.co.uk__AddressLookupRaw"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_2_AddressLookupRaw_Atomic_output_parameters__http___ws.afd.co.uk__AddressLookupRawResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddressLookupRaw(?input)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddressLookupRawResponse(?output)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_3_AddressFastFind_Atomic">
+    <process:hasName>AddressFastFind</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_3_AddressFastFind_Atomic_input_parameters__http___ws.afd.co.uk__AddressFastFind"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_3_AddressFastFind_Atomic_output_parameters__http___ws.afd.co.uk__AddressFastFindResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_4_AddressSearch_Atomic">
+    <process:hasName>AddressSearch</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_4_AddressSearch_Atomic_input_parameters__http___ws.afd.co.uk__AddressSearch"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_4_AddressSearch_Atomic_output_parameters__http___ws.afd.co.uk__AddressSearchResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddressSearch(?x) ^ hasInput(?x, ?input) ^ hasNamespace(?input, "http://ws.afd.co.uk/") ^ hasType(?input, "AddressSearch")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddressSearchResponse(?y) ^ hasOutput(?y, ?output) ^ hasNamespace(?output, "http://ws.afd.co.uk/") ^ hasType(?output, "AddressSearchResponse")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_5_BankLookup_Atomic">
+    <process:hasName>BankLookup</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_5_BankLookup_Atomic_input_parameters__http___ws.afd.co.uk__BankLookup"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_5_BankLookup_Atomic_output_parameters__http___ws.afd.co.uk__BankLookupResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankLookup(?x) ^ hasNamespace(?x, "http://ws.afd.co.uk/")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankLookupResponse(?y) ^ hasNamespace(?y, "http://ws.afd.co.uk/") ^ hasOutput(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_6_BankFastFind_Atomic">
+    <process:hasName>BankFastFind</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_6_BankFastFind_Atomic_input_parameters__http___ws.afd.co.uk__BankFastFind"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_6_BankFastFind_Atomic_output_parameters__http___ws.afd.co.uk__BankFastFindResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankFastFind(?x) ^ hasInput(?x, ?input) ^ hasParameter(?input, {http://ws.afd.co.uk/}BankFastFind)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankFastFindResponse(?y) ^ hasOutput(?y, ?output) ^ hasParameter(?output, {http://ws.afd.co.uk/}BankFastFindResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_7_BankSearch_Atomic">
+    <process:hasName>BankSearch</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_7_BankSearch_Atomic_input_parameters__http___ws.afd.co.uk__BankSearch"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_7_BankSearch_Atomic_output_parameters__http___ws.afd.co.uk__BankSearchResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankSearch(?x) ^ hasParameter(?x, ?param) ^ hasNamespace(?param, "http://ws.afd.co.uk/") ^ hasName(?param, "BankSearch")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankSearchResponse(?y) ^ hasParameter(?y, ?param) ^ hasNamespace(?param, "http://ws.afd.co.uk/") ^ hasName(?param, "BankSearchResponse")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_8_BankCardValidate_Atomic">
+    <process:hasName>BankCardValidate</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_8_BankCardValidate_Atomic_input_parameters__http___ws.afd.co.uk__BankCardValidate"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_8_BankCardValidate_Atomic_output_parameters__http___ws.afd.co.uk__BankCardValidateResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankCardValidate(?x) ^ hasCardNumber(?x, ?cardNumber) ^ hasExpirationDate(?x, ?expirationDate) ^ hasCVV(?x, ?cvv) ^ hasCardHolderName(?x, ?cardHolderName)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankCardValidateResponse(?y) ^ hasValidationResult(?y, "Valid") ^ hasCardNumber(?y, ?cardNumber) ^ hasExpirationDate(?y, ?expirationDate) ^ hasCVV(?y, ?cvv) ^ hasCardHolderName(?y, ?cardHolderName)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_9_BankAccountValidate_Atomic">
+    <process:hasName>BankAccountValidate</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_9_BankAccountValidate_Atomic_input_parameters__http___ws.afd.co.uk__BankAccountValidate"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_9_BankAccountValidate_Atomic_output_parameters__http___ws.afd.co.uk__BankAccountValidateResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankAccountValidate(?x) ^ swrlb:isInteger(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankAccountValidateResponse(?x) ^ swrlb:isBoolean(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_10_AddressList_Atomic">
+    <process:hasName>AddressList</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strPostcode(?postcode) ^ strProperty(?property) ^ strCountyType(?countyType) ^ strUserID(?userID) ^ strSerialNumber(?serialNumber) ^ strPassword(?password)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ AddressResultsList(?result) ^ hasPostcode(?result, ?postcode) ^ hasProperty(?result, ?property) ^ hasCountyType(?result, ?countyType) ^ hasUserID(?result, ?userID) ^ hasSerialNumber(?result, ?serialNumber) ^ hasPassword(?result, ?password)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_11_AddressLookup_Atomic">
+    <process:hasName>AddressLookup</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_input_strPostkey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic_output_Body__http___ws.afd.co.uk__Address"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strPostcode(?postcode) ^ strProperty(?property) ^ strPostkey(?postkey) ^ strCountyType(?countyType) ^ strUserID(?userID) ^ strSerialNumber(?serialNumber) ^ strPassword(?password)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?address) ^ hasPostcode(?address, ?postcode) ^ hasProperty(?address, ?property) ^ hasPostkey(?address, ?postkey) ^ hasCountyType(?address, ?countyType) ^ hasUserID(?address, ?userID) ^ hasSerialNumber(?address, ?serialNumber) ^ hasPassword(?address, ?password) ^ AddressLookup(?address)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_12_AddressLookupRaw_Atomic">
+    <process:hasName>AddressLookupRaw</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strPostkey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic_output_Body__http___ws.afd.co.uk__AddressRaw"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(strPostcode type xsd:string) and 
+(strProperty type xsd:string) and 
+(strPostkey type xsd:string) and 
+(strCountyType type xsd:string) and 
+(strUserID type xsd:string) and 
+(strSerialNumber type xsd:string) and 
+(strPassword type xsd:string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body type AddressRaw and 
+AddressLookupRaw(strPostcode, strProperty, strPostkey, strCountyType, strUserID, strSerialNumber, strPassword, Body)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_13_AddressFastFind_Atomic">
+    <process:hasName>AddressFastFind</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_input_strFastFind__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_input_strSkip__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_input_strMaxQuantity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strCountyType(?countyType) ^ strUserID(?userID) ^ strFastFind(?fastFind) ^ strSerialNumber(?serialNumber) ^ strSkip(?skip) ^ strPassword(?password) ^ strMaxQuantity(?maxQuantity)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?addressResultsList) ^ hasNamespace(?addressResultsList, http://ws.afd.co.uk/) ^ hasType(?addressResultsList, AddressResultsList)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_14_AddressSearch_Atomic">
+    <process:hasName>AddressSearch</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strStreet__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strLocality__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strPostcodeFrom__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strOrganisation__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strTown__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strPostcodeTo__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_input_strCounty__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strStreet(?strStreet) ^ strProperty(?strProperty) ^ strCountyType(?strCountyType) ^ strLocality(?strLocality) ^ strUserID(?strUserID) ^ strPostcodeFrom(?strPostcodeFrom) ^ strSerialNumber(?strSerialNumber) ^ strOrganisation(?strOrganisation) ^ strPassword(?strPassword) ^ strTown(?strTown) ^ strPostcodeTo(?strPostcodeTo) ^ strCounty(?strCounty)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?AddressResultsList) ^ hasResult(?AddressResultsList, ?result) ^ hasAddress(?result, ?address) ^ hasStreet(?address, ?strStreet) ^ hasProperty(?address, ?strProperty) ^ hasCountyType(?address, ?strCountyType) ^ hasLocality(?address, ?strLocality) ^ hasUserID(?address, ?strUserID) ^ hasPostcodeFrom(?address, ?strPostcodeFrom)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_15_BankLookup_Atomic">
+    <process:hasName>BankLookup</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_15_BankLookup_Atomic_input_strRecord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_15_BankLookup_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_15_BankLookup_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_15_BankLookup_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_15_BankLookup_Atomic_output_Body__http___ws.afd.co.uk__Bank"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(strRecord, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(strUserID, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(strSerialNumber, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(strPassword, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(Body, "http://ws.afd.co.uk#Bank")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_16_BankFastFind_Atomic">
+    <process:hasName>BankFastFind</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_16_BankFastFind_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_16_BankFastFind_Atomic_input_strFastFind__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_16_BankFastFind_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_16_BankFastFind_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_16_BankFastFind_Atomic_output_Body__http___ws.afd.co.uk__BankResultsList"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankFastFind(?x) ^ hasInput(?x, strUserID) ^ hasInput(?x, strFastFind) ^ hasInput(?x, strSerialNumber) ^ hasInput(?x, strPassword)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, Body) ^ hasOutput(?x, BankResultsList)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_17_BankSearch_Atomic">
+    <process:hasName>BankSearch</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strphone__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strbankBIC__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strbranch__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strbranchBIC__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strpostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strsortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strbank__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_input_strTown__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic_output_Body__http___ws.afd.co.uk__BankResultsList"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankSearch(?strphone, ?strbankBIC, ?strbranch, ?strbranchBIC, ?strUserID, ?strSerialNumber, ?strpostcode, ?strPassword, ?strsortcode, ?strbank, ?strTown)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ BankResultsList(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_18_BankCardValidate_Atomic">
+    <process:hasName>BankCardValidate</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_input_strCardNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_input_strExpiryMonth__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_input_strIssuenumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_input_strExpiryYear__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic_output_Body__http___ws.afd.co.uk__BankValCard"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankCardValidate(?strCardNumber, ?strExpiryMonth, ?strIssuenumber, ?strUserID, ?strSerialNumber, ?strPassword, ?strExpiryYear)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?BankValCard) ^ BankValCard(?BankValCard) ^ hasCardNumber(?BankValCard, ?strCardNumber) ^ hasExpiryMonth(?BankValCard, ?strExpiryMonth) ^ hasIssueNumber(?BankValCard, ?strIssuenumber) ^ hasUserID(?BankValCard, ?strUserID) ^ hasSerialNumber(?BankValCard, ?strSerialNumber) ^ hasPassword(?BankValCard, ?strPassword) ^ hasExpiryYear(?BankValCard, ?strExpiryYear)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_19_BankAccountValidate_Atomic">
+    <process:hasName>BankAccountValidate</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic_output_Body__http___ws.afd.co.uk__BankValAccount"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankAccountValidate(?strSortcode, ?strAccountNumber, ?strUserID, ?strSerialNumber, ?strPassword)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankValAccount(?Body) ^ hasSortcode(?Body, ?strSortcode) ^ hasAccountNumber(?Body, ?strAccountNumber) ^ hasUserID(?Body, ?strUserID) ^ hasSerialNumber(?Body, ?strSerialNumber) ^ hasPassword(?Body, ?strPassword)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_20_AddressList_Atomic">
+    <process:hasName>AddressList</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strPostcode type http://www.w3.org/2001/XMLSchema#string
+strProperty type http://www.w3.org/2001/XMLSchema#string
+strCountyType type http://www.w3.org/2001/XMLSchema#string
+strUserID type http://www.w3.org/2001/XMLSchema#string
+strSerialNumber type http://www.w3.org/2001/XMLSchema#string
+strPassword type http://www.w3.org/2001/XMLSchema#string</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body type http://ws.afd.co.uk#AddressResultsList</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_21_AddressLookup_Atomic">
+    <process:hasName>AddressLookup</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_input_strPostkey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic_output_Body__http___ws.afd.co.uk__Address"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strPostcode typeOf xsd:string
+strProperty typeOf xsd:string
+strPostkey typeOf xsd:string
+strCountyType typeOf xsd:string
+strUserID typeOf xsd:string
+strSerialNumber typeOf xsd:string
+strPassword typeOf xsd:string</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddressLookup(?strPostcode, ?strProperty, ?strPostkey, ?strCountyType, ?strUserID, ?strSerialNumber, ?strPassword) -&gt; Body(?Address)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_22_AddressLookupRaw_Atomic">
+    <process:hasName>AddressLookupRaw</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strPostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strPostkey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic_output_Body__http___ws.afd.co.uk__AddressRaw"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strPostcode(?postcode) ^ strProperty(?property) ^ strPostkey(?postkey) ^ strCountyType(?countyType) ^ strUserID(?userID) ^ strSerialNumber(?serialNumber) ^ strPassword(?password)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?addressRaw) ^ hasPostcode(?addressRaw, ?postcode) ^ hasProperty(?addressRaw, ?property) ^ hasPostkey(?addressRaw, ?postkey) ^ hasCountyType(?addressRaw, ?countyType) ^ hasUserID(?addressRaw, ?userID) ^ hasSerialNumber(?addressRaw, ?serialNumber) ^ hasPassword(?addressRaw, ?password) ^ AddressLookupRaw(?addressRaw)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_23_AddressFastFind_Atomic">
+    <process:hasName>AddressFastFind</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_input_strFastFind__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_input_strSkip__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_input_strMaxQuantity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strCountyType(?x), strUserID(?y), strFastFind(?z), strSerialNumber(?w), strSkip(?v), strPassword(?u), strMaxQuantity(?t)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ AddressResultsList(?result) ^ hasAttribute(?result, ?x) ^ hasAttribute(?result, ?y) ^ hasAttribute(?result, ?z) ^ hasAttribute(?result, ?w) ^ hasAttribute(?result, ?v) ^ hasAttribute(?result, ?u) ^ hasAttribute(?result, ?t)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_24_AddressSearch_Atomic">
+    <process:hasName>AddressSearch</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strStreet__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strProperty__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strCountyType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strLocality__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strPostcodeFrom__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strOrganisation__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strTown__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strPostcodeTo__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_input_strCounty__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic_output_Body__http___ws.afd.co.uk__AddressResultsList"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">strStreet(?strStreet) ^ strProperty(?strProperty) ^ strCountyType(?strCountyType) ^ strLocality(?strLocality) ^ strUserID(?strUserID) ^ strPostcodeFrom(?strPostcodeFrom) ^ strSerialNumber(?strSerialNumber) ^ strOrganisation(?strOrganisation) ^ strPassword(?strPassword) ^ strTown(?strTown) ^ strPostcodeTo(?strPostcodeTo) ^ strCounty(?strCounty)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?AddressResultsList) ^ hasResult(?AddressResultsList, ?result) ^ hasAddress(?result, ?address) ^ hasStreet(?address, ?strStreet) ^ hasProperty(?address, ?strProperty) ^ hasCountyType(?address, ?strCountyType) ^ hasLocality(?address, ?strLocality) ^ hasUserID(?address, ?strUserID) ^ hasPostcodeFrom(?address, ?strPostcodeFrom)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_25_BankLookup_Atomic">
+    <process:hasName>BankLookup</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_25_BankLookup_Atomic_input_strRecord__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_25_BankLookup_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_25_BankLookup_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_25_BankLookup_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_25_BankLookup_Atomic_output_Body__http___ws.afd.co.uk__Bank"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(strRecord, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(strUserID, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(strSerialNumber, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(strPassword, "http://www.w3.org/2001/XMLSchema"^^xsd:string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(Body, "http://ws.afd.co.uk/"^^xsd:string ^ Bank)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_26_BankFastFind_Atomic">
+    <process:hasName>BankFastFind</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_26_BankFastFind_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_26_BankFastFind_Atomic_input_strFastFind__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_26_BankFastFind_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_26_BankFastFind_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_26_BankFastFind_Atomic_output_Body__http___ws.afd.co.uk__BankResultsList"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankFastFind(?x) ^ hasInput(?x, strUserID) ^ hasInput(?x, strFastFind) ^ hasInput(?x, strSerialNumber) ^ hasInput(?x, strPassword)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, Body) ^ hasOutput(?x, BankResultsList)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_27_BankSearch_Atomic">
+    <process:hasName>BankSearch</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strphone__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strbankBIC__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strbranch__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strbranchBIC__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strpostcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strsortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strbank__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_input_strTown__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic_output_Body__http___ws.afd.co.uk__BankResultsList"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankSearch(?strphone, ?strbankBIC, ?strbranch, ?strbranchBIC, ?strUserID, ?strSerialNumber, ?strpostcode, ?strPassword, ?strsortcode, ?strbank, ?strTown)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ BankResultsList(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_28_BankCardValidate_Atomic">
+    <process:hasName>BankCardValidate</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_input_strCardNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_input_strExpiryMonth__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_input_strIssuenumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_input_strExpiryYear__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic_output_Body__http___ws.afd.co.uk__BankValCard"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankCardValidate(?strCardNumber, ?strExpiryMonth, ?strIssuenumber, ?strUserID, ?strSerialNumber, ?strPassword, ?strExpiryYear)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?BankValCard) ^ hasValidation(?BankValCard, ?strCardNumber, ?strExpiryMonth, ?strIssuenumber, ?strUserID, ?strSerialNumber, ?strPassword, ?strExpiryYear)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PostcodeEverywhere_29_BankAccountValidate_Atomic">
+    <process:hasName>BankAccountValidate</process:hasName>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strSerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic_input_strPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic_output_Body__http___ws.afd.co.uk__BankValAccount"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankAccountValidate(?strSortcode, ?strAccountNumber, ?strUserID, ?strSerialNumber, ?strPassword)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BankValAccount(?strSortcode, ?strAccountNumber, ?strUserID, ?strSerialNumber, ?strPassword)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="PostcodeEverywhere_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_0_AddressList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_1_AddressLookup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_2_AddressLookupRaw_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_3_AddressFastFind_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_4_AddressSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_5_BankLookup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_6_BankFastFind_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_7_BankSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_8_BankCardValidate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_9_BankAccountValidate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_10_AddressList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_11_AddressLookup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_14_AddressSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_15_BankLookup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_16_BankFastFind_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_17_BankSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_20_AddressList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_21_AddressLookup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_24_AddressSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_25_BankLookup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_26_BankFastFind_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_27_BankSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_0_AddressList_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_0_AddressList_Atomic"/>
+    <grounding:wsdlOperationName>AddressList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_1_AddressLookup_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_1_AddressLookup_Atomic"/>
+    <grounding:wsdlOperationName>AddressLookup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressLookupSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressLookupSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_2_AddressLookupRaw_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_2_AddressLookupRaw_Atomic"/>
+    <grounding:wsdlOperationName>AddressLookupRaw</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressLookupRawSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressLookupRawSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_3_AddressFastFind_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_3_AddressFastFind_Atomic"/>
+    <grounding:wsdlOperationName>AddressFastFind</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressFastFindSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressFastFindSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_4_AddressSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_4_AddressSearch_Atomic"/>
+    <grounding:wsdlOperationName>AddressSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressSearchSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressSearchSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_5_BankLookup_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_5_BankLookup_Atomic"/>
+    <grounding:wsdlOperationName>BankLookup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankLookupSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankLookupSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_6_BankFastFind_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_6_BankFastFind_Atomic"/>
+    <grounding:wsdlOperationName>BankFastFind</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankFastFindSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankFastFindSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_7_BankSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_7_BankSearch_Atomic"/>
+    <grounding:wsdlOperationName>BankSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankSearchSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankSearchSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_8_BankCardValidate_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_8_BankCardValidate_Atomic"/>
+    <grounding:wsdlOperationName>BankCardValidate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankCardValidateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankCardValidateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_9_BankAccountValidate_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_9_BankAccountValidate_Atomic"/>
+    <grounding:wsdlOperationName>BankAccountValidate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankAccountValidateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankAccountValidateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_10_AddressList_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_10_AddressList_Atomic"/>
+    <grounding:wsdlOperationName>AddressList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressListHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressListHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_11_AddressLookup_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_11_AddressLookup_Atomic"/>
+    <grounding:wsdlOperationName>AddressLookup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressLookupHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressLookupHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_12_AddressLookupRaw_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_12_AddressLookupRaw_Atomic"/>
+    <grounding:wsdlOperationName>AddressLookupRaw</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressLookupRawHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressLookupRawHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_13_AddressFastFind_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_13_AddressFastFind_Atomic"/>
+    <grounding:wsdlOperationName>AddressFastFind</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressFastFindHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressFastFindHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_14_AddressSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_14_AddressSearch_Atomic"/>
+    <grounding:wsdlOperationName>AddressSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressSearchHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressSearchHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_15_BankLookup_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_15_BankLookup_Atomic"/>
+    <grounding:wsdlOperationName>BankLookup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankLookupHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankLookupHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_16_BankFastFind_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_16_BankFastFind_Atomic"/>
+    <grounding:wsdlOperationName>BankFastFind</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankFastFindHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankFastFindHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_17_BankSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_17_BankSearch_Atomic"/>
+    <grounding:wsdlOperationName>BankSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankSearchHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankSearchHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_18_BankCardValidate_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_18_BankCardValidate_Atomic"/>
+    <grounding:wsdlOperationName>BankCardValidate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankCardValidateHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankCardValidateHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_19_BankAccountValidate_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_19_BankAccountValidate_Atomic"/>
+    <grounding:wsdlOperationName>BankAccountValidate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankAccountValidateHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankAccountValidateHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_20_AddressList_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_20_AddressList_Atomic"/>
+    <grounding:wsdlOperationName>AddressList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressListHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressListHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_21_AddressLookup_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_21_AddressLookup_Atomic"/>
+    <grounding:wsdlOperationName>AddressLookup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressLookupHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressLookupHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_22_AddressLookupRaw_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_22_AddressLookupRaw_Atomic"/>
+    <grounding:wsdlOperationName>AddressLookupRaw</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressLookupRawHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressLookupRawHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_23_AddressFastFind_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_23_AddressFastFind_Atomic"/>
+    <grounding:wsdlOperationName>AddressFastFind</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressFastFindHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressFastFindHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_24_AddressSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_24_AddressSearch_Atomic"/>
+    <grounding:wsdlOperationName>AddressSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddressSearchHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddressSearchHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_25_BankLookup_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_25_BankLookup_Atomic"/>
+    <grounding:wsdlOperationName>BankLookup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankLookupHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankLookupHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_26_BankFastFind_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_26_BankFastFind_Atomic"/>
+    <grounding:wsdlOperationName>BankFastFind</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankFastFindHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankFastFindHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_27_BankSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_27_BankSearch_Atomic"/>
+    <grounding:wsdlOperationName>BankSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankSearchHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankSearchHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_28_BankCardValidate_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_28_BankCardValidate_Atomic"/>
+    <grounding:wsdlOperationName>BankCardValidate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankCardValidateHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankCardValidateHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PostcodeEverywhere_29_BankAccountValidate_Grounding">
+    <grounding:owlsProcess rdf:resource="#PostcodeEverywhere_29_BankAccountValidate_Atomic"/>
+    <grounding:wsdlOperationName>BankAccountValidate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PostcodeEverywhereHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PostcodeEverywhereHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3054_3053.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BankAccountValidateHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BankAccountValidateHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

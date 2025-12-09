@@ -1,0 +1,917 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="DOTSFastTax">
+    <service:presents rdf:resource="#DOTSFastTax_Profile"/>
+    <service:describedBy rdf:resource="#DOTSFastTax_Composite"/>
+    <service:supports rdf:resource="#DOTSFastTax_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="DOTSFastTax_Profile">
+    <profile:serviceName>DOTSFastTax</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#DOTSFastTax"/>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_0_GetBestMatch_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_0_GetBestMatch_Atomic_input_parameters__http___www.serviceobjects.com__GetBestMatch"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_0_GetBestMatch_Atomic_output_parameters__http___www.serviceobjects.com__GetBestMatchResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?operation rdf:type &lt;http://www.serviceobjects.com/GetBestMatch&gt;)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?operationOutput rdf:type &lt;http://www.serviceobjects.com/GetBestMatchResponse&gt;)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_1_GetTaxInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_1_GetTaxInfo_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfo"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_1_GetTaxInfo_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfo(?x) ^ hasInput(?x, ?input) ^ hasParameterType(?input, http://www.serviceobjects.com/GetTaxInfo)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoResponse(?y) ^ hasOutput(?y, ?output) ^ hasParameterType(?output, http://www.serviceobjects.com/GetTaxInfoResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_2_GetTaxInfoByCityCountyState_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_2_GetTaxInfoByCityCountyState_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfoByCityCountyState"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_2_GetTaxInfoByCityCountyState_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoByCityCountyStateResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByCityCountyState(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByCityCountyStateResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_3_GetTaxInfoByAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_3_GetTaxInfoByAddress_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfoByAddress"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_3_GetTaxInfoByAddress_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoByAddressResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByAddress(?address)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByAddressResponse(?response)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_4_GetCanadianTaxInfoByProvince_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_4_GetCanadianTaxInfoByProvince_Atomic_input_parameters__http___www.serviceobjects.com__GetCanadianTaxInfoByProvince"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_4_GetCanadianTaxInfoByProvince_Atomic_output_parameters__http___www.serviceobjects.com__GetCanadianTaxInfoByProvinceResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetCanadianTaxInfoByProvince(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetCanadianTaxInfoByProvinceResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_5_GetTaxInfoByZip_V2_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_5_GetTaxInfoByZip_V2_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfoByZip_V2"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_5_GetTaxInfoByZip_V2_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoByZip_V2Response"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByZip_V2(?input)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByZip_V2Response(?output)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_6_GetTaxInfoByCityState_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_6_GetTaxInfoByCityState_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfoByCityState"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_6_GetTaxInfoByCityState_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoByCityStateResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByCityState(?city, ?state)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByCityStateResponse(?city, ?state)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_input_Zip__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_input_Address2__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_output_Body__http___www.serviceobjects.com__BestMatchResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Zip(?zip) ^ TaxType(?taxType) ^ Address(?address) ^ State(?state) ^ Address2(?address2) ^ City(?city) ^ LicenseKey(?licenseKey)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?response) ^ BestMatchResponse(?response)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_8_GetTaxInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_8_GetTaxInfo_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_8_GetTaxInfo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_8_GetTaxInfo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_8_GetTaxInfo_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ PostalCode(?postalCode) ^ LicenseKey(?licenseKey)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfo) ^ TaxInfo(?taxInfo)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_County__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ State(?state) ^ City(?city) ^ County(?county) ^ LicenseKey(?licenseKey)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfo) ^ GetTaxInfoByCityCountyState(?taxType, ?state, ?city, ?county, ?licenseKey, ?taxInfo)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ Address(?address) ^ State(?state) ^ ZipCode(?zipCode) ^ City(?city) ^ LicenseKey(?licenseKey)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfo) ^ GetTaxInfoByAddress(?taxType, ?address, ?state, ?zipCode, ?city, ?licenseKey, ?taxInfo)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_11_GetCanadianTaxInfoByProvince_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_11_GetCanadianTaxInfoByProvince_Atomic_input_Province__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_11_GetCanadianTaxInfoByProvince_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_11_GetCanadianTaxInfoByProvince_Atomic_output_Body__http___www.serviceobjects.com__CanadianTaxInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Province(?province) ^ LicenseKey(?licenseKey)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanadianTaxInfoByProvince(?province) ^ LicenseKey(?licenseKey) ^ Body(?result) ^ hasResult(?result, ?taxInfo) ^ CanadianTaxInfo(?taxInfo)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic_output_Body__http___www.serviceobjects.com__TaxInfoMulti"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ PostalCode(?postalCode) ^ LicenseKey(?licenseKey)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfoMulti) ^ GetTaxInfoByZip_V2(?taxType, ?postalCode, ?licenseKey, ?taxInfoMulti)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_13_GetTaxInfoByCityState_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_13_GetTaxInfoByCityState_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_13_GetTaxInfoByCityState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_13_GetTaxInfoByCityState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_13_GetTaxInfoByCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_13_GetTaxInfoByCityState_Atomic_output_Body__http___www.serviceobjects.com__TaxInfoMulti"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ State(?state) ^ City(?city) ^ LicenseKey(?licenseKey)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfoMulti) ^ GetTaxInfoByCityState(?taxType, ?state, ?city, ?licenseKey, ?taxInfoMulti)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_input_Zip__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_input_Address2__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_output_Body__http___www.serviceobjects.com__BestMatchResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Zip(?zip) ^ TaxType(?taxType) ^ Address(?address) ^ State(?state) ^ Address2(?address2) ^ City(?city) ^ LicenseKey(?licenseKey)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?bestMatchResponse) ^ BestMatchResponse(?bestMatchResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_15_GetTaxInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_15_GetTaxInfo_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_15_GetTaxInfo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_15_GetTaxInfo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_15_GetTaxInfo_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ PostalCode(?postalCode) ^ LicenseKey(?licenseKey)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfo) ^ TaxInfo(?taxInfo)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_County__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ State(?state) ^ City(?city) ^ County(?county) ^ LicenseKey(?licenseKey)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(GetTaxInfoByCityCountyState(?taxType, ?state, ?city, ?county, ?licenseKey)) -&gt; TaxInfo(?taxInfo)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ Address(?address) ^ State(?state) ^ ZipCode(?zipCode) ^ City(?city) ^ LicenseKey(?licenseKey)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfo) ^ GetTaxInfoByAddress(?taxType, ?address, ?state, ?zipCode, ?city, ?licenseKey, ?taxInfo)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_18_GetCanadianTaxInfoByProvince_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_18_GetCanadianTaxInfoByProvince_Atomic_input_Province__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_18_GetCanadianTaxInfoByProvince_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_18_GetCanadianTaxInfoByProvince_Atomic_output_Body__http___www.serviceobjects.com__CanadianTaxInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Province(?province) ^ LicenseKey(?licenseKey)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(GetCanadianTaxInfoByProvince(?province, ?licenseKey)) ^ CanadianTaxInfo(?result) ^ hasValue(?result, ?body)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic_output_Body__http___www.serviceobjects.com__TaxInfoMulti"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ PostalCode(?postalCode) ^ LicenseKey(?licenseKey)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfoMulti) ^ GetTaxInfoByZip_V2(?taxType, ?postalCode, ?licenseKey, ?taxInfoMulti)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DOTSFastTax_20_GetTaxInfoByCityState_Atomic"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_20_GetTaxInfoByCityState_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_20_GetTaxInfoByCityState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_20_GetTaxInfoByCityState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#DOTSFastTax_20_GetTaxInfoByCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DOTSFastTax_20_GetTaxInfoByCityState_Atomic_output_Body__http___www.serviceobjects.com__TaxInfoMulti"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ State(?state) ^ City(?city) ^ LicenseKey(?licenseKey)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfoMulti) ^ GetTaxInfoByCityState(?taxType, ?state, ?city, ?licenseKey, ?taxInfoMulti)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="DOTSFastTax_Composite">
+    <process:composedOf rdf:resource="#DOTSFastTax_0_GetBestMatch_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_1_GetTaxInfo_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_2_GetTaxInfoByCityCountyState_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_3_GetTaxInfoByAddress_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_4_GetCanadianTaxInfoByProvince_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_5_GetTaxInfoByZip_V2_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_6_GetTaxInfoByCityState_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_8_GetTaxInfo_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_11_GetCanadianTaxInfoByProvince_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_13_GetTaxInfoByCityState_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_15_GetTaxInfo_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_18_GetCanadianTaxInfoByProvince_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic"/>
+    <process:composedOf rdf:resource="#DOTSFastTax_20_GetTaxInfoByCityState_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="DOTSFastTax_0_GetBestMatch_Atomic_input_parameters__http___www.serviceobjects.com__GetBestMatch">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetBestMatch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_0_GetBestMatch_Atomic_output_parameters__http___www.serviceobjects.com__GetBestMatchResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetBestMatchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_1_GetTaxInfo_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfo">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetTaxInfo</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_1_GetTaxInfo_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetTaxInfoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_2_GetTaxInfoByCityCountyState_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfoByCityCountyState">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetTaxInfoByCityCountyState</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_2_GetTaxInfoByCityCountyState_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoByCityCountyStateResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetTaxInfoByCityCountyStateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_3_GetTaxInfoByAddress_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfoByAddress">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetTaxInfoByAddress</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_3_GetTaxInfoByAddress_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoByAddressResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetTaxInfoByAddressResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_4_GetCanadianTaxInfoByProvince_Atomic_input_parameters__http___www.serviceobjects.com__GetCanadianTaxInfoByProvince">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetCanadianTaxInfoByProvince</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_4_GetCanadianTaxInfoByProvince_Atomic_output_parameters__http___www.serviceobjects.com__GetCanadianTaxInfoByProvinceResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetCanadianTaxInfoByProvinceResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_5_GetTaxInfoByZip_V2_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfoByZip_V2">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetTaxInfoByZip_V2</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_5_GetTaxInfoByZip_V2_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoByZip_V2Response">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetTaxInfoByZip_V2Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_6_GetTaxInfoByCityState_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfoByCityState">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetTaxInfoByCityState</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_6_GetTaxInfoByCityState_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoByCityStateResponse">
+    <process:parameterType>parameters:{http://www.serviceobjects.com/}GetTaxInfoByCityStateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_7_GetBestMatch_Atomic_input_Zip__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Zip:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_7_GetBestMatch_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TaxType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_7_GetBestMatch_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_7_GetBestMatch_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_7_GetBestMatch_Atomic_input_Address2__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address2:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_7_GetBestMatch_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_7_GetBestMatch_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_7_GetBestMatch_Atomic_output_Body__http___www.serviceobjects.com__BestMatchResponse">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}BestMatchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_8_GetTaxInfo_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TaxType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_8_GetTaxInfo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_8_GetTaxInfo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_8_GetTaxInfo_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}TaxInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TaxType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_County__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>County:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}TaxInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TaxType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ZipCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_10_GetTaxInfoByAddress_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}TaxInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_11_GetCanadianTaxInfoByProvince_Atomic_input_Province__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Province:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_11_GetCanadianTaxInfoByProvince_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_11_GetCanadianTaxInfoByProvince_Atomic_output_Body__http___www.serviceobjects.com__CanadianTaxInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}CanadianTaxInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TaxType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic_output_Body__http___www.serviceobjects.com__TaxInfoMulti">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}TaxInfoMulti</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_13_GetTaxInfoByCityState_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TaxType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_13_GetTaxInfoByCityState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_13_GetTaxInfoByCityState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_13_GetTaxInfoByCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_13_GetTaxInfoByCityState_Atomic_output_Body__http___www.serviceobjects.com__TaxInfoMulti">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}TaxInfoMulti</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_14_GetBestMatch_Atomic_input_Zip__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Zip:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_14_GetBestMatch_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TaxType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_14_GetBestMatch_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_14_GetBestMatch_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_14_GetBestMatch_Atomic_input_Address2__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address2:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_14_GetBestMatch_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_14_GetBestMatch_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_14_GetBestMatch_Atomic_output_Body__http___www.serviceobjects.com__BestMatchResponse">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}BestMatchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_15_GetTaxInfo_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TaxType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_15_GetTaxInfo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_15_GetTaxInfo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_15_GetTaxInfo_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}TaxInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TaxType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_County__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>County:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}TaxInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TaxType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Address:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ZipCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_17_GetTaxInfoByAddress_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}TaxInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_18_GetCanadianTaxInfoByProvince_Atomic_input_Province__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Province:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_18_GetCanadianTaxInfoByProvince_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_18_GetCanadianTaxInfoByProvince_Atomic_output_Body__http___www.serviceobjects.com__CanadianTaxInfo">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}CanadianTaxInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TaxType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PostalCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic_output_Body__http___www.serviceobjects.com__TaxInfoMulti">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}TaxInfoMulti</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DOTSFastTax_20_GetTaxInfoByCityState_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TaxType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_20_GetTaxInfoByCityState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>State:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_20_GetTaxInfoByCityState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>City:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="DOTSFastTax_20_GetTaxInfoByCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DOTSFastTax_20_GetTaxInfoByCityState_Atomic_output_Body__http___www.serviceobjects.com__TaxInfoMulti">
+    <process:parameterType>Body:{http://www.serviceobjects.com/}TaxInfoMulti</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_0_GetBestMatch_Atomic">
+    <process:hasName>GetBestMatch</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_0_GetBestMatch_Atomic_input_parameters__http___www.serviceobjects.com__GetBestMatch"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_0_GetBestMatch_Atomic_output_parameters__http___www.serviceobjects.com__GetBestMatchResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?operation rdf:type &lt;http://www.serviceobjects.com/GetBestMatch&gt;)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?operationOutput rdf:type &lt;http://www.serviceobjects.com/GetBestMatchResponse&gt;)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_1_GetTaxInfo_Atomic">
+    <process:hasName>GetTaxInfo</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_1_GetTaxInfo_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfo"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_1_GetTaxInfo_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfo(?x) ^ hasInput(?x, ?input) ^ hasParameterType(?input, http://www.serviceobjects.com/GetTaxInfo)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoResponse(?y) ^ hasOutput(?y, ?output) ^ hasParameterType(?output, http://www.serviceobjects.com/GetTaxInfoResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_2_GetTaxInfoByCityCountyState_Atomic">
+    <process:hasName>GetTaxInfoByCityCountyState</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_2_GetTaxInfoByCityCountyState_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfoByCityCountyState"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_2_GetTaxInfoByCityCountyState_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoByCityCountyStateResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByCityCountyState(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByCityCountyStateResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_3_GetTaxInfoByAddress_Atomic">
+    <process:hasName>GetTaxInfoByAddress</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_3_GetTaxInfoByAddress_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfoByAddress"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_3_GetTaxInfoByAddress_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoByAddressResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByAddress(?address)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByAddressResponse(?response)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_4_GetCanadianTaxInfoByProvince_Atomic">
+    <process:hasName>GetCanadianTaxInfoByProvince</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_4_GetCanadianTaxInfoByProvince_Atomic_input_parameters__http___www.serviceobjects.com__GetCanadianTaxInfoByProvince"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_4_GetCanadianTaxInfoByProvince_Atomic_output_parameters__http___www.serviceobjects.com__GetCanadianTaxInfoByProvinceResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetCanadianTaxInfoByProvince(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetCanadianTaxInfoByProvinceResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_5_GetTaxInfoByZip_V2_Atomic">
+    <process:hasName>GetTaxInfoByZip_V2</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_5_GetTaxInfoByZip_V2_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfoByZip_V2"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_5_GetTaxInfoByZip_V2_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoByZip_V2Response"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByZip_V2(?input)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByZip_V2Response(?output)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_6_GetTaxInfoByCityState_Atomic">
+    <process:hasName>GetTaxInfoByCityState</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_6_GetTaxInfoByCityState_Atomic_input_parameters__http___www.serviceobjects.com__GetTaxInfoByCityState"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_6_GetTaxInfoByCityState_Atomic_output_parameters__http___www.serviceobjects.com__GetTaxInfoByCityStateResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByCityState(?city, ?state)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetTaxInfoByCityStateResponse(?city, ?state)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_7_GetBestMatch_Atomic">
+    <process:hasName>GetBestMatch</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_input_Zip__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_input_Address2__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic_output_Body__http___www.serviceobjects.com__BestMatchResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Zip(?zip) ^ TaxType(?taxType) ^ Address(?address) ^ State(?state) ^ Address2(?address2) ^ City(?city) ^ LicenseKey(?licenseKey)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?response) ^ BestMatchResponse(?response)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_8_GetTaxInfo_Atomic">
+    <process:hasName>GetTaxInfo</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_8_GetTaxInfo_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_8_GetTaxInfo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_8_GetTaxInfo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_8_GetTaxInfo_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ PostalCode(?postalCode) ^ LicenseKey(?licenseKey)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfo) ^ TaxInfo(?taxInfo)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic">
+    <process:hasName>GetTaxInfoByCityCountyState</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_County__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ State(?state) ^ City(?city) ^ County(?county) ^ LicenseKey(?licenseKey)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfo) ^ GetTaxInfoByCityCountyState(?taxType, ?state, ?city, ?county, ?licenseKey, ?taxInfo)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_10_GetTaxInfoByAddress_Atomic">
+    <process:hasName>GetTaxInfoByAddress</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ Address(?address) ^ State(?state) ^ ZipCode(?zipCode) ^ City(?city) ^ LicenseKey(?licenseKey)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfo) ^ GetTaxInfoByAddress(?taxType, ?address, ?state, ?zipCode, ?city, ?licenseKey, ?taxInfo)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_11_GetCanadianTaxInfoByProvince_Atomic">
+    <process:hasName>GetCanadianTaxInfoByProvince</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_11_GetCanadianTaxInfoByProvince_Atomic_input_Province__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_11_GetCanadianTaxInfoByProvince_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_11_GetCanadianTaxInfoByProvince_Atomic_output_Body__http___www.serviceobjects.com__CanadianTaxInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Province(?province) ^ LicenseKey(?licenseKey)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanadianTaxInfoByProvince(?province) ^ LicenseKey(?licenseKey) ^ Body(?result) ^ hasResult(?result, ?taxInfo) ^ CanadianTaxInfo(?taxInfo)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic">
+    <process:hasName>GetTaxInfoByZip_V2</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic_output_Body__http___www.serviceobjects.com__TaxInfoMulti"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ PostalCode(?postalCode) ^ LicenseKey(?licenseKey)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfoMulti) ^ GetTaxInfoByZip_V2(?taxType, ?postalCode, ?licenseKey, ?taxInfoMulti)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_13_GetTaxInfoByCityState_Atomic">
+    <process:hasName>GetTaxInfoByCityState</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_13_GetTaxInfoByCityState_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_13_GetTaxInfoByCityState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_13_GetTaxInfoByCityState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_13_GetTaxInfoByCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_13_GetTaxInfoByCityState_Atomic_output_Body__http___www.serviceobjects.com__TaxInfoMulti"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ State(?state) ^ City(?city) ^ LicenseKey(?licenseKey)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfoMulti) ^ GetTaxInfoByCityState(?taxType, ?state, ?city, ?licenseKey, ?taxInfoMulti)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_14_GetBestMatch_Atomic">
+    <process:hasName>GetBestMatch</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_input_Zip__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_input_Address2__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic_output_Body__http___www.serviceobjects.com__BestMatchResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Zip(?zip) ^ TaxType(?taxType) ^ Address(?address) ^ State(?state) ^ Address2(?address2) ^ City(?city) ^ LicenseKey(?licenseKey)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?bestMatchResponse) ^ BestMatchResponse(?bestMatchResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_15_GetTaxInfo_Atomic">
+    <process:hasName>GetTaxInfo</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_15_GetTaxInfo_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_15_GetTaxInfo_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_15_GetTaxInfo_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_15_GetTaxInfo_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ PostalCode(?postalCode) ^ LicenseKey(?licenseKey)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfo) ^ TaxInfo(?taxInfo)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic">
+    <process:hasName>GetTaxInfoByCityCountyState</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_County__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ State(?state) ^ City(?city) ^ County(?county) ^ LicenseKey(?licenseKey)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(GetTaxInfoByCityCountyState(?taxType, ?state, ?city, ?county, ?licenseKey)) -&gt; TaxInfo(?taxInfo)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_17_GetTaxInfoByAddress_Atomic">
+    <process:hasName>GetTaxInfoByAddress</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_Address__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_ZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic_output_Body__http___www.serviceobjects.com__TaxInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ Address(?address) ^ State(?state) ^ ZipCode(?zipCode) ^ City(?city) ^ LicenseKey(?licenseKey)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfo) ^ GetTaxInfoByAddress(?taxType, ?address, ?state, ?zipCode, ?city, ?licenseKey, ?taxInfo)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_18_GetCanadianTaxInfoByProvince_Atomic">
+    <process:hasName>GetCanadianTaxInfoByProvince</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_18_GetCanadianTaxInfoByProvince_Atomic_input_Province__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_18_GetCanadianTaxInfoByProvince_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_18_GetCanadianTaxInfoByProvince_Atomic_output_Body__http___www.serviceobjects.com__CanadianTaxInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Province(?province) ^ LicenseKey(?licenseKey)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(GetCanadianTaxInfoByProvince(?province, ?licenseKey)) ^ CanadianTaxInfo(?result) ^ hasValue(?result, ?body)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic">
+    <process:hasName>GetTaxInfoByZip_V2</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic_input_PostalCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic_output_Body__http___www.serviceobjects.com__TaxInfoMulti"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ PostalCode(?postalCode) ^ LicenseKey(?licenseKey)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfoMulti) ^ GetTaxInfoByZip_V2(?taxType, ?postalCode, ?licenseKey, ?taxInfoMulti)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DOTSFastTax_20_GetTaxInfoByCityState_Atomic">
+    <process:hasName>GetTaxInfoByCityState</process:hasName>
+    <process:hasInput rdf:resource="#DOTSFastTax_20_GetTaxInfoByCityState_Atomic_input_TaxType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_20_GetTaxInfoByCityState_Atomic_input_State__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_20_GetTaxInfoByCityState_Atomic_input_City__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#DOTSFastTax_20_GetTaxInfoByCityState_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DOTSFastTax_20_GetTaxInfoByCityState_Atomic_output_Body__http___www.serviceobjects.com__TaxInfoMulti"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaxType(?taxType) ^ State(?state) ^ City(?city) ^ LicenseKey(?licenseKey)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?taxInfoMulti) ^ GetTaxInfoByCityState(?taxType, ?state, ?city, ?licenseKey, ?taxInfoMulti)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="DOTSFastTax_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_0_GetBestMatch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_1_GetTaxInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_2_GetTaxInfoByCityCountyState_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_3_GetTaxInfoByAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_4_GetCanadianTaxInfoByProvince_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_5_GetTaxInfoByZip_V2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_6_GetTaxInfoByCityState_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_7_GetBestMatch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_8_GetTaxInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_11_GetCanadianTaxInfoByProvince_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_12_GetTaxInfoByZip_V2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_13_GetTaxInfoByCityState_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_14_GetBestMatch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_15_GetTaxInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_18_GetCanadianTaxInfoByProvince_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_19_GetTaxInfoByZip_V2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DOTSFastTax_20_GetTaxInfoByCityState_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_0_GetBestMatch_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_0_GetBestMatch_Atomic"/>
+    <grounding:wsdlOperationName>GetBestMatch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBestMatchSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBestMatchSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_1_GetTaxInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_1_GetTaxInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_2_GetTaxInfoByCityCountyState_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_2_GetTaxInfoByCityCountyState_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfoByCityCountyState</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoByCityCountyStateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoByCityCountyStateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_3_GetTaxInfoByAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_3_GetTaxInfoByAddress_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfoByAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoByAddressSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoByAddressSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_4_GetCanadianTaxInfoByProvince_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_4_GetCanadianTaxInfoByProvince_Atomic"/>
+    <grounding:wsdlOperationName>GetCanadianTaxInfoByProvince</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCanadianTaxInfoByProvinceSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCanadianTaxInfoByProvinceSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_5_GetTaxInfoByZip_V2_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_5_GetTaxInfoByZip_V2_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfoByZip_V2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoByZip_V2SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoByZip_V2SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_6_GetTaxInfoByCityState_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_6_GetTaxInfoByCityState_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfoByCityState</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoByCityStateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoByCityStateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_7_GetBestMatch_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_7_GetBestMatch_Atomic"/>
+    <grounding:wsdlOperationName>GetBestMatch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBestMatchHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBestMatchHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_8_GetTaxInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_8_GetTaxInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_9_GetTaxInfoByCityCountyState_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_9_GetTaxInfoByCityCountyState_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfoByCityCountyState</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoByCityCountyStateHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoByCityCountyStateHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_10_GetTaxInfoByAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_10_GetTaxInfoByAddress_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfoByAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoByAddressHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoByAddressHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_11_GetCanadianTaxInfoByProvince_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_11_GetCanadianTaxInfoByProvince_Atomic"/>
+    <grounding:wsdlOperationName>GetCanadianTaxInfoByProvince</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCanadianTaxInfoByProvinceHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCanadianTaxInfoByProvinceHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_12_GetTaxInfoByZip_V2_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_12_GetTaxInfoByZip_V2_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfoByZip_V2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoByZip_V2HttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoByZip_V2HttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_13_GetTaxInfoByCityState_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_13_GetTaxInfoByCityState_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfoByCityState</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoByCityStateHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoByCityStateHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_14_GetBestMatch_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_14_GetBestMatch_Atomic"/>
+    <grounding:wsdlOperationName>GetBestMatch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBestMatchHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBestMatchHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_15_GetTaxInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_15_GetTaxInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_16_GetTaxInfoByCityCountyState_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_16_GetTaxInfoByCityCountyState_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfoByCityCountyState</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoByCityCountyStateHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoByCityCountyStateHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_17_GetTaxInfoByAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_17_GetTaxInfoByAddress_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfoByAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoByAddressHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoByAddressHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_18_GetCanadianTaxInfoByProvince_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_18_GetCanadianTaxInfoByProvince_Atomic"/>
+    <grounding:wsdlOperationName>GetCanadianTaxInfoByProvince</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCanadianTaxInfoByProvinceHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCanadianTaxInfoByProvinceHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_19_GetTaxInfoByZip_V2_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_19_GetTaxInfoByZip_V2_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfoByZip_V2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoByZip_V2HttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoByZip_V2HttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DOTSFastTax_20_GetTaxInfoByCityState_Grounding">
+    <grounding:owlsProcess rdf:resource="#DOTSFastTax_20_GetTaxInfoByCityState_Atomic"/>
+    <grounding:wsdlOperationName>GetTaxInfoByCityState</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DOTSFastTaxHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DOTSFastTaxHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3447_3446.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTaxInfoByCityStateHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTaxInfoByCityStateHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

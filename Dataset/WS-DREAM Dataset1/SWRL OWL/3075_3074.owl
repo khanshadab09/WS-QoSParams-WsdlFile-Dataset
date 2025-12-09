@@ -1,0 +1,1534 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="BankDetails">
+    <service:presents rdf:resource="#BankDetails_Profile"/>
+    <service:describedBy rdf:resource="#BankDetails_Composite"/>
+    <service:supports rdf:resource="#BankDetails_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="BankDetails_Profile">
+    <profile:serviceName>BankDetails</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#BankDetails"/>
+    <profile:hasProcess rdf:resource="#BankDetails_0_ServiceTest_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_0_ServiceTest_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_0_ServiceTest_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_0_ServiceTest_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_0_ServiceTest_Atomic_output_Body__https___ws.esortcode.com_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MachineID(?x) ^ LicenceID(?y) ^ AccountName(?z)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasService(?result, ?x, ?y, ?z)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_1_GetAccountNameFromKey_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_1_GetAccountNameFromKey_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_1_GetAccountNameFromKey_Atomic_output_Body__https___ws.esortcode.com_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LicenceID(?x) ^ string(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ string(?y) ^ hasAccountName(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_2_GenerateIBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_2_GenerateIBAN_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_2_GenerateIBAN_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_2_GenerateIBAN_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_2_GenerateIBAN_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_2_GenerateIBAN_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_2_GenerateIBAN_Atomic_output_Body__https___ws.esortcode.com_Iban"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MachineID(?x) ^ sSortcode(?y) ^ LicenceID(?z) ^ sAccountNumber(?w) ^ AccountName(?v)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?iban) ^ GenerateIBAN(?x, ?y, ?z, ?w, ?v, ?iban)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_3_ValidateIBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_3_ValidateIBAN_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_3_ValidateIBAN_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_3_ValidateIBAN_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_3_ValidateIBAN_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_3_ValidateIBAN_Atomic_output_Body__https___ws.esortcode.com_Iban"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MachineID(?x) ^ IBAN(?y) ^ LicenceID(?z) ^ AccountName(?w)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(ValidateIBAN(?x, ?y, ?z, ?w)) ^ Iban(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_4_ValidateAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_4_ValidateAccount_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_4_ValidateAccount_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_4_ValidateAccount_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_4_ValidateAccount_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_4_ValidateAccount_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_4_ValidateAccount_Atomic_output_Body__https___ws.esortcode.com_Validation"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?sSortcode, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sIPAddress, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sAccountNumber, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sUserName, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sGUID, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?Body, "https://ws.esortcode.com#Validation")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_5_ValidateCreditCard_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_5_ValidateCreditCard_Atomic_input_sCreditCardNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_5_ValidateCreditCard_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_5_ValidateCreditCard_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_5_ValidateCreditCard_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_5_ValidateCreditCard_Atomic_output_Body__https___ws.esortcode.com_ValidationCC"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?sCreditCardNumber rdf:type xsd:string) 
+(?sIPAddress rdf:type xsd:string) 
+(?LicenceID rdf:type xsd:string) 
+(?sGUID rdf:type xsd:string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?ValidationCC rdf:type esortcode:ValidationCC)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic_output_Body__https___ws.esortcode.com_BranchDetail"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sAccountNumber(?sAccountNumber) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?BranchDetail) ^ hasDetails(?BranchDetail, ?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sAccountNumber(?sAccountNumber) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?ExtendedBranchDetail) ^ ExtendedBranchDetail(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID) ^ hasExtendedBranchDetails(?ExtendedBranchDetail) ^ hasAccessRights(?sUserName, ?ExtendedBranchDetail)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_8_StandardiseAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_8_StandardiseAccount_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_8_StandardiseAccount_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_8_StandardiseAccount_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_8_StandardiseAccount_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_8_StandardiseAccount_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_8_StandardiseAccount_Atomic_output_Body__https___ws.esortcode.com_Standardise"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode typeOf xsd:string and sIPAddress typeOf xsd:string and sAccountNumber typeOf xsd:string and sUserName typeOf xsd:string and sGUID typeOf xsd:string</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body typeOf esortcode:Standardise</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_9_BranchDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_9_BranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_9_BranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_9_BranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_9_BranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_9_BranchDetails_Atomic_output_Body__https___ws.esortcode.com_BranchDetail"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?BranchDetail) ^ hasSortcode(?BranchDetail, ?sSortcode) ^ hasIPAddress(?BranchDetail, ?sIPAddress) ^ hasUserName(?BranchDetail, ?sUserName) ^ hasGUID(?BranchDetail, ?sGUID)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_10_ExtendedBranchDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_10_ExtendedBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_10_ExtendedBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_10_ExtendedBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_10_ExtendedBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_10_ExtendedBranchDetails_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(sSortcode, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(sIPAddress, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(sUserName, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(sGUID, "http://www.w3.org/2001/XMLSchema"^^xsd:string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(ExtendedBranchDetails) ^ swrlb:equal(ExtendedBranchDetails, "https://ws.esortcode.com"^^xsd:string)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail_AllBranches"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?ExtendedBranchDetail_AllBranches) ^ ExtendedBranchDetails_AllBranches(?sSortcode, ?sIPAddress, ?sUserName, ?sGUID, ?ExtendedBranchDetail_AllBranches)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_12_ServiceTest_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_12_ServiceTest_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_12_ServiceTest_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_12_ServiceTest_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_12_ServiceTest_Atomic_output_Body__https___ws.esortcode.com_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MachineID(?x) ^ LicenceID(?y) ^ AccountName(?z)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasService(?result, ?x, ?y, ?z)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_13_GetAccountNameFromKey_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_13_GetAccountNameFromKey_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_13_GetAccountNameFromKey_Atomic_output_Body__https___ws.esortcode.com_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LicenceID(?x) ^ string(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ string(?y) ^ hasAccountName(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_14_GenerateIBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_14_GenerateIBAN_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_14_GenerateIBAN_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_14_GenerateIBAN_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_14_GenerateIBAN_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_14_GenerateIBAN_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_14_GenerateIBAN_Atomic_output_Body__https___ws.esortcode.com_Iban"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MachineID(?x) ^ sSortcode(?y) ^ LicenceID(?z) ^ sAccountNumber(?w) ^ AccountName(?v)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?iban) ^ GenerateIBAN(?x, ?y, ?z, ?w, ?v, ?iban)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_15_ValidateIBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_15_ValidateIBAN_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_15_ValidateIBAN_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_15_ValidateIBAN_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_15_ValidateIBAN_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_15_ValidateIBAN_Atomic_output_Body__https___ws.esortcode.com_Iban"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MachineID(?x) ^ IBAN(?y) ^ LicenceID(?z) ^ AccountName(?w)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?iban) ^ Iban(?iban) ^ hasIBAN(?iban, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_16_ValidateAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_16_ValidateAccount_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_16_ValidateAccount_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_16_ValidateAccount_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_16_ValidateAccount_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_16_ValidateAccount_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_16_ValidateAccount_Atomic_output_Body__https___ws.esortcode.com_Validation"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?sSortcode, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sIPAddress, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sAccountNumber, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sUserName, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sGUID, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?Body, "https://ws.esortcode.com#Validation")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_17_ValidateCreditCard_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_17_ValidateCreditCard_Atomic_input_sCreditCardNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_17_ValidateCreditCard_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_17_ValidateCreditCard_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_17_ValidateCreditCard_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_17_ValidateCreditCard_Atomic_output_Body__https___ws.esortcode.com_ValidationCC"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?sCreditCardNumber rdf:type xsd:string) ∧ 
+(?sIPAddress rdf:type xsd:string) ∧ 
+(?LicenceID rdf:type xsd:string) ∧ 
+(?sGUID rdf:type xsd:string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?Body rdf:type esortcode:ValidationCC)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic_output_Body__https___ws.esortcode.com_BranchDetail"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(sSortcode, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(sIPAddress, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(sAccountNumber, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(sUserName, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(sGUID, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(Body, "https://ws.esortcode.com#BranchDetail")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sAccountNumber(?sAccountNumber) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?ExtendedBranchDetail) ^ ExtendedBranchDetail(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID) ^ ExtendedBranchDetail(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID) ^ ExtendedBranchDetail(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID) ^ ExtendedBranchDetail(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID) ^ ExtendedBranchDetail(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_20_StandardiseAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_20_StandardiseAccount_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_20_StandardiseAccount_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_20_StandardiseAccount_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_20_StandardiseAccount_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_20_StandardiseAccount_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_20_StandardiseAccount_Atomic_output_Body__https___ws.esortcode.com_Standardise"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sAccountNumber(?sAccountNumber) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID) ^ Standardise(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_21_BranchDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_21_BranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_21_BranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_21_BranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_21_BranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_21_BranchDetails_Atomic_output_Body__https___ws.esortcode.com_BranchDetail"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?sBranchDetail) ^ BranchDetails(?sSortcode, ?sIPAddress, ?sUserName, ?sGUID, ?sBranchDetail)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_22_ExtendedBranchDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_22_ExtendedBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_22_ExtendedBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_22_ExtendedBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_22_ExtendedBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_22_ExtendedBranchDetails_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?ExtendedBranchDetail) ^ ExtendedBranchDetails(?ExtendedBranchDetail, ?sSortcode, ?sIPAddress, ?sUserName, ?sGUID)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail_AllBranches"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(sSortcode, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(sIPAddress, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(sUserName, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(sGUID, "http://www.w3.org/2001/XMLSchema"^^xsd:string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(ExtendedBranchDetails_AllBranches) ^ rdf:type(ExtendedBranchDetails_AllBranches, https://ws.esortcode.com)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_24_ServiceTest_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_24_ServiceTest_Atomic_input_parameters__https___ws.esortcode.com_ServiceTest"/>
+    <profile:hasOutput rdf:resource="#BankDetails_24_ServiceTest_Atomic_output_parameters__https___ws.esortcode.com_ServiceTestResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ServiceTest(?x) ^ hasInput(?x, "https://ws.esortcode.com")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ServiceTestResponse(?y) ^ hasOutput(?y, "https://ws.esortcode.com")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_25_GetAccountNameFromKey_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_25_GetAccountNameFromKey_Atomic_input_parameters__https___ws.esortcode.com_GetAccountNameFromKey"/>
+    <profile:hasOutput rdf:resource="#BankDetails_25_GetAccountNameFromKey_Atomic_output_parameters__https___ws.esortcode.com_GetAccountNameFromKeyResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetAccountNameFromKey(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetAccountNameFromKeyResponse(?y) ^ hasOutput(?x, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_26_GenerateIBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_26_GenerateIBAN_Atomic_input_parameters__https___ws.esortcode.com_GenerateIBAN"/>
+    <profile:hasOutput rdf:resource="#BankDetails_26_GenerateIBAN_Atomic_output_parameters__https___ws.esortcode.com_GenerateIBANResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(swrlb:swrlbBuiltInLibrary.owl#invokeRule "GenerateIBAN")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_27_ValidateIBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_27_ValidateIBAN_Atomic_input_parameters__https___ws.esortcode.com_ValidateIBAN"/>
+    <profile:hasOutput rdf:resource="#BankDetails_27_ValidateIBAN_Atomic_output_parameters__https___ws.esortcode.com_ValidateIBANResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(swrlb:equal (https://ws.esortcode.com:ValidateIBAN ?iban) (https://ws.esortcode.com:ValidateIBANResponse ?iban))</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_28_ValidateAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_28_ValidateAccount_Atomic_input_parameters__https___ws.esortcode.com_ValidateAccount"/>
+    <profile:hasOutput rdf:resource="#BankDetails_28_ValidateAccount_Atomic_output_parameters__https___ws.esortcode.com_ValidateAccountResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateAccount(?x) ^ hasInput(?x, ?input) ^ hasNamespace(?input, "https://ws.esortcode.com")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateAccountResponse(?y) ^ hasOutput(?y, ?output) ^ hasNamespace(?output, "https://ws.esortcode.com")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_29_ValidateCreditCard_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_29_ValidateCreditCard_Atomic_input_parameters__https___ws.esortcode.com_ValidateCreditCard"/>
+    <profile:hasOutput rdf:resource="#BankDetails_29_ValidateCreditCard_Atomic_output_parameters__https___ws.esortcode.com_ValidateCreditCardResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_30_ValidateAccountGetBranchDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_30_ValidateAccountGetBranchDetails_Atomic_input_parameters__https___ws.esortcode.com_ValidateAccountGetBranchDetails"/>
+    <profile:hasOutput rdf:resource="#BankDetails_30_ValidateAccountGetBranchDetails_Atomic_output_parameters__https___ws.esortcode.com_ValidateAccountGetBranchDetailsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateAccountGetBranchDetails(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateAccountGetBranchDetailsResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_31_ValidateAccountGetExtendedBranchDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_31_ValidateAccountGetExtendedBranchDetails_Atomic_input_parameters__https___ws.esortcode.com_ValidateAccountGetExtendedBranchDetails"/>
+    <profile:hasOutput rdf:resource="#BankDetails_31_ValidateAccountGetExtendedBranchDetails_Atomic_output_parameters__https___ws.esortcode.com_ValidateAccountGetExtendedBranchDetailsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_32_StandardiseAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_32_StandardiseAccount_Atomic_input_parameters__https___ws.esortcode.com_StandardiseAccount"/>
+    <profile:hasOutput rdf:resource="#BankDetails_32_StandardiseAccount_Atomic_output_parameters__https___ws.esortcode.com_StandardiseAccountResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StandardiseAccount(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StandardiseAccountResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_33_BranchDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_33_BranchDetails_Atomic_input_parameters__https___ws.esortcode.com_BranchDetails"/>
+    <profile:hasOutput rdf:resource="#BankDetails_33_BranchDetails_Atomic_output_parameters__https___ws.esortcode.com_BranchDetailsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BranchDetails(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BranchDetailsResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_34_ExtendedBranchDetails_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_34_ExtendedBranchDetails_Atomic_input_parameters__https___ws.esortcode.com_ExtendedBranchDetails"/>
+    <profile:hasOutput rdf:resource="#BankDetails_34_ExtendedBranchDetails_Atomic_output_parameters__https___ws.esortcode.com_ExtendedBranchDetailsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtendedBranchDetails(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtendedBranchDetailsResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BankDetails_35_ExtendedBranchDetails_AllBranches_Atomic"/>
+    <profile:hasInput rdf:resource="#BankDetails_35_ExtendedBranchDetails_AllBranches_Atomic_input_parameters__https___ws.esortcode.com_ExtendedBranchDetails_AllBranches"/>
+    <profile:hasOutput rdf:resource="#BankDetails_35_ExtendedBranchDetails_AllBranches_Atomic_output_parameters__https___ws.esortcode.com_ExtendedBranchDetails_AllBranchesResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtendedBranchDetails_AllBranches(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtendedBranchDetails_AllBranchesResponse(?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="BankDetails_Composite">
+    <process:composedOf rdf:resource="#BankDetails_0_ServiceTest_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_1_GetAccountNameFromKey_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_2_GenerateIBAN_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_3_ValidateIBAN_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_4_ValidateAccount_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_5_ValidateCreditCard_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_8_StandardiseAccount_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_9_BranchDetails_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_10_ExtendedBranchDetails_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_12_ServiceTest_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_13_GetAccountNameFromKey_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_14_GenerateIBAN_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_15_ValidateIBAN_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_16_ValidateAccount_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_17_ValidateCreditCard_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_20_StandardiseAccount_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_21_BranchDetails_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_22_ExtendedBranchDetails_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_24_ServiceTest_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_25_GetAccountNameFromKey_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_26_GenerateIBAN_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_27_ValidateIBAN_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_28_ValidateAccount_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_29_ValidateCreditCard_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_30_ValidateAccountGetBranchDetails_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_31_ValidateAccountGetExtendedBranchDetails_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_32_StandardiseAccount_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_33_BranchDetails_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_34_ExtendedBranchDetails_Atomic"/>
+    <process:composedOf rdf:resource="#BankDetails_35_ExtendedBranchDetails_AllBranches_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="BankDetails_0_ServiceTest_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MachineID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_0_ServiceTest_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenceID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_0_ServiceTest_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AccountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_0_ServiceTest_Atomic_output_Body__https___ws.esortcode.com_string">
+    <process:parameterType>Body:{https://ws.esortcode.com}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_1_GetAccountNameFromKey_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenceID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_1_GetAccountNameFromKey_Atomic_output_Body__https___ws.esortcode.com_string">
+    <process:parameterType>Body:{https://ws.esortcode.com}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_2_GenerateIBAN_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MachineID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_2_GenerateIBAN_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_2_GenerateIBAN_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenceID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_2_GenerateIBAN_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_2_GenerateIBAN_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AccountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_2_GenerateIBAN_Atomic_output_Body__https___ws.esortcode.com_Iban">
+    <process:parameterType>Body:{https://ws.esortcode.com}Iban</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_3_ValidateIBAN_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MachineID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_3_ValidateIBAN_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_3_ValidateIBAN_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenceID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_3_ValidateIBAN_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AccountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_3_ValidateIBAN_Atomic_output_Body__https___ws.esortcode.com_Iban">
+    <process:parameterType>Body:{https://ws.esortcode.com}Iban</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_4_ValidateAccount_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_4_ValidateAccount_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_4_ValidateAccount_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_4_ValidateAccount_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_4_ValidateAccount_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_4_ValidateAccount_Atomic_output_Body__https___ws.esortcode.com_Validation">
+    <process:parameterType>Body:{https://ws.esortcode.com}Validation</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_5_ValidateCreditCard_Atomic_input_sCreditCardNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sCreditCardNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_5_ValidateCreditCard_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_5_ValidateCreditCard_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenceID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_5_ValidateCreditCard_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_5_ValidateCreditCard_Atomic_output_Body__https___ws.esortcode.com_ValidationCC">
+    <process:parameterType>Body:{https://ws.esortcode.com}ValidationCC</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_6_ValidateAccountGetBranchDetails_Atomic_output_Body__https___ws.esortcode.com_BranchDetail">
+    <process:parameterType>Body:{https://ws.esortcode.com}BranchDetail</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail">
+    <process:parameterType>Body:{https://ws.esortcode.com}ExtendedBranchDetail</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_8_StandardiseAccount_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_8_StandardiseAccount_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_8_StandardiseAccount_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_8_StandardiseAccount_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_8_StandardiseAccount_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_8_StandardiseAccount_Atomic_output_Body__https___ws.esortcode.com_Standardise">
+    <process:parameterType>Body:{https://ws.esortcode.com}Standardise</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_9_BranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_9_BranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_9_BranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_9_BranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_9_BranchDetails_Atomic_output_Body__https___ws.esortcode.com_BranchDetail">
+    <process:parameterType>Body:{https://ws.esortcode.com}BranchDetail</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_10_ExtendedBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_10_ExtendedBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_10_ExtendedBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_10_ExtendedBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_10_ExtendedBranchDetails_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail">
+    <process:parameterType>Body:{https://ws.esortcode.com}ExtendedBranchDetail</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail_AllBranches">
+    <process:parameterType>Body:{https://ws.esortcode.com}ExtendedBranchDetail_AllBranches</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_12_ServiceTest_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MachineID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_12_ServiceTest_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenceID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_12_ServiceTest_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AccountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_12_ServiceTest_Atomic_output_Body__https___ws.esortcode.com_string">
+    <process:parameterType>Body:{https://ws.esortcode.com}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_13_GetAccountNameFromKey_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenceID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_13_GetAccountNameFromKey_Atomic_output_Body__https___ws.esortcode.com_string">
+    <process:parameterType>Body:{https://ws.esortcode.com}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_14_GenerateIBAN_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MachineID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_14_GenerateIBAN_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_14_GenerateIBAN_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenceID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_14_GenerateIBAN_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_14_GenerateIBAN_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AccountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_14_GenerateIBAN_Atomic_output_Body__https___ws.esortcode.com_Iban">
+    <process:parameterType>Body:{https://ws.esortcode.com}Iban</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_15_ValidateIBAN_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MachineID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_15_ValidateIBAN_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_15_ValidateIBAN_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenceID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_15_ValidateIBAN_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AccountName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_15_ValidateIBAN_Atomic_output_Body__https___ws.esortcode.com_Iban">
+    <process:parameterType>Body:{https://ws.esortcode.com}Iban</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_16_ValidateAccount_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_16_ValidateAccount_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_16_ValidateAccount_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_16_ValidateAccount_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_16_ValidateAccount_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_16_ValidateAccount_Atomic_output_Body__https___ws.esortcode.com_Validation">
+    <process:parameterType>Body:{https://ws.esortcode.com}Validation</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_17_ValidateCreditCard_Atomic_input_sCreditCardNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sCreditCardNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_17_ValidateCreditCard_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_17_ValidateCreditCard_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenceID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_17_ValidateCreditCard_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_17_ValidateCreditCard_Atomic_output_Body__https___ws.esortcode.com_ValidationCC">
+    <process:parameterType>Body:{https://ws.esortcode.com}ValidationCC</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_18_ValidateAccountGetBranchDetails_Atomic_output_Body__https___ws.esortcode.com_BranchDetail">
+    <process:parameterType>Body:{https://ws.esortcode.com}BranchDetail</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail">
+    <process:parameterType>Body:{https://ws.esortcode.com}ExtendedBranchDetail</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_20_StandardiseAccount_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_20_StandardiseAccount_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_20_StandardiseAccount_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sAccountNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_20_StandardiseAccount_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_20_StandardiseAccount_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_20_StandardiseAccount_Atomic_output_Body__https___ws.esortcode.com_Standardise">
+    <process:parameterType>Body:{https://ws.esortcode.com}Standardise</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_21_BranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_21_BranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_21_BranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_21_BranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_21_BranchDetails_Atomic_output_Body__https___ws.esortcode.com_BranchDetail">
+    <process:parameterType>Body:{https://ws.esortcode.com}BranchDetail</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_22_ExtendedBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_22_ExtendedBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_22_ExtendedBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_22_ExtendedBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_22_ExtendedBranchDetails_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail">
+    <process:parameterType>Body:{https://ws.esortcode.com}ExtendedBranchDetail</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sSortcode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIPAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUserName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sGUID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail_AllBranches">
+    <process:parameterType>Body:{https://ws.esortcode.com}ExtendedBranchDetail_AllBranches</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_24_ServiceTest_Atomic_input_parameters__https___ws.esortcode.com_ServiceTest">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ServiceTest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_24_ServiceTest_Atomic_output_parameters__https___ws.esortcode.com_ServiceTestResponse">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ServiceTestResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_25_GetAccountNameFromKey_Atomic_input_parameters__https___ws.esortcode.com_GetAccountNameFromKey">
+    <process:parameterType>parameters:{https://ws.esortcode.com}GetAccountNameFromKey</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_25_GetAccountNameFromKey_Atomic_output_parameters__https___ws.esortcode.com_GetAccountNameFromKeyResponse">
+    <process:parameterType>parameters:{https://ws.esortcode.com}GetAccountNameFromKeyResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_26_GenerateIBAN_Atomic_input_parameters__https___ws.esortcode.com_GenerateIBAN">
+    <process:parameterType>parameters:{https://ws.esortcode.com}GenerateIBAN</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_26_GenerateIBAN_Atomic_output_parameters__https___ws.esortcode.com_GenerateIBANResponse">
+    <process:parameterType>parameters:{https://ws.esortcode.com}GenerateIBANResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_27_ValidateIBAN_Atomic_input_parameters__https___ws.esortcode.com_ValidateIBAN">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ValidateIBAN</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_27_ValidateIBAN_Atomic_output_parameters__https___ws.esortcode.com_ValidateIBANResponse">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ValidateIBANResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_28_ValidateAccount_Atomic_input_parameters__https___ws.esortcode.com_ValidateAccount">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ValidateAccount</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_28_ValidateAccount_Atomic_output_parameters__https___ws.esortcode.com_ValidateAccountResponse">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ValidateAccountResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_29_ValidateCreditCard_Atomic_input_parameters__https___ws.esortcode.com_ValidateCreditCard">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ValidateCreditCard</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_29_ValidateCreditCard_Atomic_output_parameters__https___ws.esortcode.com_ValidateCreditCardResponse">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ValidateCreditCardResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_30_ValidateAccountGetBranchDetails_Atomic_input_parameters__https___ws.esortcode.com_ValidateAccountGetBranchDetails">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ValidateAccountGetBranchDetails</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_30_ValidateAccountGetBranchDetails_Atomic_output_parameters__https___ws.esortcode.com_ValidateAccountGetBranchDetailsResponse">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ValidateAccountGetBranchDetailsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_31_ValidateAccountGetExtendedBranchDetails_Atomic_input_parameters__https___ws.esortcode.com_ValidateAccountGetExtendedBranchDetails">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ValidateAccountGetExtendedBranchDetails</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_31_ValidateAccountGetExtendedBranchDetails_Atomic_output_parameters__https___ws.esortcode.com_ValidateAccountGetExtendedBranchDetailsResponse">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ValidateAccountGetExtendedBranchDetailsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_32_StandardiseAccount_Atomic_input_parameters__https___ws.esortcode.com_StandardiseAccount">
+    <process:parameterType>parameters:{https://ws.esortcode.com}StandardiseAccount</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_32_StandardiseAccount_Atomic_output_parameters__https___ws.esortcode.com_StandardiseAccountResponse">
+    <process:parameterType>parameters:{https://ws.esortcode.com}StandardiseAccountResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_33_BranchDetails_Atomic_input_parameters__https___ws.esortcode.com_BranchDetails">
+    <process:parameterType>parameters:{https://ws.esortcode.com}BranchDetails</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_33_BranchDetails_Atomic_output_parameters__https___ws.esortcode.com_BranchDetailsResponse">
+    <process:parameterType>parameters:{https://ws.esortcode.com}BranchDetailsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_34_ExtendedBranchDetails_Atomic_input_parameters__https___ws.esortcode.com_ExtendedBranchDetails">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ExtendedBranchDetails</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_34_ExtendedBranchDetails_Atomic_output_parameters__https___ws.esortcode.com_ExtendedBranchDetailsResponse">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ExtendedBranchDetailsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BankDetails_35_ExtendedBranchDetails_AllBranches_Atomic_input_parameters__https___ws.esortcode.com_ExtendedBranchDetails_AllBranches">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ExtendedBranchDetails_AllBranches</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankDetails_35_ExtendedBranchDetails_AllBranches_Atomic_output_parameters__https___ws.esortcode.com_ExtendedBranchDetails_AllBranchesResponse">
+    <process:parameterType>parameters:{https://ws.esortcode.com}ExtendedBranchDetails_AllBranchesResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="BankDetails_0_ServiceTest_Atomic">
+    <process:hasName>ServiceTest</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_0_ServiceTest_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_0_ServiceTest_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_0_ServiceTest_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_0_ServiceTest_Atomic_output_Body__https___ws.esortcode.com_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MachineID(?x) ^ LicenceID(?y) ^ AccountName(?z)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasService(?result, ?x, ?y, ?z)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_1_GetAccountNameFromKey_Atomic">
+    <process:hasName>GetAccountNameFromKey</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_1_GetAccountNameFromKey_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_1_GetAccountNameFromKey_Atomic_output_Body__https___ws.esortcode.com_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LicenceID(?x) ^ string(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ string(?y) ^ hasAccountName(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_2_GenerateIBAN_Atomic">
+    <process:hasName>GenerateIBAN</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_2_GenerateIBAN_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_2_GenerateIBAN_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_2_GenerateIBAN_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_2_GenerateIBAN_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_2_GenerateIBAN_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_2_GenerateIBAN_Atomic_output_Body__https___ws.esortcode.com_Iban"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MachineID(?x) ^ sSortcode(?y) ^ LicenceID(?z) ^ sAccountNumber(?w) ^ AccountName(?v)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?iban) ^ GenerateIBAN(?x, ?y, ?z, ?w, ?v, ?iban)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_3_ValidateIBAN_Atomic">
+    <process:hasName>ValidateIBAN</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_3_ValidateIBAN_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_3_ValidateIBAN_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_3_ValidateIBAN_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_3_ValidateIBAN_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_3_ValidateIBAN_Atomic_output_Body__https___ws.esortcode.com_Iban"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MachineID(?x) ^ IBAN(?y) ^ LicenceID(?z) ^ AccountName(?w)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(ValidateIBAN(?x, ?y, ?z, ?w)) ^ Iban(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_4_ValidateAccount_Atomic">
+    <process:hasName>ValidateAccount</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_4_ValidateAccount_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_4_ValidateAccount_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_4_ValidateAccount_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_4_ValidateAccount_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_4_ValidateAccount_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_4_ValidateAccount_Atomic_output_Body__https___ws.esortcode.com_Validation"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?sSortcode, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sIPAddress, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sAccountNumber, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sUserName, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sGUID, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?Body, "https://ws.esortcode.com#Validation")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_5_ValidateCreditCard_Atomic">
+    <process:hasName>ValidateCreditCard</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_5_ValidateCreditCard_Atomic_input_sCreditCardNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_5_ValidateCreditCard_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_5_ValidateCreditCard_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_5_ValidateCreditCard_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_5_ValidateCreditCard_Atomic_output_Body__https___ws.esortcode.com_ValidationCC"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?sCreditCardNumber rdf:type xsd:string) 
+(?sIPAddress rdf:type xsd:string) 
+(?LicenceID rdf:type xsd:string) 
+(?sGUID rdf:type xsd:string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?ValidationCC rdf:type esortcode:ValidationCC)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_6_ValidateAccountGetBranchDetails_Atomic">
+    <process:hasName>ValidateAccountGetBranchDetails</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic_output_Body__https___ws.esortcode.com_BranchDetail"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sAccountNumber(?sAccountNumber) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?BranchDetail) ^ hasDetails(?BranchDetail, ?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic">
+    <process:hasName>ValidateAccountGetExtendedBranchDetails</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sAccountNumber(?sAccountNumber) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?ExtendedBranchDetail) ^ ExtendedBranchDetail(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID) ^ hasExtendedBranchDetails(?ExtendedBranchDetail) ^ hasAccessRights(?sUserName, ?ExtendedBranchDetail)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_8_StandardiseAccount_Atomic">
+    <process:hasName>StandardiseAccount</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_8_StandardiseAccount_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_8_StandardiseAccount_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_8_StandardiseAccount_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_8_StandardiseAccount_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_8_StandardiseAccount_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_8_StandardiseAccount_Atomic_output_Body__https___ws.esortcode.com_Standardise"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode typeOf xsd:string and sIPAddress typeOf xsd:string and sAccountNumber typeOf xsd:string and sUserName typeOf xsd:string and sGUID typeOf xsd:string</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body typeOf esortcode:Standardise</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_9_BranchDetails_Atomic">
+    <process:hasName>BranchDetails</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_9_BranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_9_BranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_9_BranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_9_BranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_9_BranchDetails_Atomic_output_Body__https___ws.esortcode.com_BranchDetail"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?BranchDetail) ^ hasSortcode(?BranchDetail, ?sSortcode) ^ hasIPAddress(?BranchDetail, ?sIPAddress) ^ hasUserName(?BranchDetail, ?sUserName) ^ hasGUID(?BranchDetail, ?sGUID)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_10_ExtendedBranchDetails_Atomic">
+    <process:hasName>ExtendedBranchDetails</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_10_ExtendedBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_10_ExtendedBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_10_ExtendedBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_10_ExtendedBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_10_ExtendedBranchDetails_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(sSortcode, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(sIPAddress, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(sUserName, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(sGUID, "http://www.w3.org/2001/XMLSchema"^^xsd:string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(ExtendedBranchDetails) ^ swrlb:equal(ExtendedBranchDetails, "https://ws.esortcode.com"^^xsd:string)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic">
+    <process:hasName>ExtendedBranchDetails_AllBranches</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail_AllBranches"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?ExtendedBranchDetail_AllBranches) ^ ExtendedBranchDetails_AllBranches(?sSortcode, ?sIPAddress, ?sUserName, ?sGUID, ?ExtendedBranchDetail_AllBranches)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_12_ServiceTest_Atomic">
+    <process:hasName>ServiceTest</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_12_ServiceTest_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_12_ServiceTest_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_12_ServiceTest_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_12_ServiceTest_Atomic_output_Body__https___ws.esortcode.com_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MachineID(?x) ^ LicenceID(?y) ^ AccountName(?z)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasService(?result, ?x, ?y, ?z)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_13_GetAccountNameFromKey_Atomic">
+    <process:hasName>GetAccountNameFromKey</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_13_GetAccountNameFromKey_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_13_GetAccountNameFromKey_Atomic_output_Body__https___ws.esortcode.com_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LicenceID(?x) ^ string(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ string(?y) ^ hasAccountName(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_14_GenerateIBAN_Atomic">
+    <process:hasName>GenerateIBAN</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_14_GenerateIBAN_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_14_GenerateIBAN_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_14_GenerateIBAN_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_14_GenerateIBAN_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_14_GenerateIBAN_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_14_GenerateIBAN_Atomic_output_Body__https___ws.esortcode.com_Iban"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MachineID(?x) ^ sSortcode(?y) ^ LicenceID(?z) ^ sAccountNumber(?w) ^ AccountName(?v)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?iban) ^ GenerateIBAN(?x, ?y, ?z, ?w, ?v, ?iban)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_15_ValidateIBAN_Atomic">
+    <process:hasName>ValidateIBAN</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_15_ValidateIBAN_Atomic_input_MachineID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_15_ValidateIBAN_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_15_ValidateIBAN_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_15_ValidateIBAN_Atomic_input_AccountName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_15_ValidateIBAN_Atomic_output_Body__https___ws.esortcode.com_Iban"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MachineID(?x) ^ IBAN(?y) ^ LicenceID(?z) ^ AccountName(?w)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?iban) ^ Iban(?iban) ^ hasIBAN(?iban, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_16_ValidateAccount_Atomic">
+    <process:hasName>ValidateAccount</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_16_ValidateAccount_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_16_ValidateAccount_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_16_ValidateAccount_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_16_ValidateAccount_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_16_ValidateAccount_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_16_ValidateAccount_Atomic_output_Body__https___ws.esortcode.com_Validation"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?sSortcode, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sIPAddress, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sAccountNumber, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sUserName, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?sGUID, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?Body, "https://ws.esortcode.com#Validation")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_17_ValidateCreditCard_Atomic">
+    <process:hasName>ValidateCreditCard</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_17_ValidateCreditCard_Atomic_input_sCreditCardNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_17_ValidateCreditCard_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_17_ValidateCreditCard_Atomic_input_LicenceID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_17_ValidateCreditCard_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_17_ValidateCreditCard_Atomic_output_Body__https___ws.esortcode.com_ValidationCC"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?sCreditCardNumber rdf:type xsd:string) ∧ 
+(?sIPAddress rdf:type xsd:string) ∧ 
+(?LicenceID rdf:type xsd:string) ∧ 
+(?sGUID rdf:type xsd:string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?Body rdf:type esortcode:ValidationCC)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_18_ValidateAccountGetBranchDetails_Atomic">
+    <process:hasName>ValidateAccountGetBranchDetails</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic_output_Body__https___ws.esortcode.com_BranchDetail"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(sSortcode, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(sIPAddress, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(sAccountNumber, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(sUserName, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(sGUID, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(Body, "https://ws.esortcode.com#BranchDetail")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic">
+    <process:hasName>ValidateAccountGetExtendedBranchDetails</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sAccountNumber(?sAccountNumber) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?ExtendedBranchDetail) ^ ExtendedBranchDetail(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID) ^ ExtendedBranchDetail(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID) ^ ExtendedBranchDetail(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID) ^ ExtendedBranchDetail(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID) ^ ExtendedBranchDetail(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_20_StandardiseAccount_Atomic">
+    <process:hasName>StandardiseAccount</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_20_StandardiseAccount_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_20_StandardiseAccount_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_20_StandardiseAccount_Atomic_input_sAccountNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_20_StandardiseAccount_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_20_StandardiseAccount_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_20_StandardiseAccount_Atomic_output_Body__https___ws.esortcode.com_Standardise"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sAccountNumber(?sAccountNumber) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID) ^ Standardise(?sSortcode, ?sIPAddress, ?sAccountNumber, ?sUserName, ?sGUID)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_21_BranchDetails_Atomic">
+    <process:hasName>BranchDetails</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_21_BranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_21_BranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_21_BranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_21_BranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_21_BranchDetails_Atomic_output_Body__https___ws.esortcode.com_BranchDetail"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?sBranchDetail) ^ BranchDetails(?sSortcode, ?sIPAddress, ?sUserName, ?sGUID, ?sBranchDetail)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_22_ExtendedBranchDetails_Atomic">
+    <process:hasName>ExtendedBranchDetails</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_22_ExtendedBranchDetails_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_22_ExtendedBranchDetails_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_22_ExtendedBranchDetails_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_22_ExtendedBranchDetails_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_22_ExtendedBranchDetails_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sSortcode(?sSortcode) ^ sIPAddress(?sIPAddress) ^ sUserName(?sUserName) ^ sGUID(?sGUID)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?ExtendedBranchDetail) ^ ExtendedBranchDetails(?ExtendedBranchDetail, ?sSortcode, ?sIPAddress, ?sUserName, ?sGUID)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic">
+    <process:hasName>ExtendedBranchDetails_AllBranches</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_input_sSortcode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_input_sIPAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_input_sUserName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_input_sGUID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic_output_Body__https___ws.esortcode.com_ExtendedBranchDetail_AllBranches"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(sSortcode, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(sIPAddress, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(sUserName, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^ swrlb:equal(sGUID, "http://www.w3.org/2001/XMLSchema"^^xsd:string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(ExtendedBranchDetails_AllBranches) ^ rdf:type(ExtendedBranchDetails_AllBranches, https://ws.esortcode.com)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_24_ServiceTest_Atomic">
+    <process:hasName>ServiceTest</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_24_ServiceTest_Atomic_input_parameters__https___ws.esortcode.com_ServiceTest"/>
+    <process:hasOutput rdf:resource="#BankDetails_24_ServiceTest_Atomic_output_parameters__https___ws.esortcode.com_ServiceTestResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ServiceTest(?x) ^ hasInput(?x, "https://ws.esortcode.com")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ServiceTestResponse(?y) ^ hasOutput(?y, "https://ws.esortcode.com")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_25_GetAccountNameFromKey_Atomic">
+    <process:hasName>GetAccountNameFromKey</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_25_GetAccountNameFromKey_Atomic_input_parameters__https___ws.esortcode.com_GetAccountNameFromKey"/>
+    <process:hasOutput rdf:resource="#BankDetails_25_GetAccountNameFromKey_Atomic_output_parameters__https___ws.esortcode.com_GetAccountNameFromKeyResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetAccountNameFromKey(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetAccountNameFromKeyResponse(?y) ^ hasOutput(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_26_GenerateIBAN_Atomic">
+    <process:hasName>GenerateIBAN</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_26_GenerateIBAN_Atomic_input_parameters__https___ws.esortcode.com_GenerateIBAN"/>
+    <process:hasOutput rdf:resource="#BankDetails_26_GenerateIBAN_Atomic_output_parameters__https___ws.esortcode.com_GenerateIBANResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(swrlb:swrlbBuiltInLibrary.owl#invokeRule "GenerateIBAN")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_27_ValidateIBAN_Atomic">
+    <process:hasName>ValidateIBAN</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_27_ValidateIBAN_Atomic_input_parameters__https___ws.esortcode.com_ValidateIBAN"/>
+    <process:hasOutput rdf:resource="#BankDetails_27_ValidateIBAN_Atomic_output_parameters__https___ws.esortcode.com_ValidateIBANResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(swrlb:equal (https://ws.esortcode.com:ValidateIBAN ?iban) (https://ws.esortcode.com:ValidateIBANResponse ?iban))</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_28_ValidateAccount_Atomic">
+    <process:hasName>ValidateAccount</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_28_ValidateAccount_Atomic_input_parameters__https___ws.esortcode.com_ValidateAccount"/>
+    <process:hasOutput rdf:resource="#BankDetails_28_ValidateAccount_Atomic_output_parameters__https___ws.esortcode.com_ValidateAccountResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateAccount(?x) ^ hasInput(?x, ?input) ^ hasNamespace(?input, "https://ws.esortcode.com")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateAccountResponse(?y) ^ hasOutput(?y, ?output) ^ hasNamespace(?output, "https://ws.esortcode.com")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_29_ValidateCreditCard_Atomic">
+    <process:hasName>ValidateCreditCard</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_29_ValidateCreditCard_Atomic_input_parameters__https___ws.esortcode.com_ValidateCreditCard"/>
+    <process:hasOutput rdf:resource="#BankDetails_29_ValidateCreditCard_Atomic_output_parameters__https___ws.esortcode.com_ValidateCreditCardResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_30_ValidateAccountGetBranchDetails_Atomic">
+    <process:hasName>ValidateAccountGetBranchDetails</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_30_ValidateAccountGetBranchDetails_Atomic_input_parameters__https___ws.esortcode.com_ValidateAccountGetBranchDetails"/>
+    <process:hasOutput rdf:resource="#BankDetails_30_ValidateAccountGetBranchDetails_Atomic_output_parameters__https___ws.esortcode.com_ValidateAccountGetBranchDetailsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateAccountGetBranchDetails(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateAccountGetBranchDetailsResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_31_ValidateAccountGetExtendedBranchDetails_Atomic">
+    <process:hasName>ValidateAccountGetExtendedBranchDetails</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_31_ValidateAccountGetExtendedBranchDetails_Atomic_input_parameters__https___ws.esortcode.com_ValidateAccountGetExtendedBranchDetails"/>
+    <process:hasOutput rdf:resource="#BankDetails_31_ValidateAccountGetExtendedBranchDetails_Atomic_output_parameters__https___ws.esortcode.com_ValidateAccountGetExtendedBranchDetailsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_32_StandardiseAccount_Atomic">
+    <process:hasName>StandardiseAccount</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_32_StandardiseAccount_Atomic_input_parameters__https___ws.esortcode.com_StandardiseAccount"/>
+    <process:hasOutput rdf:resource="#BankDetails_32_StandardiseAccount_Atomic_output_parameters__https___ws.esortcode.com_StandardiseAccountResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StandardiseAccount(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StandardiseAccountResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_33_BranchDetails_Atomic">
+    <process:hasName>BranchDetails</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_33_BranchDetails_Atomic_input_parameters__https___ws.esortcode.com_BranchDetails"/>
+    <process:hasOutput rdf:resource="#BankDetails_33_BranchDetails_Atomic_output_parameters__https___ws.esortcode.com_BranchDetailsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BranchDetails(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BranchDetailsResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_34_ExtendedBranchDetails_Atomic">
+    <process:hasName>ExtendedBranchDetails</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_34_ExtendedBranchDetails_Atomic_input_parameters__https___ws.esortcode.com_ExtendedBranchDetails"/>
+    <process:hasOutput rdf:resource="#BankDetails_34_ExtendedBranchDetails_Atomic_output_parameters__https___ws.esortcode.com_ExtendedBranchDetailsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtendedBranchDetails(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtendedBranchDetailsResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BankDetails_35_ExtendedBranchDetails_AllBranches_Atomic">
+    <process:hasName>ExtendedBranchDetails_AllBranches</process:hasName>
+    <process:hasInput rdf:resource="#BankDetails_35_ExtendedBranchDetails_AllBranches_Atomic_input_parameters__https___ws.esortcode.com_ExtendedBranchDetails_AllBranches"/>
+    <process:hasOutput rdf:resource="#BankDetails_35_ExtendedBranchDetails_AllBranches_Atomic_output_parameters__https___ws.esortcode.com_ExtendedBranchDetails_AllBranchesResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtendedBranchDetails_AllBranches(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtendedBranchDetails_AllBranchesResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="BankDetails_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_0_ServiceTest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_1_GetAccountNameFromKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_2_GenerateIBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_3_ValidateIBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_4_ValidateAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_5_ValidateCreditCard_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_8_StandardiseAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_9_BranchDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_10_ExtendedBranchDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_11_ExtendedBranchDetails_AllBranches_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_12_ServiceTest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_13_GetAccountNameFromKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_14_GenerateIBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_15_ValidateIBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_16_ValidateAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_17_ValidateCreditCard_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_20_StandardiseAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_21_BranchDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_22_ExtendedBranchDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_23_ExtendedBranchDetails_AllBranches_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_24_ServiceTest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_25_GetAccountNameFromKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_26_GenerateIBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_27_ValidateIBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_28_ValidateAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_29_ValidateCreditCard_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_30_ValidateAccountGetBranchDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_31_ValidateAccountGetExtendedBranchDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_32_StandardiseAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_33_BranchDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_34_ExtendedBranchDetails_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankDetails_35_ExtendedBranchDetails_AllBranches_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_0_ServiceTest_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_0_ServiceTest_Atomic"/>
+    <grounding:wsdlOperationName>ServiceTest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ServiceTestHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ServiceTestHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_1_GetAccountNameFromKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_1_GetAccountNameFromKey_Atomic"/>
+    <grounding:wsdlOperationName>GetAccountNameFromKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAccountNameFromKeyHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAccountNameFromKeyHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_2_GenerateIBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_2_GenerateIBAN_Atomic"/>
+    <grounding:wsdlOperationName>GenerateIBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GenerateIBANHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GenerateIBANHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_3_ValidateIBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_3_ValidateIBAN_Atomic"/>
+    <grounding:wsdlOperationName>ValidateIBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateIBANHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateIBANHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_4_ValidateAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_4_ValidateAccount_Atomic"/>
+    <grounding:wsdlOperationName>ValidateAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateAccountHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateAccountHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_5_ValidateCreditCard_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_5_ValidateCreditCard_Atomic"/>
+    <grounding:wsdlOperationName>ValidateCreditCard</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateCreditCardHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateCreditCardHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_6_ValidateAccountGetBranchDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_6_ValidateAccountGetBranchDetails_Atomic"/>
+    <grounding:wsdlOperationName>ValidateAccountGetBranchDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateAccountGetBranchDetailsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateAccountGetBranchDetailsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_7_ValidateAccountGetExtendedBranchDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_7_ValidateAccountGetExtendedBranchDetails_Atomic"/>
+    <grounding:wsdlOperationName>ValidateAccountGetExtendedBranchDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateAccountGetExtendedBranchDetailsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateAccountGetExtendedBranchDetailsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_8_StandardiseAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_8_StandardiseAccount_Atomic"/>
+    <grounding:wsdlOperationName>StandardiseAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>StandardiseAccountHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>StandardiseAccountHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_9_BranchDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_9_BranchDetails_Atomic"/>
+    <grounding:wsdlOperationName>BranchDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BranchDetailsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BranchDetailsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_10_ExtendedBranchDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_10_ExtendedBranchDetails_Atomic"/>
+    <grounding:wsdlOperationName>ExtendedBranchDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ExtendedBranchDetailsHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ExtendedBranchDetailsHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_11_ExtendedBranchDetails_AllBranches_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_11_ExtendedBranchDetails_AllBranches_Atomic"/>
+    <grounding:wsdlOperationName>ExtendedBranchDetails_AllBranches</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ExtendedBranchDetails_AllBranchesHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ExtendedBranchDetails_AllBranchesHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_12_ServiceTest_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_12_ServiceTest_Atomic"/>
+    <grounding:wsdlOperationName>ServiceTest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ServiceTestHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ServiceTestHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_13_GetAccountNameFromKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_13_GetAccountNameFromKey_Atomic"/>
+    <grounding:wsdlOperationName>GetAccountNameFromKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAccountNameFromKeyHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAccountNameFromKeyHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_14_GenerateIBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_14_GenerateIBAN_Atomic"/>
+    <grounding:wsdlOperationName>GenerateIBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GenerateIBANHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GenerateIBANHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_15_ValidateIBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_15_ValidateIBAN_Atomic"/>
+    <grounding:wsdlOperationName>ValidateIBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateIBANHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateIBANHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_16_ValidateAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_16_ValidateAccount_Atomic"/>
+    <grounding:wsdlOperationName>ValidateAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateAccountHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateAccountHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_17_ValidateCreditCard_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_17_ValidateCreditCard_Atomic"/>
+    <grounding:wsdlOperationName>ValidateCreditCard</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateCreditCardHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateCreditCardHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_18_ValidateAccountGetBranchDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_18_ValidateAccountGetBranchDetails_Atomic"/>
+    <grounding:wsdlOperationName>ValidateAccountGetBranchDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateAccountGetBranchDetailsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateAccountGetBranchDetailsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_19_ValidateAccountGetExtendedBranchDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_19_ValidateAccountGetExtendedBranchDetails_Atomic"/>
+    <grounding:wsdlOperationName>ValidateAccountGetExtendedBranchDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateAccountGetExtendedBranchDetailsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateAccountGetExtendedBranchDetailsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_20_StandardiseAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_20_StandardiseAccount_Atomic"/>
+    <grounding:wsdlOperationName>StandardiseAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>StandardiseAccountHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>StandardiseAccountHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_21_BranchDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_21_BranchDetails_Atomic"/>
+    <grounding:wsdlOperationName>BranchDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BranchDetailsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BranchDetailsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_22_ExtendedBranchDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_22_ExtendedBranchDetails_Atomic"/>
+    <grounding:wsdlOperationName>ExtendedBranchDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ExtendedBranchDetailsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ExtendedBranchDetailsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_23_ExtendedBranchDetails_AllBranches_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_23_ExtendedBranchDetails_AllBranches_Atomic"/>
+    <grounding:wsdlOperationName>ExtendedBranchDetails_AllBranches</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ExtendedBranchDetails_AllBranchesHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ExtendedBranchDetails_AllBranchesHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_24_ServiceTest_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_24_ServiceTest_Atomic"/>
+    <grounding:wsdlOperationName>ServiceTest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ServiceTestSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ServiceTestSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_25_GetAccountNameFromKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_25_GetAccountNameFromKey_Atomic"/>
+    <grounding:wsdlOperationName>GetAccountNameFromKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAccountNameFromKeySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAccountNameFromKeySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_26_GenerateIBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_26_GenerateIBAN_Atomic"/>
+    <grounding:wsdlOperationName>GenerateIBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GenerateIBANSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GenerateIBANSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_27_ValidateIBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_27_ValidateIBAN_Atomic"/>
+    <grounding:wsdlOperationName>ValidateIBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateIBANSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateIBANSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_28_ValidateAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_28_ValidateAccount_Atomic"/>
+    <grounding:wsdlOperationName>ValidateAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateAccountSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateAccountSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_29_ValidateCreditCard_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_29_ValidateCreditCard_Atomic"/>
+    <grounding:wsdlOperationName>ValidateCreditCard</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateCreditCardSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateCreditCardSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_30_ValidateAccountGetBranchDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_30_ValidateAccountGetBranchDetails_Atomic"/>
+    <grounding:wsdlOperationName>ValidateAccountGetBranchDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateAccountGetBranchDetailsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateAccountGetBranchDetailsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_31_ValidateAccountGetExtendedBranchDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_31_ValidateAccountGetExtendedBranchDetails_Atomic"/>
+    <grounding:wsdlOperationName>ValidateAccountGetExtendedBranchDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateAccountGetExtendedBranchDetailsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateAccountGetExtendedBranchDetailsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_32_StandardiseAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_32_StandardiseAccount_Atomic"/>
+    <grounding:wsdlOperationName>StandardiseAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>StandardiseAccountSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>StandardiseAccountSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_33_BranchDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_33_BranchDetails_Atomic"/>
+    <grounding:wsdlOperationName>BranchDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BranchDetailsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BranchDetailsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_34_ExtendedBranchDetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_34_ExtendedBranchDetails_Atomic"/>
+    <grounding:wsdlOperationName>ExtendedBranchDetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ExtendedBranchDetailsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ExtendedBranchDetailsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankDetails_35_ExtendedBranchDetails_AllBranches_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankDetails_35_ExtendedBranchDetails_AllBranches_Atomic"/>
+    <grounding:wsdlOperationName>ExtendedBranchDetails_AllBranches</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankDetailsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankDetailsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3075_3074.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ExtendedBranchDetails_AllBranchesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ExtendedBranchDetails_AllBranchesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

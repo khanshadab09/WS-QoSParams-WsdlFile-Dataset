@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="YahooQuoteWebService">
+    <service:presents rdf:resource="#YahooQuoteWebService_Profile"/>
+    <service:describedBy rdf:resource="#YahooQuoteWebService_Composite"/>
+    <service:supports rdf:resource="#YahooQuoteWebService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="YahooQuoteWebService_Profile">
+    <profile:serviceName>YahooQuoteWebService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#YahooQuoteWebService"/>
+    <profile:hasProcess rdf:resource="#YahooQuoteWebService_0_GetQuote_Atomic"/>
+    <profile:hasInput rdf:resource="#YahooQuoteWebService_0_GetQuote_Atomic_input_parameters__outthebox.web.services_GetQuote"/>
+    <profile:hasOutput rdf:resource="#YahooQuoteWebService_0_GetQuote_Atomic_output_parameters__outthebox.web.services_GetQuoteResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetQuote(?x) ^ hasParameter(?x, outthebox.web.services) ^ hasOutput(?x, outthebox.web.services)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetQuoteResponse(?y) ^ hasParameter(?y, outthebox.web.services) ^ hasOutput(?y, outthebox.web.services)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="YahooQuoteWebService_Composite">
+    <process:composedOf rdf:resource="#YahooQuoteWebService_0_GetQuote_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="YahooQuoteWebService_0_GetQuote_Atomic_input_parameters__outthebox.web.services_GetQuote">
+    <process:parameterType>parameters:{outthebox.web.services}GetQuote</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="YahooQuoteWebService_0_GetQuote_Atomic_output_parameters__outthebox.web.services_GetQuoteResponse">
+    <process:parameterType>parameters:{outthebox.web.services}GetQuoteResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="YahooQuoteWebService_0_GetQuote_Atomic">
+    <process:hasName>GetQuote</process:hasName>
+    <process:hasInput rdf:resource="#YahooQuoteWebService_0_GetQuote_Atomic_input_parameters__outthebox.web.services_GetQuote"/>
+    <process:hasOutput rdf:resource="#YahooQuoteWebService_0_GetQuote_Atomic_output_parameters__outthebox.web.services_GetQuoteResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetQuote(?x) ^ hasParameter(?x, outthebox.web.services) ^ hasOutput(?x, outthebox.web.services)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetQuoteResponse(?y) ^ hasParameter(?y, outthebox.web.services) ^ hasOutput(?y, outthebox.web.services)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="YahooQuoteWebService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#YahooQuoteWebService_0_GetQuote_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="YahooQuoteWebService_0_GetQuote_Grounding">
+    <grounding:owlsProcess rdf:resource="#YahooQuoteWebService_0_GetQuote_Atomic"/>
+    <grounding:wsdlOperationName>GetQuote</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>YahooQuoteWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>YahooQuoteWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/3665_3664.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetQuoteSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetQuoteSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
