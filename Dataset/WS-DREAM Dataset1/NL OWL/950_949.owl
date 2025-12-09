@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Photoserver">
+    <service:presents rdf:resource="#Photoserver_Profile"/>
+    <service:describedBy rdf:resource="#Photoserver_Composite"/>
+    <service:supports rdf:resource="#Photoserver_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Photoserver_Profile">
+    <profile:serviceName>Photoserver</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Photoserver"/>
+    <profile:hasProcess rdf:resource="#Photoserver_0_GetVersion_Atomic"/>
+    <profile:hasInput rdf:resource="#Photoserver_0_GetVersion_Atomic_input_parameters__http___tempuri.org__GetVersion"/>
+    <profile:hasOutput rdf:resource="#Photoserver_0_GetVersion_Atomic_output_parameters__http___tempuri.org__GetVersionResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameter for GetVersion must be valid.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the version information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Photoserver_1_GetPocasiByLogin_Atomic"/>
+    <profile:hasInput rdf:resource="#Photoserver_1_GetPocasiByLogin_Atomic_input_parameters__http___tempuri.org__GetPocasiByLogin"/>
+    <profile:hasOutput rdf:resource="#Photoserver_1_GetPocasiByLogin_Atomic_output_parameters__http___tempuri.org__GetPocasiByLoginResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have a valid login credentials to access the GetPocasiByLogin operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return weather information specific to the user's login details.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Photoserver_2_GetPocasiById_Atomic"/>
+    <profile:hasInput rdf:resource="#Photoserver_2_GetPocasiById_Atomic_input_parameters__http___tempuri.org__GetPocasiById"/>
+    <profile:hasOutput rdf:resource="#Photoserver_2_GetPocasiById_Atomic_output_parameters__http___tempuri.org__GetPocasiByIdResponse"/>
+    <profile:hasPrecondition>The user must provide a valid ID for the weather forecast in order to retrieve specific weather information.</profile:hasPrecondition>
+    <profile:hasResult>The system will return the weather forecast data corresponding to the provided ID.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Photoserver_3_GetPocasiHistoryByLogin_Atomic"/>
+    <profile:hasInput rdf:resource="#Photoserver_3_GetPocasiHistoryByLogin_Atomic_input_parameters__http___tempuri.org__GetPocasiHistoryByLogin"/>
+    <profile:hasOutput rdf:resource="#Photoserver_3_GetPocasiHistoryByLogin_Atomic_output_parameters__http___tempuri.org__GetPocasiHistoryByLoginResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have a valid login for accessing the weather history service.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves the weather history data based on the provided login information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Photoserver_4_GetInfoByLogin_Atomic"/>
+    <profile:hasInput rdf:resource="#Photoserver_4_GetInfoByLogin_Atomic_input_parameters__http___tempuri.org__GetInfoByLogin"/>
+    <profile:hasOutput rdf:resource="#Photoserver_4_GetInfoByLogin_Atomic_output_parameters__http___tempuri.org__GetInfoByLoginResponse"/>
+    <profile:hasPrecondition>The user must provide valid login credentials for authentication.</profile:hasPrecondition>
+    <profile:hasResult>The system will retrieve information associated with the provided login credentials.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Photoserver_5_GetInfoById_Atomic"/>
+    <profile:hasInput rdf:resource="#Photoserver_5_GetInfoById_Atomic_input_parameters__http___tempuri.org__GetInfoById"/>
+    <profile:hasOutput rdf:resource="#Photoserver_5_GetInfoById_Atomic_output_parameters__http___tempuri.org__GetInfoByIdResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid ID for retrieving information.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the information corresponding to the provided ID.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Photoserver_6_GetInfoHistoryByLogin_Atomic"/>
+    <profile:hasInput rdf:resource="#Photoserver_6_GetInfoHistoryByLogin_Atomic_input_parameters__http___tempuri.org__GetInfoHistoryByLogin"/>
+    <profile:hasOutput rdf:resource="#Photoserver_6_GetInfoHistoryByLogin_Atomic_output_parameters__http___tempuri.org__GetInfoHistoryByLoginResponse"/>
+    <profile:hasPrecondition>The user must provide a valid login information to retrieve the history information.</profile:hasPrecondition>
+    <profile:hasResult>Returns the history information associated with the provided login.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Photoserver_Composite">
+    <process:composedOf rdf:resource="#Photoserver_0_GetVersion_Atomic"/>
+    <process:composedOf rdf:resource="#Photoserver_1_GetPocasiByLogin_Atomic"/>
+    <process:composedOf rdf:resource="#Photoserver_2_GetPocasiById_Atomic"/>
+    <process:composedOf rdf:resource="#Photoserver_3_GetPocasiHistoryByLogin_Atomic"/>
+    <process:composedOf rdf:resource="#Photoserver_4_GetInfoByLogin_Atomic"/>
+    <process:composedOf rdf:resource="#Photoserver_5_GetInfoById_Atomic"/>
+    <process:composedOf rdf:resource="#Photoserver_6_GetInfoHistoryByLogin_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Photoserver_0_GetVersion_Atomic_input_parameters__http___tempuri.org__GetVersion">
+    <process:parameterType>parameters:{http://tempuri.org/}GetVersion</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Photoserver_0_GetVersion_Atomic_output_parameters__http___tempuri.org__GetVersionResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetVersionResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Photoserver_1_GetPocasiByLogin_Atomic_input_parameters__http___tempuri.org__GetPocasiByLogin">
+    <process:parameterType>parameters:{http://tempuri.org/}GetPocasiByLogin</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Photoserver_1_GetPocasiByLogin_Atomic_output_parameters__http___tempuri.org__GetPocasiByLoginResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetPocasiByLoginResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Photoserver_2_GetPocasiById_Atomic_input_parameters__http___tempuri.org__GetPocasiById">
+    <process:parameterType>parameters:{http://tempuri.org/}GetPocasiById</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Photoserver_2_GetPocasiById_Atomic_output_parameters__http___tempuri.org__GetPocasiByIdResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetPocasiByIdResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Photoserver_3_GetPocasiHistoryByLogin_Atomic_input_parameters__http___tempuri.org__GetPocasiHistoryByLogin">
+    <process:parameterType>parameters:{http://tempuri.org/}GetPocasiHistoryByLogin</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Photoserver_3_GetPocasiHistoryByLogin_Atomic_output_parameters__http___tempuri.org__GetPocasiHistoryByLoginResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetPocasiHistoryByLoginResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Photoserver_4_GetInfoByLogin_Atomic_input_parameters__http___tempuri.org__GetInfoByLogin">
+    <process:parameterType>parameters:{http://tempuri.org/}GetInfoByLogin</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Photoserver_4_GetInfoByLogin_Atomic_output_parameters__http___tempuri.org__GetInfoByLoginResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetInfoByLoginResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Photoserver_5_GetInfoById_Atomic_input_parameters__http___tempuri.org__GetInfoById">
+    <process:parameterType>parameters:{http://tempuri.org/}GetInfoById</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Photoserver_5_GetInfoById_Atomic_output_parameters__http___tempuri.org__GetInfoByIdResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetInfoByIdResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Photoserver_6_GetInfoHistoryByLogin_Atomic_input_parameters__http___tempuri.org__GetInfoHistoryByLogin">
+    <process:parameterType>parameters:{http://tempuri.org/}GetInfoHistoryByLogin</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Photoserver_6_GetInfoHistoryByLogin_Atomic_output_parameters__http___tempuri.org__GetInfoHistoryByLoginResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetInfoHistoryByLoginResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Photoserver_0_GetVersion_Atomic">
+    <process:hasName>GetVersion</process:hasName>
+    <process:hasInput rdf:resource="#Photoserver_0_GetVersion_Atomic_input_parameters__http___tempuri.org__GetVersion"/>
+    <process:hasOutput rdf:resource="#Photoserver_0_GetVersion_Atomic_output_parameters__http___tempuri.org__GetVersionResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameter for GetVersion must be valid.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the version information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Photoserver_1_GetPocasiByLogin_Atomic">
+    <process:hasName>GetPocasiByLogin</process:hasName>
+    <process:hasInput rdf:resource="#Photoserver_1_GetPocasiByLogin_Atomic_input_parameters__http___tempuri.org__GetPocasiByLogin"/>
+    <process:hasOutput rdf:resource="#Photoserver_1_GetPocasiByLogin_Atomic_output_parameters__http___tempuri.org__GetPocasiByLoginResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have a valid login credentials to access the GetPocasiByLogin operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return weather information specific to the user's login details.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Photoserver_2_GetPocasiById_Atomic">
+    <process:hasName>GetPocasiById</process:hasName>
+    <process:hasInput rdf:resource="#Photoserver_2_GetPocasiById_Atomic_input_parameters__http___tempuri.org__GetPocasiById"/>
+    <process:hasOutput rdf:resource="#Photoserver_2_GetPocasiById_Atomic_output_parameters__http___tempuri.org__GetPocasiByIdResponse"/>
+    <process:hasPrecondition>The user must provide a valid ID for the weather forecast in order to retrieve specific weather information.</process:hasPrecondition>
+    <process:hasEffect>The system will return the weather forecast data corresponding to the provided ID.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Photoserver_3_GetPocasiHistoryByLogin_Atomic">
+    <process:hasName>GetPocasiHistoryByLogin</process:hasName>
+    <process:hasInput rdf:resource="#Photoserver_3_GetPocasiHistoryByLogin_Atomic_input_parameters__http___tempuri.org__GetPocasiHistoryByLogin"/>
+    <process:hasOutput rdf:resource="#Photoserver_3_GetPocasiHistoryByLogin_Atomic_output_parameters__http___tempuri.org__GetPocasiHistoryByLoginResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have a valid login for accessing the weather history service.</process:hasPrecondition>
+    <process:hasEffect>Retrieves the weather history data based on the provided login information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Photoserver_4_GetInfoByLogin_Atomic">
+    <process:hasName>GetInfoByLogin</process:hasName>
+    <process:hasInput rdf:resource="#Photoserver_4_GetInfoByLogin_Atomic_input_parameters__http___tempuri.org__GetInfoByLogin"/>
+    <process:hasOutput rdf:resource="#Photoserver_4_GetInfoByLogin_Atomic_output_parameters__http___tempuri.org__GetInfoByLoginResponse"/>
+    <process:hasPrecondition>The user must provide valid login credentials for authentication.</process:hasPrecondition>
+    <process:hasEffect>The system will retrieve information associated with the provided login credentials.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Photoserver_5_GetInfoById_Atomic">
+    <process:hasName>GetInfoById</process:hasName>
+    <process:hasInput rdf:resource="#Photoserver_5_GetInfoById_Atomic_input_parameters__http___tempuri.org__GetInfoById"/>
+    <process:hasOutput rdf:resource="#Photoserver_5_GetInfoById_Atomic_output_parameters__http___tempuri.org__GetInfoByIdResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid ID for retrieving information.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the information corresponding to the provided ID.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Photoserver_6_GetInfoHistoryByLogin_Atomic">
+    <process:hasName>GetInfoHistoryByLogin</process:hasName>
+    <process:hasInput rdf:resource="#Photoserver_6_GetInfoHistoryByLogin_Atomic_input_parameters__http___tempuri.org__GetInfoHistoryByLogin"/>
+    <process:hasOutput rdf:resource="#Photoserver_6_GetInfoHistoryByLogin_Atomic_output_parameters__http___tempuri.org__GetInfoHistoryByLoginResponse"/>
+    <process:hasPrecondition>The user must provide a valid login information to retrieve the history information.</process:hasPrecondition>
+    <process:hasEffect>Returns the history information associated with the provided login.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Photoserver_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Photoserver_0_GetVersion_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Photoserver_1_GetPocasiByLogin_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Photoserver_2_GetPocasiById_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Photoserver_3_GetPocasiHistoryByLogin_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Photoserver_4_GetInfoByLogin_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Photoserver_5_GetInfoById_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Photoserver_6_GetInfoHistoryByLogin_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Photoserver_0_GetVersion_Grounding">
+    <grounding:owlsProcess rdf:resource="#Photoserver_0_GetVersion_Atomic"/>
+    <grounding:wsdlOperationName>GetVersion</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhotoserverSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhotoserverSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/950_949.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetVersionSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetVersionSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Photoserver_1_GetPocasiByLogin_Grounding">
+    <grounding:owlsProcess rdf:resource="#Photoserver_1_GetPocasiByLogin_Atomic"/>
+    <grounding:wsdlOperationName>GetPocasiByLogin</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhotoserverSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhotoserverSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/950_949.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetPocasiByLoginSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetPocasiByLoginSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Photoserver_2_GetPocasiById_Grounding">
+    <grounding:owlsProcess rdf:resource="#Photoserver_2_GetPocasiById_Atomic"/>
+    <grounding:wsdlOperationName>GetPocasiById</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhotoserverSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhotoserverSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/950_949.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetPocasiByIdSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetPocasiByIdSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Photoserver_3_GetPocasiHistoryByLogin_Grounding">
+    <grounding:owlsProcess rdf:resource="#Photoserver_3_GetPocasiHistoryByLogin_Atomic"/>
+    <grounding:wsdlOperationName>GetPocasiHistoryByLogin</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhotoserverSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhotoserverSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/950_949.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetPocasiHistoryByLoginSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetPocasiHistoryByLoginSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Photoserver_4_GetInfoByLogin_Grounding">
+    <grounding:owlsProcess rdf:resource="#Photoserver_4_GetInfoByLogin_Atomic"/>
+    <grounding:wsdlOperationName>GetInfoByLogin</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhotoserverSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhotoserverSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/950_949.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetInfoByLoginSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetInfoByLoginSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Photoserver_5_GetInfoById_Grounding">
+    <grounding:owlsProcess rdf:resource="#Photoserver_5_GetInfoById_Atomic"/>
+    <grounding:wsdlOperationName>GetInfoById</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhotoserverSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhotoserverSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/950_949.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetInfoByIdSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetInfoByIdSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Photoserver_6_GetInfoHistoryByLogin_Grounding">
+    <grounding:owlsProcess rdf:resource="#Photoserver_6_GetInfoHistoryByLogin_Atomic"/>
+    <grounding:wsdlOperationName>GetInfoHistoryByLogin</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhotoserverSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhotoserverSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/950_949.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetInfoHistoryByLoginSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetInfoHistoryByLoginSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

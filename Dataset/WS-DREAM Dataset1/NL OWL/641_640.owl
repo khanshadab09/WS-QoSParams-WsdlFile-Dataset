@@ -1,0 +1,521 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ChinaZipSearchWebService">
+    <service:presents rdf:resource="#ChinaZipSearchWebService_Profile"/>
+    <service:describedBy rdf:resource="#ChinaZipSearchWebService_Composite"/>
+    <service:supports rdf:resource="#ChinaZipSearchWebService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ChinaZipSearchWebService_Profile">
+    <profile:serviceName>ChinaZipSearchWebService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ChinaZipSearchWebService"/>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_0_getSupportProvince_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_0_getSupportProvince_Atomic_input_parameters__http___WebXml.com.cn__getSupportProvince"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_0_getSupportProvince_Atomic_output_parameters__http___WebXml.com.cn__getSupportProvinceResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameter for getSupportProvince must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the list of supported provinces.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_1_getSupportCity_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_1_getSupportCity_Atomic_input_parameters__http___WebXml.com.cn__getSupportCity"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_1_getSupportCity_Atomic_output_parameters__http___WebXml.com.cn__getSupportCityResponse"/>
+    <profile:hasPrecondition>The web service must have access to the specified endpoint for retrieving supported cities.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the list of supported cities.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_2_getSupportProvinceCity_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_2_getSupportProvinceCity_Atomic_input_parameters__http___WebXml.com.cn__getSupportProvinceCity"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_2_getSupportProvinceCity_Atomic_output_parameters__http___WebXml.com.cn__getSupportProvinceCityResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and operational to retrieve the list of supported province cities.</profile:hasPrecondition>
+    <profile:hasResult>The response will contain the list of supported province cities based on the provided input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_3_getAddressByZipCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_3_getAddressByZipCode_Atomic_input_parameters__http___WebXml.com.cn__getAddressByZipCode"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_3_getAddressByZipCode_Atomic_output_parameters__http___WebXml.com.cn__getAddressByZipCodeResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid zip code.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the corresponding address associated with the provided zip code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_4_getZipCodeByAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_4_getZipCodeByAddress_Atomic_input_parameters__http___WebXml.com.cn__getZipCodeByAddress"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_4_getZipCodeByAddress_Atomic_output_parameters__http___WebXml.com.cn__getZipCodeByAddressResponse"/>
+    <profile:hasPrecondition>The input address must be valid and complete.</profile:hasPrecondition>
+    <profile:hasResult>The output will provide the corresponding zip code for the given address.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_5_getSupportProvince_Atomic"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_5_getSupportProvince_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <profile:hasPrecondition>The web service must be accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return an array of strings representing supported provinces.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_6_getSupportCity_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_6_getSupportCity_Atomic_input_byProvinceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_6_getSupportCity_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <profile:hasPrecondition>The input parameter "byProvinceName" must be a valid string representing a province name.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of strings containing the names of cities that have support services in the specified province.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_7_getSupportProvinceCity_Atomic"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_7_getSupportProvinceCity_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <profile:hasPrecondition>The web service must be accessible and the necessary permissions must be granted to retrieve the support province and city data.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a dataset containing information about supported provinces and cities.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_8_getAddressByZipCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_8_getAddressByZipCode_Atomic_input_userID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_8_getAddressByZipCode_Atomic_input_theZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_8_getAddressByZipCode_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <profile:hasPrecondition>The user must be authenticated and authorized to access the getAddressByZipCode operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a DataSet containing the address information corresponding to the provided zip code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_input_theAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_input_userID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_input_theProvinceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <profile:hasPrecondition>The user must provide the city name, address, user ID, and province name as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a dataset containing the zip code corresponding to the provided address.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_10_getSupportProvince_Atomic"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_10_getSupportProvince_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <profile:hasPrecondition>The web service for retrieving support provinces is accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The response will contain an array of strings representing the supported provinces.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_11_getSupportCity_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_11_getSupportCity_Atomic_input_byProvinceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_11_getSupportCity_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <profile:hasPrecondition>The web service must have access to a database or source containing a list of cities supported by provinces.</profile:hasPrecondition>
+    <profile:hasResult>Returns an array of strings containing the names of cities supported by the specified province.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_12_getSupportProvinceCity_Atomic"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_12_getSupportProvinceCity_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <profile:hasPrecondition>The web service must be accessible and properly configured to handle requests.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a dataset containing information about supported provinces and cities.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_13_getAddressByZipCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_13_getAddressByZipCode_Atomic_input_userID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_13_getAddressByZipCode_Atomic_input_theZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_13_getAddressByZipCode_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <profile:hasPrecondition>The user must provide a valid userID and theZipCode in string format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a DataSet containing the address corresponding to the provided zip code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_input_theAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_input_userID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_input_theProvinceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <profile:hasPrecondition>The user must provide the city name, address, user ID, and province name as input parameters for the operation getZipCodeByAddress.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a DataSet containing the zip code information for the specified address in the provided city and province.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ChinaZipSearchWebService_Composite">
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_0_getSupportProvince_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_1_getSupportCity_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_2_getSupportProvinceCity_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_3_getAddressByZipCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_4_getZipCodeByAddress_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_5_getSupportProvince_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_6_getSupportCity_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_7_getSupportProvinceCity_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_8_getAddressByZipCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_10_getSupportProvince_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_11_getSupportCity_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_12_getSupportProvinceCity_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_13_getAddressByZipCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ChinaZipSearchWebService_0_getSupportProvince_Atomic_input_parameters__http___WebXml.com.cn__getSupportProvince">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getSupportProvince</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaZipSearchWebService_0_getSupportProvince_Atomic_output_parameters__http___WebXml.com.cn__getSupportProvinceResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getSupportProvinceResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaZipSearchWebService_1_getSupportCity_Atomic_input_parameters__http___WebXml.com.cn__getSupportCity">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getSupportCity</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaZipSearchWebService_1_getSupportCity_Atomic_output_parameters__http___WebXml.com.cn__getSupportCityResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getSupportCityResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaZipSearchWebService_2_getSupportProvinceCity_Atomic_input_parameters__http___WebXml.com.cn__getSupportProvinceCity">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getSupportProvinceCity</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaZipSearchWebService_2_getSupportProvinceCity_Atomic_output_parameters__http___WebXml.com.cn__getSupportProvinceCityResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getSupportProvinceCityResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaZipSearchWebService_3_getAddressByZipCode_Atomic_input_parameters__http___WebXml.com.cn__getAddressByZipCode">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getAddressByZipCode</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaZipSearchWebService_3_getAddressByZipCode_Atomic_output_parameters__http___WebXml.com.cn__getAddressByZipCodeResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getAddressByZipCodeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaZipSearchWebService_4_getZipCodeByAddress_Atomic_input_parameters__http___WebXml.com.cn__getZipCodeByAddress">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getZipCodeByAddress</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaZipSearchWebService_4_getZipCodeByAddress_Atomic_output_parameters__http___WebXml.com.cn__getZipCodeByAddressResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getZipCodeByAddressResponse</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="ChinaZipSearchWebService_5_getSupportProvince_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString">
+    <process:parameterType>Body:{http://WebXml.com.cn/}ArrayOfString</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaZipSearchWebService_6_getSupportCity_Atomic_input_byProvinceName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>byProvinceName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaZipSearchWebService_6_getSupportCity_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString">
+    <process:parameterType>Body:{http://WebXml.com.cn/}ArrayOfString</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="ChinaZipSearchWebService_7_getSupportProvinceCity_Atomic_output_Body__http___WebXml.com.cn__DataSet">
+    <process:parameterType>Body:{http://WebXml.com.cn/}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaZipSearchWebService_8_getAddressByZipCode_Atomic_input_userID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaZipSearchWebService_8_getAddressByZipCode_Atomic_input_theZipCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theZipCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaZipSearchWebService_8_getAddressByZipCode_Atomic_output_Body__http___WebXml.com.cn__DataSet">
+    <process:parameterType>Body:{http://WebXml.com.cn/}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theCityName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_input_theAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_input_userID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_input_theProvinceName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theProvinceName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_output_Body__http___WebXml.com.cn__DataSet">
+    <process:parameterType>Body:{http://WebXml.com.cn/}DataSet</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="ChinaZipSearchWebService_10_getSupportProvince_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString">
+    <process:parameterType>Body:{http://WebXml.com.cn/}ArrayOfString</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaZipSearchWebService_11_getSupportCity_Atomic_input_byProvinceName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>byProvinceName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaZipSearchWebService_11_getSupportCity_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString">
+    <process:parameterType>Body:{http://WebXml.com.cn/}ArrayOfString</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="ChinaZipSearchWebService_12_getSupportProvinceCity_Atomic_output_Body__http___WebXml.com.cn__DataSet">
+    <process:parameterType>Body:{http://WebXml.com.cn/}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaZipSearchWebService_13_getAddressByZipCode_Atomic_input_userID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaZipSearchWebService_13_getAddressByZipCode_Atomic_input_theZipCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theZipCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaZipSearchWebService_13_getAddressByZipCode_Atomic_output_Body__http___WebXml.com.cn__DataSet">
+    <process:parameterType>Body:{http://WebXml.com.cn/}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theCityName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_input_theAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_input_userID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_input_theProvinceName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theProvinceName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_output_Body__http___WebXml.com.cn__DataSet">
+    <process:parameterType>Body:{http://WebXml.com.cn/}DataSet</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_0_getSupportProvince_Atomic">
+    <process:hasName>getSupportProvince</process:hasName>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_0_getSupportProvince_Atomic_input_parameters__http___WebXml.com.cn__getSupportProvince"/>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_0_getSupportProvince_Atomic_output_parameters__http___WebXml.com.cn__getSupportProvinceResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameter for getSupportProvince must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the list of supported provinces.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_1_getSupportCity_Atomic">
+    <process:hasName>getSupportCity</process:hasName>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_1_getSupportCity_Atomic_input_parameters__http___WebXml.com.cn__getSupportCity"/>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_1_getSupportCity_Atomic_output_parameters__http___WebXml.com.cn__getSupportCityResponse"/>
+    <process:hasPrecondition>The web service must have access to the specified endpoint for retrieving supported cities.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the list of supported cities.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_2_getSupportProvinceCity_Atomic">
+    <process:hasName>getSupportProvinceCity</process:hasName>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_2_getSupportProvinceCity_Atomic_input_parameters__http___WebXml.com.cn__getSupportProvinceCity"/>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_2_getSupportProvinceCity_Atomic_output_parameters__http___WebXml.com.cn__getSupportProvinceCityResponse"/>
+    <process:hasPrecondition>The web service must be accessible and operational to retrieve the list of supported province cities.</process:hasPrecondition>
+    <process:hasEffect>The response will contain the list of supported province cities based on the provided input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_3_getAddressByZipCode_Atomic">
+    <process:hasName>getAddressByZipCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_3_getAddressByZipCode_Atomic_input_parameters__http___WebXml.com.cn__getAddressByZipCode"/>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_3_getAddressByZipCode_Atomic_output_parameters__http___WebXml.com.cn__getAddressByZipCodeResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid zip code.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the corresponding address associated with the provided zip code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_4_getZipCodeByAddress_Atomic">
+    <process:hasName>getZipCodeByAddress</process:hasName>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_4_getZipCodeByAddress_Atomic_input_parameters__http___WebXml.com.cn__getZipCodeByAddress"/>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_4_getZipCodeByAddress_Atomic_output_parameters__http___WebXml.com.cn__getZipCodeByAddressResponse"/>
+    <process:hasPrecondition>The input address must be valid and complete.</process:hasPrecondition>
+    <process:hasEffect>The output will provide the corresponding zip code for the given address.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_5_getSupportProvince_Atomic">
+    <process:hasName>getSupportProvince</process:hasName>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_5_getSupportProvince_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <process:hasPrecondition>The web service must be accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The web service will return an array of strings representing supported provinces.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_6_getSupportCity_Atomic">
+    <process:hasName>getSupportCity</process:hasName>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_6_getSupportCity_Atomic_input_byProvinceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_6_getSupportCity_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <process:hasPrecondition>The input parameter "byProvinceName" must be a valid string representing a province name.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of strings containing the names of cities that have support services in the specified province.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_7_getSupportProvinceCity_Atomic">
+    <process:hasName>getSupportProvinceCity</process:hasName>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_7_getSupportProvinceCity_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <process:hasPrecondition>The web service must be accessible and the necessary permissions must be granted to retrieve the support province and city data.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a dataset containing information about supported provinces and cities.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_8_getAddressByZipCode_Atomic">
+    <process:hasName>getAddressByZipCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_8_getAddressByZipCode_Atomic_input_userID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_8_getAddressByZipCode_Atomic_input_theZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_8_getAddressByZipCode_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <process:hasPrecondition>The user must be authenticated and authorized to access the getAddressByZipCode operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a DataSet containing the address information corresponding to the provided zip code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic">
+    <process:hasName>getZipCodeByAddress</process:hasName>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_input_theAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_input_userID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_input_theProvinceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <process:hasPrecondition>The user must provide the city name, address, user ID, and province name as input parameters.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a dataset containing the zip code corresponding to the provided address.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_10_getSupportProvince_Atomic">
+    <process:hasName>getSupportProvince</process:hasName>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_10_getSupportProvince_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <process:hasPrecondition>The web service for retrieving support provinces is accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The response will contain an array of strings representing the supported provinces.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_11_getSupportCity_Atomic">
+    <process:hasName>getSupportCity</process:hasName>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_11_getSupportCity_Atomic_input_byProvinceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_11_getSupportCity_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <process:hasPrecondition>The web service must have access to a database or source containing a list of cities supported by provinces.</process:hasPrecondition>
+    <process:hasEffect>Returns an array of strings containing the names of cities supported by the specified province.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_12_getSupportProvinceCity_Atomic">
+    <process:hasName>getSupportProvinceCity</process:hasName>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_12_getSupportProvinceCity_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <process:hasPrecondition>The web service must be accessible and properly configured to handle requests.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a dataset containing information about supported provinces and cities.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_13_getAddressByZipCode_Atomic">
+    <process:hasName>getAddressByZipCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_13_getAddressByZipCode_Atomic_input_userID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_13_getAddressByZipCode_Atomic_input_theZipCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_13_getAddressByZipCode_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <process:hasPrecondition>The user must provide a valid userID and theZipCode in string format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a DataSet containing the address corresponding to the provided zip code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic">
+    <process:hasName>getZipCodeByAddress</process:hasName>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_input_theAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_input_userID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_input_theProvinceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <process:hasPrecondition>The user must provide the city name, address, user ID, and province name as input parameters for the operation getZipCodeByAddress.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a DataSet containing the zip code information for the specified address in the provided city and province.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ChinaZipSearchWebService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_0_getSupportProvince_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_1_getSupportCity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_2_getSupportProvinceCity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_3_getAddressByZipCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_4_getZipCodeByAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_5_getSupportProvince_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_6_getSupportCity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_7_getSupportProvinceCity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_8_getAddressByZipCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_9_getZipCodeByAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_10_getSupportProvince_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_11_getSupportCity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_12_getSupportProvinceCity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_13_getAddressByZipCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaZipSearchWebService_14_getZipCodeByAddress_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_0_getSupportProvince_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_0_getSupportProvince_Atomic"/>
+    <grounding:wsdlOperationName>getSupportProvince</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportProvinceSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportProvinceSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_1_getSupportCity_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_1_getSupportCity_Atomic"/>
+    <grounding:wsdlOperationName>getSupportCity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportCitySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportCitySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_2_getSupportProvinceCity_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_2_getSupportProvinceCity_Atomic"/>
+    <grounding:wsdlOperationName>getSupportProvinceCity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportProvinceCitySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportProvinceCitySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_3_getAddressByZipCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_3_getAddressByZipCode_Atomic"/>
+    <grounding:wsdlOperationName>getAddressByZipCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAddressByZipCodeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAddressByZipCodeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_4_getZipCodeByAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_4_getZipCodeByAddress_Atomic"/>
+    <grounding:wsdlOperationName>getZipCodeByAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getZipCodeByAddressSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getZipCodeByAddressSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_5_getSupportProvince_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_5_getSupportProvince_Atomic"/>
+    <grounding:wsdlOperationName>getSupportProvince</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportProvinceHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportProvinceHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_6_getSupportCity_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_6_getSupportCity_Atomic"/>
+    <grounding:wsdlOperationName>getSupportCity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportCityHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportCityHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_7_getSupportProvinceCity_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_7_getSupportProvinceCity_Atomic"/>
+    <grounding:wsdlOperationName>getSupportProvinceCity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportProvinceCityHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportProvinceCityHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_8_getAddressByZipCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_8_getAddressByZipCode_Atomic"/>
+    <grounding:wsdlOperationName>getAddressByZipCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAddressByZipCodeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAddressByZipCodeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_9_getZipCodeByAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_9_getZipCodeByAddress_Atomic"/>
+    <grounding:wsdlOperationName>getZipCodeByAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getZipCodeByAddressHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getZipCodeByAddressHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_10_getSupportProvince_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_10_getSupportProvince_Atomic"/>
+    <grounding:wsdlOperationName>getSupportProvince</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportProvinceHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportProvinceHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_11_getSupportCity_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_11_getSupportCity_Atomic"/>
+    <grounding:wsdlOperationName>getSupportCity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportCityHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportCityHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_12_getSupportProvinceCity_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_12_getSupportProvinceCity_Atomic"/>
+    <grounding:wsdlOperationName>getSupportProvinceCity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportProvinceCityHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportProvinceCityHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_13_getAddressByZipCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_13_getAddressByZipCode_Atomic"/>
+    <grounding:wsdlOperationName>getAddressByZipCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAddressByZipCodeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAddressByZipCodeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaZipSearchWebService_14_getZipCodeByAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaZipSearchWebService_14_getZipCodeByAddress_Atomic"/>
+    <grounding:wsdlOperationName>getZipCodeByAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaZipSearchWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaZipSearchWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/641_640.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getZipCodeByAddressHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getZipCodeByAddressHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,501 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ChinaStockWebService">
+    <service:presents rdf:resource="#ChinaStockWebService_Profile"/>
+    <service:describedBy rdf:resource="#ChinaStockWebService_Composite"/>
+    <service:supports rdf:resource="#ChinaStockWebService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ChinaStockWebService_Profile">
+    <profile:serviceName>ChinaStockWebService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ChinaStockWebService"/>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_0_getStockImageByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_0_getStockImageByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The stock code provided must be a valid string according to the specified XML schema.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves the stock image associated with the provided stock code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_1_getStockImageByteByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_1_getStockImageByteByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ChinaStockWebService_1_getStockImageByteByCode_Atomic_output_Body__http___WebXml.com.cn__base64Binary"/>
+    <profile:hasPrecondition>The input stock code must be a valid string in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the stock image in base64 binary format corresponding to the provided stock code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_2_getStockImage_kByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_2_getStockImage_kByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_2_getStockImage_kByCode_Atomic_input_theType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The stock code and type provided must be valid and existing in the system.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves the stock image corresponding to the provided stock code and type.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_3_getStockImage_kByteByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_3_getStockImage_kByteByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_3_getStockImage_kByteByCode_Atomic_input_theType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ChinaStockWebService_3_getStockImage_kByteByCode_Atomic_output_Body__http___WebXml.com.cn__base64Binary"/>
+    <profile:hasPrecondition>The stock code and image type must be provided as input parameters in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the stock image in base64 binary format corresponding to the provided stock code and image type.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_4_getStockInfoByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_4_getStockInfoByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ChinaStockWebService_4_getStockInfoByCode_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <profile:hasPrecondition>The input stock code must be a valid string format according to the specified XML schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of strings containing the stock information corresponding to the provided stock code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_5_getStockImageByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_5_getStockImageByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockImageByCode"/>
+    <profile:hasOutput rdf:resource="#ChinaStockWebService_5_getStockImageByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockImageByCodeResponse"/>
+    <profile:hasPrecondition>The input parameter must contain the stock code for which the image is requested.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter will contain the image corresponding to the provided stock code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_6_getStockImageByteByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_6_getStockImageByteByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockImageByteByCode"/>
+    <profile:hasOutput rdf:resource="#ChinaStockWebService_6_getStockImageByteByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockImageByteByCodeResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid stock code.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the byte data of the stock image corresponding to the provided stock code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_7_getStockImage_kByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_7_getStockImage_kByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockImage_kByCode"/>
+    <profile:hasOutput rdf:resource="#ChinaStockWebService_7_getStockImage_kByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockImage_kByCodeResponse"/>
+    <profile:hasPrecondition>The input parameter must contain the stock code for which the image is requested.</profile:hasPrecondition>
+    <profile:hasResult>The operation returns the image corresponding to the provided stock code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_8_getStockImage_kByteByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_8_getStockImage_kByteByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockImage_kByteByCode"/>
+    <profile:hasOutput rdf:resource="#ChinaStockWebService_8_getStockImage_kByteByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockImage_kByteByCodeResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid stock code for the requested stock image to be retrieved.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the stock image in kilobytes corresponding to the provided stock code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_9_getStockInfoByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_9_getStockInfoByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockInfoByCode"/>
+    <profile:hasOutput rdf:resource="#ChinaStockWebService_9_getStockInfoByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockInfoByCodeResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid stock code.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the stock information corresponding to the provided stock code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_10_getStockImageByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_10_getStockImageByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The stock code provided must be a valid string according to the specified XML schema.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves the stock image associated with the provided stock code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_11_getStockImageByteByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_11_getStockImageByteByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ChinaStockWebService_11_getStockImageByteByCode_Atomic_output_Body__http___WebXml.com.cn__base64Binary"/>
+    <profile:hasPrecondition>The input stock code must be a valid string format according to the specified XML schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the stock image in base64 binary format corresponding to the provided stock code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_12_getStockImage_kByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_12_getStockImage_kByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_12_getStockImage_kByCode_Atomic_input_theType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The stock code and image type must be provided as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves the stock image based on the provided stock code and image type.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_13_getStockImage_kByteByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_13_getStockImage_kByteByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_13_getStockImage_kByteByCode_Atomic_input_theType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ChinaStockWebService_13_getStockImage_kByteByCode_Atomic_output_Body__http___WebXml.com.cn__base64Binary"/>
+    <profile:hasPrecondition>The stock code and type must be provided as input parameters in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the stock image in base64 binary format based on the provided stock code and type.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ChinaStockWebService_14_getStockInfoByCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ChinaStockWebService_14_getStockInfoByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ChinaStockWebService_14_getStockInfoByCode_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <profile:hasPrecondition>The web service requires a valid stock code in the specified format as input.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return an array of strings containing information about the stock corresponding to the provided code.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ChinaStockWebService_Composite">
+    <process:composedOf rdf:resource="#ChinaStockWebService_0_getStockImageByCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaStockWebService_1_getStockImageByteByCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaStockWebService_2_getStockImage_kByCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaStockWebService_3_getStockImage_kByteByCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaStockWebService_4_getStockInfoByCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaStockWebService_5_getStockImageByCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaStockWebService_6_getStockImageByteByCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaStockWebService_7_getStockImage_kByCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaStockWebService_8_getStockImage_kByteByCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaStockWebService_9_getStockInfoByCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaStockWebService_10_getStockImageByCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaStockWebService_11_getStockImageByteByCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaStockWebService_12_getStockImage_kByCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaStockWebService_13_getStockImage_kByteByCode_Atomic"/>
+    <process:composedOf rdf:resource="#ChinaStockWebService_14_getStockInfoByCode_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ChinaStockWebService_0_getStockImageByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theStockCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaStockWebService_1_getStockImageByteByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theStockCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaStockWebService_1_getStockImageByteByCode_Atomic_output_Body__http___WebXml.com.cn__base64Binary">
+    <process:parameterType>Body:{http://WebXml.com.cn/}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaStockWebService_2_getStockImage_kByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theStockCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaStockWebService_2_getStockImage_kByCode_Atomic_input_theType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaStockWebService_3_getStockImage_kByteByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theStockCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaStockWebService_3_getStockImage_kByteByCode_Atomic_input_theType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaStockWebService_3_getStockImage_kByteByCode_Atomic_output_Body__http___WebXml.com.cn__base64Binary">
+    <process:parameterType>Body:{http://WebXml.com.cn/}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaStockWebService_4_getStockInfoByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theStockCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaStockWebService_4_getStockInfoByCode_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString">
+    <process:parameterType>Body:{http://WebXml.com.cn/}ArrayOfString</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaStockWebService_5_getStockImageByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockImageByCode">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getStockImageByCode</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaStockWebService_5_getStockImageByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockImageByCodeResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getStockImageByCodeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaStockWebService_6_getStockImageByteByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockImageByteByCode">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getStockImageByteByCode</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaStockWebService_6_getStockImageByteByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockImageByteByCodeResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getStockImageByteByCodeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaStockWebService_7_getStockImage_kByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockImage_kByCode">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getStockImage_kByCode</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaStockWebService_7_getStockImage_kByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockImage_kByCodeResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getStockImage_kByCodeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaStockWebService_8_getStockImage_kByteByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockImage_kByteByCode">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getStockImage_kByteByCode</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaStockWebService_8_getStockImage_kByteByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockImage_kByteByCodeResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getStockImage_kByteByCodeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaStockWebService_9_getStockInfoByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockInfoByCode">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getStockInfoByCode</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaStockWebService_9_getStockInfoByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockInfoByCodeResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getStockInfoByCodeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaStockWebService_10_getStockImageByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theStockCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaStockWebService_11_getStockImageByteByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theStockCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaStockWebService_11_getStockImageByteByCode_Atomic_output_Body__http___WebXml.com.cn__base64Binary">
+    <process:parameterType>Body:{http://WebXml.com.cn/}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaStockWebService_12_getStockImage_kByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theStockCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaStockWebService_12_getStockImage_kByCode_Atomic_input_theType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaStockWebService_13_getStockImage_kByteByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theStockCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ChinaStockWebService_13_getStockImage_kByteByCode_Atomic_input_theType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaStockWebService_13_getStockImage_kByteByCode_Atomic_output_Body__http___WebXml.com.cn__base64Binary">
+    <process:parameterType>Body:{http://WebXml.com.cn/}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ChinaStockWebService_14_getStockInfoByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theStockCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ChinaStockWebService_14_getStockInfoByCode_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString">
+    <process:parameterType>Body:{http://WebXml.com.cn/}ArrayOfString</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_0_getStockImageByCode_Atomic">
+    <process:hasName>getStockImageByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_0_getStockImageByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The stock code provided must be a valid string according to the specified XML schema.</process:hasPrecondition>
+    <process:hasEffect>Retrieves the stock image associated with the provided stock code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_1_getStockImageByteByCode_Atomic">
+    <process:hasName>getStockImageByteByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_1_getStockImageByteByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ChinaStockWebService_1_getStockImageByteByCode_Atomic_output_Body__http___WebXml.com.cn__base64Binary"/>
+    <process:hasPrecondition>The input stock code must be a valid string in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the stock image in base64 binary format corresponding to the provided stock code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_2_getStockImage_kByCode_Atomic">
+    <process:hasName>getStockImage_kByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_2_getStockImage_kByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ChinaStockWebService_2_getStockImage_kByCode_Atomic_input_theType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The stock code and type provided must be valid and existing in the system.</process:hasPrecondition>
+    <process:hasEffect>Retrieves the stock image corresponding to the provided stock code and type.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_3_getStockImage_kByteByCode_Atomic">
+    <process:hasName>getStockImage_kByteByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_3_getStockImage_kByteByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ChinaStockWebService_3_getStockImage_kByteByCode_Atomic_input_theType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ChinaStockWebService_3_getStockImage_kByteByCode_Atomic_output_Body__http___WebXml.com.cn__base64Binary"/>
+    <process:hasPrecondition>The stock code and image type must be provided as input parameters in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the stock image in base64 binary format corresponding to the provided stock code and image type.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_4_getStockInfoByCode_Atomic">
+    <process:hasName>getStockInfoByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_4_getStockInfoByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ChinaStockWebService_4_getStockInfoByCode_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <process:hasPrecondition>The input stock code must be a valid string format according to the specified XML schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of strings containing the stock information corresponding to the provided stock code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_5_getStockImageByCode_Atomic">
+    <process:hasName>getStockImageByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_5_getStockImageByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockImageByCode"/>
+    <process:hasOutput rdf:resource="#ChinaStockWebService_5_getStockImageByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockImageByCodeResponse"/>
+    <process:hasPrecondition>The input parameter must contain the stock code for which the image is requested.</process:hasPrecondition>
+    <process:hasEffect>The output parameter will contain the image corresponding to the provided stock code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_6_getStockImageByteByCode_Atomic">
+    <process:hasName>getStockImageByteByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_6_getStockImageByteByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockImageByteByCode"/>
+    <process:hasOutput rdf:resource="#ChinaStockWebService_6_getStockImageByteByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockImageByteByCodeResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid stock code.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the byte data of the stock image corresponding to the provided stock code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_7_getStockImage_kByCode_Atomic">
+    <process:hasName>getStockImage_kByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_7_getStockImage_kByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockImage_kByCode"/>
+    <process:hasOutput rdf:resource="#ChinaStockWebService_7_getStockImage_kByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockImage_kByCodeResponse"/>
+    <process:hasPrecondition>The input parameter must contain the stock code for which the image is requested.</process:hasPrecondition>
+    <process:hasEffect>The operation returns the image corresponding to the provided stock code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_8_getStockImage_kByteByCode_Atomic">
+    <process:hasName>getStockImage_kByteByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_8_getStockImage_kByteByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockImage_kByteByCode"/>
+    <process:hasOutput rdf:resource="#ChinaStockWebService_8_getStockImage_kByteByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockImage_kByteByCodeResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid stock code for the requested stock image to be retrieved.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the stock image in kilobytes corresponding to the provided stock code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_9_getStockInfoByCode_Atomic">
+    <process:hasName>getStockInfoByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_9_getStockInfoByCode_Atomic_input_parameters__http___WebXml.com.cn__getStockInfoByCode"/>
+    <process:hasOutput rdf:resource="#ChinaStockWebService_9_getStockInfoByCode_Atomic_output_parameters__http___WebXml.com.cn__getStockInfoByCodeResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid stock code.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the stock information corresponding to the provided stock code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_10_getStockImageByCode_Atomic">
+    <process:hasName>getStockImageByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_10_getStockImageByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The stock code provided must be a valid string according to the specified XML schema.</process:hasPrecondition>
+    <process:hasEffect>Retrieves the stock image associated with the provided stock code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_11_getStockImageByteByCode_Atomic">
+    <process:hasName>getStockImageByteByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_11_getStockImageByteByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ChinaStockWebService_11_getStockImageByteByCode_Atomic_output_Body__http___WebXml.com.cn__base64Binary"/>
+    <process:hasPrecondition>The input stock code must be a valid string format according to the specified XML schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the stock image in base64 binary format corresponding to the provided stock code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_12_getStockImage_kByCode_Atomic">
+    <process:hasName>getStockImage_kByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_12_getStockImage_kByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ChinaStockWebService_12_getStockImage_kByCode_Atomic_input_theType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The stock code and image type must be provided as input parameters.</process:hasPrecondition>
+    <process:hasEffect>Retrieves the stock image based on the provided stock code and image type.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_13_getStockImage_kByteByCode_Atomic">
+    <process:hasName>getStockImage_kByteByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_13_getStockImage_kByteByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ChinaStockWebService_13_getStockImage_kByteByCode_Atomic_input_theType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ChinaStockWebService_13_getStockImage_kByteByCode_Atomic_output_Body__http___WebXml.com.cn__base64Binary"/>
+    <process:hasPrecondition>The stock code and type must be provided as input parameters in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the stock image in base64 binary format based on the provided stock code and type.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ChinaStockWebService_14_getStockInfoByCode_Atomic">
+    <process:hasName>getStockInfoByCode</process:hasName>
+    <process:hasInput rdf:resource="#ChinaStockWebService_14_getStockInfoByCode_Atomic_input_theStockCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ChinaStockWebService_14_getStockInfoByCode_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <process:hasPrecondition>The web service requires a valid stock code in the specified format as input.</process:hasPrecondition>
+    <process:hasEffect>The web service will return an array of strings containing information about the stock corresponding to the provided code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ChinaStockWebService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_0_getStockImageByCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_1_getStockImageByteByCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_2_getStockImage_kByCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_3_getStockImage_kByteByCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_4_getStockInfoByCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_5_getStockImageByCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_6_getStockImageByteByCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_7_getStockImage_kByCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_8_getStockImage_kByteByCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_9_getStockInfoByCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_10_getStockImageByCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_11_getStockImageByteByCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_12_getStockImage_kByCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_13_getStockImage_kByteByCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ChinaStockWebService_14_getStockInfoByCode_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_0_getStockImageByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_0_getStockImageByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockImageByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockImageByCodeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockImageByCodeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_1_getStockImageByteByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_1_getStockImageByteByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockImageByteByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockImageByteByCodeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockImageByteByCodeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_2_getStockImage_kByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_2_getStockImage_kByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockImage_kByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockImage_kByCodeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockImage_kByCodeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_3_getStockImage_kByteByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_3_getStockImage_kByteByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockImage_kByteByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockImage_kByteByCodeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockImage_kByteByCodeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_4_getStockInfoByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_4_getStockInfoByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockInfoByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockInfoByCodeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockInfoByCodeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_5_getStockImageByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_5_getStockImageByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockImageByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockImageByCodeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockImageByCodeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_6_getStockImageByteByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_6_getStockImageByteByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockImageByteByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockImageByteByCodeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockImageByteByCodeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_7_getStockImage_kByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_7_getStockImage_kByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockImage_kByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockImage_kByCodeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockImage_kByCodeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_8_getStockImage_kByteByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_8_getStockImage_kByteByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockImage_kByteByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockImage_kByteByCodeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockImage_kByteByCodeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_9_getStockInfoByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_9_getStockInfoByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockInfoByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockInfoByCodeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockInfoByCodeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_10_getStockImageByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_10_getStockImageByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockImageByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockImageByCodeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockImageByCodeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_11_getStockImageByteByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_11_getStockImageByteByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockImageByteByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockImageByteByCodeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockImageByteByCodeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_12_getStockImage_kByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_12_getStockImage_kByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockImage_kByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockImage_kByCodeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockImage_kByCodeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_13_getStockImage_kByteByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_13_getStockImage_kByteByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockImage_kByteByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockImage_kByteByCodeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockImage_kByteByCodeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ChinaStockWebService_14_getStockInfoByCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ChinaStockWebService_14_getStockInfoByCode_Atomic"/>
+    <grounding:wsdlOperationName>getStockInfoByCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ChinaStockWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ChinaStockWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/639_638.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getStockInfoByCodeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getStockInfoByCodeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

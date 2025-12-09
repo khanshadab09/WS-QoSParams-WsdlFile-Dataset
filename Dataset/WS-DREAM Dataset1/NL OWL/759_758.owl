@@ -1,0 +1,315 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="CooperateUserService">
+    <service:presents rdf:resource="#CooperateUserService_Profile"/>
+    <service:describedBy rdf:resource="#CooperateUserService_Composite"/>
+    <service:supports rdf:resource="#CooperateUserService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="CooperateUserService_Profile">
+    <profile:serviceName>CooperateUserService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#CooperateUserService"/>
+    <profile:hasProcess rdf:resource="#CooperateUserService_0_modifyUserInfoByID_Atomic"/>
+    <profile:hasInput rdf:resource="#CooperateUserService_0_modifyUserInfoByID_Atomic_input_parameters__cooperateuser_modifyUserInfoByID"/>
+    <profile:hasOutput rdf:resource="#CooperateUserService_0_modifyUserInfoByID_Atomic_output_parameters__cooperateuser_modifyUserInfoByIDResponse"/>
+    <profile:hasPrecondition>The user must have the necessary permissions to modify user information by ID.</profile:hasPrecondition>
+    <profile:hasResult>The user's information is successfully updated in the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CooperateUserService_1_getUserId_Atomic"/>
+    <profile:hasInput rdf:resource="#CooperateUserService_1_getUserId_Atomic_input_parameters__cooperateuser_getUserId"/>
+    <profile:hasOutput rdf:resource="#CooperateUserService_1_getUserId_Atomic_output_parameters__cooperateuser_getUserIdResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameter "cooperateuser" must be provided to the getUserId operation.</profile:hasPrecondition>
+    <profile:hasResult>The getUserId operation will return the corresponding user ID for the provided "cooperateuser".</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CooperateUserService_2_modifyUserPassword_Atomic"/>
+    <profile:hasInput rdf:resource="#CooperateUserService_2_modifyUserPassword_Atomic_input_parameters__cooperateuser_modifyUserPassword"/>
+    <profile:hasOutput rdf:resource="#CooperateUserService_2_modifyUserPassword_Atomic_output_parameters__cooperateuser_modifyUserPasswordResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and authorized to modify their own password.</profile:hasPrecondition>
+    <profile:hasResult>The user's password is successfully updated in the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CooperateUserService_3_getUserInfoAll_Atomic"/>
+    <profile:hasInput rdf:resource="#CooperateUserService_3_getUserInfoAll_Atomic_input_parameters__cooperateuser_getUserInfoAll"/>
+    <profile:hasOutput rdf:resource="#CooperateUserService_3_getUserInfoAll_Atomic_output_parameters__cooperateuser_getUserInfoAllResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to access the getUserInfoAll operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return detailed information about the specified user, including their personal and account details.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CooperateUserService_4_addUser_Atomic"/>
+    <profile:hasInput rdf:resource="#CooperateUserService_4_addUser_Atomic_input_parameters__cooperateuser_addUser"/>
+    <profile:hasOutput rdf:resource="#CooperateUserService_4_addUser_Atomic_output_parameters__cooperateuser_addUserResponse"/>
+    <profile:hasPrecondition>The system has the necessary permissions to add a new user.</profile:hasPrecondition>
+    <profile:hasResult>A new user is successfully added to the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CooperateUserService_5_getUserInfoAll1_Atomic"/>
+    <profile:hasInput rdf:resource="#CooperateUserService_5_getUserInfoAll1_Atomic_input_parameters__cooperateuser_getUserInfoAll1"/>
+    <profile:hasOutput rdf:resource="#CooperateUserService_5_getUserInfoAll1_Atomic_output_parameters__cooperateuser_getUserInfoAll1Response"/>
+    <profile:hasPrecondition>The user must have the necessary permissions to access the getUserInfoAll1 operation.</profile:hasPrecondition>
+    <profile:hasResult>The getUserInfoAll1 operation will return the requested user information in the getUserInfoAll1Response parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CooperateUserService_6_signIn_Atomic"/>
+    <profile:hasInput rdf:resource="#CooperateUserService_6_signIn_Atomic_input_parameters__cooperateuser_signIn"/>
+    <profile:hasOutput rdf:resource="#CooperateUserService_6_signIn_Atomic_output_parameters__cooperateuser_signInResponse"/>
+    <profile:hasPrecondition>The user must provide valid credentials to authenticate their identity.</profile:hasPrecondition>
+    <profile:hasResult>The system will verify the credentials and provide a response indicating successful or unsuccessful sign-in.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CooperateUserService_7_delUser_Atomic"/>
+    <profile:hasInput rdf:resource="#CooperateUserService_7_delUser_Atomic_input_parameters__cooperateuser_delUser"/>
+    <profile:hasOutput rdf:resource="#CooperateUserService_7_delUser_Atomic_output_parameters__cooperateuser_delUserResponse"/>
+    <profile:hasPrecondition>The user specified in the parameter {cooperateuser} must exist in the system before calling the delUser operation.</profile:hasPrecondition>
+    <profile:hasResult>The specified user {cooperateuser} will be deleted from the system upon successful execution of the delUser operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CooperateUserService_8_getUserName_Atomic"/>
+    <profile:hasInput rdf:resource="#CooperateUserService_8_getUserName_Atomic_input_parameters__cooperateuser_getUserName"/>
+    <profile:hasOutput rdf:resource="#CooperateUserService_8_getUserName_Atomic_output_parameters__cooperateuser_getUserNameResponse"/>
+    <profile:hasPrecondition>The web service must receive a valid request containing the parameter "cooperateuser" for the operation getUserName.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the username associated with the provided "cooperateuser" parameter.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="CooperateUserService_Composite">
+    <process:composedOf rdf:resource="#CooperateUserService_0_modifyUserInfoByID_Atomic"/>
+    <process:composedOf rdf:resource="#CooperateUserService_1_getUserId_Atomic"/>
+    <process:composedOf rdf:resource="#CooperateUserService_2_modifyUserPassword_Atomic"/>
+    <process:composedOf rdf:resource="#CooperateUserService_3_getUserInfoAll_Atomic"/>
+    <process:composedOf rdf:resource="#CooperateUserService_4_addUser_Atomic"/>
+    <process:composedOf rdf:resource="#CooperateUserService_5_getUserInfoAll1_Atomic"/>
+    <process:composedOf rdf:resource="#CooperateUserService_6_signIn_Atomic"/>
+    <process:composedOf rdf:resource="#CooperateUserService_7_delUser_Atomic"/>
+    <process:composedOf rdf:resource="#CooperateUserService_8_getUserName_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="CooperateUserService_0_modifyUserInfoByID_Atomic_input_parameters__cooperateuser_modifyUserInfoByID">
+    <process:parameterType>parameters:{cooperateuser}modifyUserInfoByID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CooperateUserService_0_modifyUserInfoByID_Atomic_output_parameters__cooperateuser_modifyUserInfoByIDResponse">
+    <process:parameterType>parameters:{cooperateuser}modifyUserInfoByIDResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CooperateUserService_1_getUserId_Atomic_input_parameters__cooperateuser_getUserId">
+    <process:parameterType>parameters:{cooperateuser}getUserId</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CooperateUserService_1_getUserId_Atomic_output_parameters__cooperateuser_getUserIdResponse">
+    <process:parameterType>parameters:{cooperateuser}getUserIdResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CooperateUserService_2_modifyUserPassword_Atomic_input_parameters__cooperateuser_modifyUserPassword">
+    <process:parameterType>parameters:{cooperateuser}modifyUserPassword</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CooperateUserService_2_modifyUserPassword_Atomic_output_parameters__cooperateuser_modifyUserPasswordResponse">
+    <process:parameterType>parameters:{cooperateuser}modifyUserPasswordResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CooperateUserService_3_getUserInfoAll_Atomic_input_parameters__cooperateuser_getUserInfoAll">
+    <process:parameterType>parameters:{cooperateuser}getUserInfoAll</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CooperateUserService_3_getUserInfoAll_Atomic_output_parameters__cooperateuser_getUserInfoAllResponse">
+    <process:parameterType>parameters:{cooperateuser}getUserInfoAllResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CooperateUserService_4_addUser_Atomic_input_parameters__cooperateuser_addUser">
+    <process:parameterType>parameters:{cooperateuser}addUser</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CooperateUserService_4_addUser_Atomic_output_parameters__cooperateuser_addUserResponse">
+    <process:parameterType>parameters:{cooperateuser}addUserResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CooperateUserService_5_getUserInfoAll1_Atomic_input_parameters__cooperateuser_getUserInfoAll1">
+    <process:parameterType>parameters:{cooperateuser}getUserInfoAll1</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CooperateUserService_5_getUserInfoAll1_Atomic_output_parameters__cooperateuser_getUserInfoAll1Response">
+    <process:parameterType>parameters:{cooperateuser}getUserInfoAll1Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CooperateUserService_6_signIn_Atomic_input_parameters__cooperateuser_signIn">
+    <process:parameterType>parameters:{cooperateuser}signIn</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CooperateUserService_6_signIn_Atomic_output_parameters__cooperateuser_signInResponse">
+    <process:parameterType>parameters:{cooperateuser}signInResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CooperateUserService_7_delUser_Atomic_input_parameters__cooperateuser_delUser">
+    <process:parameterType>parameters:{cooperateuser}delUser</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CooperateUserService_7_delUser_Atomic_output_parameters__cooperateuser_delUserResponse">
+    <process:parameterType>parameters:{cooperateuser}delUserResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CooperateUserService_8_getUserName_Atomic_input_parameters__cooperateuser_getUserName">
+    <process:parameterType>parameters:{cooperateuser}getUserName</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CooperateUserService_8_getUserName_Atomic_output_parameters__cooperateuser_getUserNameResponse">
+    <process:parameterType>parameters:{cooperateuser}getUserNameResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="CooperateUserService_0_modifyUserInfoByID_Atomic">
+    <process:hasName>modifyUserInfoByID</process:hasName>
+    <process:hasInput rdf:resource="#CooperateUserService_0_modifyUserInfoByID_Atomic_input_parameters__cooperateuser_modifyUserInfoByID"/>
+    <process:hasOutput rdf:resource="#CooperateUserService_0_modifyUserInfoByID_Atomic_output_parameters__cooperateuser_modifyUserInfoByIDResponse"/>
+    <process:hasPrecondition>The user must have the necessary permissions to modify user information by ID.</process:hasPrecondition>
+    <process:hasEffect>The user's information is successfully updated in the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CooperateUserService_1_getUserId_Atomic">
+    <process:hasName>getUserId</process:hasName>
+    <process:hasInput rdf:resource="#CooperateUserService_1_getUserId_Atomic_input_parameters__cooperateuser_getUserId"/>
+    <process:hasOutput rdf:resource="#CooperateUserService_1_getUserId_Atomic_output_parameters__cooperateuser_getUserIdResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameter "cooperateuser" must be provided to the getUserId operation.</process:hasPrecondition>
+    <process:hasEffect>The getUserId operation will return the corresponding user ID for the provided "cooperateuser".</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CooperateUserService_2_modifyUserPassword_Atomic">
+    <process:hasName>modifyUserPassword</process:hasName>
+    <process:hasInput rdf:resource="#CooperateUserService_2_modifyUserPassword_Atomic_input_parameters__cooperateuser_modifyUserPassword"/>
+    <process:hasOutput rdf:resource="#CooperateUserService_2_modifyUserPassword_Atomic_output_parameters__cooperateuser_modifyUserPasswordResponse"/>
+    <process:hasPrecondition>The user must be authenticated and authorized to modify their own password.</process:hasPrecondition>
+    <process:hasEffect>The user's password is successfully updated in the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CooperateUserService_3_getUserInfoAll_Atomic">
+    <process:hasName>getUserInfoAll</process:hasName>
+    <process:hasInput rdf:resource="#CooperateUserService_3_getUserInfoAll_Atomic_input_parameters__cooperateuser_getUserInfoAll"/>
+    <process:hasOutput rdf:resource="#CooperateUserService_3_getUserInfoAll_Atomic_output_parameters__cooperateuser_getUserInfoAllResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to access the getUserInfoAll operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return detailed information about the specified user, including their personal and account details.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CooperateUserService_4_addUser_Atomic">
+    <process:hasName>addUser</process:hasName>
+    <process:hasInput rdf:resource="#CooperateUserService_4_addUser_Atomic_input_parameters__cooperateuser_addUser"/>
+    <process:hasOutput rdf:resource="#CooperateUserService_4_addUser_Atomic_output_parameters__cooperateuser_addUserResponse"/>
+    <process:hasPrecondition>The system has the necessary permissions to add a new user.</process:hasPrecondition>
+    <process:hasEffect>A new user is successfully added to the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CooperateUserService_5_getUserInfoAll1_Atomic">
+    <process:hasName>getUserInfoAll1</process:hasName>
+    <process:hasInput rdf:resource="#CooperateUserService_5_getUserInfoAll1_Atomic_input_parameters__cooperateuser_getUserInfoAll1"/>
+    <process:hasOutput rdf:resource="#CooperateUserService_5_getUserInfoAll1_Atomic_output_parameters__cooperateuser_getUserInfoAll1Response"/>
+    <process:hasPrecondition>The user must have the necessary permissions to access the getUserInfoAll1 operation.</process:hasPrecondition>
+    <process:hasEffect>The getUserInfoAll1 operation will return the requested user information in the getUserInfoAll1Response parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CooperateUserService_6_signIn_Atomic">
+    <process:hasName>signIn</process:hasName>
+    <process:hasInput rdf:resource="#CooperateUserService_6_signIn_Atomic_input_parameters__cooperateuser_signIn"/>
+    <process:hasOutput rdf:resource="#CooperateUserService_6_signIn_Atomic_output_parameters__cooperateuser_signInResponse"/>
+    <process:hasPrecondition>The user must provide valid credentials to authenticate their identity.</process:hasPrecondition>
+    <process:hasEffect>The system will verify the credentials and provide a response indicating successful or unsuccessful sign-in.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CooperateUserService_7_delUser_Atomic">
+    <process:hasName>delUser</process:hasName>
+    <process:hasInput rdf:resource="#CooperateUserService_7_delUser_Atomic_input_parameters__cooperateuser_delUser"/>
+    <process:hasOutput rdf:resource="#CooperateUserService_7_delUser_Atomic_output_parameters__cooperateuser_delUserResponse"/>
+    <process:hasPrecondition>The user specified in the parameter {cooperateuser} must exist in the system before calling the delUser operation.</process:hasPrecondition>
+    <process:hasEffect>The specified user {cooperateuser} will be deleted from the system upon successful execution of the delUser operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CooperateUserService_8_getUserName_Atomic">
+    <process:hasName>getUserName</process:hasName>
+    <process:hasInput rdf:resource="#CooperateUserService_8_getUserName_Atomic_input_parameters__cooperateuser_getUserName"/>
+    <process:hasOutput rdf:resource="#CooperateUserService_8_getUserName_Atomic_output_parameters__cooperateuser_getUserNameResponse"/>
+    <process:hasPrecondition>The web service must receive a valid request containing the parameter "cooperateuser" for the operation getUserName.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the username associated with the provided "cooperateuser" parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="CooperateUserService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CooperateUserService_0_modifyUserInfoByID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CooperateUserService_1_getUserId_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CooperateUserService_2_modifyUserPassword_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CooperateUserService_3_getUserInfoAll_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CooperateUserService_4_addUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CooperateUserService_5_getUserInfoAll1_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CooperateUserService_6_signIn_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CooperateUserService_7_delUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CooperateUserService_8_getUserName_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CooperateUserService_0_modifyUserInfoByID_Grounding">
+    <grounding:owlsProcess rdf:resource="#CooperateUserService_0_modifyUserInfoByID_Atomic"/>
+    <grounding:wsdlOperationName>modifyUserInfoByID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CooperateUserServiceHttpBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CooperateUserServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/759_758.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>modifyUserInfoByIDRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>modifyUserInfoByIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CooperateUserService_1_getUserId_Grounding">
+    <grounding:owlsProcess rdf:resource="#CooperateUserService_1_getUserId_Atomic"/>
+    <grounding:wsdlOperationName>getUserId</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CooperateUserServiceHttpBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CooperateUserServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/759_758.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getUserIdRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getUserIdResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CooperateUserService_2_modifyUserPassword_Grounding">
+    <grounding:owlsProcess rdf:resource="#CooperateUserService_2_modifyUserPassword_Atomic"/>
+    <grounding:wsdlOperationName>modifyUserPassword</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CooperateUserServiceHttpBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CooperateUserServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/759_758.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>modifyUserPasswordRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>modifyUserPasswordResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CooperateUserService_3_getUserInfoAll_Grounding">
+    <grounding:owlsProcess rdf:resource="#CooperateUserService_3_getUserInfoAll_Atomic"/>
+    <grounding:wsdlOperationName>getUserInfoAll</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CooperateUserServiceHttpBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CooperateUserServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/759_758.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getUserInfoAllRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getUserInfoAllResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CooperateUserService_4_addUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#CooperateUserService_4_addUser_Atomic"/>
+    <grounding:wsdlOperationName>addUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CooperateUserServiceHttpBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CooperateUserServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/759_758.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>addUserRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>addUserResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CooperateUserService_5_getUserInfoAll1_Grounding">
+    <grounding:owlsProcess rdf:resource="#CooperateUserService_5_getUserInfoAll1_Atomic"/>
+    <grounding:wsdlOperationName>getUserInfoAll1</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CooperateUserServiceHttpBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CooperateUserServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/759_758.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getUserInfoAll1Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getUserInfoAll1Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CooperateUserService_6_signIn_Grounding">
+    <grounding:owlsProcess rdf:resource="#CooperateUserService_6_signIn_Atomic"/>
+    <grounding:wsdlOperationName>signIn</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CooperateUserServiceHttpBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CooperateUserServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/759_758.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>signInRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>signInResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CooperateUserService_7_delUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#CooperateUserService_7_delUser_Atomic"/>
+    <grounding:wsdlOperationName>delUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CooperateUserServiceHttpBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CooperateUserServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/759_758.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>delUserRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>delUserResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CooperateUserService_8_getUserName_Grounding">
+    <grounding:owlsProcess rdf:resource="#CooperateUserService_8_getUserName_Atomic"/>
+    <grounding:wsdlOperationName>getUserName</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CooperateUserServiceHttpBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CooperateUserServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/759_758.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getUserNameRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getUserNameResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
