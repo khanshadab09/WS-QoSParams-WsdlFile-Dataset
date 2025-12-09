@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="sms">
+    <service:presents rdf:resource="#sms_Profile"/>
+    <service:describedBy rdf:resource="#sms_Composite"/>
+    <service:supports rdf:resource="#sms_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="sms_Profile">
+    <profile:serviceName>sms</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#sms"/>
+    <profile:hasProcess rdf:resource="#sms_0_sms_Atomic"/>
+    <profile:hasInput rdf:resource="#sms_0_sms_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#sms_0_sms_Atomic_input_mittente__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#sms_0_sms_Atomic_input_username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#sms_0_sms_Atomic_input_destinatario__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#sms_0_sms_Atomic_input_testo__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#sms_0_sms_Atomic_output_risultato__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sms(password, mittente, username, destinatario, testo) ^ string(password) ^ string(mittente) ^ string(username) ^ string(destinatario) ^ string(testo)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">risultato("SMS inviato con successo") ^ string("SMS inviato con successo")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#sms_1_sms_check_Atomic"/>
+    <profile:hasInput rdf:resource="#sms_1_sms_check_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#sms_1_sms_check_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#sms_1_sms_check_Atomic_input_username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#sms_1_sms_check_Atomic_output_risultato__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(password, "secret") ^ swrlb:equal(id, 123) ^ swrlb:equal(username, "john_doe")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(risultato, "Access granted")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#sms_2_send_Atomic"/>
+    <profile:hasInput rdf:resource="#sms_2_send_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#sms_2_send_Atomic_input_mittente__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#sms_2_send_Atomic_input_username__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#sms_2_send_Atomic_input_destinatario__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#sms_2_send_Atomic_input_testo__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#sms_2_send_Atomic_output_risultato__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">password(?password) ^ mittente(?mittente) ^ username(?username) ^ destinatario(?destinatario) ^ testo(?testo)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">risultato(?risultato)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="sms_Composite">
+    <process:composedOf rdf:resource="#sms_0_sms_Atomic"/>
+    <process:composedOf rdf:resource="#sms_1_sms_check_Atomic"/>
+    <process:composedOf rdf:resource="#sms_2_send_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="sms_0_sms_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="sms_0_sms_Atomic_input_mittente__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>mittente:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="sms_0_sms_Atomic_input_username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="sms_0_sms_Atomic_input_destinatario__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>destinatario:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="sms_0_sms_Atomic_input_testo__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>testo:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="sms_0_sms_Atomic_output_risultato__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>risultato:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="sms_1_sms_check_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="sms_1_sms_check_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>id:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="sms_1_sms_check_Atomic_input_username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="sms_1_sms_check_Atomic_output_risultato__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>risultato:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="sms_2_send_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="sms_2_send_Atomic_input_mittente__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>mittente:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="sms_2_send_Atomic_input_username__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>username:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="sms_2_send_Atomic_input_destinatario__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>destinatario:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="sms_2_send_Atomic_input_testo__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>testo:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="sms_2_send_Atomic_output_risultato__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>risultato:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="sms_0_sms_Atomic">
+    <process:hasName>sms</process:hasName>
+    <process:hasInput rdf:resource="#sms_0_sms_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#sms_0_sms_Atomic_input_mittente__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#sms_0_sms_Atomic_input_username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#sms_0_sms_Atomic_input_destinatario__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#sms_0_sms_Atomic_input_testo__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#sms_0_sms_Atomic_output_risultato__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sms(password, mittente, username, destinatario, testo) ^ string(password) ^ string(mittente) ^ string(username) ^ string(destinatario) ^ string(testo)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">risultato("SMS inviato con successo") ^ string("SMS inviato con successo")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="sms_1_sms_check_Atomic">
+    <process:hasName>sms_check</process:hasName>
+    <process:hasInput rdf:resource="#sms_1_sms_check_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#sms_1_sms_check_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#sms_1_sms_check_Atomic_input_username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#sms_1_sms_check_Atomic_output_risultato__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(password, "secret") ^ swrlb:equal(id, 123) ^ swrlb:equal(username, "john_doe")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(risultato, "Access granted")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="sms_2_send_Atomic">
+    <process:hasName>send</process:hasName>
+    <process:hasInput rdf:resource="#sms_2_send_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#sms_2_send_Atomic_input_mittente__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#sms_2_send_Atomic_input_username__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#sms_2_send_Atomic_input_destinatario__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#sms_2_send_Atomic_input_testo__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#sms_2_send_Atomic_output_risultato__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">password(?password) ^ mittente(?mittente) ^ username(?username) ^ destinatario(?destinatario) ^ testo(?testo)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">risultato(?risultato)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="sms_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#sms_0_sms_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#sms_1_sms_check_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#sms_2_send_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="sms_0_sms_Grounding">
+    <grounding:owlsProcess rdf:resource="#sms_0_sms_Atomic"/>
+    <grounding:wsdlOperationName>sms</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>smsBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>smsPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1841_1840.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>smsRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>smsResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="sms_1_sms_check_Grounding">
+    <grounding:owlsProcess rdf:resource="#sms_1_sms_check_Atomic"/>
+    <grounding:wsdlOperationName>sms_check</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>smsBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>smsPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1841_1840.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>sms_checkRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>sms_checkResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="sms_2_send_Grounding">
+    <grounding:owlsProcess rdf:resource="#sms_2_send_Atomic"/>
+    <grounding:wsdlOperationName>send</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>smsBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>smsPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1841_1840.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>sendRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>sendResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

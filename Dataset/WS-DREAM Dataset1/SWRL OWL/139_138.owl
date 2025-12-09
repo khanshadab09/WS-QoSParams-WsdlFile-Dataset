@@ -1,0 +1,664 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="OligoAnalyzer">
+    <service:presents rdf:resource="#OligoAnalyzer_Profile"/>
+    <service:describedBy rdf:resource="#OligoAnalyzer_Composite"/>
+    <service:supports rdf:resource="#OligoAnalyzer_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="OligoAnalyzer_Profile">
+    <profile:serviceName>OligoAnalyzer</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#OligoAnalyzer"/>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_0_CleanSeq_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_0_CleanSeq_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_0_CleanSeq_Atomic_output_Body__http___services.idtdna.com__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sequence(?x) ^ swrlb:datatype(?x, xsd:string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ swrlb:datatype(?y, idtdna:string) ^ hasOutput(CleanSeq, ?y) ^ hasInput(CleanSeq, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_1_Analyze_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_1_Analyze_Atomic_input_dNTPsConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_1_Analyze_Atomic_input_NaConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_1_Analyze_Atomic_input_TargetType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_1_Analyze_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_1_Analyze_Atomic_input_MgConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_1_Analyze_Atomic_input_OligoConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_1_Analyze_Atomic_output_Body__http___services.idtdna.com__AnalyzerResult"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dNTPsConc(?x), NaConc(?y), TargetType(?z), Sequence(?w), MgConc(?v), OligoConc(?u)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ AnalyzerResult(?result) ^ hasResult(?result, ?x, ?y, ?z, ?w, ?v, ?u)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_2_HeteroDimer_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_2_HeteroDimer_Atomic_input_SecondarySequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_2_HeteroDimer_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_2_HeteroDimer_Atomic_output_Body__http___services.idtdna.com__TDuplexResults"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecondarySequence(?seq), Sequence(?seq)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ TDuplexResults(?result) ^ hasInput(?result, ?seq) ^ hasInput(?result, ?seq)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_3_SelfDimer_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_3_SelfDimer_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_3_SelfDimer_Atomic_output_Body__http___services.idtdna.com__TDuplexResults"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sequence(?seq) ^ swrlb:containsSubstring(?seq, "A") ^ swrlb:containsSubstring(?seq, "T") ^ swrlb:containsSubstring(?seq, "C") ^ swrlb:containsSubstring(?seq, "G")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TDuplexResults(?result) ^ hasResult(?result, SelfDimer(?seq))</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_4_UNAFoldRun_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_4_UNAFoldRun_Atomic_input_isRNA__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_4_UNAFoldRun_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_4_UNAFoldRun_Atomic_output_Body__http___services.idtdna.com__UNAFoldOutputBO"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">isRNA(?isRNA) ^ Sequence(?Sequence)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UNAFoldRun(?isRNA, ?Sequence) ^ hasOutput(?UNAFoldOutputBO) ^ Body(?UNAFoldOutputBO)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_5_UNAFoldRetrieveImage_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_5_UNAFoldRetrieveImage_Atomic_input_location__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_5_UNAFoldRetrieveImage_Atomic_output_Body__http___services.idtdna.com__base64Binary"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UNAFoldRetrieveImage(?x) ^ hasInput(?x, ?y) ^ hasDataType(?y, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, ?z) ^ hasDataType(?z, "http://services.idtdna.com/#base64Binary")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_6_CleanSeq_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_6_CleanSeq_Atomic_input_parameters__http___services.idtdna.com__CleanSeq"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_6_CleanSeq_Atomic_output_parameters__http___services.idtdna.com__CleanSeqResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rdf:type(http://services.idtdna.com/CleanSeq, owl:Class)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rdf:type(http://services.idtdna.com/CleanSeqResponse, owl:Class)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_7_Analyze_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_7_Analyze_Atomic_input_parameters__http___services.idtdna.com__Analyze"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_7_Analyze_Atomic_output_parameters__http___services.idtdna.com__AnalyzeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_8_HeteroDimer_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_8_HeteroDimer_Atomic_input_parameters__http___services.idtdna.com__HeteroDimer"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_8_HeteroDimer_Atomic_output_parameters__http___services.idtdna.com__HeteroDimerResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeteroDimer(?input)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeteroDimerResponse(?output)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_9_SelfDimer_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_9_SelfDimer_Atomic_input_parameters__http___services.idtdna.com__SelfDimer"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_9_SelfDimer_Atomic_output_parameters__http___services.idtdna.com__SelfDimerResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfDimer(?x) ^ hasParameter(?x, &lt;http://services.idtdna.com/SelfDimer&gt;)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfDimerResponse(?y) ^ hasParameter(?y, &lt;http://services.idtdna.com/SelfDimerResponse&gt;) ^ hasInput(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_10_UNAFoldRun_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_10_UNAFoldRun_Atomic_input_parameters__http___services.idtdna.com__UNAFoldRun"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_10_UNAFoldRun_Atomic_output_parameters__http___services.idtdna.com__UNAFoldRunResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UNAFoldRun(?run) ^ hasInput(?run, ?input) ^ hasParameter(?input, ?parameters) ^ hasNamespace(?parameters, "http://services.idtdna.com/") ^ hasName(?parameters, "UNAFoldRun")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UNAFoldRunResponse(?response) ^ hasOutput(?run, ?response) ^ hasParameter(?response, ?responseParams) ^ hasNamespace(?responseParams, "http://services.idtdna.com/") ^ hasName(?responseParams, "UNAFoldRunResponse")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_11_UNAFoldRetrieveImage_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_11_UNAFoldRetrieveImage_Atomic_input_parameters__http___services.idtdna.com__UNAFoldRetrieveImage"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_11_UNAFoldRetrieveImage_Atomic_output_parameters__http___services.idtdna.com__UNAFoldRetrieveImageResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_12_CleanSeq_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_12_CleanSeq_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_12_CleanSeq_Atomic_output_Body__http___services.idtdna.com__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sequence(?x) ^ swrlb:datatype(?x, xsd:string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ swrlb:datatype(?y, idtdna:string) ^ hasOutput(CleanSeq, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_13_Analyze_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_13_Analyze_Atomic_input_dNTPsConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_13_Analyze_Atomic_input_NaConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_13_Analyze_Atomic_input_TargetType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_13_Analyze_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_13_Analyze_Atomic_input_MgConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_13_Analyze_Atomic_input_OligoConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_13_Analyze_Atomic_output_Body__http___services.idtdna.com__AnalyzerResult"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dNTPsConc(?x), NaConc(?y), TargetType(?z), Sequence(?w), MgConc(?v), OligoConc(?u)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(AnalyzerResult)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_14_HeteroDimer_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_14_HeteroDimer_Atomic_input_SecondarySequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_14_HeteroDimer_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_14_HeteroDimer_Atomic_output_Body__http___services.idtdna.com__TDuplexResults"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecondarySequence(?seq), Sequence(?seq)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ TDuplexResults(?result) ^ hasOutput(?result, ?seq)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_15_SelfDimer_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_15_SelfDimer_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_15_SelfDimer_Atomic_output_Body__http___services.idtdna.com__TDuplexResults"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sequence(?seq) ^ swrlb:containsSubstring(?seq, "A") ^ swrlb:containsSubstring(?seq, "T") ^ swrlb:containsSubstring(?seq, "C") ^ swrlb:containsSubstring(?seq, "G")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TDuplexResults(?result) ^ hasResult(?result, SelfDimer(?seq))</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_16_UNAFoldRun_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_16_UNAFoldRun_Atomic_input_isRNA__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_16_UNAFoldRun_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_16_UNAFoldRun_Atomic_output_Body__http___services.idtdna.com__UNAFoldOutputBO"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(UNAFoldRun, isRNA) ^ hasInputParameter(UNAFoldRun, Sequence)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(UNAFoldRun, Body) ^ hasOutputType(Body, UNAFoldOutputBO)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OligoAnalyzer_17_UNAFoldRetrieveImage_Atomic"/>
+    <profile:hasInput rdf:resource="#OligoAnalyzer_17_UNAFoldRetrieveImage_Atomic_input_location__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OligoAnalyzer_17_UNAFoldRetrieveImage_Atomic_output_Body__http___services.idtdna.com__base64Binary"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UNAFoldRetrieveImage(?location)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UNAFoldRetrieveImage(?location) ^ hasOutput(?location, Body) ^ Body(?location, ?image) ^ hasType(?image, base64Binary)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="OligoAnalyzer_Composite">
+    <process:composedOf rdf:resource="#OligoAnalyzer_0_CleanSeq_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_1_Analyze_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_2_HeteroDimer_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_3_SelfDimer_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_4_UNAFoldRun_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_5_UNAFoldRetrieveImage_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_6_CleanSeq_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_7_Analyze_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_8_HeteroDimer_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_9_SelfDimer_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_10_UNAFoldRun_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_11_UNAFoldRetrieveImage_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_12_CleanSeq_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_13_Analyze_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_14_HeteroDimer_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_15_SelfDimer_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_16_UNAFoldRun_Atomic"/>
+    <process:composedOf rdf:resource="#OligoAnalyzer_17_UNAFoldRetrieveImage_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="OligoAnalyzer_0_CleanSeq_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Sequence:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_0_CleanSeq_Atomic_output_Body__http___services.idtdna.com__string">
+    <process:parameterType>Body:{http://services.idtdna.com/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_1_Analyze_Atomic_input_dNTPsConc__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>dNTPsConc:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OligoAnalyzer_1_Analyze_Atomic_input_NaConc__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>NaConc:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OligoAnalyzer_1_Analyze_Atomic_input_TargetType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TargetType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OligoAnalyzer_1_Analyze_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Sequence:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OligoAnalyzer_1_Analyze_Atomic_input_MgConc__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MgConc:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OligoAnalyzer_1_Analyze_Atomic_input_OligoConc__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>OligoConc:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_1_Analyze_Atomic_output_Body__http___services.idtdna.com__AnalyzerResult">
+    <process:parameterType>Body:{http://services.idtdna.com/}AnalyzerResult</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_2_HeteroDimer_Atomic_input_SecondarySequence__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>SecondarySequence:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OligoAnalyzer_2_HeteroDimer_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Sequence:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_2_HeteroDimer_Atomic_output_Body__http___services.idtdna.com__TDuplexResults">
+    <process:parameterType>Body:{http://services.idtdna.com/}TDuplexResults</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_3_SelfDimer_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Sequence:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_3_SelfDimer_Atomic_output_Body__http___services.idtdna.com__TDuplexResults">
+    <process:parameterType>Body:{http://services.idtdna.com/}TDuplexResults</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_4_UNAFoldRun_Atomic_input_isRNA__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>isRNA:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OligoAnalyzer_4_UNAFoldRun_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Sequence:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_4_UNAFoldRun_Atomic_output_Body__http___services.idtdna.com__UNAFoldOutputBO">
+    <process:parameterType>Body:{http://services.idtdna.com/}UNAFoldOutputBO</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_5_UNAFoldRetrieveImage_Atomic_input_location__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>location:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_5_UNAFoldRetrieveImage_Atomic_output_Body__http___services.idtdna.com__base64Binary">
+    <process:parameterType>Body:{http://services.idtdna.com/}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_6_CleanSeq_Atomic_input_parameters__http___services.idtdna.com__CleanSeq">
+    <process:parameterType>parameters:{http://services.idtdna.com/}CleanSeq</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_6_CleanSeq_Atomic_output_parameters__http___services.idtdna.com__CleanSeqResponse">
+    <process:parameterType>parameters:{http://services.idtdna.com/}CleanSeqResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_7_Analyze_Atomic_input_parameters__http___services.idtdna.com__Analyze">
+    <process:parameterType>parameters:{http://services.idtdna.com/}Analyze</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_7_Analyze_Atomic_output_parameters__http___services.idtdna.com__AnalyzeResponse">
+    <process:parameterType>parameters:{http://services.idtdna.com/}AnalyzeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_8_HeteroDimer_Atomic_input_parameters__http___services.idtdna.com__HeteroDimer">
+    <process:parameterType>parameters:{http://services.idtdna.com/}HeteroDimer</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_8_HeteroDimer_Atomic_output_parameters__http___services.idtdna.com__HeteroDimerResponse">
+    <process:parameterType>parameters:{http://services.idtdna.com/}HeteroDimerResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_9_SelfDimer_Atomic_input_parameters__http___services.idtdna.com__SelfDimer">
+    <process:parameterType>parameters:{http://services.idtdna.com/}SelfDimer</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_9_SelfDimer_Atomic_output_parameters__http___services.idtdna.com__SelfDimerResponse">
+    <process:parameterType>parameters:{http://services.idtdna.com/}SelfDimerResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_10_UNAFoldRun_Atomic_input_parameters__http___services.idtdna.com__UNAFoldRun">
+    <process:parameterType>parameters:{http://services.idtdna.com/}UNAFoldRun</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_10_UNAFoldRun_Atomic_output_parameters__http___services.idtdna.com__UNAFoldRunResponse">
+    <process:parameterType>parameters:{http://services.idtdna.com/}UNAFoldRunResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_11_UNAFoldRetrieveImage_Atomic_input_parameters__http___services.idtdna.com__UNAFoldRetrieveImage">
+    <process:parameterType>parameters:{http://services.idtdna.com/}UNAFoldRetrieveImage</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_11_UNAFoldRetrieveImage_Atomic_output_parameters__http___services.idtdna.com__UNAFoldRetrieveImageResponse">
+    <process:parameterType>parameters:{http://services.idtdna.com/}UNAFoldRetrieveImageResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_12_CleanSeq_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Sequence:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_12_CleanSeq_Atomic_output_Body__http___services.idtdna.com__string">
+    <process:parameterType>Body:{http://services.idtdna.com/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_13_Analyze_Atomic_input_dNTPsConc__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>dNTPsConc:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OligoAnalyzer_13_Analyze_Atomic_input_NaConc__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>NaConc:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OligoAnalyzer_13_Analyze_Atomic_input_TargetType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TargetType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OligoAnalyzer_13_Analyze_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Sequence:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OligoAnalyzer_13_Analyze_Atomic_input_MgConc__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MgConc:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OligoAnalyzer_13_Analyze_Atomic_input_OligoConc__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>OligoConc:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_13_Analyze_Atomic_output_Body__http___services.idtdna.com__AnalyzerResult">
+    <process:parameterType>Body:{http://services.idtdna.com/}AnalyzerResult</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_14_HeteroDimer_Atomic_input_SecondarySequence__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>SecondarySequence:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OligoAnalyzer_14_HeteroDimer_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Sequence:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_14_HeteroDimer_Atomic_output_Body__http___services.idtdna.com__TDuplexResults">
+    <process:parameterType>Body:{http://services.idtdna.com/}TDuplexResults</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_15_SelfDimer_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Sequence:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_15_SelfDimer_Atomic_output_Body__http___services.idtdna.com__TDuplexResults">
+    <process:parameterType>Body:{http://services.idtdna.com/}TDuplexResults</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_16_UNAFoldRun_Atomic_input_isRNA__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>isRNA:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OligoAnalyzer_16_UNAFoldRun_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Sequence:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_16_UNAFoldRun_Atomic_output_Body__http___services.idtdna.com__UNAFoldOutputBO">
+    <process:parameterType>Body:{http://services.idtdna.com/}UNAFoldOutputBO</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OligoAnalyzer_17_UNAFoldRetrieveImage_Atomic_input_location__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>location:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OligoAnalyzer_17_UNAFoldRetrieveImage_Atomic_output_Body__http___services.idtdna.com__base64Binary">
+    <process:parameterType>Body:{http://services.idtdna.com/}base64Binary</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_0_CleanSeq_Atomic">
+    <process:hasName>CleanSeq</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_0_CleanSeq_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_0_CleanSeq_Atomic_output_Body__http___services.idtdna.com__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sequence(?x) ^ swrlb:datatype(?x, xsd:string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ swrlb:datatype(?y, idtdna:string) ^ hasOutput(CleanSeq, ?y) ^ hasInput(CleanSeq, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_1_Analyze_Atomic">
+    <process:hasName>Analyze</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_1_Analyze_Atomic_input_dNTPsConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OligoAnalyzer_1_Analyze_Atomic_input_NaConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OligoAnalyzer_1_Analyze_Atomic_input_TargetType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OligoAnalyzer_1_Analyze_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OligoAnalyzer_1_Analyze_Atomic_input_MgConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OligoAnalyzer_1_Analyze_Atomic_input_OligoConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_1_Analyze_Atomic_output_Body__http___services.idtdna.com__AnalyzerResult"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dNTPsConc(?x), NaConc(?y), TargetType(?z), Sequence(?w), MgConc(?v), OligoConc(?u)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ AnalyzerResult(?result) ^ hasResult(?result, ?x, ?y, ?z, ?w, ?v, ?u)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_2_HeteroDimer_Atomic">
+    <process:hasName>HeteroDimer</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_2_HeteroDimer_Atomic_input_SecondarySequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OligoAnalyzer_2_HeteroDimer_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_2_HeteroDimer_Atomic_output_Body__http___services.idtdna.com__TDuplexResults"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecondarySequence(?seq), Sequence(?seq)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ TDuplexResults(?result) ^ hasInput(?result, ?seq) ^ hasInput(?result, ?seq)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_3_SelfDimer_Atomic">
+    <process:hasName>SelfDimer</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_3_SelfDimer_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_3_SelfDimer_Atomic_output_Body__http___services.idtdna.com__TDuplexResults"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sequence(?seq) ^ swrlb:containsSubstring(?seq, "A") ^ swrlb:containsSubstring(?seq, "T") ^ swrlb:containsSubstring(?seq, "C") ^ swrlb:containsSubstring(?seq, "G")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TDuplexResults(?result) ^ hasResult(?result, SelfDimer(?seq))</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_4_UNAFoldRun_Atomic">
+    <process:hasName>UNAFoldRun</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_4_UNAFoldRun_Atomic_input_isRNA__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OligoAnalyzer_4_UNAFoldRun_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_4_UNAFoldRun_Atomic_output_Body__http___services.idtdna.com__UNAFoldOutputBO"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">isRNA(?isRNA) ^ Sequence(?Sequence)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UNAFoldRun(?isRNA, ?Sequence) ^ hasOutput(?UNAFoldOutputBO) ^ Body(?UNAFoldOutputBO)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_5_UNAFoldRetrieveImage_Atomic">
+    <process:hasName>UNAFoldRetrieveImage</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_5_UNAFoldRetrieveImage_Atomic_input_location__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_5_UNAFoldRetrieveImage_Atomic_output_Body__http___services.idtdna.com__base64Binary"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UNAFoldRetrieveImage(?x) ^ hasInput(?x, ?y) ^ hasDataType(?y, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, ?z) ^ hasDataType(?z, "http://services.idtdna.com/#base64Binary")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_6_CleanSeq_Atomic">
+    <process:hasName>CleanSeq</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_6_CleanSeq_Atomic_input_parameters__http___services.idtdna.com__CleanSeq"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_6_CleanSeq_Atomic_output_parameters__http___services.idtdna.com__CleanSeqResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rdf:type(http://services.idtdna.com/CleanSeq, owl:Class)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rdf:type(http://services.idtdna.com/CleanSeqResponse, owl:Class)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_7_Analyze_Atomic">
+    <process:hasName>Analyze</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_7_Analyze_Atomic_input_parameters__http___services.idtdna.com__Analyze"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_7_Analyze_Atomic_output_parameters__http___services.idtdna.com__AnalyzeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_8_HeteroDimer_Atomic">
+    <process:hasName>HeteroDimer</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_8_HeteroDimer_Atomic_input_parameters__http___services.idtdna.com__HeteroDimer"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_8_HeteroDimer_Atomic_output_parameters__http___services.idtdna.com__HeteroDimerResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeteroDimer(?input)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeteroDimerResponse(?output)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_9_SelfDimer_Atomic">
+    <process:hasName>SelfDimer</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_9_SelfDimer_Atomic_input_parameters__http___services.idtdna.com__SelfDimer"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_9_SelfDimer_Atomic_output_parameters__http___services.idtdna.com__SelfDimerResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfDimer(?x) ^ hasParameter(?x, &lt;http://services.idtdna.com/SelfDimer&gt;)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfDimerResponse(?y) ^ hasParameter(?y, &lt;http://services.idtdna.com/SelfDimerResponse&gt;) ^ hasInput(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_10_UNAFoldRun_Atomic">
+    <process:hasName>UNAFoldRun</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_10_UNAFoldRun_Atomic_input_parameters__http___services.idtdna.com__UNAFoldRun"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_10_UNAFoldRun_Atomic_output_parameters__http___services.idtdna.com__UNAFoldRunResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UNAFoldRun(?run) ^ hasInput(?run, ?input) ^ hasParameter(?input, ?parameters) ^ hasNamespace(?parameters, "http://services.idtdna.com/") ^ hasName(?parameters, "UNAFoldRun")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UNAFoldRunResponse(?response) ^ hasOutput(?run, ?response) ^ hasParameter(?response, ?responseParams) ^ hasNamespace(?responseParams, "http://services.idtdna.com/") ^ hasName(?responseParams, "UNAFoldRunResponse")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_11_UNAFoldRetrieveImage_Atomic">
+    <process:hasName>UNAFoldRetrieveImage</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_11_UNAFoldRetrieveImage_Atomic_input_parameters__http___services.idtdna.com__UNAFoldRetrieveImage"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_11_UNAFoldRetrieveImage_Atomic_output_parameters__http___services.idtdna.com__UNAFoldRetrieveImageResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_12_CleanSeq_Atomic">
+    <process:hasName>CleanSeq</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_12_CleanSeq_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_12_CleanSeq_Atomic_output_Body__http___services.idtdna.com__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sequence(?x) ^ swrlb:datatype(?x, xsd:string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ swrlb:datatype(?y, idtdna:string) ^ hasOutput(CleanSeq, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_13_Analyze_Atomic">
+    <process:hasName>Analyze</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_13_Analyze_Atomic_input_dNTPsConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OligoAnalyzer_13_Analyze_Atomic_input_NaConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OligoAnalyzer_13_Analyze_Atomic_input_TargetType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OligoAnalyzer_13_Analyze_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OligoAnalyzer_13_Analyze_Atomic_input_MgConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OligoAnalyzer_13_Analyze_Atomic_input_OligoConc__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_13_Analyze_Atomic_output_Body__http___services.idtdna.com__AnalyzerResult"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dNTPsConc(?x), NaConc(?y), TargetType(?z), Sequence(?w), MgConc(?v), OligoConc(?u)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(AnalyzerResult)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_14_HeteroDimer_Atomic">
+    <process:hasName>HeteroDimer</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_14_HeteroDimer_Atomic_input_SecondarySequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OligoAnalyzer_14_HeteroDimer_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_14_HeteroDimer_Atomic_output_Body__http___services.idtdna.com__TDuplexResults"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecondarySequence(?seq), Sequence(?seq)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ TDuplexResults(?result) ^ hasOutput(?result, ?seq)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_15_SelfDimer_Atomic">
+    <process:hasName>SelfDimer</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_15_SelfDimer_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_15_SelfDimer_Atomic_output_Body__http___services.idtdna.com__TDuplexResults"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sequence(?seq) ^ swrlb:containsSubstring(?seq, "A") ^ swrlb:containsSubstring(?seq, "T") ^ swrlb:containsSubstring(?seq, "C") ^ swrlb:containsSubstring(?seq, "G")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TDuplexResults(?result) ^ hasResult(?result, SelfDimer(?seq))</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_16_UNAFoldRun_Atomic">
+    <process:hasName>UNAFoldRun</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_16_UNAFoldRun_Atomic_input_isRNA__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OligoAnalyzer_16_UNAFoldRun_Atomic_input_Sequence__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_16_UNAFoldRun_Atomic_output_Body__http___services.idtdna.com__UNAFoldOutputBO"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(UNAFoldRun, isRNA) ^ hasInputParameter(UNAFoldRun, Sequence)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(UNAFoldRun, Body) ^ hasOutputType(Body, UNAFoldOutputBO)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OligoAnalyzer_17_UNAFoldRetrieveImage_Atomic">
+    <process:hasName>UNAFoldRetrieveImage</process:hasName>
+    <process:hasInput rdf:resource="#OligoAnalyzer_17_UNAFoldRetrieveImage_Atomic_input_location__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OligoAnalyzer_17_UNAFoldRetrieveImage_Atomic_output_Body__http___services.idtdna.com__base64Binary"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UNAFoldRetrieveImage(?location)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UNAFoldRetrieveImage(?location) ^ hasOutput(?location, Body) ^ Body(?location, ?image) ^ hasType(?image, base64Binary)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="OligoAnalyzer_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_0_CleanSeq_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_1_Analyze_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_2_HeteroDimer_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_3_SelfDimer_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_4_UNAFoldRun_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_5_UNAFoldRetrieveImage_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_6_CleanSeq_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_7_Analyze_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_8_HeteroDimer_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_9_SelfDimer_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_10_UNAFoldRun_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_11_UNAFoldRetrieveImage_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_12_CleanSeq_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_13_Analyze_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_14_HeteroDimer_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_15_SelfDimer_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_16_UNAFoldRun_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OligoAnalyzer_17_UNAFoldRetrieveImage_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_0_CleanSeq_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_0_CleanSeq_Atomic"/>
+    <grounding:wsdlOperationName>CleanSeq</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CleanSeqHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CleanSeqHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_1_Analyze_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_1_Analyze_Atomic"/>
+    <grounding:wsdlOperationName>Analyze</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AnalyzeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AnalyzeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_2_HeteroDimer_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_2_HeteroDimer_Atomic"/>
+    <grounding:wsdlOperationName>HeteroDimer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>HeteroDimerHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>HeteroDimerHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_3_SelfDimer_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_3_SelfDimer_Atomic"/>
+    <grounding:wsdlOperationName>SelfDimer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SelfDimerHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SelfDimerHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_4_UNAFoldRun_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_4_UNAFoldRun_Atomic"/>
+    <grounding:wsdlOperationName>UNAFoldRun</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UNAFoldRunHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UNAFoldRunHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_5_UNAFoldRetrieveImage_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_5_UNAFoldRetrieveImage_Atomic"/>
+    <grounding:wsdlOperationName>UNAFoldRetrieveImage</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UNAFoldRetrieveImageHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UNAFoldRetrieveImageHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_6_CleanSeq_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_6_CleanSeq_Atomic"/>
+    <grounding:wsdlOperationName>CleanSeq</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CleanSeqSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CleanSeqSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_7_Analyze_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_7_Analyze_Atomic"/>
+    <grounding:wsdlOperationName>Analyze</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AnalyzeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AnalyzeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_8_HeteroDimer_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_8_HeteroDimer_Atomic"/>
+    <grounding:wsdlOperationName>HeteroDimer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>HeteroDimerSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>HeteroDimerSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_9_SelfDimer_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_9_SelfDimer_Atomic"/>
+    <grounding:wsdlOperationName>SelfDimer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SelfDimerSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SelfDimerSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_10_UNAFoldRun_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_10_UNAFoldRun_Atomic"/>
+    <grounding:wsdlOperationName>UNAFoldRun</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UNAFoldRunSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UNAFoldRunSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_11_UNAFoldRetrieveImage_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_11_UNAFoldRetrieveImage_Atomic"/>
+    <grounding:wsdlOperationName>UNAFoldRetrieveImage</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UNAFoldRetrieveImageSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UNAFoldRetrieveImageSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_12_CleanSeq_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_12_CleanSeq_Atomic"/>
+    <grounding:wsdlOperationName>CleanSeq</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CleanSeqHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CleanSeqHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_13_Analyze_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_13_Analyze_Atomic"/>
+    <grounding:wsdlOperationName>Analyze</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AnalyzeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AnalyzeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_14_HeteroDimer_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_14_HeteroDimer_Atomic"/>
+    <grounding:wsdlOperationName>HeteroDimer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>HeteroDimerHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>HeteroDimerHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_15_SelfDimer_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_15_SelfDimer_Atomic"/>
+    <grounding:wsdlOperationName>SelfDimer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SelfDimerHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SelfDimerHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_16_UNAFoldRun_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_16_UNAFoldRun_Atomic"/>
+    <grounding:wsdlOperationName>UNAFoldRun</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UNAFoldRunHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UNAFoldRunHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OligoAnalyzer_17_UNAFoldRetrieveImage_Grounding">
+    <grounding:owlsProcess rdf:resource="#OligoAnalyzer_17_UNAFoldRetrieveImage_Atomic"/>
+    <grounding:wsdlOperationName>UNAFoldRetrieveImage</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OligoAnalyzerHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OligoAnalyzerHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/139_138.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UNAFoldRetrieveImageHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UNAFoldRetrieveImageHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

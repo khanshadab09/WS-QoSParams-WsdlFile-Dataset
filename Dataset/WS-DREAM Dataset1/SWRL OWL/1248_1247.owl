@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="People">
+    <service:presents rdf:resource="#People_Profile"/>
+    <service:describedBy rdf:resource="#People_Composite"/>
+    <service:supports rdf:resource="#People_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="People_Profile">
+    <profile:serviceName>People</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#People"/>
+    <profile:hasProcess rdf:resource="#People_0_IsClaimsMode_Atomic"/>
+    <profile:hasInput rdf:resource="#People_0_IsClaimsMode_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__IsClaimsMode"/>
+    <profile:hasOutput rdf:resource="#People_0_IsClaimsMode_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__IsClaimsModeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsClaimsMode(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsClaimsModeResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#People_1_ResolvePrincipals_Atomic"/>
+    <profile:hasInput rdf:resource="#People_1_ResolvePrincipals_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__ResolvePrincipals"/>
+    <profile:hasOutput rdf:resource="#People_1_ResolvePrincipals_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__ResolvePrincipalsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operation = ResolvePrincipals ^ Inputs = parameters:{http://schemas.microsoft.com/sharepoint/soap/}ResolvePrincipals</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Outputs = parameters:{http://schemas.microsoft.com/sharepoint/soap/}ResolvePrincipalsResponse</profile:hasResult>
+    <profile:hasProcess rdf:resource="#People_2_SearchPrincipals_Atomic"/>
+    <profile:hasInput rdf:resource="#People_2_SearchPrincipals_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__SearchPrincipals"/>
+    <profile:hasOutput rdf:resource="#People_2_SearchPrincipals_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__SearchPrincipalsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input parameters contain the namespace http://schemas.microsoft.com/sharepoint/soap/ and the operation SearchPrincipals.</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output parameters contain the namespace http://schemas.microsoft.com/sharepoint/soap/ and the operation SearchPrincipalsResponse.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="People_Composite">
+    <process:composedOf rdf:resource="#People_0_IsClaimsMode_Atomic"/>
+    <process:composedOf rdf:resource="#People_1_ResolvePrincipals_Atomic"/>
+    <process:composedOf rdf:resource="#People_2_SearchPrincipals_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="People_0_IsClaimsMode_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__IsClaimsMode">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}IsClaimsMode</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="People_0_IsClaimsMode_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__IsClaimsModeResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}IsClaimsModeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="People_1_ResolvePrincipals_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__ResolvePrincipals">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}ResolvePrincipals</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="People_1_ResolvePrincipals_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__ResolvePrincipalsResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}ResolvePrincipalsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="People_2_SearchPrincipals_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__SearchPrincipals">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}SearchPrincipals</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="People_2_SearchPrincipals_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__SearchPrincipalsResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}SearchPrincipalsResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="People_0_IsClaimsMode_Atomic">
+    <process:hasName>IsClaimsMode</process:hasName>
+    <process:hasInput rdf:resource="#People_0_IsClaimsMode_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__IsClaimsMode"/>
+    <process:hasOutput rdf:resource="#People_0_IsClaimsMode_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__IsClaimsModeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsClaimsMode(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsClaimsModeResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="People_1_ResolvePrincipals_Atomic">
+    <process:hasName>ResolvePrincipals</process:hasName>
+    <process:hasInput rdf:resource="#People_1_ResolvePrincipals_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__ResolvePrincipals"/>
+    <process:hasOutput rdf:resource="#People_1_ResolvePrincipals_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__ResolvePrincipalsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operation = ResolvePrincipals ^ Inputs = parameters:{http://schemas.microsoft.com/sharepoint/soap/}ResolvePrincipals</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Outputs = parameters:{http://schemas.microsoft.com/sharepoint/soap/}ResolvePrincipalsResponse</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="People_2_SearchPrincipals_Atomic">
+    <process:hasName>SearchPrincipals</process:hasName>
+    <process:hasInput rdf:resource="#People_2_SearchPrincipals_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__SearchPrincipals"/>
+    <process:hasOutput rdf:resource="#People_2_SearchPrincipals_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__SearchPrincipalsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Input parameters contain the namespace http://schemas.microsoft.com/sharepoint/soap/ and the operation SearchPrincipals.</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Output parameters contain the namespace http://schemas.microsoft.com/sharepoint/soap/ and the operation SearchPrincipalsResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="People_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#People_0_IsClaimsMode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#People_1_ResolvePrincipals_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#People_2_SearchPrincipals_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="People_0_IsClaimsMode_Grounding">
+    <grounding:owlsProcess rdf:resource="#People_0_IsClaimsMode_Atomic"/>
+    <grounding:wsdlOperationName>IsClaimsMode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PeopleSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PeopleSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1248_1247.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsClaimsModeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsClaimsModeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="People_1_ResolvePrincipals_Grounding">
+    <grounding:owlsProcess rdf:resource="#People_1_ResolvePrincipals_Atomic"/>
+    <grounding:wsdlOperationName>ResolvePrincipals</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PeopleSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PeopleSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1248_1247.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ResolvePrincipalsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ResolvePrincipalsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="People_2_SearchPrincipals_Grounding">
+    <grounding:owlsProcess rdf:resource="#People_2_SearchPrincipals_Atomic"/>
+    <grounding:wsdlOperationName>SearchPrincipals</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PeopleSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PeopleSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1248_1247.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SearchPrincipalsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SearchPrincipalsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

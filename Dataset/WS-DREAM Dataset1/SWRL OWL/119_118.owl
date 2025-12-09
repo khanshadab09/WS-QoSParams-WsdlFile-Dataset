@@ -1,0 +1,647 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="TimeService">
+    <service:presents rdf:resource="#TimeService_Profile"/>
+    <service:describedBy rdf:resource="#TimeService_Composite"/>
+    <service:supports rdf:resource="#TimeService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="TimeService_Profile">
+    <profile:serviceName>TimeService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#TimeService"/>
+    <profile:hasProcess rdf:resource="#TimeService_0_getUTCTime_Atomic"/>
+    <profile:hasOutput rdf:resource="#TimeService_0_getUTCTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getUTCTime) ^ (outputs Body:{http://www.Nanonull.com/TimeService/}string)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_1_getOffesetUTCTime_Atomic"/>
+    <profile:hasInput rdf:resource="#TimeService_1_getOffesetUTCTime_Atomic_input_hoursOffset__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#TimeService_1_getOffesetUTCTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hoursOffset(?hoursOffset) ^ swrlb:isString(?hoursOffset)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ swrlb:isString(?result) ^ swrlb:addDurationToDateTime(?result, "now", ?hoursOffset, "hours") ^ swrlb:dateTime(?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_2_getServerTime_Atomic"/>
+    <profile:hasOutput rdf:resource="#TimeService_2_getServerTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getServerTime) ^ (hasOutputType some {http://www.Nanonull.com/TimeService/}string)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_3_getServerTimeZone_Atomic"/>
+    <profile:hasOutput rdf:resource="#TimeService_3_getServerTimeZone_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getServerTimeZone) ^ (hasOutputType value {http://www.Nanonull.com/TimeService/}string)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_4_getServerCity_Atomic"/>
+    <profile:hasOutput rdf:resource="#TimeService_4_getServerCity_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getServerCity) ^ (outputs Body:{http://www.Nanonull.com/TimeService/}string)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_5_getTimeZoneTime_Atomic"/>
+    <profile:hasInput rdf:resource="#TimeService_5_getTimeZoneTime_Atomic_input_timezone__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#TimeService_5_getTimeZoneTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">timezone(?x) ^ swrlb:isString(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">body(?y) ^ timeservice:timeZoneTime(?x, ?y) ^ swrlb:isString(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_6_getCityTime_Atomic"/>
+    <profile:hasInput rdf:resource="#TimeService_6_getCityTime_Atomic_input_city__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#TimeService_6_getCityTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">city(?city) ^ swrlb:isString(?city)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?cityTime) ^ swrlb:isString(?cityTime)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_7_getUTCTime_Atomic"/>
+    <profile:hasOutput rdf:resource="#TimeService_7_getUTCTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getUTCTime) ^ (outputs Body:{http://www.Nanonull.com/TimeService/}string)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_8_getOffesetUTCTime_Atomic"/>
+    <profile:hasInput rdf:resource="#TimeService_8_getOffesetUTCTime_Atomic_input_hoursOffset__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#TimeService_8_getOffesetUTCTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hoursOffset(?offset) ^ swrlb:isString(?offset)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ swrlb:addDurationToDateTime(?result, "PT"^^xsd:dayTimeDuration, ?offset)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_9_getServerTime_Atomic"/>
+    <profile:hasOutput rdf:resource="#TimeService_9_getServerTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getServerTime) ^ (hasOutputType some {http://www.Nanonull.com/TimeService/}string)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_10_getServerTimeZone_Atomic"/>
+    <profile:hasOutput rdf:resource="#TimeService_10_getServerTimeZone_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getServerTimeZone) ^ (hasOutputType value {http://www.Nanonull.com/TimeService/}string)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_11_getServerCity_Atomic"/>
+    <profile:hasOutput rdf:resource="#TimeService_11_getServerCity_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getServerCity) ^ (outputs Body:{http://www.Nanonull.com/TimeService/}string)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_12_getTimeZoneTime_Atomic"/>
+    <profile:hasInput rdf:resource="#TimeService_12_getTimeZoneTime_Atomic_input_timezone__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#TimeService_12_getTimeZoneTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">timezone(?timezone) ^ swrlb:isString(?timezone)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ swrlb:isString(?result) ^ getTimeZoneTime(?timezone, ?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_13_getCityTime_Atomic"/>
+    <profile:hasInput rdf:resource="#TimeService_13_getCityTime_Atomic_input_city__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#TimeService_13_getCityTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">city(?city) ^ swrlb:isString(?city)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?cityTime) ^ swrlb:isString(?cityTime)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_14_getUTCTime_Atomic"/>
+    <profile:hasInput rdf:resource="#TimeService_14_getUTCTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getUTCTime"/>
+    <profile:hasOutput rdf:resource="#TimeService_14_getUTCTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getUTCTimeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getUTCTime ?time) ^ (getUTCTimeResponse ?time)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_15_getOffesetUTCTime_Atomic"/>
+    <profile:hasInput rdf:resource="#TimeService_15_getOffesetUTCTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getOffesetUTCTime"/>
+    <profile:hasOutput rdf:resource="#TimeService_15_getOffesetUTCTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getOffesetUTCTimeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_16_getServerTime_Atomic"/>
+    <profile:hasInput rdf:resource="#TimeService_16_getServerTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getServerTime"/>
+    <profile:hasOutput rdf:resource="#TimeService_16_getServerTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getServerTimeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_17_getServerTimeZone_Atomic"/>
+    <profile:hasInput rdf:resource="#TimeService_17_getServerTimeZone_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getServerTimeZone"/>
+    <profile:hasOutput rdf:resource="#TimeService_17_getServerTimeZone_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getServerTimeZoneResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_18_getServerCity_Atomic"/>
+    <profile:hasInput rdf:resource="#TimeService_18_getServerCity_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getServerCity"/>
+    <profile:hasOutput rdf:resource="#TimeService_18_getServerCity_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getServerCityResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_19_getTimeZoneTime_Atomic"/>
+    <profile:hasInput rdf:resource="#TimeService_19_getTimeZoneTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getTimeZoneTime"/>
+    <profile:hasOutput rdf:resource="#TimeService_19_getTimeZoneTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getTimeZoneTimeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">getTimeZoneTime(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">getTimeZoneTimeResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TimeService_20_getCityTime_Atomic"/>
+    <profile:hasInput rdf:resource="#TimeService_20_getCityTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getCityTime"/>
+    <profile:hasOutput rdf:resource="#TimeService_20_getCityTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getCityTimeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="TimeService_Composite">
+    <process:composedOf rdf:resource="#TimeService_0_getUTCTime_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_1_getOffesetUTCTime_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_2_getServerTime_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_3_getServerTimeZone_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_4_getServerCity_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_5_getTimeZoneTime_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_6_getCityTime_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_7_getUTCTime_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_8_getOffesetUTCTime_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_9_getServerTime_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_10_getServerTimeZone_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_11_getServerCity_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_12_getTimeZoneTime_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_13_getCityTime_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_14_getUTCTime_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_15_getOffesetUTCTime_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_16_getServerTime_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_17_getServerTimeZone_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_18_getServerCity_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_19_getTimeZoneTime_Atomic"/>
+    <process:composedOf rdf:resource="#TimeService_20_getCityTime_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Output rdf:ID="TimeService_0_getUTCTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string">
+    <process:parameterType>Body:{http://www.Nanonull.com/TimeService/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TimeService_1_getOffesetUTCTime_Atomic_input_hoursOffset__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>hoursOffset:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TimeService_1_getOffesetUTCTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string">
+    <process:parameterType>Body:{http://www.Nanonull.com/TimeService/}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="TimeService_2_getServerTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string">
+    <process:parameterType>Body:{http://www.Nanonull.com/TimeService/}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="TimeService_3_getServerTimeZone_Atomic_output_Body__http___www.Nanonull.com_TimeService__string">
+    <process:parameterType>Body:{http://www.Nanonull.com/TimeService/}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="TimeService_4_getServerCity_Atomic_output_Body__http___www.Nanonull.com_TimeService__string">
+    <process:parameterType>Body:{http://www.Nanonull.com/TimeService/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TimeService_5_getTimeZoneTime_Atomic_input_timezone__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>timezone:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TimeService_5_getTimeZoneTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string">
+    <process:parameterType>Body:{http://www.Nanonull.com/TimeService/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TimeService_6_getCityTime_Atomic_input_city__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>city:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TimeService_6_getCityTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string">
+    <process:parameterType>Body:{http://www.Nanonull.com/TimeService/}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="TimeService_7_getUTCTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string">
+    <process:parameterType>Body:{http://www.Nanonull.com/TimeService/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TimeService_8_getOffesetUTCTime_Atomic_input_hoursOffset__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>hoursOffset:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TimeService_8_getOffesetUTCTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string">
+    <process:parameterType>Body:{http://www.Nanonull.com/TimeService/}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="TimeService_9_getServerTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string">
+    <process:parameterType>Body:{http://www.Nanonull.com/TimeService/}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="TimeService_10_getServerTimeZone_Atomic_output_Body__http___www.Nanonull.com_TimeService__string">
+    <process:parameterType>Body:{http://www.Nanonull.com/TimeService/}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="TimeService_11_getServerCity_Atomic_output_Body__http___www.Nanonull.com_TimeService__string">
+    <process:parameterType>Body:{http://www.Nanonull.com/TimeService/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TimeService_12_getTimeZoneTime_Atomic_input_timezone__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>timezone:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TimeService_12_getTimeZoneTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string">
+    <process:parameterType>Body:{http://www.Nanonull.com/TimeService/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TimeService_13_getCityTime_Atomic_input_city__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>city:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TimeService_13_getCityTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string">
+    <process:parameterType>Body:{http://www.Nanonull.com/TimeService/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TimeService_14_getUTCTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getUTCTime">
+    <process:parameterType>parameters:{http://www.Nanonull.com/TimeService/}getUTCTime</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TimeService_14_getUTCTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getUTCTimeResponse">
+    <process:parameterType>parameters:{http://www.Nanonull.com/TimeService/}getUTCTimeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TimeService_15_getOffesetUTCTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getOffesetUTCTime">
+    <process:parameterType>parameters:{http://www.Nanonull.com/TimeService/}getOffesetUTCTime</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TimeService_15_getOffesetUTCTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getOffesetUTCTimeResponse">
+    <process:parameterType>parameters:{http://www.Nanonull.com/TimeService/}getOffesetUTCTimeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TimeService_16_getServerTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getServerTime">
+    <process:parameterType>parameters:{http://www.Nanonull.com/TimeService/}getServerTime</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TimeService_16_getServerTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getServerTimeResponse">
+    <process:parameterType>parameters:{http://www.Nanonull.com/TimeService/}getServerTimeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TimeService_17_getServerTimeZone_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getServerTimeZone">
+    <process:parameterType>parameters:{http://www.Nanonull.com/TimeService/}getServerTimeZone</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TimeService_17_getServerTimeZone_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getServerTimeZoneResponse">
+    <process:parameterType>parameters:{http://www.Nanonull.com/TimeService/}getServerTimeZoneResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TimeService_18_getServerCity_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getServerCity">
+    <process:parameterType>parameters:{http://www.Nanonull.com/TimeService/}getServerCity</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TimeService_18_getServerCity_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getServerCityResponse">
+    <process:parameterType>parameters:{http://www.Nanonull.com/TimeService/}getServerCityResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TimeService_19_getTimeZoneTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getTimeZoneTime">
+    <process:parameterType>parameters:{http://www.Nanonull.com/TimeService/}getTimeZoneTime</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TimeService_19_getTimeZoneTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getTimeZoneTimeResponse">
+    <process:parameterType>parameters:{http://www.Nanonull.com/TimeService/}getTimeZoneTimeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TimeService_20_getCityTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getCityTime">
+    <process:parameterType>parameters:{http://www.Nanonull.com/TimeService/}getCityTime</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TimeService_20_getCityTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getCityTimeResponse">
+    <process:parameterType>parameters:{http://www.Nanonull.com/TimeService/}getCityTimeResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="TimeService_0_getUTCTime_Atomic">
+    <process:hasName>getUTCTime</process:hasName>
+    <process:hasOutput rdf:resource="#TimeService_0_getUTCTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getUTCTime) ^ (outputs Body:{http://www.Nanonull.com/TimeService/}string)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_1_getOffesetUTCTime_Atomic">
+    <process:hasName>getOffesetUTCTime</process:hasName>
+    <process:hasInput rdf:resource="#TimeService_1_getOffesetUTCTime_Atomic_input_hoursOffset__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#TimeService_1_getOffesetUTCTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hoursOffset(?hoursOffset) ^ swrlb:isString(?hoursOffset)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ swrlb:isString(?result) ^ swrlb:addDurationToDateTime(?result, "now", ?hoursOffset, "hours") ^ swrlb:dateTime(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_2_getServerTime_Atomic">
+    <process:hasName>getServerTime</process:hasName>
+    <process:hasOutput rdf:resource="#TimeService_2_getServerTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getServerTime) ^ (hasOutputType some {http://www.Nanonull.com/TimeService/}string)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_3_getServerTimeZone_Atomic">
+    <process:hasName>getServerTimeZone</process:hasName>
+    <process:hasOutput rdf:resource="#TimeService_3_getServerTimeZone_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getServerTimeZone) ^ (hasOutputType value {http://www.Nanonull.com/TimeService/}string)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_4_getServerCity_Atomic">
+    <process:hasName>getServerCity</process:hasName>
+    <process:hasOutput rdf:resource="#TimeService_4_getServerCity_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getServerCity) ^ (outputs Body:{http://www.Nanonull.com/TimeService/}string)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_5_getTimeZoneTime_Atomic">
+    <process:hasName>getTimeZoneTime</process:hasName>
+    <process:hasInput rdf:resource="#TimeService_5_getTimeZoneTime_Atomic_input_timezone__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#TimeService_5_getTimeZoneTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">timezone(?x) ^ swrlb:isString(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">body(?y) ^ timeservice:timeZoneTime(?x, ?y) ^ swrlb:isString(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_6_getCityTime_Atomic">
+    <process:hasName>getCityTime</process:hasName>
+    <process:hasInput rdf:resource="#TimeService_6_getCityTime_Atomic_input_city__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#TimeService_6_getCityTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">city(?city) ^ swrlb:isString(?city)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?cityTime) ^ swrlb:isString(?cityTime)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_7_getUTCTime_Atomic">
+    <process:hasName>getUTCTime</process:hasName>
+    <process:hasOutput rdf:resource="#TimeService_7_getUTCTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getUTCTime) ^ (outputs Body:{http://www.Nanonull.com/TimeService/}string)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_8_getOffesetUTCTime_Atomic">
+    <process:hasName>getOffesetUTCTime</process:hasName>
+    <process:hasInput rdf:resource="#TimeService_8_getOffesetUTCTime_Atomic_input_hoursOffset__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#TimeService_8_getOffesetUTCTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hoursOffset(?offset) ^ swrlb:isString(?offset)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ swrlb:addDurationToDateTime(?result, "PT"^^xsd:dayTimeDuration, ?offset)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_9_getServerTime_Atomic">
+    <process:hasName>getServerTime</process:hasName>
+    <process:hasOutput rdf:resource="#TimeService_9_getServerTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getServerTime) ^ (hasOutputType some {http://www.Nanonull.com/TimeService/}string)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_10_getServerTimeZone_Atomic">
+    <process:hasName>getServerTimeZone</process:hasName>
+    <process:hasOutput rdf:resource="#TimeService_10_getServerTimeZone_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getServerTimeZone) ^ (hasOutputType value {http://www.Nanonull.com/TimeService/}string)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_11_getServerCity_Atomic">
+    <process:hasName>getServerCity</process:hasName>
+    <process:hasOutput rdf:resource="#TimeService_11_getServerCity_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getServerCity) ^ (outputs Body:{http://www.Nanonull.com/TimeService/}string)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_12_getTimeZoneTime_Atomic">
+    <process:hasName>getTimeZoneTime</process:hasName>
+    <process:hasInput rdf:resource="#TimeService_12_getTimeZoneTime_Atomic_input_timezone__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#TimeService_12_getTimeZoneTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">timezone(?timezone) ^ swrlb:isString(?timezone)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ swrlb:isString(?result) ^ getTimeZoneTime(?timezone, ?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_13_getCityTime_Atomic">
+    <process:hasName>getCityTime</process:hasName>
+    <process:hasInput rdf:resource="#TimeService_13_getCityTime_Atomic_input_city__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#TimeService_13_getCityTime_Atomic_output_Body__http___www.Nanonull.com_TimeService__string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">city(?city) ^ swrlb:isString(?city)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?cityTime) ^ swrlb:isString(?cityTime)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_14_getUTCTime_Atomic">
+    <process:hasName>getUTCTime</process:hasName>
+    <process:hasInput rdf:resource="#TimeService_14_getUTCTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getUTCTime"/>
+    <process:hasOutput rdf:resource="#TimeService_14_getUTCTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getUTCTimeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(getUTCTime ?time) ^ (getUTCTimeResponse ?time)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_15_getOffesetUTCTime_Atomic">
+    <process:hasName>getOffesetUTCTime</process:hasName>
+    <process:hasInput rdf:resource="#TimeService_15_getOffesetUTCTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getOffesetUTCTime"/>
+    <process:hasOutput rdf:resource="#TimeService_15_getOffesetUTCTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getOffesetUTCTimeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_16_getServerTime_Atomic">
+    <process:hasName>getServerTime</process:hasName>
+    <process:hasInput rdf:resource="#TimeService_16_getServerTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getServerTime"/>
+    <process:hasOutput rdf:resource="#TimeService_16_getServerTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getServerTimeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_17_getServerTimeZone_Atomic">
+    <process:hasName>getServerTimeZone</process:hasName>
+    <process:hasInput rdf:resource="#TimeService_17_getServerTimeZone_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getServerTimeZone"/>
+    <process:hasOutput rdf:resource="#TimeService_17_getServerTimeZone_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getServerTimeZoneResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_18_getServerCity_Atomic">
+    <process:hasName>getServerCity</process:hasName>
+    <process:hasInput rdf:resource="#TimeService_18_getServerCity_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getServerCity"/>
+    <process:hasOutput rdf:resource="#TimeService_18_getServerCity_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getServerCityResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_19_getTimeZoneTime_Atomic">
+    <process:hasName>getTimeZoneTime</process:hasName>
+    <process:hasInput rdf:resource="#TimeService_19_getTimeZoneTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getTimeZoneTime"/>
+    <process:hasOutput rdf:resource="#TimeService_19_getTimeZoneTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getTimeZoneTimeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">getTimeZoneTime(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">getTimeZoneTimeResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TimeService_20_getCityTime_Atomic">
+    <process:hasName>getCityTime</process:hasName>
+    <process:hasInput rdf:resource="#TimeService_20_getCityTime_Atomic_input_parameters__http___www.Nanonull.com_TimeService__getCityTime"/>
+    <process:hasOutput rdf:resource="#TimeService_20_getCityTime_Atomic_output_parameters__http___www.Nanonull.com_TimeService__getCityTimeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="TimeService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_0_getUTCTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_1_getOffesetUTCTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_2_getServerTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_3_getServerTimeZone_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_4_getServerCity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_5_getTimeZoneTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_6_getCityTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_7_getUTCTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_8_getOffesetUTCTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_9_getServerTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_10_getServerTimeZone_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_11_getServerCity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_12_getTimeZoneTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_13_getCityTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_14_getUTCTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_15_getOffesetUTCTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_16_getServerTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_17_getServerTimeZone_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_18_getServerCity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_19_getTimeZoneTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_20_getCityTime_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_0_getUTCTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_0_getUTCTime_Atomic"/>
+    <grounding:wsdlOperationName>getUTCTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getUTCTimeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getUTCTimeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_1_getOffesetUTCTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_1_getOffesetUTCTime_Atomic"/>
+    <grounding:wsdlOperationName>getOffesetUTCTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getOffesetUTCTimeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getOffesetUTCTimeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_2_getServerTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_2_getServerTime_Atomic"/>
+    <grounding:wsdlOperationName>getServerTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getServerTimeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getServerTimeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_3_getServerTimeZone_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_3_getServerTimeZone_Atomic"/>
+    <grounding:wsdlOperationName>getServerTimeZone</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getServerTimeZoneHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getServerTimeZoneHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_4_getServerCity_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_4_getServerCity_Atomic"/>
+    <grounding:wsdlOperationName>getServerCity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getServerCityHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getServerCityHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_5_getTimeZoneTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_5_getTimeZoneTime_Atomic"/>
+    <grounding:wsdlOperationName>getTimeZoneTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getTimeZoneTimeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getTimeZoneTimeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_6_getCityTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_6_getCityTime_Atomic"/>
+    <grounding:wsdlOperationName>getCityTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getCityTimeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getCityTimeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_7_getUTCTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_7_getUTCTime_Atomic"/>
+    <grounding:wsdlOperationName>getUTCTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getUTCTimeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getUTCTimeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_8_getOffesetUTCTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_8_getOffesetUTCTime_Atomic"/>
+    <grounding:wsdlOperationName>getOffesetUTCTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getOffesetUTCTimeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getOffesetUTCTimeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_9_getServerTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_9_getServerTime_Atomic"/>
+    <grounding:wsdlOperationName>getServerTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getServerTimeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getServerTimeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_10_getServerTimeZone_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_10_getServerTimeZone_Atomic"/>
+    <grounding:wsdlOperationName>getServerTimeZone</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getServerTimeZoneHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getServerTimeZoneHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_11_getServerCity_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_11_getServerCity_Atomic"/>
+    <grounding:wsdlOperationName>getServerCity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getServerCityHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getServerCityHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_12_getTimeZoneTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_12_getTimeZoneTime_Atomic"/>
+    <grounding:wsdlOperationName>getTimeZoneTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getTimeZoneTimeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getTimeZoneTimeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_13_getCityTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_13_getCityTime_Atomic"/>
+    <grounding:wsdlOperationName>getCityTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getCityTimeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getCityTimeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_14_getUTCTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_14_getUTCTime_Atomic"/>
+    <grounding:wsdlOperationName>getUTCTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getUTCTimeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getUTCTimeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_15_getOffesetUTCTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_15_getOffesetUTCTime_Atomic"/>
+    <grounding:wsdlOperationName>getOffesetUTCTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getOffesetUTCTimeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getOffesetUTCTimeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_16_getServerTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_16_getServerTime_Atomic"/>
+    <grounding:wsdlOperationName>getServerTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getServerTimeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getServerTimeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_17_getServerTimeZone_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_17_getServerTimeZone_Atomic"/>
+    <grounding:wsdlOperationName>getServerTimeZone</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getServerTimeZoneSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getServerTimeZoneSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_18_getServerCity_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_18_getServerCity_Atomic"/>
+    <grounding:wsdlOperationName>getServerCity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getServerCitySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getServerCitySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_19_getTimeZoneTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_19_getTimeZoneTime_Atomic"/>
+    <grounding:wsdlOperationName>getTimeZoneTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getTimeZoneTimeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getTimeZoneTimeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_20_getCityTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_20_getCityTime_Atomic"/>
+    <grounding:wsdlOperationName>getCityTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/119_118.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getCityTimeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getCityTimeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

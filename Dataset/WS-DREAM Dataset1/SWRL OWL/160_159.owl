@@ -1,0 +1,940 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="AphiaNameService">
+    <service:presents rdf:resource="#AphiaNameService_Profile"/>
+    <service:describedBy rdf:resource="#AphiaNameService_Composite"/>
+    <service:supports rdf:resource="#AphiaNameService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="AphiaNameService_Profile">
+    <profile:serviceName>AphiaNameService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#AphiaNameService"/>
+    <profile:hasProcess rdf:resource="#AphiaNameService_0_getAphiaID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_0_getAphiaID_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_0_getAphiaID_Atomic_input_scientificname__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_0_getAphiaID_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_0_getAphiaID_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">marine_only(?marine_only) ^ scientificname(?scientificname) ^ extant_only(?extant_only)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?aphia_id) ^ hasAphiaID(?scientificname, ?aphia_id) ^ isMarine(?aphia_id, ?marine_only) ^ isExtant(?aphia_id, ?extant_only)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic_input_like__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic_input_scientificname__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic_input_fuzzy__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic_output_return__http___aphia_v1.0_AphiaRecords"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">offset(?offset) ^ like(?like) ^ marine_only(?marine_only) ^ scientificname(?scientificname) ^ fuzzy(?fuzzy) ^ extant_only(?extant_only)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?AphiaRecords)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_2_getAphiaNameByID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_2_getAphiaNameByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_2_getAphiaNameByID_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ swrlb:integer(?id)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?name) ^ swrlb:string(?name)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_3_getAphiaRecordByID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_3_getAphiaRecordByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_3_getAphiaRecordByID_Atomic_output_return__http___aphia_v1.0_AphiaRecord"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ swrlb:integer(?id)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?record) ^ AphiaRecord(?record) ^ hasAphiaID(?record, ?id)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_4_getAphiaRecordsByIDs_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_4_getAphiaRecordsByIDs_Atomic_input_aphiaids__http___aphia_v1.0_aphiaids"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_4_getAphiaRecordsByIDs_Atomic_output_return__http___aphia_v1.0_AphiaRecords"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aphiaids(?aphiaids)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?AphiaRecords)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_5_getAphiaRecordByExtID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_5_getAphiaRecordByExtID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_5_getAphiaRecordByExtID_Atomic_input_type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_5_getAphiaRecordByExtID_Atomic_output_return__http___aphia_v1.0_AphiaRecord"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?idType, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?typeType, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?returnType, "http://aphia/v1.0#AphiaRecord")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_6_getExtIDbyAphiaID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_6_getExtIDbyAphiaID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_6_getExtIDbyAphiaID_Atomic_input_type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_6_getExtIDbyAphiaID_Atomic_output_return__http___aphia_v1.0_externalidentifiers"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ type(?t) ^ datatype(?id, http://www.w3.org/2001/XMLSchema#int) ^ datatype(?t, http://www.w3.org/2001/XMLSchema#string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">externalidentifiers(?id)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_like__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_scientificnames__http___aphia_v1.0_scientificnames"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_fuzzy__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic_output_return__http___aphia_v1.0_AphiaMatches"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">like(?like) ^ scientificnames(?scientificnames) ^ marine_only(?marine_only) ^ fuzzy(?fuzzy) ^ extant_only(?extant_only)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?AphiaMatches)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_8_getAphiaRecordsByVernacular_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_8_getAphiaRecordsByVernacular_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_8_getAphiaRecordsByVernacular_Atomic_input_like__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_8_getAphiaRecordsByVernacular_Atomic_input_vernacular__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_8_getAphiaRecordsByVernacular_Atomic_output_return__http___aphia_v1.0_AphiaRecords"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:greaterThan(offset, 0) ^ swrlb:equal(like, true) ^ swrlb:stringLength(vernacular, 1, 100)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aphia:getAphiaRecordsByVernacular(offset, like, vernacular) ^ aphia:hasAphiaRecords(return)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_enddate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_startdate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic_output_return__http___aphia_v1.0_AphiaRecords"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(enddate, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(offset, "http://www.w3.org/2001/XMLSchema#int") ^ swrlb:equal(marine_only, "http://www.w3.org/2001/XMLSchema#boolean") ^ swrlb:equal(startdate, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(extant_only, "http://www.w3.org/2001/XMLSchema#boolean")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return -&gt; AphiaRecords</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_10_getAphiaClassificationByID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_10_getAphiaClassificationByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_10_getAphiaClassificationByID_Atomic_output_return__http___aphia_v1.0_Classification"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ swrlb:integer(?id)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Classification(?result) ^ getAphiaClassificationByID(?id, ?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_11_getSourcesByAphiaID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_11_getSourcesByAphiaID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_11_getSourcesByAphiaID_Atomic_output_return__http___aphia_v1.0_Sources"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ swrlb:integer(?id)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sources(?sources) ^ getSourcesByAphiaID(?sources, ?id)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_12_getAphiaSynonymsByID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_12_getAphiaSynonymsByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_12_getAphiaSynonymsByID_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_12_getAphiaSynonymsByID_Atomic_output_return__http___aphia_v1.0_AphiaRecords"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID is an integer value and offset is an integer value</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The operation getAphiaSynonymsByID returns a set of AphiaRecords based on the provided AphiaID and offset values</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_13_getAphiaVernacularsByID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_13_getAphiaVernacularsByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_13_getAphiaVernacularsByID_Atomic_output_return__http___aphia_v1.0_Vernaculars"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ swrlb:integer(?id)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?vernaculars) ^ Vernaculars(?vernaculars) ^ hasAphiaID(?vernaculars, ?id)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_14_getAphiaChildrenByID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_14_getAphiaChildrenByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_14_getAphiaChildrenByID_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_14_getAphiaChildrenByID_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_14_getAphiaChildrenByID_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_14_getAphiaChildrenByID_Atomic_output_return__http___aphia_v1.0_AphiaRecords"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID is an integer and offset is an integer and marine_only is a boolean and extant_only is a boolean</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Returns AphiaRecords based on the input AphiaID, offset, marine_only, and extant_only</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_15_matchAphiaRecordsByNames_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_15_matchAphiaRecordsByNames_Atomic_input_scientificnames__http___aphia_v1.0_scientificnames"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_15_matchAphiaRecordsByNames_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_15_matchAphiaRecordsByNames_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_15_matchAphiaRecordsByNames_Atomic_output_return__http___aphia_v1.0_AphiaMatches"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?marine_only, "true"^^xsd:boolean) ^ swrlb:equal(?extant_only, "true"^^xsd:boolean)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aphia:matchAphiaRecordsByNames(?scientificnames, ?marine_only, ?extant_only, ?AphiaMatches)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_16_getAphiaDistributionsByID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_16_getAphiaDistributionsByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_16_getAphiaDistributionsByID_Atomic_output_return__http___aphia_v1.0_Distributions"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ swrlb:integer(?id)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?d) ^ Distributions(?d) ^ hasAphiaID(?d, ?id)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_17_getAphiaTaxonRanksByID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_17_getAphiaTaxonRanksByID_Atomic_input_taxonRankID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_17_getAphiaTaxonRanksByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_17_getAphiaTaxonRanksByID_Atomic_output_return__http___aphia_v1.0_AphiaRanks"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">taxonRankID is an integer and AphiaID is an integer</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The operation getAphiaTaxonRanksByID returns AphiaRanks based on the provided taxonRankID and AphiaID</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_18_getAphiaTaxonRanksByName_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_18_getAphiaTaxonRanksByName_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_18_getAphiaTaxonRanksByName_Atomic_input_taxonRank__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_18_getAphiaTaxonRanksByName_Atomic_output_return__http___aphia_v1.0_AphiaRanks"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ taxonRank(?rank) ^ datatype(?id, http://www.w3.org/2001/XMLSchema#int) ^ datatype(?rank, http://www.w3.org/2001/XMLSchema#string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?rank, http://aphia/v1.0#AphiaRanks)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic_input_taxonRankID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic_input_belongsTo__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic_output_return__http___aphia_v1.0_AphiaRecords"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:greaterThanOrEqual(?taxonRankID, 0) ^ swrlb:greaterThanOrEqual(?offset, 0) ^ swrlb:greaterThanOrEqual(?belongsTo, 0)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aphia:getAphiaRecordsByTaxonRankID(?taxonRankID, ?offset, ?belongsTo, ?return)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_20_getAphiaAttributeKeysByID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_20_getAphiaAttributeKeysByID_Atomic_input_include_children__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_20_getAphiaAttributeKeysByID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_20_getAphiaAttributeKeysByID_Atomic_output_return__http___aphia_v1.0_AttributeKeys"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">include_children(?include_children) ^ id(?id)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?AttributeKeys)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_21_getAphiaAttributeValuesByCategoryID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_21_getAphiaAttributeValuesByCategoryID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_21_getAphiaAttributeValuesByCategoryID_Atomic_output_return__http___aphia_v1.0_AttributeValues"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">id rdf:type xsd:int</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">getAphiaAttributeValuesByCategoryID(id) -&gt; return rdf:type aphia:AttributeValues</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_22_getAphiaIDsByAttributeKeyID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_22_getAphiaIDsByAttributeKeyID_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_22_getAphiaIDsByAttributeKeyID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_22_getAphiaIDsByAttributeKeyID_Atomic_output_return__http___aphia_v1.0_aphiaids"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">offset(?offset) ^ id(?id)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?aphiaids)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AphiaNameService_23_getAphiaAttributesByAphiaID_Atomic"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_23_getAphiaAttributesByAphiaID_Atomic_input_include_inherited__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#AphiaNameService_23_getAphiaAttributesByAphiaID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#AphiaNameService_23_getAphiaAttributesByAphiaID_Atomic_output_return__http___aphia_v1.0_Attributes"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">include_inherited(?include_inherited), id(?id)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?Attributes)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="AphiaNameService_Composite">
+    <process:composedOf rdf:resource="#AphiaNameService_0_getAphiaID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_2_getAphiaNameByID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_3_getAphiaRecordByID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_4_getAphiaRecordsByIDs_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_5_getAphiaRecordByExtID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_6_getExtIDbyAphiaID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_8_getAphiaRecordsByVernacular_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_10_getAphiaClassificationByID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_11_getSourcesByAphiaID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_12_getAphiaSynonymsByID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_13_getAphiaVernacularsByID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_14_getAphiaChildrenByID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_15_matchAphiaRecordsByNames_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_16_getAphiaDistributionsByID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_17_getAphiaTaxonRanksByID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_18_getAphiaTaxonRanksByName_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_20_getAphiaAttributeKeysByID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_21_getAphiaAttributeValuesByCategoryID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_22_getAphiaIDsByAttributeKeyID_Atomic"/>
+    <process:composedOf rdf:resource="#AphiaNameService_23_getAphiaAttributesByAphiaID_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="AphiaNameService_0_getAphiaID_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>marine_only:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_0_getAphiaID_Atomic_input_scientificname__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>scientificname:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_0_getAphiaID_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>extant_only:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_0_getAphiaID_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_1_getAphiaRecords_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>offset:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_1_getAphiaRecords_Atomic_input_like__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>like:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_1_getAphiaRecords_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>marine_only:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_1_getAphiaRecords_Atomic_input_scientificname__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>scientificname:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_1_getAphiaRecords_Atomic_input_fuzzy__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>fuzzy:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_1_getAphiaRecords_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>extant_only:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_1_getAphiaRecords_Atomic_output_return__http___aphia_v1.0_AphiaRecords">
+    <process:parameterType>return:{http://aphia/v1.0}AphiaRecords</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_2_getAphiaNameByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AphiaID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_2_getAphiaNameByID_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_3_getAphiaRecordByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AphiaID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_3_getAphiaRecordByID_Atomic_output_return__http___aphia_v1.0_AphiaRecord">
+    <process:parameterType>return:{http://aphia/v1.0}AphiaRecord</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_4_getAphiaRecordsByIDs_Atomic_input_aphiaids__http___aphia_v1.0_aphiaids">
+    <process:parameterType>aphiaids:{http://aphia/v1.0}aphiaids</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_4_getAphiaRecordsByIDs_Atomic_output_return__http___aphia_v1.0_AphiaRecords">
+    <process:parameterType>return:{http://aphia/v1.0}AphiaRecords</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_5_getAphiaRecordByExtID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>id:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_5_getAphiaRecordByExtID_Atomic_input_type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_5_getAphiaRecordByExtID_Atomic_output_return__http___aphia_v1.0_AphiaRecord">
+    <process:parameterType>return:{http://aphia/v1.0}AphiaRecord</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_6_getExtIDbyAphiaID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AphiaID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_6_getExtIDbyAphiaID_Atomic_input_type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_6_getExtIDbyAphiaID_Atomic_output_return__http___aphia_v1.0_externalidentifiers">
+    <process:parameterType>return:{http://aphia/v1.0}externalidentifiers</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_like__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>like:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_scientificnames__http___aphia_v1.0_scientificnames">
+    <process:parameterType>scientificnames:{http://aphia/v1.0}scientificnames</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>marine_only:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_fuzzy__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>fuzzy:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>extant_only:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_7_getAphiaRecordsByNames_Atomic_output_return__http___aphia_v1.0_AphiaMatches">
+    <process:parameterType>return:{http://aphia/v1.0}AphiaMatches</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_8_getAphiaRecordsByVernacular_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>offset:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_8_getAphiaRecordsByVernacular_Atomic_input_like__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>like:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_8_getAphiaRecordsByVernacular_Atomic_input_vernacular__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>vernacular:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_8_getAphiaRecordsByVernacular_Atomic_output_return__http___aphia_v1.0_AphiaRecords">
+    <process:parameterType>return:{http://aphia/v1.0}AphiaRecords</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_enddate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>enddate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>offset:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>marine_only:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_startdate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>startdate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>extant_only:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_9_getAphiaRecordsByDate_Atomic_output_return__http___aphia_v1.0_AphiaRecords">
+    <process:parameterType>return:{http://aphia/v1.0}AphiaRecords</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_10_getAphiaClassificationByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AphiaID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_10_getAphiaClassificationByID_Atomic_output_return__http___aphia_v1.0_Classification">
+    <process:parameterType>return:{http://aphia/v1.0}Classification</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_11_getSourcesByAphiaID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AphiaID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_11_getSourcesByAphiaID_Atomic_output_return__http___aphia_v1.0_Sources">
+    <process:parameterType>return:{http://aphia/v1.0}Sources</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_12_getAphiaSynonymsByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AphiaID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_12_getAphiaSynonymsByID_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>offset:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_12_getAphiaSynonymsByID_Atomic_output_return__http___aphia_v1.0_AphiaRecords">
+    <process:parameterType>return:{http://aphia/v1.0}AphiaRecords</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_13_getAphiaVernacularsByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AphiaID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_13_getAphiaVernacularsByID_Atomic_output_return__http___aphia_v1.0_Vernaculars">
+    <process:parameterType>return:{http://aphia/v1.0}Vernaculars</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_14_getAphiaChildrenByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AphiaID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_14_getAphiaChildrenByID_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>offset:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_14_getAphiaChildrenByID_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>marine_only:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_14_getAphiaChildrenByID_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>extant_only:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_14_getAphiaChildrenByID_Atomic_output_return__http___aphia_v1.0_AphiaRecords">
+    <process:parameterType>return:{http://aphia/v1.0}AphiaRecords</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_15_matchAphiaRecordsByNames_Atomic_input_scientificnames__http___aphia_v1.0_scientificnames">
+    <process:parameterType>scientificnames:{http://aphia/v1.0}scientificnames</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_15_matchAphiaRecordsByNames_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>marine_only:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_15_matchAphiaRecordsByNames_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>extant_only:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_15_matchAphiaRecordsByNames_Atomic_output_return__http___aphia_v1.0_AphiaMatches">
+    <process:parameterType>return:{http://aphia/v1.0}AphiaMatches</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_16_getAphiaDistributionsByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AphiaID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_16_getAphiaDistributionsByID_Atomic_output_return__http___aphia_v1.0_Distributions">
+    <process:parameterType>return:{http://aphia/v1.0}Distributions</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_17_getAphiaTaxonRanksByID_Atomic_input_taxonRankID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>taxonRankID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_17_getAphiaTaxonRanksByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AphiaID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_17_getAphiaTaxonRanksByID_Atomic_output_return__http___aphia_v1.0_AphiaRanks">
+    <process:parameterType>return:{http://aphia/v1.0}AphiaRanks</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_18_getAphiaTaxonRanksByName_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AphiaID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_18_getAphiaTaxonRanksByName_Atomic_input_taxonRank__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>taxonRank:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_18_getAphiaTaxonRanksByName_Atomic_output_return__http___aphia_v1.0_AphiaRanks">
+    <process:parameterType>return:{http://aphia/v1.0}AphiaRanks</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic_input_taxonRankID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>taxonRankID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>offset:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic_input_belongsTo__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>belongsTo:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic_output_return__http___aphia_v1.0_AphiaRecords">
+    <process:parameterType>return:{http://aphia/v1.0}AphiaRecords</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_20_getAphiaAttributeKeysByID_Atomic_input_include_children__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>include_children:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_20_getAphiaAttributeKeysByID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>id:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_20_getAphiaAttributeKeysByID_Atomic_output_return__http___aphia_v1.0_AttributeKeys">
+    <process:parameterType>return:{http://aphia/v1.0}AttributeKeys</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_21_getAphiaAttributeValuesByCategoryID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>id:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_21_getAphiaAttributeValuesByCategoryID_Atomic_output_return__http___aphia_v1.0_AttributeValues">
+    <process:parameterType>return:{http://aphia/v1.0}AttributeValues</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_22_getAphiaIDsByAttributeKeyID_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>offset:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_22_getAphiaIDsByAttributeKeyID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>id:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_22_getAphiaIDsByAttributeKeyID_Atomic_output_return__http___aphia_v1.0_aphiaids">
+    <process:parameterType>return:{http://aphia/v1.0}aphiaids</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AphiaNameService_23_getAphiaAttributesByAphiaID_Atomic_input_include_inherited__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>include_inherited:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="AphiaNameService_23_getAphiaAttributesByAphiaID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>id:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AphiaNameService_23_getAphiaAttributesByAphiaID_Atomic_output_return__http___aphia_v1.0_Attributes">
+    <process:parameterType>return:{http://aphia/v1.0}Attributes</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_0_getAphiaID_Atomic">
+    <process:hasName>getAphiaID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_0_getAphiaID_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#AphiaNameService_0_getAphiaID_Atomic_input_scientificname__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AphiaNameService_0_getAphiaID_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_0_getAphiaID_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">marine_only(?marine_only) ^ scientificname(?scientificname) ^ extant_only(?extant_only)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?aphia_id) ^ hasAphiaID(?scientificname, ?aphia_id) ^ isMarine(?aphia_id, ?marine_only) ^ isExtant(?aphia_id, ?extant_only)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_1_getAphiaRecords_Atomic">
+    <process:hasName>getAphiaRecords</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic_input_like__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic_input_scientificname__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic_input_fuzzy__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic_output_return__http___aphia_v1.0_AphiaRecords"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">offset(?offset) ^ like(?like) ^ marine_only(?marine_only) ^ scientificname(?scientificname) ^ fuzzy(?fuzzy) ^ extant_only(?extant_only)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?AphiaRecords)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_2_getAphiaNameByID_Atomic">
+    <process:hasName>getAphiaNameByID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_2_getAphiaNameByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_2_getAphiaNameByID_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ swrlb:integer(?id)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?name) ^ swrlb:string(?name)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_3_getAphiaRecordByID_Atomic">
+    <process:hasName>getAphiaRecordByID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_3_getAphiaRecordByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_3_getAphiaRecordByID_Atomic_output_return__http___aphia_v1.0_AphiaRecord"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ swrlb:integer(?id)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?record) ^ AphiaRecord(?record) ^ hasAphiaID(?record, ?id)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_4_getAphiaRecordsByIDs_Atomic">
+    <process:hasName>getAphiaRecordsByIDs</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_4_getAphiaRecordsByIDs_Atomic_input_aphiaids__http___aphia_v1.0_aphiaids"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_4_getAphiaRecordsByIDs_Atomic_output_return__http___aphia_v1.0_AphiaRecords"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aphiaids(?aphiaids)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?AphiaRecords)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_5_getAphiaRecordByExtID_Atomic">
+    <process:hasName>getAphiaRecordByExtID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_5_getAphiaRecordByExtID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AphiaNameService_5_getAphiaRecordByExtID_Atomic_input_type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_5_getAphiaRecordByExtID_Atomic_output_return__http___aphia_v1.0_AphiaRecord"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?idType, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(?typeType, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?returnType, "http://aphia/v1.0#AphiaRecord")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_6_getExtIDbyAphiaID_Atomic">
+    <process:hasName>getExtIDbyAphiaID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_6_getExtIDbyAphiaID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#AphiaNameService_6_getExtIDbyAphiaID_Atomic_input_type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_6_getExtIDbyAphiaID_Atomic_output_return__http___aphia_v1.0_externalidentifiers"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ type(?t) ^ datatype(?id, http://www.w3.org/2001/XMLSchema#int) ^ datatype(?t, http://www.w3.org/2001/XMLSchema#string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">externalidentifiers(?id)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_7_getAphiaRecordsByNames_Atomic">
+    <process:hasName>getAphiaRecordsByNames</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_like__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_scientificnames__http___aphia_v1.0_scientificnames"/>
+    <process:hasInput rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_fuzzy__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic_output_return__http___aphia_v1.0_AphiaMatches"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">like(?like) ^ scientificnames(?scientificnames) ^ marine_only(?marine_only) ^ fuzzy(?fuzzy) ^ extant_only(?extant_only)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?AphiaMatches)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_8_getAphiaRecordsByVernacular_Atomic">
+    <process:hasName>getAphiaRecordsByVernacular</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_8_getAphiaRecordsByVernacular_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#AphiaNameService_8_getAphiaRecordsByVernacular_Atomic_input_like__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#AphiaNameService_8_getAphiaRecordsByVernacular_Atomic_input_vernacular__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_8_getAphiaRecordsByVernacular_Atomic_output_return__http___aphia_v1.0_AphiaRecords"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:greaterThan(offset, 0) ^ swrlb:equal(like, true) ^ swrlb:stringLength(vernacular, 1, 100)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aphia:getAphiaRecordsByVernacular(offset, like, vernacular) ^ aphia:hasAphiaRecords(return)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_9_getAphiaRecordsByDate_Atomic">
+    <process:hasName>getAphiaRecordsByDate</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_enddate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_startdate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic_output_return__http___aphia_v1.0_AphiaRecords"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(enddate, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(offset, "http://www.w3.org/2001/XMLSchema#int") ^ swrlb:equal(marine_only, "http://www.w3.org/2001/XMLSchema#boolean") ^ swrlb:equal(startdate, "http://www.w3.org/2001/XMLSchema#string") ^ swrlb:equal(extant_only, "http://www.w3.org/2001/XMLSchema#boolean")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return -&gt; AphiaRecords</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_10_getAphiaClassificationByID_Atomic">
+    <process:hasName>getAphiaClassificationByID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_10_getAphiaClassificationByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_10_getAphiaClassificationByID_Atomic_output_return__http___aphia_v1.0_Classification"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ swrlb:integer(?id)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Classification(?result) ^ getAphiaClassificationByID(?id, ?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_11_getSourcesByAphiaID_Atomic">
+    <process:hasName>getSourcesByAphiaID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_11_getSourcesByAphiaID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_11_getSourcesByAphiaID_Atomic_output_return__http___aphia_v1.0_Sources"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ swrlb:integer(?id)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sources(?sources) ^ getSourcesByAphiaID(?sources, ?id)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_12_getAphiaSynonymsByID_Atomic">
+    <process:hasName>getAphiaSynonymsByID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_12_getAphiaSynonymsByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#AphiaNameService_12_getAphiaSynonymsByID_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_12_getAphiaSynonymsByID_Atomic_output_return__http___aphia_v1.0_AphiaRecords"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID is an integer value and offset is an integer value</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The operation getAphiaSynonymsByID returns a set of AphiaRecords based on the provided AphiaID and offset values</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_13_getAphiaVernacularsByID_Atomic">
+    <process:hasName>getAphiaVernacularsByID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_13_getAphiaVernacularsByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_13_getAphiaVernacularsByID_Atomic_output_return__http___aphia_v1.0_Vernaculars"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ swrlb:integer(?id)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?vernaculars) ^ Vernaculars(?vernaculars) ^ hasAphiaID(?vernaculars, ?id)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_14_getAphiaChildrenByID_Atomic">
+    <process:hasName>getAphiaChildrenByID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_14_getAphiaChildrenByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#AphiaNameService_14_getAphiaChildrenByID_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#AphiaNameService_14_getAphiaChildrenByID_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#AphiaNameService_14_getAphiaChildrenByID_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_14_getAphiaChildrenByID_Atomic_output_return__http___aphia_v1.0_AphiaRecords"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID is an integer and offset is an integer and marine_only is a boolean and extant_only is a boolean</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Returns AphiaRecords based on the input AphiaID, offset, marine_only, and extant_only</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_15_matchAphiaRecordsByNames_Atomic">
+    <process:hasName>matchAphiaRecordsByNames</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_15_matchAphiaRecordsByNames_Atomic_input_scientificnames__http___aphia_v1.0_scientificnames"/>
+    <process:hasInput rdf:resource="#AphiaNameService_15_matchAphiaRecordsByNames_Atomic_input_marine_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#AphiaNameService_15_matchAphiaRecordsByNames_Atomic_input_extant_only__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_15_matchAphiaRecordsByNames_Atomic_output_return__http___aphia_v1.0_AphiaMatches"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?marine_only, "true"^^xsd:boolean) ^ swrlb:equal(?extant_only, "true"^^xsd:boolean)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aphia:matchAphiaRecordsByNames(?scientificnames, ?marine_only, ?extant_only, ?AphiaMatches)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_16_getAphiaDistributionsByID_Atomic">
+    <process:hasName>getAphiaDistributionsByID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_16_getAphiaDistributionsByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_16_getAphiaDistributionsByID_Atomic_output_return__http___aphia_v1.0_Distributions"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ swrlb:integer(?id)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?d) ^ Distributions(?d) ^ hasAphiaID(?d, ?id)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_17_getAphiaTaxonRanksByID_Atomic">
+    <process:hasName>getAphiaTaxonRanksByID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_17_getAphiaTaxonRanksByID_Atomic_input_taxonRankID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#AphiaNameService_17_getAphiaTaxonRanksByID_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_17_getAphiaTaxonRanksByID_Atomic_output_return__http___aphia_v1.0_AphiaRanks"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">taxonRankID is an integer and AphiaID is an integer</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The operation getAphiaTaxonRanksByID returns AphiaRanks based on the provided taxonRankID and AphiaID</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_18_getAphiaTaxonRanksByName_Atomic">
+    <process:hasName>getAphiaTaxonRanksByName</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_18_getAphiaTaxonRanksByName_Atomic_input_AphiaID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#AphiaNameService_18_getAphiaTaxonRanksByName_Atomic_input_taxonRank__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_18_getAphiaTaxonRanksByName_Atomic_output_return__http___aphia_v1.0_AphiaRanks"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AphiaID(?id) ^ taxonRank(?rank) ^ datatype(?id, http://www.w3.org/2001/XMLSchema#int) ^ datatype(?rank, http://www.w3.org/2001/XMLSchema#string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?rank, http://aphia/v1.0#AphiaRanks)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic">
+    <process:hasName>getAphiaRecordsByTaxonRankID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic_input_taxonRankID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic_input_belongsTo__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic_output_return__http___aphia_v1.0_AphiaRecords"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:greaterThanOrEqual(?taxonRankID, 0) ^ swrlb:greaterThanOrEqual(?offset, 0) ^ swrlb:greaterThanOrEqual(?belongsTo, 0)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aphia:getAphiaRecordsByTaxonRankID(?taxonRankID, ?offset, ?belongsTo, ?return)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_20_getAphiaAttributeKeysByID_Atomic">
+    <process:hasName>getAphiaAttributeKeysByID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_20_getAphiaAttributeKeysByID_Atomic_input_include_children__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#AphiaNameService_20_getAphiaAttributeKeysByID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_20_getAphiaAttributeKeysByID_Atomic_output_return__http___aphia_v1.0_AttributeKeys"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">include_children(?include_children) ^ id(?id)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?AttributeKeys)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_21_getAphiaAttributeValuesByCategoryID_Atomic">
+    <process:hasName>getAphiaAttributeValuesByCategoryID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_21_getAphiaAttributeValuesByCategoryID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_21_getAphiaAttributeValuesByCategoryID_Atomic_output_return__http___aphia_v1.0_AttributeValues"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">id rdf:type xsd:int</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">getAphiaAttributeValuesByCategoryID(id) -&gt; return rdf:type aphia:AttributeValues</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_22_getAphiaIDsByAttributeKeyID_Atomic">
+    <process:hasName>getAphiaIDsByAttributeKeyID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_22_getAphiaIDsByAttributeKeyID_Atomic_input_offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#AphiaNameService_22_getAphiaIDsByAttributeKeyID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_22_getAphiaIDsByAttributeKeyID_Atomic_output_return__http___aphia_v1.0_aphiaids"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">offset(?offset) ^ id(?id)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?aphiaids)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AphiaNameService_23_getAphiaAttributesByAphiaID_Atomic">
+    <process:hasName>getAphiaAttributesByAphiaID</process:hasName>
+    <process:hasInput rdf:resource="#AphiaNameService_23_getAphiaAttributesByAphiaID_Atomic_input_include_inherited__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#AphiaNameService_23_getAphiaAttributesByAphiaID_Atomic_input_id__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#AphiaNameService_23_getAphiaAttributesByAphiaID_Atomic_output_return__http___aphia_v1.0_Attributes"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">include_inherited(?include_inherited), id(?id)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(?Attributes)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="AphiaNameService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_0_getAphiaID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_1_getAphiaRecords_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_2_getAphiaNameByID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_3_getAphiaRecordByID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_4_getAphiaRecordsByIDs_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_5_getAphiaRecordByExtID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_6_getExtIDbyAphiaID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_8_getAphiaRecordsByVernacular_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_10_getAphiaClassificationByID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_11_getSourcesByAphiaID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_12_getAphiaSynonymsByID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_13_getAphiaVernacularsByID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_14_getAphiaChildrenByID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_15_matchAphiaRecordsByNames_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_16_getAphiaDistributionsByID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_17_getAphiaTaxonRanksByID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_18_getAphiaTaxonRanksByName_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_19_getAphiaRecordsByTaxonRankID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_20_getAphiaAttributeKeysByID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_21_getAphiaAttributeValuesByCategoryID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_22_getAphiaIDsByAttributeKeyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AphiaNameService_23_getAphiaAttributesByAphiaID_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_0_getAphiaID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_0_getAphiaID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_1_getAphiaRecords_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_1_getAphiaRecords_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaRecords</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaRecords</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaRecordsResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_2_getAphiaNameByID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_2_getAphiaNameByID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaNameByID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaNameByID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaNameByIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_3_getAphiaRecordByID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_3_getAphiaRecordByID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaRecordByID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaRecordByID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaRecordByIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_4_getAphiaRecordsByIDs_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_4_getAphiaRecordsByIDs_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaRecordsByIDs</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaRecordsByIDs</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaRecordsByIDsResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_5_getAphiaRecordByExtID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_5_getAphiaRecordByExtID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaRecordByExtID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaRecordByExtID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaRecordByExtIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_6_getExtIDbyAphiaID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_6_getExtIDbyAphiaID_Atomic"/>
+    <grounding:wsdlOperationName>getExtIDbyAphiaID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getExtIDbyAphiaID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getExtIDbyAphiaIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_7_getAphiaRecordsByNames_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_7_getAphiaRecordsByNames_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaRecordsByNames</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaRecordsByNames</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaRecordsByNamesResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_8_getAphiaRecordsByVernacular_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_8_getAphiaRecordsByVernacular_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaRecordsByVernacular</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaRecordsByVernacular</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaRecordsByVernacularResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_9_getAphiaRecordsByDate_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_9_getAphiaRecordsByDate_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaRecordsByDate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaRecordsByDate</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaRecordsByDateResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_10_getAphiaClassificationByID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_10_getAphiaClassificationByID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaClassificationByID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaClassificationByID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaClassificationByIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_11_getSourcesByAphiaID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_11_getSourcesByAphiaID_Atomic"/>
+    <grounding:wsdlOperationName>getSourcesByAphiaID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSourcesByAphiaID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSourcesByAphiaIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_12_getAphiaSynonymsByID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_12_getAphiaSynonymsByID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaSynonymsByID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaSynonymsByID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaSynonymsByIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_13_getAphiaVernacularsByID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_13_getAphiaVernacularsByID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaVernacularsByID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaVernacularsByID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaVernacularsByIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_14_getAphiaChildrenByID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_14_getAphiaChildrenByID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaChildrenByID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaChildrenByID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaChildrenByIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_15_matchAphiaRecordsByNames_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_15_matchAphiaRecordsByNames_Atomic"/>
+    <grounding:wsdlOperationName>matchAphiaRecordsByNames</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>matchAphiaRecordsByNames</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>matchAphiaRecordsByNamesResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_16_getAphiaDistributionsByID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_16_getAphiaDistributionsByID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaDistributionsByID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaDistributionsByID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaDistributionsByIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_17_getAphiaTaxonRanksByID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_17_getAphiaTaxonRanksByID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaTaxonRanksByID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaTaxonRanksByID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaTaxonRanksByIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_18_getAphiaTaxonRanksByName_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_18_getAphiaTaxonRanksByName_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaTaxonRanksByName</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaTaxonRanksByName</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaTaxonRanksByNameResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_19_getAphiaRecordsByTaxonRankID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_19_getAphiaRecordsByTaxonRankID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaRecordsByTaxonRankID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaRecordsByTaxonRankID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaRecordsByTaxonRankIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_20_getAphiaAttributeKeysByID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_20_getAphiaAttributeKeysByID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaAttributeKeysByID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaAttributeKeysByID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaAttributeKeysByIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_21_getAphiaAttributeValuesByCategoryID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_21_getAphiaAttributeValuesByCategoryID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaAttributeValuesByCategoryID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaAttributeValuesByCategoryID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaAttributeValuesByCategoryIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_22_getAphiaIDsByAttributeKeyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_22_getAphiaIDsByAttributeKeyID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaIDsByAttributeKeyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaIDsByAttributeKeyID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaIDsByAttributeKeyIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AphiaNameService_23_getAphiaAttributesByAphiaID_Grounding">
+    <grounding:owlsProcess rdf:resource="#AphiaNameService_23_getAphiaAttributesByAphiaID_Atomic"/>
+    <grounding:wsdlOperationName>getAphiaAttributesByAphiaID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AphiaNameServiceBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AphiaNameServicePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/160_159.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAphiaAttributesByAphiaID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAphiaAttributesByAphiaIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

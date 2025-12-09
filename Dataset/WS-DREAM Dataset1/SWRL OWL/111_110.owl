@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="PersonService">
+    <service:presents rdf:resource="#PersonService_Profile"/>
+    <service:describedBy rdf:resource="#PersonService_Composite"/>
+    <service:supports rdf:resource="#PersonService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="PersonService_Profile">
+    <profile:serviceName>PersonService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#PersonService"/>
+    <profile:hasProcess rdf:resource="#PersonService_0_Find_Atomic"/>
+    <profile:hasInput rdf:resource="#PersonService_0_Find_Atomic_input_ssn__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#PersonService_0_Find_Atomic_output_FindResult__http___tempuri.org_encodedTypes_Person"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ssn(?x) ^ string(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindResult(?y) ^ Person(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PersonService_1_GetAll_Atomic"/>
+    <profile:hasOutput rdf:resource="#PersonService_1_GetAll_Atomic_output_GetAllResult__http___tempuri.org_encodedTypes_ArrayOfPerson"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetAllResult:{http://tempuri.org/encodedTypes}ArrayOfPerson</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="PersonService_Composite">
+    <process:composedOf rdf:resource="#PersonService_0_Find_Atomic"/>
+    <process:composedOf rdf:resource="#PersonService_1_GetAll_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="PersonService_0_Find_Atomic_input_ssn__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ssn:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PersonService_0_Find_Atomic_output_FindResult__http___tempuri.org_encodedTypes_Person">
+    <process:parameterType>FindResult:{http://tempuri.org/encodedTypes}Person</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="PersonService_1_GetAll_Atomic_output_GetAllResult__http___tempuri.org_encodedTypes_ArrayOfPerson">
+    <process:parameterType>GetAllResult:{http://tempuri.org/encodedTypes}ArrayOfPerson</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="PersonService_0_Find_Atomic">
+    <process:hasName>Find</process:hasName>
+    <process:hasInput rdf:resource="#PersonService_0_Find_Atomic_input_ssn__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#PersonService_0_Find_Atomic_output_FindResult__http___tempuri.org_encodedTypes_Person"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ssn(?x) ^ string(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindResult(?y) ^ Person(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PersonService_1_GetAll_Atomic">
+    <process:hasName>GetAll</process:hasName>
+    <process:hasOutput rdf:resource="#PersonService_1_GetAll_Atomic_output_GetAllResult__http___tempuri.org_encodedTypes_ArrayOfPerson"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetAllResult:{http://tempuri.org/encodedTypes}ArrayOfPerson</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="PersonService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PersonService_0_Find_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PersonService_1_GetAll_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PersonService_0_Find_Grounding">
+    <grounding:owlsProcess rdf:resource="#PersonService_0_Find_Atomic"/>
+    <grounding:wsdlOperationName>Find</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PersonServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PersonServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/111_110.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PersonService_1_GetAll_Grounding">
+    <grounding:owlsProcess rdf:resource="#PersonService_1_GetAll_Atomic"/>
+    <grounding:wsdlOperationName>GetAll</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PersonServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PersonServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/111_110.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAllSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAllSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

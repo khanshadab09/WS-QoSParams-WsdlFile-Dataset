@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ValidateEmailWebService">
+    <service:presents rdf:resource="#ValidateEmailWebService_Profile"/>
+    <service:describedBy rdf:resource="#ValidateEmailWebService_Composite"/>
+    <service:supports rdf:resource="#ValidateEmailWebService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ValidateEmailWebService_Profile">
+    <profile:serviceName>ValidateEmailWebService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ValidateEmailWebService"/>
+    <profile:hasProcess rdf:resource="#ValidateEmailWebService_0_ValidateEmailAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#ValidateEmailWebService_0_ValidateEmailAddress_Atomic_input_parameters__http___WebXml.com.cn__ValidateEmailAddress"/>
+    <profile:hasOutput rdf:resource="#ValidateEmailWebService_0_ValidateEmailAddress_Atomic_output_parameters__http___WebXml.com.cn__ValidateEmailAddressResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateEmailAddress(?emailAddress) ^ string(?emailAddress)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateEmailAddressResponse(?emailAddress) ^ string(?emailAddress) ^ validEmail(?emailAddress)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ValidateEmailWebService_1_ValidateEmailAddressPro_Atomic"/>
+    <profile:hasInput rdf:resource="#ValidateEmailWebService_1_ValidateEmailAddressPro_Atomic_input_parameters__http___WebXml.com.cn__ValidateEmailAddressPro"/>
+    <profile:hasOutput rdf:resource="#ValidateEmailWebService_1_ValidateEmailAddressPro_Atomic_output_parameters__http___WebXml.com.cn__ValidateEmailAddressProResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ValidateEmailWebService_2_ValidateEmailAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#ValidateEmailWebService_2_ValidateEmailAddress_Atomic_input_theEmail__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ValidateEmailWebService_2_ValidateEmailAddress_Atomic_output_Body__http___WebXml.com.cn__unsignedByte"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:isEmailAddress(?theEmail)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:add(?Body, 1, 0)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ValidateEmailWebService_3_ValidateEmailAddressPro_Atomic"/>
+    <profile:hasInput rdf:resource="#ValidateEmailWebService_3_ValidateEmailAddressPro_Atomic_input_theEmail__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ValidateEmailWebService_3_ValidateEmailAddressPro_Atomic_input_theEmailPort__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ValidateEmailWebService_3_ValidateEmailAddressPro_Atomic_output_Body__http___WebXml.com.cn__unsignedByte"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmailAddress(theEmail) ^ PortNumber(theEmailPort)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(1)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ValidateEmailWebService_4_ValidateEmailAddress_Atomic"/>
+    <profile:hasInput rdf:resource="#ValidateEmailWebService_4_ValidateEmailAddress_Atomic_input_theEmail__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ValidateEmailWebService_4_ValidateEmailAddress_Atomic_output_Body__http___WebXml.com.cn__unsignedByte"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?theEmail, xsd:string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?Body, webxml:unsignedByte)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ValidateEmailWebService_5_ValidateEmailAddressPro_Atomic"/>
+    <profile:hasInput rdf:resource="#ValidateEmailWebService_5_ValidateEmailAddressPro_Atomic_input_theEmail__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ValidateEmailWebService_5_ValidateEmailAddressPro_Atomic_input_theEmailPort__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ValidateEmailWebService_5_ValidateEmailAddressPro_Atomic_output_Body__http___WebXml.com.cn__unsignedByte"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?theEmailPort, "25") ^ swrlb:stringLength(?theEmail, ?len) ^ swrlb:greaterThanOrEqual(?len, 5)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:add(?Body, 1)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ValidateEmailWebService_Composite">
+    <process:composedOf rdf:resource="#ValidateEmailWebService_0_ValidateEmailAddress_Atomic"/>
+    <process:composedOf rdf:resource="#ValidateEmailWebService_1_ValidateEmailAddressPro_Atomic"/>
+    <process:composedOf rdf:resource="#ValidateEmailWebService_2_ValidateEmailAddress_Atomic"/>
+    <process:composedOf rdf:resource="#ValidateEmailWebService_3_ValidateEmailAddressPro_Atomic"/>
+    <process:composedOf rdf:resource="#ValidateEmailWebService_4_ValidateEmailAddress_Atomic"/>
+    <process:composedOf rdf:resource="#ValidateEmailWebService_5_ValidateEmailAddressPro_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ValidateEmailWebService_0_ValidateEmailAddress_Atomic_input_parameters__http___WebXml.com.cn__ValidateEmailAddress">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}ValidateEmailAddress</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ValidateEmailWebService_0_ValidateEmailAddress_Atomic_output_parameters__http___WebXml.com.cn__ValidateEmailAddressResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}ValidateEmailAddressResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ValidateEmailWebService_1_ValidateEmailAddressPro_Atomic_input_parameters__http___WebXml.com.cn__ValidateEmailAddressPro">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}ValidateEmailAddressPro</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ValidateEmailWebService_1_ValidateEmailAddressPro_Atomic_output_parameters__http___WebXml.com.cn__ValidateEmailAddressProResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}ValidateEmailAddressProResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ValidateEmailWebService_2_ValidateEmailAddress_Atomic_input_theEmail__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theEmail:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ValidateEmailWebService_2_ValidateEmailAddress_Atomic_output_Body__http___WebXml.com.cn__unsignedByte">
+    <process:parameterType>Body:{http://WebXml.com.cn/}unsignedByte</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ValidateEmailWebService_3_ValidateEmailAddressPro_Atomic_input_theEmail__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theEmail:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ValidateEmailWebService_3_ValidateEmailAddressPro_Atomic_input_theEmailPort__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theEmailPort:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ValidateEmailWebService_3_ValidateEmailAddressPro_Atomic_output_Body__http___WebXml.com.cn__unsignedByte">
+    <process:parameterType>Body:{http://WebXml.com.cn/}unsignedByte</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ValidateEmailWebService_4_ValidateEmailAddress_Atomic_input_theEmail__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theEmail:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ValidateEmailWebService_4_ValidateEmailAddress_Atomic_output_Body__http___WebXml.com.cn__unsignedByte">
+    <process:parameterType>Body:{http://WebXml.com.cn/}unsignedByte</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ValidateEmailWebService_5_ValidateEmailAddressPro_Atomic_input_theEmail__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theEmail:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ValidateEmailWebService_5_ValidateEmailAddressPro_Atomic_input_theEmailPort__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theEmailPort:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ValidateEmailWebService_5_ValidateEmailAddressPro_Atomic_output_Body__http___WebXml.com.cn__unsignedByte">
+    <process:parameterType>Body:{http://WebXml.com.cn/}unsignedByte</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ValidateEmailWebService_0_ValidateEmailAddress_Atomic">
+    <process:hasName>ValidateEmailAddress</process:hasName>
+    <process:hasInput rdf:resource="#ValidateEmailWebService_0_ValidateEmailAddress_Atomic_input_parameters__http___WebXml.com.cn__ValidateEmailAddress"/>
+    <process:hasOutput rdf:resource="#ValidateEmailWebService_0_ValidateEmailAddress_Atomic_output_parameters__http___WebXml.com.cn__ValidateEmailAddressResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateEmailAddress(?emailAddress) ^ string(?emailAddress)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateEmailAddressResponse(?emailAddress) ^ string(?emailAddress) ^ validEmail(?emailAddress)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ValidateEmailWebService_1_ValidateEmailAddressPro_Atomic">
+    <process:hasName>ValidateEmailAddressPro</process:hasName>
+    <process:hasInput rdf:resource="#ValidateEmailWebService_1_ValidateEmailAddressPro_Atomic_input_parameters__http___WebXml.com.cn__ValidateEmailAddressPro"/>
+    <process:hasOutput rdf:resource="#ValidateEmailWebService_1_ValidateEmailAddressPro_Atomic_output_parameters__http___WebXml.com.cn__ValidateEmailAddressProResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ValidateEmailWebService_2_ValidateEmailAddress_Atomic">
+    <process:hasName>ValidateEmailAddress</process:hasName>
+    <process:hasInput rdf:resource="#ValidateEmailWebService_2_ValidateEmailAddress_Atomic_input_theEmail__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ValidateEmailWebService_2_ValidateEmailAddress_Atomic_output_Body__http___WebXml.com.cn__unsignedByte"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:isEmailAddress(?theEmail)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:add(?Body, 1, 0)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ValidateEmailWebService_3_ValidateEmailAddressPro_Atomic">
+    <process:hasName>ValidateEmailAddressPro</process:hasName>
+    <process:hasInput rdf:resource="#ValidateEmailWebService_3_ValidateEmailAddressPro_Atomic_input_theEmail__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ValidateEmailWebService_3_ValidateEmailAddressPro_Atomic_input_theEmailPort__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ValidateEmailWebService_3_ValidateEmailAddressPro_Atomic_output_Body__http___WebXml.com.cn__unsignedByte"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmailAddress(theEmail) ^ PortNumber(theEmailPort)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(1)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ValidateEmailWebService_4_ValidateEmailAddress_Atomic">
+    <process:hasName>ValidateEmailAddress</process:hasName>
+    <process:hasInput rdf:resource="#ValidateEmailWebService_4_ValidateEmailAddress_Atomic_input_theEmail__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ValidateEmailWebService_4_ValidateEmailAddress_Atomic_output_Body__http___WebXml.com.cn__unsignedByte"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?theEmail, xsd:string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?Body, webxml:unsignedByte)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ValidateEmailWebService_5_ValidateEmailAddressPro_Atomic">
+    <process:hasName>ValidateEmailAddressPro</process:hasName>
+    <process:hasInput rdf:resource="#ValidateEmailWebService_5_ValidateEmailAddressPro_Atomic_input_theEmail__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ValidateEmailWebService_5_ValidateEmailAddressPro_Atomic_input_theEmailPort__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ValidateEmailWebService_5_ValidateEmailAddressPro_Atomic_output_Body__http___WebXml.com.cn__unsignedByte"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?theEmailPort, "25") ^ swrlb:stringLength(?theEmail, ?len) ^ swrlb:greaterThanOrEqual(?len, 5)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:add(?Body, 1)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ValidateEmailWebService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ValidateEmailWebService_0_ValidateEmailAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ValidateEmailWebService_1_ValidateEmailAddressPro_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ValidateEmailWebService_2_ValidateEmailAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ValidateEmailWebService_3_ValidateEmailAddressPro_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ValidateEmailWebService_4_ValidateEmailAddress_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ValidateEmailWebService_5_ValidateEmailAddressPro_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ValidateEmailWebService_0_ValidateEmailAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#ValidateEmailWebService_0_ValidateEmailAddress_Atomic"/>
+    <grounding:wsdlOperationName>ValidateEmailAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ValidateEmailWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ValidateEmailWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/634_633.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateEmailAddressSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateEmailAddressSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ValidateEmailWebService_1_ValidateEmailAddressPro_Grounding">
+    <grounding:owlsProcess rdf:resource="#ValidateEmailWebService_1_ValidateEmailAddressPro_Atomic"/>
+    <grounding:wsdlOperationName>ValidateEmailAddressPro</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ValidateEmailWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ValidateEmailWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/634_633.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateEmailAddressProSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateEmailAddressProSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ValidateEmailWebService_2_ValidateEmailAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#ValidateEmailWebService_2_ValidateEmailAddress_Atomic"/>
+    <grounding:wsdlOperationName>ValidateEmailAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ValidateEmailWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ValidateEmailWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/634_633.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateEmailAddressHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateEmailAddressHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ValidateEmailWebService_3_ValidateEmailAddressPro_Grounding">
+    <grounding:owlsProcess rdf:resource="#ValidateEmailWebService_3_ValidateEmailAddressPro_Atomic"/>
+    <grounding:wsdlOperationName>ValidateEmailAddressPro</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ValidateEmailWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ValidateEmailWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/634_633.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateEmailAddressProHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateEmailAddressProHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ValidateEmailWebService_4_ValidateEmailAddress_Grounding">
+    <grounding:owlsProcess rdf:resource="#ValidateEmailWebService_4_ValidateEmailAddress_Atomic"/>
+    <grounding:wsdlOperationName>ValidateEmailAddress</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ValidateEmailWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ValidateEmailWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/634_633.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateEmailAddressHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateEmailAddressHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ValidateEmailWebService_5_ValidateEmailAddressPro_Grounding">
+    <grounding:owlsProcess rdf:resource="#ValidateEmailWebService_5_ValidateEmailAddressPro_Atomic"/>
+    <grounding:wsdlOperationName>ValidateEmailAddressPro</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ValidateEmailWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ValidateEmailWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/634_633.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateEmailAddressProHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateEmailAddressProHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

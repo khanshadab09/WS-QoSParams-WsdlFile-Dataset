@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="BisqwitAjaxSoapDemoService">
+    <service:presents rdf:resource="#BisqwitAjaxSoapDemoService_Profile"/>
+    <service:describedBy rdf:resource="#BisqwitAjaxSoapDemoService_Composite"/>
+    <service:supports rdf:resource="#BisqwitAjaxSoapDemoService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="BisqwitAjaxSoapDemoService_Profile">
+    <profile:serviceName>BisqwitAjaxSoapDemoService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#BisqwitAjaxSoapDemoService"/>
+    <profile:hasProcess rdf:resource="#BisqwitAjaxSoapDemoService_0_ItemQuery_Atomic"/>
+    <profile:hasInput rdf:resource="#BisqwitAjaxSoapDemoService_0_ItemQuery_Atomic_input_item__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BisqwitAjaxSoapDemoService_0_ItemQuery_Atomic_output_return__urn_BisqwitAjaxSoapDemo_DemoResult"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ItemQuery(?item) ^ swrlb:datatype(?item, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DemoResult(?return) ^ hasResult(?return, ?item) ^ hasSource(?return, "urn:BisqwitAjaxSoapDemo")</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="BisqwitAjaxSoapDemoService_Composite">
+    <process:composedOf rdf:resource="#BisqwitAjaxSoapDemoService_0_ItemQuery_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="BisqwitAjaxSoapDemoService_0_ItemQuery_Atomic_input_item__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>item:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BisqwitAjaxSoapDemoService_0_ItemQuery_Atomic_output_return__urn_BisqwitAjaxSoapDemo_DemoResult">
+    <process:parameterType>return:{urn:BisqwitAjaxSoapDemo}DemoResult</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="BisqwitAjaxSoapDemoService_0_ItemQuery_Atomic">
+    <process:hasName>ItemQuery</process:hasName>
+    <process:hasInput rdf:resource="#BisqwitAjaxSoapDemoService_0_ItemQuery_Atomic_input_item__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BisqwitAjaxSoapDemoService_0_ItemQuery_Atomic_output_return__urn_BisqwitAjaxSoapDemo_DemoResult"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ItemQuery(?item) ^ swrlb:datatype(?item, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DemoResult(?return) ^ hasResult(?return, ?item) ^ hasSource(?return, "urn:BisqwitAjaxSoapDemo")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="BisqwitAjaxSoapDemoService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BisqwitAjaxSoapDemoService_0_ItemQuery_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BisqwitAjaxSoapDemoService_0_ItemQuery_Grounding">
+    <grounding:owlsProcess rdf:resource="#BisqwitAjaxSoapDemoService_0_ItemQuery_Atomic"/>
+    <grounding:wsdlOperationName>ItemQuery</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BisqwitAjaxSoapDemoBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BisqwitAjaxSoapDemoPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1047_1046.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ItemQueryMessage</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ItemQueryResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
