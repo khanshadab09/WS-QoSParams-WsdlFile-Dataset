@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="FloodService">
+    <service:presents rdf:resource="#FloodService_Profile"/>
+    <service:describedBy rdf:resource="#FloodService_Composite"/>
+    <service:supports rdf:resource="#FloodService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="FloodService_Profile">
+    <profile:serviceName>FloodService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#FloodService"/>
+    <profile:hasProcess rdf:resource="#FloodService_0_request_Atomic"/>
+    <profile:hasInput rdf:resource="#FloodService_0_request_Atomic_input_floodRequestXml__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#FloodService_0_request_Atomic_input_responseVersionId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#FloodService_0_request_Atomic_input_requestVersionId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#FloodService_0_request_Atomic_output_floodResponseXml__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">floodRequestXml(?x), responseVersionId(?y), requestVersionId(?z)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">floodResponseXml(?w)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="FloodService_Composite">
+    <process:composedOf rdf:resource="#FloodService_0_request_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="FloodService_0_request_Atomic_input_floodRequestXml__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>floodRequestXml:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="FloodService_0_request_Atomic_input_responseVersionId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>responseVersionId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="FloodService_0_request_Atomic_input_requestVersionId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>requestVersionId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="FloodService_0_request_Atomic_output_floodResponseXml__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>floodResponseXml:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="FloodService_0_request_Atomic">
+    <process:hasName>request</process:hasName>
+    <process:hasInput rdf:resource="#FloodService_0_request_Atomic_input_floodRequestXml__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#FloodService_0_request_Atomic_input_responseVersionId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#FloodService_0_request_Atomic_input_requestVersionId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#FloodService_0_request_Atomic_output_floodResponseXml__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">floodRequestXml(?x), responseVersionId(?y), requestVersionId(?z)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">floodResponseXml(?w)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="FloodService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#FloodService_0_request_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="FloodService_0_request_Grounding">
+    <grounding:owlsProcess rdf:resource="#FloodService_0_request_Atomic"/>
+    <grounding:wsdlOperationName>request</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FloodSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Flood</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1011_FloodService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>request_IN</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>request_OUT</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

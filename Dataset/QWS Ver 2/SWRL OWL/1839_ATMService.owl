@@ -1,0 +1,1219 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ATMService">
+    <service:presents rdf:resource="#ATMService_Profile"/>
+    <service:describedBy rdf:resource="#ATMService_Composite"/>
+    <service:supports rdf:resource="#ATMService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ATMService_Profile">
+    <profile:serviceName>ATMService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ATMService"/>
+    <profile:hasProcess rdf:resource="#ATMService_0_IsParticipant_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_0_IsParticipant_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_0_IsParticipant_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_0_IsParticipant_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_boolean"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aba(?x) ^ token(?y)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?z) ^ IsParticipant(?x, ?y, ?z)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_1_GetStatusCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_1_GetStatusCode_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_1_GetStatusCode_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_1_GetStatusCode_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_1_GetStatusCode_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_1_GetStatusCode_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aba(?x) ^ amount(?y) ^ account(?z) ^ token(?w)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?v) ^ int(?v) ^ hasStatusCode(?v) ^ hasABA(?v, ?x) ^ hasAmount(?v, ?y) ^ hasAccount(?v, ?z) ^ hasToken(?v, ?w)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic_input_present__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aba(?x) ^ amount(?y) ^ present(?z) ^ account(?w) ^ token(?v) ^ string(?x) ^ string(?y) ^ string(?z) ^ string(?w) ^ string(?v)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ int(?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_3_TranslateStatusCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_3_TranslateStatusCode_Atomic_input_code__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_3_TranslateStatusCode_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_3_TranslateStatusCode_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">code(?code) ^ token(?token)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasStatusCode(?result, ?code) ^ hasToken(?result, ?token) ^ string(?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic_input_NSF__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic_input_present__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_AVSBResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NSF(?x) ^ aba(?y) ^ amount(?z) ^ present(?w) ^ account(?v) ^ token(?u)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?r) ^ AVSBResponse(?r) ^ GetStatusCodeAVSB(?r)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_5_FindASCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_5_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_5_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_5_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">serialNumber(?serialNumber) ^ payeeCode(?payeeCode)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?int) ^ FindASCompanyID(?serialNumber, ?payeeCode, ?int)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_6_FindCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_6_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_6_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">?inputValue rdf:type &lt;http://www.w3.org/2001/XMLSchema#string&gt; .</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">?outputValue rdf:type &lt;http://www.lyonsreg.com/WebService/ATMService#int&gt; .</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_7_GetCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_7_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_7_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">token(?x) ^ type(?x, "http://www.w3.org/2001/XMLSchema}string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ type(?y, "http://www.lyonsreg.com/WebService/ATMService}int")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_8_Logoff_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_8_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">token(?x) ^ swrlb:equal(?x, "Logoff")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not loggedin(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_9_Logon_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_9_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_9_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_9_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_9_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">companyID(?x), password(?y), userName(?z)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ string(?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_10_RequiredLogon_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_10_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_10_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_boolean"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">token(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ swrlb:datatype(?y, "http://www.lyonsreg.com/WebService/ATMService#boolean")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_11_IsParticipant_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_11_IsParticipant_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_11_IsParticipant_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_11_IsParticipant_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_boolean"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aba(?x) ^ token(?y)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?z) ^ IsParticipant(?x, ?y, ?z)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_12_GetStatusCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_12_GetStatusCode_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_12_GetStatusCode_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_12_GetStatusCode_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_12_GetStatusCode_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_12_GetStatusCode_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aba(?x) ^ amount(?y) ^ account(?z) ^ token(?w)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?v) ^ GetStatusCode(?x, ?y, ?z, ?w, ?v)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic_input_present__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aba(?x) ^ amount(?y) ^ present(?z) ^ account(?w) ^ token(?v)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasStatusCodeV2(?result, ?x, ?y, ?z, ?w, ?v)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_14_TranslateStatusCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_14_TranslateStatusCode_Atomic_input_code__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_14_TranslateStatusCode_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_14_TranslateStatusCode_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">code(?code) ^ token(?token)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasStatusCode(?result, ?code) ^ hasToken(?result, ?token) ^ string(?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic_input_NSF__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic_input_present__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_AVSBResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NSF(?x) ^ aba(?y) ^ amount(?z) ^ present(?w) ^ account(?v) ^ token(?u)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?r) ^ AVSBResponse(?r) ^ GetStatusCodeAVSB(?r)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_16_FindASCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_16_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_16_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_16_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">serialNumber(?serialNumber) ^ payeeCode(?payeeCode)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?int) ^ hasCompanyID(?int) ^ hasSerialNumber(?int, ?serialNumber) ^ hasPayeeCode(?int, ?payeeCode)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_17_FindCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_17_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_17_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">?inputValue rdf:type &lt;http://www.w3.org/2001/XMLSchema#string&gt;</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">?outputValue rdf:type &lt;http://www.lyonsreg.com/WebService/ATMService#int&gt;</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_18_GetCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_18_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_18_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">token(?x) ^ type(?x, "http://www.w3.org/2001/XMLSchema}string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ type(?y, "http://www.lyonsreg.com/WebService/ATMService") ^ int(?y) ^ hasID(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_19_Logoff_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_19_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">token(?x) ^ swrlb:equal(?x, "Logoff")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬loggedIn(?y) ^ hasToken(?y, ?x) ^ hasStatus(?y, "Offline")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_20_Logon_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_20_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_20_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ATMService_20_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_20_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">companyID(?x), password(?y), userName(?z)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ string(?result) ^ Logon(?x, ?y, ?z, ?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_21_RequiredLogon_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_21_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ATMService_21_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_boolean"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">token(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ swrlb:datatype(?y, "http://www.lyonsreg.com/WebService/ATMService#boolean")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_22_IsParticipant_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_22_IsParticipant_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_IsParticipant"/>
+    <profile:hasOutput rdf:resource="#ATMService_22_IsParticipant_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_IsParticipantResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsParticipant(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsParticipantResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_23_GetStatusCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_23_GetStatusCode_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCode"/>
+    <profile:hasOutput rdf:resource="#ATMService_23_GetStatusCode_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(GetStatusCode, http://www.lyonsreg.com/WebService/ATMService)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(GetStatusCodeResponse, http://www.lyonsreg.com/WebService/ATMService)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_24_GetStatusCodeV2_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_24_GetStatusCodeV2_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeV2"/>
+    <profile:hasOutput rdf:resource="#ATMService_24_GetStatusCodeV2_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeV2Response"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(GetStatusCodeV2, ?input) ^ hasNamespace(?input, "http://www.lyonsreg.com/WebService/ATMService")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(GetStatusCodeV2Response, ?output) ^ hasNamespace(?output, "http://www.lyonsreg.com/WebService/ATMService")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_25_TranslateStatusCode_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_25_TranslateStatusCode_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_TranslateStatusCode"/>
+    <profile:hasOutput rdf:resource="#ATMService_25_TranslateStatusCode_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_TranslateStatusCodeResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(swrlb:equal(http://www.lyonsreg.com/WebService/ATMService, http://www.lyonsreg.com/WebService/ATMService) ^ swrlb:equal(http://www.lyonsreg.com/WebService/ATMServiceResponse, http://www.lyonsreg.com/WebService/ATMServiceResponse))</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_26_GetStatusCodeAVSB_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_26_GetStatusCodeAVSB_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeAVSB"/>
+    <profile:hasOutput rdf:resource="#ATMService_26_GetStatusCodeAVSB_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeAVSBResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(http://www.lyonsreg.com/WebService/ATMService, GetStatusCodeAVSB)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(http://www.lyonsreg.com/WebService/ATMService, GetStatusCodeAVSBResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_27_FindASCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_27_FindASCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_FindASCompanyID"/>
+    <profile:hasOutput rdf:resource="#ATMService_27_FindASCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_FindASCompanyIDResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindASCompanyID(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindASCompanyIDResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_28_FindCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_28_FindCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_FindCompanyID"/>
+    <profile:hasOutput rdf:resource="#ATMService_28_FindCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_FindCompanyIDResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindCompanyID(?x) ^ hasParameter(?x, http://www.lyonsreg.com/WebService/ATMService)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindCompanyIDResponse(?y) ^ hasParameter(?y, http://www.lyonsreg.com/WebService/ATMService)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_29_GetCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_29_GetCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_GetCompanyID"/>
+    <profile:hasOutput rdf:resource="#ATMService_29_GetCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_GetCompanyIDResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_30_Logoff_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_30_Logoff_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_Logoff"/>
+    <profile:hasOutput rdf:resource="#ATMService_30_Logoff_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_LogoffResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Logoff(?x) ^ hasParameter(?x, ?param) ^ hasNamespace(?param, "http://www.lyonsreg.com/WebService/ATMService")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LogoffResponse(?y) ^ hasParameter(?y, ?param) ^ hasNamespace(?param, "http://www.lyonsreg.com/WebService/ATMService")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_31_Logon_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_31_Logon_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_Logon"/>
+    <profile:hasOutput rdf:resource="#ATMService_31_Logon_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_LogonResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Logon(?x) ^ hasParameter(?x, ?param) ^ hasNamespace(?param, "http://www.lyonsreg.com/WebService/ATMService")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LogonResponse(?y) ^ hasParameter(?y, ?result) ^ hasNamespace(?result, "http://www.lyonsreg.com/WebService/ATMService")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ATMService_32_RequiredLogon_Atomic"/>
+    <profile:hasInput rdf:resource="#ATMService_32_RequiredLogon_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_RequiredLogon"/>
+    <profile:hasOutput rdf:resource="#ATMService_32_RequiredLogon_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_RequiredLogonResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RequiredLogon(?x) ^ hasInput(?x, ?input) ^ hasParameter(?input, http://www.lyonsreg.com/WebService/ATMService)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RequiredLogonResponse(?y) ^ hasOutput(?y, ?output) ^ hasParameter(?output, http://www.lyonsreg.com/WebService/ATMService)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ATMService_Composite">
+    <process:composedOf rdf:resource="#ATMService_0_IsParticipant_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_1_GetStatusCode_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_3_TranslateStatusCode_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_5_FindASCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_6_FindCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_7_GetCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_8_Logoff_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_9_Logon_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_10_RequiredLogon_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_11_IsParticipant_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_12_GetStatusCode_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_14_TranslateStatusCode_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_16_FindASCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_17_FindCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_18_GetCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_19_Logoff_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_20_Logon_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_21_RequiredLogon_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_22_IsParticipant_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_23_GetStatusCode_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_24_GetStatusCodeV2_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_25_TranslateStatusCode_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_26_GetStatusCodeAVSB_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_27_FindASCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_28_FindCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_29_GetCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_30_Logoff_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_31_Logon_Atomic"/>
+    <process:composedOf rdf:resource="#ATMService_32_RequiredLogon_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ATMService_0_IsParticipant_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_0_IsParticipant_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_0_IsParticipant_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_boolean">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_1_GetStatusCode_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_1_GetStatusCode_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>amount:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_1_GetStatusCode_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_1_GetStatusCode_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_1_GetStatusCode_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_2_GetStatusCodeV2_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_2_GetStatusCodeV2_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>amount:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_2_GetStatusCodeV2_Atomic_input_present__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>present:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_2_GetStatusCodeV2_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_2_GetStatusCodeV2_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_2_GetStatusCodeV2_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_3_TranslateStatusCode_Atomic_input_code__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>code:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_3_TranslateStatusCode_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_3_TranslateStatusCode_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_4_GetStatusCodeAVSB_Atomic_input_NSF__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>NSF:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_4_GetStatusCodeAVSB_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_4_GetStatusCodeAVSB_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>amount:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_4_GetStatusCodeAVSB_Atomic_input_present__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>present:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_4_GetStatusCodeAVSB_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_4_GetStatusCodeAVSB_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_4_GetStatusCodeAVSB_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_AVSBResponse">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}AVSBResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_5_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>serialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_5_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>payeeCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_5_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_6_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wildcard:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_6_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_7_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_7_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_8_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_9_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>companyID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_9_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_9_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_9_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_10_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_10_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_boolean">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_11_IsParticipant_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_11_IsParticipant_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_11_IsParticipant_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_boolean">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_12_GetStatusCode_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_12_GetStatusCode_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>amount:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_12_GetStatusCode_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_12_GetStatusCode_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_12_GetStatusCode_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_13_GetStatusCodeV2_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_13_GetStatusCodeV2_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>amount:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_13_GetStatusCodeV2_Atomic_input_present__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>present:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_13_GetStatusCodeV2_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_13_GetStatusCodeV2_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_13_GetStatusCodeV2_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_14_TranslateStatusCode_Atomic_input_code__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>code:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_14_TranslateStatusCode_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_14_TranslateStatusCode_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_15_GetStatusCodeAVSB_Atomic_input_NSF__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>NSF:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_15_GetStatusCodeAVSB_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_15_GetStatusCodeAVSB_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>amount:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_15_GetStatusCodeAVSB_Atomic_input_present__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>present:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_15_GetStatusCodeAVSB_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_15_GetStatusCodeAVSB_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_15_GetStatusCodeAVSB_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_AVSBResponse">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}AVSBResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_16_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>serialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_16_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>payeeCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_16_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_17_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wildcard:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_17_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_18_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_18_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_19_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_20_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>companyID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_20_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ATMService_20_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_20_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_21_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_21_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_boolean">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ATMService}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_22_IsParticipant_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_IsParticipant">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}IsParticipant</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_22_IsParticipant_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_IsParticipantResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}IsParticipantResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_23_GetStatusCode_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCode">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}GetStatusCode</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_23_GetStatusCode_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}GetStatusCodeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_24_GetStatusCodeV2_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeV2">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}GetStatusCodeV2</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_24_GetStatusCodeV2_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeV2Response">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}GetStatusCodeV2Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_25_TranslateStatusCode_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_TranslateStatusCode">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}TranslateStatusCode</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_25_TranslateStatusCode_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_TranslateStatusCodeResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}TranslateStatusCodeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_26_GetStatusCodeAVSB_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeAVSB">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}GetStatusCodeAVSB</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_26_GetStatusCodeAVSB_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeAVSBResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}GetStatusCodeAVSBResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_27_FindASCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_FindASCompanyID">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}FindASCompanyID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_27_FindASCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_FindASCompanyIDResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}FindASCompanyIDResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_28_FindCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_FindCompanyID">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}FindCompanyID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_28_FindCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_FindCompanyIDResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}FindCompanyIDResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_29_GetCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_GetCompanyID">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}GetCompanyID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_29_GetCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_GetCompanyIDResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}GetCompanyIDResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_30_Logoff_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_Logoff">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}Logoff</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_30_Logoff_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_LogoffResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}LogoffResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_31_Logon_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_Logon">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}Logon</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_31_Logon_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_LogonResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}LogonResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ATMService_32_RequiredLogon_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_RequiredLogon">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}RequiredLogon</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ATMService_32_RequiredLogon_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_RequiredLogonResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ATMService}RequiredLogonResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ATMService_0_IsParticipant_Atomic">
+    <process:hasName>IsParticipant</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_0_IsParticipant_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_0_IsParticipant_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_0_IsParticipant_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_boolean"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aba(?x) ^ token(?y)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?z) ^ IsParticipant(?x, ?y, ?z)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_1_GetStatusCode_Atomic">
+    <process:hasName>GetStatusCode</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_1_GetStatusCode_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_1_GetStatusCode_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_1_GetStatusCode_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_1_GetStatusCode_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_1_GetStatusCode_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aba(?x) ^ amount(?y) ^ account(?z) ^ token(?w)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?v) ^ int(?v) ^ hasStatusCode(?v) ^ hasABA(?v, ?x) ^ hasAmount(?v, ?y) ^ hasAccount(?v, ?z) ^ hasToken(?v, ?w)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_2_GetStatusCodeV2_Atomic">
+    <process:hasName>GetStatusCodeV2</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic_input_present__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aba(?x) ^ amount(?y) ^ present(?z) ^ account(?w) ^ token(?v) ^ string(?x) ^ string(?y) ^ string(?z) ^ string(?w) ^ string(?v)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ int(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_3_TranslateStatusCode_Atomic">
+    <process:hasName>TranslateStatusCode</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_3_TranslateStatusCode_Atomic_input_code__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_3_TranslateStatusCode_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_3_TranslateStatusCode_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">code(?code) ^ token(?token)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasStatusCode(?result, ?code) ^ hasToken(?result, ?token) ^ string(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_4_GetStatusCodeAVSB_Atomic">
+    <process:hasName>GetStatusCodeAVSB</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic_input_NSF__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic_input_present__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_AVSBResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NSF(?x) ^ aba(?y) ^ amount(?z) ^ present(?w) ^ account(?v) ^ token(?u)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?r) ^ AVSBResponse(?r) ^ GetStatusCodeAVSB(?r)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_5_FindASCompanyID_Atomic">
+    <process:hasName>FindASCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_5_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_5_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_5_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">serialNumber(?serialNumber) ^ payeeCode(?payeeCode)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?int) ^ FindASCompanyID(?serialNumber, ?payeeCode, ?int)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_6_FindCompanyID_Atomic">
+    <process:hasName>FindCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_6_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_6_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">?inputValue rdf:type &lt;http://www.w3.org/2001/XMLSchema#string&gt; .</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">?outputValue rdf:type &lt;http://www.lyonsreg.com/WebService/ATMService#int&gt; .</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_7_GetCompanyID_Atomic">
+    <process:hasName>GetCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_7_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_7_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">token(?x) ^ type(?x, "http://www.w3.org/2001/XMLSchema}string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ type(?y, "http://www.lyonsreg.com/WebService/ATMService}int")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_8_Logoff_Atomic">
+    <process:hasName>Logoff</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_8_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">token(?x) ^ swrlb:equal(?x, "Logoff")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not loggedin(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_9_Logon_Atomic">
+    <process:hasName>Logon</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_9_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_9_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_9_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_9_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">companyID(?x), password(?y), userName(?z)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ string(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_10_RequiredLogon_Atomic">
+    <process:hasName>RequiredLogon</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_10_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_10_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_boolean"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">token(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ swrlb:datatype(?y, "http://www.lyonsreg.com/WebService/ATMService#boolean")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_11_IsParticipant_Atomic">
+    <process:hasName>IsParticipant</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_11_IsParticipant_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_11_IsParticipant_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_11_IsParticipant_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_boolean"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aba(?x) ^ token(?y)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?z) ^ IsParticipant(?x, ?y, ?z)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_12_GetStatusCode_Atomic">
+    <process:hasName>GetStatusCode</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_12_GetStatusCode_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_12_GetStatusCode_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_12_GetStatusCode_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_12_GetStatusCode_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_12_GetStatusCode_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aba(?x) ^ amount(?y) ^ account(?z) ^ token(?w)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?v) ^ GetStatusCode(?x, ?y, ?z, ?w, ?v)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_13_GetStatusCodeV2_Atomic">
+    <process:hasName>GetStatusCodeV2</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic_input_present__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aba(?x) ^ amount(?y) ^ present(?z) ^ account(?w) ^ token(?v)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasStatusCodeV2(?result, ?x, ?y, ?z, ?w, ?v)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_14_TranslateStatusCode_Atomic">
+    <process:hasName>TranslateStatusCode</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_14_TranslateStatusCode_Atomic_input_code__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_14_TranslateStatusCode_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_14_TranslateStatusCode_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">code(?code) ^ token(?token)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ hasStatusCode(?result, ?code) ^ hasToken(?result, ?token) ^ string(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_15_GetStatusCodeAVSB_Atomic">
+    <process:hasName>GetStatusCodeAVSB</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic_input_NSF__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic_input_amount__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic_input_present__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic_input_account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_AVSBResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NSF(?x) ^ aba(?y) ^ amount(?z) ^ present(?w) ^ account(?v) ^ token(?u)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?r) ^ AVSBResponse(?r) ^ GetStatusCodeAVSB(?r)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_16_FindASCompanyID_Atomic">
+    <process:hasName>FindASCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_16_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_16_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_16_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">serialNumber(?serialNumber) ^ payeeCode(?payeeCode)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?int) ^ hasCompanyID(?int) ^ hasSerialNumber(?int, ?serialNumber) ^ hasPayeeCode(?int, ?payeeCode)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_17_FindCompanyID_Atomic">
+    <process:hasName>FindCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_17_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_17_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">?inputValue rdf:type &lt;http://www.w3.org/2001/XMLSchema#string&gt;</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">?outputValue rdf:type &lt;http://www.lyonsreg.com/WebService/ATMService#int&gt;</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_18_GetCompanyID_Atomic">
+    <process:hasName>GetCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_18_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_18_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">token(?x) ^ type(?x, "http://www.w3.org/2001/XMLSchema}string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ type(?y, "http://www.lyonsreg.com/WebService/ATMService") ^ int(?y) ^ hasID(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_19_Logoff_Atomic">
+    <process:hasName>Logoff</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_19_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">token(?x) ^ swrlb:equal(?x, "Logoff")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬loggedIn(?y) ^ hasToken(?y, ?x) ^ hasStatus(?y, "Offline")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_20_Logon_Atomic">
+    <process:hasName>Logon</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_20_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_20_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ATMService_20_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_20_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">companyID(?x), password(?y), userName(?z)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?result) ^ string(?result) ^ Logon(?x, ?y, ?z, ?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_21_RequiredLogon_Atomic">
+    <process:hasName>RequiredLogon</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_21_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ATMService_21_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ATMService_boolean"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">token(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?y) ^ swrlb:datatype(?y, "http://www.lyonsreg.com/WebService/ATMService#boolean")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_22_IsParticipant_Atomic">
+    <process:hasName>IsParticipant</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_22_IsParticipant_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_IsParticipant"/>
+    <process:hasOutput rdf:resource="#ATMService_22_IsParticipant_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_IsParticipantResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsParticipant(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsParticipantResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_23_GetStatusCode_Atomic">
+    <process:hasName>GetStatusCode</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_23_GetStatusCode_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCode"/>
+    <process:hasOutput rdf:resource="#ATMService_23_GetStatusCode_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(GetStatusCode, http://www.lyonsreg.com/WebService/ATMService)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(GetStatusCodeResponse, http://www.lyonsreg.com/WebService/ATMService)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_24_GetStatusCodeV2_Atomic">
+    <process:hasName>GetStatusCodeV2</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_24_GetStatusCodeV2_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeV2"/>
+    <process:hasOutput rdf:resource="#ATMService_24_GetStatusCodeV2_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeV2Response"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(GetStatusCodeV2, ?input) ^ hasNamespace(?input, "http://www.lyonsreg.com/WebService/ATMService")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(GetStatusCodeV2Response, ?output) ^ hasNamespace(?output, "http://www.lyonsreg.com/WebService/ATMService")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_25_TranslateStatusCode_Atomic">
+    <process:hasName>TranslateStatusCode</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_25_TranslateStatusCode_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_TranslateStatusCode"/>
+    <process:hasOutput rdf:resource="#ATMService_25_TranslateStatusCode_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_TranslateStatusCodeResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(swrlb:equal(http://www.lyonsreg.com/WebService/ATMService, http://www.lyonsreg.com/WebService/ATMService) ^ swrlb:equal(http://www.lyonsreg.com/WebService/ATMServiceResponse, http://www.lyonsreg.com/WebService/ATMServiceResponse))</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_26_GetStatusCodeAVSB_Atomic">
+    <process:hasName>GetStatusCodeAVSB</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_26_GetStatusCodeAVSB_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeAVSB"/>
+    <process:hasOutput rdf:resource="#ATMService_26_GetStatusCodeAVSB_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_GetStatusCodeAVSBResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(http://www.lyonsreg.com/WebService/ATMService, GetStatusCodeAVSB)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(http://www.lyonsreg.com/WebService/ATMService, GetStatusCodeAVSBResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_27_FindASCompanyID_Atomic">
+    <process:hasName>FindASCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_27_FindASCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_FindASCompanyID"/>
+    <process:hasOutput rdf:resource="#ATMService_27_FindASCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_FindASCompanyIDResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindASCompanyID(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindASCompanyIDResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_28_FindCompanyID_Atomic">
+    <process:hasName>FindCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_28_FindCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_FindCompanyID"/>
+    <process:hasOutput rdf:resource="#ATMService_28_FindCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_FindCompanyIDResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindCompanyID(?x) ^ hasParameter(?x, http://www.lyonsreg.com/WebService/ATMService)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FindCompanyIDResponse(?y) ^ hasParameter(?y, http://www.lyonsreg.com/WebService/ATMService)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_29_GetCompanyID_Atomic">
+    <process:hasName>GetCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_29_GetCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_GetCompanyID"/>
+    <process:hasOutput rdf:resource="#ATMService_29_GetCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_GetCompanyIDResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_30_Logoff_Atomic">
+    <process:hasName>Logoff</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_30_Logoff_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_Logoff"/>
+    <process:hasOutput rdf:resource="#ATMService_30_Logoff_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_LogoffResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Logoff(?x) ^ hasParameter(?x, ?param) ^ hasNamespace(?param, "http://www.lyonsreg.com/WebService/ATMService")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LogoffResponse(?y) ^ hasParameter(?y, ?param) ^ hasNamespace(?param, "http://www.lyonsreg.com/WebService/ATMService")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_31_Logon_Atomic">
+    <process:hasName>Logon</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_31_Logon_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_Logon"/>
+    <process:hasOutput rdf:resource="#ATMService_31_Logon_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_LogonResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Logon(?x) ^ hasParameter(?x, ?param) ^ hasNamespace(?param, "http://www.lyonsreg.com/WebService/ATMService")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LogonResponse(?y) ^ hasParameter(?y, ?result) ^ hasNamespace(?result, "http://www.lyonsreg.com/WebService/ATMService")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ATMService_32_RequiredLogon_Atomic">
+    <process:hasName>RequiredLogon</process:hasName>
+    <process:hasInput rdf:resource="#ATMService_32_RequiredLogon_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ATMService_RequiredLogon"/>
+    <process:hasOutput rdf:resource="#ATMService_32_RequiredLogon_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ATMService_RequiredLogonResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RequiredLogon(?x) ^ hasInput(?x, ?input) ^ hasParameter(?input, http://www.lyonsreg.com/WebService/ATMService)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RequiredLogonResponse(?y) ^ hasOutput(?y, ?output) ^ hasParameter(?output, http://www.lyonsreg.com/WebService/ATMService)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ATMService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_0_IsParticipant_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_1_GetStatusCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_2_GetStatusCodeV2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_3_TranslateStatusCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_4_GetStatusCodeAVSB_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_5_FindASCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_6_FindCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_7_GetCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_8_Logoff_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_9_Logon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_10_RequiredLogon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_11_IsParticipant_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_12_GetStatusCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_13_GetStatusCodeV2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_14_TranslateStatusCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_15_GetStatusCodeAVSB_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_16_FindASCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_17_FindCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_18_GetCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_19_Logoff_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_20_Logon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_21_RequiredLogon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_22_IsParticipant_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_23_GetStatusCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_24_GetStatusCodeV2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_25_TranslateStatusCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_26_GetStatusCodeAVSB_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_27_FindASCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_28_FindCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_29_GetCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_30_Logoff_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_31_Logon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ATMService_32_RequiredLogon_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_0_IsParticipant_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_0_IsParticipant_Atomic"/>
+    <grounding:wsdlOperationName>IsParticipant</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsParticipantHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsParticipantHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_1_GetStatusCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_1_GetStatusCode_Atomic"/>
+    <grounding:wsdlOperationName>GetStatusCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStatusCodeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStatusCodeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_2_GetStatusCodeV2_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_2_GetStatusCodeV2_Atomic"/>
+    <grounding:wsdlOperationName>GetStatusCodeV2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStatusCodeV2HttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStatusCodeV2HttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_3_TranslateStatusCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_3_TranslateStatusCode_Atomic"/>
+    <grounding:wsdlOperationName>TranslateStatusCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>TranslateStatusCodeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>TranslateStatusCodeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_4_GetStatusCodeAVSB_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_4_GetStatusCodeAVSB_Atomic"/>
+    <grounding:wsdlOperationName>GetStatusCodeAVSB</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStatusCodeAVSBHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStatusCodeAVSBHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_5_FindASCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_5_FindASCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindASCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindASCompanyIDHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindASCompanyIDHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_6_FindCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_6_FindCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindCompanyIDHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindCompanyIDHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_7_GetCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_7_GetCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>GetCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCompanyIDHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCompanyIDHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_8_Logoff_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_8_Logoff_Atomic"/>
+    <grounding:wsdlOperationName>Logoff</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoffHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoffHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_9_Logon_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_9_Logon_Atomic"/>
+    <grounding:wsdlOperationName>Logon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogonHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogonHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_10_RequiredLogon_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_10_RequiredLogon_Atomic"/>
+    <grounding:wsdlOperationName>RequiredLogon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RequiredLogonHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RequiredLogonHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_11_IsParticipant_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_11_IsParticipant_Atomic"/>
+    <grounding:wsdlOperationName>IsParticipant</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsParticipantHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsParticipantHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_12_GetStatusCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_12_GetStatusCode_Atomic"/>
+    <grounding:wsdlOperationName>GetStatusCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStatusCodeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStatusCodeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_13_GetStatusCodeV2_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_13_GetStatusCodeV2_Atomic"/>
+    <grounding:wsdlOperationName>GetStatusCodeV2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStatusCodeV2HttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStatusCodeV2HttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_14_TranslateStatusCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_14_TranslateStatusCode_Atomic"/>
+    <grounding:wsdlOperationName>TranslateStatusCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>TranslateStatusCodeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>TranslateStatusCodeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_15_GetStatusCodeAVSB_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_15_GetStatusCodeAVSB_Atomic"/>
+    <grounding:wsdlOperationName>GetStatusCodeAVSB</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStatusCodeAVSBHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStatusCodeAVSBHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_16_FindASCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_16_FindASCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindASCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindASCompanyIDHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindASCompanyIDHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_17_FindCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_17_FindCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindCompanyIDHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindCompanyIDHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_18_GetCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_18_GetCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>GetCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCompanyIDHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCompanyIDHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_19_Logoff_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_19_Logoff_Atomic"/>
+    <grounding:wsdlOperationName>Logoff</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoffHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoffHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_20_Logon_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_20_Logon_Atomic"/>
+    <grounding:wsdlOperationName>Logon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogonHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogonHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_21_RequiredLogon_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_21_RequiredLogon_Atomic"/>
+    <grounding:wsdlOperationName>RequiredLogon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RequiredLogonHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RequiredLogonHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_22_IsParticipant_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_22_IsParticipant_Atomic"/>
+    <grounding:wsdlOperationName>IsParticipant</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsParticipantSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsParticipantSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_23_GetStatusCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_23_GetStatusCode_Atomic"/>
+    <grounding:wsdlOperationName>GetStatusCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStatusCodeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStatusCodeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_24_GetStatusCodeV2_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_24_GetStatusCodeV2_Atomic"/>
+    <grounding:wsdlOperationName>GetStatusCodeV2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStatusCodeV2SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStatusCodeV2SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_25_TranslateStatusCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_25_TranslateStatusCode_Atomic"/>
+    <grounding:wsdlOperationName>TranslateStatusCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>TranslateStatusCodeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>TranslateStatusCodeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_26_GetStatusCodeAVSB_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_26_GetStatusCodeAVSB_Atomic"/>
+    <grounding:wsdlOperationName>GetStatusCodeAVSB</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStatusCodeAVSBSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStatusCodeAVSBSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_27_FindASCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_27_FindASCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindASCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindASCompanyIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindASCompanyIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_28_FindCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_28_FindCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindCompanyIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindCompanyIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_29_GetCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_29_GetCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>GetCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCompanyIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCompanyIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_30_Logoff_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_30_Logoff_Atomic"/>
+    <grounding:wsdlOperationName>Logoff</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoffSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoffSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_31_Logon_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_31_Logon_Atomic"/>
+    <grounding:wsdlOperationName>Logon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogonSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogonSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ATMService_32_RequiredLogon_Grounding">
+    <grounding:owlsProcess rdf:resource="#ATMService_32_RequiredLogon_Atomic"/>
+    <grounding:wsdlOperationName>RequiredLogon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ATMServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ATMServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1839_ATMService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RequiredLogonSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RequiredLogonSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

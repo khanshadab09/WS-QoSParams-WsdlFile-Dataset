@@ -1,0 +1,1561 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="service_test">
+    <service:presents rdf:resource="#service_test_Profile"/>
+    <service:describedBy rdf:resource="#service_test_Composite"/>
+    <service:supports rdf:resource="#service_test_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="service_test_Profile">
+    <profile:serviceName>service_test</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#service_test"/>
+    <profile:hasProcess rdf:resource="#service_test_0_Authentification_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_0_Authentification_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_0_Authentification_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_0_Authentification_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(Login, "string") ^ swrlb:equal(Password, "string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(Result, "int")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_1_GetTrackingID_Atomic"/>
+    <profile:hasOutput rdf:resource="#service_test_1_GetTrackingID_Atomic_output_TrackingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrackingID(?x) ^ string(?x) ^ hasDataType(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_2_LoadTrackingID_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_2_LoadTrackingID_Atomic_input_TrackingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_2_LoadTrackingID_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrackingID(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:datatype(?y, "http://www.w3.org/2001/XMLSchema#int")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_3_SelectCatalog_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_3_SelectCatalog_Atomic_input_CatalogID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#service_test_3_SelectCatalog_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CatalogID(?x) ^ swrlb:integer(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:integer(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_4_GetCampaigns_Atomic"/>
+    <profile:hasOutput rdf:resource="#service_test_4_GetCampaigns_Atomic_output_Campaigns__http___platform.mobibase.com_api_services.wsdl_ArrayOfCampaign"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_5_SelectCampaign_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_5_SelectCampaign_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#service_test_5_SelectCampaign_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CampaignID(?id) ^ swrlb:integer(?id)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?id)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_6_SelectCategory_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_6_SelectCategory_Atomic_input_CategoryID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#service_test_6_SelectCategory_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CategoryID(?x) ^ swrlb:integer(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:integer(?y) ^ hasCategory(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_7_GetCategories_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_7_GetCategories_Atomic_input_SubCategoryList__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#service_test_7_GetCategories_Atomic_output_Categories__http___platform.mobibase.com_api_services.wsdl_ArrayOfCategories"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubCategoryList(?x) ^ swrlb:datatype(?x, xsd:int)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Categories(?y) ^ swrlb:datatype(?y, mobibase:ArrayOfCategories)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_8_GetCategoryInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_8_GetCategoryInfo_Atomic_input_SubCategoryList__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#service_test_8_GetCategoryInfo_Atomic_output_Category__http___platform.mobibase.com_api_services.wsdl_Category"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubCategoryList(?x) ^ swrlb:uriEquals(?x, "http://www.w3.org/2001/XMLSchema#int")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Category(?y) ^ swrlb:uriEquals(?y, "http://platform.mobibase.com/api/services.wsdl#Category")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_9_GetParentCategoryInfo_Atomic"/>
+    <profile:hasOutput rdf:resource="#service_test_9_GetParentCategoryInfo_Atomic_output_Category__http___platform.mobibase.com_api_services.wsdl_Category"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(subclassOf Category:{http://platform.mobibase.com/api/services.wsdl}Category Category:{http://platform.mobibase.com/api/services.wsdl}Category)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_10_GetContents_Atomic"/>
+    <profile:hasOutput rdf:resource="#service_test_10_GetContents_Atomic_output_Contents__http___platform.mobibase.com_api_services.wsdl_ArrayOfContent"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(hasOutput GetContents {http://platform.mobibase.com/api/services.wsdl}ArrayOfContent)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_11_SelectContent_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_11_SelectContent_Atomic_input_ContentID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#service_test_11_SelectContent_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContentID(?x) ^ swrlb:integer(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:integer(?y) ^ hasContent(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_12_SelectMediaType_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_12_SelectMediaType_Atomic_input_MediaTypeName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_12_SelectMediaType_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MediaTypeName(?x) ^ swrlb:equal(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:equal(?y, "http://www.w3.org/2001/XMLSchema#int")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_13_SetDefaultSpecifications_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_13_SetDefaultSpecifications_Atomic_input_DefaultSpecifications__http___platform.mobibase.com_api_services.wsdl_ArrayOfSpecification"/>
+    <profile:hasOutput rdf:resource="#service_test_13_SetDefaultSpecifications_Atomic_output_ReturnCode__http___platform.mobibase.com_api_services.wsdl_ReturnCode"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultSpecifications has type ArrayOfSpecification</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReturnCode has type ReturnCode</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_14_SetOptions_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_14_SetOptions_Atomic_input_Value__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_14_SetOptions_Atomic_input_OptionName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_14_SetOptions_Atomic_output_ReturnCode__http___platform.mobibase.com_api_services.wsdl_ReturnCode"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SetOptions(Value, OptionName) ^ datatype(Value, "http://www.w3.org/2001/XMLSchema#string") ^ datatype(OptionName, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReturnCode("http://platform.mobibase.com/api/services.wsdl#ReturnCode")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_15_SetTranscodingParameter_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_15_SetTranscodingParameter_Atomic_input_Value__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_15_SetTranscodingParameter_Atomic_input_Name__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_15_SetTranscodingParameter_Atomic_output_ReturnCode__http___platform.mobibase.com_api_services.wsdl_ReturnCode"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TranscodingParameter(Value, "http://www.w3.org/2001/XMLSchema#string") ^ TranscodingParameter(Name, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReturnCode(SetTranscodingParameter) ^ ReturnCode(ReturnCode, "http://platform.mobibase.com/api/services.wsdl#ReturnCode")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_16_SelectContentFromMarketingID_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_16_SelectContentFromMarketingID_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_16_SelectContentFromMarketingID_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarketingID(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:datatype(?y, "http://www.w3.org/2001/XMLSchema#int") ^ SelectContentFromMarketingID(?x, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_17_GetContentInfo_Atomic"/>
+    <profile:hasOutput rdf:resource="#service_test_17_GetContentInfo_Atomic_output_Content__http___platform.mobibase.com_api_services.wsdl_Content"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Content(GetContentInfo, Content, http://platform.mobibase.com/api/services.wsdl)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_18_GetContentPreviewInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_18_GetContentPreviewInfo_Atomic_input_DeliveryFormat1__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#service_test_18_GetContentPreviewInfo_Atomic_output_ContentPreviewInfo__http___platform.mobibase.com_api_services.wsdl_ContentPreviewInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeliveryFormat1(?x) ^ swrlb:equal(?x, "http://www.w3.org/2001/XMLSchema#int")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContentPreviewInfo(?y) ^ swrlb:equal(?y, "http://platform.mobibase.com/api/services.wsdl#ContentPreviewInfo")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_19_GetContentPreviewURL_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_19_GetContentPreviewURL_Atomic_input_DeliveryFormat3__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#service_test_19_GetContentPreviewURL_Atomic_input_DeliveryFormat2__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#service_test_19_GetContentPreviewURL_Atomic_input_DeliveryFormat1__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#service_test_19_GetContentPreviewURL_Atomic_output_URL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeliveryFormat3:{http://www.w3.org/2001/XMLSchema}int and DeliveryFormat2:{http://www.w3.org/2001/XMLSchema}int and DeliveryFormat1:{http://www.w3.org/2001/XMLSchema}int</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">URL:{http://www.w3.org/2001/XMLSchema}string</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_20_GetAllContentPreviewURL_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_20_GetAllContentPreviewURL_Atomic_input_DeliveryFormats__http___platform.mobibase.com_api_services.wsdl_ArrayOfDeliveryFormat"/>
+    <profile:hasOutput rdf:resource="#service_test_20_GetAllContentPreviewURL_Atomic_output_PreviewList__http___platform.mobibase.com_api_services.wsdl_ArrayOfPreviewResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeliveryFormats(?x) ^ ArrayOfDeliveryFormat(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreviewList(?y) ^ ArrayOfPreviewResponse(?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_21_GetContentPreviewURLForDownload_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_21_GetContentPreviewURLForDownload_Atomic_input_DeliveryFormat3__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#service_test_21_GetContentPreviewURLForDownload_Atomic_input_DeliveryFormat2__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#service_test_21_GetContentPreviewURLForDownload_Atomic_input_DeliveryFormat1__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#service_test_21_GetContentPreviewURLForDownload_Atomic_output_Preview__http___platform.mobibase.com_api_services.wsdl_Preview"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeliveryFormat3:{http://www.w3.org/2001/XMLSchema}int and DeliveryFormat2:{http://www.w3.org/2001/XMLSchema}int and DeliveryFormat1:{http://www.w3.org/2001/XMLSchema}int</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Preview:{http://platform.mobibase.com/api/services.wsdl}Preview</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_22_GetContentHandsetsCompatibility_Atomic"/>
+    <profile:hasOutput rdf:resource="#service_test_22_GetContentHandsetsCompatibility_Atomic_output_Vendors__http___platform.mobibase.com_api_services.wsdl_ArrayOfVendor"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_23_SelectHandset_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_23_SelectHandset_Atomic_input_Model__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_23_SelectHandset_Atomic_input_Vendor__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_23_SelectHandset_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Model(?x) ^ Vendor(?y)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?z) ^ hasHandset(?z, ?x) ^ hasVendor(?z, ?y) ^ integer(?z)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_24_SelectHandsetFromID_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_24_SelectHandsetFromID_Atomic_input_HandsetID__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#service_test_24_SelectHandsetFromID_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HandsetID(?id) ^ swrlb:integer(?id)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?id)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_25_SelectHandsetFromUserAgent_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_25_SelectHandsetFromUserAgent_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_25_SelectHandsetFromUserAgent_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UserAgent(?ua) ^ swrlb:contains(?ua, "Mobile") ^ swrlb:contains(?ua, "Android") ^ swrlb:contains(?ua, "Apple") ^ swrlb:contains(?ua, "Windows") ^ swrlb:contains(?ua, "BlackBerry") ^ swrlb:contains(?ua, "Nokia")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?result) ^ swrlb:add(?result, 1)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_26_CheckHandsetMediaTypeCompatibility_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_26_CheckHandsetMediaTypeCompatibility_Atomic_input_MediaType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_26_CheckHandsetMediaTypeCompatibility_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MediaType(?x) ^ swrlb:equal(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:equal(?y, "http://www.w3.org/2001/XMLSchema#int")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_27_CheckHandsetContentCompatibility_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_27_CheckHandsetContentCompatibility_Atomic_input_MarketingId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_27_CheckHandsetContentCompatibility_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarketingId(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:datatype(?y, "http://www.w3.org/2001/XMLSchema#int")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_28_OrderAuth_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_28_OrderAuth_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_28_OrderAuth_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderAuth(?key) ^ swrlb:datatype(?key, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?x) ^ swrlb:add(?x, 1, 0) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#int")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_29_OrderContent_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_Base64PageHeader__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_PageTitle__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_Base64PageFooter__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_Base64PageContent__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_CallBackURLOnDelivery__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_29_OrderContent_Atomic_output_URL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operation(OrderContent) ^ hasInput(Base64PageHeader, "http://www.w3.org/2001/XMLSchema"^^string) ^ hasInput(BillingMethod, "http://www.w3.org/2001/XMLSchema"^^string) ^ hasInput(UserCost, "http://www.w3.org/2001/XMLSchema"^^string) ^ hasInput(PageTitle, "http://www.w3.org/2001/XMLSchema"^^string) ^ hasInput(Country, "http://www.w3.org/2001/XMLSchema"^^string) ^ hasInput(Base64PageFooter, "http://www.w3.org/2001/XMLSchema"^^string) ^ hasInput(Base64PageContent, "http://www.w3.org/2001/XMLSchema"^^string) ^ hasInput(CallBackURLOnDelivery, "http://www.w3.org/2001/XMLSchema"^^string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operation(OrderContent) ^ hasOutput(URL, "</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_Base64PageHeader__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_PageTitle__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_Base64PageFooter__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_Base64PageContent__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_CallBackURLOnDelivery__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Base64PageHeader(?x), MarketingID(?y), BillingMethod(?z), UserCost(?w), PageTitle(?a), Country(?b), Login(?c), Base64PageFooter(?d), Key(?e), Base64PageContent(?f), CallBackURLOnDelivery(?g), Password(?h)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectContent(?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Base64PageHeader__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_PageTitle__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Base64PageFooter__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Base64PageContent__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_CallBackURLOnDelivery__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Base64PageHeader(?header) ^ MarketingID(?marketingID) ^ BillingMethod(?billingMethod) ^ UserCost(?userCost) ^ PageTitle(?pageTitle) ^ Country(?country) ^ Login(?login) ^ Base64PageFooter(?footer) ^ Key(?key) ^ Base64PageContent(?content) ^ CallBackURLOnDelivery(?callbackURL) ^ Password(?password)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectContent(?directContent)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_output_DirectContentEx__http___platform.mobibase.com_api_services.wsdl_DirectContentEx"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarketingID(?mid) ^ BillingMethod(?bm) ^ UserAgent(?ua) ^ UserCost(?uc) ^ Country(?c) ^ Login(?l) ^ Key(?k) ^ Password(?p)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectContentEx(?dce) ^ OrderContentForDownloadFromMIDWithAuthEx(?mid, ?bm, ?ua, ?uc, ?c, ?l, ?k, ?p, ?dce)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_33_OrderContentForDownload_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_33_OrderContentForDownload_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_33_OrderContentForDownload_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_33_OrderContentForDownload_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_33_OrderContentForDownload_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BillingMethod(?x), UserCost(?y), Country(?z)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectContent(?w) ^ OrderContentForDownload(?w) ^ hasBillingMethod(?w, ?x) ^ hasUserCost(?w, ?y) ^ hasCountry(?w, ?z)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarketingID(?mid) ^ BillingMethod(?bm) ^ UserAgent(?ua) ^ UserCost(?uc) ^ Country(?c) ^ Key(?k)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectContent(?dc) ^ OrderContentForDownloadFromMID(?mid, ?bm, ?ua, ?uc, ?c, ?k, ?dc)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarketingID(?mid) ^ BillingMethod(?billingMethod) ^ UserAgent(?userAgent) ^ UserCost(?userCost) ^ Country(?country) ^ Login(?login) ^ Key(?key) ^ Password(?password)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectContent(?directContent) ^ OrderContentForDownloadFromMIDWithAuth(?mid, ?billingMethod, ?userAgent, ?userCost, ?country, ?login, ?key, ?password, ?directContent)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_36_GetAdaptedContentInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_36_GetAdaptedContentInfo_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_36_GetAdaptedContentInfo_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_36_GetAdaptedContentInfo_Atomic_output_AdaptedContentInfo__http___platform.mobibase.com_api_services.wsdl_AdaptedContentInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarketingID(?x) ^ UserAgent(?y)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdaptedContentInfo(?z) ^ hasMarketingID(?z, ?x) ^ hasUserAgent(?z, ?y)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_37_OrderNotification_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_37_OrderNotification_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_37_OrderNotification_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_37_OrderNotification_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_37_OrderNotification_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BillingMethod(?x), UserCost(?y), Country(?z)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?r)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_38_OrderLock_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_38_OrderLock_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_38_OrderLock_Atomic_input_Url__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_38_OrderLock_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderLock(?message) ^ OrderLock(?url)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderLock(?result) ^ Result(?result) ^ string(?result) ^ int(?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#service_test_39_GetHandsetInfo_Atomic"/>
+    <profile:hasInput rdf:resource="#service_test_39_GetHandsetInfo_Atomic_input_Model__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#service_test_39_GetHandsetInfo_Atomic_input_Vendor__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#service_test_39_GetHandsetInfo_Atomic_output_HandsetInfo__http___platform.mobibase.com_api_services.wsdl_HandsetInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Model(?x) ^ Vendor(?y)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HandsetInfo(?z) ^ hasModel(?z, ?x) ^ hasVendor(?z, ?y)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="service_test_Composite">
+    <process:composedOf rdf:resource="#service_test_0_Authentification_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_1_GetTrackingID_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_2_LoadTrackingID_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_3_SelectCatalog_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_4_GetCampaigns_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_5_SelectCampaign_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_6_SelectCategory_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_7_GetCategories_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_8_GetCategoryInfo_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_9_GetParentCategoryInfo_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_10_GetContents_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_11_SelectContent_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_12_SelectMediaType_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_13_SetDefaultSpecifications_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_14_SetOptions_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_15_SetTranscodingParameter_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_16_SelectContentFromMarketingID_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_17_GetContentInfo_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_18_GetContentPreviewInfo_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_19_GetContentPreviewURL_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_20_GetAllContentPreviewURL_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_21_GetContentPreviewURLForDownload_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_22_GetContentHandsetsCompatibility_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_23_SelectHandset_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_24_SelectHandsetFromID_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_25_SelectHandsetFromUserAgent_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_26_CheckHandsetMediaTypeCompatibility_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_27_CheckHandsetContentCompatibility_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_28_OrderAuth_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_29_OrderContent_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_33_OrderContentForDownload_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_36_GetAdaptedContentInfo_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_37_OrderNotification_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_38_OrderLock_Atomic"/>
+    <process:composedOf rdf:resource="#service_test_39_GetHandsetInfo_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="service_test_0_Authentification_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Login:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_0_Authentification_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_0_Authentification_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="service_test_1_GetTrackingID_Atomic_output_TrackingID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TrackingID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_2_LoadTrackingID_Atomic_input_TrackingID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TrackingID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_2_LoadTrackingID_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_3_SelectCatalog_Atomic_input_CatalogID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>CatalogID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_3_SelectCatalog_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="service_test_4_GetCampaigns_Atomic_output_Campaigns__http___platform.mobibase.com_api_services.wsdl_ArrayOfCampaign">
+    <process:parameterType>Campaigns:{http://platform.mobibase.com/api/services.wsdl}ArrayOfCampaign</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_5_SelectCampaign_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>CampaignID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_5_SelectCampaign_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_6_SelectCategory_Atomic_input_CategoryID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>CategoryID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_6_SelectCategory_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_7_GetCategories_Atomic_input_SubCategoryList__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>SubCategoryList:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_7_GetCategories_Atomic_output_Categories__http___platform.mobibase.com_api_services.wsdl_ArrayOfCategories">
+    <process:parameterType>Categories:{http://platform.mobibase.com/api/services.wsdl}ArrayOfCategories</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_8_GetCategoryInfo_Atomic_input_SubCategoryList__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>SubCategoryList:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_8_GetCategoryInfo_Atomic_output_Category__http___platform.mobibase.com_api_services.wsdl_Category">
+    <process:parameterType>Category:{http://platform.mobibase.com/api/services.wsdl}Category</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="service_test_9_GetParentCategoryInfo_Atomic_output_Category__http___platform.mobibase.com_api_services.wsdl_Category">
+    <process:parameterType>Category:{http://platform.mobibase.com/api/services.wsdl}Category</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="service_test_10_GetContents_Atomic_output_Contents__http___platform.mobibase.com_api_services.wsdl_ArrayOfContent">
+    <process:parameterType>Contents:{http://platform.mobibase.com/api/services.wsdl}ArrayOfContent</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_11_SelectContent_Atomic_input_ContentID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>ContentID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_11_SelectContent_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_12_SelectMediaType_Atomic_input_MediaTypeName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MediaTypeName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_12_SelectMediaType_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_13_SetDefaultSpecifications_Atomic_input_DefaultSpecifications__http___platform.mobibase.com_api_services.wsdl_ArrayOfSpecification">
+    <process:parameterType>DefaultSpecifications:{http://platform.mobibase.com/api/services.wsdl}ArrayOfSpecification</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_13_SetDefaultSpecifications_Atomic_output_ReturnCode__http___platform.mobibase.com_api_services.wsdl_ReturnCode">
+    <process:parameterType>ReturnCode:{http://platform.mobibase.com/api/services.wsdl}ReturnCode</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_14_SetOptions_Atomic_input_Value__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Value:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_14_SetOptions_Atomic_input_OptionName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>OptionName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_14_SetOptions_Atomic_output_ReturnCode__http___platform.mobibase.com_api_services.wsdl_ReturnCode">
+    <process:parameterType>ReturnCode:{http://platform.mobibase.com/api/services.wsdl}ReturnCode</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_15_SetTranscodingParameter_Atomic_input_Value__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Value:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_15_SetTranscodingParameter_Atomic_input_Name__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Name:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_15_SetTranscodingParameter_Atomic_output_ReturnCode__http___platform.mobibase.com_api_services.wsdl_ReturnCode">
+    <process:parameterType>ReturnCode:{http://platform.mobibase.com/api/services.wsdl}ReturnCode</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_16_SelectContentFromMarketingID_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MarketingID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_16_SelectContentFromMarketingID_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="service_test_17_GetContentInfo_Atomic_output_Content__http___platform.mobibase.com_api_services.wsdl_Content">
+    <process:parameterType>Content:{http://platform.mobibase.com/api/services.wsdl}Content</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_18_GetContentPreviewInfo_Atomic_input_DeliveryFormat1__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>DeliveryFormat1:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_18_GetContentPreviewInfo_Atomic_output_ContentPreviewInfo__http___platform.mobibase.com_api_services.wsdl_ContentPreviewInfo">
+    <process:parameterType>ContentPreviewInfo:{http://platform.mobibase.com/api/services.wsdl}ContentPreviewInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_19_GetContentPreviewURL_Atomic_input_DeliveryFormat3__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>DeliveryFormat3:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_19_GetContentPreviewURL_Atomic_input_DeliveryFormat2__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>DeliveryFormat2:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_19_GetContentPreviewURL_Atomic_input_DeliveryFormat1__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>DeliveryFormat1:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_19_GetContentPreviewURL_Atomic_output_URL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>URL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_20_GetAllContentPreviewURL_Atomic_input_DeliveryFormats__http___platform.mobibase.com_api_services.wsdl_ArrayOfDeliveryFormat">
+    <process:parameterType>DeliveryFormats:{http://platform.mobibase.com/api/services.wsdl}ArrayOfDeliveryFormat</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_20_GetAllContentPreviewURL_Atomic_output_PreviewList__http___platform.mobibase.com_api_services.wsdl_ArrayOfPreviewResponse">
+    <process:parameterType>PreviewList:{http://platform.mobibase.com/api/services.wsdl}ArrayOfPreviewResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_21_GetContentPreviewURLForDownload_Atomic_input_DeliveryFormat3__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>DeliveryFormat3:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_21_GetContentPreviewURLForDownload_Atomic_input_DeliveryFormat2__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>DeliveryFormat2:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_21_GetContentPreviewURLForDownload_Atomic_input_DeliveryFormat1__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>DeliveryFormat1:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_21_GetContentPreviewURLForDownload_Atomic_output_Preview__http___platform.mobibase.com_api_services.wsdl_Preview">
+    <process:parameterType>Preview:{http://platform.mobibase.com/api/services.wsdl}Preview</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="service_test_22_GetContentHandsetsCompatibility_Atomic_output_Vendors__http___platform.mobibase.com_api_services.wsdl_ArrayOfVendor">
+    <process:parameterType>Vendors:{http://platform.mobibase.com/api/services.wsdl}ArrayOfVendor</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_23_SelectHandset_Atomic_input_Model__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Model:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_23_SelectHandset_Atomic_input_Vendor__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Vendor:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_23_SelectHandset_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_24_SelectHandsetFromID_Atomic_input_HandsetID__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>HandsetID:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_24_SelectHandsetFromID_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_25_SelectHandsetFromUserAgent_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserAgent:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_25_SelectHandsetFromUserAgent_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_26_CheckHandsetMediaTypeCompatibility_Atomic_input_MediaType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MediaType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_26_CheckHandsetMediaTypeCompatibility_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_27_CheckHandsetContentCompatibility_Atomic_input_MarketingId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MarketingId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_27_CheckHandsetContentCompatibility_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_28_OrderAuth_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Key:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_28_OrderAuth_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_29_OrderContent_Atomic_input_Base64PageHeader__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Base64PageHeader:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_29_OrderContent_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BillingMethod:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_29_OrderContent_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserCost:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_29_OrderContent_Atomic_input_PageTitle__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PageTitle:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_29_OrderContent_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_29_OrderContent_Atomic_input_Base64PageFooter__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Base64PageFooter:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_29_OrderContent_Atomic_input_Base64PageContent__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Base64PageContent:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_29_OrderContent_Atomic_input_CallBackURLOnDelivery__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CallBackURLOnDelivery:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_29_OrderContent_Atomic_output_URL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>URL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_30_OrderContentFromMarketingID_Atomic_input_Base64PageHeader__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Base64PageHeader:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_30_OrderContentFromMarketingID_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MarketingID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_30_OrderContentFromMarketingID_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BillingMethod:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_30_OrderContentFromMarketingID_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserCost:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_30_OrderContentFromMarketingID_Atomic_input_PageTitle__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PageTitle:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_30_OrderContentFromMarketingID_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_30_OrderContentFromMarketingID_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Login:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_30_OrderContentFromMarketingID_Atomic_input_Base64PageFooter__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Base64PageFooter:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_30_OrderContentFromMarketingID_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Key:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_30_OrderContentFromMarketingID_Atomic_input_Base64PageContent__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Base64PageContent:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_30_OrderContentFromMarketingID_Atomic_input_CallBackURLOnDelivery__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CallBackURLOnDelivery:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_30_OrderContentFromMarketingID_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_30_OrderContentFromMarketingID_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent">
+    <process:parameterType>DirectContent:{http://platform.mobibase.com/api/services.wsdl}DirectContent</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Base64PageHeader__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Base64PageHeader:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MarketingID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BillingMethod:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserCost:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_PageTitle__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>PageTitle:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Login:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Base64PageFooter__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Base64PageFooter:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Key:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Base64PageContent__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Base64PageContent:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_CallBackURLOnDelivery__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CallBackURLOnDelivery:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent">
+    <process:parameterType>DirectContent:{http://platform.mobibase.com/api/services.wsdl}DirectContent</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MarketingID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BillingMethod:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserAgent:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserCost:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Login:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Key:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_output_DirectContentEx__http___platform.mobibase.com_api_services.wsdl_DirectContentEx">
+    <process:parameterType>DirectContentEx:{http://platform.mobibase.com/api/services.wsdl}DirectContentEx</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_33_OrderContentForDownload_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BillingMethod:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_33_OrderContentForDownload_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserCost:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_33_OrderContentForDownload_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_33_OrderContentForDownload_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent">
+    <process:parameterType>DirectContent:{http://platform.mobibase.com/api/services.wsdl}DirectContent</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_34_OrderContentForDownloadFromMID_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MarketingID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_34_OrderContentForDownloadFromMID_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BillingMethod:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_34_OrderContentForDownloadFromMID_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserAgent:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_34_OrderContentForDownloadFromMID_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserCost:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_34_OrderContentForDownloadFromMID_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_34_OrderContentForDownloadFromMID_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Key:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_34_OrderContentForDownloadFromMID_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent">
+    <process:parameterType>DirectContent:{http://platform.mobibase.com/api/services.wsdl}DirectContent</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MarketingID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BillingMethod:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserAgent:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserCost:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Login:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Key:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent">
+    <process:parameterType>DirectContent:{http://platform.mobibase.com/api/services.wsdl}DirectContent</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_36_GetAdaptedContentInfo_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>MarketingID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_36_GetAdaptedContentInfo_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserAgent:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_36_GetAdaptedContentInfo_Atomic_output_AdaptedContentInfo__http___platform.mobibase.com_api_services.wsdl_AdaptedContentInfo">
+    <process:parameterType>AdaptedContentInfo:{http://platform.mobibase.com/api/services.wsdl}AdaptedContentInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_37_OrderNotification_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BillingMethod:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_37_OrderNotification_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserCost:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_37_OrderNotification_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_37_OrderNotification_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_38_OrderLock_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Message:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_38_OrderLock_Atomic_input_Url__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Url:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_38_OrderLock_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="service_test_39_GetHandsetInfo_Atomic_input_Model__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Model:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="service_test_39_GetHandsetInfo_Atomic_input_Vendor__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Vendor:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="service_test_39_GetHandsetInfo_Atomic_output_HandsetInfo__http___platform.mobibase.com_api_services.wsdl_HandsetInfo">
+    <process:parameterType>HandsetInfo:{http://platform.mobibase.com/api/services.wsdl}HandsetInfo</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="service_test_0_Authentification_Atomic">
+    <process:hasName>Authentification</process:hasName>
+    <process:hasInput rdf:resource="#service_test_0_Authentification_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_0_Authentification_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_0_Authentification_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(Login, "string") ^ swrlb:equal(Password, "string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(Result, "int")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_1_GetTrackingID_Atomic">
+    <process:hasName>GetTrackingID</process:hasName>
+    <process:hasOutput rdf:resource="#service_test_1_GetTrackingID_Atomic_output_TrackingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrackingID(?x) ^ string(?x) ^ hasDataType(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_2_LoadTrackingID_Atomic">
+    <process:hasName>LoadTrackingID</process:hasName>
+    <process:hasInput rdf:resource="#service_test_2_LoadTrackingID_Atomic_input_TrackingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_2_LoadTrackingID_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrackingID(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:datatype(?y, "http://www.w3.org/2001/XMLSchema#int")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_3_SelectCatalog_Atomic">
+    <process:hasName>SelectCatalog</process:hasName>
+    <process:hasInput rdf:resource="#service_test_3_SelectCatalog_Atomic_input_CatalogID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#service_test_3_SelectCatalog_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CatalogID(?x) ^ swrlb:integer(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:integer(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_4_GetCampaigns_Atomic">
+    <process:hasName>GetCampaigns</process:hasName>
+    <process:hasOutput rdf:resource="#service_test_4_GetCampaigns_Atomic_output_Campaigns__http___platform.mobibase.com_api_services.wsdl_ArrayOfCampaign"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_5_SelectCampaign_Atomic">
+    <process:hasName>SelectCampaign</process:hasName>
+    <process:hasInput rdf:resource="#service_test_5_SelectCampaign_Atomic_input_CampaignID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#service_test_5_SelectCampaign_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CampaignID(?id) ^ swrlb:integer(?id)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?id)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_6_SelectCategory_Atomic">
+    <process:hasName>SelectCategory</process:hasName>
+    <process:hasInput rdf:resource="#service_test_6_SelectCategory_Atomic_input_CategoryID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#service_test_6_SelectCategory_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CategoryID(?x) ^ swrlb:integer(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:integer(?y) ^ hasCategory(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_7_GetCategories_Atomic">
+    <process:hasName>GetCategories</process:hasName>
+    <process:hasInput rdf:resource="#service_test_7_GetCategories_Atomic_input_SubCategoryList__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#service_test_7_GetCategories_Atomic_output_Categories__http___platform.mobibase.com_api_services.wsdl_ArrayOfCategories"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubCategoryList(?x) ^ swrlb:datatype(?x, xsd:int)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Categories(?y) ^ swrlb:datatype(?y, mobibase:ArrayOfCategories)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_8_GetCategoryInfo_Atomic">
+    <process:hasName>GetCategoryInfo</process:hasName>
+    <process:hasInput rdf:resource="#service_test_8_GetCategoryInfo_Atomic_input_SubCategoryList__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#service_test_8_GetCategoryInfo_Atomic_output_Category__http___platform.mobibase.com_api_services.wsdl_Category"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubCategoryList(?x) ^ swrlb:uriEquals(?x, "http://www.w3.org/2001/XMLSchema#int")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Category(?y) ^ swrlb:uriEquals(?y, "http://platform.mobibase.com/api/services.wsdl#Category")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_9_GetParentCategoryInfo_Atomic">
+    <process:hasName>GetParentCategoryInfo</process:hasName>
+    <process:hasOutput rdf:resource="#service_test_9_GetParentCategoryInfo_Atomic_output_Category__http___platform.mobibase.com_api_services.wsdl_Category"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(subclassOf Category:{http://platform.mobibase.com/api/services.wsdl}Category Category:{http://platform.mobibase.com/api/services.wsdl}Category)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_10_GetContents_Atomic">
+    <process:hasName>GetContents</process:hasName>
+    <process:hasOutput rdf:resource="#service_test_10_GetContents_Atomic_output_Contents__http___platform.mobibase.com_api_services.wsdl_ArrayOfContent"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(hasOutput GetContents {http://platform.mobibase.com/api/services.wsdl}ArrayOfContent)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_11_SelectContent_Atomic">
+    <process:hasName>SelectContent</process:hasName>
+    <process:hasInput rdf:resource="#service_test_11_SelectContent_Atomic_input_ContentID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#service_test_11_SelectContent_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContentID(?x) ^ swrlb:integer(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:integer(?y) ^ hasContent(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_12_SelectMediaType_Atomic">
+    <process:hasName>SelectMediaType</process:hasName>
+    <process:hasInput rdf:resource="#service_test_12_SelectMediaType_Atomic_input_MediaTypeName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_12_SelectMediaType_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MediaTypeName(?x) ^ swrlb:equal(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:equal(?y, "http://www.w3.org/2001/XMLSchema#int")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_13_SetDefaultSpecifications_Atomic">
+    <process:hasName>SetDefaultSpecifications</process:hasName>
+    <process:hasInput rdf:resource="#service_test_13_SetDefaultSpecifications_Atomic_input_DefaultSpecifications__http___platform.mobibase.com_api_services.wsdl_ArrayOfSpecification"/>
+    <process:hasOutput rdf:resource="#service_test_13_SetDefaultSpecifications_Atomic_output_ReturnCode__http___platform.mobibase.com_api_services.wsdl_ReturnCode"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultSpecifications has type ArrayOfSpecification</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReturnCode has type ReturnCode</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_14_SetOptions_Atomic">
+    <process:hasName>SetOptions</process:hasName>
+    <process:hasInput rdf:resource="#service_test_14_SetOptions_Atomic_input_Value__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_14_SetOptions_Atomic_input_OptionName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_14_SetOptions_Atomic_output_ReturnCode__http___platform.mobibase.com_api_services.wsdl_ReturnCode"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SetOptions(Value, OptionName) ^ datatype(Value, "http://www.w3.org/2001/XMLSchema#string") ^ datatype(OptionName, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReturnCode("http://platform.mobibase.com/api/services.wsdl#ReturnCode")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_15_SetTranscodingParameter_Atomic">
+    <process:hasName>SetTranscodingParameter</process:hasName>
+    <process:hasInput rdf:resource="#service_test_15_SetTranscodingParameter_Atomic_input_Value__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_15_SetTranscodingParameter_Atomic_input_Name__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_15_SetTranscodingParameter_Atomic_output_ReturnCode__http___platform.mobibase.com_api_services.wsdl_ReturnCode"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TranscodingParameter(Value, "http://www.w3.org/2001/XMLSchema#string") ^ TranscodingParameter(Name, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReturnCode(SetTranscodingParameter) ^ ReturnCode(ReturnCode, "http://platform.mobibase.com/api/services.wsdl#ReturnCode")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_16_SelectContentFromMarketingID_Atomic">
+    <process:hasName>SelectContentFromMarketingID</process:hasName>
+    <process:hasInput rdf:resource="#service_test_16_SelectContentFromMarketingID_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_16_SelectContentFromMarketingID_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarketingID(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:datatype(?y, "http://www.w3.org/2001/XMLSchema#int") ^ SelectContentFromMarketingID(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_17_GetContentInfo_Atomic">
+    <process:hasName>GetContentInfo</process:hasName>
+    <process:hasOutput rdf:resource="#service_test_17_GetContentInfo_Atomic_output_Content__http___platform.mobibase.com_api_services.wsdl_Content"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Content(GetContentInfo, Content, http://platform.mobibase.com/api/services.wsdl)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_18_GetContentPreviewInfo_Atomic">
+    <process:hasName>GetContentPreviewInfo</process:hasName>
+    <process:hasInput rdf:resource="#service_test_18_GetContentPreviewInfo_Atomic_input_DeliveryFormat1__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#service_test_18_GetContentPreviewInfo_Atomic_output_ContentPreviewInfo__http___platform.mobibase.com_api_services.wsdl_ContentPreviewInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeliveryFormat1(?x) ^ swrlb:equal(?x, "http://www.w3.org/2001/XMLSchema#int")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContentPreviewInfo(?y) ^ swrlb:equal(?y, "http://platform.mobibase.com/api/services.wsdl#ContentPreviewInfo")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_19_GetContentPreviewURL_Atomic">
+    <process:hasName>GetContentPreviewURL</process:hasName>
+    <process:hasInput rdf:resource="#service_test_19_GetContentPreviewURL_Atomic_input_DeliveryFormat3__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#service_test_19_GetContentPreviewURL_Atomic_input_DeliveryFormat2__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#service_test_19_GetContentPreviewURL_Atomic_input_DeliveryFormat1__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#service_test_19_GetContentPreviewURL_Atomic_output_URL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeliveryFormat3:{http://www.w3.org/2001/XMLSchema}int and DeliveryFormat2:{http://www.w3.org/2001/XMLSchema}int and DeliveryFormat1:{http://www.w3.org/2001/XMLSchema}int</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">URL:{http://www.w3.org/2001/XMLSchema}string</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_20_GetAllContentPreviewURL_Atomic">
+    <process:hasName>GetAllContentPreviewURL</process:hasName>
+    <process:hasInput rdf:resource="#service_test_20_GetAllContentPreviewURL_Atomic_input_DeliveryFormats__http___platform.mobibase.com_api_services.wsdl_ArrayOfDeliveryFormat"/>
+    <process:hasOutput rdf:resource="#service_test_20_GetAllContentPreviewURL_Atomic_output_PreviewList__http___platform.mobibase.com_api_services.wsdl_ArrayOfPreviewResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeliveryFormats(?x) ^ ArrayOfDeliveryFormat(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreviewList(?y) ^ ArrayOfPreviewResponse(?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_21_GetContentPreviewURLForDownload_Atomic">
+    <process:hasName>GetContentPreviewURLForDownload</process:hasName>
+    <process:hasInput rdf:resource="#service_test_21_GetContentPreviewURLForDownload_Atomic_input_DeliveryFormat3__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#service_test_21_GetContentPreviewURLForDownload_Atomic_input_DeliveryFormat2__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#service_test_21_GetContentPreviewURLForDownload_Atomic_input_DeliveryFormat1__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#service_test_21_GetContentPreviewURLForDownload_Atomic_output_Preview__http___platform.mobibase.com_api_services.wsdl_Preview"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeliveryFormat3:{http://www.w3.org/2001/XMLSchema}int and DeliveryFormat2:{http://www.w3.org/2001/XMLSchema}int and DeliveryFormat1:{http://www.w3.org/2001/XMLSchema}int</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Preview:{http://platform.mobibase.com/api/services.wsdl}Preview</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_22_GetContentHandsetsCompatibility_Atomic">
+    <process:hasName>GetContentHandsetsCompatibility</process:hasName>
+    <process:hasOutput rdf:resource="#service_test_22_GetContentHandsetsCompatibility_Atomic_output_Vendors__http___platform.mobibase.com_api_services.wsdl_ArrayOfVendor"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_23_SelectHandset_Atomic">
+    <process:hasName>SelectHandset</process:hasName>
+    <process:hasInput rdf:resource="#service_test_23_SelectHandset_Atomic_input_Model__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_23_SelectHandset_Atomic_input_Vendor__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_23_SelectHandset_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Model(?x) ^ Vendor(?y)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?z) ^ hasHandset(?z, ?x) ^ hasVendor(?z, ?y) ^ integer(?z)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_24_SelectHandsetFromID_Atomic">
+    <process:hasName>SelectHandsetFromID</process:hasName>
+    <process:hasInput rdf:resource="#service_test_24_SelectHandsetFromID_Atomic_input_HandsetID__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#service_test_24_SelectHandsetFromID_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HandsetID(?id) ^ swrlb:integer(?id)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?id)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_25_SelectHandsetFromUserAgent_Atomic">
+    <process:hasName>SelectHandsetFromUserAgent</process:hasName>
+    <process:hasInput rdf:resource="#service_test_25_SelectHandsetFromUserAgent_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_25_SelectHandsetFromUserAgent_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UserAgent(?ua) ^ swrlb:contains(?ua, "Mobile") ^ swrlb:contains(?ua, "Android") ^ swrlb:contains(?ua, "Apple") ^ swrlb:contains(?ua, "Windows") ^ swrlb:contains(?ua, "BlackBerry") ^ swrlb:contains(?ua, "Nokia")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?result) ^ swrlb:add(?result, 1)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_26_CheckHandsetMediaTypeCompatibility_Atomic">
+    <process:hasName>CheckHandsetMediaTypeCompatibility</process:hasName>
+    <process:hasInput rdf:resource="#service_test_26_CheckHandsetMediaTypeCompatibility_Atomic_input_MediaType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_26_CheckHandsetMediaTypeCompatibility_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MediaType(?x) ^ swrlb:equal(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:equal(?y, "http://www.w3.org/2001/XMLSchema#int")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_27_CheckHandsetContentCompatibility_Atomic">
+    <process:hasName>CheckHandsetContentCompatibility</process:hasName>
+    <process:hasInput rdf:resource="#service_test_27_CheckHandsetContentCompatibility_Atomic_input_MarketingId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_27_CheckHandsetContentCompatibility_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarketingId(?x) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ swrlb:datatype(?y, "http://www.w3.org/2001/XMLSchema#int")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_28_OrderAuth_Atomic">
+    <process:hasName>OrderAuth</process:hasName>
+    <process:hasInput rdf:resource="#service_test_28_OrderAuth_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_28_OrderAuth_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderAuth(?key) ^ swrlb:datatype(?key, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?x) ^ swrlb:add(?x, 1, 0) ^ swrlb:datatype(?x, "http://www.w3.org/2001/XMLSchema#int")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_29_OrderContent_Atomic">
+    <process:hasName>OrderContent</process:hasName>
+    <process:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_Base64PageHeader__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_PageTitle__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_Base64PageFooter__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_Base64PageContent__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_29_OrderContent_Atomic_input_CallBackURLOnDelivery__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_29_OrderContent_Atomic_output_URL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operation(OrderContent) ^ hasInput(Base64PageHeader, "http://www.w3.org/2001/XMLSchema"^^string) ^ hasInput(BillingMethod, "http://www.w3.org/2001/XMLSchema"^^string) ^ hasInput(UserCost, "http://www.w3.org/2001/XMLSchema"^^string) ^ hasInput(PageTitle, "http://www.w3.org/2001/XMLSchema"^^string) ^ hasInput(Country, "http://www.w3.org/2001/XMLSchema"^^string) ^ hasInput(Base64PageFooter, "http://www.w3.org/2001/XMLSchema"^^string) ^ hasInput(Base64PageContent, "http://www.w3.org/2001/XMLSchema"^^string) ^ hasInput(CallBackURLOnDelivery, "http://www.w3.org/2001/XMLSchema"^^string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Operation(OrderContent) ^ hasOutput(URL, "</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_30_OrderContentFromMarketingID_Atomic">
+    <process:hasName>OrderContentFromMarketingID</process:hasName>
+    <process:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_Base64PageHeader__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_PageTitle__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_Base64PageFooter__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_Base64PageContent__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_CallBackURLOnDelivery__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Base64PageHeader(?x), MarketingID(?y), BillingMethod(?z), UserCost(?w), PageTitle(?a), Country(?b), Login(?c), Base64PageFooter(?d), Key(?e), Base64PageContent(?f), CallBackURLOnDelivery(?g), Password(?h)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectContent(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Atomic">
+    <process:hasName>OrderContentFromMarketingIDWithAuth</process:hasName>
+    <process:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Base64PageHeader__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_PageTitle__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Base64PageFooter__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Base64PageContent__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_CallBackURLOnDelivery__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Base64PageHeader(?header) ^ MarketingID(?marketingID) ^ BillingMethod(?billingMethod) ^ UserCost(?userCost) ^ PageTitle(?pageTitle) ^ Country(?country) ^ Login(?login) ^ Base64PageFooter(?footer) ^ Key(?key) ^ Base64PageContent(?content) ^ CallBackURLOnDelivery(?callbackURL) ^ Password(?password)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectContent(?directContent)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic">
+    <process:hasName>OrderContentForDownloadFromMIDWithAuthEx</process:hasName>
+    <process:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic_output_DirectContentEx__http___platform.mobibase.com_api_services.wsdl_DirectContentEx"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarketingID(?mid) ^ BillingMethod(?bm) ^ UserAgent(?ua) ^ UserCost(?uc) ^ Country(?c) ^ Login(?l) ^ Key(?k) ^ Password(?p)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectContentEx(?dce) ^ OrderContentForDownloadFromMIDWithAuthEx(?mid, ?bm, ?ua, ?uc, ?c, ?l, ?k, ?p, ?dce)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_33_OrderContentForDownload_Atomic">
+    <process:hasName>OrderContentForDownload</process:hasName>
+    <process:hasInput rdf:resource="#service_test_33_OrderContentForDownload_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_33_OrderContentForDownload_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_33_OrderContentForDownload_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_33_OrderContentForDownload_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BillingMethod(?x), UserCost(?y), Country(?z)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectContent(?w) ^ OrderContentForDownload(?w) ^ hasBillingMethod(?w, ?x) ^ hasUserCost(?w, ?y) ^ hasCountry(?w, ?z)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_34_OrderContentForDownloadFromMID_Atomic">
+    <process:hasName>OrderContentForDownloadFromMID</process:hasName>
+    <process:hasInput rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarketingID(?mid) ^ BillingMethod(?bm) ^ UserAgent(?ua) ^ UserCost(?uc) ^ Country(?c) ^ Key(?k)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectContent(?dc) ^ OrderContentForDownloadFromMID(?mid, ?bm, ?ua, ?uc, ?c, ?k, ?dc)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic">
+    <process:hasName>OrderContentForDownloadFromMIDWithAuth</process:hasName>
+    <process:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_Login__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_Key__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic_output_DirectContent__http___platform.mobibase.com_api_services.wsdl_DirectContent"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarketingID(?mid) ^ BillingMethod(?billingMethod) ^ UserAgent(?userAgent) ^ UserCost(?userCost) ^ Country(?country) ^ Login(?login) ^ Key(?key) ^ Password(?password)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectContent(?directContent) ^ OrderContentForDownloadFromMIDWithAuth(?mid, ?billingMethod, ?userAgent, ?userCost, ?country, ?login, ?key, ?password, ?directContent)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_36_GetAdaptedContentInfo_Atomic">
+    <process:hasName>GetAdaptedContentInfo</process:hasName>
+    <process:hasInput rdf:resource="#service_test_36_GetAdaptedContentInfo_Atomic_input_MarketingID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_36_GetAdaptedContentInfo_Atomic_input_UserAgent__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_36_GetAdaptedContentInfo_Atomic_output_AdaptedContentInfo__http___platform.mobibase.com_api_services.wsdl_AdaptedContentInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarketingID(?x) ^ UserAgent(?y)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdaptedContentInfo(?z) ^ hasMarketingID(?z, ?x) ^ hasUserAgent(?z, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_37_OrderNotification_Atomic">
+    <process:hasName>OrderNotification</process:hasName>
+    <process:hasInput rdf:resource="#service_test_37_OrderNotification_Atomic_input_BillingMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_37_OrderNotification_Atomic_input_UserCost__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_37_OrderNotification_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_37_OrderNotification_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BillingMethod(?x), UserCost(?y), Country(?z)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?r)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_38_OrderLock_Atomic">
+    <process:hasName>OrderLock</process:hasName>
+    <process:hasInput rdf:resource="#service_test_38_OrderLock_Atomic_input_Message__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_38_OrderLock_Atomic_input_Url__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_38_OrderLock_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderLock(?message) ^ OrderLock(?url)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderLock(?result) ^ Result(?result) ^ string(?result) ^ int(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="service_test_39_GetHandsetInfo_Atomic">
+    <process:hasName>GetHandsetInfo</process:hasName>
+    <process:hasInput rdf:resource="#service_test_39_GetHandsetInfo_Atomic_input_Model__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#service_test_39_GetHandsetInfo_Atomic_input_Vendor__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#service_test_39_GetHandsetInfo_Atomic_output_HandsetInfo__http___platform.mobibase.com_api_services.wsdl_HandsetInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Model(?x) ^ Vendor(?y)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HandsetInfo(?z) ^ hasModel(?z, ?x) ^ hasVendor(?z, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="service_test_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_0_Authentification_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_1_GetTrackingID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_2_LoadTrackingID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_3_SelectCatalog_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_4_GetCampaigns_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_5_SelectCampaign_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_6_SelectCategory_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_7_GetCategories_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_8_GetCategoryInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_9_GetParentCategoryInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_10_GetContents_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_11_SelectContent_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_12_SelectMediaType_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_13_SetDefaultSpecifications_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_14_SetOptions_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_15_SetTranscodingParameter_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_16_SelectContentFromMarketingID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_17_GetContentInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_18_GetContentPreviewInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_19_GetContentPreviewURL_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_20_GetAllContentPreviewURL_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_21_GetContentPreviewURLForDownload_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_22_GetContentHandsetsCompatibility_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_23_SelectHandset_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_24_SelectHandsetFromID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_25_SelectHandsetFromUserAgent_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_26_CheckHandsetMediaTypeCompatibility_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_27_CheckHandsetContentCompatibility_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_28_OrderAuth_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_29_OrderContent_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_30_OrderContentFromMarketingID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_33_OrderContentForDownload_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_36_GetAdaptedContentInfo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_37_OrderNotification_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_38_OrderLock_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#service_test_39_GetHandsetInfo_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_0_Authentification_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_0_Authentification_Atomic"/>
+    <grounding:wsdlOperationName>Authentification</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AuthentificationSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AuthentificationSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_1_GetTrackingID_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_1_GetTrackingID_Atomic"/>
+    <grounding:wsdlOperationName>GetTrackingID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTrackingIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTrackingIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_2_LoadTrackingID_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_2_LoadTrackingID_Atomic"/>
+    <grounding:wsdlOperationName>LoadTrackingID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LoadTrackingIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LoadTrackingIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_3_SelectCatalog_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_3_SelectCatalog_Atomic"/>
+    <grounding:wsdlOperationName>SelectCatalog</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SelectCatalogSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SelectCatalogSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_4_GetCampaigns_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_4_GetCampaigns_Atomic"/>
+    <grounding:wsdlOperationName>GetCampaigns</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCampaignsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCampaignsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_5_SelectCampaign_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_5_SelectCampaign_Atomic"/>
+    <grounding:wsdlOperationName>SelectCampaign</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SelectCampaignSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SelectCampaignSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_6_SelectCategory_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_6_SelectCategory_Atomic"/>
+    <grounding:wsdlOperationName>SelectCategory</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SelectCategorySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SelectCategorySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_7_GetCategories_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_7_GetCategories_Atomic"/>
+    <grounding:wsdlOperationName>GetCategories</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCategoriesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCategoriesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_8_GetCategoryInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_8_GetCategoryInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetCategoryInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCategoryInfoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCategoryInfoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_9_GetParentCategoryInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_9_GetParentCategoryInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetParentCategoryInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetParentCategoryInfoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetParentCategoryInfoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_10_GetContents_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_10_GetContents_Atomic"/>
+    <grounding:wsdlOperationName>GetContents</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetContentsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetContentsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_11_SelectContent_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_11_SelectContent_Atomic"/>
+    <grounding:wsdlOperationName>SelectContent</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SelectContentSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SelectContentSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_12_SelectMediaType_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_12_SelectMediaType_Atomic"/>
+    <grounding:wsdlOperationName>SelectMediaType</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SelectMediaTypeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SelectMediaTypeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_13_SetDefaultSpecifications_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_13_SetDefaultSpecifications_Atomic"/>
+    <grounding:wsdlOperationName>SetDefaultSpecifications</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SetDefaultSpecificationsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SetDefaultSpecificationsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_14_SetOptions_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_14_SetOptions_Atomic"/>
+    <grounding:wsdlOperationName>SetOptions</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SetOptionsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SetOptionsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_15_SetTranscodingParameter_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_15_SetTranscodingParameter_Atomic"/>
+    <grounding:wsdlOperationName>SetTranscodingParameter</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SetTranscodingParameterSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SetTranscodingParameterSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_16_SelectContentFromMarketingID_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_16_SelectContentFromMarketingID_Atomic"/>
+    <grounding:wsdlOperationName>SelectContentFromMarketingID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SelectContentFromMarketingIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SelectContentFromMarketingIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_17_GetContentInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_17_GetContentInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetContentInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetContentInfoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetContentInfoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_18_GetContentPreviewInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_18_GetContentPreviewInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetContentPreviewInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetContentPreviewInfoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetContentPreviewInfoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_19_GetContentPreviewURL_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_19_GetContentPreviewURL_Atomic"/>
+    <grounding:wsdlOperationName>GetContentPreviewURL</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetContentPreviewURLSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetContentPreviewURLSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_20_GetAllContentPreviewURL_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_20_GetAllContentPreviewURL_Atomic"/>
+    <grounding:wsdlOperationName>GetAllContentPreviewURL</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAllContentPreviewURLSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAllContentPreviewURLSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_21_GetContentPreviewURLForDownload_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_21_GetContentPreviewURLForDownload_Atomic"/>
+    <grounding:wsdlOperationName>GetContentPreviewURLForDownload</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetContentPreviewURLForDownloadSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetContentPreviewURLForDownloadSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_22_GetContentHandsetsCompatibility_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_22_GetContentHandsetsCompatibility_Atomic"/>
+    <grounding:wsdlOperationName>GetContentHandsetsCompatibility</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetContentHandsetsCompatibilitySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetContentHandsetsCompatibilitySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_23_SelectHandset_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_23_SelectHandset_Atomic"/>
+    <grounding:wsdlOperationName>SelectHandset</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SelectHandsetSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SelectHandsetSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_24_SelectHandsetFromID_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_24_SelectHandsetFromID_Atomic"/>
+    <grounding:wsdlOperationName>SelectHandsetFromID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SelectHandsetFromIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SelectHandsetFromIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_25_SelectHandsetFromUserAgent_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_25_SelectHandsetFromUserAgent_Atomic"/>
+    <grounding:wsdlOperationName>SelectHandsetFromUserAgent</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SelectHandsetFromUserAgentSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SelectHandsetFromUserAgentSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_26_CheckHandsetMediaTypeCompatibility_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_26_CheckHandsetMediaTypeCompatibility_Atomic"/>
+    <grounding:wsdlOperationName>CheckHandsetMediaTypeCompatibility</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckHandsetMediaTypeCompatibilitySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckHandsetMediaTypeCompatibilitySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_27_CheckHandsetContentCompatibility_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_27_CheckHandsetContentCompatibility_Atomic"/>
+    <grounding:wsdlOperationName>CheckHandsetContentCompatibility</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckHandsetContentCompatibilitySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckHandsetContentCompatibilitySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_28_OrderAuth_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_28_OrderAuth_Atomic"/>
+    <grounding:wsdlOperationName>OrderAuth</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OrderAuthSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OrderAuthSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_29_OrderContent_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_29_OrderContent_Atomic"/>
+    <grounding:wsdlOperationName>OrderContent</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OrderContentSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OrderContentSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_30_OrderContentFromMarketingID_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_30_OrderContentFromMarketingID_Atomic"/>
+    <grounding:wsdlOperationName>OrderContentFromMarketingID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OrderContentFromMarketingIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OrderContentFromMarketingIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_31_OrderContentFromMarketingIDWithAuth_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_31_OrderContentFromMarketingIDWithAuth_Atomic"/>
+    <grounding:wsdlOperationName>OrderContentFromMarketingIDWithAuth</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OrderContentFromMarketingIDWithAuthSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OrderContentFromMarketingIDWithAuthSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_32_OrderContentForDownloadFromMIDWithAuthEx_Atomic"/>
+    <grounding:wsdlOperationName>OrderContentForDownloadFromMIDWithAuthEx</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OrderContentForDownloadFromMIDWithAuthExSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OrderContentForDownloadFromMIDWithAuthExSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_33_OrderContentForDownload_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_33_OrderContentForDownload_Atomic"/>
+    <grounding:wsdlOperationName>OrderContentForDownload</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OrderContentForDownloadSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OrderContentForDownloadSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_34_OrderContentForDownloadFromMID_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_34_OrderContentForDownloadFromMID_Atomic"/>
+    <grounding:wsdlOperationName>OrderContentForDownloadFromMID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OrderContentForDownloadFromMIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OrderContentForDownloadFromMIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_35_OrderContentForDownloadFromMIDWithAuth_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_35_OrderContentForDownloadFromMIDWithAuth_Atomic"/>
+    <grounding:wsdlOperationName>OrderContentForDownloadFromMIDWithAuth</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OrderContentForDownloadFromMIDWithAuthSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OrderContentForDownloadFromMIDWithAuthSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_36_GetAdaptedContentInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_36_GetAdaptedContentInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetAdaptedContentInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAdaptedContentInfoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAdaptedContentInfoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_37_OrderNotification_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_37_OrderNotification_Atomic"/>
+    <grounding:wsdlOperationName>OrderNotification</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OrderNotificationSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OrderNotificationSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_38_OrderLock_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_38_OrderLock_Atomic"/>
+    <grounding:wsdlOperationName>OrderLock</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OrderLockSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OrderLockSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="service_test_39_GetHandsetInfo_Grounding">
+    <grounding:owlsProcess rdf:resource="#service_test_39_GetHandsetInfo_Atomic"/>
+    <grounding:wsdlOperationName>GetHandsetInfo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>service_testSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>service_test</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1199_service_test.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetHandsetInfoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetHandsetInfoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

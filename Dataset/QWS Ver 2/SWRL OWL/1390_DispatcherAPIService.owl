@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="DispatcherAPIService">
+    <service:presents rdf:resource="#DispatcherAPIService_Profile"/>
+    <service:describedBy rdf:resource="#DispatcherAPIService_Composite"/>
+    <service:supports rdf:resource="#DispatcherAPIService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="DispatcherAPIService_Profile">
+    <profile:serviceName>DispatcherAPIService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#DispatcherAPIService"/>
+    <profile:hasProcess rdf:resource="#DispatcherAPIService_0_getURL_Atomic"/>
+    <profile:hasInput rdf:resource="#DispatcherAPIService_0_getURL_Atomic_input_orgCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#DispatcherAPIService_0_getURL_Atomic_output_getURLReturn__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">orgCode(?x) ^ string(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">getURLReturn(?y) ^ string(?y) ^ getURL(?x, ?y)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="DispatcherAPIService_Composite">
+    <process:composedOf rdf:resource="#DispatcherAPIService_0_getURL_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="DispatcherAPIService_0_getURL_Atomic_input_orgCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>orgCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DispatcherAPIService_0_getURL_Atomic_output_getURLReturn__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>getURLReturn:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="DispatcherAPIService_0_getURL_Atomic">
+    <process:hasName>getURL</process:hasName>
+    <process:hasInput rdf:resource="#DispatcherAPIService_0_getURL_Atomic_input_orgCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#DispatcherAPIService_0_getURL_Atomic_output_getURLReturn__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">orgCode(?x) ^ string(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">getURLReturn(?y) ^ string(?y) ^ getURL(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="DispatcherAPIService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DispatcherAPIService_0_getURL_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DispatcherAPIService_0_getURL_Grounding">
+    <grounding:owlsProcess rdf:resource="#DispatcherAPIService_0_getURL_Atomic"/>
+    <grounding:wsdlOperationName>getURL</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>rpcrouterSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DispatcherAPI</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1390_DispatcherAPIService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getURLRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getURLResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="SMART">
+    <service:presents rdf:resource="#SMART_Profile"/>
+    <service:describedBy rdf:resource="#SMART_Composite"/>
+    <service:supports rdf:resource="#SMART_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="SMART_Profile">
+    <profile:serviceName>SMART</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#SMART"/>
+    <profile:hasProcess rdf:resource="#SMART_0_doSMART_Atomic"/>
+    <profile:hasInput rdf:resource="#SMART_0_doSMART_Atomic_input_SMARTAnalysis__http___smart.embl.de_webservice_SMART.wsdl_input_protein"/>
+    <profile:hasOutput rdf:resource="#SMART_0_doSMART_Atomic_output_SMARTResult__http___smart.embl.de_webservice_SMART.wsdl_proteinFeatures"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SMARTAnalysis(input_protein)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SMARTResult(proteinFeatures)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="SMART_Composite">
+    <process:composedOf rdf:resource="#SMART_0_doSMART_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="SMART_0_doSMART_Atomic_input_SMARTAnalysis__http___smart.embl.de_webservice_SMART.wsdl_input_protein">
+    <process:parameterType>SMARTAnalysis:{http://smart.embl.de/webservice/SMART.wsdl}input_protein</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMART_0_doSMART_Atomic_output_SMARTResult__http___smart.embl.de_webservice_SMART.wsdl_proteinFeatures">
+    <process:parameterType>SMARTResult:{http://smart.embl.de/webservice/SMART.wsdl}proteinFeatures</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="SMART_0_doSMART_Atomic">
+    <process:hasName>doSMART</process:hasName>
+    <process:hasInput rdf:resource="#SMART_0_doSMART_Atomic_input_SMARTAnalysis__http___smart.embl.de_webservice_SMART.wsdl_input_protein"/>
+    <process:hasOutput rdf:resource="#SMART_0_doSMART_Atomic_output_SMARTResult__http___smart.embl.de_webservice_SMART.wsdl_proteinFeatures"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SMARTAnalysis(input_protein)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SMARTResult(proteinFeatures)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="SMART_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMART_0_doSMART_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMART_0_doSMART_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMART_0_doSMART_Atomic"/>
+    <grounding:wsdlOperationName>doSMART</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMART_service</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMART</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1547_SMART.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SMARTRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SMARTResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

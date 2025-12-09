@@ -1,0 +1,687 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="AmazonSearchService">
+    <service:presents rdf:resource="#AmazonSearchService_Profile"/>
+    <service:describedBy rdf:resource="#AmazonSearchService_Composite"/>
+    <service:supports rdf:resource="#AmazonSearchService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="AmazonSearchService_Profile">
+    <profile:serviceName>AmazonSearchService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#AmazonSearchService"/>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_0_KeywordSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_0_KeywordSearchRequest_Atomic_input_KeywordSearchRequest__urn_PI_DevCentral_SoapService_KeywordRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_0_KeywordSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSearchRequest(?x) ^ KeywordRequest(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProductInfo(?y) ^ return(?y) ^ hasKeyword(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_1_PowerSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_1_PowerSearchRequest_Atomic_input_PowerSearchRequest__urn_PI_DevCentral_SoapService_PowerRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_1_PowerSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerSearchRequest(?request) ^ hasInput(?request, ?input) ^ PowerRequest(?input)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?request, ?output) ^ ProductInfo(?output) ^ return(?output)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_2_BrowseNodeSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_2_BrowseNodeSearchRequest_Atomic_input_BrowseNodeSearchRequest__urn_PI_DevCentral_SoapService_BrowseNodeRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_2_BrowseNodeSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BrowseNodeSearchRequest(?x) ^ hasInput(?x, BrowseNodeRequest)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, ProductInfo)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_3_AsinSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_3_AsinSearchRequest_Atomic_input_AsinSearchRequest__urn_PI_DevCentral_SoapService_AsinRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_3_AsinSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AsinSearchRequest(?request) ^ hasInput(?request, ?input) ^ AsinRequest(?input)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?request, ?output) ^ ProductInfo(?output)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_4_UpcSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_4_UpcSearchRequest_Atomic_input_UpcSearchRequest__urn_PI_DevCentral_SoapService_UpcRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_4_UpcSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpcSearchRequest(?request) ^ hasInput(?request, UpcRequest)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?result, ProductInfo) ^ return(?result)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_5_AuthorSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_5_AuthorSearchRequest_Atomic_input_AuthorSearchRequest__urn_PI_DevCentral_SoapService_AuthorRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_5_AuthorSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorSearchRequest(?request) ^ hasInput(?request, AuthorRequest) ^ hasNamespace(?request, urn:PI/DevCentral/SoapService)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?request, ProductInfo) ^ hasNamespace(ProductInfo, urn:PI/DevCentral/SoapService)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_6_ArtistSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_6_ArtistSearchRequest_Atomic_input_ArtistSearchRequest__urn_PI_DevCentral_SoapService_ArtistRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_6_ArtistSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArtistSearchRequest(?request) ^ hasInput(?request, ArtistRequest) ^ hasNamespace(?request, "urn:PI/DevCentral/SoapService")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?return, ProductInfo) ^ hasNamespace(?return, "urn:PI/DevCentral/SoapService") ^ return(?request, ?return)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_7_ActorSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_7_ActorSearchRequest_Atomic_input_ActorSearchRequest__urn_PI_DevCentral_SoapService_ActorRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_7_ActorSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActorSearchRequest(?request) ^ hasInput(?request, ActorRequest) ^ hasNamespace(?request, urn:PI/DevCentral/SoapService)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(return, ProductInfo) ^ hasNamespace(return, urn:PI/DevCentral/SoapService)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_8_ManufacturerSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_8_ManufacturerSearchRequest_Atomic_input_ManufacturerSearchRequest__urn_PI_DevCentral_SoapService_ManufacturerRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_8_ManufacturerSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ManufacturerSearchRequest(?x) ^ ManufacturerRequest(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProductInfo(?y) ^ return(?y) ^ hasManufacturer(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_9_DirectorSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_9_DirectorSearchRequest_Atomic_input_DirectorSearchRequest__urn_PI_DevCentral_SoapService_DirectorRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_9_DirectorSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectorSearchRequest(?x) ^ DirectorRequest(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProductInfo(?y) ^ return(?y) ^ hasDirector(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_10_ListManiaSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_10_ListManiaSearchRequest_Atomic_input_ListManiaSearchRequest__urn_PI_DevCentral_SoapService_ListManiaRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_10_ListManiaSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ListManiaSearchRequest(?x) ^ hasInput(?x, ?y) ^ ListManiaRequest(?y)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, ?z) ^ ProductInfo(?z)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_11_WishlistSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_11_WishlistSearchRequest_Atomic_input_WishlistSearchRequest__urn_PI_DevCentral_SoapService_WishlistRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_11_WishlistSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WishlistSearchRequest(?request) ^ WishlistRequest(?request)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProductInfo(?product) ^ return(?product)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_12_ExchangeSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_12_ExchangeSearchRequest_Atomic_input_ExchangeSearchRequest__urn_PI_DevCentral_SoapService_ExchangeRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_12_ExchangeSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ListingProductDetails"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExchangeSearchRequest(?x) ^ hasInput(?x, ?request) ^ hasType(?request, urn:PI/DevCentral/SoapService}ExchangeRequest)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, ?output) ^ hasType(?output, {urn:PI/DevCentral/SoapService}ListingProductDetails)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_13_SellerProfileSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_13_SellerProfileSearchRequest_Atomic_input_SellerProfileSearchRequest__urn_PI_DevCentral_SoapService_SellerProfileRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_13_SellerProfileSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_SellerProfile"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SellerProfileSearchRequest(?request) ^ hasInput(?request, SellerProfileRequest)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(return, SellerProfile)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_14_SellerSearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_14_SellerSearchRequest_Atomic_input_SellerSearchRequest__urn_PI_DevCentral_SoapService_SellerRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_14_SellerSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_SellerSearch"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SellerSearchRequest(?request) ^ hasInput(?request, SellerRequest) ^ hasNamespace(?request, urn:PI/DevCentral/SoapService)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(SellerSearch, ?result) ^ hasNamespace(?result, urn:PI/DevCentral/SoapService) ^ hasType(?result, SellerSearch)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_15_SimilaritySearchRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_15_SimilaritySearchRequest_Atomic_input_SimilaritySearchRequest__urn_PI_DevCentral_SoapService_SimilarityRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_15_SimilaritySearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimilaritySearchRequest(?request) ^ hasInput(?request, SimilarityRequest)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?request, ProductInfo) ^ return(?request)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_16_GetShoppingCartRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_16_GetShoppingCartRequest_Atomic_input_GetShoppingCartRequest__urn_PI_DevCentral_SoapService_GetShoppingCartRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_16_GetShoppingCartRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetShoppingCartRequest(?request) ^ type(?request, urn:PI/DevCentral/SoapService:GetShoppingCartRequest)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShoppingCart(?cart) ^ type(?cart, urn:PI/DevCentral/SoapService:ShoppingCart)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_17_ClearShoppingCartRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_17_ClearShoppingCartRequest_Atomic_input_ClearShoppingCartRequest__urn_PI_DevCentral_SoapService_ClearShoppingCartRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_17_ClearShoppingCartRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearShoppingCartRequest(?request)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShoppingCart(?cart) ^ hasStatus(?cart, "empty") ^ hasOwner(?cart, ?request)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_18_AddShoppingCartItemsRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_18_AddShoppingCartItemsRequest_Atomic_input_AddShoppingCartItemsRequest__urn_PI_DevCentral_SoapService_AddShoppingCartItemsRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_18_AddShoppingCartItemsRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddShoppingCartItemsRequest(?request) ^ type(?request, urn:PI/DevCentral/SoapService/AddShoppingCartItemsRequest)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShoppingCart(?cart) ^ type(?cart, urn:PI/DevCentral/SoapService/ShoppingCart)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_19_RemoveShoppingCartItemsRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_19_RemoveShoppingCartItemsRequest_Atomic_input_RemoveShoppingCartItemsRequest__urn_PI_DevCentral_SoapService_RemoveShoppingCartItemsRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_19_RemoveShoppingCartItemsRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RemoveShoppingCartItemsRequest(?request)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not ShoppingCart(?cart) and not hasItem(?cart, ?item) and not hasQuantity(?cart, ?item, ?quantity)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AmazonSearchService_20_ModifyShoppingCartItemsRequest_Atomic"/>
+    <profile:hasInput rdf:resource="#AmazonSearchService_20_ModifyShoppingCartItemsRequest_Atomic_input_ModifyShoppingCartItemsRequest__urn_PI_DevCentral_SoapService_ModifyShoppingCartItemsRequest"/>
+    <profile:hasOutput rdf:resource="#AmazonSearchService_20_ModifyShoppingCartItemsRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModifyShoppingCartItemsRequest(?request)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShoppingCart(?cart) ^ hasItems(?cart, ?items) ^ hasItems(?request, ?items) ^ not(hasItems(?cart, ?items)) ^ hasItems(?request, ?newItems) ^ hasItems(?cart, ?newItems) ^ not(hasItems(?cart, ?items))</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="AmazonSearchService_Composite">
+    <process:composedOf rdf:resource="#AmazonSearchService_0_KeywordSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_1_PowerSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_2_BrowseNodeSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_3_AsinSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_4_UpcSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_5_AuthorSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_6_ArtistSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_7_ActorSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_8_ManufacturerSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_9_DirectorSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_10_ListManiaSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_11_WishlistSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_12_ExchangeSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_13_SellerProfileSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_14_SellerSearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_15_SimilaritySearchRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_16_GetShoppingCartRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_17_ClearShoppingCartRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_18_AddShoppingCartItemsRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_19_RemoveShoppingCartItemsRequest_Atomic"/>
+    <process:composedOf rdf:resource="#AmazonSearchService_20_ModifyShoppingCartItemsRequest_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="AmazonSearchService_0_KeywordSearchRequest_Atomic_input_KeywordSearchRequest__urn_PI_DevCentral_SoapService_KeywordRequest">
+    <process:parameterType>KeywordSearchRequest:{urn:PI/DevCentral/SoapService}KeywordRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_0_KeywordSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}ProductInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_1_PowerSearchRequest_Atomic_input_PowerSearchRequest__urn_PI_DevCentral_SoapService_PowerRequest">
+    <process:parameterType>PowerSearchRequest:{urn:PI/DevCentral/SoapService}PowerRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_1_PowerSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}ProductInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_2_BrowseNodeSearchRequest_Atomic_input_BrowseNodeSearchRequest__urn_PI_DevCentral_SoapService_BrowseNodeRequest">
+    <process:parameterType>BrowseNodeSearchRequest:{urn:PI/DevCentral/SoapService}BrowseNodeRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_2_BrowseNodeSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}ProductInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_3_AsinSearchRequest_Atomic_input_AsinSearchRequest__urn_PI_DevCentral_SoapService_AsinRequest">
+    <process:parameterType>AsinSearchRequest:{urn:PI/DevCentral/SoapService}AsinRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_3_AsinSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}ProductInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_4_UpcSearchRequest_Atomic_input_UpcSearchRequest__urn_PI_DevCentral_SoapService_UpcRequest">
+    <process:parameterType>UpcSearchRequest:{urn:PI/DevCentral/SoapService}UpcRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_4_UpcSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}ProductInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_5_AuthorSearchRequest_Atomic_input_AuthorSearchRequest__urn_PI_DevCentral_SoapService_AuthorRequest">
+    <process:parameterType>AuthorSearchRequest:{urn:PI/DevCentral/SoapService}AuthorRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_5_AuthorSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}ProductInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_6_ArtistSearchRequest_Atomic_input_ArtistSearchRequest__urn_PI_DevCentral_SoapService_ArtistRequest">
+    <process:parameterType>ArtistSearchRequest:{urn:PI/DevCentral/SoapService}ArtistRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_6_ArtistSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}ProductInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_7_ActorSearchRequest_Atomic_input_ActorSearchRequest__urn_PI_DevCentral_SoapService_ActorRequest">
+    <process:parameterType>ActorSearchRequest:{urn:PI/DevCentral/SoapService}ActorRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_7_ActorSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}ProductInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_8_ManufacturerSearchRequest_Atomic_input_ManufacturerSearchRequest__urn_PI_DevCentral_SoapService_ManufacturerRequest">
+    <process:parameterType>ManufacturerSearchRequest:{urn:PI/DevCentral/SoapService}ManufacturerRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_8_ManufacturerSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}ProductInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_9_DirectorSearchRequest_Atomic_input_DirectorSearchRequest__urn_PI_DevCentral_SoapService_DirectorRequest">
+    <process:parameterType>DirectorSearchRequest:{urn:PI/DevCentral/SoapService}DirectorRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_9_DirectorSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}ProductInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_10_ListManiaSearchRequest_Atomic_input_ListManiaSearchRequest__urn_PI_DevCentral_SoapService_ListManiaRequest">
+    <process:parameterType>ListManiaSearchRequest:{urn:PI/DevCentral/SoapService}ListManiaRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_10_ListManiaSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}ProductInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_11_WishlistSearchRequest_Atomic_input_WishlistSearchRequest__urn_PI_DevCentral_SoapService_WishlistRequest">
+    <process:parameterType>WishlistSearchRequest:{urn:PI/DevCentral/SoapService}WishlistRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_11_WishlistSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}ProductInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_12_ExchangeSearchRequest_Atomic_input_ExchangeSearchRequest__urn_PI_DevCentral_SoapService_ExchangeRequest">
+    <process:parameterType>ExchangeSearchRequest:{urn:PI/DevCentral/SoapService}ExchangeRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_12_ExchangeSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ListingProductDetails">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}ListingProductDetails</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_13_SellerProfileSearchRequest_Atomic_input_SellerProfileSearchRequest__urn_PI_DevCentral_SoapService_SellerProfileRequest">
+    <process:parameterType>SellerProfileSearchRequest:{urn:PI/DevCentral/SoapService}SellerProfileRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_13_SellerProfileSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_SellerProfile">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}SellerProfile</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_14_SellerSearchRequest_Atomic_input_SellerSearchRequest__urn_PI_DevCentral_SoapService_SellerRequest">
+    <process:parameterType>SellerSearchRequest:{urn:PI/DevCentral/SoapService}SellerRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_14_SellerSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_SellerSearch">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}SellerSearch</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_15_SimilaritySearchRequest_Atomic_input_SimilaritySearchRequest__urn_PI_DevCentral_SoapService_SimilarityRequest">
+    <process:parameterType>SimilaritySearchRequest:{urn:PI/DevCentral/SoapService}SimilarityRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_15_SimilaritySearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo">
+    <process:parameterType>return:{urn:PI/DevCentral/SoapService}ProductInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_16_GetShoppingCartRequest_Atomic_input_GetShoppingCartRequest__urn_PI_DevCentral_SoapService_GetShoppingCartRequest">
+    <process:parameterType>GetShoppingCartRequest:{urn:PI/DevCentral/SoapService}GetShoppingCartRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_16_GetShoppingCartRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart">
+    <process:parameterType>ShoppingCart:{urn:PI/DevCentral/SoapService}ShoppingCart</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_17_ClearShoppingCartRequest_Atomic_input_ClearShoppingCartRequest__urn_PI_DevCentral_SoapService_ClearShoppingCartRequest">
+    <process:parameterType>ClearShoppingCartRequest:{urn:PI/DevCentral/SoapService}ClearShoppingCartRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_17_ClearShoppingCartRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart">
+    <process:parameterType>ShoppingCart:{urn:PI/DevCentral/SoapService}ShoppingCart</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_18_AddShoppingCartItemsRequest_Atomic_input_AddShoppingCartItemsRequest__urn_PI_DevCentral_SoapService_AddShoppingCartItemsRequest">
+    <process:parameterType>AddShoppingCartItemsRequest:{urn:PI/DevCentral/SoapService}AddShoppingCartItemsRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_18_AddShoppingCartItemsRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart">
+    <process:parameterType>ShoppingCart:{urn:PI/DevCentral/SoapService}ShoppingCart</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_19_RemoveShoppingCartItemsRequest_Atomic_input_RemoveShoppingCartItemsRequest__urn_PI_DevCentral_SoapService_RemoveShoppingCartItemsRequest">
+    <process:parameterType>RemoveShoppingCartItemsRequest:{urn:PI/DevCentral/SoapService}RemoveShoppingCartItemsRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_19_RemoveShoppingCartItemsRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart">
+    <process:parameterType>ShoppingCart:{urn:PI/DevCentral/SoapService}ShoppingCart</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AmazonSearchService_20_ModifyShoppingCartItemsRequest_Atomic_input_ModifyShoppingCartItemsRequest__urn_PI_DevCentral_SoapService_ModifyShoppingCartItemsRequest">
+    <process:parameterType>ModifyShoppingCartItemsRequest:{urn:PI/DevCentral/SoapService}ModifyShoppingCartItemsRequest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AmazonSearchService_20_ModifyShoppingCartItemsRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart">
+    <process:parameterType>ShoppingCart:{urn:PI/DevCentral/SoapService}ShoppingCart</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_0_KeywordSearchRequest_Atomic">
+    <process:hasName>KeywordSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_0_KeywordSearchRequest_Atomic_input_KeywordSearchRequest__urn_PI_DevCentral_SoapService_KeywordRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_0_KeywordSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KeywordSearchRequest(?x) ^ KeywordRequest(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProductInfo(?y) ^ return(?y) ^ hasKeyword(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_1_PowerSearchRequest_Atomic">
+    <process:hasName>PowerSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_1_PowerSearchRequest_Atomic_input_PowerSearchRequest__urn_PI_DevCentral_SoapService_PowerRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_1_PowerSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerSearchRequest(?request) ^ hasInput(?request, ?input) ^ PowerRequest(?input)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?request, ?output) ^ ProductInfo(?output) ^ return(?output)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_2_BrowseNodeSearchRequest_Atomic">
+    <process:hasName>BrowseNodeSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_2_BrowseNodeSearchRequest_Atomic_input_BrowseNodeSearchRequest__urn_PI_DevCentral_SoapService_BrowseNodeRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_2_BrowseNodeSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BrowseNodeSearchRequest(?x) ^ hasInput(?x, BrowseNodeRequest)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, ProductInfo)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_3_AsinSearchRequest_Atomic">
+    <process:hasName>AsinSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_3_AsinSearchRequest_Atomic_input_AsinSearchRequest__urn_PI_DevCentral_SoapService_AsinRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_3_AsinSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AsinSearchRequest(?request) ^ hasInput(?request, ?input) ^ AsinRequest(?input)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?request, ?output) ^ ProductInfo(?output)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_4_UpcSearchRequest_Atomic">
+    <process:hasName>UpcSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_4_UpcSearchRequest_Atomic_input_UpcSearchRequest__urn_PI_DevCentral_SoapService_UpcRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_4_UpcSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UpcSearchRequest(?request) ^ hasInput(?request, UpcRequest)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?result, ProductInfo) ^ return(?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_5_AuthorSearchRequest_Atomic">
+    <process:hasName>AuthorSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_5_AuthorSearchRequest_Atomic_input_AuthorSearchRequest__urn_PI_DevCentral_SoapService_AuthorRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_5_AuthorSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorSearchRequest(?request) ^ hasInput(?request, AuthorRequest) ^ hasNamespace(?request, urn:PI/DevCentral/SoapService)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?request, ProductInfo) ^ hasNamespace(ProductInfo, urn:PI/DevCentral/SoapService)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_6_ArtistSearchRequest_Atomic">
+    <process:hasName>ArtistSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_6_ArtistSearchRequest_Atomic_input_ArtistSearchRequest__urn_PI_DevCentral_SoapService_ArtistRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_6_ArtistSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArtistSearchRequest(?request) ^ hasInput(?request, ArtistRequest) ^ hasNamespace(?request, "urn:PI/DevCentral/SoapService")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?return, ProductInfo) ^ hasNamespace(?return, "urn:PI/DevCentral/SoapService") ^ return(?request, ?return)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_7_ActorSearchRequest_Atomic">
+    <process:hasName>ActorSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_7_ActorSearchRequest_Atomic_input_ActorSearchRequest__urn_PI_DevCentral_SoapService_ActorRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_7_ActorSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActorSearchRequest(?request) ^ hasInput(?request, ActorRequest) ^ hasNamespace(?request, urn:PI/DevCentral/SoapService)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(return, ProductInfo) ^ hasNamespace(return, urn:PI/DevCentral/SoapService)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_8_ManufacturerSearchRequest_Atomic">
+    <process:hasName>ManufacturerSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_8_ManufacturerSearchRequest_Atomic_input_ManufacturerSearchRequest__urn_PI_DevCentral_SoapService_ManufacturerRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_8_ManufacturerSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ManufacturerSearchRequest(?x) ^ ManufacturerRequest(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProductInfo(?y) ^ return(?y) ^ hasManufacturer(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_9_DirectorSearchRequest_Atomic">
+    <process:hasName>DirectorSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_9_DirectorSearchRequest_Atomic_input_DirectorSearchRequest__urn_PI_DevCentral_SoapService_DirectorRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_9_DirectorSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectorSearchRequest(?x) ^ DirectorRequest(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProductInfo(?y) ^ return(?y) ^ hasDirector(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_10_ListManiaSearchRequest_Atomic">
+    <process:hasName>ListManiaSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_10_ListManiaSearchRequest_Atomic_input_ListManiaSearchRequest__urn_PI_DevCentral_SoapService_ListManiaRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_10_ListManiaSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ListManiaSearchRequest(?x) ^ hasInput(?x, ?y) ^ ListManiaRequest(?y)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, ?z) ^ ProductInfo(?z)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_11_WishlistSearchRequest_Atomic">
+    <process:hasName>WishlistSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_11_WishlistSearchRequest_Atomic_input_WishlistSearchRequest__urn_PI_DevCentral_SoapService_WishlistRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_11_WishlistSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WishlistSearchRequest(?request) ^ WishlistRequest(?request)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProductInfo(?product) ^ return(?product)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_12_ExchangeSearchRequest_Atomic">
+    <process:hasName>ExchangeSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_12_ExchangeSearchRequest_Atomic_input_ExchangeSearchRequest__urn_PI_DevCentral_SoapService_ExchangeRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_12_ExchangeSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ListingProductDetails"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExchangeSearchRequest(?x) ^ hasInput(?x, ?request) ^ hasType(?request, urn:PI/DevCentral/SoapService}ExchangeRequest)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?x, ?output) ^ hasType(?output, {urn:PI/DevCentral/SoapService}ListingProductDetails)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_13_SellerProfileSearchRequest_Atomic">
+    <process:hasName>SellerProfileSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_13_SellerProfileSearchRequest_Atomic_input_SellerProfileSearchRequest__urn_PI_DevCentral_SoapService_SellerProfileRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_13_SellerProfileSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_SellerProfile"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SellerProfileSearchRequest(?request) ^ hasInput(?request, SellerProfileRequest)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(return, SellerProfile)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_14_SellerSearchRequest_Atomic">
+    <process:hasName>SellerSearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_14_SellerSearchRequest_Atomic_input_SellerSearchRequest__urn_PI_DevCentral_SoapService_SellerRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_14_SellerSearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_SellerSearch"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SellerSearchRequest(?request) ^ hasInput(?request, SellerRequest) ^ hasNamespace(?request, urn:PI/DevCentral/SoapService)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(SellerSearch, ?result) ^ hasNamespace(?result, urn:PI/DevCentral/SoapService) ^ hasType(?result, SellerSearch)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_15_SimilaritySearchRequest_Atomic">
+    <process:hasName>SimilaritySearchRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_15_SimilaritySearchRequest_Atomic_input_SimilaritySearchRequest__urn_PI_DevCentral_SoapService_SimilarityRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_15_SimilaritySearchRequest_Atomic_output_return__urn_PI_DevCentral_SoapService_ProductInfo"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimilaritySearchRequest(?request) ^ hasInput(?request, SimilarityRequest)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?request, ProductInfo) ^ return(?request)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_16_GetShoppingCartRequest_Atomic">
+    <process:hasName>GetShoppingCartRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_16_GetShoppingCartRequest_Atomic_input_GetShoppingCartRequest__urn_PI_DevCentral_SoapService_GetShoppingCartRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_16_GetShoppingCartRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetShoppingCartRequest(?request) ^ type(?request, urn:PI/DevCentral/SoapService:GetShoppingCartRequest)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShoppingCart(?cart) ^ type(?cart, urn:PI/DevCentral/SoapService:ShoppingCart)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_17_ClearShoppingCartRequest_Atomic">
+    <process:hasName>ClearShoppingCartRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_17_ClearShoppingCartRequest_Atomic_input_ClearShoppingCartRequest__urn_PI_DevCentral_SoapService_ClearShoppingCartRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_17_ClearShoppingCartRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearShoppingCartRequest(?request)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShoppingCart(?cart) ^ hasStatus(?cart, "empty") ^ hasOwner(?cart, ?request)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_18_AddShoppingCartItemsRequest_Atomic">
+    <process:hasName>AddShoppingCartItemsRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_18_AddShoppingCartItemsRequest_Atomic_input_AddShoppingCartItemsRequest__urn_PI_DevCentral_SoapService_AddShoppingCartItemsRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_18_AddShoppingCartItemsRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AddShoppingCartItemsRequest(?request) ^ type(?request, urn:PI/DevCentral/SoapService/AddShoppingCartItemsRequest)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShoppingCart(?cart) ^ type(?cart, urn:PI/DevCentral/SoapService/ShoppingCart)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_19_RemoveShoppingCartItemsRequest_Atomic">
+    <process:hasName>RemoveShoppingCartItemsRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_19_RemoveShoppingCartItemsRequest_Atomic_input_RemoveShoppingCartItemsRequest__urn_PI_DevCentral_SoapService_RemoveShoppingCartItemsRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_19_RemoveShoppingCartItemsRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RemoveShoppingCartItemsRequest(?request)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not ShoppingCart(?cart) and not hasItem(?cart, ?item) and not hasQuantity(?cart, ?item, ?quantity)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AmazonSearchService_20_ModifyShoppingCartItemsRequest_Atomic">
+    <process:hasName>ModifyShoppingCartItemsRequest</process:hasName>
+    <process:hasInput rdf:resource="#AmazonSearchService_20_ModifyShoppingCartItemsRequest_Atomic_input_ModifyShoppingCartItemsRequest__urn_PI_DevCentral_SoapService_ModifyShoppingCartItemsRequest"/>
+    <process:hasOutput rdf:resource="#AmazonSearchService_20_ModifyShoppingCartItemsRequest_Atomic_output_ShoppingCart__urn_PI_DevCentral_SoapService_ShoppingCart"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModifyShoppingCartItemsRequest(?request)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShoppingCart(?cart) ^ hasItems(?cart, ?items) ^ hasItems(?request, ?items) ^ not(hasItems(?cart, ?items)) ^ hasItems(?request, ?newItems) ^ hasItems(?cart, ?newItems) ^ not(hasItems(?cart, ?items))</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="AmazonSearchService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_0_KeywordSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_1_PowerSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_2_BrowseNodeSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_3_AsinSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_4_UpcSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_5_AuthorSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_6_ArtistSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_7_ActorSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_8_ManufacturerSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_9_DirectorSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_10_ListManiaSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_11_WishlistSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_12_ExchangeSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_13_SellerProfileSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_14_SellerSearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_15_SimilaritySearchRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_16_GetShoppingCartRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_17_ClearShoppingCartRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_18_AddShoppingCartItemsRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_19_RemoveShoppingCartItemsRequest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AmazonSearchService_20_ModifyShoppingCartItemsRequest_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_0_KeywordSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_0_KeywordSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>KeywordSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>KeywordSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>KeywordSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_1_PowerSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_1_PowerSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>PowerSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PowerSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PowerSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_2_BrowseNodeSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_2_BrowseNodeSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>BrowseNodeSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BrowseNodeSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BrowseNodeSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_3_AsinSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_3_AsinSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>AsinSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AsinSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AsinSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_4_UpcSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_4_UpcSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>UpcSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpcSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpcSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_5_AuthorSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_5_AuthorSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>AuthorSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AuthorSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AuthorSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_6_ArtistSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_6_ArtistSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>ArtistSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ArtistSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ArtistSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_7_ActorSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_7_ActorSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>ActorSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ActorSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ActorSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_8_ManufacturerSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_8_ManufacturerSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>ManufacturerSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ManufacturerSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ManufacturerSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_9_DirectorSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_9_DirectorSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>DirectorSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DirectorSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DirectorSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_10_ListManiaSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_10_ListManiaSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>ListManiaSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListManiaSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListManiaSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_11_WishlistSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_11_WishlistSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>WishlistSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>WishlistSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>WishlistSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_12_ExchangeSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_12_ExchangeSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>ExchangeSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ExchangeSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ExchangeSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_13_SellerProfileSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_13_SellerProfileSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>SellerProfileSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SellerProfileSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SellerProfileSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_14_SellerSearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_14_SellerSearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>SellerSearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SellerSearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SellerSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_15_SimilaritySearchRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_15_SimilaritySearchRequest_Atomic"/>
+    <grounding:wsdlOperationName>SimilaritySearchRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SimilaritySearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SimilaritySearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_16_GetShoppingCartRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_16_GetShoppingCartRequest_Atomic"/>
+    <grounding:wsdlOperationName>GetShoppingCartRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetShoppingCartRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ShoppingCartResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_17_ClearShoppingCartRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_17_ClearShoppingCartRequest_Atomic"/>
+    <grounding:wsdlOperationName>ClearShoppingCartRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ClearShoppingCartRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ShoppingCartResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_18_AddShoppingCartItemsRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_18_AddShoppingCartItemsRequest_Atomic"/>
+    <grounding:wsdlOperationName>AddShoppingCartItemsRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddShoppingCartItemsRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ShoppingCartResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_19_RemoveShoppingCartItemsRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_19_RemoveShoppingCartItemsRequest_Atomic"/>
+    <grounding:wsdlOperationName>RemoveShoppingCartItemsRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RemoveShoppingCartItemsRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ShoppingCartResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AmazonSearchService_20_ModifyShoppingCartItemsRequest_Grounding">
+    <grounding:owlsProcess rdf:resource="#AmazonSearchService_20_ModifyShoppingCartItemsRequest_Atomic"/>
+    <grounding:wsdlOperationName>ModifyShoppingCartItemsRequest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AmazonSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AmazonSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1407_AmazonSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ModifyShoppingCartItemsRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ShoppingCartResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,1060 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="CasGroups">
+    <service:presents rdf:resource="#CasGroups_Profile"/>
+    <service:describedBy rdf:resource="#CasGroups_Composite"/>
+    <service:supports rdf:resource="#CasGroups_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="CasGroups_Profile">
+    <profile:serviceName>CasGroups</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#CasGroups"/>
+    <profile:hasProcess rdf:resource="#CasGroups_0_CreateGroup_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_0_CreateGroup_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_0_CreateGroup_Atomic_input_groupName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_0_CreateGroup_Atomic_input_description__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasGroups_0_CreateGroup_Atomic_output_Body__http___Users.Cas.jhu.edu_long"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(wsid, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^
+  swrlb:equal(groupName, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^
+  swrlb:equal(description, "http://www.w3.org/2001/XMLSchema"^^xsd:string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:addition(Body, "http://Users.Cas.jhu.edu"^^xsd:long, 1)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_1_InviteUser_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_1_InviteUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_1_InviteUser_Atomic_input_inviteThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_1_InviteUser_Atomic_input_toThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">User with username inviteThis exists in the system and is not already invited to workspace wsid.</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">User with username inviteThis is invited to workspace wsid with the role specified in toThis.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_2_RemoveUser_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_2_RemoveUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_2_RemoveUser_Atomic_input_fromThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_2_RemoveUser_Atomic_input_removeThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UserExists(fromThis) ^ UserExists(removeThis)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬UserExists(removeThis)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_3_AcceptInvite_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_3_AcceptInvite_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_3_AcceptInvite_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AcceptInvite(?wsid, ?gid) ^ datatype(?wsid, {http://www.w3.org/2001/XMLSchema}string) ^ datatype(?gid, {http://www.w3.org/2001/XMLSchema}string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">No specific effect for the AcceptInvite operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_4_DeclineInvite_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_4_DeclineInvite_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_4_DeclineInvite_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Invite(wsid, gid) ∧ hasStatus(wsid, gid, "pending")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬Invite(wsid, gid)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_5_PublishTable_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_5_PublishTable_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_5_PublishTable_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_5_PublishTable_Atomic_input_tableName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PublishTable(wsid, gid, tableName) ^ datatype(wsid, {http://www.w3.org/2001/XMLSchema}string) ^ datatype(gid, {http://www.w3.org/2001/XMLSchema}string) ^ datatype(tableName, {http://www.w3.org/2001/XMLSchema}string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TablePublished(wsid, gid, tableName)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_6_DePublishTable_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_6_DePublishTable_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_6_DePublishTable_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_6_DePublishTable_Atomic_input_tableName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasValue(wsid, "http://www.w3.org/2001/XMLSchema#string") ^ hasValue(gid, "http://www.w3.org/2001/XMLSchema#string") ^ hasValue(tableName, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not(hasValue(wsid, "http://www.w3.org/2001/XMLSchema#string")) ^ not(hasValue(gid, "http://www.w3.org/2001/XMLSchema#string")) ^ not(hasValue(tableName, "http://www.w3.org/2001/XMLSchema#string"))</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_7_IsOwner_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_7_IsOwner_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_7_IsOwner_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasGroups_7_IsOwner_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasRole(wsid, "Owner") ^ hasGroup(wsid, gid)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(wsid, gid)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_8_DestroyGroup_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_8_DestroyGroup_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_8_DestroyGroup_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GroupExists(?gid) ^ WorkspaceExists(?wsid)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬GroupExists(?gid)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_9_CanReadTable_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_9_CanReadTable_Atomic_input_lender__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_9_CanReadTable_Atomic_input_borrower__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_9_CanReadTable_Atomic_input_lendedTable__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasGroups_9_CanReadTable_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lender(?lender) ^ borrower(?borrower) ^ lendedTable(?lendedTable)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?lender, ?borrower, ?lendedTable) ^ boolean(true)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_10_CreateGroup_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_10_CreateGroup_Atomic_input_parameters__http___Users.Cas.jhu.edu_CreateGroup"/>
+    <profile:hasOutput rdf:resource="#CasGroups_10_CreateGroup_Atomic_output_parameters__http___Users.Cas.jhu.edu_CreateGroupResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_11_InviteUser_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_11_InviteUser_Atomic_input_parameters__http___Users.Cas.jhu.edu_InviteUser"/>
+    <profile:hasOutput rdf:resource="#CasGroups_11_InviteUser_Atomic_output_parameters__http___Users.Cas.jhu.edu_InviteUserResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_12_RemoveUser_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_12_RemoveUser_Atomic_input_parameters__http___Users.Cas.jhu.edu_RemoveUser"/>
+    <profile:hasOutput rdf:resource="#CasGroups_12_RemoveUser_Atomic_output_parameters__http___Users.Cas.jhu.edu_RemoveUserResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RemoveUser(?user)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not RemoveUser(?user)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_13_AcceptInvite_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_13_AcceptInvite_Atomic_input_parameters__http___Users.Cas.jhu.edu_AcceptInvite"/>
+    <profile:hasOutput rdf:resource="#CasGroups_13_AcceptInvite_Atomic_output_parameters__http___Users.Cas.jhu.edu_AcceptInviteResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AcceptInvite(?x) ^ hasStatus(?x, "pending")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AcceptInviteResponse(?y) ^ hasStatus(?y, "accepted") ^ hasResponseTo(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_14_DeclineInvite_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_14_DeclineInvite_Atomic_input_parameters__http___Users.Cas.jhu.edu_DeclineInvite"/>
+    <profile:hasOutput rdf:resource="#CasGroups_14_DeclineInvite_Atomic_output_parameters__http___Users.Cas.jhu.edu_DeclineInviteResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeclineInvite(?x) ^ hasStatus(?x, "Pending")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeclineInviteResponse(?x) ^ hasStatus(?x, "Declined")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_15_PublishTable_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_15_PublishTable_Atomic_input_parameters__http___Users.Cas.jhu.edu_PublishTable"/>
+    <profile:hasOutput rdf:resource="#CasGroups_15_PublishTable_Atomic_output_parameters__http___Users.Cas.jhu.edu_PublishTableResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_16_DePublishTable_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_16_DePublishTable_Atomic_input_parameters__http___Users.Cas.jhu.edu_DePublishTable"/>
+    <profile:hasOutput rdf:resource="#CasGroups_16_DePublishTable_Atomic_output_parameters__http___Users.Cas.jhu.edu_DePublishTableResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DePublishTable(?table)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not Published(?table)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_17_IsOwner_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_17_IsOwner_Atomic_input_parameters__http___Users.Cas.jhu.edu_IsOwner"/>
+    <profile:hasOutput rdf:resource="#CasGroups_17_IsOwner_Atomic_output_parameters__http___Users.Cas.jhu.edu_IsOwnerResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsOwner(?user)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsOwnerResponse(?user)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_18_DestroyGroup_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_18_DestroyGroup_Atomic_input_parameters__http___Users.Cas.jhu.edu_DestroyGroup"/>
+    <profile:hasOutput rdf:resource="#CasGroups_18_DestroyGroup_Atomic_output_parameters__http___Users.Cas.jhu.edu_DestroyGroupResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestroyGroup(?group) ^ hasPermission(?group, "admin")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not(GroupExists(?group))</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_19_CanReadTable_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_19_CanReadTable_Atomic_input_parameters__http___Users.Cas.jhu.edu_CanReadTable"/>
+    <profile:hasOutput rdf:resource="#CasGroups_19_CanReadTable_Atomic_output_parameters__http___Users.Cas.jhu.edu_CanReadTableResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanReadTable(?x) ^ TableExists(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanReadTableResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_20_CreateGroup_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_20_CreateGroup_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_20_CreateGroup_Atomic_input_groupName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_20_CreateGroup_Atomic_input_description__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasGroups_20_CreateGroup_Atomic_output_Body__http___Users.Cas.jhu.edu_long"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wsid(?wsid) ^ groupName(?groupName) ^ description(?description)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?groupID) ^ long(?groupID)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_21_InviteUser_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_21_InviteUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_21_InviteUser_Atomic_input_inviteThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_21_InviteUser_Atomic_input_toThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wsid(?wsid) ^ inviteThis(?inviteThis) ^ toThis(?toThis)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InviteUser(?wsid, ?inviteThis, ?toThis)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_22_RemoveUser_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_22_RemoveUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_22_RemoveUser_Atomic_input_fromThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_22_RemoveUser_Atomic_input_removeThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UserExists(fromThis) ^ UserExists(removeThis)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬UserExists(removeThis)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_23_AcceptInvite_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_23_AcceptInvite_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_23_AcceptInvite_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AcceptInvite(?wsid, ?gid) ^ datatype(?wsid, {http://www.w3.org/2001/XMLSchema}string) ^ datatype(?gid, {http://www.w3.org/2001/XMLSchema}string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">No specific effect for the AcceptInvite operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_24_DeclineInvite_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_24_DeclineInvite_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_24_DeclineInvite_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Invite(wsid, gid) ^ hasStatus(wsid, gid, "pending")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬Invite(wsid, gid)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_25_PublishTable_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_25_PublishTable_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_25_PublishTable_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_25_PublishTable_Atomic_input_tableName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PublishTable(wsid, gid, tableName) ^ datatype(wsid, {http://www.w3.org/2001/XMLSchema}string) ^ datatype(gid, {http://www.w3.org/2001/XMLSchema}string) ^ datatype(tableName, {http://www.w3.org/2001/XMLSchema}string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TablePublished(wsid, gid, tableName)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_26_DePublishTable_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_26_DePublishTable_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_26_DePublishTable_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_26_DePublishTable_Atomic_input_tableName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasValue(wsid, "http://www.w3.org/2001/XMLSchema#string") ^ hasValue(gid, "http://www.w3.org/2001/XMLSchema#string") ^ hasValue(tableName, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not published(tableName) ^ not hasOutput(wsid, gid, tableName)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_27_IsOwner_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_27_IsOwner_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_27_IsOwner_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasGroups_27_IsOwner_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsOwner(?wsid, ?gid)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?wsid, ?gid) -&gt; boolean(true)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_28_DestroyGroup_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_28_DestroyGroup_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_28_DestroyGroup_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GroupExists(?gid) ^ WorkspaceExists(?wsid)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬GroupExists(?gid)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CasGroups_29_CanReadTable_Atomic"/>
+    <profile:hasInput rdf:resource="#CasGroups_29_CanReadTable_Atomic_input_lender__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_29_CanReadTable_Atomic_input_borrower__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CasGroups_29_CanReadTable_Atomic_input_lendedTable__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CasGroups_29_CanReadTable_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lender(?lender) ^ borrower(?borrower) ^ lendedTable(?lendedTable)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?canReadTable) ^ hasPermission(?lender, ?lendedTable, ?canReadTable) ^ hasPermission(?borrower, ?lendedTable, ?canReadTable)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="CasGroups_Composite">
+    <process:composedOf rdf:resource="#CasGroups_0_CreateGroup_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_1_InviteUser_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_2_RemoveUser_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_3_AcceptInvite_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_4_DeclineInvite_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_5_PublishTable_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_6_DePublishTable_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_7_IsOwner_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_8_DestroyGroup_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_9_CanReadTable_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_10_CreateGroup_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_11_InviteUser_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_12_RemoveUser_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_13_AcceptInvite_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_14_DeclineInvite_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_15_PublishTable_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_16_DePublishTable_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_17_IsOwner_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_18_DestroyGroup_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_19_CanReadTable_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_20_CreateGroup_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_21_InviteUser_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_22_RemoveUser_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_23_AcceptInvite_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_24_DeclineInvite_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_25_PublishTable_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_26_DePublishTable_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_27_IsOwner_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_28_DestroyGroup_Atomic"/>
+    <process:composedOf rdf:resource="#CasGroups_29_CanReadTable_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="CasGroups_0_CreateGroup_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_0_CreateGroup_Atomic_input_groupName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>groupName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_0_CreateGroup_Atomic_input_description__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>description:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_0_CreateGroup_Atomic_output_Body__http___Users.Cas.jhu.edu_long">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}long</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_1_InviteUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_1_InviteUser_Atomic_input_inviteThis__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>inviteThis:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_1_InviteUser_Atomic_input_toThis__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>toThis:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_2_RemoveUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_2_RemoveUser_Atomic_input_fromThis__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>fromThis:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_2_RemoveUser_Atomic_input_removeThis__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>removeThis:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_3_AcceptInvite_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_3_AcceptInvite_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>gid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_4_DeclineInvite_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_4_DeclineInvite_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>gid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_5_PublishTable_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_5_PublishTable_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>gid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_5_PublishTable_Atomic_input_tableName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>tableName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_6_DePublishTable_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_6_DePublishTable_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>gid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_6_DePublishTable_Atomic_input_tableName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>tableName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_7_IsOwner_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_7_IsOwner_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>gid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_7_IsOwner_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_8_DestroyGroup_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_8_DestroyGroup_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>gid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_9_CanReadTable_Atomic_input_lender__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>lender:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_9_CanReadTable_Atomic_input_borrower__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>borrower:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_9_CanReadTable_Atomic_input_lendedTable__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>lendedTable:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_9_CanReadTable_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_10_CreateGroup_Atomic_input_parameters__http___Users.Cas.jhu.edu_CreateGroup">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}CreateGroup</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_10_CreateGroup_Atomic_output_parameters__http___Users.Cas.jhu.edu_CreateGroupResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}CreateGroupResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_11_InviteUser_Atomic_input_parameters__http___Users.Cas.jhu.edu_InviteUser">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}InviteUser</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_11_InviteUser_Atomic_output_parameters__http___Users.Cas.jhu.edu_InviteUserResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}InviteUserResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_12_RemoveUser_Atomic_input_parameters__http___Users.Cas.jhu.edu_RemoveUser">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}RemoveUser</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_12_RemoveUser_Atomic_output_parameters__http___Users.Cas.jhu.edu_RemoveUserResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}RemoveUserResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_13_AcceptInvite_Atomic_input_parameters__http___Users.Cas.jhu.edu_AcceptInvite">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}AcceptInvite</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_13_AcceptInvite_Atomic_output_parameters__http___Users.Cas.jhu.edu_AcceptInviteResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}AcceptInviteResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_14_DeclineInvite_Atomic_input_parameters__http___Users.Cas.jhu.edu_DeclineInvite">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}DeclineInvite</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_14_DeclineInvite_Atomic_output_parameters__http___Users.Cas.jhu.edu_DeclineInviteResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}DeclineInviteResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_15_PublishTable_Atomic_input_parameters__http___Users.Cas.jhu.edu_PublishTable">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}PublishTable</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_15_PublishTable_Atomic_output_parameters__http___Users.Cas.jhu.edu_PublishTableResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}PublishTableResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_16_DePublishTable_Atomic_input_parameters__http___Users.Cas.jhu.edu_DePublishTable">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}DePublishTable</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_16_DePublishTable_Atomic_output_parameters__http___Users.Cas.jhu.edu_DePublishTableResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}DePublishTableResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_17_IsOwner_Atomic_input_parameters__http___Users.Cas.jhu.edu_IsOwner">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}IsOwner</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_17_IsOwner_Atomic_output_parameters__http___Users.Cas.jhu.edu_IsOwnerResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}IsOwnerResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_18_DestroyGroup_Atomic_input_parameters__http___Users.Cas.jhu.edu_DestroyGroup">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}DestroyGroup</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_18_DestroyGroup_Atomic_output_parameters__http___Users.Cas.jhu.edu_DestroyGroupResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}DestroyGroupResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_19_CanReadTable_Atomic_input_parameters__http___Users.Cas.jhu.edu_CanReadTable">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}CanReadTable</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_19_CanReadTable_Atomic_output_parameters__http___Users.Cas.jhu.edu_CanReadTableResponse">
+    <process:parameterType>parameters:{http://Users.Cas.jhu.edu}CanReadTableResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_20_CreateGroup_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_20_CreateGroup_Atomic_input_groupName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>groupName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_20_CreateGroup_Atomic_input_description__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>description:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_20_CreateGroup_Atomic_output_Body__http___Users.Cas.jhu.edu_long">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}long</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_21_InviteUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_21_InviteUser_Atomic_input_inviteThis__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>inviteThis:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_21_InviteUser_Atomic_input_toThis__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>toThis:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_22_RemoveUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_22_RemoveUser_Atomic_input_fromThis__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>fromThis:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_22_RemoveUser_Atomic_input_removeThis__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>removeThis:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_23_AcceptInvite_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_23_AcceptInvite_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>gid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_24_DeclineInvite_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_24_DeclineInvite_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>gid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_25_PublishTable_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_25_PublishTable_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>gid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_25_PublishTable_Atomic_input_tableName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>tableName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_26_DePublishTable_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_26_DePublishTable_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>gid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_26_DePublishTable_Atomic_input_tableName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>tableName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_27_IsOwner_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_27_IsOwner_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>gid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_27_IsOwner_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CasGroups_28_DestroyGroup_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wsid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_28_DestroyGroup_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>gid:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_29_CanReadTable_Atomic_input_lender__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>lender:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_29_CanReadTable_Atomic_input_borrower__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>borrower:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CasGroups_29_CanReadTable_Atomic_input_lendedTable__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>lendedTable:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CasGroups_29_CanReadTable_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean">
+    <process:parameterType>Body:{http://Users.Cas.jhu.edu}boolean</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="CasGroups_0_CreateGroup_Atomic">
+    <process:hasName>CreateGroup</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_0_CreateGroup_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_0_CreateGroup_Atomic_input_groupName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_0_CreateGroup_Atomic_input_description__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasGroups_0_CreateGroup_Atomic_output_Body__http___Users.Cas.jhu.edu_long"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(wsid, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^
+  swrlb:equal(groupName, "http://www.w3.org/2001/XMLSchema"^^xsd:string) ^
+  swrlb:equal(description, "http://www.w3.org/2001/XMLSchema"^^xsd:string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:addition(Body, "http://Users.Cas.jhu.edu"^^xsd:long, 1)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_1_InviteUser_Atomic">
+    <process:hasName>InviteUser</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_1_InviteUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_1_InviteUser_Atomic_input_inviteThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_1_InviteUser_Atomic_input_toThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">User with username inviteThis exists in the system and is not already invited to workspace wsid.</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">User with username inviteThis is invited to workspace wsid with the role specified in toThis.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_2_RemoveUser_Atomic">
+    <process:hasName>RemoveUser</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_2_RemoveUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_2_RemoveUser_Atomic_input_fromThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_2_RemoveUser_Atomic_input_removeThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UserExists(fromThis) ^ UserExists(removeThis)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬UserExists(removeThis)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_3_AcceptInvite_Atomic">
+    <process:hasName>AcceptInvite</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_3_AcceptInvite_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_3_AcceptInvite_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AcceptInvite(?wsid, ?gid) ^ datatype(?wsid, {http://www.w3.org/2001/XMLSchema}string) ^ datatype(?gid, {http://www.w3.org/2001/XMLSchema}string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">No specific effect for the AcceptInvite operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_4_DeclineInvite_Atomic">
+    <process:hasName>DeclineInvite</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_4_DeclineInvite_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_4_DeclineInvite_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Invite(wsid, gid) ∧ hasStatus(wsid, gid, "pending")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬Invite(wsid, gid)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_5_PublishTable_Atomic">
+    <process:hasName>PublishTable</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_5_PublishTable_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_5_PublishTable_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_5_PublishTable_Atomic_input_tableName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PublishTable(wsid, gid, tableName) ^ datatype(wsid, {http://www.w3.org/2001/XMLSchema}string) ^ datatype(gid, {http://www.w3.org/2001/XMLSchema}string) ^ datatype(tableName, {http://www.w3.org/2001/XMLSchema}string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TablePublished(wsid, gid, tableName)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_6_DePublishTable_Atomic">
+    <process:hasName>DePublishTable</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_6_DePublishTable_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_6_DePublishTable_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_6_DePublishTable_Atomic_input_tableName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasValue(wsid, "http://www.w3.org/2001/XMLSchema#string") ^ hasValue(gid, "http://www.w3.org/2001/XMLSchema#string") ^ hasValue(tableName, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not(hasValue(wsid, "http://www.w3.org/2001/XMLSchema#string")) ^ not(hasValue(gid, "http://www.w3.org/2001/XMLSchema#string")) ^ not(hasValue(tableName, "http://www.w3.org/2001/XMLSchema#string"))</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_7_IsOwner_Atomic">
+    <process:hasName>IsOwner</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_7_IsOwner_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_7_IsOwner_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasGroups_7_IsOwner_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasRole(wsid, "Owner") ^ hasGroup(wsid, gid)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(wsid, gid)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_8_DestroyGroup_Atomic">
+    <process:hasName>DestroyGroup</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_8_DestroyGroup_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_8_DestroyGroup_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GroupExists(?gid) ^ WorkspaceExists(?wsid)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬GroupExists(?gid)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_9_CanReadTable_Atomic">
+    <process:hasName>CanReadTable</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_9_CanReadTable_Atomic_input_lender__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_9_CanReadTable_Atomic_input_borrower__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_9_CanReadTable_Atomic_input_lendedTable__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasGroups_9_CanReadTable_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lender(?lender) ^ borrower(?borrower) ^ lendedTable(?lendedTable)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?lender, ?borrower, ?lendedTable) ^ boolean(true)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_10_CreateGroup_Atomic">
+    <process:hasName>CreateGroup</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_10_CreateGroup_Atomic_input_parameters__http___Users.Cas.jhu.edu_CreateGroup"/>
+    <process:hasOutput rdf:resource="#CasGroups_10_CreateGroup_Atomic_output_parameters__http___Users.Cas.jhu.edu_CreateGroupResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_11_InviteUser_Atomic">
+    <process:hasName>InviteUser</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_11_InviteUser_Atomic_input_parameters__http___Users.Cas.jhu.edu_InviteUser"/>
+    <process:hasOutput rdf:resource="#CasGroups_11_InviteUser_Atomic_output_parameters__http___Users.Cas.jhu.edu_InviteUserResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_12_RemoveUser_Atomic">
+    <process:hasName>RemoveUser</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_12_RemoveUser_Atomic_input_parameters__http___Users.Cas.jhu.edu_RemoveUser"/>
+    <process:hasOutput rdf:resource="#CasGroups_12_RemoveUser_Atomic_output_parameters__http___Users.Cas.jhu.edu_RemoveUserResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RemoveUser(?user)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not RemoveUser(?user)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_13_AcceptInvite_Atomic">
+    <process:hasName>AcceptInvite</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_13_AcceptInvite_Atomic_input_parameters__http___Users.Cas.jhu.edu_AcceptInvite"/>
+    <process:hasOutput rdf:resource="#CasGroups_13_AcceptInvite_Atomic_output_parameters__http___Users.Cas.jhu.edu_AcceptInviteResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AcceptInvite(?x) ^ hasStatus(?x, "pending")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AcceptInviteResponse(?y) ^ hasStatus(?y, "accepted") ^ hasResponseTo(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_14_DeclineInvite_Atomic">
+    <process:hasName>DeclineInvite</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_14_DeclineInvite_Atomic_input_parameters__http___Users.Cas.jhu.edu_DeclineInvite"/>
+    <process:hasOutput rdf:resource="#CasGroups_14_DeclineInvite_Atomic_output_parameters__http___Users.Cas.jhu.edu_DeclineInviteResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeclineInvite(?x) ^ hasStatus(?x, "Pending")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeclineInviteResponse(?x) ^ hasStatus(?x, "Declined")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_15_PublishTable_Atomic">
+    <process:hasName>PublishTable</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_15_PublishTable_Atomic_input_parameters__http___Users.Cas.jhu.edu_PublishTable"/>
+    <process:hasOutput rdf:resource="#CasGroups_15_PublishTable_Atomic_output_parameters__http___Users.Cas.jhu.edu_PublishTableResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_16_DePublishTable_Atomic">
+    <process:hasName>DePublishTable</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_16_DePublishTable_Atomic_input_parameters__http___Users.Cas.jhu.edu_DePublishTable"/>
+    <process:hasOutput rdf:resource="#CasGroups_16_DePublishTable_Atomic_output_parameters__http___Users.Cas.jhu.edu_DePublishTableResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DePublishTable(?table)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not Published(?table)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_17_IsOwner_Atomic">
+    <process:hasName>IsOwner</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_17_IsOwner_Atomic_input_parameters__http___Users.Cas.jhu.edu_IsOwner"/>
+    <process:hasOutput rdf:resource="#CasGroups_17_IsOwner_Atomic_output_parameters__http___Users.Cas.jhu.edu_IsOwnerResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsOwner(?user)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsOwnerResponse(?user)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_18_DestroyGroup_Atomic">
+    <process:hasName>DestroyGroup</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_18_DestroyGroup_Atomic_input_parameters__http___Users.Cas.jhu.edu_DestroyGroup"/>
+    <process:hasOutput rdf:resource="#CasGroups_18_DestroyGroup_Atomic_output_parameters__http___Users.Cas.jhu.edu_DestroyGroupResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestroyGroup(?group) ^ hasPermission(?group, "admin")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not(GroupExists(?group))</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_19_CanReadTable_Atomic">
+    <process:hasName>CanReadTable</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_19_CanReadTable_Atomic_input_parameters__http___Users.Cas.jhu.edu_CanReadTable"/>
+    <process:hasOutput rdf:resource="#CasGroups_19_CanReadTable_Atomic_output_parameters__http___Users.Cas.jhu.edu_CanReadTableResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanReadTable(?x) ^ TableExists(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanReadTableResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_20_CreateGroup_Atomic">
+    <process:hasName>CreateGroup</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_20_CreateGroup_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_20_CreateGroup_Atomic_input_groupName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_20_CreateGroup_Atomic_input_description__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasGroups_20_CreateGroup_Atomic_output_Body__http___Users.Cas.jhu.edu_long"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wsid(?wsid) ^ groupName(?groupName) ^ description(?description)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?groupID) ^ long(?groupID)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_21_InviteUser_Atomic">
+    <process:hasName>InviteUser</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_21_InviteUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_21_InviteUser_Atomic_input_inviteThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_21_InviteUser_Atomic_input_toThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wsid(?wsid) ^ inviteThis(?inviteThis) ^ toThis(?toThis)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InviteUser(?wsid, ?inviteThis, ?toThis)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_22_RemoveUser_Atomic">
+    <process:hasName>RemoveUser</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_22_RemoveUser_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_22_RemoveUser_Atomic_input_fromThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_22_RemoveUser_Atomic_input_removeThis__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UserExists(fromThis) ^ UserExists(removeThis)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬UserExists(removeThis)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_23_AcceptInvite_Atomic">
+    <process:hasName>AcceptInvite</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_23_AcceptInvite_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_23_AcceptInvite_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AcceptInvite(?wsid, ?gid) ^ datatype(?wsid, {http://www.w3.org/2001/XMLSchema}string) ^ datatype(?gid, {http://www.w3.org/2001/XMLSchema}string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">No specific effect for the AcceptInvite operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_24_DeclineInvite_Atomic">
+    <process:hasName>DeclineInvite</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_24_DeclineInvite_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_24_DeclineInvite_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Invite(wsid, gid) ^ hasStatus(wsid, gid, "pending")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬Invite(wsid, gid)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_25_PublishTable_Atomic">
+    <process:hasName>PublishTable</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_25_PublishTable_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_25_PublishTable_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_25_PublishTable_Atomic_input_tableName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PublishTable(wsid, gid, tableName) ^ datatype(wsid, {http://www.w3.org/2001/XMLSchema}string) ^ datatype(gid, {http://www.w3.org/2001/XMLSchema}string) ^ datatype(tableName, {http://www.w3.org/2001/XMLSchema}string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TablePublished(wsid, gid, tableName)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_26_DePublishTable_Atomic">
+    <process:hasName>DePublishTable</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_26_DePublishTable_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_26_DePublishTable_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_26_DePublishTable_Atomic_input_tableName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasValue(wsid, "http://www.w3.org/2001/XMLSchema#string") ^ hasValue(gid, "http://www.w3.org/2001/XMLSchema#string") ^ hasValue(tableName, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not published(tableName) ^ not hasOutput(wsid, gid, tableName)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_27_IsOwner_Atomic">
+    <process:hasName>IsOwner</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_27_IsOwner_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_27_IsOwner_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasGroups_27_IsOwner_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsOwner(?wsid, ?gid)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?wsid, ?gid) -&gt; boolean(true)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_28_DestroyGroup_Atomic">
+    <process:hasName>DestroyGroup</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_28_DestroyGroup_Atomic_input_wsid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_28_DestroyGroup_Atomic_input_gid__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GroupExists(?gid) ^ WorkspaceExists(?wsid)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">¬GroupExists(?gid)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CasGroups_29_CanReadTable_Atomic">
+    <process:hasName>CanReadTable</process:hasName>
+    <process:hasInput rdf:resource="#CasGroups_29_CanReadTable_Atomic_input_lender__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_29_CanReadTable_Atomic_input_borrower__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CasGroups_29_CanReadTable_Atomic_input_lendedTable__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CasGroups_29_CanReadTable_Atomic_output_Body__http___Users.Cas.jhu.edu_boolean"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lender(?lender) ^ borrower(?borrower) ^ lendedTable(?lendedTable)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body(?canReadTable) ^ hasPermission(?lender, ?lendedTable, ?canReadTable) ^ hasPermission(?borrower, ?lendedTable, ?canReadTable)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="CasGroups_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_0_CreateGroup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_1_InviteUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_2_RemoveUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_3_AcceptInvite_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_4_DeclineInvite_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_5_PublishTable_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_6_DePublishTable_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_7_IsOwner_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_8_DestroyGroup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_9_CanReadTable_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_10_CreateGroup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_11_InviteUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_12_RemoveUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_13_AcceptInvite_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_14_DeclineInvite_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_15_PublishTable_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_16_DePublishTable_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_17_IsOwner_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_18_DestroyGroup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_19_CanReadTable_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_20_CreateGroup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_21_InviteUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_22_RemoveUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_23_AcceptInvite_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_24_DeclineInvite_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_25_PublishTable_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_26_DePublishTable_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_27_IsOwner_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_28_DestroyGroup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CasGroups_29_CanReadTable_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_0_CreateGroup_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_0_CreateGroup_Atomic"/>
+    <grounding:wsdlOperationName>CreateGroup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CreateGroupHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CreateGroupHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_1_InviteUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_1_InviteUser_Atomic"/>
+    <grounding:wsdlOperationName>InviteUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>InviteUserHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>InviteUserHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_2_RemoveUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_2_RemoveUser_Atomic"/>
+    <grounding:wsdlOperationName>RemoveUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RemoveUserHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RemoveUserHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_3_AcceptInvite_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_3_AcceptInvite_Atomic"/>
+    <grounding:wsdlOperationName>AcceptInvite</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AcceptInviteHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AcceptInviteHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_4_DeclineInvite_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_4_DeclineInvite_Atomic"/>
+    <grounding:wsdlOperationName>DeclineInvite</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeclineInviteHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeclineInviteHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_5_PublishTable_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_5_PublishTable_Atomic"/>
+    <grounding:wsdlOperationName>PublishTable</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PublishTableHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PublishTableHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_6_DePublishTable_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_6_DePublishTable_Atomic"/>
+    <grounding:wsdlOperationName>DePublishTable</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DePublishTableHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DePublishTableHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_7_IsOwner_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_7_IsOwner_Atomic"/>
+    <grounding:wsdlOperationName>IsOwner</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsOwnerHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsOwnerHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_8_DestroyGroup_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_8_DestroyGroup_Atomic"/>
+    <grounding:wsdlOperationName>DestroyGroup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DestroyGroupHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DestroyGroupHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_9_CanReadTable_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_9_CanReadTable_Atomic"/>
+    <grounding:wsdlOperationName>CanReadTable</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CanReadTableHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CanReadTableHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_10_CreateGroup_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_10_CreateGroup_Atomic"/>
+    <grounding:wsdlOperationName>CreateGroup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CreateGroupSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CreateGroupSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_11_InviteUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_11_InviteUser_Atomic"/>
+    <grounding:wsdlOperationName>InviteUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>InviteUserSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>InviteUserSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_12_RemoveUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_12_RemoveUser_Atomic"/>
+    <grounding:wsdlOperationName>RemoveUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RemoveUserSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RemoveUserSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_13_AcceptInvite_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_13_AcceptInvite_Atomic"/>
+    <grounding:wsdlOperationName>AcceptInvite</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AcceptInviteSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AcceptInviteSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_14_DeclineInvite_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_14_DeclineInvite_Atomic"/>
+    <grounding:wsdlOperationName>DeclineInvite</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeclineInviteSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeclineInviteSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_15_PublishTable_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_15_PublishTable_Atomic"/>
+    <grounding:wsdlOperationName>PublishTable</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PublishTableSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PublishTableSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_16_DePublishTable_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_16_DePublishTable_Atomic"/>
+    <grounding:wsdlOperationName>DePublishTable</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DePublishTableSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DePublishTableSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_17_IsOwner_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_17_IsOwner_Atomic"/>
+    <grounding:wsdlOperationName>IsOwner</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsOwnerSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsOwnerSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_18_DestroyGroup_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_18_DestroyGroup_Atomic"/>
+    <grounding:wsdlOperationName>DestroyGroup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DestroyGroupSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DestroyGroupSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_19_CanReadTable_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_19_CanReadTable_Atomic"/>
+    <grounding:wsdlOperationName>CanReadTable</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CanReadTableSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CanReadTableSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_20_CreateGroup_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_20_CreateGroup_Atomic"/>
+    <grounding:wsdlOperationName>CreateGroup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CreateGroupHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CreateGroupHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_21_InviteUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_21_InviteUser_Atomic"/>
+    <grounding:wsdlOperationName>InviteUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>InviteUserHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>InviteUserHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_22_RemoveUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_22_RemoveUser_Atomic"/>
+    <grounding:wsdlOperationName>RemoveUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RemoveUserHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RemoveUserHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_23_AcceptInvite_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_23_AcceptInvite_Atomic"/>
+    <grounding:wsdlOperationName>AcceptInvite</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AcceptInviteHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AcceptInviteHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_24_DeclineInvite_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_24_DeclineInvite_Atomic"/>
+    <grounding:wsdlOperationName>DeclineInvite</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeclineInviteHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeclineInviteHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_25_PublishTable_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_25_PublishTable_Atomic"/>
+    <grounding:wsdlOperationName>PublishTable</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PublishTableHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PublishTableHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_26_DePublishTable_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_26_DePublishTable_Atomic"/>
+    <grounding:wsdlOperationName>DePublishTable</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DePublishTableHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DePublishTableHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_27_IsOwner_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_27_IsOwner_Atomic"/>
+    <grounding:wsdlOperationName>IsOwner</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IsOwnerHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IsOwnerHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_28_DestroyGroup_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_28_DestroyGroup_Atomic"/>
+    <grounding:wsdlOperationName>DestroyGroup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DestroyGroupHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DestroyGroupHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CasGroups_29_CanReadTable_Grounding">
+    <grounding:owlsProcess rdf:resource="#CasGroups_29_CanReadTable_Atomic"/>
+    <grounding:wsdlOperationName>CanReadTable</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CasGroupsHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CasGroupsHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1577_CasGroups.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CanReadTableHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CanReadTableHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

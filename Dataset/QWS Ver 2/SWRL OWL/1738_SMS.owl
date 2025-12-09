@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="SMS">
+    <service:presents rdf:resource="#SMS_Profile"/>
+    <service:describedBy rdf:resource="#SMS_Composite"/>
+    <service:supports rdf:resource="#SMS_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="SMS_Profile">
+    <profile:serviceName>SMS</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#SMS"/>
+    <profile:hasProcess rdf:resource="#SMS_0_Send_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_0_Send_Atomic_input_parameters__http___ws.AcrossCommunications.com__Send"/>
+    <profile:hasOutput rdf:resource="#SMS_0_Send_Atomic_output_parameters__http___ws.AcrossCommunications.com__SendResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_1_SendEx_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_1_SendEx_Atomic_input_parameters__http___ws.AcrossCommunications.com__SendEx"/>
+    <profile:hasOutput rdf:resource="#SMS_1_SendEx_Atomic_output_parameters__http___ws.AcrossCommunications.com__SendExResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendEx(?x) ^ hasInput(?x, ?input) ^ hasParameterType(?input, http://ws.AcrossCommunications.com/)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendExResponse(?y) ^ hasOutput(?y, ?output) ^ hasParameterType(?output, http://ws.AcrossCommunications.com/)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_2_SetSearchString_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_2_SetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__SetSearchString"/>
+    <profile:hasOutput rdf:resource="#SMS_2_SetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__SetSearchStringResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_3_GetSearchString_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_3_GetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__GetSearchString"/>
+    <profile:hasOutput rdf:resource="#SMS_3_GetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__GetSearchStringResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SMS_4_Release_Atomic"/>
+    <profile:hasInput rdf:resource="#SMS_4_Release_Atomic_input_parameters__http___ws.AcrossCommunications.com__Release"/>
+    <profile:hasOutput rdf:resource="#SMS_4_Release_Atomic_output_parameters__http___ws.AcrossCommunications.com__ReleaseResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="SMS_Composite">
+    <process:composedOf rdf:resource="#SMS_0_Send_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_1_SendEx_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_2_SetSearchString_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_3_GetSearchString_Atomic"/>
+    <process:composedOf rdf:resource="#SMS_4_Release_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="SMS_0_Send_Atomic_input_parameters__http___ws.AcrossCommunications.com__Send">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}Send</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_0_Send_Atomic_output_parameters__http___ws.AcrossCommunications.com__SendResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}SendResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_1_SendEx_Atomic_input_parameters__http___ws.AcrossCommunications.com__SendEx">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}SendEx</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_1_SendEx_Atomic_output_parameters__http___ws.AcrossCommunications.com__SendExResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}SendExResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_2_SetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__SetSearchString">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}SetSearchString</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_2_SetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__SetSearchStringResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}SetSearchStringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_3_GetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__GetSearchString">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}GetSearchString</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_3_GetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__GetSearchStringResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}GetSearchStringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SMS_4_Release_Atomic_input_parameters__http___ws.AcrossCommunications.com__Release">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}Release</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SMS_4_Release_Atomic_output_parameters__http___ws.AcrossCommunications.com__ReleaseResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}ReleaseResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="SMS_0_Send_Atomic">
+    <process:hasName>Send</process:hasName>
+    <process:hasInput rdf:resource="#SMS_0_Send_Atomic_input_parameters__http___ws.AcrossCommunications.com__Send"/>
+    <process:hasOutput rdf:resource="#SMS_0_Send_Atomic_output_parameters__http___ws.AcrossCommunications.com__SendResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_1_SendEx_Atomic">
+    <process:hasName>SendEx</process:hasName>
+    <process:hasInput rdf:resource="#SMS_1_SendEx_Atomic_input_parameters__http___ws.AcrossCommunications.com__SendEx"/>
+    <process:hasOutput rdf:resource="#SMS_1_SendEx_Atomic_output_parameters__http___ws.AcrossCommunications.com__SendExResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendEx(?x) ^ hasInput(?x, ?input) ^ hasParameterType(?input, http://ws.AcrossCommunications.com/)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SendExResponse(?y) ^ hasOutput(?y, ?output) ^ hasParameterType(?output, http://ws.AcrossCommunications.com/)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_2_SetSearchString_Atomic">
+    <process:hasName>SetSearchString</process:hasName>
+    <process:hasInput rdf:resource="#SMS_2_SetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__SetSearchString"/>
+    <process:hasOutput rdf:resource="#SMS_2_SetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__SetSearchStringResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_3_GetSearchString_Atomic">
+    <process:hasName>GetSearchString</process:hasName>
+    <process:hasInput rdf:resource="#SMS_3_GetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__GetSearchString"/>
+    <process:hasOutput rdf:resource="#SMS_3_GetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__GetSearchStringResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SMS_4_Release_Atomic">
+    <process:hasName>Release</process:hasName>
+    <process:hasInput rdf:resource="#SMS_4_Release_Atomic_input_parameters__http___ws.AcrossCommunications.com__Release"/>
+    <process:hasOutput rdf:resource="#SMS_4_Release_Atomic_output_parameters__http___ws.AcrossCommunications.com__ReleaseResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="SMS_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_0_Send_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_1_SendEx_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_2_SetSearchString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_3_GetSearchString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SMS_4_Release_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_0_Send_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_0_Send_Atomic"/>
+    <grounding:wsdlOperationName>Send</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1738_SMS.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_1_SendEx_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_1_SendEx_Atomic"/>
+    <grounding:wsdlOperationName>SendEx</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1738_SMS.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendExSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendExSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_2_SetSearchString_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_2_SetSearchString_Atomic"/>
+    <grounding:wsdlOperationName>SetSearchString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1738_SMS.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SetSearchStringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SetSearchStringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_3_GetSearchString_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_3_GetSearchString_Atomic"/>
+    <grounding:wsdlOperationName>GetSearchString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1738_SMS.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSearchStringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSearchStringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SMS_4_Release_Grounding">
+    <grounding:owlsProcess rdf:resource="#SMS_4_Release_Atomic"/>
+    <grounding:wsdlOperationName>Release</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1738_SMS.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReleaseSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReleaseSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

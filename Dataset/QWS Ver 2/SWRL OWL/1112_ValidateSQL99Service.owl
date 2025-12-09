@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ValidateSQL99Service">
+    <service:presents rdf:resource="#ValidateSQL99Service_Profile"/>
+    <service:describedBy rdf:resource="#ValidateSQL99Service_Composite"/>
+    <service:supports rdf:resource="#ValidateSQL99Service_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ValidateSQL99Service_Profile">
+    <profile:serviceName>ValidateSQL99Service</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ValidateSQL99Service"/>
+    <profile:hasProcess rdf:resource="#ValidateSQL99Service_0_openSession_Atomic"/>
+    <profile:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_connectionTechnology__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_targetDbmsVersion__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_targetDbms__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_interactive__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_connectionTechnologyVersion__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_callingProgram__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_callingProgramVersion__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_output_return__http___sqlvalidator.mimer.com_v1.0_SessionData"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ValidateSQL99Service_1_validateSQL_Atomic"/>
+    <profile:hasInput rdf:resource="#ValidateSQL99Service_1_validateSQL_Atomic_input_a_sessionId__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#ValidateSQL99Service_1_validateSQL_Atomic_input_a_SQL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ValidateSQL99Service_1_validateSQL_Atomic_input_a_sessionKey__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#ValidateSQL99Service_1_validateSQL_Atomic_input_a_resultType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ValidateSQL99Service_1_validateSQL_Atomic_output_return__http___sqlvalidator.mimer.com_v1.0_ValidatorResult"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a_sessionId(?sessionId) ^ a_SQL(?sql) ^ a_sessionKey(?sessionKey) ^ a_resultType(?resultType)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(validateSQL(?sessionId, ?sql, ?sessionKey, ?resultType)) ^ ValidatorResult(?return)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ValidateSQL99Service_Composite">
+    <process:composedOf rdf:resource="#ValidateSQL99Service_0_openSession_Atomic"/>
+    <process:composedOf rdf:resource="#ValidateSQL99Service_1_validateSQL_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ValidateSQL99Service_0_openSession_Atomic_input_a_userName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>a_userName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ValidateSQL99Service_0_openSession_Atomic_input_a_connectionTechnology__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>a_connectionTechnology:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ValidateSQL99Service_0_openSession_Atomic_input_a_targetDbmsVersion__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>a_targetDbmsVersion:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ValidateSQL99Service_0_openSession_Atomic_input_a_targetDbms__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>a_targetDbms:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ValidateSQL99Service_0_openSession_Atomic_input_a_interactive__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>a_interactive:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ValidateSQL99Service_0_openSession_Atomic_input_a_connectionTechnologyVersion__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>a_connectionTechnologyVersion:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ValidateSQL99Service_0_openSession_Atomic_input_a_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>a_password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ValidateSQL99Service_0_openSession_Atomic_input_a_callingProgram__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>a_callingProgram:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ValidateSQL99Service_0_openSession_Atomic_input_a_callingProgramVersion__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>a_callingProgramVersion:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ValidateSQL99Service_0_openSession_Atomic_output_return__http___sqlvalidator.mimer.com_v1.0_SessionData">
+    <process:parameterType>return:{http://sqlvalidator.mimer.com/v1.0}SessionData</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ValidateSQL99Service_1_validateSQL_Atomic_input_a_sessionId__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>a_sessionId:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ValidateSQL99Service_1_validateSQL_Atomic_input_a_SQL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>a_SQL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ValidateSQL99Service_1_validateSQL_Atomic_input_a_sessionKey__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>a_sessionKey:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ValidateSQL99Service_1_validateSQL_Atomic_input_a_resultType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>a_resultType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ValidateSQL99Service_1_validateSQL_Atomic_output_return__http___sqlvalidator.mimer.com_v1.0_ValidatorResult">
+    <process:parameterType>return:{http://sqlvalidator.mimer.com/v1.0}ValidatorResult</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ValidateSQL99Service_0_openSession_Atomic">
+    <process:hasName>openSession</process:hasName>
+    <process:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_connectionTechnology__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_targetDbmsVersion__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_targetDbms__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_interactive__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_connectionTechnologyVersion__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_callingProgram__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_input_a_callingProgramVersion__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ValidateSQL99Service_0_openSession_Atomic_output_return__http___sqlvalidator.mimer.com_v1.0_SessionData"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ValidateSQL99Service_1_validateSQL_Atomic">
+    <process:hasName>validateSQL</process:hasName>
+    <process:hasInput rdf:resource="#ValidateSQL99Service_1_validateSQL_Atomic_input_a_sessionId__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#ValidateSQL99Service_1_validateSQL_Atomic_input_a_SQL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ValidateSQL99Service_1_validateSQL_Atomic_input_a_sessionKey__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#ValidateSQL99Service_1_validateSQL_Atomic_input_a_resultType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ValidateSQL99Service_1_validateSQL_Atomic_output_return__http___sqlvalidator.mimer.com_v1.0_ValidatorResult"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a_sessionId(?sessionId) ^ a_SQL(?sql) ^ a_sessionKey(?sessionKey) ^ a_resultType(?resultType)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">return(validateSQL(?sessionId, ?sql, ?sessionKey, ?resultType)) ^ ValidatorResult(?return)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ValidateSQL99Service_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ValidateSQL99Service_0_openSession_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ValidateSQL99Service_1_validateSQL_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ValidateSQL99Service_0_openSession_Grounding">
+    <grounding:owlsProcess rdf:resource="#ValidateSQL99Service_0_openSession_Atomic"/>
+    <grounding:wsdlOperationName>openSession</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SQL99ValidatorSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ValidateSQL99</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1112_ValidateSQL99Service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>openSessionRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>openSessionResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ValidateSQL99Service_1_validateSQL_Grounding">
+    <grounding:owlsProcess rdf:resource="#ValidateSQL99Service_1_validateSQL_Atomic"/>
+    <grounding:wsdlOperationName>validateSQL</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SQL99ValidatorSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ValidateSQL99</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1112_ValidateSQL99Service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>validateSQLRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>validateSQLResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
