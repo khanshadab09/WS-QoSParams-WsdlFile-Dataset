@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Typograf">
+    <service:presents rdf:resource="#Typograf_Profile"/>
+    <service:describedBy rdf:resource="#Typograf_Composite"/>
+    <service:supports rdf:resource="#Typograf_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Typograf_Profile">
+    <profile:serviceName>Typograf</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Typograf"/>
+    <profile:hasProcess rdf:resource="#Typograf_0_ProcessText_Atomic"/>
+    <profile:hasInput rdf:resource="#Typograf_0_ProcessText_Atomic_input_parameters__http___typograf.artlebedev.ru_webservices__ProcessText"/>
+    <profile:hasOutput rdf:resource="#Typograf_0_ProcessText_Atomic_output_parameters__http___typograf.artlebedev.ru_webservices__ProcessTextResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProcessText(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProcessTextResponse(?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Typograf_Composite">
+    <process:composedOf rdf:resource="#Typograf_0_ProcessText_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Typograf_0_ProcessText_Atomic_input_parameters__http___typograf.artlebedev.ru_webservices__ProcessText">
+    <process:parameterType>parameters:{http://typograf.artlebedev.ru/webservices/}ProcessText</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Typograf_0_ProcessText_Atomic_output_parameters__http___typograf.artlebedev.ru_webservices__ProcessTextResponse">
+    <process:parameterType>parameters:{http://typograf.artlebedev.ru/webservices/}ProcessTextResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Typograf_0_ProcessText_Atomic">
+    <process:hasName>ProcessText</process:hasName>
+    <process:hasInput rdf:resource="#Typograf_0_ProcessText_Atomic_input_parameters__http___typograf.artlebedev.ru_webservices__ProcessText"/>
+    <process:hasOutput rdf:resource="#Typograf_0_ProcessText_Atomic_output_parameters__http___typograf.artlebedev.ru_webservices__ProcessTextResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProcessText(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProcessTextResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Typograf_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Typograf_0_ProcessText_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Typograf_0_ProcessText_Grounding">
+    <grounding:owlsProcess rdf:resource="#Typograf_0_ProcessText_Atomic"/>
+    <grounding:wsdlOperationName>ProcessText</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TypografSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TypografSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/546_Typograf.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ProcessTextSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ProcessTextSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

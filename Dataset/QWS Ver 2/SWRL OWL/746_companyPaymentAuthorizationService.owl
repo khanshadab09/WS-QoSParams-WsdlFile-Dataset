@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="companyPaymentAuthorizationService">
+    <service:presents rdf:resource="#companyPaymentAuthorizationService_Profile"/>
+    <service:describedBy rdf:resource="#companyPaymentAuthorizationService_Composite"/>
+    <service:supports rdf:resource="#companyPaymentAuthorizationService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="companyPaymentAuthorizationService_Profile">
+    <profile:serviceName>companyPaymentAuthorizationService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#companyPaymentAuthorizationService"/>
+    <profile:hasProcess rdf:resource="#companyPaymentAuthorizationService_0_AuthorizePayment_Atomic"/>
+    <profile:hasInput rdf:resource="#companyPaymentAuthorizationService_0_AuthorizePayment_Atomic_input_body__http___www.company.com_09_09_2004_PaymentAuthorization_xsd_PaymentAuthorizationRQ"/>
+    <profile:hasOutput rdf:resource="#companyPaymentAuthorizationService_0_AuthorizePayment_Atomic_output_body__http___www.company.com_09_08_2004_PaymentAuthorization_xsd_PaymentAuthorizationRS"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PaymentAuthorizationRQ hasValidSignature</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PaymentAuthorizationRS isAuthorized</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="companyPaymentAuthorizationService_Composite">
+    <process:composedOf rdf:resource="#companyPaymentAuthorizationService_0_AuthorizePayment_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="companyPaymentAuthorizationService_0_AuthorizePayment_Atomic_input_body__http___www.company.com_09_09_2004_PaymentAuthorization_xsd_PaymentAuthorizationRQ">
+    <process:parameterType>body:{http://www.company.com/09/09/2004/PaymentAuthorization/xsd}PaymentAuthorizationRQ</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="companyPaymentAuthorizationService_0_AuthorizePayment_Atomic_output_body__http___www.company.com_09_08_2004_PaymentAuthorization_xsd_PaymentAuthorizationRS">
+    <process:parameterType>body:{http://www.company.com/09/08/2004/PaymentAuthorization/xsd}PaymentAuthorizationRS</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="companyPaymentAuthorizationService_0_AuthorizePayment_Atomic">
+    <process:hasName>AuthorizePayment</process:hasName>
+    <process:hasInput rdf:resource="#companyPaymentAuthorizationService_0_AuthorizePayment_Atomic_input_body__http___www.company.com_09_09_2004_PaymentAuthorization_xsd_PaymentAuthorizationRQ"/>
+    <process:hasOutput rdf:resource="#companyPaymentAuthorizationService_0_AuthorizePayment_Atomic_output_body__http___www.company.com_09_08_2004_PaymentAuthorization_xsd_PaymentAuthorizationRS"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PaymentAuthorizationRQ hasValidSignature</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PaymentAuthorizationRS isAuthorized</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="companyPaymentAuthorizationService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#companyPaymentAuthorizationService_0_AuthorizePayment_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="companyPaymentAuthorizationService_0_AuthorizePayment_Grounding">
+    <grounding:owlsProcess rdf:resource="#companyPaymentAuthorizationService_0_AuthorizePayment_Atomic"/>
+    <grounding:wsdlOperationName>AuthorizePayment</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PaymentAuthorizationSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PaymentAuthorizationPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/746_companyPaymentAuthorizationService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PaymentAuthorizationInput</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PaymentAuthorizationOutput</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

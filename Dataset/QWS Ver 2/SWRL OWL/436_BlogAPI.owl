@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="BlogAPI">
+    <service:presents rdf:resource="#BlogAPI_Profile"/>
+    <service:describedBy rdf:resource="#BlogAPI_Composite"/>
+    <service:supports rdf:resource="#BlogAPI_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="BlogAPI_Profile">
+    <profile:serviceName>BlogAPI</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#BlogAPI"/>
+    <profile:hasProcess rdf:resource="#BlogAPI_0_Search_Atomic"/>
+    <profile:hasInput rdf:resource="#BlogAPI_0_Search_Atomic_input_parameters__http___www.openlinksw.com_weblog_api_Search"/>
+    <profile:hasOutput rdf:resource="#BlogAPI_0_Search_Atomic_output_parameters__http___www.openlinksw.com_weblog_api_SearchResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Search(?x) ^ hasParameters(?x, &lt;http://www.openlinksw.com/weblog/api/Search&gt;)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SearchResponse(?y) ^ hasParameters(?y, &lt;http://www.openlinksw.com/weblog/api/SearchResponse&gt;) ^ hasOutput(?x, ?y)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="BlogAPI_Composite">
+    <process:composedOf rdf:resource="#BlogAPI_0_Search_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="BlogAPI_0_Search_Atomic_input_parameters__http___www.openlinksw.com_weblog_api_Search">
+    <process:parameterType>parameters:{http://www.openlinksw.com/weblog/api}Search</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BlogAPI_0_Search_Atomic_output_parameters__http___www.openlinksw.com_weblog_api_SearchResponse">
+    <process:parameterType>parameters:{http://www.openlinksw.com/weblog/api}SearchResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="BlogAPI_0_Search_Atomic">
+    <process:hasName>Search</process:hasName>
+    <process:hasInput rdf:resource="#BlogAPI_0_Search_Atomic_input_parameters__http___www.openlinksw.com_weblog_api_Search"/>
+    <process:hasOutput rdf:resource="#BlogAPI_0_Search_Atomic_output_parameters__http___www.openlinksw.com_weblog_api_SearchResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Search(?x) ^ hasParameters(?x, &lt;http://www.openlinksw.com/weblog/api/Search&gt;)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SearchResponse(?y) ^ hasParameters(?y, &lt;http://www.openlinksw.com/weblog/api/SearchResponse&gt;) ^ hasOutput(?x, ?y)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="BlogAPI_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BlogAPI_0_Search_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BlogAPI_0_Search_Grounding">
+    <grounding:owlsProcess rdf:resource="#BlogAPI_0_Search_Atomic"/>
+    <grounding:wsdlOperationName>Search</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BlogAPIDocLiteralBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BlogAPIDocLiteralPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/436_BlogAPI.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SearchRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

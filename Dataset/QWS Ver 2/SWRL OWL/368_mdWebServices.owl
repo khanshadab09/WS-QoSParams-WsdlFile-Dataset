@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="mdWebServices">
+    <service:presents rdf:resource="#mdWebServices_Profile"/>
+    <service:describedBy rdf:resource="#mdWebServices_Composite"/>
+    <service:supports rdf:resource="#mdWebServices_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="mdWebServices_Profile">
+    <profile:serviceName>mdWebServices</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#mdWebServices"/>
+    <profile:hasProcess rdf:resource="#mdWebServices_0_doMultipleRecords_Atomic"/>
+    <profile:hasInput rdf:resource="#mdWebServices_0_doMultipleRecords_Atomic_input_parameters__urn_mdWebService_doMultipleRecords"/>
+    <profile:hasOutput rdf:resource="#mdWebServices_0_doMultipleRecords_Atomic_output_parameters__urn_mdWebService_doMultipleRecordsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInput(parameters, doMultipleRecords)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(parameters, doMultipleRecordsResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#mdWebServices_1_doSingleRecord_Atomic"/>
+    <profile:hasInput rdf:resource="#mdWebServices_1_doSingleRecord_Atomic_input_parameters__urn_mdWebService_doSingleRecord"/>
+    <profile:hasOutput rdf:resource="#mdWebServices_1_doSingleRecord_Atomic_output_parameters__urn_mdWebService_doSingleRecordResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doSingleRecord(?x) ^ hasNamespace(?x, "urn:mdWebService")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doSingleRecordResponse(?y) ^ hasNamespace(?y, "urn:mdWebService") ^ hasOutput(?y, ?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="mdWebServices_Composite">
+    <process:composedOf rdf:resource="#mdWebServices_0_doMultipleRecords_Atomic"/>
+    <process:composedOf rdf:resource="#mdWebServices_1_doSingleRecord_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="mdWebServices_0_doMultipleRecords_Atomic_input_parameters__urn_mdWebService_doMultipleRecords">
+    <process:parameterType>parameters:{urn:mdWebService}doMultipleRecords</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="mdWebServices_0_doMultipleRecords_Atomic_output_parameters__urn_mdWebService_doMultipleRecordsResponse">
+    <process:parameterType>parameters:{urn:mdWebService}doMultipleRecordsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="mdWebServices_1_doSingleRecord_Atomic_input_parameters__urn_mdWebService_doSingleRecord">
+    <process:parameterType>parameters:{urn:mdWebService}doSingleRecord</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="mdWebServices_1_doSingleRecord_Atomic_output_parameters__urn_mdWebService_doSingleRecordResponse">
+    <process:parameterType>parameters:{urn:mdWebService}doSingleRecordResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="mdWebServices_0_doMultipleRecords_Atomic">
+    <process:hasName>doMultipleRecords</process:hasName>
+    <process:hasInput rdf:resource="#mdWebServices_0_doMultipleRecords_Atomic_input_parameters__urn_mdWebService_doMultipleRecords"/>
+    <process:hasOutput rdf:resource="#mdWebServices_0_doMultipleRecords_Atomic_output_parameters__urn_mdWebService_doMultipleRecordsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInput(parameters, doMultipleRecords)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(parameters, doMultipleRecordsResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="mdWebServices_1_doSingleRecord_Atomic">
+    <process:hasName>doSingleRecord</process:hasName>
+    <process:hasInput rdf:resource="#mdWebServices_1_doSingleRecord_Atomic_input_parameters__urn_mdWebService_doSingleRecord"/>
+    <process:hasOutput rdf:resource="#mdWebServices_1_doSingleRecord_Atomic_output_parameters__urn_mdWebService_doSingleRecordResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doSingleRecord(?x) ^ hasNamespace(?x, "urn:mdWebService")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doSingleRecordResponse(?y) ^ hasNamespace(?y, "urn:mdWebService") ^ hasOutput(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="mdWebServices_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#mdWebServices_0_doMultipleRecords_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#mdWebServices_1_doSingleRecord_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="mdWebServices_0_doMultipleRecords_Grounding">
+    <grounding:owlsProcess rdf:resource="#mdWebServices_0_doMultipleRecords_Atomic"/>
+    <grounding:wsdlOperationName>doMultipleRecords</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>mdWebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>mdWebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/368_mdWebServices.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>doMultipleRecordsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>doMultipleRecordsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="mdWebServices_1_doSingleRecord_Grounding">
+    <grounding:owlsProcess rdf:resource="#mdWebServices_1_doSingleRecord_Atomic"/>
+    <grounding:wsdlOperationName>doSingleRecord</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>mdWebServicesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>mdWebServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/368_mdWebServices.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>doSingleRecordSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>doSingleRecordSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

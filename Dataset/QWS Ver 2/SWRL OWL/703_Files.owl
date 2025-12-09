@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Files">
+    <service:presents rdf:resource="#Files_Profile"/>
+    <service:describedBy rdf:resource="#Files_Composite"/>
+    <service:supports rdf:resource="#Files_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Files_Profile">
+    <profile:serviceName>Files</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Files"/>
+    <profile:hasProcess rdf:resource="#Files_0_CreateFile_Atomic"/>
+    <profile:hasInput rdf:resource="#Files_0_CreateFile_Atomic_input_parameters__http___ws.acrosscommunications.com__CreateFile"/>
+    <profile:hasOutput rdf:resource="#Files_0_CreateFile_Atomic_output_parameters__http___ws.acrosscommunications.com__CreateFileResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(CreateFile, ?inputParams) ^ swrlb:equal(?inputParams, {http://ws.acrosscommunications.com/}CreateFile)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(CreateFileResponse, ?outputParams) ^ swrlb:equal(?outputParams, {http://ws.acrosscommunications.com/}CreateFileResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Files_1_CreateFileFromWeb_Atomic"/>
+    <profile:hasInput rdf:resource="#Files_1_CreateFileFromWeb_Atomic_input_parameters__http___ws.acrosscommunications.com__CreateFileFromWeb"/>
+    <profile:hasOutput rdf:resource="#Files_1_CreateFileFromWeb_Atomic_output_parameters__http___ws.acrosscommunications.com__CreateFileFromWebResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOperationType(CreateFileFromWeb, http://ws.acrosscommunications.com/)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOperationType(CreateFileFromWebResponse, http://ws.acrosscommunications.com/)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Files_2_GetFirstFile_Atomic"/>
+    <profile:hasInput rdf:resource="#Files_2_GetFirstFile_Atomic_input_parameters__http___ws.acrosscommunications.com__GetFirstFile"/>
+    <profile:hasOutput rdf:resource="#Files_2_GetFirstFile_Atomic_output_parameters__http___ws.acrosscommunications.com__GetFirstFileResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(GetFirstFile, ?inputParams) ^ hasNamespace(?inputParams, "http://ws.acrosscommunications.com/")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(GetFirstFileResponse, ?outputParams) ^ hasNamespace(?outputParams, "http://ws.acrosscommunications.com/")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Files_3_GetNextFile_Atomic"/>
+    <profile:hasInput rdf:resource="#Files_3_GetNextFile_Atomic_input_parameters__http___ws.acrosscommunications.com__GetNextFile"/>
+    <profile:hasOutput rdf:resource="#Files_3_GetNextFile_Atomic_output_parameters__http___ws.acrosscommunications.com__GetNextFileResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Files_4_GetFile_Atomic"/>
+    <profile:hasInput rdf:resource="#Files_4_GetFile_Atomic_input_parameters__http___ws.acrosscommunications.com__GetFile"/>
+    <profile:hasOutput rdf:resource="#Files_4_GetFile_Atomic_output_parameters__http___ws.acrosscommunications.com__GetFileResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetFile(?x) ^ hasInput(?x, ?input) ^ hasParameterType(?input, &lt;http://ws.acrosscommunications.com/&gt;GetFile)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetFileResponse(?y) ^ hasOutput(?y, ?output) ^ hasParameterType(?output, &lt;http://ws.acrosscommunications.com/&gt;GetFileResponse)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Files_5_DeleteFile_Atomic"/>
+    <profile:hasInput rdf:resource="#Files_5_DeleteFile_Atomic_input_parameters__http___ws.acrosscommunications.com__DeleteFile"/>
+    <profile:hasOutput rdf:resource="#Files_5_DeleteFile_Atomic_output_parameters__http___ws.acrosscommunications.com__DeleteFileResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteFile(?file)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not DeleteFile(?file)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Files_Composite">
+    <process:composedOf rdf:resource="#Files_0_CreateFile_Atomic"/>
+    <process:composedOf rdf:resource="#Files_1_CreateFileFromWeb_Atomic"/>
+    <process:composedOf rdf:resource="#Files_2_GetFirstFile_Atomic"/>
+    <process:composedOf rdf:resource="#Files_3_GetNextFile_Atomic"/>
+    <process:composedOf rdf:resource="#Files_4_GetFile_Atomic"/>
+    <process:composedOf rdf:resource="#Files_5_DeleteFile_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Files_0_CreateFile_Atomic_input_parameters__http___ws.acrosscommunications.com__CreateFile">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CreateFile</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Files_0_CreateFile_Atomic_output_parameters__http___ws.acrosscommunications.com__CreateFileResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CreateFileResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Files_1_CreateFileFromWeb_Atomic_input_parameters__http___ws.acrosscommunications.com__CreateFileFromWeb">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CreateFileFromWeb</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Files_1_CreateFileFromWeb_Atomic_output_parameters__http___ws.acrosscommunications.com__CreateFileFromWebResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CreateFileFromWebResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Files_2_GetFirstFile_Atomic_input_parameters__http___ws.acrosscommunications.com__GetFirstFile">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetFirstFile</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Files_2_GetFirstFile_Atomic_output_parameters__http___ws.acrosscommunications.com__GetFirstFileResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetFirstFileResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Files_3_GetNextFile_Atomic_input_parameters__http___ws.acrosscommunications.com__GetNextFile">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetNextFile</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Files_3_GetNextFile_Atomic_output_parameters__http___ws.acrosscommunications.com__GetNextFileResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetNextFileResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Files_4_GetFile_Atomic_input_parameters__http___ws.acrosscommunications.com__GetFile">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetFile</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Files_4_GetFile_Atomic_output_parameters__http___ws.acrosscommunications.com__GetFileResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetFileResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Files_5_DeleteFile_Atomic_input_parameters__http___ws.acrosscommunications.com__DeleteFile">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}DeleteFile</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Files_5_DeleteFile_Atomic_output_parameters__http___ws.acrosscommunications.com__DeleteFileResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}DeleteFileResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Files_0_CreateFile_Atomic">
+    <process:hasName>CreateFile</process:hasName>
+    <process:hasInput rdf:resource="#Files_0_CreateFile_Atomic_input_parameters__http___ws.acrosscommunications.com__CreateFile"/>
+    <process:hasOutput rdf:resource="#Files_0_CreateFile_Atomic_output_parameters__http___ws.acrosscommunications.com__CreateFileResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(CreateFile, ?inputParams) ^ swrlb:equal(?inputParams, {http://ws.acrosscommunications.com/}CreateFile)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(CreateFileResponse, ?outputParams) ^ swrlb:equal(?outputParams, {http://ws.acrosscommunications.com/}CreateFileResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Files_1_CreateFileFromWeb_Atomic">
+    <process:hasName>CreateFileFromWeb</process:hasName>
+    <process:hasInput rdf:resource="#Files_1_CreateFileFromWeb_Atomic_input_parameters__http___ws.acrosscommunications.com__CreateFileFromWeb"/>
+    <process:hasOutput rdf:resource="#Files_1_CreateFileFromWeb_Atomic_output_parameters__http___ws.acrosscommunications.com__CreateFileFromWebResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOperationType(CreateFileFromWeb, http://ws.acrosscommunications.com/)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOperationType(CreateFileFromWebResponse, http://ws.acrosscommunications.com/)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Files_2_GetFirstFile_Atomic">
+    <process:hasName>GetFirstFile</process:hasName>
+    <process:hasInput rdf:resource="#Files_2_GetFirstFile_Atomic_input_parameters__http___ws.acrosscommunications.com__GetFirstFile"/>
+    <process:hasOutput rdf:resource="#Files_2_GetFirstFile_Atomic_output_parameters__http___ws.acrosscommunications.com__GetFirstFileResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(GetFirstFile, ?inputParams) ^ hasNamespace(?inputParams, "http://ws.acrosscommunications.com/")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(GetFirstFileResponse, ?outputParams) ^ hasNamespace(?outputParams, "http://ws.acrosscommunications.com/")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Files_3_GetNextFile_Atomic">
+    <process:hasName>GetNextFile</process:hasName>
+    <process:hasInput rdf:resource="#Files_3_GetNextFile_Atomic_input_parameters__http___ws.acrosscommunications.com__GetNextFile"/>
+    <process:hasOutput rdf:resource="#Files_3_GetNextFile_Atomic_output_parameters__http___ws.acrosscommunications.com__GetNextFileResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Files_4_GetFile_Atomic">
+    <process:hasName>GetFile</process:hasName>
+    <process:hasInput rdf:resource="#Files_4_GetFile_Atomic_input_parameters__http___ws.acrosscommunications.com__GetFile"/>
+    <process:hasOutput rdf:resource="#Files_4_GetFile_Atomic_output_parameters__http___ws.acrosscommunications.com__GetFileResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetFile(?x) ^ hasInput(?x, ?input) ^ hasParameterType(?input, &lt;http://ws.acrosscommunications.com/&gt;GetFile)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetFileResponse(?y) ^ hasOutput(?y, ?output) ^ hasParameterType(?output, &lt;http://ws.acrosscommunications.com/&gt;GetFileResponse)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Files_5_DeleteFile_Atomic">
+    <process:hasName>DeleteFile</process:hasName>
+    <process:hasInput rdf:resource="#Files_5_DeleteFile_Atomic_input_parameters__http___ws.acrosscommunications.com__DeleteFile"/>
+    <process:hasOutput rdf:resource="#Files_5_DeleteFile_Atomic_output_parameters__http___ws.acrosscommunications.com__DeleteFileResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeleteFile(?file)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not DeleteFile(?file)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Files_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Files_0_CreateFile_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Files_1_CreateFileFromWeb_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Files_2_GetFirstFile_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Files_3_GetNextFile_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Files_4_GetFile_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Files_5_DeleteFile_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Files_0_CreateFile_Grounding">
+    <grounding:owlsProcess rdf:resource="#Files_0_CreateFile_Atomic"/>
+    <grounding:wsdlOperationName>CreateFile</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FilesSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FilesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/703_Files.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CreateFileSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CreateFileSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Files_1_CreateFileFromWeb_Grounding">
+    <grounding:owlsProcess rdf:resource="#Files_1_CreateFileFromWeb_Atomic"/>
+    <grounding:wsdlOperationName>CreateFileFromWeb</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FilesSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FilesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/703_Files.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CreateFileFromWebSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CreateFileFromWebSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Files_2_GetFirstFile_Grounding">
+    <grounding:owlsProcess rdf:resource="#Files_2_GetFirstFile_Atomic"/>
+    <grounding:wsdlOperationName>GetFirstFile</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FilesSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FilesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/703_Files.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetFirstFileSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetFirstFileSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Files_3_GetNextFile_Grounding">
+    <grounding:owlsProcess rdf:resource="#Files_3_GetNextFile_Atomic"/>
+    <grounding:wsdlOperationName>GetNextFile</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FilesSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FilesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/703_Files.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetNextFileSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetNextFileSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Files_4_GetFile_Grounding">
+    <grounding:owlsProcess rdf:resource="#Files_4_GetFile_Atomic"/>
+    <grounding:wsdlOperationName>GetFile</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FilesSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FilesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/703_Files.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetFileSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetFileSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Files_5_DeleteFile_Grounding">
+    <grounding:owlsProcess rdf:resource="#Files_5_DeleteFile_Atomic"/>
+    <grounding:wsdlOperationName>DeleteFile</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FilesSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FilesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/703_Files.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DeleteFileSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DeleteFileSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

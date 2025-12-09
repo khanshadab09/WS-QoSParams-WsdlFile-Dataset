@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="EmailVerification">
+    <service:presents rdf:resource="#EmailVerification_Profile"/>
+    <service:describedBy rdf:resource="#EmailVerification_Composite"/>
+    <service:supports rdf:resource="#EmailVerification_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="EmailVerification_Profile">
+    <profile:serviceName>EmailVerification</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#EmailVerification"/>
+    <profile:hasProcess rdf:resource="#EmailVerification_0_ValidateEmail_Atomic"/>
+    <profile:hasInput rdf:resource="#EmailVerification_0_ValidateEmail_Atomic_input_parameters__http___www.strikeiron.com_ValidateEmail"/>
+    <profile:hasOutput rdf:resource="#EmailVerification_0_ValidateEmail_Atomic_output_parameters__http___www.strikeiron.com_ValidateEmailResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateEmail(?email) ^ string(?email)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateEmailResponse(?response) ^ string(?response)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#EmailVerification_1_GetRemainingHits_Atomic"/>
+    <profile:hasInput rdf:resource="#EmailVerification_1_GetRemainingHits_Atomic_input_parameters__http___ws.strikeiron.com_GetRemainingHits"/>
+    <profile:hasOutput rdf:resource="#EmailVerification_1_GetRemainingHits_Atomic_output_parameters__http___ws.strikeiron.com_GetRemainingHitsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="EmailVerification_Composite">
+    <process:composedOf rdf:resource="#EmailVerification_0_ValidateEmail_Atomic"/>
+    <process:composedOf rdf:resource="#EmailVerification_1_GetRemainingHits_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="EmailVerification_0_ValidateEmail_Atomic_input_parameters__http___www.strikeiron.com_ValidateEmail">
+    <process:parameterType>parameters:{http://www.strikeiron.com}ValidateEmail</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="EmailVerification_0_ValidateEmail_Atomic_output_parameters__http___www.strikeiron.com_ValidateEmailResponse">
+    <process:parameterType>parameters:{http://www.strikeiron.com}ValidateEmailResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="EmailVerification_1_GetRemainingHits_Atomic_input_parameters__http___ws.strikeiron.com_GetRemainingHits">
+    <process:parameterType>parameters:{http://ws.strikeiron.com}GetRemainingHits</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="EmailVerification_1_GetRemainingHits_Atomic_output_parameters__http___ws.strikeiron.com_GetRemainingHitsResponse">
+    <process:parameterType>parameters:{http://ws.strikeiron.com}GetRemainingHitsResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="EmailVerification_0_ValidateEmail_Atomic">
+    <process:hasName>ValidateEmail</process:hasName>
+    <process:hasInput rdf:resource="#EmailVerification_0_ValidateEmail_Atomic_input_parameters__http___www.strikeiron.com_ValidateEmail"/>
+    <process:hasOutput rdf:resource="#EmailVerification_0_ValidateEmail_Atomic_output_parameters__http___www.strikeiron.com_ValidateEmailResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateEmail(?email) ^ string(?email)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ValidateEmailResponse(?response) ^ string(?response)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="EmailVerification_1_GetRemainingHits_Atomic">
+    <process:hasName>GetRemainingHits</process:hasName>
+    <process:hasInput rdf:resource="#EmailVerification_1_GetRemainingHits_Atomic_input_parameters__http___ws.strikeiron.com_GetRemainingHits"/>
+    <process:hasOutput rdf:resource="#EmailVerification_1_GetRemainingHits_Atomic_output_parameters__http___ws.strikeiron.com_GetRemainingHitsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="EmailVerification_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#EmailVerification_0_ValidateEmail_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#EmailVerification_1_GetRemainingHits_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="EmailVerification_0_ValidateEmail_Grounding">
+    <grounding:owlsProcess rdf:resource="#EmailVerification_0_ValidateEmail_Atomic"/>
+    <grounding:wsdlOperationName>ValidateEmail</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>EmailVerificationSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>EmailVerificationSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/465_EmailVerification.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateEmailSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateEmailSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="EmailVerification_1_GetRemainingHits_Grounding">
+    <grounding:owlsProcess rdf:resource="#EmailVerification_1_GetRemainingHits_Atomic"/>
+    <grounding:wsdlOperationName>GetRemainingHits</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>EmailVerificationSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>EmailVerificationSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/465_EmailVerification.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRemainingHitsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRemainingHitsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

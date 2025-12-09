@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Personalizer">
+    <service:presents rdf:resource="#Personalizer_Profile"/>
+    <service:describedBy rdf:resource="#Personalizer_Composite"/>
+    <service:supports rdf:resource="#Personalizer_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Personalizer_Profile">
+    <profile:serviceName>Personalizer</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Personalizer"/>
+    <profile:hasProcess rdf:resource="#Personalizer_0_CreateSession_Atomic"/>
+    <profile:hasInput rdf:resource="#Personalizer_0_CreateSession_Atomic_input_parameters__http___ws.acrosscommunications.com__CreateSession"/>
+    <profile:hasOutput rdf:resource="#Personalizer_0_CreateSession_Atomic_output_parameters__http___ws.acrosscommunications.com__CreateSessionResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Personalizer_1_ReleaseAllActiveSessions_Atomic"/>
+    <profile:hasInput rdf:resource="#Personalizer_1_ReleaseAllActiveSessions_Atomic_input_parameters__http___ws.acrosscommunications.com__ReleaseAllActiveSessions"/>
+    <profile:hasOutput rdf:resource="#Personalizer_1_ReleaseAllActiveSessions_Atomic_output_parameters__http___ws.acrosscommunications.com__ReleaseAllActiveSessionsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReleaseAllActiveSessions(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReleaseAllActiveSessionsResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Personalizer_2_GetUserID_Atomic"/>
+    <profile:hasInput rdf:resource="#Personalizer_2_GetUserID_Atomic_input_parameters__http___ws.acrosscommunications.com__GetUserID"/>
+    <profile:hasOutput rdf:resource="#Personalizer_2_GetUserID_Atomic_output_parameters__http___ws.acrosscommunications.com__GetUserIDResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserID(?input)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserIDResponse(?output)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Personalizer_Composite">
+    <process:composedOf rdf:resource="#Personalizer_0_CreateSession_Atomic"/>
+    <process:composedOf rdf:resource="#Personalizer_1_ReleaseAllActiveSessions_Atomic"/>
+    <process:composedOf rdf:resource="#Personalizer_2_GetUserID_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Personalizer_0_CreateSession_Atomic_input_parameters__http___ws.acrosscommunications.com__CreateSession">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CreateSession</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Personalizer_0_CreateSession_Atomic_output_parameters__http___ws.acrosscommunications.com__CreateSessionResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CreateSessionResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Personalizer_1_ReleaseAllActiveSessions_Atomic_input_parameters__http___ws.acrosscommunications.com__ReleaseAllActiveSessions">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}ReleaseAllActiveSessions</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Personalizer_1_ReleaseAllActiveSessions_Atomic_output_parameters__http___ws.acrosscommunications.com__ReleaseAllActiveSessionsResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}ReleaseAllActiveSessionsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Personalizer_2_GetUserID_Atomic_input_parameters__http___ws.acrosscommunications.com__GetUserID">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetUserID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Personalizer_2_GetUserID_Atomic_output_parameters__http___ws.acrosscommunications.com__GetUserIDResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetUserIDResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Personalizer_0_CreateSession_Atomic">
+    <process:hasName>CreateSession</process:hasName>
+    <process:hasInput rdf:resource="#Personalizer_0_CreateSession_Atomic_input_parameters__http___ws.acrosscommunications.com__CreateSession"/>
+    <process:hasOutput rdf:resource="#Personalizer_0_CreateSession_Atomic_output_parameters__http___ws.acrosscommunications.com__CreateSessionResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Personalizer_1_ReleaseAllActiveSessions_Atomic">
+    <process:hasName>ReleaseAllActiveSessions</process:hasName>
+    <process:hasInput rdf:resource="#Personalizer_1_ReleaseAllActiveSessions_Atomic_input_parameters__http___ws.acrosscommunications.com__ReleaseAllActiveSessions"/>
+    <process:hasOutput rdf:resource="#Personalizer_1_ReleaseAllActiveSessions_Atomic_output_parameters__http___ws.acrosscommunications.com__ReleaseAllActiveSessionsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReleaseAllActiveSessions(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReleaseAllActiveSessionsResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Personalizer_2_GetUserID_Atomic">
+    <process:hasName>GetUserID</process:hasName>
+    <process:hasInput rdf:resource="#Personalizer_2_GetUserID_Atomic_input_parameters__http___ws.acrosscommunications.com__GetUserID"/>
+    <process:hasOutput rdf:resource="#Personalizer_2_GetUserID_Atomic_output_parameters__http___ws.acrosscommunications.com__GetUserIDResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserID(?input)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GetUserIDResponse(?output)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Personalizer_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Personalizer_0_CreateSession_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Personalizer_1_ReleaseAllActiveSessions_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Personalizer_2_GetUserID_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Personalizer_0_CreateSession_Grounding">
+    <grounding:owlsProcess rdf:resource="#Personalizer_0_CreateSession_Atomic"/>
+    <grounding:wsdlOperationName>CreateSession</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PersonalizerSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PersonalizerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/252_Personalizer.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CreateSessionSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CreateSessionSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Personalizer_1_ReleaseAllActiveSessions_Grounding">
+    <grounding:owlsProcess rdf:resource="#Personalizer_1_ReleaseAllActiveSessions_Atomic"/>
+    <grounding:wsdlOperationName>ReleaseAllActiveSessions</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PersonalizerSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PersonalizerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/252_Personalizer.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReleaseAllActiveSessionsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReleaseAllActiveSessionsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Personalizer_2_GetUserID_Grounding">
+    <grounding:owlsProcess rdf:resource="#Personalizer_2_GetUserID_Atomic"/>
+    <grounding:wsdlOperationName>GetUserID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PersonalizerSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PersonalizerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/252_Personalizer.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

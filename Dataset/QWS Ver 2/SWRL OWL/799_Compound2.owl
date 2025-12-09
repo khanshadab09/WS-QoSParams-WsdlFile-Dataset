@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Compound2">
+    <service:presents rdf:resource="#Compound2_Profile"/>
+    <service:describedBy rdf:resource="#Compound2_Composite"/>
+    <service:supports rdf:resource="#Compound2_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Compound2_Profile">
+    <profile:serviceName>Compound2</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Compound2"/>
+    <profile:hasProcess rdf:resource="#Compound2_0_echoEmployee_Atomic"/>
+    <profile:hasInput rdf:resource="#Compound2_0_echoEmployee_Atomic_input_x__http___soapinterop.org_employee_x_Employee"/>
+    <profile:hasOutput rdf:resource="#Compound2_0_echoEmployee_Atomic_output_result__http___soapinterop.org_employee_result_Employee"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">x:{http://soapinterop.org/employee}x_Employee</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">result:{http://soapinterop.org/employee}result_Employee</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Compound2_Composite">
+    <process:composedOf rdf:resource="#Compound2_0_echoEmployee_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Compound2_0_echoEmployee_Atomic_input_x__http___soapinterop.org_employee_x_Employee">
+    <process:parameterType>x:{http://soapinterop.org/employee}x_Employee</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Compound2_0_echoEmployee_Atomic_output_result__http___soapinterop.org_employee_result_Employee">
+    <process:parameterType>result:{http://soapinterop.org/employee}result_Employee</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Compound2_0_echoEmployee_Atomic">
+    <process:hasName>echoEmployee</process:hasName>
+    <process:hasInput rdf:resource="#Compound2_0_echoEmployee_Atomic_input_x__http___soapinterop.org_employee_x_Employee"/>
+    <process:hasOutput rdf:resource="#Compound2_0_echoEmployee_Atomic_output_result__http___soapinterop.org_employee_result_Employee"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">x:{http://soapinterop.org/employee}x_Employee</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">result:{http://soapinterop.org/employee}result_Employee</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Compound2_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Compound2_0_echoEmployee_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Compound2_0_echoEmployee_Grounding">
+    <grounding:owlsProcess rdf:resource="#Compound2_0_echoEmployee_Atomic"/>
+    <grounding:wsdlOperationName>echoEmployee</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SoapInteropCompound2Binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SoapInteropCompound2PortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/799_Compound2.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>echoEmployee</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>echoEmployeeResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

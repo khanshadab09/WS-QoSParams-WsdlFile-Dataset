@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="WSDLInteropTestDocLitService">
+    <service:presents rdf:resource="#WSDLInteropTestDocLitService_Profile"/>
+    <service:describedBy rdf:resource="#WSDLInteropTestDocLitService_Composite"/>
+    <service:supports rdf:resource="#WSDLInteropTestDocLitService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="WSDLInteropTestDocLitService_Profile">
+    <profile:serviceName>WSDLInteropTestDocLitService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#WSDLInteropTestDocLitService"/>
+    <profile:hasProcess rdf:resource="#WSDLInteropTestDocLitService_0_echoString_Atomic"/>
+    <profile:hasInput rdf:resource="#WSDLInteropTestDocLitService_0_echoString_Atomic_input_a__http___soapinterop.org_xsd_echoStringParam"/>
+    <profile:hasOutput rdf:resource="#WSDLInteropTestDocLitService_0_echoString_Atomic_output_result__http___soapinterop.org_xsd_echoStringReturn"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(a, "http://soapinterop.org/xsd#echoStringParam")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(result, "http://soapinterop.org/xsd#echoStringReturn")</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="WSDLInteropTestDocLitService_Composite">
+    <process:composedOf rdf:resource="#WSDLInteropTestDocLitService_0_echoString_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="WSDLInteropTestDocLitService_0_echoString_Atomic_input_a__http___soapinterop.org_xsd_echoStringParam">
+    <process:parameterType>a:{http://soapinterop.org/xsd}echoStringParam</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WSDLInteropTestDocLitService_0_echoString_Atomic_output_result__http___soapinterop.org_xsd_echoStringReturn">
+    <process:parameterType>result:{http://soapinterop.org/xsd}echoStringReturn</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="WSDLInteropTestDocLitService_0_echoString_Atomic">
+    <process:hasName>echoString</process:hasName>
+    <process:hasInput rdf:resource="#WSDLInteropTestDocLitService_0_echoString_Atomic_input_a__http___soapinterop.org_xsd_echoStringParam"/>
+    <process:hasOutput rdf:resource="#WSDLInteropTestDocLitService_0_echoString_Atomic_output_result__http___soapinterop.org_xsd_echoStringReturn"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(a, "http://soapinterop.org/xsd#echoStringParam")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(result, "http://soapinterop.org/xsd#echoStringReturn")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="WSDLInteropTestDocLitService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WSDLInteropTestDocLitService_0_echoString_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLInteropTestDocLitService_0_echoString_Grounding">
+    <grounding:owlsProcess rdf:resource="#WSDLInteropTestDocLitService_0_echoString_Atomic"/>
+    <grounding:wsdlOperationName>echoString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSDLInteropTestDocLitPortBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSDLInteropTestDocLitPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/833_WSDLInteropTestDocLitService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>echoString</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>echoStringResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

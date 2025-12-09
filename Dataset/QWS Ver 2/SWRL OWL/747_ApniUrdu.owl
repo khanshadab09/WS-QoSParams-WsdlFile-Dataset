@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ApniUrdu">
+    <service:presents rdf:resource="#ApniUrdu_Profile"/>
+    <service:describedBy rdf:resource="#ApniUrdu_Composite"/>
+    <service:supports rdf:resource="#ApniUrdu_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ApniUrdu_Profile">
+    <profile:serviceName>ApniUrdu</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ApniUrdu"/>
+    <profile:hasProcess rdf:resource="#ApniUrdu_0_GetWords_Atomic"/>
+    <profile:hasInput rdf:resource="#ApniUrdu_0_GetWords_Atomic_input_symbol__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ApniUrdu_0_GetWords_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?symbolDatatype, xsd:string)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?resultDatatype, xsd:int)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ApniUrdu_1_Translate_Atomic"/>
+    <profile:hasInput rdf:resource="#ApniUrdu_1_Translate_Atomic_input_symbol__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ApniUrdu_1_Translate_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClassAssertion(DataSomeValuesFrom(ObjectProperty(&lt;http://www.w3.org/2001/XMLSchema#string&gt;) DataRange(&lt;http://www.w3.org/2001/XMLSchema#string&gt;))</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClassAssertion(DataSomeValuesFrom(ObjectProperty(&lt;http://www.w3.org/2001/XMLSchema#string&gt;) DataRange(&lt;http://www.w3.org/2001/XMLSchema#string&gt;))</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ApniUrdu_2_GetUnicode_Atomic"/>
+    <profile:hasInput rdf:resource="#ApniUrdu_2_GetUnicode_Atomic_input_symbol__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ApniUrdu_2_GetUnicode_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(GetUnicode, symbol) ^ hasDataType(symbol, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(GetUnicode, Result) ^ hasDataType(Result, "http://www.w3.org/2001/XMLSchema#string")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ApniUrdu_3_GetMapping_Atomic"/>
+    <profile:hasInput rdf:resource="#ApniUrdu_3_GetMapping_Atomic_input_symbol__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ApniUrdu_3_GetMapping_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MappingExists(?symbol, ?result) ^ hasInput(?symbol, GetMapping) ^ hasOutput(?result, GetMapping)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?result, GetMapping) ^ hasMapping(?symbol, ?result)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ApniUrdu_Composite">
+    <process:composedOf rdf:resource="#ApniUrdu_0_GetWords_Atomic"/>
+    <process:composedOf rdf:resource="#ApniUrdu_1_Translate_Atomic"/>
+    <process:composedOf rdf:resource="#ApniUrdu_2_GetUnicode_Atomic"/>
+    <process:composedOf rdf:resource="#ApniUrdu_3_GetMapping_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ApniUrdu_0_GetWords_Atomic_input_symbol__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>symbol:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ApniUrdu_0_GetWords_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ApniUrdu_1_Translate_Atomic_input_symbol__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>symbol:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ApniUrdu_1_Translate_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ApniUrdu_2_GetUnicode_Atomic_input_symbol__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>symbol:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ApniUrdu_2_GetUnicode_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ApniUrdu_3_GetMapping_Atomic_input_symbol__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>symbol:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ApniUrdu_3_GetMapping_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ApniUrdu_0_GetWords_Atomic">
+    <process:hasName>GetWords</process:hasName>
+    <process:hasInput rdf:resource="#ApniUrdu_0_GetWords_Atomic_input_symbol__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ApniUrdu_0_GetWords_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?symbolDatatype, xsd:string)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrlb:equal(?resultDatatype, xsd:int)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ApniUrdu_1_Translate_Atomic">
+    <process:hasName>Translate</process:hasName>
+    <process:hasInput rdf:resource="#ApniUrdu_1_Translate_Atomic_input_symbol__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ApniUrdu_1_Translate_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClassAssertion(DataSomeValuesFrom(ObjectProperty(&lt;http://www.w3.org/2001/XMLSchema#string&gt;) DataRange(&lt;http://www.w3.org/2001/XMLSchema#string&gt;))</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClassAssertion(DataSomeValuesFrom(ObjectProperty(&lt;http://www.w3.org/2001/XMLSchema#string&gt;) DataRange(&lt;http://www.w3.org/2001/XMLSchema#string&gt;))</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ApniUrdu_2_GetUnicode_Atomic">
+    <process:hasName>GetUnicode</process:hasName>
+    <process:hasInput rdf:resource="#ApniUrdu_2_GetUnicode_Atomic_input_symbol__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ApniUrdu_2_GetUnicode_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasInputParameter(GetUnicode, symbol) ^ hasDataType(symbol, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutputParameter(GetUnicode, Result) ^ hasDataType(Result, "http://www.w3.org/2001/XMLSchema#string")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ApniUrdu_3_GetMapping_Atomic">
+    <process:hasName>GetMapping</process:hasName>
+    <process:hasInput rdf:resource="#ApniUrdu_3_GetMapping_Atomic_input_symbol__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ApniUrdu_3_GetMapping_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MappingExists(?symbol, ?result) ^ hasInput(?symbol, GetMapping) ^ hasOutput(?result, GetMapping)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOutput(?result, GetMapping) ^ hasMapping(?symbol, ?result)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ApniUrdu_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ApniUrdu_0_GetWords_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ApniUrdu_1_Translate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ApniUrdu_2_GetUnicode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ApniUrdu_3_GetMapping_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ApniUrdu_0_GetWords_Grounding">
+    <grounding:owlsProcess rdf:resource="#ApniUrdu_0_GetWords_Atomic"/>
+    <grounding:wsdlOperationName>GetWords</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ApniUrduBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ApniUrduPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/747_ApniUrdu.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWordsRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWordsResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ApniUrdu_1_Translate_Grounding">
+    <grounding:owlsProcess rdf:resource="#ApniUrdu_1_Translate_Atomic"/>
+    <grounding:wsdlOperationName>Translate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ApniUrduBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ApniUrduPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/747_ApniUrdu.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>TranslateRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>TranslateResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ApniUrdu_2_GetUnicode_Grounding">
+    <grounding:owlsProcess rdf:resource="#ApniUrdu_2_GetUnicode_Atomic"/>
+    <grounding:wsdlOperationName>GetUnicode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ApniUrduBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ApniUrduPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/747_ApniUrdu.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUnicodeRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUnicodeResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ApniUrdu_3_GetMapping_Grounding">
+    <grounding:owlsProcess rdf:resource="#ApniUrdu_3_GetMapping_Atomic"/>
+    <grounding:wsdlOperationName>GetMapping</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ApniUrduBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ApniUrduPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/747_ApniUrdu.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetMappingRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetMappingResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

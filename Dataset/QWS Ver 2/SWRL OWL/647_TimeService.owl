@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="TimeService">
+    <service:presents rdf:resource="#TimeService_Profile"/>
+    <service:describedBy rdf:resource="#TimeService_Composite"/>
+    <service:supports rdf:resource="#TimeService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="TimeService_Profile">
+    <profile:serviceName>TimeService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#TimeService"/>
+    <profile:hasProcess rdf:resource="#TimeService_0_GetTimeDesc_Atomic"/>
+    <profile:hasOutput rdf:resource="#TimeService_0_GetTimeDesc_Atomic_output_GetTimeDescResult__http___dotnet.jku.at_time__TimeDesc"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="TimeService_Composite">
+    <process:composedOf rdf:resource="#TimeService_0_GetTimeDesc_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Output rdf:ID="TimeService_0_GetTimeDesc_Atomic_output_GetTimeDescResult__http___dotnet.jku.at_time__TimeDesc">
+    <process:parameterType>GetTimeDescResult:{http://dotnet.jku.at/time/}TimeDesc</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="TimeService_0_GetTimeDesc_Atomic">
+    <process:hasName>GetTimeDesc</process:hasName>
+    <process:hasOutput rdf:resource="#TimeService_0_GetTimeDesc_Atomic_output_GetTimeDescResult__http___dotnet.jku.at_time__TimeDesc"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="TimeService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TimeService_0_GetTimeDesc_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TimeService_0_GetTimeDesc_Grounding">
+    <grounding:owlsProcess rdf:resource="#TimeService_0_GetTimeDesc_Atomic"/>
+    <grounding:wsdlOperationName>GetTimeDesc</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TimeServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TimeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/647_TimeService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTimeDescSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTimeDescSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="WikiWebService">
+    <service:presents rdf:resource="#WikiWebService_Profile"/>
+    <service:describedBy rdf:resource="#WikiWebService_Composite"/>
+    <service:supports rdf:resource="#WikiWebService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="WikiWebService_Profile">
+    <profile:serviceName>WikiWebService</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#WikiWebService"/>
+    <profile:hasProcess rdf:resource="#WikiWebService_0_GetRecentChanges_Atomic"/>
+    <profile:hasInput rdf:resource="#WikiWebService_0_GetRecentChanges_Atomic_input_tnDays__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#WikiWebService_0_GetRecentChanges_Atomic_input_tcFilter__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#WikiWebService_0_GetRecentChanges_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tnDays(?days) ^ tcFilter(?filter)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result("RecentChanges")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WikiWebService_1_GetTextSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#WikiWebService_1_GetTextSearch_Atomic_input_tcString__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#WikiWebService_1_GetTextSearch_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tcString(?x) ^ string(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ string(?y) ^ contains(?y, ?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WikiWebService_2_GetTopicText_Atomic"/>
+    <profile:hasInput rdf:resource="#WikiWebService_2_GetTopicText_Atomic_input_tcTopic__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#WikiWebService_2_GetTopicText_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tcTopic(?topic) ^ swrlb:datatype(?topic, "http://www.w3.org/2001/XMLSchema#string")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?text) ^ swrlb:datatype(?text, "http://www.w3.org/2001/XMLSchema#string")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WikiWebService_3_GetTopicHTML_Atomic"/>
+    <profile:hasInput rdf:resource="#WikiWebService_3_GetTopicHTML_Atomic_input_tcTopic__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#WikiWebService_3_GetTopicHTML_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tcTopic(?topic) ^ swrlb:isString(?topic)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?html) ^ swrlb:isString(?html)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="WikiWebService_Composite">
+    <process:composedOf rdf:resource="#WikiWebService_0_GetRecentChanges_Atomic"/>
+    <process:composedOf rdf:resource="#WikiWebService_1_GetTextSearch_Atomic"/>
+    <process:composedOf rdf:resource="#WikiWebService_2_GetTopicText_Atomic"/>
+    <process:composedOf rdf:resource="#WikiWebService_3_GetTopicHTML_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="WikiWebService_0_GetRecentChanges_Atomic_input_tnDays__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>tnDays:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="WikiWebService_0_GetRecentChanges_Atomic_input_tcFilter__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>tcFilter:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WikiWebService_0_GetRecentChanges_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WikiWebService_1_GetTextSearch_Atomic_input_tcString__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>tcString:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WikiWebService_1_GetTextSearch_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WikiWebService_2_GetTopicText_Atomic_input_tcTopic__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>tcTopic:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WikiWebService_2_GetTopicText_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WikiWebService_3_GetTopicHTML_Atomic_input_tcTopic__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>tcTopic:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WikiWebService_3_GetTopicHTML_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Result:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="WikiWebService_0_GetRecentChanges_Atomic">
+    <process:hasName>GetRecentChanges</process:hasName>
+    <process:hasInput rdf:resource="#WikiWebService_0_GetRecentChanges_Atomic_input_tnDays__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#WikiWebService_0_GetRecentChanges_Atomic_input_tcFilter__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#WikiWebService_0_GetRecentChanges_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tnDays(?days) ^ tcFilter(?filter)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result("RecentChanges")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WikiWebService_1_GetTextSearch_Atomic">
+    <process:hasName>GetTextSearch</process:hasName>
+    <process:hasInput rdf:resource="#WikiWebService_1_GetTextSearch_Atomic_input_tcString__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#WikiWebService_1_GetTextSearch_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tcString(?x) ^ string(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?y) ^ string(?y) ^ contains(?y, ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WikiWebService_2_GetTopicText_Atomic">
+    <process:hasName>GetTopicText</process:hasName>
+    <process:hasInput rdf:resource="#WikiWebService_2_GetTopicText_Atomic_input_tcTopic__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#WikiWebService_2_GetTopicText_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tcTopic(?topic) ^ swrlb:datatype(?topic, "http://www.w3.org/2001/XMLSchema#string")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?text) ^ swrlb:datatype(?text, "http://www.w3.org/2001/XMLSchema#string")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WikiWebService_3_GetTopicHTML_Atomic">
+    <process:hasName>GetTopicHTML</process:hasName>
+    <process:hasInput rdf:resource="#WikiWebService_3_GetTopicHTML_Atomic_input_tcTopic__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#WikiWebService_3_GetTopicHTML_Atomic_output_Result__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tcTopic(?topic) ^ swrlb:isString(?topic)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Result(?html) ^ swrlb:isString(?html)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="WikiWebService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WikiWebService_0_GetRecentChanges_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WikiWebService_1_GetTextSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WikiWebService_2_GetTopicText_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WikiWebService_3_GetTopicHTML_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WikiWebService_0_GetRecentChanges_Grounding">
+    <grounding:owlsProcess rdf:resource="#WikiWebService_0_GetRecentChanges_Atomic"/>
+    <grounding:wsdlOperationName>GetRecentChanges</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wikiwebserviceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wikiwebserviceSoapPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/322_WikiWebService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>wikiwebservice.GetRecentChanges</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>wikiwebservice.GetRecentChangesResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WikiWebService_1_GetTextSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#WikiWebService_1_GetTextSearch_Atomic"/>
+    <grounding:wsdlOperationName>GetTextSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wikiwebserviceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wikiwebserviceSoapPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/322_WikiWebService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>wikiwebservice.GetTextSearch</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>wikiwebservice.GetTextSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WikiWebService_2_GetTopicText_Grounding">
+    <grounding:owlsProcess rdf:resource="#WikiWebService_2_GetTopicText_Atomic"/>
+    <grounding:wsdlOperationName>GetTopicText</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wikiwebserviceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wikiwebserviceSoapPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/322_WikiWebService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>wikiwebservice.GetTopicText</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>wikiwebservice.GetTopicTextResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WikiWebService_3_GetTopicHTML_Grounding">
+    <grounding:owlsProcess rdf:resource="#WikiWebService_3_GetTopicHTML_Atomic"/>
+    <grounding:wsdlOperationName>GetTopicHTML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wikiwebserviceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wikiwebserviceSoapPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/322_WikiWebService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>wikiwebservice.GetTopicHTML</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>wikiwebservice.GetTopicHTMLResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
