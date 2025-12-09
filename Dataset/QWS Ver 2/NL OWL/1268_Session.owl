@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Session">
+    <service:presents rdf:resource="#Session_Profile"/>
+    <service:describedBy rdf:resource="#Session_Composite"/>
+    <service:supports rdf:resource="#Session_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Session_Profile">
+    <profile:serviceName>Session</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Session"/>
+    <profile:hasProcess rdf:resource="#Session_0_StartSession_Atomic"/>
+    <profile:hasInput rdf:resource="#Session_0_StartSession_Atomic_input_parameters__http___sjmillerconsultants.com_webservices_StartSession"/>
+    <profile:hasOutput rdf:resource="#Session_0_StartSession_Atomic_output_parameters__http___sjmillerconsultants.com_webservices_StartSessionResponse"/>
+    <profile:hasPrecondition>The client must provide the necessary parameters in the StartSession request.</profile:hasPrecondition>
+    <profile:hasResult>The server will respond with the StartSessionResponse containing the session information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Session_1_EndSession_Atomic"/>
+    <profile:hasInput rdf:resource="#Session_1_EndSession_Atomic_input_parameters__http___sjmillerconsultants.com_webservices_EndSession"/>
+    <profile:hasOutput rdf:resource="#Session_1_EndSession_Atomic_output_parameters__http___sjmillerconsultants.com_webservices_EndSessionResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have an active session to end the session.</profile:hasPrecondition>
+    <profile:hasResult>The session for the user is successfully terminated and the user is logged out of the system.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Session_Composite">
+    <process:composedOf rdf:resource="#Session_0_StartSession_Atomic"/>
+    <process:composedOf rdf:resource="#Session_1_EndSession_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Session_0_StartSession_Atomic_input_parameters__http___sjmillerconsultants.com_webservices_StartSession">
+    <process:parameterType>parameters:{http://sjmillerconsultants.com/webservices}StartSession</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Session_0_StartSession_Atomic_output_parameters__http___sjmillerconsultants.com_webservices_StartSessionResponse">
+    <process:parameterType>parameters:{http://sjmillerconsultants.com/webservices}StartSessionResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Session_1_EndSession_Atomic_input_parameters__http___sjmillerconsultants.com_webservices_EndSession">
+    <process:parameterType>parameters:{http://sjmillerconsultants.com/webservices}EndSession</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Session_1_EndSession_Atomic_output_parameters__http___sjmillerconsultants.com_webservices_EndSessionResponse">
+    <process:parameterType>parameters:{http://sjmillerconsultants.com/webservices}EndSessionResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Session_0_StartSession_Atomic">
+    <process:hasName>StartSession</process:hasName>
+    <process:hasInput rdf:resource="#Session_0_StartSession_Atomic_input_parameters__http___sjmillerconsultants.com_webservices_StartSession"/>
+    <process:hasOutput rdf:resource="#Session_0_StartSession_Atomic_output_parameters__http___sjmillerconsultants.com_webservices_StartSessionResponse"/>
+    <process:hasPrecondition>The client must provide the necessary parameters in the StartSession request.</process:hasPrecondition>
+    <process:hasEffect>The server will respond with the StartSessionResponse containing the session information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Session_1_EndSession_Atomic">
+    <process:hasName>EndSession</process:hasName>
+    <process:hasInput rdf:resource="#Session_1_EndSession_Atomic_input_parameters__http___sjmillerconsultants.com_webservices_EndSession"/>
+    <process:hasOutput rdf:resource="#Session_1_EndSession_Atomic_output_parameters__http___sjmillerconsultants.com_webservices_EndSessionResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have an active session to end the session.</process:hasPrecondition>
+    <process:hasEffect>The session for the user is successfully terminated and the user is logged out of the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Session_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Session_0_StartSession_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Session_1_EndSession_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Session_0_StartSession_Grounding">
+    <grounding:owlsProcess rdf:resource="#Session_0_StartSession_Atomic"/>
+    <grounding:wsdlOperationName>StartSession</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SessionSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SessionSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1268_Session.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>StartSessionSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>StartSessionSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Session_1_EndSession_Grounding">
+    <grounding:owlsProcess rdf:resource="#Session_1_EndSession_Atomic"/>
+    <grounding:wsdlOperationName>EndSession</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SessionSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SessionSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1268_Session.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>EndSessionSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>EndSessionSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

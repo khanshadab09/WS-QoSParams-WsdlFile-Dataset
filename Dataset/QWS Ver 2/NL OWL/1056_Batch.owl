@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Batch">
+    <service:presents rdf:resource="#Batch_Profile"/>
+    <service:describedBy rdf:resource="#Batch_Composite"/>
+    <service:supports rdf:resource="#Batch_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Batch_Profile">
+    <profile:serviceName>Batch</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Batch"/>
+    <profile:hasProcess rdf:resource="#Batch_0_Validate_Atomic"/>
+    <profile:hasInput rdf:resource="#Batch_0_Validate_Atomic_input_parameters__http___validator2.AddressDoctor.com_addBatch_Batch_Validate"/>
+    <profile:hasOutput rdf:resource="#Batch_0_Validate_Atomic_output_parameters__http___validator2.AddressDoctor.com_addBatch_Batch_ValidateResponse"/>
+    <profile:hasPrecondition>The input parameters must conform to the specified structure for the AddressDoctor validation service.</profile:hasPrecondition>
+    <profile:hasResult>The validation operation will be executed, and the response will adhere to the expected structure for the AddressDoctor validation service.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Batch_Composite">
+    <process:composedOf rdf:resource="#Batch_0_Validate_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Batch_0_Validate_Atomic_input_parameters__http___validator2.AddressDoctor.com_addBatch_Batch_Validate">
+    <process:parameterType>parameters:{http://validator2.AddressDoctor.com/addBatch/Batch}Validate</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Batch_0_Validate_Atomic_output_parameters__http___validator2.AddressDoctor.com_addBatch_Batch_ValidateResponse">
+    <process:parameterType>parameters:{http://validator2.AddressDoctor.com/addBatch/Batch}ValidateResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Batch_0_Validate_Atomic">
+    <process:hasName>Validate</process:hasName>
+    <process:hasInput rdf:resource="#Batch_0_Validate_Atomic_input_parameters__http___validator2.AddressDoctor.com_addBatch_Batch_Validate"/>
+    <process:hasOutput rdf:resource="#Batch_0_Validate_Atomic_output_parameters__http___validator2.AddressDoctor.com_addBatch_Batch_ValidateResponse"/>
+    <process:hasPrecondition>The input parameters must conform to the specified structure for the AddressDoctor validation service.</process:hasPrecondition>
+    <process:hasEffect>The validation operation will be executed, and the response will adhere to the expected structure for the AddressDoctor validation service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Batch_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Batch_0_Validate_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Batch_0_Validate_Grounding">
+    <grounding:owlsProcess rdf:resource="#Batch_0_Validate_Atomic"/>
+    <grounding:wsdlOperationName>Validate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BatchSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BatchSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1056_Batch.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

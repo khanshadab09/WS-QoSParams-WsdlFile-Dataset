@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Conversor">
+    <service:presents rdf:resource="#Conversor_Profile"/>
+    <service:describedBy rdf:resource="#Conversor_Composite"/>
+    <service:supports rdf:resource="#Conversor_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Conversor_Profile">
+    <profile:serviceName>Conversor</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Conversor"/>
+    <profile:hasProcess rdf:resource="#Conversor_0_FaC_Atomic"/>
+    <profile:hasInput rdf:resource="#Conversor_0_FaC_Atomic_input_parameters__http___elGuille_WebServices_FaC"/>
+    <profile:hasOutput rdf:resource="#Conversor_0_FaC_Atomic_output_parameters__http___elGuille_WebServices_FaCResponse"/>
+    <profile:hasPrecondition>The input parameter for the FaC operation must be provided in the specified format under the namespace http://elGuille/WebServices.</profile:hasPrecondition>
+    <profile:hasResult>The FaC operation will return a response parameter in the specified format under the namespace http://elGuille/WebServices.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Conversor_1_CaF_Atomic"/>
+    <profile:hasInput rdf:resource="#Conversor_1_CaF_Atomic_input_parameters__http___elGuille_WebServices_CaF"/>
+    <profile:hasOutput rdf:resource="#Conversor_1_CaF_Atomic_output_parameters__http___elGuille_WebServices_CaFResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and capable of receiving requests for the CaF operation with parameters in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will process the CaF operation and generate a response in the specified format.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Conversor_Composite">
+    <process:composedOf rdf:resource="#Conversor_0_FaC_Atomic"/>
+    <process:composedOf rdf:resource="#Conversor_1_CaF_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Conversor_0_FaC_Atomic_input_parameters__http___elGuille_WebServices_FaC">
+    <process:parameterType>parameters:{http://elGuille/WebServices}FaC</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Conversor_0_FaC_Atomic_output_parameters__http___elGuille_WebServices_FaCResponse">
+    <process:parameterType>parameters:{http://elGuille/WebServices}FaCResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Conversor_1_CaF_Atomic_input_parameters__http___elGuille_WebServices_CaF">
+    <process:parameterType>parameters:{http://elGuille/WebServices}CaF</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Conversor_1_CaF_Atomic_output_parameters__http___elGuille_WebServices_CaFResponse">
+    <process:parameterType>parameters:{http://elGuille/WebServices}CaFResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Conversor_0_FaC_Atomic">
+    <process:hasName>FaC</process:hasName>
+    <process:hasInput rdf:resource="#Conversor_0_FaC_Atomic_input_parameters__http___elGuille_WebServices_FaC"/>
+    <process:hasOutput rdf:resource="#Conversor_0_FaC_Atomic_output_parameters__http___elGuille_WebServices_FaCResponse"/>
+    <process:hasPrecondition>The input parameter for the FaC operation must be provided in the specified format under the namespace http://elGuille/WebServices.</process:hasPrecondition>
+    <process:hasEffect>The FaC operation will return a response parameter in the specified format under the namespace http://elGuille/WebServices.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Conversor_1_CaF_Atomic">
+    <process:hasName>CaF</process:hasName>
+    <process:hasInput rdf:resource="#Conversor_1_CaF_Atomic_input_parameters__http___elGuille_WebServices_CaF"/>
+    <process:hasOutput rdf:resource="#Conversor_1_CaF_Atomic_output_parameters__http___elGuille_WebServices_CaFResponse"/>
+    <process:hasPrecondition>The web service must be accessible and capable of receiving requests for the CaF operation with parameters in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will process the CaF operation and generate a response in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Conversor_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Conversor_0_FaC_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Conversor_1_CaF_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Conversor_0_FaC_Grounding">
+    <grounding:owlsProcess rdf:resource="#Conversor_0_FaC_Atomic"/>
+    <grounding:wsdlOperationName>FaC</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ConversorSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ConversorSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1686_Conversor.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FaCSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FaCSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Conversor_1_CaF_Grounding">
+    <grounding:owlsProcess rdf:resource="#Conversor_1_CaF_Atomic"/>
+    <grounding:wsdlOperationName>CaF</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ConversorSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ConversorSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1686_Conversor.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CaFSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CaFSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

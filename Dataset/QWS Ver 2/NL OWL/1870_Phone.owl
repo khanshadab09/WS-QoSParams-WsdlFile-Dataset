@@ -1,0 +1,1090 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Phone">
+    <service:presents rdf:resource="#Phone_Profile"/>
+    <service:describedBy rdf:resource="#Phone_Composite"/>
+    <service:supports rdf:resource="#Phone_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Phone_Profile">
+    <profile:serviceName>Phone</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Phone"/>
+    <profile:hasProcess rdf:resource="#Phone_0_MakeAudioFile_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_0_MakeAudioFile_Atomic_input_parameters__http___ws.acrosscommunications.com__MakeAudioFile"/>
+    <profile:hasOutput rdf:resource="#Phone_0_MakeAudioFile_Atomic_output_parameters__http___ws.acrosscommunications.com__MakeAudioFileResponse"/>
+    <profile:hasPrecondition>The input parameters for the MakeAudioFile operation must be provided in the specified format from http://ws.acrosscommunications.com/.</profile:hasPrecondition>
+    <profile:hasResult>The MakeAudioFile operation will generate an audio file and return the output parameters in the specified format from http://ws.acrosscommunications.com/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_1_GetLastMethodDuration_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_1_GetLastMethodDuration_Atomic_input_parameters__http___ws.acrosscommunications.com__GetLastMethodDuration"/>
+    <profile:hasOutput rdf:resource="#Phone_1_GetLastMethodDuration_Atomic_output_parameters__http___ws.acrosscommunications.com__GetLastMethodDurationResponse"/>
+    <profile:hasPrecondition>The web service must have a method to retrieve the duration of the last method call.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the duration of the last method call in the response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_2_GetPDDmsec_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_2_GetPDDmsec_Atomic_input_parameters__http___ws.acrosscommunications.com__GetPDDmsec"/>
+    <profile:hasOutput rdf:resource="#Phone_2_GetPDDmsec_Atomic_output_parameters__http___ws.acrosscommunications.com__GetPDDmsecResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetPDDmsec must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the PDD (Post Dial Delay) in milliseconds.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_3_GetJitterStatistic_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_3_GetJitterStatistic_Atomic_input_parameters__http___ws.acrosscommunications.com__GetJitterStatistic"/>
+    <profile:hasOutput rdf:resource="#Phone_3_GetJitterStatistic_Atomic_output_parameters__http___ws.acrosscommunications.com__GetJitterStatisticResponse"/>
+    <profile:hasPrecondition>The web service must support the GetJitterStatistic operation with input parameters defined in the {http://ws.acrosscommunications.com/} namespace.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing jitter statistics based on the input parameters provided in the {http://ws.acrosscommunications.com/} namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_4_StartRecordCall_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_4_StartRecordCall_Atomic_input_parameters__http___ws.acrosscommunications.com__StartRecordCall"/>
+    <profile:hasOutput rdf:resource="#Phone_4_StartRecordCall_Atomic_output_parameters__http___ws.acrosscommunications.com__StartRecordCallResponse"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>Initiates the recording of a call as per the specified parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_5_StopRecordCall_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_5_StopRecordCall_Atomic_input_parameters__http___ws.acrosscommunications.com__StopRecordCall"/>
+    <profile:hasOutput rdf:resource="#Phone_5_StopRecordCall_Atomic_output_parameters__http___ws.acrosscommunications.com__StopRecordCallResponse"/>
+    <profile:hasPrecondition>The system must be actively recording a call.</profile:hasPrecondition>
+    <profile:hasResult>The system stops recording the call and saves the recording.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_6_SetSearchString_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_6_SetSearchString_Atomic_input_parameters__http___ws.acrosscommunications.com__SetSearchString"/>
+    <profile:hasOutput rdf:resource="#Phone_6_SetSearchString_Atomic_output_parameters__http___ws.acrosscommunications.com__SetSearchStringResponse"/>
+    <profile:hasPrecondition>The input parameter for SetSearchString must be provided in the specified format from http://ws.acrosscommunications.com/.</profile:hasPrecondition>
+    <profile:hasResult>The operation SetSearchString will return a response in the specified format from http://ws.acrosscommunications.com/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_7_GetSearchString_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_7_GetSearchString_Atomic_input_parameters__http___ws.acrosscommunications.com__GetSearchString"/>
+    <profile:hasOutput rdf:resource="#Phone_7_GetSearchString_Atomic_output_parameters__http___ws.acrosscommunications.com__GetSearchStringResponse"/>
+    <profile:hasPrecondition>The input parameters for GetSearchString must be provided in the specified format from http://ws.acrosscommunications.com/.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for GetSearchStringResponse will be returned in the specified format from http://ws.acrosscommunications.com/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_8_Release_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_8_Release_Atomic_input_parameters__http___ws.acrosscommunications.com__Release"/>
+    <profile:hasOutput rdf:resource="#Phone_8_Release_Atomic_output_parameters__http___ws.acrosscommunications.com__ReleaseResponse"/>
+    <profile:hasPrecondition>The system has received a valid request to release a resource.</profile:hasPrecondition>
+    <profile:hasResult>The resource is successfully released and a response confirming the release is returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_9_Call_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_9_Call_Atomic_input_parameters__http___ws.acrosscommunications.com__Call"/>
+    <profile:hasOutput rdf:resource="#Phone_9_Call_Atomic_output_parameters__http___ws.acrosscommunications.com__CallResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for the Call operation must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The Call operation will be executed and a CallResponse will be generated as output in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_10_CallEx_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_10_CallEx_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx"/>
+    <profile:hasOutput rdf:resource="#Phone_10_CallEx_Atomic_output_parameters__http___ws.acrosscommunications.com__CallExResponse"/>
+    <profile:hasPrecondition>The input parameters must conform to the schema defined by http://ws.acrosscommunications.com/ for the CallEx operation.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters will adhere to the schema defined by http://ws.acrosscommunications.com/ for the CallExResponse operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_11_CallEx2_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_11_CallEx2_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx2"/>
+    <profile:hasOutput rdf:resource="#Phone_11_CallEx2_Atomic_output_parameters__http___ws.acrosscommunications.com__CallEx2Response"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for CallEx2 must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will execute the CallEx2 operation and return a response in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_12_CallEx3_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_12_CallEx3_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx3"/>
+    <profile:hasOutput rdf:resource="#Phone_12_CallEx3_Atomic_output_parameters__http___ws.acrosscommunications.com__CallEx3Response"/>
+    <profile:hasPrecondition>The web service must be accessible and support the CallEx3 operation with input parameters from http://ws.acrosscommunications.com/.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response with output parameters conforming to the structure defined at http://ws.acrosscommunications.com/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_13_CallEx4_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_13_CallEx4_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx4"/>
+    <profile:hasOutput rdf:resource="#Phone_13_CallEx4_Atomic_output_parameters__http___ws.acrosscommunications.com__CallEx4Response"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for CallEx4 must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>Upon successful execution, the web service will return a response in the specified format for CallEx4.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_14_CallEx5_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_14_CallEx5_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx5"/>
+    <profile:hasOutput rdf:resource="#Phone_14_CallEx5_Atomic_output_parameters__http___ws.acrosscommunications.com__CallEx5Response"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for CallEx5 must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will execute the CallEx5 operation and return a response in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_15_HangUp_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_15_HangUp_Atomic_input_parameters__http___ws.acrosscommunications.com__HangUp"/>
+    <profile:hasOutput rdf:resource="#Phone_15_HangUp_Atomic_output_parameters__http___ws.acrosscommunications.com__HangUpResponse"/>
+    <profile:hasPrecondition>The HangUp operation is invoked with the required parameters from the Across Communications web service.</profile:hasPrecondition>
+    <profile:hasResult>The HangUp operation successfully completes and returns a response indicating the call has been disconnected.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_16_Say_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_16_Say_Atomic_input_parameters__http___ws.acrosscommunications.com__Say"/>
+    <profile:hasOutput rdf:resource="#Phone_16_Say_Atomic_output_parameters__http___ws.acrosscommunications.com__SayResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for the Say operation must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The Say operation will be executed and a response containing the output parameters will be returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_17_SayWithDigitEvent_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_17_SayWithDigitEvent_Atomic_input_parameters__http___ws.acrosscommunications.com__SayWithDigitEvent"/>
+    <profile:hasOutput rdf:resource="#Phone_17_SayWithDigitEvent_Atomic_output_parameters__http___ws.acrosscommunications.com__SayWithDigitEventResponse"/>
+    <profile:hasPrecondition>The input parameter for SayWithDigitEvent must be provided in the specified format from the Across Communications web service.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter for SayWithDigitEventResponse will be returned in the specified format from the Across Communications web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_18_SayWithDigitEventEx_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_18_SayWithDigitEventEx_Atomic_input_parameters__http___ws.acrosscommunications.com__SayWithDigitEventEx"/>
+    <profile:hasOutput rdf:resource="#Phone_18_SayWithDigitEventEx_Atomic_output_parameters__http___ws.acrosscommunications.com__SayWithDigitEventExResponse"/>
+    <profile:hasPrecondition>The input parameters for the SayWithDigitEventEx operation must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for the SayWithDigitEventEx operation will be returned in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_19_Prepare_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_19_Prepare_Atomic_input_parameters__http___ws.acrosscommunications.com__Prepare"/>
+    <profile:hasOutput rdf:resource="#Phone_19_Prepare_Atomic_output_parameters__http___ws.acrosscommunications.com__PrepareResponse"/>
+    <profile:hasPrecondition>The input parameters for the Prepare operation must be provided in the specified format from the Across Communications web service.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters in the PrepareResponse format will be generated after the Prepare operation is successfully executed.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_20_PrepareWebLink_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_20_PrepareWebLink_Atomic_input_parameters__http___ws.acrosscommunications.com__PrepareWebLink"/>
+    <profile:hasOutput rdf:resource="#Phone_20_PrepareWebLink_Atomic_output_parameters__http___ws.acrosscommunications.com__PrepareWebLinkResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the PrepareWebLink parameters must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The PrepareWebLink operation will be executed and a response containing the PrepareWebLink parameters will be returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_21_PlayFile_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_21_PlayFile_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayFile"/>
+    <profile:hasOutput rdf:resource="#Phone_21_PlayFile_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayFileResponse"/>
+    <profile:hasPrecondition>The PlayFile operation must be called with the required parameters from the specified namespace.</profile:hasPrecondition>
+    <profile:hasResult>The PlayFile operation will return a response containing the specified parameters from the designated namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_22_PlayFileWithDigitEvent_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_22_PlayFileWithDigitEvent_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayFileWithDigitEvent"/>
+    <profile:hasOutput rdf:resource="#Phone_22_PlayFileWithDigitEvent_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayFileWithDigitEventResponse"/>
+    <profile:hasPrecondition>The input parameters must adhere to the PlayFileWithDigitEvent schema defined at http://ws.acrosscommunications.com/.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return output parameters conforming to the PlayFileWithDigitEventResponse schema specified at http://ws.acrosscommunications.com/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_23_PlayFileWithDigitEventEx_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_23_PlayFileWithDigitEventEx_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayFileWithDigitEventEx"/>
+    <profile:hasOutput rdf:resource="#Phone_23_PlayFileWithDigitEventEx_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayFileWithDigitEventExResponse"/>
+    <profile:hasPrecondition>The input parameters for playing a file with a digit event must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will play the specified file with the digit event and return the response in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_24_PlayDigits_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_24_PlayDigits_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayDigits"/>
+    <profile:hasOutput rdf:resource="#Phone_24_PlayDigits_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayDigitsResponse"/>
+    <profile:hasPrecondition>The web service must receive a valid request containing parameters for playing digits from the specified endpoint.</profile:hasPrecondition>
+    <profile:hasResult>The web service will process the request and return a response containing the played digits.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_25_WaitDigits_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_25_WaitDigits_Atomic_input_parameters__http___ws.acrosscommunications.com__WaitDigits"/>
+    <profile:hasOutput rdf:resource="#Phone_25_WaitDigits_Atomic_output_parameters__http___ws.acrosscommunications.com__WaitDigitsResponse"/>
+    <profile:hasPrecondition>The system is actively waiting for a specified number of digits to be entered by the user.</profile:hasPrecondition>
+    <profile:hasResult>The system will respond with a confirmation message once the specified number of digits has been successfully entered.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_26_WaitDigitsEx_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_26_WaitDigitsEx_Atomic_input_parameters__http___ws.acrosscommunications.com__WaitDigitsEx"/>
+    <profile:hasOutput rdf:resource="#Phone_26_WaitDigitsEx_Atomic_output_parameters__http___ws.acrosscommunications.com__WaitDigitsExResponse"/>
+    <profile:hasPrecondition>The system is actively waiting for user input to receive a specific number of digits.</profile:hasPrecondition>
+    <profile:hasResult>The system will respond with the collected digits once the required number has been entered by the user.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_27_GetDigitsFromBuffer_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_27_GetDigitsFromBuffer_Atomic_input_parameters__http___ws.acrosscommunications.com__GetDigitsFromBuffer"/>
+    <profile:hasOutput rdf:resource="#Phone_27_GetDigitsFromBuffer_Atomic_output_parameters__http___ws.acrosscommunications.com__GetDigitsFromBufferResponse"/>
+    <profile:hasPrecondition>The input parameters for GetDigitsFromBuffer must be provided in the specified format from http://ws.acrosscommunications.com/.</profile:hasPrecondition>
+    <profile:hasResult>The output response for GetDigitsFromBuffer will be returned in the specified format from http://ws.acrosscommunications.com/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_28_ClearDigitsFromBuffer_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_28_ClearDigitsFromBuffer_Atomic_input_parameters__http___ws.acrosscommunications.com__ClearDigitsFromBuffer"/>
+    <profile:hasOutput rdf:resource="#Phone_28_ClearDigitsFromBuffer_Atomic_output_parameters__http___ws.acrosscommunications.com__ClearDigitsFromBufferResponse"/>
+    <profile:hasPrecondition>The web service buffer contains digits that need to be cleared.</profile:hasPrecondition>
+    <profile:hasResult>The digits are removed from the buffer in the web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_29_Record_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_29_Record_Atomic_input_parameters__http___ws.acrosscommunications.com__Record"/>
+    <profile:hasOutput rdf:resource="#Phone_29_Record_Atomic_output_parameters__http___ws.acrosscommunications.com__RecordResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters must conform to the expected structure defined by the {http://ws.acrosscommunications.com/}Record schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will store the provided record data and return a response confirming the successful recording.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_30_PlayFileWithRecording_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_30_PlayFileWithRecording_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayFileWithRecording"/>
+    <profile:hasOutput rdf:resource="#Phone_30_PlayFileWithRecording_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayFileWithRecordingResponse"/>
+    <profile:hasPrecondition>The input parameters must conform to the {http://ws.acrosscommunications.com/}PlayFileWithRecording schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will play the specified file with recording and return the response according to the {http://ws.acrosscommunications.com/}PlayFileWithRecordingResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_31_AcceptCall_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_31_AcceptCall_Atomic_input_parameters__http___ws.acrosscommunications.com__AcceptCall"/>
+    <profile:hasOutput rdf:resource="#Phone_31_AcceptCall_Atomic_output_parameters__http___ws.acrosscommunications.com__AcceptCallResponse"/>
+    <profile:hasPrecondition>The AcceptCall operation can only be invoked if there is an incoming call to be accepted.</profile:hasPrecondition>
+    <profile:hasResult>AcceptCall operation will respond with an AcceptCallResponse indicating that the call has been accepted.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_32_RejectCall_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_32_RejectCall_Atomic_input_parameters__http___ws.acrosscommunications.com__RejectCall"/>
+    <profile:hasOutput rdf:resource="#Phone_32_RejectCall_Atomic_output_parameters__http___ws.acrosscommunications.com__RejectCallResponse"/>
+    <profile:hasPrecondition>The incoming call must be identified and available for rejection.</profile:hasPrecondition>
+    <profile:hasResult>The incoming call is rejected and a response indicating the rejection is sent.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Phone_33_GetRouterId_Atomic"/>
+    <profile:hasInput rdf:resource="#Phone_33_GetRouterId_Atomic_input_parameters__http___ws.acrosscommunications.com__GetRouterId"/>
+    <profile:hasOutput rdf:resource="#Phone_33_GetRouterId_Atomic_output_parameters__http___ws.acrosscommunications.com__GetRouterIdResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetRouterId must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the router ID in the specified response format.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Phone_Composite">
+    <process:composedOf rdf:resource="#Phone_0_MakeAudioFile_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_1_GetLastMethodDuration_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_2_GetPDDmsec_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_3_GetJitterStatistic_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_4_StartRecordCall_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_5_StopRecordCall_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_6_SetSearchString_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_7_GetSearchString_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_8_Release_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_9_Call_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_10_CallEx_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_11_CallEx2_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_12_CallEx3_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_13_CallEx4_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_14_CallEx5_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_15_HangUp_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_16_Say_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_17_SayWithDigitEvent_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_18_SayWithDigitEventEx_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_19_Prepare_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_20_PrepareWebLink_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_21_PlayFile_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_22_PlayFileWithDigitEvent_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_23_PlayFileWithDigitEventEx_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_24_PlayDigits_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_25_WaitDigits_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_26_WaitDigitsEx_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_27_GetDigitsFromBuffer_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_28_ClearDigitsFromBuffer_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_29_Record_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_30_PlayFileWithRecording_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_31_AcceptCall_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_32_RejectCall_Atomic"/>
+    <process:composedOf rdf:resource="#Phone_33_GetRouterId_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Phone_0_MakeAudioFile_Atomic_input_parameters__http___ws.acrosscommunications.com__MakeAudioFile">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}MakeAudioFile</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_0_MakeAudioFile_Atomic_output_parameters__http___ws.acrosscommunications.com__MakeAudioFileResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}MakeAudioFileResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_1_GetLastMethodDuration_Atomic_input_parameters__http___ws.acrosscommunications.com__GetLastMethodDuration">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetLastMethodDuration</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_1_GetLastMethodDuration_Atomic_output_parameters__http___ws.acrosscommunications.com__GetLastMethodDurationResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetLastMethodDurationResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_2_GetPDDmsec_Atomic_input_parameters__http___ws.acrosscommunications.com__GetPDDmsec">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetPDDmsec</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_2_GetPDDmsec_Atomic_output_parameters__http___ws.acrosscommunications.com__GetPDDmsecResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetPDDmsecResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_3_GetJitterStatistic_Atomic_input_parameters__http___ws.acrosscommunications.com__GetJitterStatistic">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetJitterStatistic</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_3_GetJitterStatistic_Atomic_output_parameters__http___ws.acrosscommunications.com__GetJitterStatisticResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetJitterStatisticResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_4_StartRecordCall_Atomic_input_parameters__http___ws.acrosscommunications.com__StartRecordCall">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}StartRecordCall</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_4_StartRecordCall_Atomic_output_parameters__http___ws.acrosscommunications.com__StartRecordCallResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}StartRecordCallResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_5_StopRecordCall_Atomic_input_parameters__http___ws.acrosscommunications.com__StopRecordCall">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}StopRecordCall</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_5_StopRecordCall_Atomic_output_parameters__http___ws.acrosscommunications.com__StopRecordCallResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}StopRecordCallResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_6_SetSearchString_Atomic_input_parameters__http___ws.acrosscommunications.com__SetSearchString">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}SetSearchString</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_6_SetSearchString_Atomic_output_parameters__http___ws.acrosscommunications.com__SetSearchStringResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}SetSearchStringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_7_GetSearchString_Atomic_input_parameters__http___ws.acrosscommunications.com__GetSearchString">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetSearchString</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_7_GetSearchString_Atomic_output_parameters__http___ws.acrosscommunications.com__GetSearchStringResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetSearchStringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_8_Release_Atomic_input_parameters__http___ws.acrosscommunications.com__Release">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}Release</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_8_Release_Atomic_output_parameters__http___ws.acrosscommunications.com__ReleaseResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}ReleaseResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_9_Call_Atomic_input_parameters__http___ws.acrosscommunications.com__Call">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}Call</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_9_Call_Atomic_output_parameters__http___ws.acrosscommunications.com__CallResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CallResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_10_CallEx_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CallEx</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_10_CallEx_Atomic_output_parameters__http___ws.acrosscommunications.com__CallExResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CallExResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_11_CallEx2_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx2">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CallEx2</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_11_CallEx2_Atomic_output_parameters__http___ws.acrosscommunications.com__CallEx2Response">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CallEx2Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_12_CallEx3_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx3">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CallEx3</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_12_CallEx3_Atomic_output_parameters__http___ws.acrosscommunications.com__CallEx3Response">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CallEx3Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_13_CallEx4_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx4">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CallEx4</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_13_CallEx4_Atomic_output_parameters__http___ws.acrosscommunications.com__CallEx4Response">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CallEx4Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_14_CallEx5_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx5">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CallEx5</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_14_CallEx5_Atomic_output_parameters__http___ws.acrosscommunications.com__CallEx5Response">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}CallEx5Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_15_HangUp_Atomic_input_parameters__http___ws.acrosscommunications.com__HangUp">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}HangUp</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_15_HangUp_Atomic_output_parameters__http___ws.acrosscommunications.com__HangUpResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}HangUpResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_16_Say_Atomic_input_parameters__http___ws.acrosscommunications.com__Say">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}Say</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_16_Say_Atomic_output_parameters__http___ws.acrosscommunications.com__SayResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}SayResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_17_SayWithDigitEvent_Atomic_input_parameters__http___ws.acrosscommunications.com__SayWithDigitEvent">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}SayWithDigitEvent</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_17_SayWithDigitEvent_Atomic_output_parameters__http___ws.acrosscommunications.com__SayWithDigitEventResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}SayWithDigitEventResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_18_SayWithDigitEventEx_Atomic_input_parameters__http___ws.acrosscommunications.com__SayWithDigitEventEx">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}SayWithDigitEventEx</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_18_SayWithDigitEventEx_Atomic_output_parameters__http___ws.acrosscommunications.com__SayWithDigitEventExResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}SayWithDigitEventExResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_19_Prepare_Atomic_input_parameters__http___ws.acrosscommunications.com__Prepare">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}Prepare</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_19_Prepare_Atomic_output_parameters__http___ws.acrosscommunications.com__PrepareResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}PrepareResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_20_PrepareWebLink_Atomic_input_parameters__http___ws.acrosscommunications.com__PrepareWebLink">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}PrepareWebLink</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_20_PrepareWebLink_Atomic_output_parameters__http___ws.acrosscommunications.com__PrepareWebLinkResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}PrepareWebLinkResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_21_PlayFile_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayFile">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}PlayFile</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_21_PlayFile_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayFileResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}PlayFileResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_22_PlayFileWithDigitEvent_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayFileWithDigitEvent">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}PlayFileWithDigitEvent</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_22_PlayFileWithDigitEvent_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayFileWithDigitEventResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}PlayFileWithDigitEventResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_23_PlayFileWithDigitEventEx_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayFileWithDigitEventEx">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}PlayFileWithDigitEventEx</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_23_PlayFileWithDigitEventEx_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayFileWithDigitEventExResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}PlayFileWithDigitEventExResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_24_PlayDigits_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayDigits">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}PlayDigits</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_24_PlayDigits_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayDigitsResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}PlayDigitsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_25_WaitDigits_Atomic_input_parameters__http___ws.acrosscommunications.com__WaitDigits">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}WaitDigits</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_25_WaitDigits_Atomic_output_parameters__http___ws.acrosscommunications.com__WaitDigitsResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}WaitDigitsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_26_WaitDigitsEx_Atomic_input_parameters__http___ws.acrosscommunications.com__WaitDigitsEx">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}WaitDigitsEx</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_26_WaitDigitsEx_Atomic_output_parameters__http___ws.acrosscommunications.com__WaitDigitsExResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}WaitDigitsExResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_27_GetDigitsFromBuffer_Atomic_input_parameters__http___ws.acrosscommunications.com__GetDigitsFromBuffer">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetDigitsFromBuffer</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_27_GetDigitsFromBuffer_Atomic_output_parameters__http___ws.acrosscommunications.com__GetDigitsFromBufferResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetDigitsFromBufferResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_28_ClearDigitsFromBuffer_Atomic_input_parameters__http___ws.acrosscommunications.com__ClearDigitsFromBuffer">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}ClearDigitsFromBuffer</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_28_ClearDigitsFromBuffer_Atomic_output_parameters__http___ws.acrosscommunications.com__ClearDigitsFromBufferResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}ClearDigitsFromBufferResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_29_Record_Atomic_input_parameters__http___ws.acrosscommunications.com__Record">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}Record</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_29_Record_Atomic_output_parameters__http___ws.acrosscommunications.com__RecordResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}RecordResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_30_PlayFileWithRecording_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayFileWithRecording">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}PlayFileWithRecording</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_30_PlayFileWithRecording_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayFileWithRecordingResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}PlayFileWithRecordingResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_31_AcceptCall_Atomic_input_parameters__http___ws.acrosscommunications.com__AcceptCall">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}AcceptCall</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_31_AcceptCall_Atomic_output_parameters__http___ws.acrosscommunications.com__AcceptCallResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}AcceptCallResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_32_RejectCall_Atomic_input_parameters__http___ws.acrosscommunications.com__RejectCall">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}RejectCall</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_32_RejectCall_Atomic_output_parameters__http___ws.acrosscommunications.com__RejectCallResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}RejectCallResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Phone_33_GetRouterId_Atomic_input_parameters__http___ws.acrosscommunications.com__GetRouterId">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetRouterId</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Phone_33_GetRouterId_Atomic_output_parameters__http___ws.acrosscommunications.com__GetRouterIdResponse">
+    <process:parameterType>parameters:{http://ws.acrosscommunications.com/}GetRouterIdResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Phone_0_MakeAudioFile_Atomic">
+    <process:hasName>MakeAudioFile</process:hasName>
+    <process:hasInput rdf:resource="#Phone_0_MakeAudioFile_Atomic_input_parameters__http___ws.acrosscommunications.com__MakeAudioFile"/>
+    <process:hasOutput rdf:resource="#Phone_0_MakeAudioFile_Atomic_output_parameters__http___ws.acrosscommunications.com__MakeAudioFileResponse"/>
+    <process:hasPrecondition>The input parameters for the MakeAudioFile operation must be provided in the specified format from http://ws.acrosscommunications.com/.</process:hasPrecondition>
+    <process:hasEffect>The MakeAudioFile operation will generate an audio file and return the output parameters in the specified format from http://ws.acrosscommunications.com/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_1_GetLastMethodDuration_Atomic">
+    <process:hasName>GetLastMethodDuration</process:hasName>
+    <process:hasInput rdf:resource="#Phone_1_GetLastMethodDuration_Atomic_input_parameters__http___ws.acrosscommunications.com__GetLastMethodDuration"/>
+    <process:hasOutput rdf:resource="#Phone_1_GetLastMethodDuration_Atomic_output_parameters__http___ws.acrosscommunications.com__GetLastMethodDurationResponse"/>
+    <process:hasPrecondition>The web service must have a method to retrieve the duration of the last method call.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the duration of the last method call in the response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_2_GetPDDmsec_Atomic">
+    <process:hasName>GetPDDmsec</process:hasName>
+    <process:hasInput rdf:resource="#Phone_2_GetPDDmsec_Atomic_input_parameters__http___ws.acrosscommunications.com__GetPDDmsec"/>
+    <process:hasOutput rdf:resource="#Phone_2_GetPDDmsec_Atomic_output_parameters__http___ws.acrosscommunications.com__GetPDDmsecResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetPDDmsec must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the PDD (Post Dial Delay) in milliseconds.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_3_GetJitterStatistic_Atomic">
+    <process:hasName>GetJitterStatistic</process:hasName>
+    <process:hasInput rdf:resource="#Phone_3_GetJitterStatistic_Atomic_input_parameters__http___ws.acrosscommunications.com__GetJitterStatistic"/>
+    <process:hasOutput rdf:resource="#Phone_3_GetJitterStatistic_Atomic_output_parameters__http___ws.acrosscommunications.com__GetJitterStatisticResponse"/>
+    <process:hasPrecondition>The web service must support the GetJitterStatistic operation with input parameters defined in the {http://ws.acrosscommunications.com/} namespace.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing jitter statistics based on the input parameters provided in the {http://ws.acrosscommunications.com/} namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_4_StartRecordCall_Atomic">
+    <process:hasName>StartRecordCall</process:hasName>
+    <process:hasInput rdf:resource="#Phone_4_StartRecordCall_Atomic_input_parameters__http___ws.acrosscommunications.com__StartRecordCall"/>
+    <process:hasOutput rdf:resource="#Phone_4_StartRecordCall_Atomic_output_parameters__http___ws.acrosscommunications.com__StartRecordCallResponse"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>Initiates the recording of a call as per the specified parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_5_StopRecordCall_Atomic">
+    <process:hasName>StopRecordCall</process:hasName>
+    <process:hasInput rdf:resource="#Phone_5_StopRecordCall_Atomic_input_parameters__http___ws.acrosscommunications.com__StopRecordCall"/>
+    <process:hasOutput rdf:resource="#Phone_5_StopRecordCall_Atomic_output_parameters__http___ws.acrosscommunications.com__StopRecordCallResponse"/>
+    <process:hasPrecondition>The system must be actively recording a call.</process:hasPrecondition>
+    <process:hasEffect>The system stops recording the call and saves the recording.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_6_SetSearchString_Atomic">
+    <process:hasName>SetSearchString</process:hasName>
+    <process:hasInput rdf:resource="#Phone_6_SetSearchString_Atomic_input_parameters__http___ws.acrosscommunications.com__SetSearchString"/>
+    <process:hasOutput rdf:resource="#Phone_6_SetSearchString_Atomic_output_parameters__http___ws.acrosscommunications.com__SetSearchStringResponse"/>
+    <process:hasPrecondition>The input parameter for SetSearchString must be provided in the specified format from http://ws.acrosscommunications.com/.</process:hasPrecondition>
+    <process:hasEffect>The operation SetSearchString will return a response in the specified format from http://ws.acrosscommunications.com/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_7_GetSearchString_Atomic">
+    <process:hasName>GetSearchString</process:hasName>
+    <process:hasInput rdf:resource="#Phone_7_GetSearchString_Atomic_input_parameters__http___ws.acrosscommunications.com__GetSearchString"/>
+    <process:hasOutput rdf:resource="#Phone_7_GetSearchString_Atomic_output_parameters__http___ws.acrosscommunications.com__GetSearchStringResponse"/>
+    <process:hasPrecondition>The input parameters for GetSearchString must be provided in the specified format from http://ws.acrosscommunications.com/.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for GetSearchStringResponse will be returned in the specified format from http://ws.acrosscommunications.com/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_8_Release_Atomic">
+    <process:hasName>Release</process:hasName>
+    <process:hasInput rdf:resource="#Phone_8_Release_Atomic_input_parameters__http___ws.acrosscommunications.com__Release"/>
+    <process:hasOutput rdf:resource="#Phone_8_Release_Atomic_output_parameters__http___ws.acrosscommunications.com__ReleaseResponse"/>
+    <process:hasPrecondition>The system has received a valid request to release a resource.</process:hasPrecondition>
+    <process:hasEffect>The resource is successfully released and a response confirming the release is returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_9_Call_Atomic">
+    <process:hasName>Call</process:hasName>
+    <process:hasInput rdf:resource="#Phone_9_Call_Atomic_input_parameters__http___ws.acrosscommunications.com__Call"/>
+    <process:hasOutput rdf:resource="#Phone_9_Call_Atomic_output_parameters__http___ws.acrosscommunications.com__CallResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for the Call operation must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The Call operation will be executed and a CallResponse will be generated as output in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_10_CallEx_Atomic">
+    <process:hasName>CallEx</process:hasName>
+    <process:hasInput rdf:resource="#Phone_10_CallEx_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx"/>
+    <process:hasOutput rdf:resource="#Phone_10_CallEx_Atomic_output_parameters__http___ws.acrosscommunications.com__CallExResponse"/>
+    <process:hasPrecondition>The input parameters must conform to the schema defined by http://ws.acrosscommunications.com/ for the CallEx operation.</process:hasPrecondition>
+    <process:hasEffect>The output parameters will adhere to the schema defined by http://ws.acrosscommunications.com/ for the CallExResponse operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_11_CallEx2_Atomic">
+    <process:hasName>CallEx2</process:hasName>
+    <process:hasInput rdf:resource="#Phone_11_CallEx2_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx2"/>
+    <process:hasOutput rdf:resource="#Phone_11_CallEx2_Atomic_output_parameters__http___ws.acrosscommunications.com__CallEx2Response"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for CallEx2 must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will execute the CallEx2 operation and return a response in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_12_CallEx3_Atomic">
+    <process:hasName>CallEx3</process:hasName>
+    <process:hasInput rdf:resource="#Phone_12_CallEx3_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx3"/>
+    <process:hasOutput rdf:resource="#Phone_12_CallEx3_Atomic_output_parameters__http___ws.acrosscommunications.com__CallEx3Response"/>
+    <process:hasPrecondition>The web service must be accessible and support the CallEx3 operation with input parameters from http://ws.acrosscommunications.com/.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response with output parameters conforming to the structure defined at http://ws.acrosscommunications.com/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_13_CallEx4_Atomic">
+    <process:hasName>CallEx4</process:hasName>
+    <process:hasInput rdf:resource="#Phone_13_CallEx4_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx4"/>
+    <process:hasOutput rdf:resource="#Phone_13_CallEx4_Atomic_output_parameters__http___ws.acrosscommunications.com__CallEx4Response"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for CallEx4 must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>Upon successful execution, the web service will return a response in the specified format for CallEx4.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_14_CallEx5_Atomic">
+    <process:hasName>CallEx5</process:hasName>
+    <process:hasInput rdf:resource="#Phone_14_CallEx5_Atomic_input_parameters__http___ws.acrosscommunications.com__CallEx5"/>
+    <process:hasOutput rdf:resource="#Phone_14_CallEx5_Atomic_output_parameters__http___ws.acrosscommunications.com__CallEx5Response"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for CallEx5 must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will execute the CallEx5 operation and return a response in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_15_HangUp_Atomic">
+    <process:hasName>HangUp</process:hasName>
+    <process:hasInput rdf:resource="#Phone_15_HangUp_Atomic_input_parameters__http___ws.acrosscommunications.com__HangUp"/>
+    <process:hasOutput rdf:resource="#Phone_15_HangUp_Atomic_output_parameters__http___ws.acrosscommunications.com__HangUpResponse"/>
+    <process:hasPrecondition>The HangUp operation is invoked with the required parameters from the Across Communications web service.</process:hasPrecondition>
+    <process:hasEffect>The HangUp operation successfully completes and returns a response indicating the call has been disconnected.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_16_Say_Atomic">
+    <process:hasName>Say</process:hasName>
+    <process:hasInput rdf:resource="#Phone_16_Say_Atomic_input_parameters__http___ws.acrosscommunications.com__Say"/>
+    <process:hasOutput rdf:resource="#Phone_16_Say_Atomic_output_parameters__http___ws.acrosscommunications.com__SayResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for the Say operation must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The Say operation will be executed and a response containing the output parameters will be returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_17_SayWithDigitEvent_Atomic">
+    <process:hasName>SayWithDigitEvent</process:hasName>
+    <process:hasInput rdf:resource="#Phone_17_SayWithDigitEvent_Atomic_input_parameters__http___ws.acrosscommunications.com__SayWithDigitEvent"/>
+    <process:hasOutput rdf:resource="#Phone_17_SayWithDigitEvent_Atomic_output_parameters__http___ws.acrosscommunications.com__SayWithDigitEventResponse"/>
+    <process:hasPrecondition>The input parameter for SayWithDigitEvent must be provided in the specified format from the Across Communications web service.</process:hasPrecondition>
+    <process:hasEffect>The output parameter for SayWithDigitEventResponse will be returned in the specified format from the Across Communications web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_18_SayWithDigitEventEx_Atomic">
+    <process:hasName>SayWithDigitEventEx</process:hasName>
+    <process:hasInput rdf:resource="#Phone_18_SayWithDigitEventEx_Atomic_input_parameters__http___ws.acrosscommunications.com__SayWithDigitEventEx"/>
+    <process:hasOutput rdf:resource="#Phone_18_SayWithDigitEventEx_Atomic_output_parameters__http___ws.acrosscommunications.com__SayWithDigitEventExResponse"/>
+    <process:hasPrecondition>The input parameters for the SayWithDigitEventEx operation must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for the SayWithDigitEventEx operation will be returned in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_19_Prepare_Atomic">
+    <process:hasName>Prepare</process:hasName>
+    <process:hasInput rdf:resource="#Phone_19_Prepare_Atomic_input_parameters__http___ws.acrosscommunications.com__Prepare"/>
+    <process:hasOutput rdf:resource="#Phone_19_Prepare_Atomic_output_parameters__http___ws.acrosscommunications.com__PrepareResponse"/>
+    <process:hasPrecondition>The input parameters for the Prepare operation must be provided in the specified format from the Across Communications web service.</process:hasPrecondition>
+    <process:hasEffect>The output parameters in the PrepareResponse format will be generated after the Prepare operation is successfully executed.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_20_PrepareWebLink_Atomic">
+    <process:hasName>PrepareWebLink</process:hasName>
+    <process:hasInput rdf:resource="#Phone_20_PrepareWebLink_Atomic_input_parameters__http___ws.acrosscommunications.com__PrepareWebLink"/>
+    <process:hasOutput rdf:resource="#Phone_20_PrepareWebLink_Atomic_output_parameters__http___ws.acrosscommunications.com__PrepareWebLinkResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the PrepareWebLink parameters must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The PrepareWebLink operation will be executed and a response containing the PrepareWebLink parameters will be returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_21_PlayFile_Atomic">
+    <process:hasName>PlayFile</process:hasName>
+    <process:hasInput rdf:resource="#Phone_21_PlayFile_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayFile"/>
+    <process:hasOutput rdf:resource="#Phone_21_PlayFile_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayFileResponse"/>
+    <process:hasPrecondition>The PlayFile operation must be called with the required parameters from the specified namespace.</process:hasPrecondition>
+    <process:hasEffect>The PlayFile operation will return a response containing the specified parameters from the designated namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_22_PlayFileWithDigitEvent_Atomic">
+    <process:hasName>PlayFileWithDigitEvent</process:hasName>
+    <process:hasInput rdf:resource="#Phone_22_PlayFileWithDigitEvent_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayFileWithDigitEvent"/>
+    <process:hasOutput rdf:resource="#Phone_22_PlayFileWithDigitEvent_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayFileWithDigitEventResponse"/>
+    <process:hasPrecondition>The input parameters must adhere to the PlayFileWithDigitEvent schema defined at http://ws.acrosscommunications.com/.</process:hasPrecondition>
+    <process:hasEffect>The operation will return output parameters conforming to the PlayFileWithDigitEventResponse schema specified at http://ws.acrosscommunications.com/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_23_PlayFileWithDigitEventEx_Atomic">
+    <process:hasName>PlayFileWithDigitEventEx</process:hasName>
+    <process:hasInput rdf:resource="#Phone_23_PlayFileWithDigitEventEx_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayFileWithDigitEventEx"/>
+    <process:hasOutput rdf:resource="#Phone_23_PlayFileWithDigitEventEx_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayFileWithDigitEventExResponse"/>
+    <process:hasPrecondition>The input parameters for playing a file with a digit event must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will play the specified file with the digit event and return the response in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_24_PlayDigits_Atomic">
+    <process:hasName>PlayDigits</process:hasName>
+    <process:hasInput rdf:resource="#Phone_24_PlayDigits_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayDigits"/>
+    <process:hasOutput rdf:resource="#Phone_24_PlayDigits_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayDigitsResponse"/>
+    <process:hasPrecondition>The web service must receive a valid request containing parameters for playing digits from the specified endpoint.</process:hasPrecondition>
+    <process:hasEffect>The web service will process the request and return a response containing the played digits.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_25_WaitDigits_Atomic">
+    <process:hasName>WaitDigits</process:hasName>
+    <process:hasInput rdf:resource="#Phone_25_WaitDigits_Atomic_input_parameters__http___ws.acrosscommunications.com__WaitDigits"/>
+    <process:hasOutput rdf:resource="#Phone_25_WaitDigits_Atomic_output_parameters__http___ws.acrosscommunications.com__WaitDigitsResponse"/>
+    <process:hasPrecondition>The system is actively waiting for a specified number of digits to be entered by the user.</process:hasPrecondition>
+    <process:hasEffect>The system will respond with a confirmation message once the specified number of digits has been successfully entered.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_26_WaitDigitsEx_Atomic">
+    <process:hasName>WaitDigitsEx</process:hasName>
+    <process:hasInput rdf:resource="#Phone_26_WaitDigitsEx_Atomic_input_parameters__http___ws.acrosscommunications.com__WaitDigitsEx"/>
+    <process:hasOutput rdf:resource="#Phone_26_WaitDigitsEx_Atomic_output_parameters__http___ws.acrosscommunications.com__WaitDigitsExResponse"/>
+    <process:hasPrecondition>The system is actively waiting for user input to receive a specific number of digits.</process:hasPrecondition>
+    <process:hasEffect>The system will respond with the collected digits once the required number has been entered by the user.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_27_GetDigitsFromBuffer_Atomic">
+    <process:hasName>GetDigitsFromBuffer</process:hasName>
+    <process:hasInput rdf:resource="#Phone_27_GetDigitsFromBuffer_Atomic_input_parameters__http___ws.acrosscommunications.com__GetDigitsFromBuffer"/>
+    <process:hasOutput rdf:resource="#Phone_27_GetDigitsFromBuffer_Atomic_output_parameters__http___ws.acrosscommunications.com__GetDigitsFromBufferResponse"/>
+    <process:hasPrecondition>The input parameters for GetDigitsFromBuffer must be provided in the specified format from http://ws.acrosscommunications.com/.</process:hasPrecondition>
+    <process:hasEffect>The output response for GetDigitsFromBuffer will be returned in the specified format from http://ws.acrosscommunications.com/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_28_ClearDigitsFromBuffer_Atomic">
+    <process:hasName>ClearDigitsFromBuffer</process:hasName>
+    <process:hasInput rdf:resource="#Phone_28_ClearDigitsFromBuffer_Atomic_input_parameters__http___ws.acrosscommunications.com__ClearDigitsFromBuffer"/>
+    <process:hasOutput rdf:resource="#Phone_28_ClearDigitsFromBuffer_Atomic_output_parameters__http___ws.acrosscommunications.com__ClearDigitsFromBufferResponse"/>
+    <process:hasPrecondition>The web service buffer contains digits that need to be cleared.</process:hasPrecondition>
+    <process:hasEffect>The digits are removed from the buffer in the web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_29_Record_Atomic">
+    <process:hasName>Record</process:hasName>
+    <process:hasInput rdf:resource="#Phone_29_Record_Atomic_input_parameters__http___ws.acrosscommunications.com__Record"/>
+    <process:hasOutput rdf:resource="#Phone_29_Record_Atomic_output_parameters__http___ws.acrosscommunications.com__RecordResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters must conform to the expected structure defined by the {http://ws.acrosscommunications.com/}Record schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will store the provided record data and return a response confirming the successful recording.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_30_PlayFileWithRecording_Atomic">
+    <process:hasName>PlayFileWithRecording</process:hasName>
+    <process:hasInput rdf:resource="#Phone_30_PlayFileWithRecording_Atomic_input_parameters__http___ws.acrosscommunications.com__PlayFileWithRecording"/>
+    <process:hasOutput rdf:resource="#Phone_30_PlayFileWithRecording_Atomic_output_parameters__http___ws.acrosscommunications.com__PlayFileWithRecordingResponse"/>
+    <process:hasPrecondition>The input parameters must conform to the {http://ws.acrosscommunications.com/}PlayFileWithRecording schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will play the specified file with recording and return the response according to the {http://ws.acrosscommunications.com/}PlayFileWithRecordingResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_31_AcceptCall_Atomic">
+    <process:hasName>AcceptCall</process:hasName>
+    <process:hasInput rdf:resource="#Phone_31_AcceptCall_Atomic_input_parameters__http___ws.acrosscommunications.com__AcceptCall"/>
+    <process:hasOutput rdf:resource="#Phone_31_AcceptCall_Atomic_output_parameters__http___ws.acrosscommunications.com__AcceptCallResponse"/>
+    <process:hasPrecondition>The AcceptCall operation can only be invoked if there is an incoming call to be accepted.</process:hasPrecondition>
+    <process:hasEffect>AcceptCall operation will respond with an AcceptCallResponse indicating that the call has been accepted.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_32_RejectCall_Atomic">
+    <process:hasName>RejectCall</process:hasName>
+    <process:hasInput rdf:resource="#Phone_32_RejectCall_Atomic_input_parameters__http___ws.acrosscommunications.com__RejectCall"/>
+    <process:hasOutput rdf:resource="#Phone_32_RejectCall_Atomic_output_parameters__http___ws.acrosscommunications.com__RejectCallResponse"/>
+    <process:hasPrecondition>The incoming call must be identified and available for rejection.</process:hasPrecondition>
+    <process:hasEffect>The incoming call is rejected and a response indicating the rejection is sent.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Phone_33_GetRouterId_Atomic">
+    <process:hasName>GetRouterId</process:hasName>
+    <process:hasInput rdf:resource="#Phone_33_GetRouterId_Atomic_input_parameters__http___ws.acrosscommunications.com__GetRouterId"/>
+    <process:hasOutput rdf:resource="#Phone_33_GetRouterId_Atomic_output_parameters__http___ws.acrosscommunications.com__GetRouterIdResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetRouterId must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the router ID in the specified response format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Phone_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_0_MakeAudioFile_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_1_GetLastMethodDuration_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_2_GetPDDmsec_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_3_GetJitterStatistic_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_4_StartRecordCall_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_5_StopRecordCall_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_6_SetSearchString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_7_GetSearchString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_8_Release_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_9_Call_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_10_CallEx_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_11_CallEx2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_12_CallEx3_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_13_CallEx4_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_14_CallEx5_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_15_HangUp_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_16_Say_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_17_SayWithDigitEvent_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_18_SayWithDigitEventEx_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_19_Prepare_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_20_PrepareWebLink_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_21_PlayFile_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_22_PlayFileWithDigitEvent_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_23_PlayFileWithDigitEventEx_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_24_PlayDigits_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_25_WaitDigits_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_26_WaitDigitsEx_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_27_GetDigitsFromBuffer_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_28_ClearDigitsFromBuffer_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_29_Record_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_30_PlayFileWithRecording_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_31_AcceptCall_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_32_RejectCall_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Phone_33_GetRouterId_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_0_MakeAudioFile_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_0_MakeAudioFile_Atomic"/>
+    <grounding:wsdlOperationName>MakeAudioFile</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>MakeAudioFileSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>MakeAudioFileSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_1_GetLastMethodDuration_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_1_GetLastMethodDuration_Atomic"/>
+    <grounding:wsdlOperationName>GetLastMethodDuration</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastMethodDurationSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastMethodDurationSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_2_GetPDDmsec_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_2_GetPDDmsec_Atomic"/>
+    <grounding:wsdlOperationName>GetPDDmsec</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetPDDmsecSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetPDDmsecSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_3_GetJitterStatistic_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_3_GetJitterStatistic_Atomic"/>
+    <grounding:wsdlOperationName>GetJitterStatistic</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetJitterStatisticSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetJitterStatisticSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_4_StartRecordCall_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_4_StartRecordCall_Atomic"/>
+    <grounding:wsdlOperationName>StartRecordCall</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>StartRecordCallSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>StartRecordCallSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_5_StopRecordCall_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_5_StopRecordCall_Atomic"/>
+    <grounding:wsdlOperationName>StopRecordCall</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>StopRecordCallSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>StopRecordCallSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_6_SetSearchString_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_6_SetSearchString_Atomic"/>
+    <grounding:wsdlOperationName>SetSearchString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SetSearchStringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SetSearchStringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_7_GetSearchString_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_7_GetSearchString_Atomic"/>
+    <grounding:wsdlOperationName>GetSearchString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSearchStringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSearchStringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_8_Release_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_8_Release_Atomic"/>
+    <grounding:wsdlOperationName>Release</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReleaseSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReleaseSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_9_Call_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_9_Call_Atomic"/>
+    <grounding:wsdlOperationName>Call</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CallSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CallSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_10_CallEx_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_10_CallEx_Atomic"/>
+    <grounding:wsdlOperationName>CallEx</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CallExSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CallExSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_11_CallEx2_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_11_CallEx2_Atomic"/>
+    <grounding:wsdlOperationName>CallEx2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CallEx2SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CallEx2SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_12_CallEx3_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_12_CallEx3_Atomic"/>
+    <grounding:wsdlOperationName>CallEx3</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CallEx3SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CallEx3SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_13_CallEx4_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_13_CallEx4_Atomic"/>
+    <grounding:wsdlOperationName>CallEx4</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CallEx4SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CallEx4SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_14_CallEx5_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_14_CallEx5_Atomic"/>
+    <grounding:wsdlOperationName>CallEx5</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CallEx5SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CallEx5SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_15_HangUp_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_15_HangUp_Atomic"/>
+    <grounding:wsdlOperationName>HangUp</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>HangUpSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>HangUpSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_16_Say_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_16_Say_Atomic"/>
+    <grounding:wsdlOperationName>Say</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SaySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SaySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_17_SayWithDigitEvent_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_17_SayWithDigitEvent_Atomic"/>
+    <grounding:wsdlOperationName>SayWithDigitEvent</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SayWithDigitEventSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SayWithDigitEventSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_18_SayWithDigitEventEx_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_18_SayWithDigitEventEx_Atomic"/>
+    <grounding:wsdlOperationName>SayWithDigitEventEx</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SayWithDigitEventExSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SayWithDigitEventExSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_19_Prepare_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_19_Prepare_Atomic"/>
+    <grounding:wsdlOperationName>Prepare</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PrepareSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PrepareSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_20_PrepareWebLink_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_20_PrepareWebLink_Atomic"/>
+    <grounding:wsdlOperationName>PrepareWebLink</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PrepareWebLinkSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PrepareWebLinkSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_21_PlayFile_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_21_PlayFile_Atomic"/>
+    <grounding:wsdlOperationName>PlayFile</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PlayFileSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PlayFileSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_22_PlayFileWithDigitEvent_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_22_PlayFileWithDigitEvent_Atomic"/>
+    <grounding:wsdlOperationName>PlayFileWithDigitEvent</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PlayFileWithDigitEventSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PlayFileWithDigitEventSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_23_PlayFileWithDigitEventEx_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_23_PlayFileWithDigitEventEx_Atomic"/>
+    <grounding:wsdlOperationName>PlayFileWithDigitEventEx</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PlayFileWithDigitEventExSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PlayFileWithDigitEventExSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_24_PlayDigits_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_24_PlayDigits_Atomic"/>
+    <grounding:wsdlOperationName>PlayDigits</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PlayDigitsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PlayDigitsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_25_WaitDigits_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_25_WaitDigits_Atomic"/>
+    <grounding:wsdlOperationName>WaitDigits</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>WaitDigitsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>WaitDigitsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_26_WaitDigitsEx_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_26_WaitDigitsEx_Atomic"/>
+    <grounding:wsdlOperationName>WaitDigitsEx</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>WaitDigitsExSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>WaitDigitsExSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_27_GetDigitsFromBuffer_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_27_GetDigitsFromBuffer_Atomic"/>
+    <grounding:wsdlOperationName>GetDigitsFromBuffer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDigitsFromBufferSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDigitsFromBufferSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_28_ClearDigitsFromBuffer_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_28_ClearDigitsFromBuffer_Atomic"/>
+    <grounding:wsdlOperationName>ClearDigitsFromBuffer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ClearDigitsFromBufferSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ClearDigitsFromBufferSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_29_Record_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_29_Record_Atomic"/>
+    <grounding:wsdlOperationName>Record</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RecordSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RecordSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_30_PlayFileWithRecording_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_30_PlayFileWithRecording_Atomic"/>
+    <grounding:wsdlOperationName>PlayFileWithRecording</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PlayFileWithRecordingSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PlayFileWithRecordingSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_31_AcceptCall_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_31_AcceptCall_Atomic"/>
+    <grounding:wsdlOperationName>AcceptCall</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AcceptCallSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AcceptCallSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_32_RejectCall_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_32_RejectCall_Atomic"/>
+    <grounding:wsdlOperationName>RejectCall</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RejectCallSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RejectCallSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Phone_33_GetRouterId_Grounding">
+    <grounding:owlsProcess rdf:resource="#Phone_33_GetRouterId_Atomic"/>
+    <grounding:wsdlOperationName>GetRouterId</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PhoneSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PhoneSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1870_Phone.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRouterIdSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRouterIdSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

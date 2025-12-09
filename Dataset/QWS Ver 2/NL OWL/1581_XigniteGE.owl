@@ -1,0 +1,893 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="XigniteGE">
+    <service:presents rdf:resource="#XigniteGE_Profile"/>
+    <service:describedBy rdf:resource="#XigniteGE_Composite"/>
+    <service:supports rdf:resource="#XigniteGE_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="XigniteGE_Profile">
+    <profile:serviceName>XigniteGE</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#XigniteGE"/>
+    <profile:hasProcess rdf:resource="#XigniteGE_0_GetLastH15Rate_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_0_GetLastH15Rate_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_0_GetLastH15Rate_Atomic_output_Body__http___www.xignite.com_services__InterestRate"/>
+    <profile:hasPrecondition>The web service must be accessible and the Type input parameter must be a valid string.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the last 15-minute interest rate as specified in the Body output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_1_GetLastWSJRate_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_1_GetLastWSJRate_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_1_GetLastWSJRate_Atomic_output_Body__http___www.xignite.com_services__WSJRate"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameter Type must be a valid string value.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the latest Wall Street Journal rate in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_2_GetLastWSJRateByMaturity_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_2_GetLastWSJRateByMaturity_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteGE_2_GetLastWSJRateByMaturity_Atomic_input_Maturity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_2_GetLastWSJRateByMaturity_Atomic_output_Body__http___www.xignite.com_services__WSJRate"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters Type and Maturity must be valid strings.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the latest Wall Street Journal rate corresponding to the provided Maturity.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_3_GetLastWSJRateByDescription_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_3_GetLastWSJRateByDescription_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteGE_3_GetLastWSJRateByDescription_Atomic_input_Description__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_3_GetLastWSJRateByDescription_Atomic_output_Body__http___www.xignite.com_services__WSJRate"/>
+    <profile:hasPrecondition>The web service must be accessible and the Description parameter must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the latest Wall Street Journal rate corresponding to the provided Description.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_4_GetWSJRates_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_4_GetWSJRates_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_4_GetWSJRates_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate"/>
+    <profile:hasPrecondition>The input AsOfDate must be a valid date string in the format specified by the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of WSJ rates corresponding to the provided AsOfDate.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_5_GetWSJRatesTest_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_5_GetWSJRatesTest_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_5_GetWSJRatesTest_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate"/>
+    <profile:hasPrecondition>The input parameter AsOfDate must be a valid date string in the format specified by the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of WSJ rates corresponding to the provided AsOfDate.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_6_GetH15Rates_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_6_GetH15Rates_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_6_GetH15Rates_Atomic_output_Body__http___www.xignite.com_services__ArrayOfInterestRate"/>
+    <profile:hasPrecondition>The AsOfDate parameter must be provided in the format specified by the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of interest rates corresponding to the provided AsOfDate.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_7_GetH15Rates1_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_7_GetH15Rates1_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_7_GetH15Rates1_Atomic_output_Body__http___www.xignite.com_services__ArrayOfInterestRate"/>
+    <profile:hasPrecondition>The input AsOfDate must be a valid date in the format specified by the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of interest rates corresponding to the provided AsOfDate.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_8_GetWSJRates1_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_8_GetWSJRates1_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_8_GetWSJRates1_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate"/>
+    <profile:hasPrecondition>The input parameter AsOfDate must be a valid date string in the format specified by the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of WSJ rates corresponding to the provided AsOfDate.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_9_GetLastH15Rate_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_9_GetLastH15Rate_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_9_GetLastH15Rate_Atomic_output_Body__http___www.xignite.com_services__InterestRate"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameter Type must be a valid string value.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the latest 15-minute interest rate as specified in the output body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_10_GetLastWSJRate_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_10_GetLastWSJRate_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_10_GetLastWSJRate_Atomic_output_Body__http___www.xignite.com_services__WSJRate"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameter Type must be a valid string value.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the latest Wall Street Journal (WSJ) rate in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_11_GetLastWSJRateByMaturity_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_11_GetLastWSJRateByMaturity_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteGE_11_GetLastWSJRateByMaturity_Atomic_input_Maturity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_11_GetLastWSJRateByMaturity_Atomic_output_Body__http___www.xignite.com_services__WSJRate"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters Type and Maturity must be valid strings.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the latest Wall Street Journal rate corresponding to the provided Maturity.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_12_GetLastWSJRateByDescription_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_12_GetLastWSJRateByDescription_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#XigniteGE_12_GetLastWSJRateByDescription_Atomic_input_Description__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_12_GetLastWSJRateByDescription_Atomic_output_Body__http___www.xignite.com_services__WSJRate"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters Type and Description must be valid strings.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the latest Wall Street Journal rate corresponding to the provided Description.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_13_GetWSJRates_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_13_GetWSJRates_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_13_GetWSJRates_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate"/>
+    <profile:hasPrecondition>The input AsOfDate must be provided in the format specified by the XML Schema Definition for strings.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of WSJ rates based on the provided AsOfDate.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_14_GetWSJRatesTest_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_14_GetWSJRatesTest_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_14_GetWSJRatesTest_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate"/>
+    <profile:hasPrecondition>The input parameter AsOfDate must be a valid date string in the format specified by the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of WSJ rates corresponding to the provided AsOfDate.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_15_GetH15Rates_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_15_GetH15Rates_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_15_GetH15Rates_Atomic_output_Body__http___www.xignite.com_services__ArrayOfInterestRate"/>
+    <profile:hasPrecondition>The input AsOfDate must be a valid date in the format specified by the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of interest rates corresponding to the provided AsOfDate.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_16_GetH15Rates1_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_16_GetH15Rates1_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_16_GetH15Rates1_Atomic_output_Body__http___www.xignite.com_services__ArrayOfInterestRate"/>
+    <profile:hasPrecondition>The input AsOfDate must be a valid date in the format specified by the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of interest rates corresponding to the specified AsOfDate.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_17_GetWSJRates1_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_17_GetWSJRates1_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_17_GetWSJRates1_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate"/>
+    <profile:hasPrecondition>The input parameter AsOfDate must be a valid date string in the format specified by the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation GetWSJRates1 will return an array of WSJ rates corresponding to the provided AsOfDate.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_18_GetLastH15Rate_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_18_GetLastH15Rate_Atomic_input_parameters__http___www.xignite.com_services__GetLastH15Rate"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_18_GetLastH15Rate_Atomic_output_parameters__http___www.xignite.com_services__GetLastH15RateResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetLastH15Rate must be valid.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the last 15-minute rate as specified in the GetLastH15RateResponse output parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_19_GetLastWSJRate_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_19_GetLastWSJRate_Atomic_input_parameters__http___www.xignite.com_services__GetLastWSJRate"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_19_GetLastWSJRate_Atomic_output_parameters__http___www.xignite.com_services__GetLastWSJRateResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetLastWSJRate must be valid.</profile:hasPrecondition>
+    <profile:hasResult>The response will contain the latest Wall Street Journal rate information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_20_GetLastWSJRateByMaturity_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_20_GetLastWSJRateByMaturity_Atomic_input_parameters__http___www.xignite.com_services__GetLastWSJRateByMaturity"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_20_GetLastWSJRateByMaturity_Atomic_output_parameters__http___www.xignite.com_services__GetLastWSJRateByMaturityResponse"/>
+    <profile:hasPrecondition>The web service must have access to the latest Wall Street Journal rate data by maturity.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the last Wall Street Journal rate based on the specified maturity.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_21_GetLastWSJRateByDescription_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_21_GetLastWSJRateByDescription_Atomic_input_parameters__http___www.xignite.com_services__GetLastWSJRateByDescription"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_21_GetLastWSJRateByDescription_Atomic_output_parameters__http___www.xignite.com_services__GetLastWSJRateByDescriptionResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameter must be a valid description for the last Wall Street Journal rate.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the last Wall Street Journal rate corresponding to the provided description.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_22_GetWSJRates_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_22_GetWSJRates_Atomic_input_parameters__http___www.xignite.com_services__GetWSJRates"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_22_GetWSJRates_Atomic_output_parameters__http___www.xignite.com_services__GetWSJRatesResponse"/>
+    <profile:hasPrecondition>The user must provide valid parameters for the GetWSJRates operation from the Xignite web service.</profile:hasPrecondition>
+    <profile:hasResult>The system will return a response containing the rates from The Wall Street Journal obtained through the Xignite web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_23_GetWSJRatesTest_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_23_GetWSJRatesTest_Atomic_input_parameters__http___www.xignite.com_services__GetWSJRatesTest"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_23_GetWSJRatesTest_Atomic_output_parameters__http___www.xignite.com_services__GetWSJRatesTestResponse"/>
+    <profile:hasPrecondition>The web service endpoint for GetWSJRatesTest is accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>GetWSJRatesTest successfully retrieves and returns the latest rates from The Wall Street Journal.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_24_GetH15Rates_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_24_GetH15Rates_Atomic_input_parameters__http___www.xignite.com_services__GetH15Rates"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_24_GetH15Rates_Atomic_output_parameters__http___www.xignite.com_services__GetH15RatesResponse"/>
+    <profile:hasPrecondition>The client must provide valid parameters in the specified format for the GetH15Rates operation.</profile:hasPrecondition>
+    <profile:hasResult>The server will return a response in the specified format containing the H15 rates data.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_25_GetH15Rates1_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_25_GetH15Rates1_Atomic_input_parameters__http___www.xignite.com_services__GetH15Rates1"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_25_GetH15Rates1_Atomic_output_parameters__http___www.xignite.com_services__GetH15Rates1Response"/>
+    <profile:hasPrecondition>The web service endpoint for GetH15Rates1 is accessible and the required input parameters are correctly formatted.</profile:hasPrecondition>
+    <profile:hasResult>The GetH15Rates1Response containing the requested H.15 rates data is returned successfully.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XigniteGE_26_GetWSJRates1_Atomic"/>
+    <profile:hasInput rdf:resource="#XigniteGE_26_GetWSJRates1_Atomic_input_parameters__http___www.xignite.com_services__GetWSJRates1"/>
+    <profile:hasOutput rdf:resource="#XigniteGE_26_GetWSJRates1_Atomic_output_parameters__http___www.xignite.com_services__GetWSJRates1Response"/>
+    <profile:hasPrecondition>The web service endpoint for GetWSJRates1 is accessible and the input parameters conform to the specified schema.</profile:hasPrecondition>
+    <profile:hasResult>The response containing the requested rates is returned in the specified format.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="XigniteGE_Composite">
+    <process:composedOf rdf:resource="#XigniteGE_0_GetLastH15Rate_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_1_GetLastWSJRate_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_2_GetLastWSJRateByMaturity_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_3_GetLastWSJRateByDescription_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_4_GetWSJRates_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_5_GetWSJRatesTest_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_6_GetH15Rates_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_7_GetH15Rates1_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_8_GetWSJRates1_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_9_GetLastH15Rate_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_10_GetLastWSJRate_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_11_GetLastWSJRateByMaturity_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_12_GetLastWSJRateByDescription_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_13_GetWSJRates_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_14_GetWSJRatesTest_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_15_GetH15Rates_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_16_GetH15Rates1_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_17_GetWSJRates1_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_18_GetLastH15Rate_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_19_GetLastWSJRate_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_20_GetLastWSJRateByMaturity_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_21_GetLastWSJRateByDescription_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_22_GetWSJRates_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_23_GetWSJRatesTest_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_24_GetH15Rates_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_25_GetH15Rates1_Atomic"/>
+    <process:composedOf rdf:resource="#XigniteGE_26_GetWSJRates1_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="XigniteGE_0_GetLastH15Rate_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_0_GetLastH15Rate_Atomic_output_Body__http___www.xignite.com_services__InterestRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}InterestRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_1_GetLastWSJRate_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_1_GetLastWSJRate_Atomic_output_Body__http___www.xignite.com_services__WSJRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}WSJRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_2_GetLastWSJRateByMaturity_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteGE_2_GetLastWSJRateByMaturity_Atomic_input_Maturity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Maturity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_2_GetLastWSJRateByMaturity_Atomic_output_Body__http___www.xignite.com_services__WSJRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}WSJRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_3_GetLastWSJRateByDescription_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteGE_3_GetLastWSJRateByDescription_Atomic_input_Description__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Description:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_3_GetLastWSJRateByDescription_Atomic_output_Body__http___www.xignite.com_services__WSJRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}WSJRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_4_GetWSJRates_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AsOfDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_4_GetWSJRates_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfWSJRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_5_GetWSJRatesTest_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AsOfDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_5_GetWSJRatesTest_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfWSJRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_6_GetH15Rates_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AsOfDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_6_GetH15Rates_Atomic_output_Body__http___www.xignite.com_services__ArrayOfInterestRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfInterestRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_7_GetH15Rates1_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AsOfDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_7_GetH15Rates1_Atomic_output_Body__http___www.xignite.com_services__ArrayOfInterestRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfInterestRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_8_GetWSJRates1_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AsOfDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_8_GetWSJRates1_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfWSJRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_9_GetLastH15Rate_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_9_GetLastH15Rate_Atomic_output_Body__http___www.xignite.com_services__InterestRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}InterestRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_10_GetLastWSJRate_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_10_GetLastWSJRate_Atomic_output_Body__http___www.xignite.com_services__WSJRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}WSJRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_11_GetLastWSJRateByMaturity_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteGE_11_GetLastWSJRateByMaturity_Atomic_input_Maturity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Maturity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_11_GetLastWSJRateByMaturity_Atomic_output_Body__http___www.xignite.com_services__WSJRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}WSJRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_12_GetLastWSJRateByDescription_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="XigniteGE_12_GetLastWSJRateByDescription_Atomic_input_Description__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Description:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_12_GetLastWSJRateByDescription_Atomic_output_Body__http___www.xignite.com_services__WSJRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}WSJRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_13_GetWSJRates_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AsOfDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_13_GetWSJRates_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfWSJRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_14_GetWSJRatesTest_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AsOfDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_14_GetWSJRatesTest_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfWSJRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_15_GetH15Rates_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AsOfDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_15_GetH15Rates_Atomic_output_Body__http___www.xignite.com_services__ArrayOfInterestRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfInterestRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_16_GetH15Rates1_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AsOfDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_16_GetH15Rates1_Atomic_output_Body__http___www.xignite.com_services__ArrayOfInterestRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfInterestRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_17_GetWSJRates1_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AsOfDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_17_GetWSJRates1_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate">
+    <process:parameterType>Body:{http://www.xignite.com/services/}ArrayOfWSJRate</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_18_GetLastH15Rate_Atomic_input_parameters__http___www.xignite.com_services__GetLastH15Rate">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetLastH15Rate</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_18_GetLastH15Rate_Atomic_output_parameters__http___www.xignite.com_services__GetLastH15RateResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetLastH15RateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_19_GetLastWSJRate_Atomic_input_parameters__http___www.xignite.com_services__GetLastWSJRate">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetLastWSJRate</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_19_GetLastWSJRate_Atomic_output_parameters__http___www.xignite.com_services__GetLastWSJRateResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetLastWSJRateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_20_GetLastWSJRateByMaturity_Atomic_input_parameters__http___www.xignite.com_services__GetLastWSJRateByMaturity">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetLastWSJRateByMaturity</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_20_GetLastWSJRateByMaturity_Atomic_output_parameters__http___www.xignite.com_services__GetLastWSJRateByMaturityResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetLastWSJRateByMaturityResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_21_GetLastWSJRateByDescription_Atomic_input_parameters__http___www.xignite.com_services__GetLastWSJRateByDescription">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetLastWSJRateByDescription</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_21_GetLastWSJRateByDescription_Atomic_output_parameters__http___www.xignite.com_services__GetLastWSJRateByDescriptionResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetLastWSJRateByDescriptionResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_22_GetWSJRates_Atomic_input_parameters__http___www.xignite.com_services__GetWSJRates">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetWSJRates</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_22_GetWSJRates_Atomic_output_parameters__http___www.xignite.com_services__GetWSJRatesResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetWSJRatesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_23_GetWSJRatesTest_Atomic_input_parameters__http___www.xignite.com_services__GetWSJRatesTest">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetWSJRatesTest</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_23_GetWSJRatesTest_Atomic_output_parameters__http___www.xignite.com_services__GetWSJRatesTestResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetWSJRatesTestResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_24_GetH15Rates_Atomic_input_parameters__http___www.xignite.com_services__GetH15Rates">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetH15Rates</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_24_GetH15Rates_Atomic_output_parameters__http___www.xignite.com_services__GetH15RatesResponse">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetH15RatesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_25_GetH15Rates1_Atomic_input_parameters__http___www.xignite.com_services__GetH15Rates1">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetH15Rates1</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_25_GetH15Rates1_Atomic_output_parameters__http___www.xignite.com_services__GetH15Rates1Response">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetH15Rates1Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XigniteGE_26_GetWSJRates1_Atomic_input_parameters__http___www.xignite.com_services__GetWSJRates1">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetWSJRates1</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XigniteGE_26_GetWSJRates1_Atomic_output_parameters__http___www.xignite.com_services__GetWSJRates1Response">
+    <process:parameterType>parameters:{http://www.xignite.com/services/}GetWSJRates1Response</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_0_GetLastH15Rate_Atomic">
+    <process:hasName>GetLastH15Rate</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_0_GetLastH15Rate_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_0_GetLastH15Rate_Atomic_output_Body__http___www.xignite.com_services__InterestRate"/>
+    <process:hasPrecondition>The web service must be accessible and the Type input parameter must be a valid string.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the last 15-minute interest rate as specified in the Body output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_1_GetLastWSJRate_Atomic">
+    <process:hasName>GetLastWSJRate</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_1_GetLastWSJRate_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_1_GetLastWSJRate_Atomic_output_Body__http___www.xignite.com_services__WSJRate"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameter Type must be a valid string value.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the latest Wall Street Journal rate in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_2_GetLastWSJRateByMaturity_Atomic">
+    <process:hasName>GetLastWSJRateByMaturity</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_2_GetLastWSJRateByMaturity_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteGE_2_GetLastWSJRateByMaturity_Atomic_input_Maturity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_2_GetLastWSJRateByMaturity_Atomic_output_Body__http___www.xignite.com_services__WSJRate"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters Type and Maturity must be valid strings.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the latest Wall Street Journal rate corresponding to the provided Maturity.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_3_GetLastWSJRateByDescription_Atomic">
+    <process:hasName>GetLastWSJRateByDescription</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_3_GetLastWSJRateByDescription_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteGE_3_GetLastWSJRateByDescription_Atomic_input_Description__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_3_GetLastWSJRateByDescription_Atomic_output_Body__http___www.xignite.com_services__WSJRate"/>
+    <process:hasPrecondition>The web service must be accessible and the Description parameter must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the latest Wall Street Journal rate corresponding to the provided Description.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_4_GetWSJRates_Atomic">
+    <process:hasName>GetWSJRates</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_4_GetWSJRates_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_4_GetWSJRates_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate"/>
+    <process:hasPrecondition>The input AsOfDate must be a valid date string in the format specified by the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of WSJ rates corresponding to the provided AsOfDate.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_5_GetWSJRatesTest_Atomic">
+    <process:hasName>GetWSJRatesTest</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_5_GetWSJRatesTest_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_5_GetWSJRatesTest_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate"/>
+    <process:hasPrecondition>The input parameter AsOfDate must be a valid date string in the format specified by the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of WSJ rates corresponding to the provided AsOfDate.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_6_GetH15Rates_Atomic">
+    <process:hasName>GetH15Rates</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_6_GetH15Rates_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_6_GetH15Rates_Atomic_output_Body__http___www.xignite.com_services__ArrayOfInterestRate"/>
+    <process:hasPrecondition>The AsOfDate parameter must be provided in the format specified by the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of interest rates corresponding to the provided AsOfDate.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_7_GetH15Rates1_Atomic">
+    <process:hasName>GetH15Rates1</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_7_GetH15Rates1_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_7_GetH15Rates1_Atomic_output_Body__http___www.xignite.com_services__ArrayOfInterestRate"/>
+    <process:hasPrecondition>The input AsOfDate must be a valid date in the format specified by the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of interest rates corresponding to the provided AsOfDate.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_8_GetWSJRates1_Atomic">
+    <process:hasName>GetWSJRates1</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_8_GetWSJRates1_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_8_GetWSJRates1_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate"/>
+    <process:hasPrecondition>The input parameter AsOfDate must be a valid date string in the format specified by the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of WSJ rates corresponding to the provided AsOfDate.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_9_GetLastH15Rate_Atomic">
+    <process:hasName>GetLastH15Rate</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_9_GetLastH15Rate_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_9_GetLastH15Rate_Atomic_output_Body__http___www.xignite.com_services__InterestRate"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameter Type must be a valid string value.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the latest 15-minute interest rate as specified in the output body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_10_GetLastWSJRate_Atomic">
+    <process:hasName>GetLastWSJRate</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_10_GetLastWSJRate_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_10_GetLastWSJRate_Atomic_output_Body__http___www.xignite.com_services__WSJRate"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameter Type must be a valid string value.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the latest Wall Street Journal (WSJ) rate in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_11_GetLastWSJRateByMaturity_Atomic">
+    <process:hasName>GetLastWSJRateByMaturity</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_11_GetLastWSJRateByMaturity_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteGE_11_GetLastWSJRateByMaturity_Atomic_input_Maturity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_11_GetLastWSJRateByMaturity_Atomic_output_Body__http___www.xignite.com_services__WSJRate"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters Type and Maturity must be valid strings.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the latest Wall Street Journal rate corresponding to the provided Maturity.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_12_GetLastWSJRateByDescription_Atomic">
+    <process:hasName>GetLastWSJRateByDescription</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_12_GetLastWSJRateByDescription_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#XigniteGE_12_GetLastWSJRateByDescription_Atomic_input_Description__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_12_GetLastWSJRateByDescription_Atomic_output_Body__http___www.xignite.com_services__WSJRate"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters Type and Description must be valid strings.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the latest Wall Street Journal rate corresponding to the provided Description.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_13_GetWSJRates_Atomic">
+    <process:hasName>GetWSJRates</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_13_GetWSJRates_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_13_GetWSJRates_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate"/>
+    <process:hasPrecondition>The input AsOfDate must be provided in the format specified by the XML Schema Definition for strings.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of WSJ rates based on the provided AsOfDate.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_14_GetWSJRatesTest_Atomic">
+    <process:hasName>GetWSJRatesTest</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_14_GetWSJRatesTest_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_14_GetWSJRatesTest_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate"/>
+    <process:hasPrecondition>The input parameter AsOfDate must be a valid date string in the format specified by the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of WSJ rates corresponding to the provided AsOfDate.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_15_GetH15Rates_Atomic">
+    <process:hasName>GetH15Rates</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_15_GetH15Rates_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_15_GetH15Rates_Atomic_output_Body__http___www.xignite.com_services__ArrayOfInterestRate"/>
+    <process:hasPrecondition>The input AsOfDate must be a valid date in the format specified by the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of interest rates corresponding to the provided AsOfDate.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_16_GetH15Rates1_Atomic">
+    <process:hasName>GetH15Rates1</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_16_GetH15Rates1_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_16_GetH15Rates1_Atomic_output_Body__http___www.xignite.com_services__ArrayOfInterestRate"/>
+    <process:hasPrecondition>The input AsOfDate must be a valid date in the format specified by the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of interest rates corresponding to the specified AsOfDate.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_17_GetWSJRates1_Atomic">
+    <process:hasName>GetWSJRates1</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_17_GetWSJRates1_Atomic_input_AsOfDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#XigniteGE_17_GetWSJRates1_Atomic_output_Body__http___www.xignite.com_services__ArrayOfWSJRate"/>
+    <process:hasPrecondition>The input parameter AsOfDate must be a valid date string in the format specified by the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation GetWSJRates1 will return an array of WSJ rates corresponding to the provided AsOfDate.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_18_GetLastH15Rate_Atomic">
+    <process:hasName>GetLastH15Rate</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_18_GetLastH15Rate_Atomic_input_parameters__http___www.xignite.com_services__GetLastH15Rate"/>
+    <process:hasOutput rdf:resource="#XigniteGE_18_GetLastH15Rate_Atomic_output_parameters__http___www.xignite.com_services__GetLastH15RateResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetLastH15Rate must be valid.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the last 15-minute rate as specified in the GetLastH15RateResponse output parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_19_GetLastWSJRate_Atomic">
+    <process:hasName>GetLastWSJRate</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_19_GetLastWSJRate_Atomic_input_parameters__http___www.xignite.com_services__GetLastWSJRate"/>
+    <process:hasOutput rdf:resource="#XigniteGE_19_GetLastWSJRate_Atomic_output_parameters__http___www.xignite.com_services__GetLastWSJRateResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetLastWSJRate must be valid.</process:hasPrecondition>
+    <process:hasEffect>The response will contain the latest Wall Street Journal rate information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_20_GetLastWSJRateByMaturity_Atomic">
+    <process:hasName>GetLastWSJRateByMaturity</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_20_GetLastWSJRateByMaturity_Atomic_input_parameters__http___www.xignite.com_services__GetLastWSJRateByMaturity"/>
+    <process:hasOutput rdf:resource="#XigniteGE_20_GetLastWSJRateByMaturity_Atomic_output_parameters__http___www.xignite.com_services__GetLastWSJRateByMaturityResponse"/>
+    <process:hasPrecondition>The web service must have access to the latest Wall Street Journal rate data by maturity.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the last Wall Street Journal rate based on the specified maturity.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_21_GetLastWSJRateByDescription_Atomic">
+    <process:hasName>GetLastWSJRateByDescription</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_21_GetLastWSJRateByDescription_Atomic_input_parameters__http___www.xignite.com_services__GetLastWSJRateByDescription"/>
+    <process:hasOutput rdf:resource="#XigniteGE_21_GetLastWSJRateByDescription_Atomic_output_parameters__http___www.xignite.com_services__GetLastWSJRateByDescriptionResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameter must be a valid description for the last Wall Street Journal rate.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the last Wall Street Journal rate corresponding to the provided description.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_22_GetWSJRates_Atomic">
+    <process:hasName>GetWSJRates</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_22_GetWSJRates_Atomic_input_parameters__http___www.xignite.com_services__GetWSJRates"/>
+    <process:hasOutput rdf:resource="#XigniteGE_22_GetWSJRates_Atomic_output_parameters__http___www.xignite.com_services__GetWSJRatesResponse"/>
+    <process:hasPrecondition>The user must provide valid parameters for the GetWSJRates operation from the Xignite web service.</process:hasPrecondition>
+    <process:hasEffect>The system will return a response containing the rates from The Wall Street Journal obtained through the Xignite web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_23_GetWSJRatesTest_Atomic">
+    <process:hasName>GetWSJRatesTest</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_23_GetWSJRatesTest_Atomic_input_parameters__http___www.xignite.com_services__GetWSJRatesTest"/>
+    <process:hasOutput rdf:resource="#XigniteGE_23_GetWSJRatesTest_Atomic_output_parameters__http___www.xignite.com_services__GetWSJRatesTestResponse"/>
+    <process:hasPrecondition>The web service endpoint for GetWSJRatesTest is accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>GetWSJRatesTest successfully retrieves and returns the latest rates from The Wall Street Journal.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_24_GetH15Rates_Atomic">
+    <process:hasName>GetH15Rates</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_24_GetH15Rates_Atomic_input_parameters__http___www.xignite.com_services__GetH15Rates"/>
+    <process:hasOutput rdf:resource="#XigniteGE_24_GetH15Rates_Atomic_output_parameters__http___www.xignite.com_services__GetH15RatesResponse"/>
+    <process:hasPrecondition>The client must provide valid parameters in the specified format for the GetH15Rates operation.</process:hasPrecondition>
+    <process:hasEffect>The server will return a response in the specified format containing the H15 rates data.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_25_GetH15Rates1_Atomic">
+    <process:hasName>GetH15Rates1</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_25_GetH15Rates1_Atomic_input_parameters__http___www.xignite.com_services__GetH15Rates1"/>
+    <process:hasOutput rdf:resource="#XigniteGE_25_GetH15Rates1_Atomic_output_parameters__http___www.xignite.com_services__GetH15Rates1Response"/>
+    <process:hasPrecondition>The web service endpoint for GetH15Rates1 is accessible and the required input parameters are correctly formatted.</process:hasPrecondition>
+    <process:hasEffect>The GetH15Rates1Response containing the requested H.15 rates data is returned successfully.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XigniteGE_26_GetWSJRates1_Atomic">
+    <process:hasName>GetWSJRates1</process:hasName>
+    <process:hasInput rdf:resource="#XigniteGE_26_GetWSJRates1_Atomic_input_parameters__http___www.xignite.com_services__GetWSJRates1"/>
+    <process:hasOutput rdf:resource="#XigniteGE_26_GetWSJRates1_Atomic_output_parameters__http___www.xignite.com_services__GetWSJRates1Response"/>
+    <process:hasPrecondition>The web service endpoint for GetWSJRates1 is accessible and the input parameters conform to the specified schema.</process:hasPrecondition>
+    <process:hasEffect>The response containing the requested rates is returned in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="XigniteGE_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_0_GetLastH15Rate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_1_GetLastWSJRate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_2_GetLastWSJRateByMaturity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_3_GetLastWSJRateByDescription_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_4_GetWSJRates_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_5_GetWSJRatesTest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_6_GetH15Rates_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_7_GetH15Rates1_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_8_GetWSJRates1_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_9_GetLastH15Rate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_10_GetLastWSJRate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_11_GetLastWSJRateByMaturity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_12_GetLastWSJRateByDescription_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_13_GetWSJRates_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_14_GetWSJRatesTest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_15_GetH15Rates_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_16_GetH15Rates1_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_17_GetWSJRates1_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_18_GetLastH15Rate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_19_GetLastWSJRate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_20_GetLastWSJRateByMaturity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_21_GetLastWSJRateByDescription_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_22_GetWSJRates_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_23_GetWSJRatesTest_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_24_GetH15Rates_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_25_GetH15Rates1_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XigniteGE_26_GetWSJRates1_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_0_GetLastH15Rate_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_0_GetLastH15Rate_Atomic"/>
+    <grounding:wsdlOperationName>GetLastH15Rate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastH15RateHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastH15RateHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_1_GetLastWSJRate_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_1_GetLastWSJRate_Atomic"/>
+    <grounding:wsdlOperationName>GetLastWSJRate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastWSJRateHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastWSJRateHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_2_GetLastWSJRateByMaturity_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_2_GetLastWSJRateByMaturity_Atomic"/>
+    <grounding:wsdlOperationName>GetLastWSJRateByMaturity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastWSJRateByMaturityHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastWSJRateByMaturityHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_3_GetLastWSJRateByDescription_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_3_GetLastWSJRateByDescription_Atomic"/>
+    <grounding:wsdlOperationName>GetLastWSJRateByDescription</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastWSJRateByDescriptionHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastWSJRateByDescriptionHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_4_GetWSJRates_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_4_GetWSJRates_Atomic"/>
+    <grounding:wsdlOperationName>GetWSJRates</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWSJRatesHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWSJRatesHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_5_GetWSJRatesTest_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_5_GetWSJRatesTest_Atomic"/>
+    <grounding:wsdlOperationName>GetWSJRatesTest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWSJRatesTestHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWSJRatesTestHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_6_GetH15Rates_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_6_GetH15Rates_Atomic"/>
+    <grounding:wsdlOperationName>GetH15Rates</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetH15RatesHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetH15RatesHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_7_GetH15Rates1_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_7_GetH15Rates1_Atomic"/>
+    <grounding:wsdlOperationName>GetH15Rates1</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetH15Rates1HttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetH15Rates1HttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_8_GetWSJRates1_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_8_GetWSJRates1_Atomic"/>
+    <grounding:wsdlOperationName>GetWSJRates1</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWSJRates1HttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWSJRates1HttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_9_GetLastH15Rate_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_9_GetLastH15Rate_Atomic"/>
+    <grounding:wsdlOperationName>GetLastH15Rate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastH15RateHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastH15RateHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_10_GetLastWSJRate_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_10_GetLastWSJRate_Atomic"/>
+    <grounding:wsdlOperationName>GetLastWSJRate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastWSJRateHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastWSJRateHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_11_GetLastWSJRateByMaturity_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_11_GetLastWSJRateByMaturity_Atomic"/>
+    <grounding:wsdlOperationName>GetLastWSJRateByMaturity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastWSJRateByMaturityHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastWSJRateByMaturityHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_12_GetLastWSJRateByDescription_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_12_GetLastWSJRateByDescription_Atomic"/>
+    <grounding:wsdlOperationName>GetLastWSJRateByDescription</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastWSJRateByDescriptionHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastWSJRateByDescriptionHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_13_GetWSJRates_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_13_GetWSJRates_Atomic"/>
+    <grounding:wsdlOperationName>GetWSJRates</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWSJRatesHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWSJRatesHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_14_GetWSJRatesTest_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_14_GetWSJRatesTest_Atomic"/>
+    <grounding:wsdlOperationName>GetWSJRatesTest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWSJRatesTestHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWSJRatesTestHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_15_GetH15Rates_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_15_GetH15Rates_Atomic"/>
+    <grounding:wsdlOperationName>GetH15Rates</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetH15RatesHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetH15RatesHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_16_GetH15Rates1_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_16_GetH15Rates1_Atomic"/>
+    <grounding:wsdlOperationName>GetH15Rates1</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetH15Rates1HttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetH15Rates1HttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_17_GetWSJRates1_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_17_GetWSJRates1_Atomic"/>
+    <grounding:wsdlOperationName>GetWSJRates1</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGEHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGEHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWSJRates1HttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWSJRates1HttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_18_GetLastH15Rate_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_18_GetLastH15Rate_Atomic"/>
+    <grounding:wsdlOperationName>GetLastH15Rate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGESoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGESoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastH15RateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastH15RateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_19_GetLastWSJRate_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_19_GetLastWSJRate_Atomic"/>
+    <grounding:wsdlOperationName>GetLastWSJRate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGESoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGESoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastWSJRateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastWSJRateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_20_GetLastWSJRateByMaturity_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_20_GetLastWSJRateByMaturity_Atomic"/>
+    <grounding:wsdlOperationName>GetLastWSJRateByMaturity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGESoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGESoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastWSJRateByMaturitySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastWSJRateByMaturitySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_21_GetLastWSJRateByDescription_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_21_GetLastWSJRateByDescription_Atomic"/>
+    <grounding:wsdlOperationName>GetLastWSJRateByDescription</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGESoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGESoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastWSJRateByDescriptionSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastWSJRateByDescriptionSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_22_GetWSJRates_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_22_GetWSJRates_Atomic"/>
+    <grounding:wsdlOperationName>GetWSJRates</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGESoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGESoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWSJRatesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWSJRatesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_23_GetWSJRatesTest_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_23_GetWSJRatesTest_Atomic"/>
+    <grounding:wsdlOperationName>GetWSJRatesTest</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGESoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGESoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWSJRatesTestSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWSJRatesTestSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_24_GetH15Rates_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_24_GetH15Rates_Atomic"/>
+    <grounding:wsdlOperationName>GetH15Rates</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGESoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGESoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetH15RatesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetH15RatesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_25_GetH15Rates1_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_25_GetH15Rates1_Atomic"/>
+    <grounding:wsdlOperationName>GetH15Rates1</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGESoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGESoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetH15Rates1SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetH15Rates1SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XigniteGE_26_GetWSJRates1_Grounding">
+    <grounding:owlsProcess rdf:resource="#XigniteGE_26_GetWSJRates1_Atomic"/>
+    <grounding:wsdlOperationName>GetWSJRates1</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XigniteGESoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XigniteGESoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1581_XigniteGE.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWSJRates1SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWSJRates1SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

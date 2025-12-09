@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="BankValSOAP">
+    <service:presents rdf:resource="#BankValSOAP_Profile"/>
+    <service:describedBy rdf:resource="#BankValSOAP_Composite"/>
+    <service:supports rdf:resource="#BankValSOAP_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="BankValSOAP_Profile">
+    <profile:serviceName>BankValSOAP</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#BankValSOAP"/>
+    <profile:hasProcess rdf:resource="#BankValSOAP_0_getbranchdetails_Atomic"/>
+    <profile:hasInput rdf:resource="#BankValSOAP_0_getbranchdetails_Atomic_input_params__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BankValSOAP_0_getbranchdetails_Atomic_output_result__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The input parameter must be a valid string representing a branch identifier.</profile:hasPrecondition>
+    <profile:hasResult>The operation returns a string containing details of the specified branch.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="BankValSOAP_Composite">
+    <process:composedOf rdf:resource="#BankValSOAP_0_getbranchdetails_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="BankValSOAP_0_getbranchdetails_Atomic_input_params__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>params:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BankValSOAP_0_getbranchdetails_Atomic_output_result__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>result:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="BankValSOAP_0_getbranchdetails_Atomic">
+    <process:hasName>getbranchdetails</process:hasName>
+    <process:hasInput rdf:resource="#BankValSOAP_0_getbranchdetails_Atomic_input_params__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BankValSOAP_0_getbranchdetails_Atomic_output_result__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The input parameter must be a valid string representing a branch identifier.</process:hasPrecondition>
+    <process:hasEffect>The operation returns a string containing details of the specified branch.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="BankValSOAP_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BankValSOAP_0_getbranchdetails_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BankValSOAP_0_getbranchdetails_Grounding">
+    <grounding:owlsProcess rdf:resource="#BankValSOAP_0_getbranchdetails_Atomic"/>
+    <grounding:wsdlOperationName>getbranchdetails</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BankValBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BankValPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1079_BankValSOAP.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBranchDetailInput</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBranchDetailOutput</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

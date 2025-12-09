@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="SaraGridService">
+    <service:presents rdf:resource="#SaraGridService_Profile"/>
+    <service:describedBy rdf:resource="#SaraGridService_Composite"/>
+    <service:supports rdf:resource="#SaraGridService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="SaraGridService_Profile">
+    <profile:serviceName>SaraGridService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#SaraGridService"/>
+    <profile:hasProcess rdf:resource="#SaraGridService_0_get_version_Atomic"/>
+    <profile:hasOutput rdf:resource="#SaraGridService_0_get_version_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The web service is running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The version of the web service is returned as a string in XML Schema format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SaraGridService_1_job_submit_Atomic"/>
+    <profile:hasInput rdf:resource="#SaraGridService_1_job_submit_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SaraGridService_1_job_submit_Atomic_input_job__urn_SaraGrid_Job"/>
+    <profile:hasOutput rdf:resource="#SaraGridService_1_job_submit_Atomic_output_result__urn_SaraGrid_Result"/>
+    <profile:hasPrecondition>The user must provide a valid identity and a job in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The system will process the job submission and return the result.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SaraGridService_2_job_list_match_Atomic"/>
+    <profile:hasInput rdf:resource="#SaraGridService_2_job_list_match_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SaraGridService_2_job_list_match_Atomic_input_job__urn_SaraGrid_Job"/>
+    <profile:hasOutput rdf:resource="#SaraGridService_2_job_list_match_Atomic_output_result__urn_SaraGrid_Result"/>
+    <profile:hasPrecondition>The identity must be a valid string and the job must be a valid SaraGrid job object.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a result based on matching the job with the provided identity.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SaraGridService_3_job_list_Atomic"/>
+    <profile:hasInput rdf:resource="#SaraGridService_3_job_list_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SaraGridService_3_job_list_Atomic_output_result__urn_SaraGrid_Result"/>
+    <profile:hasPrecondition>The user must provide a valid identity in the form of a string.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a Result object containing a list of job information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SaraGridService_4_job_status_Atomic"/>
+    <profile:hasInput rdf:resource="#SaraGridService_4_job_status_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SaraGridService_4_job_status_Atomic_input_job_id__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SaraGridService_4_job_status_Atomic_output_result__urn_SaraGrid_Result"/>
+    <profile:hasPrecondition>The system requires the identity of the user and the job ID to be provided as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The system will return the status of the job specified by the job ID for the user identified by the provided identity.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SaraGridService_5_job_cancel_Atomic"/>
+    <profile:hasInput rdf:resource="#SaraGridService_5_job_cancel_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SaraGridService_5_job_cancel_Atomic_input_job_id__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SaraGridService_5_job_cancel_Atomic_output_result__urn_SaraGrid_Result"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to cancel a job.</profile:hasPrecondition>
+    <profile:hasResult>The specified job will be canceled and the result of the operation will be returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SaraGridService_6_job_get_output_Atomic"/>
+    <profile:hasInput rdf:resource="#SaraGridService_6_job_get_output_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#SaraGridService_6_job_get_output_Atomic_input_job_id__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SaraGridService_6_job_get_output_Atomic_output_result__urn_SaraGrid_OutputResult"/>
+    <profile:hasPrecondition>The user must have a valid identity and provide a job ID to retrieve the output of a job.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the output result associated with the specified job ID.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SaraGridService_7_proxy_init_Atomic"/>
+    <profile:hasInput rdf:resource="#SaraGridService_7_proxy_init_Atomic_input_proxy__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SaraGridService_7_proxy_init_Atomic_output_result__urn_SaraGrid_Result"/>
+    <profile:hasPrecondition>The input parameter "proxy" must be a valid string conforming to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation "proxy_init" will initialize the proxy using the provided string and return a Result object.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SaraGridService_8_proxy_info_Atomic"/>
+    <profile:hasInput rdf:resource="#SaraGridService_8_proxy_info_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SaraGridService_8_proxy_info_Atomic_output_result__urn_SaraGrid_Result"/>
+    <profile:hasPrecondition>The input identity must be a valid string conforming to the http://www.w3.org/2001/XMLSchema standard.</profile:hasPrecondition>
+    <profile:hasResult>The operation proxy_info will return a Result object as specified by the urn:SaraGrid namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SaraGridService_9_proxy_destroy_Atomic"/>
+    <profile:hasInput rdf:resource="#SaraGridService_9_proxy_destroy_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#SaraGridService_9_proxy_destroy_Atomic_output_result__urn_SaraGrid_Result"/>
+    <profile:hasPrecondition>The identity parameter must be a valid string conforming to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The proxy associated with the provided identity will be destroyed, and the result will be returned as a Result object.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="SaraGridService_Composite">
+    <process:composedOf rdf:resource="#SaraGridService_0_get_version_Atomic"/>
+    <process:composedOf rdf:resource="#SaraGridService_1_job_submit_Atomic"/>
+    <process:composedOf rdf:resource="#SaraGridService_2_job_list_match_Atomic"/>
+    <process:composedOf rdf:resource="#SaraGridService_3_job_list_Atomic"/>
+    <process:composedOf rdf:resource="#SaraGridService_4_job_status_Atomic"/>
+    <process:composedOf rdf:resource="#SaraGridService_5_job_cancel_Atomic"/>
+    <process:composedOf rdf:resource="#SaraGridService_6_job_get_output_Atomic"/>
+    <process:composedOf rdf:resource="#SaraGridService_7_proxy_init_Atomic"/>
+    <process:composedOf rdf:resource="#SaraGridService_8_proxy_info_Atomic"/>
+    <process:composedOf rdf:resource="#SaraGridService_9_proxy_destroy_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Output rdf:ID="SaraGridService_0_get_version_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SaraGridService_1_job_submit_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>identity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SaraGridService_1_job_submit_Atomic_input_job__urn_SaraGrid_Job">
+    <process:parameterType>job:{urn:SaraGrid}Job</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SaraGridService_1_job_submit_Atomic_output_result__urn_SaraGrid_Result">
+    <process:parameterType>result:{urn:SaraGrid}Result</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SaraGridService_2_job_list_match_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>identity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SaraGridService_2_job_list_match_Atomic_input_job__urn_SaraGrid_Job">
+    <process:parameterType>job:{urn:SaraGrid}Job</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SaraGridService_2_job_list_match_Atomic_output_result__urn_SaraGrid_Result">
+    <process:parameterType>result:{urn:SaraGrid}Result</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SaraGridService_3_job_list_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>identity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SaraGridService_3_job_list_Atomic_output_result__urn_SaraGrid_Result">
+    <process:parameterType>result:{urn:SaraGrid}Result</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SaraGridService_4_job_status_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>identity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SaraGridService_4_job_status_Atomic_input_job_id__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>job_id:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SaraGridService_4_job_status_Atomic_output_result__urn_SaraGrid_Result">
+    <process:parameterType>result:{urn:SaraGrid}Result</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SaraGridService_5_job_cancel_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>identity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SaraGridService_5_job_cancel_Atomic_input_job_id__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>job_id:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SaraGridService_5_job_cancel_Atomic_output_result__urn_SaraGrid_Result">
+    <process:parameterType>result:{urn:SaraGrid}Result</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SaraGridService_6_job_get_output_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>identity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="SaraGridService_6_job_get_output_Atomic_input_job_id__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>job_id:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SaraGridService_6_job_get_output_Atomic_output_result__urn_SaraGrid_OutputResult">
+    <process:parameterType>result:{urn:SaraGrid}OutputResult</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SaraGridService_7_proxy_init_Atomic_input_proxy__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>proxy:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SaraGridService_7_proxy_init_Atomic_output_result__urn_SaraGrid_Result">
+    <process:parameterType>result:{urn:SaraGrid}Result</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SaraGridService_8_proxy_info_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>identity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SaraGridService_8_proxy_info_Atomic_output_result__urn_SaraGrid_Result">
+    <process:parameterType>result:{urn:SaraGrid}Result</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SaraGridService_9_proxy_destroy_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>identity:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SaraGridService_9_proxy_destroy_Atomic_output_result__urn_SaraGrid_Result">
+    <process:parameterType>result:{urn:SaraGrid}Result</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="SaraGridService_0_get_version_Atomic">
+    <process:hasName>get_version</process:hasName>
+    <process:hasOutput rdf:resource="#SaraGridService_0_get_version_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The web service is running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The version of the web service is returned as a string in XML Schema format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SaraGridService_1_job_submit_Atomic">
+    <process:hasName>job_submit</process:hasName>
+    <process:hasInput rdf:resource="#SaraGridService_1_job_submit_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SaraGridService_1_job_submit_Atomic_input_job__urn_SaraGrid_Job"/>
+    <process:hasOutput rdf:resource="#SaraGridService_1_job_submit_Atomic_output_result__urn_SaraGrid_Result"/>
+    <process:hasPrecondition>The user must provide a valid identity and a job in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The system will process the job submission and return the result.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SaraGridService_2_job_list_match_Atomic">
+    <process:hasName>job_list_match</process:hasName>
+    <process:hasInput rdf:resource="#SaraGridService_2_job_list_match_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SaraGridService_2_job_list_match_Atomic_input_job__urn_SaraGrid_Job"/>
+    <process:hasOutput rdf:resource="#SaraGridService_2_job_list_match_Atomic_output_result__urn_SaraGrid_Result"/>
+    <process:hasPrecondition>The identity must be a valid string and the job must be a valid SaraGrid job object.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a result based on matching the job with the provided identity.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SaraGridService_3_job_list_Atomic">
+    <process:hasName>job_list</process:hasName>
+    <process:hasInput rdf:resource="#SaraGridService_3_job_list_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SaraGridService_3_job_list_Atomic_output_result__urn_SaraGrid_Result"/>
+    <process:hasPrecondition>The user must provide a valid identity in the form of a string.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a Result object containing a list of job information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SaraGridService_4_job_status_Atomic">
+    <process:hasName>job_status</process:hasName>
+    <process:hasInput rdf:resource="#SaraGridService_4_job_status_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SaraGridService_4_job_status_Atomic_input_job_id__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SaraGridService_4_job_status_Atomic_output_result__urn_SaraGrid_Result"/>
+    <process:hasPrecondition>The system requires the identity of the user and the job ID to be provided as input parameters.</process:hasPrecondition>
+    <process:hasEffect>The system will return the status of the job specified by the job ID for the user identified by the provided identity.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SaraGridService_5_job_cancel_Atomic">
+    <process:hasName>job_cancel</process:hasName>
+    <process:hasInput rdf:resource="#SaraGridService_5_job_cancel_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SaraGridService_5_job_cancel_Atomic_input_job_id__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SaraGridService_5_job_cancel_Atomic_output_result__urn_SaraGrid_Result"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to cancel a job.</process:hasPrecondition>
+    <process:hasEffect>The specified job will be canceled and the result of the operation will be returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SaraGridService_6_job_get_output_Atomic">
+    <process:hasName>job_get_output</process:hasName>
+    <process:hasInput rdf:resource="#SaraGridService_6_job_get_output_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#SaraGridService_6_job_get_output_Atomic_input_job_id__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SaraGridService_6_job_get_output_Atomic_output_result__urn_SaraGrid_OutputResult"/>
+    <process:hasPrecondition>The user must have a valid identity and provide a job ID to retrieve the output of a job.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the output result associated with the specified job ID.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SaraGridService_7_proxy_init_Atomic">
+    <process:hasName>proxy_init</process:hasName>
+    <process:hasInput rdf:resource="#SaraGridService_7_proxy_init_Atomic_input_proxy__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SaraGridService_7_proxy_init_Atomic_output_result__urn_SaraGrid_Result"/>
+    <process:hasPrecondition>The input parameter "proxy" must be a valid string conforming to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation "proxy_init" will initialize the proxy using the provided string and return a Result object.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SaraGridService_8_proxy_info_Atomic">
+    <process:hasName>proxy_info</process:hasName>
+    <process:hasInput rdf:resource="#SaraGridService_8_proxy_info_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SaraGridService_8_proxy_info_Atomic_output_result__urn_SaraGrid_Result"/>
+    <process:hasPrecondition>The input identity must be a valid string conforming to the http://www.w3.org/2001/XMLSchema standard.</process:hasPrecondition>
+    <process:hasEffect>The operation proxy_info will return a Result object as specified by the urn:SaraGrid namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SaraGridService_9_proxy_destroy_Atomic">
+    <process:hasName>proxy_destroy</process:hasName>
+    <process:hasInput rdf:resource="#SaraGridService_9_proxy_destroy_Atomic_input_identity__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#SaraGridService_9_proxy_destroy_Atomic_output_result__urn_SaraGrid_Result"/>
+    <process:hasPrecondition>The identity parameter must be a valid string conforming to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The proxy associated with the provided identity will be destroyed, and the result will be returned as a Result object.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="SaraGridService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SaraGridService_0_get_version_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SaraGridService_1_job_submit_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SaraGridService_2_job_list_match_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SaraGridService_3_job_list_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SaraGridService_4_job_status_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SaraGridService_5_job_cancel_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SaraGridService_6_job_get_output_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SaraGridService_7_proxy_init_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SaraGridService_8_proxy_info_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SaraGridService_9_proxy_destroy_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SaraGridService_0_get_version_Grounding">
+    <grounding:owlsProcess rdf:resource="#SaraGridService_0_get_version_Atomic"/>
+    <grounding:wsdlOperationName>get_version</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SaraGridBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SaraGridPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1508_SaraGridService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getVersion</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getVersionResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SaraGridService_1_job_submit_Grounding">
+    <grounding:owlsProcess rdf:resource="#SaraGridService_1_job_submit_Atomic"/>
+    <grounding:wsdlOperationName>job_submit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SaraGridBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SaraGridPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1508_SaraGridService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getJobSubmit</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getResult</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SaraGridService_2_job_list_match_Grounding">
+    <grounding:owlsProcess rdf:resource="#SaraGridService_2_job_list_match_Atomic"/>
+    <grounding:wsdlOperationName>job_list_match</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SaraGridBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SaraGridPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1508_SaraGridService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getJobSubmit</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getResult</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SaraGridService_3_job_list_Grounding">
+    <grounding:owlsProcess rdf:resource="#SaraGridService_3_job_list_Atomic"/>
+    <grounding:wsdlOperationName>job_list</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SaraGridBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SaraGridPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1508_SaraGridService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getIdentity</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getResult</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SaraGridService_4_job_status_Grounding">
+    <grounding:owlsProcess rdf:resource="#SaraGridService_4_job_status_Atomic"/>
+    <grounding:wsdlOperationName>job_status</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SaraGridBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SaraGridPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1508_SaraGridService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getJobInfo</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getResult</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SaraGridService_5_job_cancel_Grounding">
+    <grounding:owlsProcess rdf:resource="#SaraGridService_5_job_cancel_Atomic"/>
+    <grounding:wsdlOperationName>job_cancel</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SaraGridBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SaraGridPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1508_SaraGridService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getJobInfo</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getResult</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SaraGridService_6_job_get_output_Grounding">
+    <grounding:owlsProcess rdf:resource="#SaraGridService_6_job_get_output_Atomic"/>
+    <grounding:wsdlOperationName>job_get_output</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SaraGridBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SaraGridPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1508_SaraGridService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getJobInfo</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getOutputResult</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SaraGridService_7_proxy_init_Grounding">
+    <grounding:owlsProcess rdf:resource="#SaraGridService_7_proxy_init_Atomic"/>
+    <grounding:wsdlOperationName>proxy_init</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SaraGridBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SaraGridPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1508_SaraGridService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getProxy</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getResult</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SaraGridService_8_proxy_info_Grounding">
+    <grounding:owlsProcess rdf:resource="#SaraGridService_8_proxy_info_Atomic"/>
+    <grounding:wsdlOperationName>proxy_info</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SaraGridBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SaraGridPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1508_SaraGridService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getIdentity</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getResult</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SaraGridService_9_proxy_destroy_Grounding">
+    <grounding:owlsProcess rdf:resource="#SaraGridService_9_proxy_destroy_Atomic"/>
+    <grounding:wsdlOperationName>proxy_destroy</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SaraGridBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SaraGridPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1508_SaraGridService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getIdentity</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getResult</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

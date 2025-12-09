@@ -1,0 +1,750 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="IXMLWS2service">
+    <service:presents rdf:resource="#IXMLWS2service_Profile"/>
+    <service:describedBy rdf:resource="#IXMLWS2service_Composite"/>
+    <service:supports rdf:resource="#IXMLWS2service_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="IXMLWS2service_Profile">
+    <profile:serviceName>IXMLWS2service</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#IXMLWS2service"/>
+    <profile:hasProcess rdf:resource="#IXMLWS2service_0_FaxDelete_Atomic"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_0_FaxDelete_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_0_FaxDelete_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_0_FaxDelete_Atomic_input_FaxFile__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_0_FaxDelete_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user must be authenticated with a valid Account and Password to delete a FaxFile.</profile:hasPrecondition>
+    <profile:hasResult>The specified FaxFile will be deleted from the system, and the operation will return an integer indicating the success of the deletion.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#IXMLWS2service_1_Cancel_Atomic"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_1_Cancel_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_1_Cancel_Atomic_input_JobId__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_1_Cancel_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_1_Cancel_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The Account provided must have the necessary permissions to cancel the job specified by JobId using the Password for authentication.</profile:hasPrecondition>
+    <profile:hasResult>The specified JobId will be canceled, and the operation will return a status code indicating the success or failure of the cancellation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#IXMLWS2service_2_Kundenname_Atomic"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_2_Kundenname_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_2_Kundenname_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_2_Kundenname_Atomic_output_KdName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_2_Kundenname_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user must provide valid Account and Password inputs.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the Kundenname associated with the provided Account and Password, along with a status code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#IXMLWS2service_3_SendWelcomeMail_Atomic"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_3_SendWelcomeMail_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_3_SendWelcomeMail_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The Account input must be a valid email address.</profile:hasPrecondition>
+    <profile:hasResult>Sends a welcome email to the specified email address and returns a success status code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#IXMLWS2service_4_SetPassword_Atomic"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_4_SetPassword_Atomic_input_NewPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_4_SetPassword_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_4_SetPassword_Atomic_input_OldPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_4_SetPassword_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user must be authenticated and provide the correct OldPassword for the specified Account.</profile:hasPrecondition>
+    <profile:hasResult>The password for the specified Account is updated to the provided NewPassword.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#IXMLWS2service_5_Kontostand_Atomic"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_5_Kontostand_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_5_Kontostand_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_5_Kontostand_Atomic_output_KdKontostand__http___www.w3.org_2001_XMLSchema_double"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_5_Kontostand_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user must provide a valid account and password in order to access the account balance.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the customer's account balance as a double and a status code indicating the success of the operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#IXMLWS2service_6_Journal_Atomic"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_6_Journal_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_6_Journal_Atomic_input_AnzLines__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_6_Journal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_6_Journal_Atomic_input_Offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_6_Journal_Atomic_output_JournalTab__http___www.borland.com_namespaces_Types_TStringDynArray"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_6_Journal_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user must provide a valid account, password, number of lines, and offset values for the operation to execute successfully.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a journal tab as a string dynamic array and an integer indicating the success status of the operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#IXMLWS2service_7_Kundendaten_Atomic"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_7_Kundendaten_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_7_Kundendaten_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_7_Kundendaten_Atomic_output_KdDaten__http___www.borland.com_namespaces_Types_TStringDynArray"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_7_Kundendaten_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user must provide a valid Account and Password in order to access the Kundendaten operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a TStringDynArray containing customer data and an integer indicating the success of the operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#IXMLWS2service_8_KundenAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_8_KundenAccount_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_8_KundenAccount_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_8_KundenAccount_Atomic_output_AccountData__http___www.borland.com_namespaces_Types_TStringDynArray"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_8_KundenAccount_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The input Account and Password must be valid strings conforming to the specified data types.</profile:hasPrecondition>
+    <profile:hasResult>The operation retrieves AccountData as an array of strings and returns an integer indicating the success of the operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#IXMLWS2service_9_Send_Atomic"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendText__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_EmpfaengerFile__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendFile1__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendFile2__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendFilename3__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendeDatumZeit__http___www.w3.org_2001_XMLSchema_dateTime"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendFile3__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendFilename1__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendFilename2__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_EmpfaengerNr__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_Schalter__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_JobArt__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_EmpfaengerFilename__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_9_Send_Atomic_output_AnzahlSeiten__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_9_Send_Atomic_output_AnzahlEmpfaenger__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_9_Send_Atomic_output_CheckDocFile__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_9_Send_Atomic_output_JobId__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_9_Send_Atomic_output_CheckDocFilename__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_9_Send_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The web service requires the input parameters to be provided in the specified data types and formats.</profile:hasPrecondition>
+    <profile:hasResult>The web service will send the specified data to the recipient and return relevant information such as the number of pages, recipients, and job ID.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_output_Pages__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_output_ReceiveDate__http___www.w3.org_2001_XMLSchema_dateTime"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_output_Originator__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_output_FaxImage__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_output_RemoteId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_output_FaxFile__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The user must provide valid Account and Password inputs to access the fax receiving service.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the received fax details including the number of pages, receive date, originator, fax image, remote ID, return status, and fax file.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#IXMLWS2service_11_Status_Atomic"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_11_Status_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_11_Status_Atomic_input_JobId__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_11_Status_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_11_Status_Atomic_output_ProtokollFile__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_11_Status_Atomic_output_Protokollfilename__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_11_Status_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user must provide a valid Account, JobId, and Password to access the status operation.</profile:hasPrecondition>
+    <profile:hasResult>The system will return the protocol file in base64Binary format along with its filename, and an integer indicating the success of the operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#IXMLWS2service_12_SendReport_Atomic"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_12_SendReport_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_12_SendReport_Atomic_input_JobId__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_12_SendReport_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_12_SendReport_Atomic_output_Reportfilename__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_12_SendReport_Atomic_output_ReportFile__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_12_SendReport_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user must provide a valid Account, JobId, and Password to authenticate and access the report sending functionality.</profile:hasPrecondition>
+    <profile:hasResult>The system will generate and return a report file with its filename, content in base64 format, and a status code upon successful report submission.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#IXMLWS2service_13_QSignGet_Atomic"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_13_QSignGet_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_13_QSignGet_Atomic_input_JobId__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#IXMLWS2service_13_QSignGet_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_13_QSignGet_Atomic_output_SigFile__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_13_QSignGet_Atomic_output_SignedFile__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <profile:hasOutput rdf:resource="#IXMLWS2service_13_QSignGet_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user must provide a valid Account, JobId, and Password to access the QSignGet operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the SigFile, SignedFile, and an integer value as specified outputs.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="IXMLWS2service_Composite">
+    <process:composedOf rdf:resource="#IXMLWS2service_0_FaxDelete_Atomic"/>
+    <process:composedOf rdf:resource="#IXMLWS2service_1_Cancel_Atomic"/>
+    <process:composedOf rdf:resource="#IXMLWS2service_2_Kundenname_Atomic"/>
+    <process:composedOf rdf:resource="#IXMLWS2service_3_SendWelcomeMail_Atomic"/>
+    <process:composedOf rdf:resource="#IXMLWS2service_4_SetPassword_Atomic"/>
+    <process:composedOf rdf:resource="#IXMLWS2service_5_Kontostand_Atomic"/>
+    <process:composedOf rdf:resource="#IXMLWS2service_6_Journal_Atomic"/>
+    <process:composedOf rdf:resource="#IXMLWS2service_7_Kundendaten_Atomic"/>
+    <process:composedOf rdf:resource="#IXMLWS2service_8_KundenAccount_Atomic"/>
+    <process:composedOf rdf:resource="#IXMLWS2service_9_Send_Atomic"/>
+    <process:composedOf rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic"/>
+    <process:composedOf rdf:resource="#IXMLWS2service_11_Status_Atomic"/>
+    <process:composedOf rdf:resource="#IXMLWS2service_12_SendReport_Atomic"/>
+    <process:composedOf rdf:resource="#IXMLWS2service_13_QSignGet_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="IXMLWS2service_0_FaxDelete_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_0_FaxDelete_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_0_FaxDelete_Atomic_input_FaxFile__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FaxFile:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="IXMLWS2service_0_FaxDelete_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="IXMLWS2service_1_Cancel_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_1_Cancel_Atomic_input_JobId__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>JobId:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_1_Cancel_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="IXMLWS2service_1_Cancel_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="IXMLWS2service_2_Kundenname_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_2_Kundenname_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="IXMLWS2service_2_Kundenname_Atomic_output_KdName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>KdName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_2_Kundenname_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="IXMLWS2service_3_SendWelcomeMail_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="IXMLWS2service_3_SendWelcomeMail_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="IXMLWS2service_4_SetPassword_Atomic_input_NewPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>NewPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_4_SetPassword_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_4_SetPassword_Atomic_input_OldPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>OldPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="IXMLWS2service_4_SetPassword_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="IXMLWS2service_5_Kontostand_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_5_Kontostand_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="IXMLWS2service_5_Kontostand_Atomic_output_KdKontostand__http___www.w3.org_2001_XMLSchema_double">
+    <process:parameterType>KdKontostand:{http://www.w3.org/2001/XMLSchema}double</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_5_Kontostand_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="IXMLWS2service_6_Journal_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_6_Journal_Atomic_input_AnzLines__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AnzLines:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_6_Journal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_6_Journal_Atomic_input_Offset__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Offset:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="IXMLWS2service_6_Journal_Atomic_output_JournalTab__http___www.borland.com_namespaces_Types_TStringDynArray">
+    <process:parameterType>JournalTab:{http://www.borland.com/namespaces/Types}TStringDynArray</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_6_Journal_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="IXMLWS2service_7_Kundendaten_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_7_Kundendaten_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="IXMLWS2service_7_Kundendaten_Atomic_output_KdDaten__http___www.borland.com_namespaces_Types_TStringDynArray">
+    <process:parameterType>KdDaten:{http://www.borland.com/namespaces/Types}TStringDynArray</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_7_Kundendaten_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="IXMLWS2service_8_KundenAccount_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_8_KundenAccount_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="IXMLWS2service_8_KundenAccount_Atomic_output_AccountData__http___www.borland.com_namespaces_Types_TStringDynArray">
+    <process:parameterType>AccountData:{http://www.borland.com/namespaces/Types}TStringDynArray</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_8_KundenAccount_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_SendText__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>SendText:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_EmpfaengerFile__http___www.w3.org_2001_XMLSchema_base64Binary">
+    <process:parameterType>EmpfaengerFile:{http://www.w3.org/2001/XMLSchema}base64Binary</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_SendFile1__http___www.w3.org_2001_XMLSchema_base64Binary">
+    <process:parameterType>SendFile1:{http://www.w3.org/2001/XMLSchema}base64Binary</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_SendFile2__http___www.w3.org_2001_XMLSchema_base64Binary">
+    <process:parameterType>SendFile2:{http://www.w3.org/2001/XMLSchema}base64Binary</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_SendFilename3__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>SendFilename3:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_SendeDatumZeit__http___www.w3.org_2001_XMLSchema_dateTime">
+    <process:parameterType>SendeDatumZeit:{http://www.w3.org/2001/XMLSchema}dateTime</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_SendFile3__http___www.w3.org_2001_XMLSchema_base64Binary">
+    <process:parameterType>SendFile3:{http://www.w3.org/2001/XMLSchema}base64Binary</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_SendFilename1__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>SendFilename1:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_SendFilename2__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>SendFilename2:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_EmpfaengerNr__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>EmpfaengerNr:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_Schalter__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Schalter:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_JobArt__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>JobArt:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_EmpfaengerFilename__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>EmpfaengerFilename:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_9_Send_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="IXMLWS2service_9_Send_Atomic_output_AnzahlSeiten__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AnzahlSeiten:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_9_Send_Atomic_output_AnzahlEmpfaenger__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AnzahlEmpfaenger:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_9_Send_Atomic_output_CheckDocFile__http___www.w3.org_2001_XMLSchema_base64Binary">
+    <process:parameterType>CheckDocFile:{http://www.w3.org/2001/XMLSchema}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_9_Send_Atomic_output_JobId__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>JobId:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_9_Send_Atomic_output_CheckDocFilename__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CheckDocFilename:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_9_Send_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="IXMLWS2service_10_FaxReceive_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_10_FaxReceive_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="IXMLWS2service_10_FaxReceive_Atomic_output_Pages__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>Pages:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_10_FaxReceive_Atomic_output_ReceiveDate__http___www.w3.org_2001_XMLSchema_dateTime">
+    <process:parameterType>ReceiveDate:{http://www.w3.org/2001/XMLSchema}dateTime</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_10_FaxReceive_Atomic_output_Originator__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Originator:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_10_FaxReceive_Atomic_output_FaxImage__http___www.w3.org_2001_XMLSchema_base64Binary">
+    <process:parameterType>FaxImage:{http://www.w3.org/2001/XMLSchema}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_10_FaxReceive_Atomic_output_RemoteId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>RemoteId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_10_FaxReceive_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_10_FaxReceive_Atomic_output_FaxFile__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FaxFile:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="IXMLWS2service_11_Status_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_11_Status_Atomic_input_JobId__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>JobId:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_11_Status_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="IXMLWS2service_11_Status_Atomic_output_ProtokollFile__http___www.w3.org_2001_XMLSchema_base64Binary">
+    <process:parameterType>ProtokollFile:{http://www.w3.org/2001/XMLSchema}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_11_Status_Atomic_output_Protokollfilename__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Protokollfilename:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_11_Status_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="IXMLWS2service_12_SendReport_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_12_SendReport_Atomic_input_JobId__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>JobId:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_12_SendReport_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="IXMLWS2service_12_SendReport_Atomic_output_Reportfilename__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Reportfilename:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_12_SendReport_Atomic_output_ReportFile__http___www.w3.org_2001_XMLSchema_base64Binary">
+    <process:parameterType>ReportFile:{http://www.w3.org/2001/XMLSchema}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_12_SendReport_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="IXMLWS2service_13_QSignGet_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_13_QSignGet_Atomic_input_JobId__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>JobId:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="IXMLWS2service_13_QSignGet_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="IXMLWS2service_13_QSignGet_Atomic_output_SigFile__http___www.w3.org_2001_XMLSchema_base64Binary">
+    <process:parameterType>SigFile:{http://www.w3.org/2001/XMLSchema}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_13_QSignGet_Atomic_output_SignedFile__http___www.w3.org_2001_XMLSchema_base64Binary">
+    <process:parameterType>SignedFile:{http://www.w3.org/2001/XMLSchema}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="IXMLWS2service_13_QSignGet_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="IXMLWS2service_0_FaxDelete_Atomic">
+    <process:hasName>FaxDelete</process:hasName>
+    <process:hasInput rdf:resource="#IXMLWS2service_0_FaxDelete_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_0_FaxDelete_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_0_FaxDelete_Atomic_input_FaxFile__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_0_FaxDelete_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user must be authenticated with a valid Account and Password to delete a FaxFile.</process:hasPrecondition>
+    <process:hasEffect>The specified FaxFile will be deleted from the system, and the operation will return an integer indicating the success of the deletion.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="IXMLWS2service_1_Cancel_Atomic">
+    <process:hasName>Cancel</process:hasName>
+    <process:hasInput rdf:resource="#IXMLWS2service_1_Cancel_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_1_Cancel_Atomic_input_JobId__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_1_Cancel_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_1_Cancel_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The Account provided must have the necessary permissions to cancel the job specified by JobId using the Password for authentication.</process:hasPrecondition>
+    <process:hasEffect>The specified JobId will be canceled, and the operation will return a status code indicating the success or failure of the cancellation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="IXMLWS2service_2_Kundenname_Atomic">
+    <process:hasName>Kundenname</process:hasName>
+    <process:hasInput rdf:resource="#IXMLWS2service_2_Kundenname_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_2_Kundenname_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_2_Kundenname_Atomic_output_KdName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_2_Kundenname_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user must provide valid Account and Password inputs.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the Kundenname associated with the provided Account and Password, along with a status code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="IXMLWS2service_3_SendWelcomeMail_Atomic">
+    <process:hasName>SendWelcomeMail</process:hasName>
+    <process:hasInput rdf:resource="#IXMLWS2service_3_SendWelcomeMail_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_3_SendWelcomeMail_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The Account input must be a valid email address.</process:hasPrecondition>
+    <process:hasEffect>Sends a welcome email to the specified email address and returns a success status code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="IXMLWS2service_4_SetPassword_Atomic">
+    <process:hasName>SetPassword</process:hasName>
+    <process:hasInput rdf:resource="#IXMLWS2service_4_SetPassword_Atomic_input_NewPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_4_SetPassword_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_4_SetPassword_Atomic_input_OldPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_4_SetPassword_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user must be authenticated and provide the correct OldPassword for the specified Account.</process:hasPrecondition>
+    <process:hasEffect>The password for the specified Account is updated to the provided NewPassword.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="IXMLWS2service_5_Kontostand_Atomic">
+    <process:hasName>Kontostand</process:hasName>
+    <process:hasInput rdf:resource="#IXMLWS2service_5_Kontostand_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_5_Kontostand_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_5_Kontostand_Atomic_output_KdKontostand__http___www.w3.org_2001_XMLSchema_double"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_5_Kontostand_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user must provide a valid account and password in order to access the account balance.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the customer's account balance as a double and a status code indicating the success of the operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="IXMLWS2service_6_Journal_Atomic">
+    <process:hasName>Journal</process:hasName>
+    <process:hasInput rdf:resource="#IXMLWS2service_6_Journal_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_6_Journal_Atomic_input_AnzLines__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_6_Journal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_6_Journal_Atomic_input_Offset__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_6_Journal_Atomic_output_JournalTab__http___www.borland.com_namespaces_Types_TStringDynArray"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_6_Journal_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user must provide a valid account, password, number of lines, and offset values for the operation to execute successfully.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a journal tab as a string dynamic array and an integer indicating the success status of the operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="IXMLWS2service_7_Kundendaten_Atomic">
+    <process:hasName>Kundendaten</process:hasName>
+    <process:hasInput rdf:resource="#IXMLWS2service_7_Kundendaten_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_7_Kundendaten_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_7_Kundendaten_Atomic_output_KdDaten__http___www.borland.com_namespaces_Types_TStringDynArray"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_7_Kundendaten_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user must provide a valid Account and Password in order to access the Kundendaten operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a TStringDynArray containing customer data and an integer indicating the success of the operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="IXMLWS2service_8_KundenAccount_Atomic">
+    <process:hasName>KundenAccount</process:hasName>
+    <process:hasInput rdf:resource="#IXMLWS2service_8_KundenAccount_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_8_KundenAccount_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_8_KundenAccount_Atomic_output_AccountData__http___www.borland.com_namespaces_Types_TStringDynArray"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_8_KundenAccount_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The input Account and Password must be valid strings conforming to the specified data types.</process:hasPrecondition>
+    <process:hasEffect>The operation retrieves AccountData as an array of strings and returns an integer indicating the success of the operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="IXMLWS2service_9_Send_Atomic">
+    <process:hasName>Send</process:hasName>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendText__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_EmpfaengerFile__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendFile1__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendFile2__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendFilename3__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendeDatumZeit__http___www.w3.org_2001_XMLSchema_dateTime"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendFile3__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendFilename1__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_SendFilename2__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_EmpfaengerNr__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_Schalter__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_JobArt__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_EmpfaengerFilename__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_9_Send_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_9_Send_Atomic_output_AnzahlSeiten__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_9_Send_Atomic_output_AnzahlEmpfaenger__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_9_Send_Atomic_output_CheckDocFile__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_9_Send_Atomic_output_JobId__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_9_Send_Atomic_output_CheckDocFilename__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_9_Send_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The web service requires the input parameters to be provided in the specified data types and formats.</process:hasPrecondition>
+    <process:hasEffect>The web service will send the specified data to the recipient and return relevant information such as the number of pages, recipients, and job ID.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="IXMLWS2service_10_FaxReceive_Atomic">
+    <process:hasName>FaxReceive</process:hasName>
+    <process:hasInput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_output_Pages__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_output_ReceiveDate__http___www.w3.org_2001_XMLSchema_dateTime"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_output_Originator__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_output_FaxImage__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_output_RemoteId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic_output_FaxFile__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The user must provide valid Account and Password inputs to access the fax receiving service.</process:hasPrecondition>
+    <process:hasEffect>The service will return the received fax details including the number of pages, receive date, originator, fax image, remote ID, return status, and fax file.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="IXMLWS2service_11_Status_Atomic">
+    <process:hasName>Status</process:hasName>
+    <process:hasInput rdf:resource="#IXMLWS2service_11_Status_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_11_Status_Atomic_input_JobId__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_11_Status_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_11_Status_Atomic_output_ProtokollFile__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_11_Status_Atomic_output_Protokollfilename__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_11_Status_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user must provide a valid Account, JobId, and Password to access the status operation.</process:hasPrecondition>
+    <process:hasEffect>The system will return the protocol file in base64Binary format along with its filename, and an integer indicating the success of the operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="IXMLWS2service_12_SendReport_Atomic">
+    <process:hasName>SendReport</process:hasName>
+    <process:hasInput rdf:resource="#IXMLWS2service_12_SendReport_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_12_SendReport_Atomic_input_JobId__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_12_SendReport_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_12_SendReport_Atomic_output_Reportfilename__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_12_SendReport_Atomic_output_ReportFile__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_12_SendReport_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user must provide a valid Account, JobId, and Password to authenticate and access the report sending functionality.</process:hasPrecondition>
+    <process:hasEffect>The system will generate and return a report file with its filename, content in base64 format, and a status code upon successful report submission.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="IXMLWS2service_13_QSignGet_Atomic">
+    <process:hasName>QSignGet</process:hasName>
+    <process:hasInput rdf:resource="#IXMLWS2service_13_QSignGet_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_13_QSignGet_Atomic_input_JobId__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#IXMLWS2service_13_QSignGet_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_13_QSignGet_Atomic_output_SigFile__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_13_QSignGet_Atomic_output_SignedFile__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <process:hasOutput rdf:resource="#IXMLWS2service_13_QSignGet_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user must provide a valid Account, JobId, and Password to access the QSignGet operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the SigFile, SignedFile, and an integer value as specified outputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="IXMLWS2service_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#IXMLWS2service_0_FaxDelete_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#IXMLWS2service_1_Cancel_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#IXMLWS2service_2_Kundenname_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#IXMLWS2service_3_SendWelcomeMail_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#IXMLWS2service_4_SetPassword_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#IXMLWS2service_5_Kontostand_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#IXMLWS2service_6_Journal_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#IXMLWS2service_7_Kundendaten_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#IXMLWS2service_8_KundenAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#IXMLWS2service_9_Send_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#IXMLWS2service_10_FaxReceive_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#IXMLWS2service_11_Status_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#IXMLWS2service_12_SendReport_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#IXMLWS2service_13_QSignGet_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="IXMLWS2service_0_FaxDelete_Grounding">
+    <grounding:owlsProcess rdf:resource="#IXMLWS2service_0_FaxDelete_Atomic"/>
+    <grounding:wsdlOperationName>FaxDelete</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IXMLWS2binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IXMLWS2</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1096_IXMLWS2service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FaxDelete0Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FaxDelete0Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="IXMLWS2service_1_Cancel_Grounding">
+    <grounding:owlsProcess rdf:resource="#IXMLWS2service_1_Cancel_Atomic"/>
+    <grounding:wsdlOperationName>Cancel</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IXMLWS2binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IXMLWS2</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1096_IXMLWS2service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Cancel1Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>Cancel1Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="IXMLWS2service_2_Kundenname_Grounding">
+    <grounding:owlsProcess rdf:resource="#IXMLWS2service_2_Kundenname_Atomic"/>
+    <grounding:wsdlOperationName>Kundenname</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IXMLWS2binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IXMLWS2</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1096_IXMLWS2service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Kundenname2Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>Kundenname2Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="IXMLWS2service_3_SendWelcomeMail_Grounding">
+    <grounding:owlsProcess rdf:resource="#IXMLWS2service_3_SendWelcomeMail_Atomic"/>
+    <grounding:wsdlOperationName>SendWelcomeMail</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IXMLWS2binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IXMLWS2</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1096_IXMLWS2service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendWelcomeMail3Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendWelcomeMail3Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="IXMLWS2service_4_SetPassword_Grounding">
+    <grounding:owlsProcess rdf:resource="#IXMLWS2service_4_SetPassword_Atomic"/>
+    <grounding:wsdlOperationName>SetPassword</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IXMLWS2binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IXMLWS2</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1096_IXMLWS2service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SetPassword4Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SetPassword4Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="IXMLWS2service_5_Kontostand_Grounding">
+    <grounding:owlsProcess rdf:resource="#IXMLWS2service_5_Kontostand_Atomic"/>
+    <grounding:wsdlOperationName>Kontostand</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IXMLWS2binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IXMLWS2</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1096_IXMLWS2service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Kontostand5Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>Kontostand5Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="IXMLWS2service_6_Journal_Grounding">
+    <grounding:owlsProcess rdf:resource="#IXMLWS2service_6_Journal_Atomic"/>
+    <grounding:wsdlOperationName>Journal</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IXMLWS2binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IXMLWS2</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1096_IXMLWS2service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Journal6Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>Journal6Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="IXMLWS2service_7_Kundendaten_Grounding">
+    <grounding:owlsProcess rdf:resource="#IXMLWS2service_7_Kundendaten_Atomic"/>
+    <grounding:wsdlOperationName>Kundendaten</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IXMLWS2binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IXMLWS2</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1096_IXMLWS2service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Kundendaten7Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>Kundendaten7Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="IXMLWS2service_8_KundenAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#IXMLWS2service_8_KundenAccount_Atomic"/>
+    <grounding:wsdlOperationName>KundenAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IXMLWS2binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IXMLWS2</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1096_IXMLWS2service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>KundenAccount8Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>KundenAccount8Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="IXMLWS2service_9_Send_Grounding">
+    <grounding:owlsProcess rdf:resource="#IXMLWS2service_9_Send_Atomic"/>
+    <grounding:wsdlOperationName>Send</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IXMLWS2binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IXMLWS2</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1096_IXMLWS2service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Send9Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>Send9Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="IXMLWS2service_10_FaxReceive_Grounding">
+    <grounding:owlsProcess rdf:resource="#IXMLWS2service_10_FaxReceive_Atomic"/>
+    <grounding:wsdlOperationName>FaxReceive</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IXMLWS2binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IXMLWS2</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1096_IXMLWS2service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FaxReceive10Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FaxReceive10Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="IXMLWS2service_11_Status_Grounding">
+    <grounding:owlsProcess rdf:resource="#IXMLWS2service_11_Status_Atomic"/>
+    <grounding:wsdlOperationName>Status</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IXMLWS2binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IXMLWS2</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1096_IXMLWS2service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Status11Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>Status11Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="IXMLWS2service_12_SendReport_Grounding">
+    <grounding:owlsProcess rdf:resource="#IXMLWS2service_12_SendReport_Atomic"/>
+    <grounding:wsdlOperationName>SendReport</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IXMLWS2binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IXMLWS2</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1096_IXMLWS2service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendReport12Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendReport12Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="IXMLWS2service_13_QSignGet_Grounding">
+    <grounding:owlsProcess rdf:resource="#IXMLWS2service_13_QSignGet_Atomic"/>
+    <grounding:wsdlOperationName>QSignGet</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>IXMLWS2binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>IXMLWS2</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1096_IXMLWS2service.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>QSignGet13Request</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>QSignGet13Response</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ExpressCongoBuy_Service">
+    <service:presents rdf:resource="#ExpressCongoBuy_Service_Profile"/>
+    <service:describedBy rdf:resource="#ExpressCongoBuy_Service_Composite"/>
+    <service:supports rdf:resource="#ExpressCongoBuy_Service_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ExpressCongoBuy_Service_Profile">
+    <profile:serviceName>ExpressCongoBuy_Service</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ExpressCongoBuy_Service"/>
+    <profile:hasProcess rdf:resource="#ExpressCongoBuy_Service_0_LocateBook_operation_Atomic"/>
+    <profile:hasInput rdf:resource="#ExpressCongoBuy_Service_0_LocateBook_operation_Atomic_input_bookName_unknown"/>
+    <profile:hasOutput rdf:resource="#ExpressCongoBuy_Service_0_LocateBook_operation_Atomic_output_locateBookOutput_unknown"/>
+    <profile:hasPrecondition>The web service must have access to a database of book locations.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the location of the specified book.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ExpressCongoBuy_Service_1_CreateAcct_operation_Atomic"/>
+    <profile:hasInput rdf:resource="#ExpressCongoBuy_Service_1_CreateAcct_operation_Atomic_input_createAcctInfo_unknown"/>
+    <profile:hasOutput rdf:resource="#ExpressCongoBuy_Service_1_CreateAcct_operation_Atomic_output_createAcctOutput_unknown"/>
+    <profile:hasPrecondition>The system must have access to the necessary information to create a new account.</profile:hasPrecondition>
+    <profile:hasResult>A new account is successfully created in the system with the provided information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ExpressCongoBuy_Service_2_PutInCart_operation_Atomic"/>
+    <profile:hasInput rdf:resource="#ExpressCongoBuy_Service_2_PutInCart_operation_Atomic_input_bookName_unknown"/>
+    <profile:hasPrecondition>The book with the specified name is available in the online store.</profile:hasPrecondition>
+    <profile:hasResult>The book is added to the shopping cart.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Atomic"/>
+    <profile:hasInput rdf:resource="#ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Atomic_input_deliveryTypeSelection_unknown"/>
+    <profile:hasInput rdf:resource="#ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Atomic_input_deliveryAddress_unknown"/>
+    <profile:hasInput rdf:resource="#ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Atomic_input_packagingSelection_unknown"/>
+    <profile:hasPrecondition>The user must provide the delivery type selection, delivery address, and packaging selection for the SpecifyDeliveryDetails operation.</profile:hasPrecondition>
+    <profile:hasResult>The system will store the provided delivery details for further processing.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Atomic"/>
+    <profile:hasInput rdf:resource="#ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Atomic_input_signInInfo_unknown"/>
+    <profile:hasInput rdf:resource="#ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Atomic_input_bookName_unknown"/>
+    <profile:hasOutput rdf:resource="#ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Atomic_output_acknowledgement_unknown"/>
+    <profile:hasPrecondition>The user must provide valid sign-in information and specify the name of the book to purchase.</profile:hasPrecondition>
+    <profile:hasResult>The system will acknowledge the successful purchase request made by the user.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Atomic"/>
+    <profile:hasInput rdf:resource="#ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Atomic_input_creditCardExpirationDate_unknown"/>
+    <profile:hasInput rdf:resource="#ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Atomic_input_creditCardNumber_unknown"/>
+    <profile:hasInput rdf:resource="#ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Atomic_input_creditCardType_unknown"/>
+    <profile:hasPrecondition>The user must have a valid credit card to specify a payment method.</profile:hasPrecondition>
+    <profile:hasResult>The specified payment method with the provided credit card details is saved in the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ExpressCongoBuy_Service_6_SignIn_operation_Atomic"/>
+    <profile:hasInput rdf:resource="#ExpressCongoBuy_Service_6_SignIn_operation_Atomic_input_signInInfo_unknown"/>
+    <profile:hasPrecondition>The user must provide valid sign-in information.</profile:hasPrecondition>
+    <profile:hasResult>The system will authenticate the user based on the provided sign-in information.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ExpressCongoBuy_Service_Composite">
+    <process:composedOf rdf:resource="#ExpressCongoBuy_Service_0_LocateBook_operation_Atomic"/>
+    <process:composedOf rdf:resource="#ExpressCongoBuy_Service_1_CreateAcct_operation_Atomic"/>
+    <process:composedOf rdf:resource="#ExpressCongoBuy_Service_2_PutInCart_operation_Atomic"/>
+    <process:composedOf rdf:resource="#ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Atomic"/>
+    <process:composedOf rdf:resource="#ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Atomic"/>
+    <process:composedOf rdf:resource="#ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Atomic"/>
+    <process:composedOf rdf:resource="#ExpressCongoBuy_Service_6_SignIn_operation_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ExpressCongoBuy_Service_0_LocateBook_operation_Atomic_input_bookName_unknown">
+    <process:parameterType>bookName:unknown</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ExpressCongoBuy_Service_0_LocateBook_operation_Atomic_output_locateBookOutput_unknown">
+    <process:parameterType>locateBookOutput:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ExpressCongoBuy_Service_1_CreateAcct_operation_Atomic_input_createAcctInfo_unknown">
+    <process:parameterType>createAcctInfo:unknown</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ExpressCongoBuy_Service_1_CreateAcct_operation_Atomic_output_createAcctOutput_unknown">
+    <process:parameterType>createAcctOutput:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ExpressCongoBuy_Service_2_PutInCart_operation_Atomic_input_bookName_unknown">
+    <process:parameterType>bookName:unknown</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Atomic_input_deliveryTypeSelection_unknown">
+    <process:parameterType>deliveryTypeSelection:unknown</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Atomic_input_deliveryAddress_unknown">
+    <process:parameterType>deliveryAddress:unknown</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Atomic_input_packagingSelection_unknown">
+    <process:parameterType>packagingSelection:unknown</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Atomic_input_signInInfo_unknown">
+    <process:parameterType>signInInfo:unknown</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Atomic_input_bookName_unknown">
+    <process:parameterType>bookName:unknown</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Atomic_output_acknowledgement_unknown">
+    <process:parameterType>acknowledgement:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Atomic_input_creditCardExpirationDate_unknown">
+    <process:parameterType>creditCardExpirationDate:unknown</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Atomic_input_creditCardNumber_unknown">
+    <process:parameterType>creditCardNumber:unknown</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Atomic_input_creditCardType_unknown">
+    <process:parameterType>creditCardType:unknown</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ExpressCongoBuy_Service_6_SignIn_operation_Atomic_input_signInInfo_unknown">
+    <process:parameterType>signInInfo:unknown</process:parameterType>
+  </process:Input>
+
+  <process:AtomicProcess rdf:ID="ExpressCongoBuy_Service_0_LocateBook_operation_Atomic">
+    <process:hasName>LocateBook_operation</process:hasName>
+    <process:hasInput rdf:resource="#ExpressCongoBuy_Service_0_LocateBook_operation_Atomic_input_bookName_unknown"/>
+    <process:hasOutput rdf:resource="#ExpressCongoBuy_Service_0_LocateBook_operation_Atomic_output_locateBookOutput_unknown"/>
+    <process:hasPrecondition>The web service must have access to a database of book locations.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the location of the specified book.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ExpressCongoBuy_Service_1_CreateAcct_operation_Atomic">
+    <process:hasName>CreateAcct_operation</process:hasName>
+    <process:hasInput rdf:resource="#ExpressCongoBuy_Service_1_CreateAcct_operation_Atomic_input_createAcctInfo_unknown"/>
+    <process:hasOutput rdf:resource="#ExpressCongoBuy_Service_1_CreateAcct_operation_Atomic_output_createAcctOutput_unknown"/>
+    <process:hasPrecondition>The system must have access to the necessary information to create a new account.</process:hasPrecondition>
+    <process:hasEffect>A new account is successfully created in the system with the provided information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ExpressCongoBuy_Service_2_PutInCart_operation_Atomic">
+    <process:hasName>PutInCart_operation</process:hasName>
+    <process:hasInput rdf:resource="#ExpressCongoBuy_Service_2_PutInCart_operation_Atomic_input_bookName_unknown"/>
+    <process:hasPrecondition>The book with the specified name is available in the online store.</process:hasPrecondition>
+    <process:hasEffect>The book is added to the shopping cart.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Atomic">
+    <process:hasName>SpecifyDeliveryDetails_operation</process:hasName>
+    <process:hasInput rdf:resource="#ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Atomic_input_deliveryTypeSelection_unknown"/>
+    <process:hasInput rdf:resource="#ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Atomic_input_deliveryAddress_unknown"/>
+    <process:hasInput rdf:resource="#ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Atomic_input_packagingSelection_unknown"/>
+    <process:hasPrecondition>The user must provide the delivery type selection, delivery address, and packaging selection for the SpecifyDeliveryDetails operation.</process:hasPrecondition>
+    <process:hasEffect>The system will store the provided delivery details for further processing.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Atomic">
+    <process:hasName>ExpressCongoBuy_operation</process:hasName>
+    <process:hasInput rdf:resource="#ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Atomic_input_signInInfo_unknown"/>
+    <process:hasInput rdf:resource="#ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Atomic_input_bookName_unknown"/>
+    <process:hasOutput rdf:resource="#ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Atomic_output_acknowledgement_unknown"/>
+    <process:hasPrecondition>The user must provide valid sign-in information and specify the name of the book to purchase.</process:hasPrecondition>
+    <process:hasEffect>The system will acknowledge the successful purchase request made by the user.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Atomic">
+    <process:hasName>SpecifyPaymentMethod_operation</process:hasName>
+    <process:hasInput rdf:resource="#ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Atomic_input_creditCardExpirationDate_unknown"/>
+    <process:hasInput rdf:resource="#ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Atomic_input_creditCardNumber_unknown"/>
+    <process:hasInput rdf:resource="#ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Atomic_input_creditCardType_unknown"/>
+    <process:hasPrecondition>The user must have a valid credit card to specify a payment method.</process:hasPrecondition>
+    <process:hasEffect>The specified payment method with the provided credit card details is saved in the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ExpressCongoBuy_Service_6_SignIn_operation_Atomic">
+    <process:hasName>SignIn_operation</process:hasName>
+    <process:hasInput rdf:resource="#ExpressCongoBuy_Service_6_SignIn_operation_Atomic_input_signInInfo_unknown"/>
+    <process:hasPrecondition>The user must provide valid sign-in information.</process:hasPrecondition>
+    <process:hasEffect>The system will authenticate the user based on the provided sign-in information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ExpressCongoBuy_Service_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ExpressCongoBuy_Service_0_LocateBook_operation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ExpressCongoBuy_Service_1_CreateAcct_operation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ExpressCongoBuy_Service_2_PutInCart_operation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ExpressCongoBuy_Service_6_SignIn_operation_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ExpressCongoBuy_Service_0_LocateBook_operation_Grounding">
+    <grounding:owlsProcess rdf:resource="#ExpressCongoBuy_Service_0_LocateBook_operation_Atomic"/>
+    <grounding:wsdlOperationName>LocateBook_operation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LocateBook_SoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LocateBook_PortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1348_FullCongoBuy_servoce.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LocateBook_Input</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LocateBook_Output</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ExpressCongoBuy_Service_1_CreateAcct_operation_Grounding">
+    <grounding:owlsProcess rdf:resource="#ExpressCongoBuy_Service_1_CreateAcct_operation_Atomic"/>
+    <grounding:wsdlOperationName>CreateAcct_operation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CreateAcct_SoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CreateAcct_PortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1348_FullCongoBuy_servoce.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CreateAcct_Input</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CreateAcct_Output</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ExpressCongoBuy_Service_2_PutInCart_operation_Grounding">
+    <grounding:owlsProcess rdf:resource="#ExpressCongoBuy_Service_2_PutInCart_operation_Atomic"/>
+    <grounding:wsdlOperationName>PutInCart_operation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PutInCart_SoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PutInCart_PortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1348_FullCongoBuy_servoce.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PutInCart_Input</grounding:wsdlInputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Grounding">
+    <grounding:owlsProcess rdf:resource="#ExpressCongoBuy_Service_3_SpecifyDeliveryDetails_operation_Atomic"/>
+    <grounding:wsdlOperationName>SpecifyDeliveryDetails_operation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SpecifyDeliveryDetails_SoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SpecifyDeliveryDetails_PortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1348_FullCongoBuy_servoce.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SpecifyDeliveryDetails_Input</grounding:wsdlInputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Grounding">
+    <grounding:owlsProcess rdf:resource="#ExpressCongoBuy_Service_4_ExpressCongoBuy_operation_Atomic"/>
+    <grounding:wsdlOperationName>ExpressCongoBuy_operation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ExpressCongoBuy_SoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ExpressCongoBuy_PortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1348_FullCongoBuy_servoce.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ExpressCongoBuy_Input</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ExpressCongoBuy_Output</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Grounding">
+    <grounding:owlsProcess rdf:resource="#ExpressCongoBuy_Service_5_SpecifyPaymentMethod_operation_Atomic"/>
+    <grounding:wsdlOperationName>SpecifyPaymentMethod_operation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SpecifyPaymentMethod_SoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SpecifyPaymentMethod_PortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1348_FullCongoBuy_servoce.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SpecifyPaymentMethod_Input</grounding:wsdlInputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ExpressCongoBuy_Service_6_SignIn_operation_Grounding">
+    <grounding:owlsProcess rdf:resource="#ExpressCongoBuy_Service_6_SignIn_operation_Atomic"/>
+    <grounding:wsdlOperationName>SignIn_operation</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SignIn_SoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SignIn_PortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1348_FullCongoBuy_servoce.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SignIn_Input</grounding:wsdlInputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

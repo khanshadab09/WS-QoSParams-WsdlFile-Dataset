@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="HAPWSClass">
+    <service:presents rdf:resource="#HAPWSClass_Profile"/>
+    <service:describedBy rdf:resource="#HAPWSClass_Composite"/>
+    <service:supports rdf:resource="#HAPWSClass_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="HAPWSClass_Profile">
+    <profile:serviceName>HAPWSClass</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#HAPWSClass"/>
+    <profile:hasProcess rdf:resource="#HAPWSClass_0_HAP_Atomic"/>
+    <profile:hasInput rdf:resource="#HAPWSClass_0_HAP_Atomic_input_parameters__HAP-WS_HAP"/>
+    <profile:hasOutput rdf:resource="#HAPWSClass_0_HAP_Atomic_output_parameters__HAP-WS_HAPResponse"/>
+    <profile:hasPrecondition>The input parameters must include the necessary information for the HAP web service.</profile:hasPrecondition>
+    <profile:hasResult>The output will be a response containing the HAP data as specified in the input.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="HAPWSClass_Composite">
+    <process:composedOf rdf:resource="#HAPWSClass_0_HAP_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="HAPWSClass_0_HAP_Atomic_input_parameters__HAP-WS_HAP">
+    <process:parameterType>parameters:{HAP-WS}HAP</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="HAPWSClass_0_HAP_Atomic_output_parameters__HAP-WS_HAPResponse">
+    <process:parameterType>parameters:{HAP-WS}HAPResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="HAPWSClass_0_HAP_Atomic">
+    <process:hasName>HAP</process:hasName>
+    <process:hasInput rdf:resource="#HAPWSClass_0_HAP_Atomic_input_parameters__HAP-WS_HAP"/>
+    <process:hasOutput rdf:resource="#HAPWSClass_0_HAP_Atomic_output_parameters__HAP-WS_HAPResponse"/>
+    <process:hasPrecondition>The input parameters must include the necessary information for the HAP web service.</process:hasPrecondition>
+    <process:hasEffect>The output will be a response containing the HAP data as specified in the input.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="HAPWSClass_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#HAPWSClass_0_HAP_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="HAPWSClass_0_HAP_Grounding">
+    <grounding:owlsProcess rdf:resource="#HAPWSClass_0_HAP_Atomic"/>
+    <grounding:wsdlOperationName>HAP</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>HAPWSClassSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>HAPWSClassSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1747_HAPWSClass.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>HAPSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>HAPSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

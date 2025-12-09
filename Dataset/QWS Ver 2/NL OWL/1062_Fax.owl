@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Fax">
+    <service:presents rdf:resource="#Fax_Profile"/>
+    <service:describedBy rdf:resource="#Fax_Composite"/>
+    <service:supports rdf:resource="#Fax_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Fax_Profile">
+    <profile:serviceName>Fax</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Fax"/>
+    <profile:hasProcess rdf:resource="#Fax_0_EnqueueTextDocument_Atomic"/>
+    <profile:hasInput rdf:resource="#Fax_0_EnqueueTextDocument_Atomic_input_parameters__http___ws.AcrossCommunications.com__EnqueueTextDocument"/>
+    <profile:hasOutput rdf:resource="#Fax_0_EnqueueTextDocument_Atomic_output_parameters__http___ws.AcrossCommunications.com__EnqueueTextDocumentResponse"/>
+    <profile:hasPrecondition>The input text document must be properly formatted and conform to the specified structure defined by the EnqueueTextDocument service.</profile:hasPrecondition>
+    <profile:hasResult>The EnqueueTextDocument operation will add the text document to the queue for processing and return a response indicating the success or failure of the enqueue operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Fax_1_GetLastMethodDuration_Atomic"/>
+    <profile:hasInput rdf:resource="#Fax_1_GetLastMethodDuration_Atomic_input_parameters__http___ws.AcrossCommunications.com__GetLastMethodDuration"/>
+    <profile:hasOutput rdf:resource="#Fax_1_GetLastMethodDuration_Atomic_output_parameters__http___ws.AcrossCommunications.com__GetLastMethodDurationResponse"/>
+    <profile:hasPrecondition>The web service must have a method to retrieve the duration of the last method call.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the duration of the last method call in the response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Fax_2_SetSearchString_Atomic"/>
+    <profile:hasInput rdf:resource="#Fax_2_SetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__SetSearchString"/>
+    <profile:hasOutput rdf:resource="#Fax_2_SetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__SetSearchStringResponse"/>
+    <profile:hasPrecondition>The input parameter for SetSearchString must be provided in the specified format from http://ws.AcrossCommunications.com/.</profile:hasPrecondition>
+    <profile:hasResult>The operation SetSearchString will return a response in the specified format from http://ws.AcrossCommunications.com/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Fax_3_GetSearchString_Atomic"/>
+    <profile:hasInput rdf:resource="#Fax_3_GetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__GetSearchString"/>
+    <profile:hasOutput rdf:resource="#Fax_3_GetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__GetSearchStringResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetSearchString must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the search string based on the input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Fax_4_Release_Atomic"/>
+    <profile:hasInput rdf:resource="#Fax_4_Release_Atomic_input_parameters__http___ws.AcrossCommunications.com__Release"/>
+    <profile:hasOutput rdf:resource="#Fax_4_Release_Atomic_output_parameters__http___ws.AcrossCommunications.com__ReleaseResponse"/>
+    <profile:hasPrecondition>The system must have a valid authentication token to access the Release operation.</profile:hasPrecondition>
+    <profile:hasResult>The Release operation will be executed, and a response containing the status of the release process will be returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Fax_5_SendTextDocument_Atomic"/>
+    <profile:hasInput rdf:resource="#Fax_5_SendTextDocument_Atomic_input_parameters__http___ws.AcrossCommunications.com__SendTextDocument"/>
+    <profile:hasOutput rdf:resource="#Fax_5_SendTextDocument_Atomic_output_parameters__http___ws.AcrossCommunications.com__SendTextDocumentResponse"/>
+    <profile:hasPrecondition>The user must have a valid authentication token to access the SendTextDocument operation.</profile:hasPrecondition>
+    <profile:hasResult>The SendTextDocument operation will send a text document and return a response confirming the document has been successfully sent.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Fax_Composite">
+    <process:composedOf rdf:resource="#Fax_0_EnqueueTextDocument_Atomic"/>
+    <process:composedOf rdf:resource="#Fax_1_GetLastMethodDuration_Atomic"/>
+    <process:composedOf rdf:resource="#Fax_2_SetSearchString_Atomic"/>
+    <process:composedOf rdf:resource="#Fax_3_GetSearchString_Atomic"/>
+    <process:composedOf rdf:resource="#Fax_4_Release_Atomic"/>
+    <process:composedOf rdf:resource="#Fax_5_SendTextDocument_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Fax_0_EnqueueTextDocument_Atomic_input_parameters__http___ws.AcrossCommunications.com__EnqueueTextDocument">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}EnqueueTextDocument</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Fax_0_EnqueueTextDocument_Atomic_output_parameters__http___ws.AcrossCommunications.com__EnqueueTextDocumentResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}EnqueueTextDocumentResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Fax_1_GetLastMethodDuration_Atomic_input_parameters__http___ws.AcrossCommunications.com__GetLastMethodDuration">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}GetLastMethodDuration</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Fax_1_GetLastMethodDuration_Atomic_output_parameters__http___ws.AcrossCommunications.com__GetLastMethodDurationResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}GetLastMethodDurationResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Fax_2_SetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__SetSearchString">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}SetSearchString</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Fax_2_SetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__SetSearchStringResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}SetSearchStringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Fax_3_GetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__GetSearchString">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}GetSearchString</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Fax_3_GetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__GetSearchStringResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}GetSearchStringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Fax_4_Release_Atomic_input_parameters__http___ws.AcrossCommunications.com__Release">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}Release</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Fax_4_Release_Atomic_output_parameters__http___ws.AcrossCommunications.com__ReleaseResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}ReleaseResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Fax_5_SendTextDocument_Atomic_input_parameters__http___ws.AcrossCommunications.com__SendTextDocument">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}SendTextDocument</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Fax_5_SendTextDocument_Atomic_output_parameters__http___ws.AcrossCommunications.com__SendTextDocumentResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}SendTextDocumentResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Fax_0_EnqueueTextDocument_Atomic">
+    <process:hasName>EnqueueTextDocument</process:hasName>
+    <process:hasInput rdf:resource="#Fax_0_EnqueueTextDocument_Atomic_input_parameters__http___ws.AcrossCommunications.com__EnqueueTextDocument"/>
+    <process:hasOutput rdf:resource="#Fax_0_EnqueueTextDocument_Atomic_output_parameters__http___ws.AcrossCommunications.com__EnqueueTextDocumentResponse"/>
+    <process:hasPrecondition>The input text document must be properly formatted and conform to the specified structure defined by the EnqueueTextDocument service.</process:hasPrecondition>
+    <process:hasEffect>The EnqueueTextDocument operation will add the text document to the queue for processing and return a response indicating the success or failure of the enqueue operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Fax_1_GetLastMethodDuration_Atomic">
+    <process:hasName>GetLastMethodDuration</process:hasName>
+    <process:hasInput rdf:resource="#Fax_1_GetLastMethodDuration_Atomic_input_parameters__http___ws.AcrossCommunications.com__GetLastMethodDuration"/>
+    <process:hasOutput rdf:resource="#Fax_1_GetLastMethodDuration_Atomic_output_parameters__http___ws.AcrossCommunications.com__GetLastMethodDurationResponse"/>
+    <process:hasPrecondition>The web service must have a method to retrieve the duration of the last method call.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the duration of the last method call in the response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Fax_2_SetSearchString_Atomic">
+    <process:hasName>SetSearchString</process:hasName>
+    <process:hasInput rdf:resource="#Fax_2_SetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__SetSearchString"/>
+    <process:hasOutput rdf:resource="#Fax_2_SetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__SetSearchStringResponse"/>
+    <process:hasPrecondition>The input parameter for SetSearchString must be provided in the specified format from http://ws.AcrossCommunications.com/.</process:hasPrecondition>
+    <process:hasEffect>The operation SetSearchString will return a response in the specified format from http://ws.AcrossCommunications.com/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Fax_3_GetSearchString_Atomic">
+    <process:hasName>GetSearchString</process:hasName>
+    <process:hasInput rdf:resource="#Fax_3_GetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__GetSearchString"/>
+    <process:hasOutput rdf:resource="#Fax_3_GetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__GetSearchStringResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetSearchString must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the search string based on the input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Fax_4_Release_Atomic">
+    <process:hasName>Release</process:hasName>
+    <process:hasInput rdf:resource="#Fax_4_Release_Atomic_input_parameters__http___ws.AcrossCommunications.com__Release"/>
+    <process:hasOutput rdf:resource="#Fax_4_Release_Atomic_output_parameters__http___ws.AcrossCommunications.com__ReleaseResponse"/>
+    <process:hasPrecondition>The system must have a valid authentication token to access the Release operation.</process:hasPrecondition>
+    <process:hasEffect>The Release operation will be executed, and a response containing the status of the release process will be returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Fax_5_SendTextDocument_Atomic">
+    <process:hasName>SendTextDocument</process:hasName>
+    <process:hasInput rdf:resource="#Fax_5_SendTextDocument_Atomic_input_parameters__http___ws.AcrossCommunications.com__SendTextDocument"/>
+    <process:hasOutput rdf:resource="#Fax_5_SendTextDocument_Atomic_output_parameters__http___ws.AcrossCommunications.com__SendTextDocumentResponse"/>
+    <process:hasPrecondition>The user must have a valid authentication token to access the SendTextDocument operation.</process:hasPrecondition>
+    <process:hasEffect>The SendTextDocument operation will send a text document and return a response confirming the document has been successfully sent.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Fax_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Fax_0_EnqueueTextDocument_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Fax_1_GetLastMethodDuration_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Fax_2_SetSearchString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Fax_3_GetSearchString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Fax_4_Release_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Fax_5_SendTextDocument_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Fax_0_EnqueueTextDocument_Grounding">
+    <grounding:owlsProcess rdf:resource="#Fax_0_EnqueueTextDocument_Atomic"/>
+    <grounding:wsdlOperationName>EnqueueTextDocument</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FaxSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FaxSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1062_Fax.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>EnqueueTextDocumentSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>EnqueueTextDocumentSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Fax_1_GetLastMethodDuration_Grounding">
+    <grounding:owlsProcess rdf:resource="#Fax_1_GetLastMethodDuration_Atomic"/>
+    <grounding:wsdlOperationName>GetLastMethodDuration</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FaxSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FaxSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1062_Fax.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetLastMethodDurationSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetLastMethodDurationSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Fax_2_SetSearchString_Grounding">
+    <grounding:owlsProcess rdf:resource="#Fax_2_SetSearchString_Atomic"/>
+    <grounding:wsdlOperationName>SetSearchString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FaxSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FaxSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1062_Fax.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SetSearchStringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SetSearchStringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Fax_3_GetSearchString_Grounding">
+    <grounding:owlsProcess rdf:resource="#Fax_3_GetSearchString_Atomic"/>
+    <grounding:wsdlOperationName>GetSearchString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FaxSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FaxSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1062_Fax.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSearchStringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSearchStringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Fax_4_Release_Grounding">
+    <grounding:owlsProcess rdf:resource="#Fax_4_Release_Atomic"/>
+    <grounding:wsdlOperationName>Release</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FaxSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FaxSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1062_Fax.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReleaseSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReleaseSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Fax_5_SendTextDocument_Grounding">
+    <grounding:owlsProcess rdf:resource="#Fax_5_SendTextDocument_Atomic"/>
+    <grounding:wsdlOperationName>SendTextDocument</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FaxSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FaxSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1062_Fax.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendTextDocumentSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendTextDocumentSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

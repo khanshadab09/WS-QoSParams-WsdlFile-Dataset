@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="DatabindingPatterns">
+    <service:presents rdf:resource="#DatabindingPatterns_Profile"/>
+    <service:describedBy rdf:resource="#DatabindingPatterns_Composite"/>
+    <service:supports rdf:resource="#DatabindingPatterns_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="DatabindingPatterns_Profile">
+    <profile:serviceName>DatabindingPatterns</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#DatabindingPatterns"/>
+    <profile:hasProcess rdf:resource="#DatabindingPatterns_0_echoAll_Atomic"/>
+    <profile:hasInput rdf:resource="#DatabindingPatterns_0_echoAll_Atomic_input_allRequest__http___www.w3.org_2002_ws_databinding_testsuite_documents_all__all"/>
+    <profile:hasOutput rdf:resource="#DatabindingPatterns_0_echoAll_Atomic_output_allResponse__http___www.w3.org_2002_ws_databinding_testsuite_documents_all__all"/>
+    <profile:hasPrecondition>The input parameter "allRequest" must contain data conforming to the specified schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response containing all the data from the input parameter "allRequest".</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="DatabindingPatterns_Composite">
+    <process:composedOf rdf:resource="#DatabindingPatterns_0_echoAll_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="DatabindingPatterns_0_echoAll_Atomic_input_allRequest__http___www.w3.org_2002_ws_databinding_testsuite_documents_all__all">
+    <process:parameterType>allRequest:{http://www.w3.org/2002/ws/databinding/testsuite/documents/all/}all</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DatabindingPatterns_0_echoAll_Atomic_output_allResponse__http___www.w3.org_2002_ws_databinding_testsuite_documents_all__all">
+    <process:parameterType>allResponse:{http://www.w3.org/2002/ws/databinding/testsuite/documents/all/}all</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="DatabindingPatterns_0_echoAll_Atomic">
+    <process:hasName>echoAll</process:hasName>
+    <process:hasInput rdf:resource="#DatabindingPatterns_0_echoAll_Atomic_input_allRequest__http___www.w3.org_2002_ws_databinding_testsuite_documents_all__all"/>
+    <process:hasOutput rdf:resource="#DatabindingPatterns_0_echoAll_Atomic_output_allResponse__http___www.w3.org_2002_ws_databinding_testsuite_documents_all__all"/>
+    <process:hasPrecondition>The input parameter "allRequest" must contain data conforming to the specified schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response containing all the data from the input parameter "allRequest".</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="DatabindingPatterns_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DatabindingPatterns_0_echoAll_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DatabindingPatterns_0_echoAll_Grounding">
+    <grounding:owlsProcess rdf:resource="#DatabindingPatterns_0_echoAll_Atomic"/>
+    <grounding:wsdlOperationName>echoAll</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Soap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1114_DatabindingPatterns.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>allRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>allResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

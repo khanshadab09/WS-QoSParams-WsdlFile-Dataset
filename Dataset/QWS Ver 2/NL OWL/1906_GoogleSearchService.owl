@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="GoogleSearchService">
+    <service:presents rdf:resource="#GoogleSearchService_Profile"/>
+    <service:describedBy rdf:resource="#GoogleSearchService_Composite"/>
+    <service:supports rdf:resource="#GoogleSearchService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="GoogleSearchService_Profile">
+    <profile:serviceName>GoogleSearchService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#GoogleSearchService"/>
+    <profile:hasProcess rdf:resource="#GoogleSearchService_0_doGetCachedPage_Atomic"/>
+    <profile:hasInput rdf:resource="#GoogleSearchService_0_doGetCachedPage_Atomic_input_key__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#GoogleSearchService_0_doGetCachedPage_Atomic_input_url__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#GoogleSearchService_0_doGetCachedPage_Atomic_output_return__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <profile:hasPrecondition>The key and URL inputs must be valid strings conforming to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation returns a base64 encoded binary representation of the cached webpage corresponding to the provided key and URL inputs.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#GoogleSearchService_1_doSpellingSuggestion_Atomic"/>
+    <profile:hasInput rdf:resource="#GoogleSearchService_1_doSpellingSuggestion_Atomic_input_phrase__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#GoogleSearchService_1_doSpellingSuggestion_Atomic_input_key__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#GoogleSearchService_1_doSpellingSuggestion_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The input phrase must be a valid string and the key must be a valid string.</profile:hasPrecondition>
+    <profile:hasResult>The operation returns a string as a spelling suggestion based on the input phrase and key.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_filter__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_q__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_maxResults__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_lr__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_oe__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_start__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_restrict__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_ie__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_safeSearch__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_key__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_output_return__urn_GoogleSearch_GoogleSearchResult"/>
+    <profile:hasPrecondition>The user must provide valid input parameters for the Google search operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a GoogleSearchResult based on the provided input parameters.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="GoogleSearchService_Composite">
+    <process:composedOf rdf:resource="#GoogleSearchService_0_doGetCachedPage_Atomic"/>
+    <process:composedOf rdf:resource="#GoogleSearchService_1_doSpellingSuggestion_Atomic"/>
+    <process:composedOf rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="GoogleSearchService_0_doGetCachedPage_Atomic_input_key__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>key:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="GoogleSearchService_0_doGetCachedPage_Atomic_input_url__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>url:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="GoogleSearchService_0_doGetCachedPage_Atomic_output_return__http___www.w3.org_2001_XMLSchema_base64Binary">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="GoogleSearchService_1_doSpellingSuggestion_Atomic_input_phrase__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>phrase:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="GoogleSearchService_1_doSpellingSuggestion_Atomic_input_key__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>key:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="GoogleSearchService_1_doSpellingSuggestion_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="GoogleSearchService_2_doGoogleSearch_Atomic_input_filter__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>filter:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="GoogleSearchService_2_doGoogleSearch_Atomic_input_q__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>q:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="GoogleSearchService_2_doGoogleSearch_Atomic_input_maxResults__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>maxResults:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="GoogleSearchService_2_doGoogleSearch_Atomic_input_lr__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>lr:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="GoogleSearchService_2_doGoogleSearch_Atomic_input_oe__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>oe:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="GoogleSearchService_2_doGoogleSearch_Atomic_input_start__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>start:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="GoogleSearchService_2_doGoogleSearch_Atomic_input_restrict__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>restrict:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="GoogleSearchService_2_doGoogleSearch_Atomic_input_ie__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ie:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="GoogleSearchService_2_doGoogleSearch_Atomic_input_safeSearch__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>safeSearch:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="GoogleSearchService_2_doGoogleSearch_Atomic_input_key__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>key:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="GoogleSearchService_2_doGoogleSearch_Atomic_output_return__urn_GoogleSearch_GoogleSearchResult">
+    <process:parameterType>return:{urn:GoogleSearch}GoogleSearchResult</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="GoogleSearchService_0_doGetCachedPage_Atomic">
+    <process:hasName>doGetCachedPage</process:hasName>
+    <process:hasInput rdf:resource="#GoogleSearchService_0_doGetCachedPage_Atomic_input_key__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#GoogleSearchService_0_doGetCachedPage_Atomic_input_url__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#GoogleSearchService_0_doGetCachedPage_Atomic_output_return__http___www.w3.org_2001_XMLSchema_base64Binary"/>
+    <process:hasPrecondition>The key and URL inputs must be valid strings conforming to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation returns a base64 encoded binary representation of the cached webpage corresponding to the provided key and URL inputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="GoogleSearchService_1_doSpellingSuggestion_Atomic">
+    <process:hasName>doSpellingSuggestion</process:hasName>
+    <process:hasInput rdf:resource="#GoogleSearchService_1_doSpellingSuggestion_Atomic_input_phrase__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#GoogleSearchService_1_doSpellingSuggestion_Atomic_input_key__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#GoogleSearchService_1_doSpellingSuggestion_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The input phrase must be a valid string and the key must be a valid string.</process:hasPrecondition>
+    <process:hasEffect>The operation returns a string as a spelling suggestion based on the input phrase and key.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="GoogleSearchService_2_doGoogleSearch_Atomic">
+    <process:hasName>doGoogleSearch</process:hasName>
+    <process:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_filter__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_q__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_maxResults__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_lr__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_oe__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_start__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_restrict__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_ie__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_safeSearch__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasInput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_input_key__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic_output_return__urn_GoogleSearch_GoogleSearchResult"/>
+    <process:hasPrecondition>The user must provide valid input parameters for the Google search operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a GoogleSearchResult based on the provided input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="GoogleSearchService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#GoogleSearchService_0_doGetCachedPage_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#GoogleSearchService_1_doSpellingSuggestion_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#GoogleSearchService_2_doGoogleSearch_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="GoogleSearchService_0_doGetCachedPage_Grounding">
+    <grounding:owlsProcess rdf:resource="#GoogleSearchService_0_doGetCachedPage_Atomic"/>
+    <grounding:wsdlOperationName>doGetCachedPage</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>GoogleSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>GoogleSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1906_GoogleSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>doGetCachedPage</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>doGetCachedPageResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="GoogleSearchService_1_doSpellingSuggestion_Grounding">
+    <grounding:owlsProcess rdf:resource="#GoogleSearchService_1_doSpellingSuggestion_Atomic"/>
+    <grounding:wsdlOperationName>doSpellingSuggestion</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>GoogleSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>GoogleSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1906_GoogleSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>doSpellingSuggestion</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>doSpellingSuggestionResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="GoogleSearchService_2_doGoogleSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#GoogleSearchService_2_doGoogleSearch_Atomic"/>
+    <grounding:wsdlOperationName>doGoogleSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>GoogleSearchBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>GoogleSearchPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1906_GoogleSearchService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>doGoogleSearch</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>doGoogleSearchResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

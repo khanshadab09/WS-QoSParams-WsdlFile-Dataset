@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="HeaderTimeService">
+    <service:presents rdf:resource="#HeaderTimeService_Profile"/>
+    <service:describedBy rdf:resource="#HeaderTimeService_Composite"/>
+    <service:supports rdf:resource="#HeaderTimeService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="HeaderTimeService_Profile">
+    <profile:serviceName>HeaderTimeService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#HeaderTimeService"/>
+    <profile:hasProcess rdf:resource="#HeaderTimeService_0_Login_Atomic"/>
+    <profile:hasInput rdf:resource="#HeaderTimeService_0_Login_Atomic_input_parameters__http___dotnet.jku.at_time__Login"/>
+    <profile:hasOutput rdf:resource="#HeaderTimeService_0_Login_Atomic_output_parameters__http___dotnet.jku.at_time__LoginResponse"/>
+    <profile:hasPrecondition>The user must provide valid login credentials.</profile:hasPrecondition>
+    <profile:hasResult>The system will authenticate the user and provide access to the requested resources.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#HeaderTimeService_1_GetTime_Atomic"/>
+    <profile:hasInput rdf:resource="#HeaderTimeService_1_GetTime_Atomic_input_parameters__http___dotnet.jku.at_time__GetTime"/>
+    <profile:hasOutput rdf:resource="#HeaderTimeService_1_GetTime_Atomic_output_parameters__http___dotnet.jku.at_time__GetTimeResponse"/>
+    <profile:hasPrecondition>The client must provide a valid request for the current time in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The server will return a response containing the current time in the specified format.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="HeaderTimeService_Composite">
+    <process:composedOf rdf:resource="#HeaderTimeService_0_Login_Atomic"/>
+    <process:composedOf rdf:resource="#HeaderTimeService_1_GetTime_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="HeaderTimeService_0_Login_Atomic_input_parameters__http___dotnet.jku.at_time__Login">
+    <process:parameterType>parameters:{http://dotnet.jku.at/time/}Login</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="HeaderTimeService_0_Login_Atomic_output_parameters__http___dotnet.jku.at_time__LoginResponse">
+    <process:parameterType>parameters:{http://dotnet.jku.at/time/}LoginResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="HeaderTimeService_1_GetTime_Atomic_input_parameters__http___dotnet.jku.at_time__GetTime">
+    <process:parameterType>parameters:{http://dotnet.jku.at/time/}GetTime</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="HeaderTimeService_1_GetTime_Atomic_output_parameters__http___dotnet.jku.at_time__GetTimeResponse">
+    <process:parameterType>parameters:{http://dotnet.jku.at/time/}GetTimeResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="HeaderTimeService_0_Login_Atomic">
+    <process:hasName>Login</process:hasName>
+    <process:hasInput rdf:resource="#HeaderTimeService_0_Login_Atomic_input_parameters__http___dotnet.jku.at_time__Login"/>
+    <process:hasOutput rdf:resource="#HeaderTimeService_0_Login_Atomic_output_parameters__http___dotnet.jku.at_time__LoginResponse"/>
+    <process:hasPrecondition>The user must provide valid login credentials.</process:hasPrecondition>
+    <process:hasEffect>The system will authenticate the user and provide access to the requested resources.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="HeaderTimeService_1_GetTime_Atomic">
+    <process:hasName>GetTime</process:hasName>
+    <process:hasInput rdf:resource="#HeaderTimeService_1_GetTime_Atomic_input_parameters__http___dotnet.jku.at_time__GetTime"/>
+    <process:hasOutput rdf:resource="#HeaderTimeService_1_GetTime_Atomic_output_parameters__http___dotnet.jku.at_time__GetTimeResponse"/>
+    <process:hasPrecondition>The client must provide a valid request for the current time in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The server will return a response containing the current time in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="HeaderTimeService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#HeaderTimeService_0_Login_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#HeaderTimeService_1_GetTime_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="HeaderTimeService_0_Login_Grounding">
+    <grounding:owlsProcess rdf:resource="#HeaderTimeService_0_Login_Atomic"/>
+    <grounding:wsdlOperationName>Login</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>HeaderTimeServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>HeaderTimeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1869_HeaderTimeService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LoginSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LoginSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="HeaderTimeService_1_GetTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#HeaderTimeService_1_GetTime_Atomic"/>
+    <grounding:wsdlOperationName>GetTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>HeaderTimeServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>HeaderTimeServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1869_HeaderTimeService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetTimeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetTimeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
