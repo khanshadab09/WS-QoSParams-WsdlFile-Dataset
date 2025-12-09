@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="StateDemo">
+    <service:presents rdf:resource="#StateDemo_Profile"/>
+    <service:describedBy rdf:resource="#StateDemo_Composite"/>
+    <service:supports rdf:resource="#StateDemo_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="StateDemo_Profile">
+    <profile:serviceName>StateDemo</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#StateDemo"/>
+    <profile:hasProcess rdf:resource="#StateDemo_0_IncApplication_Atomic"/>
+    <profile:hasInput rdf:resource="#StateDemo_0_IncApplication_Atomic_input_parameters__http___dotnet.jku.at_StateDemo__IncApplication"/>
+    <profile:hasOutput rdf:resource="#StateDemo_0_IncApplication_Atomic_output_parameters__http___dotnet.jku.at_StateDemo__IncApplicationResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncApplication(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncApplicationResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#StateDemo_1_IncSession_Atomic"/>
+    <profile:hasInput rdf:resource="#StateDemo_1_IncSession_Atomic_input_parameters__http___dotnet.jku.at_StateDemo__IncSession"/>
+    <profile:hasOutput rdf:resource="#StateDemo_1_IncSession_Atomic_output_parameters__http___dotnet.jku.at_StateDemo__IncSessionResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(increase (SessionCount ?x) 1)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="StateDemo_Composite">
+    <process:composedOf rdf:resource="#StateDemo_0_IncApplication_Atomic"/>
+    <process:composedOf rdf:resource="#StateDemo_1_IncSession_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="StateDemo_0_IncApplication_Atomic_input_parameters__http___dotnet.jku.at_StateDemo__IncApplication">
+    <process:parameterType>parameters:{http://dotnet.jku.at/StateDemo/}IncApplication</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="StateDemo_0_IncApplication_Atomic_output_parameters__http___dotnet.jku.at_StateDemo__IncApplicationResponse">
+    <process:parameterType>parameters:{http://dotnet.jku.at/StateDemo/}IncApplicationResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="StateDemo_1_IncSession_Atomic_input_parameters__http___dotnet.jku.at_StateDemo__IncSession">
+    <process:parameterType>parameters:{http://dotnet.jku.at/StateDemo/}IncSession</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="StateDemo_1_IncSession_Atomic_output_parameters__http___dotnet.jku.at_StateDemo__IncSessionResponse">
+    <process:parameterType>parameters:{http://dotnet.jku.at/StateDemo/}IncSessionResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="StateDemo_0_IncApplication_Atomic">
+    <process:hasName>IncApplication</process:hasName>
+    <process:hasInput rdf:resource="#StateDemo_0_IncApplication_Atomic_input_parameters__http___dotnet.jku.at_StateDemo__IncApplication"/>
+    <process:hasOutput rdf:resource="#StateDemo_0_IncApplication_Atomic_output_parameters__http___dotnet.jku.at_StateDemo__IncApplicationResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncApplication(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncApplicationResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="StateDemo_1_IncSession_Atomic">
+    <process:hasName>IncSession</process:hasName>
+    <process:hasInput rdf:resource="#StateDemo_1_IncSession_Atomic_input_parameters__http___dotnet.jku.at_StateDemo__IncSession"/>
+    <process:hasOutput rdf:resource="#StateDemo_1_IncSession_Atomic_output_parameters__http___dotnet.jku.at_StateDemo__IncSessionResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(increase (SessionCount ?x) 1)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="StateDemo_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#StateDemo_0_IncApplication_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#StateDemo_1_IncSession_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="StateDemo_0_IncApplication_Grounding">
+    <grounding:owlsProcess rdf:resource="#StateDemo_0_IncApplication_Atomic"/>
+    <grounding:wsdlOperationName>IncApplication</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>StateDemoSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>StateDemoSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2423_StateDemo.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IncApplicationSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IncApplicationSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="StateDemo_1_IncSession_Grounding">
+    <grounding:owlsProcess rdf:resource="#StateDemo_1_IncSession_Atomic"/>
+    <grounding:wsdlOperationName>IncSession</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>StateDemoSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>StateDemoSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2423_StateDemo.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IncSessionSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IncSessionSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

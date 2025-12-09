@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="XfccBasic">
+    <service:presents rdf:resource="#XfccBasic_Profile"/>
+    <service:describedBy rdf:resource="#XfccBasic_Composite"/>
+    <service:supports rdf:resource="#XfccBasic_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="XfccBasic_Profile">
+    <profile:serviceName>XfccBasic</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#XfccBasic"/>
+    <profile:hasProcess rdf:resource="#XfccBasic_0_GetMyGames_Atomic"/>
+    <profile:hasInput rdf:resource="#XfccBasic_0_GetMyGames_Atomic_input_parameters__http___www.bennedik.com_webservices_XfccBasic_GetMyGames"/>
+    <profile:hasOutput rdf:resource="#XfccBasic_0_GetMyGames_Atomic_output_parameters__http___www.bennedik.com_webservices_XfccBasic_GetMyGamesResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?input rdf:type &lt;http://www.bennedik.com/webservices/XfccBasic:GetMyGames&gt;)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?output rdf:type &lt;http://www.bennedik.com/webservices/XfccBasic:GetMyGamesResponse&gt;)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XfccBasic_1_MakeAMove_Atomic"/>
+    <profile:hasInput rdf:resource="#XfccBasic_1_MakeAMove_Atomic_input_parameters__http___www.bennedik.com_webservices_XfccBasic_MakeAMove"/>
+    <profile:hasOutput rdf:resource="#XfccBasic_1_MakeAMove_Atomic_output_parameters__http___www.bennedik.com_webservices_XfccBasic_MakeAMoveResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MakeAMove(?x) ^ hasParameter(?x, ?param) ^ hasValue(?param, http://www.bennedik.com/webservices/XfccBasic)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MakeAMoveResponse(?y) ^ hasOutput(?y, ?output) ^ hasValue(?output, http://www.bennedik.com/webservices/XfccBasic)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#XfccBasic_2_MakeAMove2_Atomic"/>
+    <profile:hasInput rdf:resource="#XfccBasic_2_MakeAMove2_Atomic_input_parameters__http___www.bennedik.com_webservices_XfccBasic_MakeAMove2"/>
+    <profile:hasOutput rdf:resource="#XfccBasic_2_MakeAMove2_Atomic_output_parameters__http___www.bennedik.com_webservices_XfccBasic_MakeAMove2Response"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MakeAMove2(?x) ^ hasPermission(?x, "make_move")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MakeAMove2Response(?y) ^ hasPermission(?y, "view_response") ^ hasStatus(?y, "success")</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="XfccBasic_Composite">
+    <process:composedOf rdf:resource="#XfccBasic_0_GetMyGames_Atomic"/>
+    <process:composedOf rdf:resource="#XfccBasic_1_MakeAMove_Atomic"/>
+    <process:composedOf rdf:resource="#XfccBasic_2_MakeAMove2_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="XfccBasic_0_GetMyGames_Atomic_input_parameters__http___www.bennedik.com_webservices_XfccBasic_GetMyGames">
+    <process:parameterType>parameters:{http://www.bennedik.com/webservices/XfccBasic}GetMyGames</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XfccBasic_0_GetMyGames_Atomic_output_parameters__http___www.bennedik.com_webservices_XfccBasic_GetMyGamesResponse">
+    <process:parameterType>parameters:{http://www.bennedik.com/webservices/XfccBasic}GetMyGamesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XfccBasic_1_MakeAMove_Atomic_input_parameters__http___www.bennedik.com_webservices_XfccBasic_MakeAMove">
+    <process:parameterType>parameters:{http://www.bennedik.com/webservices/XfccBasic}MakeAMove</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XfccBasic_1_MakeAMove_Atomic_output_parameters__http___www.bennedik.com_webservices_XfccBasic_MakeAMoveResponse">
+    <process:parameterType>parameters:{http://www.bennedik.com/webservices/XfccBasic}MakeAMoveResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="XfccBasic_2_MakeAMove2_Atomic_input_parameters__http___www.bennedik.com_webservices_XfccBasic_MakeAMove2">
+    <process:parameterType>parameters:{http://www.bennedik.com/webservices/XfccBasic}MakeAMove2</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="XfccBasic_2_MakeAMove2_Atomic_output_parameters__http___www.bennedik.com_webservices_XfccBasic_MakeAMove2Response">
+    <process:parameterType>parameters:{http://www.bennedik.com/webservices/XfccBasic}MakeAMove2Response</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="XfccBasic_0_GetMyGames_Atomic">
+    <process:hasName>GetMyGames</process:hasName>
+    <process:hasInput rdf:resource="#XfccBasic_0_GetMyGames_Atomic_input_parameters__http___www.bennedik.com_webservices_XfccBasic_GetMyGames"/>
+    <process:hasOutput rdf:resource="#XfccBasic_0_GetMyGames_Atomic_output_parameters__http___www.bennedik.com_webservices_XfccBasic_GetMyGamesResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?input rdf:type &lt;http://www.bennedik.com/webservices/XfccBasic:GetMyGames&gt;)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(?output rdf:type &lt;http://www.bennedik.com/webservices/XfccBasic:GetMyGamesResponse&gt;)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XfccBasic_1_MakeAMove_Atomic">
+    <process:hasName>MakeAMove</process:hasName>
+    <process:hasInput rdf:resource="#XfccBasic_1_MakeAMove_Atomic_input_parameters__http___www.bennedik.com_webservices_XfccBasic_MakeAMove"/>
+    <process:hasOutput rdf:resource="#XfccBasic_1_MakeAMove_Atomic_output_parameters__http___www.bennedik.com_webservices_XfccBasic_MakeAMoveResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MakeAMove(?x) ^ hasParameter(?x, ?param) ^ hasValue(?param, http://www.bennedik.com/webservices/XfccBasic)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MakeAMoveResponse(?y) ^ hasOutput(?y, ?output) ^ hasValue(?output, http://www.bennedik.com/webservices/XfccBasic)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="XfccBasic_2_MakeAMove2_Atomic">
+    <process:hasName>MakeAMove2</process:hasName>
+    <process:hasInput rdf:resource="#XfccBasic_2_MakeAMove2_Atomic_input_parameters__http___www.bennedik.com_webservices_XfccBasic_MakeAMove2"/>
+    <process:hasOutput rdf:resource="#XfccBasic_2_MakeAMove2_Atomic_output_parameters__http___www.bennedik.com_webservices_XfccBasic_MakeAMove2Response"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MakeAMove2(?x) ^ hasPermission(?x, "make_move")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MakeAMove2Response(?y) ^ hasPermission(?y, "view_response") ^ hasStatus(?y, "success")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="XfccBasic_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XfccBasic_0_GetMyGames_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XfccBasic_1_MakeAMove_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#XfccBasic_2_MakeAMove2_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XfccBasic_0_GetMyGames_Grounding">
+    <grounding:owlsProcess rdf:resource="#XfccBasic_0_GetMyGames_Atomic"/>
+    <grounding:wsdlOperationName>GetMyGames</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XfccBasicSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XfccBasicSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2434_XfccBasic.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetMyGamesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetMyGamesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XfccBasic_1_MakeAMove_Grounding">
+    <grounding:owlsProcess rdf:resource="#XfccBasic_1_MakeAMove_Atomic"/>
+    <grounding:wsdlOperationName>MakeAMove</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XfccBasicSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XfccBasicSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2434_XfccBasic.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>MakeAMoveSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>MakeAMoveSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="XfccBasic_2_MakeAMove2_Grounding">
+    <grounding:owlsProcess rdf:resource="#XfccBasic_2_MakeAMove2_Atomic"/>
+    <grounding:wsdlOperationName>MakeAMove2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>XfccBasicSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>XfccBasicSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2434_XfccBasic.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>MakeAMove2SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>MakeAMove2SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

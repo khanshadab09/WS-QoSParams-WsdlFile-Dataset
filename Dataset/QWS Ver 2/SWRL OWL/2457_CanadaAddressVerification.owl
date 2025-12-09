@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="CanadaAddressVerification">
+    <service:presents rdf:resource="#CanadaAddressVerification_Profile"/>
+    <service:describedBy rdf:resource="#CanadaAddressVerification_Composite"/>
+    <service:supports rdf:resource="#CanadaAddressVerification_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="CanadaAddressVerification_Profile">
+    <profile:serviceName>CanadaAddressVerification</profile:serviceName>
+    <profile:textDescription>Auto-generated SWRL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#CanadaAddressVerification"/>
+    <profile:hasProcess rdf:resource="#CanadaAddressVerification_0_VerifyAddressCanada_Atomic"/>
+    <profile:hasInput rdf:resource="#CanadaAddressVerification_0_VerifyAddressCanada_Atomic_input_parameters__http___www.strikeiron.com_VerifyAddressCanada"/>
+    <profile:hasOutput rdf:resource="#CanadaAddressVerification_0_VerifyAddressCanada_Atomic_output_parameters__http___www.strikeiron.com_VerifyAddressCanadaResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VerifyAddressCanada(?x) ^ hasCountry(?x, "Canada")</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VerifyAddressCanadaResponse(?y) ^ hasResult(?y, "Valid") ^ hasMessage(?y, "Address is valid in Canada")</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CanadaAddressVerification_1_VerifyAddressCanadaBatch_Atomic"/>
+    <profile:hasInput rdf:resource="#CanadaAddressVerification_1_VerifyAddressCanadaBatch_Atomic_input_parameters__http___www.strikeiron.com_VerifyAddressCanadaBatch"/>
+    <profile:hasOutput rdf:resource="#CanadaAddressVerification_1_VerifyAddressCanadaBatch_Atomic_output_parameters__http___www.strikeiron.com_VerifyAddressCanadaBatchResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VerifyAddressCanadaBatch(?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VerifyAddressCanadaBatchResponse(?x)</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CanadaAddressVerification_2_GetRemainingHits_Atomic"/>
+    <profile:hasInput rdf:resource="#CanadaAddressVerification_2_GetRemainingHits_Atomic_input_parameters__http___ws.strikeiron.com_GetRemainingHits"/>
+    <profile:hasOutput rdf:resource="#CanadaAddressVerification_2_GetRemainingHits_Atomic_output_parameters__http___ws.strikeiron.com_GetRemainingHitsResponse"/>
+    <profile:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</profile:hasPrecondition>
+    <profile:hasResult rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="CanadaAddressVerification_Composite">
+    <process:composedOf rdf:resource="#CanadaAddressVerification_0_VerifyAddressCanada_Atomic"/>
+    <process:composedOf rdf:resource="#CanadaAddressVerification_1_VerifyAddressCanadaBatch_Atomic"/>
+    <process:composedOf rdf:resource="#CanadaAddressVerification_2_GetRemainingHits_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="CanadaAddressVerification_0_VerifyAddressCanada_Atomic_input_parameters__http___www.strikeiron.com_VerifyAddressCanada">
+    <process:parameterType>parameters:{http://www.strikeiron.com}VerifyAddressCanada</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CanadaAddressVerification_0_VerifyAddressCanada_Atomic_output_parameters__http___www.strikeiron.com_VerifyAddressCanadaResponse">
+    <process:parameterType>parameters:{http://www.strikeiron.com}VerifyAddressCanadaResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CanadaAddressVerification_1_VerifyAddressCanadaBatch_Atomic_input_parameters__http___www.strikeiron.com_VerifyAddressCanadaBatch">
+    <process:parameterType>parameters:{http://www.strikeiron.com}VerifyAddressCanadaBatch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CanadaAddressVerification_1_VerifyAddressCanadaBatch_Atomic_output_parameters__http___www.strikeiron.com_VerifyAddressCanadaBatchResponse">
+    <process:parameterType>parameters:{http://www.strikeiron.com}VerifyAddressCanadaBatchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CanadaAddressVerification_2_GetRemainingHits_Atomic_input_parameters__http___ws.strikeiron.com_GetRemainingHits">
+    <process:parameterType>parameters:{http://ws.strikeiron.com}GetRemainingHits</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CanadaAddressVerification_2_GetRemainingHits_Atomic_output_parameters__http___ws.strikeiron.com_GetRemainingHitsResponse">
+    <process:parameterType>parameters:{http://ws.strikeiron.com}GetRemainingHitsResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="CanadaAddressVerification_0_VerifyAddressCanada_Atomic">
+    <process:hasName>VerifyAddressCanada</process:hasName>
+    <process:hasInput rdf:resource="#CanadaAddressVerification_0_VerifyAddressCanada_Atomic_input_parameters__http___www.strikeiron.com_VerifyAddressCanada"/>
+    <process:hasOutput rdf:resource="#CanadaAddressVerification_0_VerifyAddressCanada_Atomic_output_parameters__http___www.strikeiron.com_VerifyAddressCanadaResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VerifyAddressCanada(?x) ^ hasCountry(?x, "Canada")</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VerifyAddressCanadaResponse(?y) ^ hasResult(?y, "Valid") ^ hasMessage(?y, "Address is valid in Canada")</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CanadaAddressVerification_1_VerifyAddressCanadaBatch_Atomic">
+    <process:hasName>VerifyAddressCanadaBatch</process:hasName>
+    <process:hasInput rdf:resource="#CanadaAddressVerification_1_VerifyAddressCanadaBatch_Atomic_input_parameters__http___www.strikeiron.com_VerifyAddressCanadaBatch"/>
+    <process:hasOutput rdf:resource="#CanadaAddressVerification_1_VerifyAddressCanadaBatch_Atomic_output_parameters__http___www.strikeiron.com_VerifyAddressCanadaBatchResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VerifyAddressCanadaBatch(?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VerifyAddressCanadaBatchResponse(?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CanadaAddressVerification_2_GetRemainingHits_Atomic">
+    <process:hasName>GetRemainingHits</process:hasName>
+    <process:hasInput rdf:resource="#CanadaAddressVerification_2_GetRemainingHits_Atomic_input_parameters__http___ws.strikeiron.com_GetRemainingHits"/>
+    <process:hasOutput rdf:resource="#CanadaAddressVerification_2_GetRemainingHits_Atomic_output_parameters__http___ws.strikeiron.com_GetRemainingHitsResponse"/>
+    <process:hasPrecondition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(inputs-present ?x)</process:hasPrecondition>
+    <process:hasEffect rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(outputs-available ?x)</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="CanadaAddressVerification_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CanadaAddressVerification_0_VerifyAddressCanada_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CanadaAddressVerification_1_VerifyAddressCanadaBatch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CanadaAddressVerification_2_GetRemainingHits_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CanadaAddressVerification_0_VerifyAddressCanada_Grounding">
+    <grounding:owlsProcess rdf:resource="#CanadaAddressVerification_0_VerifyAddressCanada_Atomic"/>
+    <grounding:wsdlOperationName>VerifyAddressCanada</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CanadaAddressVerificationSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CanadaAddressVerificationSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2457_CanadaAddressVerification.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VerifyAddressCanadaSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VerifyAddressCanadaSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CanadaAddressVerification_1_VerifyAddressCanadaBatch_Grounding">
+    <grounding:owlsProcess rdf:resource="#CanadaAddressVerification_1_VerifyAddressCanadaBatch_Atomic"/>
+    <grounding:wsdlOperationName>VerifyAddressCanadaBatch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CanadaAddressVerificationSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CanadaAddressVerificationSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2457_CanadaAddressVerification.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VerifyAddressCanadaBatchSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VerifyAddressCanadaBatchSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CanadaAddressVerification_2_GetRemainingHits_Grounding">
+    <grounding:owlsProcess rdf:resource="#CanadaAddressVerification_2_GetRemainingHits_Atomic"/>
+    <grounding:wsdlOperationName>GetRemainingHits</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CanadaAddressVerificationSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CanadaAddressVerificationSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2457_CanadaAddressVerification.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRemainingHitsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRemainingHitsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
