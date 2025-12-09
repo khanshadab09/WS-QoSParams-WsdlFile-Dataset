@@ -1,0 +1,352 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="NewsletterUserServiceService">
+    <service:presents rdf:resource="#NewsletterUserServiceService_Profile"/>
+    <service:describedBy rdf:resource="#NewsletterUserServiceService_Composite"/>
+    <service:supports rdf:resource="#NewsletterUserServiceService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="NewsletterUserServiceService_Profile">
+    <profile:serviceName>NewsletterUserServiceService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#NewsletterUserServiceService"/>
+    <profile:hasProcess rdf:resource="#NewsletterUserServiceService_0_authenticate_Atomic"/>
+    <profile:hasInput rdf:resource="#NewsletterUserServiceService_0_authenticate_Atomic_input_accessKey__http___schemas.xmlsoap.org_soap_encoding__string"/>
+    <profile:hasOutput rdf:resource="#NewsletterUserServiceService_0_authenticate_Atomic_output_authenticateReturn__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasPrecondition>The access key provided must be a valid string according to the SOAP encoding schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a boolean value indicating the success or failure of the authentication process.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NewsletterUserServiceService_1_getVersion_Atomic"/>
+    <profile:hasOutput rdf:resource="#NewsletterUserServiceService_1_getVersion_Atomic_output_getVersionReturn__http___schemas.xmlsoap.org_soap_encoding__string"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The getVersion operation will return a string indicating the version of the web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NewsletterUserServiceService_2_removeUser_Atomic"/>
+    <profile:hasInput rdf:resource="#NewsletterUserServiceService_2_removeUser_Atomic_input_email__http___schemas.xmlsoap.org_soap_encoding__string"/>
+    <profile:hasOutput rdf:resource="#NewsletterUserServiceService_2_removeUser_Atomic_output_removeUserReturn__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasPrecondition>The user with the specified email address exists in the system.</profile:hasPrecondition>
+    <profile:hasResult>The user associated with the provided email address is successfully removed from the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NewsletterUserServiceService_3_getUser_Atomic"/>
+    <profile:hasInput rdf:resource="#NewsletterUserServiceService_3_getUser_Atomic_input_email__http___schemas.xmlsoap.org_soap_encoding__string"/>
+    <profile:hasOutput rdf:resource="#NewsletterUserServiceService_3_getUser_Atomic_output_getUserReturn__http___webservices.newsletter_WS_NewsletterUser"/>
+    <profile:hasPrecondition>The email address provided must be a valid string conforming to the SOAP encoding standard.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a WS_NewsletterUser object corresponding to the user with the provided email address.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NewsletterUserServiceService_4_setForceTopicUpdate_Atomic"/>
+    <profile:hasInput rdf:resource="#NewsletterUserServiceService_4_setForceTopicUpdate_Atomic_input_forceTopicUpdate__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasPrecondition>The input parameter "forceTopicUpdate" must be a boolean value.</profile:hasPrecondition>
+    <profile:hasResult>The operation will trigger a forced update of the specified topic.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NewsletterUserServiceService_5_setForceFormatUpdate_Atomic"/>
+    <profile:hasInput rdf:resource="#NewsletterUserServiceService_5_setForceFormatUpdate_Atomic_input_forceFormatUpdate__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasPrecondition>The input parameter forceFormatUpdate must be provided with a valid boolean value.</profile:hasPrecondition>
+    <profile:hasResult>The operation setForceFormatUpdate will update the format forcefully based on the provided boolean value.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NewsletterUserServiceService_6_updateUser_Atomic"/>
+    <profile:hasInput rdf:resource="#NewsletterUserServiceService_6_updateUser_Atomic_input_user__http___webservices.newsletter_WS_NewsletterUser"/>
+    <profile:hasOutput rdf:resource="#NewsletterUserServiceService_6_updateUser_Atomic_output_updateUserReturn__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user information provided must be in the format specified by the WS_NewsletterUser schema.</profile:hasPrecondition>
+    <profile:hasResult>The updateUser operation will return an integer value indicating the success or failure of the user update process.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NewsletterUserServiceService_7_setUserStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#NewsletterUserServiceService_7_setUserStatus_Atomic_input_newStatus__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#NewsletterUserServiceService_7_setUserStatus_Atomic_input_email__http___schemas.xmlsoap.org_soap_encoding__string"/>
+    <profile:hasOutput rdf:resource="#NewsletterUserServiceService_7_setUserStatus_Atomic_output_setUserStatusReturn__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to update their status.</profile:hasPrecondition>
+    <profile:hasResult>The user's status is successfully updated in the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NewsletterUserServiceService_8_getAllTopics_Atomic"/>
+    <profile:hasOutput rdf:resource="#NewsletterUserServiceService_8_getAllTopics_Atomic_output_getAllTopicsReturn__urn_webservices.newsletter_ArrayOf_tns1_WS_Topic"/>
+    <profile:hasPrecondition>The getAllTopics operation is called without any input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The operation returns an array of topics related to the newsletter web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NewsletterUserServiceService_9_getLastErrorCode_Atomic"/>
+    <profile:hasOutput rdf:resource="#NewsletterUserServiceService_9_getLastErrorCode_Atomic_output_getLastErrorCodeReturn__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The system must have encountered an error previously.</profile:hasPrecondition>
+    <profile:hasResult>Returns the last error code as an integer.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NewsletterUserServiceService_10_getLastErrorMessage_Atomic"/>
+    <profile:hasOutput rdf:resource="#NewsletterUserServiceService_10_getLastErrorMessage_Atomic_output_getLastErrorMessageReturn__http___schemas.xmlsoap.org_soap_encoding__string"/>
+    <profile:hasPrecondition>The system must have previously encountered an error.</profile:hasPrecondition>
+    <profile:hasResult>Returns the last error message encountered by the system.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="NewsletterUserServiceService_Composite">
+    <process:composedOf rdf:resource="#NewsletterUserServiceService_0_authenticate_Atomic"/>
+    <process:composedOf rdf:resource="#NewsletterUserServiceService_1_getVersion_Atomic"/>
+    <process:composedOf rdf:resource="#NewsletterUserServiceService_2_removeUser_Atomic"/>
+    <process:composedOf rdf:resource="#NewsletterUserServiceService_3_getUser_Atomic"/>
+    <process:composedOf rdf:resource="#NewsletterUserServiceService_4_setForceTopicUpdate_Atomic"/>
+    <process:composedOf rdf:resource="#NewsletterUserServiceService_5_setForceFormatUpdate_Atomic"/>
+    <process:composedOf rdf:resource="#NewsletterUserServiceService_6_updateUser_Atomic"/>
+    <process:composedOf rdf:resource="#NewsletterUserServiceService_7_setUserStatus_Atomic"/>
+    <process:composedOf rdf:resource="#NewsletterUserServiceService_8_getAllTopics_Atomic"/>
+    <process:composedOf rdf:resource="#NewsletterUserServiceService_9_getLastErrorCode_Atomic"/>
+    <process:composedOf rdf:resource="#NewsletterUserServiceService_10_getLastErrorMessage_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="NewsletterUserServiceService_0_authenticate_Atomic_input_accessKey__http___schemas.xmlsoap.org_soap_encoding__string">
+    <process:parameterType>accessKey:{http://schemas.xmlsoap.org/soap/encoding/}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NewsletterUserServiceService_0_authenticate_Atomic_output_authenticateReturn__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>authenticateReturn:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="NewsletterUserServiceService_1_getVersion_Atomic_output_getVersionReturn__http___schemas.xmlsoap.org_soap_encoding__string">
+    <process:parameterType>getVersionReturn:{http://schemas.xmlsoap.org/soap/encoding/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NewsletterUserServiceService_2_removeUser_Atomic_input_email__http___schemas.xmlsoap.org_soap_encoding__string">
+    <process:parameterType>email:{http://schemas.xmlsoap.org/soap/encoding/}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NewsletterUserServiceService_2_removeUser_Atomic_output_removeUserReturn__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>removeUserReturn:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NewsletterUserServiceService_3_getUser_Atomic_input_email__http___schemas.xmlsoap.org_soap_encoding__string">
+    <process:parameterType>email:{http://schemas.xmlsoap.org/soap/encoding/}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NewsletterUserServiceService_3_getUser_Atomic_output_getUserReturn__http___webservices.newsletter_WS_NewsletterUser">
+    <process:parameterType>getUserReturn:{http://webservices.newsletter}WS_NewsletterUser</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NewsletterUserServiceService_4_setForceTopicUpdate_Atomic_input_forceTopicUpdate__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>forceTopicUpdate:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NewsletterUserServiceService_5_setForceFormatUpdate_Atomic_input_forceFormatUpdate__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>forceFormatUpdate:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NewsletterUserServiceService_6_updateUser_Atomic_input_user__http___webservices.newsletter_WS_NewsletterUser">
+    <process:parameterType>user:{http://webservices.newsletter}WS_NewsletterUser</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NewsletterUserServiceService_6_updateUser_Atomic_output_updateUserReturn__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>updateUserReturn:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NewsletterUserServiceService_7_setUserStatus_Atomic_input_newStatus__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>newStatus:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NewsletterUserServiceService_7_setUserStatus_Atomic_input_email__http___schemas.xmlsoap.org_soap_encoding__string">
+    <process:parameterType>email:{http://schemas.xmlsoap.org/soap/encoding/}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NewsletterUserServiceService_7_setUserStatus_Atomic_output_setUserStatusReturn__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>setUserStatusReturn:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="NewsletterUserServiceService_8_getAllTopics_Atomic_output_getAllTopicsReturn__urn_webservices.newsletter_ArrayOf_tns1_WS_Topic">
+    <process:parameterType>getAllTopicsReturn:{urn:webservices.newsletter}ArrayOf_tns1_WS_Topic</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="NewsletterUserServiceService_9_getLastErrorCode_Atomic_output_getLastErrorCodeReturn__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>getLastErrorCodeReturn:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="NewsletterUserServiceService_10_getLastErrorMessage_Atomic_output_getLastErrorMessageReturn__http___schemas.xmlsoap.org_soap_encoding__string">
+    <process:parameterType>getLastErrorMessageReturn:{http://schemas.xmlsoap.org/soap/encoding/}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="NewsletterUserServiceService_0_authenticate_Atomic">
+    <process:hasName>authenticate</process:hasName>
+    <process:hasInput rdf:resource="#NewsletterUserServiceService_0_authenticate_Atomic_input_accessKey__http___schemas.xmlsoap.org_soap_encoding__string"/>
+    <process:hasOutput rdf:resource="#NewsletterUserServiceService_0_authenticate_Atomic_output_authenticateReturn__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasPrecondition>The access key provided must be a valid string according to the SOAP encoding schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a boolean value indicating the success or failure of the authentication process.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NewsletterUserServiceService_1_getVersion_Atomic">
+    <process:hasName>getVersion</process:hasName>
+    <process:hasOutput rdf:resource="#NewsletterUserServiceService_1_getVersion_Atomic_output_getVersionReturn__http___schemas.xmlsoap.org_soap_encoding__string"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The getVersion operation will return a string indicating the version of the web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NewsletterUserServiceService_2_removeUser_Atomic">
+    <process:hasName>removeUser</process:hasName>
+    <process:hasInput rdf:resource="#NewsletterUserServiceService_2_removeUser_Atomic_input_email__http___schemas.xmlsoap.org_soap_encoding__string"/>
+    <process:hasOutput rdf:resource="#NewsletterUserServiceService_2_removeUser_Atomic_output_removeUserReturn__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasPrecondition>The user with the specified email address exists in the system.</process:hasPrecondition>
+    <process:hasEffect>The user associated with the provided email address is successfully removed from the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NewsletterUserServiceService_3_getUser_Atomic">
+    <process:hasName>getUser</process:hasName>
+    <process:hasInput rdf:resource="#NewsletterUserServiceService_3_getUser_Atomic_input_email__http___schemas.xmlsoap.org_soap_encoding__string"/>
+    <process:hasOutput rdf:resource="#NewsletterUserServiceService_3_getUser_Atomic_output_getUserReturn__http___webservices.newsletter_WS_NewsletterUser"/>
+    <process:hasPrecondition>The email address provided must be a valid string conforming to the SOAP encoding standard.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a WS_NewsletterUser object corresponding to the user with the provided email address.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NewsletterUserServiceService_4_setForceTopicUpdate_Atomic">
+    <process:hasName>setForceTopicUpdate</process:hasName>
+    <process:hasInput rdf:resource="#NewsletterUserServiceService_4_setForceTopicUpdate_Atomic_input_forceTopicUpdate__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasPrecondition>The input parameter "forceTopicUpdate" must be a boolean value.</process:hasPrecondition>
+    <process:hasEffect>The operation will trigger a forced update of the specified topic.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NewsletterUserServiceService_5_setForceFormatUpdate_Atomic">
+    <process:hasName>setForceFormatUpdate</process:hasName>
+    <process:hasInput rdf:resource="#NewsletterUserServiceService_5_setForceFormatUpdate_Atomic_input_forceFormatUpdate__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasPrecondition>The input parameter forceFormatUpdate must be provided with a valid boolean value.</process:hasPrecondition>
+    <process:hasEffect>The operation setForceFormatUpdate will update the format forcefully based on the provided boolean value.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NewsletterUserServiceService_6_updateUser_Atomic">
+    <process:hasName>updateUser</process:hasName>
+    <process:hasInput rdf:resource="#NewsletterUserServiceService_6_updateUser_Atomic_input_user__http___webservices.newsletter_WS_NewsletterUser"/>
+    <process:hasOutput rdf:resource="#NewsletterUserServiceService_6_updateUser_Atomic_output_updateUserReturn__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user information provided must be in the format specified by the WS_NewsletterUser schema.</process:hasPrecondition>
+    <process:hasEffect>The updateUser operation will return an integer value indicating the success or failure of the user update process.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NewsletterUserServiceService_7_setUserStatus_Atomic">
+    <process:hasName>setUserStatus</process:hasName>
+    <process:hasInput rdf:resource="#NewsletterUserServiceService_7_setUserStatus_Atomic_input_newStatus__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#NewsletterUserServiceService_7_setUserStatus_Atomic_input_email__http___schemas.xmlsoap.org_soap_encoding__string"/>
+    <process:hasOutput rdf:resource="#NewsletterUserServiceService_7_setUserStatus_Atomic_output_setUserStatusReturn__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to update their status.</process:hasPrecondition>
+    <process:hasEffect>The user's status is successfully updated in the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NewsletterUserServiceService_8_getAllTopics_Atomic">
+    <process:hasName>getAllTopics</process:hasName>
+    <process:hasOutput rdf:resource="#NewsletterUserServiceService_8_getAllTopics_Atomic_output_getAllTopicsReturn__urn_webservices.newsletter_ArrayOf_tns1_WS_Topic"/>
+    <process:hasPrecondition>The getAllTopics operation is called without any input parameters.</process:hasPrecondition>
+    <process:hasEffect>The operation returns an array of topics related to the newsletter web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NewsletterUserServiceService_9_getLastErrorCode_Atomic">
+    <process:hasName>getLastErrorCode</process:hasName>
+    <process:hasOutput rdf:resource="#NewsletterUserServiceService_9_getLastErrorCode_Atomic_output_getLastErrorCodeReturn__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The system must have encountered an error previously.</process:hasPrecondition>
+    <process:hasEffect>Returns the last error code as an integer.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NewsletterUserServiceService_10_getLastErrorMessage_Atomic">
+    <process:hasName>getLastErrorMessage</process:hasName>
+    <process:hasOutput rdf:resource="#NewsletterUserServiceService_10_getLastErrorMessage_Atomic_output_getLastErrorMessageReturn__http___schemas.xmlsoap.org_soap_encoding__string"/>
+    <process:hasPrecondition>The system must have previously encountered an error.</process:hasPrecondition>
+    <process:hasEffect>Returns the last error message encountered by the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="NewsletterUserServiceService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsletterUserServiceService_0_authenticate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsletterUserServiceService_1_getVersion_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsletterUserServiceService_2_removeUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsletterUserServiceService_3_getUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsletterUserServiceService_4_setForceTopicUpdate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsletterUserServiceService_5_setForceFormatUpdate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsletterUserServiceService_6_updateUser_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsletterUserServiceService_7_setUserStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsletterUserServiceService_8_getAllTopics_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsletterUserServiceService_9_getLastErrorCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsletterUserServiceService_10_getLastErrorMessage_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsletterUserServiceService_0_authenticate_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsletterUserServiceService_0_authenticate_Atomic"/>
+    <grounding:wsdlOperationName>authenticate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsletterUserSerivceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsletterUserService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1436_1435.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>authenticateRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>authenticateResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsletterUserServiceService_1_getVersion_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsletterUserServiceService_1_getVersion_Atomic"/>
+    <grounding:wsdlOperationName>getVersion</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsletterUserSerivceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsletterUserService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1436_1435.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getVersionRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getVersionResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsletterUserServiceService_2_removeUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsletterUserServiceService_2_removeUser_Atomic"/>
+    <grounding:wsdlOperationName>removeUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsletterUserSerivceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsletterUserService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1436_1435.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>removeUserRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>removeUserResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsletterUserServiceService_3_getUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsletterUserServiceService_3_getUser_Atomic"/>
+    <grounding:wsdlOperationName>getUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsletterUserSerivceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsletterUserService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1436_1435.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getUserRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getUserResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsletterUserServiceService_4_setForceTopicUpdate_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsletterUserServiceService_4_setForceTopicUpdate_Atomic"/>
+    <grounding:wsdlOperationName>setForceTopicUpdate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsletterUserSerivceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsletterUserService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1436_1435.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>setForceTopicUpdateRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>setForceTopicUpdateResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsletterUserServiceService_5_setForceFormatUpdate_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsletterUserServiceService_5_setForceFormatUpdate_Atomic"/>
+    <grounding:wsdlOperationName>setForceFormatUpdate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsletterUserSerivceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsletterUserService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1436_1435.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>setForceFormatUpdateRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>setForceFormatUpdateResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsletterUserServiceService_6_updateUser_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsletterUserServiceService_6_updateUser_Atomic"/>
+    <grounding:wsdlOperationName>updateUser</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsletterUserSerivceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsletterUserService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1436_1435.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>updateUserRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>updateUserResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsletterUserServiceService_7_setUserStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsletterUserServiceService_7_setUserStatus_Atomic"/>
+    <grounding:wsdlOperationName>setUserStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsletterUserSerivceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsletterUserService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1436_1435.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>setUserStatusRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>setUserStatusResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsletterUserServiceService_8_getAllTopics_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsletterUserServiceService_8_getAllTopics_Atomic"/>
+    <grounding:wsdlOperationName>getAllTopics</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsletterUserSerivceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsletterUserService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1436_1435.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAllTopicsRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAllTopicsResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsletterUserServiceService_9_getLastErrorCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsletterUserServiceService_9_getLastErrorCode_Atomic"/>
+    <grounding:wsdlOperationName>getLastErrorCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsletterUserSerivceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsletterUserService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1436_1435.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLastErrorCodeRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLastErrorCodeResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsletterUserServiceService_10_getLastErrorMessage_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsletterUserServiceService_10_getLastErrorMessage_Atomic"/>
+    <grounding:wsdlOperationName>getLastErrorMessage</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsletterUserSerivceSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsletterUserService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1436_1435.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLastErrorMessageRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLastErrorMessageResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Wsession">
+    <service:presents rdf:resource="#Wsession_Profile"/>
+    <service:describedBy rdf:resource="#Wsession_Composite"/>
+    <service:supports rdf:resource="#Wsession_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Wsession_Profile">
+    <profile:serviceName>Wsession</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Wsession"/>
+    <profile:hasProcess rdf:resource="#Wsession_0_Cecam_Ws_Connect_Atomic"/>
+    <profile:hasInput rdf:resource="#Wsession_0_Cecam_Ws_Connect_Atomic_input_sUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Wsession_0_Cecam_Ws_Connect_Atomic_input_sPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Wsession_0_Cecam_Ws_Connect_Atomic_output_Cecam_Ws_ConnectResult__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The user must provide a valid username and password for authentication.</profile:hasPrecondition>
+    <profile:hasResult>The operation establishes a connection to the Cecam web service and returns a connection result.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Wsession_1_Cecam_Ws_DisConnect_Atomic"/>
+    <profile:hasInput rdf:resource="#Wsession_1_Cecam_Ws_DisConnect_Atomic_input_sIdentifiant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Wsession_1_Cecam_Ws_DisConnect_Atomic_output_Cecam_Ws_DisConnectResult__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The user must provide a valid identifier in string format to disconnect from the Cecam web service.</profile:hasPrecondition>
+    <profile:hasResult>The user will receive a string result confirming the disconnection from the Cecam web service.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Wsession_Composite">
+    <process:composedOf rdf:resource="#Wsession_0_Cecam_Ws_Connect_Atomic"/>
+    <process:composedOf rdf:resource="#Wsession_1_Cecam_Ws_DisConnect_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Wsession_0_Cecam_Ws_Connect_Atomic_input_sUser__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sUser:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Wsession_0_Cecam_Ws_Connect_Atomic_input_sPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Wsession_0_Cecam_Ws_Connect_Atomic_output_Cecam_Ws_ConnectResult__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Cecam_Ws_ConnectResult:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Wsession_1_Cecam_Ws_DisConnect_Atomic_input_sIdentifiant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>sIdentifiant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Wsession_1_Cecam_Ws_DisConnect_Atomic_output_Cecam_Ws_DisConnectResult__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Cecam_Ws_DisConnectResult:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Wsession_0_Cecam_Ws_Connect_Atomic">
+    <process:hasName>Cecam_Ws_Connect</process:hasName>
+    <process:hasInput rdf:resource="#Wsession_0_Cecam_Ws_Connect_Atomic_input_sUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Wsession_0_Cecam_Ws_Connect_Atomic_input_sPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Wsession_0_Cecam_Ws_Connect_Atomic_output_Cecam_Ws_ConnectResult__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The user must provide a valid username and password for authentication.</process:hasPrecondition>
+    <process:hasEffect>The operation establishes a connection to the Cecam web service and returns a connection result.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Wsession_1_Cecam_Ws_DisConnect_Atomic">
+    <process:hasName>Cecam_Ws_DisConnect</process:hasName>
+    <process:hasInput rdf:resource="#Wsession_1_Cecam_Ws_DisConnect_Atomic_input_sIdentifiant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Wsession_1_Cecam_Ws_DisConnect_Atomic_output_Cecam_Ws_DisConnectResult__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The user must provide a valid identifier in string format to disconnect from the Cecam web service.</process:hasPrecondition>
+    <process:hasEffect>The user will receive a string result confirming the disconnection from the Cecam web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Wsession_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Wsession_0_Cecam_Ws_Connect_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Wsession_1_Cecam_Ws_DisConnect_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Wsession_0_Cecam_Ws_Connect_Grounding">
+    <grounding:owlsProcess rdf:resource="#Wsession_0_Cecam_Ws_Connect_Atomic"/>
+    <grounding:wsdlOperationName>Cecam_Ws_Connect</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WsessionSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WsessionSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1123_1122.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Cecam_Ws_ConnectSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>Cecam_Ws_ConnectSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Wsession_1_Cecam_Ws_DisConnect_Grounding">
+    <grounding:owlsProcess rdf:resource="#Wsession_1_Cecam_Ws_DisConnect_Atomic"/>
+    <grounding:wsdlOperationName>Cecam_Ws_DisConnect</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WsessionSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WsessionSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1123_1122.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Cecam_Ws_DisConnectSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>Cecam_Ws_DisConnectSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
