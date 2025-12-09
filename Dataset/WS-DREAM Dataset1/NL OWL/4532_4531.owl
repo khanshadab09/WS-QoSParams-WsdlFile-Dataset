@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="KnowledgeLeak">
+    <service:presents rdf:resource="#KnowledgeLeak_Profile"/>
+    <service:describedBy rdf:resource="#KnowledgeLeak_Composite"/>
+    <service:supports rdf:resource="#KnowledgeLeak_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="KnowledgeLeak_Profile">
+    <profile:serviceName>KnowledgeLeak</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#KnowledgeLeak"/>
+    <profile:hasProcess rdf:resource="#KnowledgeLeak_0_AboutKnowledgeLeak_Atomic"/>
+    <profile:hasInput rdf:resource="#KnowledgeLeak_0_AboutKnowledgeLeak_Atomic_input_parameters__http___webservices.gcomputer.net__AboutKnowledgeLeak"/>
+    <profile:hasOutput rdf:resource="#KnowledgeLeak_0_AboutKnowledgeLeak_Atomic_output_parameters__http___webservices.gcomputer.net__AboutKnowledgeLeakResponse"/>
+    <profile:hasPrecondition>The web service must receive a request containing information about a knowledge leak in a specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will provide a response containing details about the knowledge leak.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#KnowledgeLeak_1_Knowledge_Atomic"/>
+    <profile:hasInput rdf:resource="#KnowledgeLeak_1_Knowledge_Atomic_input_parameters__http___webservices.gcomputer.net__Knowledge"/>
+    <profile:hasOutput rdf:resource="#KnowledgeLeak_1_Knowledge_Atomic_output_parameters__http___webservices.gcomputer.net__KnowledgeResponse"/>
+    <profile:hasPrecondition>The web service must receive a request containing knowledge data in the specified format from http://webservices.gcomputer.net/.</profile:hasPrecondition>
+    <profile:hasResult>The web service will generate and send a response containing knowledge data in the specified format to http://webservices.gcomputer.net/.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="KnowledgeLeak_Composite">
+    <process:composedOf rdf:resource="#KnowledgeLeak_0_AboutKnowledgeLeak_Atomic"/>
+    <process:composedOf rdf:resource="#KnowledgeLeak_1_Knowledge_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="KnowledgeLeak_0_AboutKnowledgeLeak_Atomic_input_parameters__http___webservices.gcomputer.net__AboutKnowledgeLeak">
+    <process:parameterType>parameters:{http://webservices.gcomputer.net/}AboutKnowledgeLeak</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="KnowledgeLeak_0_AboutKnowledgeLeak_Atomic_output_parameters__http___webservices.gcomputer.net__AboutKnowledgeLeakResponse">
+    <process:parameterType>parameters:{http://webservices.gcomputer.net/}AboutKnowledgeLeakResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="KnowledgeLeak_1_Knowledge_Atomic_input_parameters__http___webservices.gcomputer.net__Knowledge">
+    <process:parameterType>parameters:{http://webservices.gcomputer.net/}Knowledge</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="KnowledgeLeak_1_Knowledge_Atomic_output_parameters__http___webservices.gcomputer.net__KnowledgeResponse">
+    <process:parameterType>parameters:{http://webservices.gcomputer.net/}KnowledgeResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="KnowledgeLeak_0_AboutKnowledgeLeak_Atomic">
+    <process:hasName>AboutKnowledgeLeak</process:hasName>
+    <process:hasInput rdf:resource="#KnowledgeLeak_0_AboutKnowledgeLeak_Atomic_input_parameters__http___webservices.gcomputer.net__AboutKnowledgeLeak"/>
+    <process:hasOutput rdf:resource="#KnowledgeLeak_0_AboutKnowledgeLeak_Atomic_output_parameters__http___webservices.gcomputer.net__AboutKnowledgeLeakResponse"/>
+    <process:hasPrecondition>The web service must receive a request containing information about a knowledge leak in a specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will provide a response containing details about the knowledge leak.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="KnowledgeLeak_1_Knowledge_Atomic">
+    <process:hasName>Knowledge</process:hasName>
+    <process:hasInput rdf:resource="#KnowledgeLeak_1_Knowledge_Atomic_input_parameters__http___webservices.gcomputer.net__Knowledge"/>
+    <process:hasOutput rdf:resource="#KnowledgeLeak_1_Knowledge_Atomic_output_parameters__http___webservices.gcomputer.net__KnowledgeResponse"/>
+    <process:hasPrecondition>The web service must receive a request containing knowledge data in the specified format from http://webservices.gcomputer.net/.</process:hasPrecondition>
+    <process:hasEffect>The web service will generate and send a response containing knowledge data in the specified format to http://webservices.gcomputer.net/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="KnowledgeLeak_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#KnowledgeLeak_0_AboutKnowledgeLeak_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#KnowledgeLeak_1_Knowledge_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="KnowledgeLeak_0_AboutKnowledgeLeak_Grounding">
+    <grounding:owlsProcess rdf:resource="#KnowledgeLeak_0_AboutKnowledgeLeak_Atomic"/>
+    <grounding:wsdlOperationName>AboutKnowledgeLeak</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>KnowledgeLeakSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>KnowledgeLeakSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4532_4531.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AboutKnowledgeLeakSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AboutKnowledgeLeakSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="KnowledgeLeak_1_Knowledge_Grounding">
+    <grounding:owlsProcess rdf:resource="#KnowledgeLeak_1_Knowledge_Atomic"/>
+    <grounding:wsdlOperationName>Knowledge</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>KnowledgeLeakSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>KnowledgeLeakSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4532_4531.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>KnowledgeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>KnowledgeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

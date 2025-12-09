@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ClientServices">
+    <service:presents rdf:resource="#ClientServices_Profile"/>
+    <service:describedBy rdf:resource="#ClientServices_Composite"/>
+    <service:supports rdf:resource="#ClientServices_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ClientServices_Profile">
+    <profile:serviceName>ClientServices</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ClientServices"/>
+    <profile:hasProcess rdf:resource="#ClientServices_0_GetCountyList_Atomic"/>
+    <profile:hasInput rdf:resource="#ClientServices_0_GetCountyList_Atomic_input_parameters__http___tempuri.org__GetCountyList"/>
+    <profile:hasOutput rdf:resource="#ClientServices_0_GetCountyList_Atomic_output_parameters__http___tempuri.org__GetCountyListResponse"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The list of counties will be retrieved successfully.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ClientServices_1_GetZipCodeList_Atomic"/>
+    <profile:hasInput rdf:resource="#ClientServices_1_GetZipCodeList_Atomic_input_parameters__http___tempuri.org__GetZipCodeList"/>
+    <profile:hasOutput rdf:resource="#ClientServices_1_GetZipCodeList_Atomic_output_parameters__http___tempuri.org__GetZipCodeListResponse"/>
+    <profile:hasPrecondition>The user must provide valid input parameters for the GetZipCodeList operation.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing a list of zip codes based on the provided input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ClientServices_2_GetCityList_Atomic"/>
+    <profile:hasInput rdf:resource="#ClientServices_2_GetCityList_Atomic_input_parameters__http___tempuri.org__GetCityList"/>
+    <profile:hasOutput rdf:resource="#ClientServices_2_GetCityList_Atomic_output_parameters__http___tempuri.org__GetCityListResponse"/>
+    <profile:hasPrecondition>The web service must be running and accessible to receive requests.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a list of cities in response to the GetCityList request.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ClientServices_Composite">
+    <process:composedOf rdf:resource="#ClientServices_0_GetCountyList_Atomic"/>
+    <process:composedOf rdf:resource="#ClientServices_1_GetZipCodeList_Atomic"/>
+    <process:composedOf rdf:resource="#ClientServices_2_GetCityList_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ClientServices_0_GetCountyList_Atomic_input_parameters__http___tempuri.org__GetCountyList">
+    <process:parameterType>parameters:{http://tempuri.org/}GetCountyList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ClientServices_0_GetCountyList_Atomic_output_parameters__http___tempuri.org__GetCountyListResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetCountyListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ClientServices_1_GetZipCodeList_Atomic_input_parameters__http___tempuri.org__GetZipCodeList">
+    <process:parameterType>parameters:{http://tempuri.org/}GetZipCodeList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ClientServices_1_GetZipCodeList_Atomic_output_parameters__http___tempuri.org__GetZipCodeListResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetZipCodeListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ClientServices_2_GetCityList_Atomic_input_parameters__http___tempuri.org__GetCityList">
+    <process:parameterType>parameters:{http://tempuri.org/}GetCityList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ClientServices_2_GetCityList_Atomic_output_parameters__http___tempuri.org__GetCityListResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetCityListResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ClientServices_0_GetCountyList_Atomic">
+    <process:hasName>GetCountyList</process:hasName>
+    <process:hasInput rdf:resource="#ClientServices_0_GetCountyList_Atomic_input_parameters__http___tempuri.org__GetCountyList"/>
+    <process:hasOutput rdf:resource="#ClientServices_0_GetCountyList_Atomic_output_parameters__http___tempuri.org__GetCountyListResponse"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The list of counties will be retrieved successfully.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ClientServices_1_GetZipCodeList_Atomic">
+    <process:hasName>GetZipCodeList</process:hasName>
+    <process:hasInput rdf:resource="#ClientServices_1_GetZipCodeList_Atomic_input_parameters__http___tempuri.org__GetZipCodeList"/>
+    <process:hasOutput rdf:resource="#ClientServices_1_GetZipCodeList_Atomic_output_parameters__http___tempuri.org__GetZipCodeListResponse"/>
+    <process:hasPrecondition>The user must provide valid input parameters for the GetZipCodeList operation.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing a list of zip codes based on the provided input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ClientServices_2_GetCityList_Atomic">
+    <process:hasName>GetCityList</process:hasName>
+    <process:hasInput rdf:resource="#ClientServices_2_GetCityList_Atomic_input_parameters__http___tempuri.org__GetCityList"/>
+    <process:hasOutput rdf:resource="#ClientServices_2_GetCityList_Atomic_output_parameters__http___tempuri.org__GetCityListResponse"/>
+    <process:hasPrecondition>The web service must be running and accessible to receive requests.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a list of cities in response to the GetCityList request.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ClientServices_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ClientServices_0_GetCountyList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ClientServices_1_GetZipCodeList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ClientServices_2_GetCityList_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ClientServices_0_GetCountyList_Grounding">
+    <grounding:owlsProcess rdf:resource="#ClientServices_0_GetCountyList_Atomic"/>
+    <grounding:wsdlOperationName>GetCountyList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ClientServicesSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ClientServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4782_4781.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCountyListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCountyListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ClientServices_1_GetZipCodeList_Grounding">
+    <grounding:owlsProcess rdf:resource="#ClientServices_1_GetZipCodeList_Atomic"/>
+    <grounding:wsdlOperationName>GetZipCodeList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ClientServicesSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ClientServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4782_4781.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetZipCodeListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetZipCodeListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ClientServices_2_GetCityList_Grounding">
+    <grounding:owlsProcess rdf:resource="#ClientServices_2_GetCityList_Atomic"/>
+    <grounding:wsdlOperationName>GetCityList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ClientServicesSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ClientServicesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4782_4781.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCityListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCityListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

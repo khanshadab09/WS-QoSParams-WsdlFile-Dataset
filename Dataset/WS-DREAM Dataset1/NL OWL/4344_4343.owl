@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Properties">
+    <service:presents rdf:resource="#Properties_Profile"/>
+    <service:describedBy rdf:resource="#Properties_Composite"/>
+    <service:supports rdf:resource="#Properties_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Properties_Profile">
+    <profile:serviceName>Properties</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Properties"/>
+    <profile:hasProcess rdf:resource="#Properties_0_HelloWorld_Atomic"/>
+    <profile:hasInput rdf:resource="#Properties_0_HelloWorld_Atomic_input_parameters__http___aci.matweb.com__HelloWorld"/>
+    <profile:hasOutput rdf:resource="#Properties_0_HelloWorld_Atomic_output_parameters__http___aci.matweb.com__HelloWorldResponse"/>
+    <profile:hasPrecondition>The web service must receive a parameter named "HelloWorld" from the client in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response named "HelloWorldResponse" to the client in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Properties_1_FindProperties_Atomic"/>
+    <profile:hasInput rdf:resource="#Properties_1_FindProperties_Atomic_input_parameters__http___aci.matweb.com__FindProperties"/>
+    <profile:hasOutput rdf:resource="#Properties_1_FindProperties_Atomic_output_parameters__http___aci.matweb.com__FindPropertiesResponse"/>
+    <profile:hasPrecondition>The input parameters for the FindProperties operation must be provided in the specified format from the http://aci.matweb.com/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for the FindProperties operation will be returned in the specified format from the http://aci.matweb.com/ namespace.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Properties_Composite">
+    <process:composedOf rdf:resource="#Properties_0_HelloWorld_Atomic"/>
+    <process:composedOf rdf:resource="#Properties_1_FindProperties_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Properties_0_HelloWorld_Atomic_input_parameters__http___aci.matweb.com__HelloWorld">
+    <process:parameterType>parameters:{http://aci.matweb.com/}HelloWorld</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Properties_0_HelloWorld_Atomic_output_parameters__http___aci.matweb.com__HelloWorldResponse">
+    <process:parameterType>parameters:{http://aci.matweb.com/}HelloWorldResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Properties_1_FindProperties_Atomic_input_parameters__http___aci.matweb.com__FindProperties">
+    <process:parameterType>parameters:{http://aci.matweb.com/}FindProperties</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Properties_1_FindProperties_Atomic_output_parameters__http___aci.matweb.com__FindPropertiesResponse">
+    <process:parameterType>parameters:{http://aci.matweb.com/}FindPropertiesResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Properties_0_HelloWorld_Atomic">
+    <process:hasName>HelloWorld</process:hasName>
+    <process:hasInput rdf:resource="#Properties_0_HelloWorld_Atomic_input_parameters__http___aci.matweb.com__HelloWorld"/>
+    <process:hasOutput rdf:resource="#Properties_0_HelloWorld_Atomic_output_parameters__http___aci.matweb.com__HelloWorldResponse"/>
+    <process:hasPrecondition>The web service must receive a parameter named "HelloWorld" from the client in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response named "HelloWorldResponse" to the client in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Properties_1_FindProperties_Atomic">
+    <process:hasName>FindProperties</process:hasName>
+    <process:hasInput rdf:resource="#Properties_1_FindProperties_Atomic_input_parameters__http___aci.matweb.com__FindProperties"/>
+    <process:hasOutput rdf:resource="#Properties_1_FindProperties_Atomic_output_parameters__http___aci.matweb.com__FindPropertiesResponse"/>
+    <process:hasPrecondition>The input parameters for the FindProperties operation must be provided in the specified format from the http://aci.matweb.com/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for the FindProperties operation will be returned in the specified format from the http://aci.matweb.com/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Properties_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Properties_0_HelloWorld_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Properties_1_FindProperties_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Properties_0_HelloWorld_Grounding">
+    <grounding:owlsProcess rdf:resource="#Properties_0_HelloWorld_Atomic"/>
+    <grounding:wsdlOperationName>HelloWorld</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PropertiesSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PropertiesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4344_4343.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>HelloWorldSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>HelloWorldSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Properties_1_FindProperties_Grounding">
+    <grounding:owlsProcess rdf:resource="#Properties_1_FindProperties_Atomic"/>
+    <grounding:wsdlOperationName>FindProperties</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PropertiesSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PropertiesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4344_4343.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindPropertiesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindPropertiesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

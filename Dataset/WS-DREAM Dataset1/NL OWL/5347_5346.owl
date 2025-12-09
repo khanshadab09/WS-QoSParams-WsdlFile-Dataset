@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Shipment">
+    <service:presents rdf:resource="#Shipment_Profile"/>
+    <service:describedBy rdf:resource="#Shipment_Composite"/>
+    <service:supports rdf:resource="#Shipment_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Shipment_Profile">
+    <profile:serviceName>Shipment</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Shipment"/>
+    <profile:hasProcess rdf:resource="#Shipment_0_ProcessXML_Atomic"/>
+    <profile:hasInput rdf:resource="#Shipment_0_ProcessXML_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_ProcessXML"/>
+    <profile:hasOutput rdf:resource="#Shipment_0_ProcessXML_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_ProcessXMLResponse"/>
+    <profile:hasPrecondition>The input XML data must adhere to the schema specified by http://www.SaiaSecure.com/WebService/Shipment.</profile:hasPrecondition>
+    <profile:hasResult>The operation will process the input XML data and generate a response conforming to the schema specified by http://www.SaiaSecure.com/WebService/Shipment.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Shipment_1_GetByProNumber_Atomic"/>
+    <profile:hasInput rdf:resource="#Shipment_1_GetByProNumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByProNumber"/>
+    <profile:hasOutput rdf:resource="#Shipment_1_GetByProNumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByProNumberResponse"/>
+    <profile:hasPrecondition>The client must provide a valid ProNumber in the request to retrieve shipment information.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the shipment details associated with the provided ProNumber in the response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Shipment_2_GetByBLNumber_Atomic"/>
+    <profile:hasInput rdf:resource="#Shipment_2_GetByBLNumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByBLNumber"/>
+    <profile:hasOutput rdf:resource="#Shipment_2_GetByBLNumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByBLNumberResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameter for GetByBLNumber must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the shipment information corresponding to the provided Bill of Lading number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Shipment_3_GetByPONumber_Atomic"/>
+    <profile:hasInput rdf:resource="#Shipment_3_GetByPONumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByPONumber"/>
+    <profile:hasOutput rdf:resource="#Shipment_3_GetByPONumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByPONumberResponse"/>
+    <profile:hasPrecondition>The web service must receive a valid Purchase Order Number in the input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing shipment information related to the provided Purchase Order Number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Shipment_4_GetByShipperNumber_Atomic"/>
+    <profile:hasInput rdf:resource="#Shipment_4_GetByShipperNumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByShipperNumber"/>
+    <profile:hasOutput rdf:resource="#Shipment_4_GetByShipperNumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByShipperNumberResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid shipper number from the SaiaSecure web service.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response containing information related to the shipment associated with the provided shipper number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Shipment_5_FaxItem_Atomic"/>
+    <profile:hasInput rdf:resource="#Shipment_5_FaxItem_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_FaxItem"/>
+    <profile:hasOutput rdf:resource="#Shipment_5_FaxItem_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_FaxItemResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid FaxItem object conforming to the specified schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will send the FaxItem and return a response confirming the successful fax transmission.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Shipment_6_GetByPartnerNumber_Atomic"/>
+    <profile:hasInput rdf:resource="#Shipment_6_GetByPartnerNumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByPartnerNumber"/>
+    <profile:hasOutput rdf:resource="#Shipment_6_GetByPartnerNumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByPartnerNumberResponse"/>
+    <profile:hasPrecondition>The web service must have access to the SaiaSecure API and the input parameter must be a valid partner number for shipments.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the shipment details corresponding to the provided partner number.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Shipment_Composite">
+    <process:composedOf rdf:resource="#Shipment_0_ProcessXML_Atomic"/>
+    <process:composedOf rdf:resource="#Shipment_1_GetByProNumber_Atomic"/>
+    <process:composedOf rdf:resource="#Shipment_2_GetByBLNumber_Atomic"/>
+    <process:composedOf rdf:resource="#Shipment_3_GetByPONumber_Atomic"/>
+    <process:composedOf rdf:resource="#Shipment_4_GetByShipperNumber_Atomic"/>
+    <process:composedOf rdf:resource="#Shipment_5_FaxItem_Atomic"/>
+    <process:composedOf rdf:resource="#Shipment_6_GetByPartnerNumber_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Shipment_0_ProcessXML_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_ProcessXML">
+    <process:parameterType>parameters:{http://www.SaiaSecure.com/WebService/Shipment}ProcessXML</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Shipment_0_ProcessXML_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_ProcessXMLResponse">
+    <process:parameterType>parameters:{http://www.SaiaSecure.com/WebService/Shipment}ProcessXMLResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Shipment_1_GetByProNumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByProNumber">
+    <process:parameterType>parameters:{http://www.SaiaSecure.com/WebService/Shipment}GetByProNumber</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Shipment_1_GetByProNumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByProNumberResponse">
+    <process:parameterType>parameters:{http://www.SaiaSecure.com/WebService/Shipment}GetByProNumberResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Shipment_2_GetByBLNumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByBLNumber">
+    <process:parameterType>parameters:{http://www.SaiaSecure.com/WebService/Shipment}GetByBLNumber</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Shipment_2_GetByBLNumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByBLNumberResponse">
+    <process:parameterType>parameters:{http://www.SaiaSecure.com/WebService/Shipment}GetByBLNumberResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Shipment_3_GetByPONumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByPONumber">
+    <process:parameterType>parameters:{http://www.SaiaSecure.com/WebService/Shipment}GetByPONumber</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Shipment_3_GetByPONumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByPONumberResponse">
+    <process:parameterType>parameters:{http://www.SaiaSecure.com/WebService/Shipment}GetByPONumberResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Shipment_4_GetByShipperNumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByShipperNumber">
+    <process:parameterType>parameters:{http://www.SaiaSecure.com/WebService/Shipment}GetByShipperNumber</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Shipment_4_GetByShipperNumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByShipperNumberResponse">
+    <process:parameterType>parameters:{http://www.SaiaSecure.com/WebService/Shipment}GetByShipperNumberResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Shipment_5_FaxItem_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_FaxItem">
+    <process:parameterType>parameters:{http://www.SaiaSecure.com/WebService/Shipment}FaxItem</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Shipment_5_FaxItem_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_FaxItemResponse">
+    <process:parameterType>parameters:{http://www.SaiaSecure.com/WebService/Shipment}FaxItemResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Shipment_6_GetByPartnerNumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByPartnerNumber">
+    <process:parameterType>parameters:{http://www.SaiaSecure.com/WebService/Shipment}GetByPartnerNumber</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Shipment_6_GetByPartnerNumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByPartnerNumberResponse">
+    <process:parameterType>parameters:{http://www.SaiaSecure.com/WebService/Shipment}GetByPartnerNumberResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Shipment_0_ProcessXML_Atomic">
+    <process:hasName>ProcessXML</process:hasName>
+    <process:hasInput rdf:resource="#Shipment_0_ProcessXML_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_ProcessXML"/>
+    <process:hasOutput rdf:resource="#Shipment_0_ProcessXML_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_ProcessXMLResponse"/>
+    <process:hasPrecondition>The input XML data must adhere to the schema specified by http://www.SaiaSecure.com/WebService/Shipment.</process:hasPrecondition>
+    <process:hasEffect>The operation will process the input XML data and generate a response conforming to the schema specified by http://www.SaiaSecure.com/WebService/Shipment.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Shipment_1_GetByProNumber_Atomic">
+    <process:hasName>GetByProNumber</process:hasName>
+    <process:hasInput rdf:resource="#Shipment_1_GetByProNumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByProNumber"/>
+    <process:hasOutput rdf:resource="#Shipment_1_GetByProNumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByProNumberResponse"/>
+    <process:hasPrecondition>The client must provide a valid ProNumber in the request to retrieve shipment information.</process:hasPrecondition>
+    <process:hasEffect>The service will return the shipment details associated with the provided ProNumber in the response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Shipment_2_GetByBLNumber_Atomic">
+    <process:hasName>GetByBLNumber</process:hasName>
+    <process:hasInput rdf:resource="#Shipment_2_GetByBLNumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByBLNumber"/>
+    <process:hasOutput rdf:resource="#Shipment_2_GetByBLNumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByBLNumberResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameter for GetByBLNumber must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the shipment information corresponding to the provided Bill of Lading number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Shipment_3_GetByPONumber_Atomic">
+    <process:hasName>GetByPONumber</process:hasName>
+    <process:hasInput rdf:resource="#Shipment_3_GetByPONumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByPONumber"/>
+    <process:hasOutput rdf:resource="#Shipment_3_GetByPONumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByPONumberResponse"/>
+    <process:hasPrecondition>The web service must receive a valid Purchase Order Number in the input parameters.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing shipment information related to the provided Purchase Order Number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Shipment_4_GetByShipperNumber_Atomic">
+    <process:hasName>GetByShipperNumber</process:hasName>
+    <process:hasInput rdf:resource="#Shipment_4_GetByShipperNumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByShipperNumber"/>
+    <process:hasOutput rdf:resource="#Shipment_4_GetByShipperNumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByShipperNumberResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid shipper number from the SaiaSecure web service.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response containing information related to the shipment associated with the provided shipper number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Shipment_5_FaxItem_Atomic">
+    <process:hasName>FaxItem</process:hasName>
+    <process:hasInput rdf:resource="#Shipment_5_FaxItem_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_FaxItem"/>
+    <process:hasOutput rdf:resource="#Shipment_5_FaxItem_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_FaxItemResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid FaxItem object conforming to the specified schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will send the FaxItem and return a response confirming the successful fax transmission.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Shipment_6_GetByPartnerNumber_Atomic">
+    <process:hasName>GetByPartnerNumber</process:hasName>
+    <process:hasInput rdf:resource="#Shipment_6_GetByPartnerNumber_Atomic_input_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByPartnerNumber"/>
+    <process:hasOutput rdf:resource="#Shipment_6_GetByPartnerNumber_Atomic_output_parameters__http___www.SaiaSecure.com_WebService_Shipment_GetByPartnerNumberResponse"/>
+    <process:hasPrecondition>The web service must have access to the SaiaSecure API and the input parameter must be a valid partner number for shipments.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the shipment details corresponding to the provided partner number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Shipment_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Shipment_0_ProcessXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Shipment_1_GetByProNumber_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Shipment_2_GetByBLNumber_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Shipment_3_GetByPONumber_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Shipment_4_GetByShipperNumber_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Shipment_5_FaxItem_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Shipment_6_GetByPartnerNumber_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Shipment_0_ProcessXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#Shipment_0_ProcessXML_Atomic"/>
+    <grounding:wsdlOperationName>ProcessXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ShipmentSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ShipmentSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5347_5346.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ProcessXMLSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ProcessXMLSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Shipment_1_GetByProNumber_Grounding">
+    <grounding:owlsProcess rdf:resource="#Shipment_1_GetByProNumber_Atomic"/>
+    <grounding:wsdlOperationName>GetByProNumber</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ShipmentSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ShipmentSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5347_5346.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetByProNumberSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetByProNumberSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Shipment_2_GetByBLNumber_Grounding">
+    <grounding:owlsProcess rdf:resource="#Shipment_2_GetByBLNumber_Atomic"/>
+    <grounding:wsdlOperationName>GetByBLNumber</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ShipmentSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ShipmentSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5347_5346.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetByBLNumberSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetByBLNumberSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Shipment_3_GetByPONumber_Grounding">
+    <grounding:owlsProcess rdf:resource="#Shipment_3_GetByPONumber_Atomic"/>
+    <grounding:wsdlOperationName>GetByPONumber</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ShipmentSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ShipmentSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5347_5346.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetByPONumberSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetByPONumberSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Shipment_4_GetByShipperNumber_Grounding">
+    <grounding:owlsProcess rdf:resource="#Shipment_4_GetByShipperNumber_Atomic"/>
+    <grounding:wsdlOperationName>GetByShipperNumber</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ShipmentSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ShipmentSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5347_5346.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetByShipperNumberSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetByShipperNumberSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Shipment_5_FaxItem_Grounding">
+    <grounding:owlsProcess rdf:resource="#Shipment_5_FaxItem_Atomic"/>
+    <grounding:wsdlOperationName>FaxItem</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ShipmentSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ShipmentSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5347_5346.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FaxItemSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FaxItemSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Shipment_6_GetByPartnerNumber_Grounding">
+    <grounding:owlsProcess rdf:resource="#Shipment_6_GetByPartnerNumber_Atomic"/>
+    <grounding:wsdlOperationName>GetByPartnerNumber</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ShipmentSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ShipmentSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5347_5346.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetByPartnerNumberSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetByPartnerNumberSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

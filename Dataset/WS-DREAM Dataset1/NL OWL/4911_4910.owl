@@ -1,0 +1,315 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="rates">
+    <service:presents rdf:resource="#rates_Profile"/>
+    <service:describedBy rdf:resource="#rates_Composite"/>
+    <service:supports rdf:resource="#rates_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="rates_Profile">
+    <profile:serviceName>rates</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#rates"/>
+    <profile:hasProcess rdf:resource="#rates_0_GetCurrencyList_Atomic"/>
+    <profile:hasInput rdf:resource="#rates_0_GetCurrencyList_Atomic_input_parameters__http___mondor.org__GetCurrencyList"/>
+    <profile:hasOutput rdf:resource="#rates_0_GetCurrencyList_Atomic_output_parameters__http___mondor.org__GetCurrencyListResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetCurrencyList must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing a list of available currencies.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#rates_1_GetCurrencyCodes_Atomic"/>
+    <profile:hasInput rdf:resource="#rates_1_GetCurrencyCodes_Atomic_input_parameters__http___mondor.org__GetCurrencyCodes"/>
+    <profile:hasOutput rdf:resource="#rates_1_GetCurrencyCodes_Atomic_output_parameters__http___mondor.org__GetCurrencyCodesResponse"/>
+    <profile:hasPrecondition>The client must provide a valid request for currency codes in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a response containing the currency codes as per the request.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#rates_2_Convert_Atomic"/>
+    <profile:hasInput rdf:resource="#rates_2_Convert_Atomic_input_parameters__http___mondor.org__Convert"/>
+    <profile:hasOutput rdf:resource="#rates_2_Convert_Atomic_output_parameters__http___mondor.org__ConvertResponse"/>
+    <profile:hasPrecondition>The input parameter for the Convert operation must be provided in the specified format according to the http://mondor.org/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter in the ConvertResponse must adhere to the specified format based on the http://mondor.org/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#rates_3_CheckBalance_Atomic"/>
+    <profile:hasInput rdf:resource="#rates_3_CheckBalance_Atomic_input_parameters__http___mondor.org__CheckBalance"/>
+    <profile:hasOutput rdf:resource="#rates_3_CheckBalance_Atomic_output_parameters__http___mondor.org__CheckBalanceResponse"/>
+    <profile:hasPrecondition>The user must provide the necessary parameters for the CheckBalance operation in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The system will return a response containing the balance information based on the provided parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#rates_4_CheckExpirationDate_Atomic"/>
+    <profile:hasInput rdf:resource="#rates_4_CheckExpirationDate_Atomic_input_parameters__http___mondor.org__CheckExpirationDate"/>
+    <profile:hasOutput rdf:resource="#rates_4_CheckExpirationDate_Atomic_output_parameters__http___mondor.org__CheckExpirationDateResponse"/>
+    <profile:hasPrecondition>The input parameter must contain a valid expiration date in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter will contain the response with the expiration date information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#rates_5_UpgradeAccessCode_Atomic"/>
+    <profile:hasInput rdf:resource="#rates_5_UpgradeAccessCode_Atomic_input_parameters__http___mondor.org__UpgradeAccessCode"/>
+    <profile:hasOutput rdf:resource="#rates_5_UpgradeAccessCode_Atomic_output_parameters__http___mondor.org__UpgradeAccessCodeResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and authorized to request an upgrade of the access code.</profile:hasPrecondition>
+    <profile:hasResult>The access code is successfully upgraded and a response containing the updated access code is returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#rates_6_ConvertByDate_Atomic"/>
+    <profile:hasInput rdf:resource="#rates_6_ConvertByDate_Atomic_input_parameters__http___mondor.org__ConvertByDate"/>
+    <profile:hasOutput rdf:resource="#rates_6_ConvertByDate_Atomic_output_parameters__http___mondor.org__ConvertByDateResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid date in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the converted date in the response parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#rates_7_GetMinimalDate_Atomic"/>
+    <profile:hasInput rdf:resource="#rates_7_GetMinimalDate_Atomic_input_parameters__http___mondor.org__GetMinimalDate"/>
+    <profile:hasOutput rdf:resource="#rates_7_GetMinimalDate_Atomic_output_parameters__http___mondor.org__GetMinimalDateResponse"/>
+    <profile:hasPrecondition>The input parameter for GetMinimalDate must be provided in the specified format from http://mondor.org/.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter for GetMinimalDateResponse will be returned in the specified format from http://mondor.org/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#rates_8_GetRatesMatrix_Atomic"/>
+    <profile:hasInput rdf:resource="#rates_8_GetRatesMatrix_Atomic_input_parameters__http___mondor.org__GetRatesMatrix"/>
+    <profile:hasOutput rdf:resource="#rates_8_GetRatesMatrix_Atomic_output_parameters__http___mondor.org__GetRatesMatrixResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetRatesMatrix must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the rates matrix based on the input parameters provided.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="rates_Composite">
+    <process:composedOf rdf:resource="#rates_0_GetCurrencyList_Atomic"/>
+    <process:composedOf rdf:resource="#rates_1_GetCurrencyCodes_Atomic"/>
+    <process:composedOf rdf:resource="#rates_2_Convert_Atomic"/>
+    <process:composedOf rdf:resource="#rates_3_CheckBalance_Atomic"/>
+    <process:composedOf rdf:resource="#rates_4_CheckExpirationDate_Atomic"/>
+    <process:composedOf rdf:resource="#rates_5_UpgradeAccessCode_Atomic"/>
+    <process:composedOf rdf:resource="#rates_6_ConvertByDate_Atomic"/>
+    <process:composedOf rdf:resource="#rates_7_GetMinimalDate_Atomic"/>
+    <process:composedOf rdf:resource="#rates_8_GetRatesMatrix_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="rates_0_GetCurrencyList_Atomic_input_parameters__http___mondor.org__GetCurrencyList">
+    <process:parameterType>parameters:{http://mondor.org/}GetCurrencyList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="rates_0_GetCurrencyList_Atomic_output_parameters__http___mondor.org__GetCurrencyListResponse">
+    <process:parameterType>parameters:{http://mondor.org/}GetCurrencyListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="rates_1_GetCurrencyCodes_Atomic_input_parameters__http___mondor.org__GetCurrencyCodes">
+    <process:parameterType>parameters:{http://mondor.org/}GetCurrencyCodes</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="rates_1_GetCurrencyCodes_Atomic_output_parameters__http___mondor.org__GetCurrencyCodesResponse">
+    <process:parameterType>parameters:{http://mondor.org/}GetCurrencyCodesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="rates_2_Convert_Atomic_input_parameters__http___mondor.org__Convert">
+    <process:parameterType>parameters:{http://mondor.org/}Convert</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="rates_2_Convert_Atomic_output_parameters__http___mondor.org__ConvertResponse">
+    <process:parameterType>parameters:{http://mondor.org/}ConvertResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="rates_3_CheckBalance_Atomic_input_parameters__http___mondor.org__CheckBalance">
+    <process:parameterType>parameters:{http://mondor.org/}CheckBalance</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="rates_3_CheckBalance_Atomic_output_parameters__http___mondor.org__CheckBalanceResponse">
+    <process:parameterType>parameters:{http://mondor.org/}CheckBalanceResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="rates_4_CheckExpirationDate_Atomic_input_parameters__http___mondor.org__CheckExpirationDate">
+    <process:parameterType>parameters:{http://mondor.org/}CheckExpirationDate</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="rates_4_CheckExpirationDate_Atomic_output_parameters__http___mondor.org__CheckExpirationDateResponse">
+    <process:parameterType>parameters:{http://mondor.org/}CheckExpirationDateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="rates_5_UpgradeAccessCode_Atomic_input_parameters__http___mondor.org__UpgradeAccessCode">
+    <process:parameterType>parameters:{http://mondor.org/}UpgradeAccessCode</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="rates_5_UpgradeAccessCode_Atomic_output_parameters__http___mondor.org__UpgradeAccessCodeResponse">
+    <process:parameterType>parameters:{http://mondor.org/}UpgradeAccessCodeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="rates_6_ConvertByDate_Atomic_input_parameters__http___mondor.org__ConvertByDate">
+    <process:parameterType>parameters:{http://mondor.org/}ConvertByDate</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="rates_6_ConvertByDate_Atomic_output_parameters__http___mondor.org__ConvertByDateResponse">
+    <process:parameterType>parameters:{http://mondor.org/}ConvertByDateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="rates_7_GetMinimalDate_Atomic_input_parameters__http___mondor.org__GetMinimalDate">
+    <process:parameterType>parameters:{http://mondor.org/}GetMinimalDate</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="rates_7_GetMinimalDate_Atomic_output_parameters__http___mondor.org__GetMinimalDateResponse">
+    <process:parameterType>parameters:{http://mondor.org/}GetMinimalDateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="rates_8_GetRatesMatrix_Atomic_input_parameters__http___mondor.org__GetRatesMatrix">
+    <process:parameterType>parameters:{http://mondor.org/}GetRatesMatrix</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="rates_8_GetRatesMatrix_Atomic_output_parameters__http___mondor.org__GetRatesMatrixResponse">
+    <process:parameterType>parameters:{http://mondor.org/}GetRatesMatrixResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="rates_0_GetCurrencyList_Atomic">
+    <process:hasName>GetCurrencyList</process:hasName>
+    <process:hasInput rdf:resource="#rates_0_GetCurrencyList_Atomic_input_parameters__http___mondor.org__GetCurrencyList"/>
+    <process:hasOutput rdf:resource="#rates_0_GetCurrencyList_Atomic_output_parameters__http___mondor.org__GetCurrencyListResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetCurrencyList must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing a list of available currencies.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="rates_1_GetCurrencyCodes_Atomic">
+    <process:hasName>GetCurrencyCodes</process:hasName>
+    <process:hasInput rdf:resource="#rates_1_GetCurrencyCodes_Atomic_input_parameters__http___mondor.org__GetCurrencyCodes"/>
+    <process:hasOutput rdf:resource="#rates_1_GetCurrencyCodes_Atomic_output_parameters__http___mondor.org__GetCurrencyCodesResponse"/>
+    <process:hasPrecondition>The client must provide a valid request for currency codes in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The service will return a response containing the currency codes as per the request.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="rates_2_Convert_Atomic">
+    <process:hasName>Convert</process:hasName>
+    <process:hasInput rdf:resource="#rates_2_Convert_Atomic_input_parameters__http___mondor.org__Convert"/>
+    <process:hasOutput rdf:resource="#rates_2_Convert_Atomic_output_parameters__http___mondor.org__ConvertResponse"/>
+    <process:hasPrecondition>The input parameter for the Convert operation must be provided in the specified format according to the http://mondor.org/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The output parameter in the ConvertResponse must adhere to the specified format based on the http://mondor.org/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="rates_3_CheckBalance_Atomic">
+    <process:hasName>CheckBalance</process:hasName>
+    <process:hasInput rdf:resource="#rates_3_CheckBalance_Atomic_input_parameters__http___mondor.org__CheckBalance"/>
+    <process:hasOutput rdf:resource="#rates_3_CheckBalance_Atomic_output_parameters__http___mondor.org__CheckBalanceResponse"/>
+    <process:hasPrecondition>The user must provide the necessary parameters for the CheckBalance operation in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The system will return a response containing the balance information based on the provided parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="rates_4_CheckExpirationDate_Atomic">
+    <process:hasName>CheckExpirationDate</process:hasName>
+    <process:hasInput rdf:resource="#rates_4_CheckExpirationDate_Atomic_input_parameters__http___mondor.org__CheckExpirationDate"/>
+    <process:hasOutput rdf:resource="#rates_4_CheckExpirationDate_Atomic_output_parameters__http___mondor.org__CheckExpirationDateResponse"/>
+    <process:hasPrecondition>The input parameter must contain a valid expiration date in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The output parameter will contain the response with the expiration date information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="rates_5_UpgradeAccessCode_Atomic">
+    <process:hasName>UpgradeAccessCode</process:hasName>
+    <process:hasInput rdf:resource="#rates_5_UpgradeAccessCode_Atomic_input_parameters__http___mondor.org__UpgradeAccessCode"/>
+    <process:hasOutput rdf:resource="#rates_5_UpgradeAccessCode_Atomic_output_parameters__http___mondor.org__UpgradeAccessCodeResponse"/>
+    <process:hasPrecondition>The user must be authenticated and authorized to request an upgrade of the access code.</process:hasPrecondition>
+    <process:hasEffect>The access code is successfully upgraded and a response containing the updated access code is returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="rates_6_ConvertByDate_Atomic">
+    <process:hasName>ConvertByDate</process:hasName>
+    <process:hasInput rdf:resource="#rates_6_ConvertByDate_Atomic_input_parameters__http___mondor.org__ConvertByDate"/>
+    <process:hasOutput rdf:resource="#rates_6_ConvertByDate_Atomic_output_parameters__http___mondor.org__ConvertByDateResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid date in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the converted date in the response parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="rates_7_GetMinimalDate_Atomic">
+    <process:hasName>GetMinimalDate</process:hasName>
+    <process:hasInput rdf:resource="#rates_7_GetMinimalDate_Atomic_input_parameters__http___mondor.org__GetMinimalDate"/>
+    <process:hasOutput rdf:resource="#rates_7_GetMinimalDate_Atomic_output_parameters__http___mondor.org__GetMinimalDateResponse"/>
+    <process:hasPrecondition>The input parameter for GetMinimalDate must be provided in the specified format from http://mondor.org/.</process:hasPrecondition>
+    <process:hasEffect>The output parameter for GetMinimalDateResponse will be returned in the specified format from http://mondor.org/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="rates_8_GetRatesMatrix_Atomic">
+    <process:hasName>GetRatesMatrix</process:hasName>
+    <process:hasInput rdf:resource="#rates_8_GetRatesMatrix_Atomic_input_parameters__http___mondor.org__GetRatesMatrix"/>
+    <process:hasOutput rdf:resource="#rates_8_GetRatesMatrix_Atomic_output_parameters__http___mondor.org__GetRatesMatrixResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetRatesMatrix must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the rates matrix based on the input parameters provided.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="rates_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#rates_0_GetCurrencyList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#rates_1_GetCurrencyCodes_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#rates_2_Convert_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#rates_3_CheckBalance_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#rates_4_CheckExpirationDate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#rates_5_UpgradeAccessCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#rates_6_ConvertByDate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#rates_7_GetMinimalDate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#rates_8_GetRatesMatrix_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="rates_0_GetCurrencyList_Grounding">
+    <grounding:owlsProcess rdf:resource="#rates_0_GetCurrencyList_Atomic"/>
+    <grounding:wsdlOperationName>GetCurrencyList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>iRates</grounding:wsdlBinding>
+    <grounding:wsdlPortType>iRates</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4911_4910.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCurrencyListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCurrencyListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="rates_1_GetCurrencyCodes_Grounding">
+    <grounding:owlsProcess rdf:resource="#rates_1_GetCurrencyCodes_Atomic"/>
+    <grounding:wsdlOperationName>GetCurrencyCodes</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>iRates</grounding:wsdlBinding>
+    <grounding:wsdlPortType>iRates</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4911_4910.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCurrencyCodesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCurrencyCodesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="rates_2_Convert_Grounding">
+    <grounding:owlsProcess rdf:resource="#rates_2_Convert_Atomic"/>
+    <grounding:wsdlOperationName>Convert</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>iRates</grounding:wsdlBinding>
+    <grounding:wsdlPortType>iRates</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4911_4910.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ConvertSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ConvertSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="rates_3_CheckBalance_Grounding">
+    <grounding:owlsProcess rdf:resource="#rates_3_CheckBalance_Atomic"/>
+    <grounding:wsdlOperationName>CheckBalance</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>iRates</grounding:wsdlBinding>
+    <grounding:wsdlPortType>iRates</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4911_4910.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckBalanceSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckBalanceSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="rates_4_CheckExpirationDate_Grounding">
+    <grounding:owlsProcess rdf:resource="#rates_4_CheckExpirationDate_Atomic"/>
+    <grounding:wsdlOperationName>CheckExpirationDate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>iRates</grounding:wsdlBinding>
+    <grounding:wsdlPortType>iRates</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4911_4910.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckExpirationDateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckExpirationDateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="rates_5_UpgradeAccessCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#rates_5_UpgradeAccessCode_Atomic"/>
+    <grounding:wsdlOperationName>UpgradeAccessCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>iRates</grounding:wsdlBinding>
+    <grounding:wsdlPortType>iRates</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4911_4910.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpgradeAccessCodeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpgradeAccessCodeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="rates_6_ConvertByDate_Grounding">
+    <grounding:owlsProcess rdf:resource="#rates_6_ConvertByDate_Atomic"/>
+    <grounding:wsdlOperationName>ConvertByDate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>iRates</grounding:wsdlBinding>
+    <grounding:wsdlPortType>iRates</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4911_4910.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ConvertByDateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ConvertByDateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="rates_7_GetMinimalDate_Grounding">
+    <grounding:owlsProcess rdf:resource="#rates_7_GetMinimalDate_Atomic"/>
+    <grounding:wsdlOperationName>GetMinimalDate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>iRates</grounding:wsdlBinding>
+    <grounding:wsdlPortType>iRates</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4911_4910.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetMinimalDateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetMinimalDateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="rates_8_GetRatesMatrix_Grounding">
+    <grounding:owlsProcess rdf:resource="#rates_8_GetRatesMatrix_Atomic"/>
+    <grounding:wsdlOperationName>GetRatesMatrix</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>iRates</grounding:wsdlBinding>
+    <grounding:wsdlPortType>iRates</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4911_4910.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRatesMatrixSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRatesMatrixSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

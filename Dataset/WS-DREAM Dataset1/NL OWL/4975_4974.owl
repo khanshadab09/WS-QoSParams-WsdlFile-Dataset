@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ExampleService">
+    <service:presents rdf:resource="#ExampleService_Profile"/>
+    <service:describedBy rdf:resource="#ExampleService_Composite"/>
+    <service:supports rdf:resource="#ExampleService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ExampleService_Profile">
+    <profile:serviceName>ExampleService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ExampleService"/>
+    <profile:hasProcess rdf:resource="#ExampleService_0_AddNumbers_Atomic"/>
+    <profile:hasInput rdf:resource="#ExampleService_0_AddNumbers_Atomic_input_intNumber2__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#ExampleService_0_AddNumbers_Atomic_input_intNumber1__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#ExampleService_0_AddNumbers_Atomic_output_AddNumbersResult__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The input parameters intNumber1 and intNumber2 must be integers.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the sum of intNumber1 and intNumber2 as AddNumbersResult.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ExampleService_1_GetDate_Atomic"/>
+    <profile:hasInput rdf:resource="#ExampleService_1_GetDate_Atomic_input_intYear__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#ExampleService_1_GetDate_Atomic_input_intMonth__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#ExampleService_1_GetDate_Atomic_input_intDay__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#ExampleService_1_GetDate_Atomic_output_GetDateResult__http___www.w3.org_2001_XMLSchema_dateTime"/>
+    <profile:hasPrecondition>The input parameters intYear, intMonth, and intDay must be valid integers representing a valid date.</profile:hasPrecondition>
+    <profile:hasResult>The operation GetDate will return a dateTime value representing the date specified by the input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ExampleService_2_GetPeople_Atomic"/>
+    <profile:hasInput rdf:resource="#ExampleService_2_GetPeople_Atomic_input_strLastName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ExampleService_2_GetPeople_Atomic_output_GetPeopleResult__http___examples.qcodo.com_ArrayOfPerson"/>
+    <profile:hasPrecondition>The input parameter "strLastName" must be a valid string value.</profile:hasPrecondition>
+    <profile:hasResult>The operation "GetPeople" will return an array of Person objects based on the provided last name.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ExampleService_Composite">
+    <process:composedOf rdf:resource="#ExampleService_0_AddNumbers_Atomic"/>
+    <process:composedOf rdf:resource="#ExampleService_1_GetDate_Atomic"/>
+    <process:composedOf rdf:resource="#ExampleService_2_GetPeople_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ExampleService_0_AddNumbers_Atomic_input_intNumber2__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>intNumber2:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ExampleService_0_AddNumbers_Atomic_input_intNumber1__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>intNumber1:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ExampleService_0_AddNumbers_Atomic_output_AddNumbersResult__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>AddNumbersResult:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ExampleService_1_GetDate_Atomic_input_intYear__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>intYear:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ExampleService_1_GetDate_Atomic_input_intMonth__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>intMonth:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ExampleService_1_GetDate_Atomic_input_intDay__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>intDay:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ExampleService_1_GetDate_Atomic_output_GetDateResult__http___www.w3.org_2001_XMLSchema_dateTime">
+    <process:parameterType>GetDateResult:{http://www.w3.org/2001/XMLSchema}dateTime</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ExampleService_2_GetPeople_Atomic_input_strLastName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strLastName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ExampleService_2_GetPeople_Atomic_output_GetPeopleResult__http___examples.qcodo.com_ArrayOfPerson">
+    <process:parameterType>GetPeopleResult:{http://examples.qcodo.com}ArrayOfPerson</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ExampleService_0_AddNumbers_Atomic">
+    <process:hasName>AddNumbers</process:hasName>
+    <process:hasInput rdf:resource="#ExampleService_0_AddNumbers_Atomic_input_intNumber2__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#ExampleService_0_AddNumbers_Atomic_input_intNumber1__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#ExampleService_0_AddNumbers_Atomic_output_AddNumbersResult__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The input parameters intNumber1 and intNumber2 must be integers.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the sum of intNumber1 and intNumber2 as AddNumbersResult.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ExampleService_1_GetDate_Atomic">
+    <process:hasName>GetDate</process:hasName>
+    <process:hasInput rdf:resource="#ExampleService_1_GetDate_Atomic_input_intYear__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#ExampleService_1_GetDate_Atomic_input_intMonth__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#ExampleService_1_GetDate_Atomic_input_intDay__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#ExampleService_1_GetDate_Atomic_output_GetDateResult__http___www.w3.org_2001_XMLSchema_dateTime"/>
+    <process:hasPrecondition>The input parameters intYear, intMonth, and intDay must be valid integers representing a valid date.</process:hasPrecondition>
+    <process:hasEffect>The operation GetDate will return a dateTime value representing the date specified by the input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ExampleService_2_GetPeople_Atomic">
+    <process:hasName>GetPeople</process:hasName>
+    <process:hasInput rdf:resource="#ExampleService_2_GetPeople_Atomic_input_strLastName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ExampleService_2_GetPeople_Atomic_output_GetPeopleResult__http___examples.qcodo.com_ArrayOfPerson"/>
+    <process:hasPrecondition>The input parameter "strLastName" must be a valid string value.</process:hasPrecondition>
+    <process:hasEffect>The operation "GetPeople" will return an array of Person objects based on the provided last name.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ExampleService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ExampleService_0_AddNumbers_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ExampleService_1_GetDate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ExampleService_2_GetPeople_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ExampleService_0_AddNumbers_Grounding">
+    <grounding:owlsProcess rdf:resource="#ExampleService_0_AddNumbers_Atomic"/>
+    <grounding:wsdlOperationName>AddNumbers</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4975_4974.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddNumbersRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddNumbersResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ExampleService_1_GetDate_Grounding">
+    <grounding:owlsProcess rdf:resource="#ExampleService_1_GetDate_Atomic"/>
+    <grounding:wsdlOperationName>GetDate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4975_4974.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDateRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDateResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ExampleService_2_GetPeople_Grounding">
+    <grounding:owlsProcess rdf:resource="#ExampleService_2_GetPeople_Atomic"/>
+    <grounding:wsdlOperationName>GetPeople</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4975_4974.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetPeopleRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetPeopleResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

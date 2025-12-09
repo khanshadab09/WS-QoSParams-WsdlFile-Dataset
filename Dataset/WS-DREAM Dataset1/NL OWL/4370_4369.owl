@@ -1,0 +1,966 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="PUG">
+    <service:presents rdf:resource="#PUG_Profile"/>
+    <service:describedBy rdf:resource="#PUG_Composite"/>
+    <service:supports rdf:resource="#PUG_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="PUG_Profile">
+    <profile:serviceName>PUG</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#PUG"/>
+    <profile:hasProcess rdf:resource="#PUG_0_AssayDownload_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_0_AssayDownload_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__AssayDownload"/>
+    <profile:hasOutput rdf:resource="#PUG_0_AssayDownload_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__AssayDownloadResponse"/>
+    <profile:hasPrecondition>The user must provide parameters for the AssayDownload operation in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The system will return a response containing the AssayDownload data based on the provided parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_1_Download_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_1_Download_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__Download"/>
+    <profile:hasOutput rdf:resource="#PUG_1_Download_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__DownloadResponse"/>
+    <profile:hasPrecondition>The web service endpoint must support the Download operation from the specified URL.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a DownloadResponse containing the requested data.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_2_GetAssayColumnDescription_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_2_GetAssayColumnDescription_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayColumnDescription"/>
+    <profile:hasOutput rdf:resource="#PUG_2_GetAssayColumnDescription_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayColumnDescriptionResponse"/>
+    <profile:hasPrecondition>The input parameters must conform to the structure defined by the http://pubchem.ncbi.nlm.nih.gov/ GetAssayColumnDescription schema.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters will adhere to the structure specified by the http://pubchem.ncbi.nlm.nih.gov/ GetAssayColumnDescriptionResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_3_GetAssayColumnDescriptions_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_3_GetAssayColumnDescriptions_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayColumnDescriptions"/>
+    <profile:hasOutput rdf:resource="#PUG_3_GetAssayColumnDescriptions_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayColumnDescriptionsResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters must conform to the specified format for GetAssayColumnDescriptions.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing assay column descriptions based on the input parameters provided.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_4_GetAssayDescription_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_4_GetAssayDescription_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayDescription"/>
+    <profile:hasOutput rdf:resource="#PUG_4_GetAssayDescription_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayDescriptionResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid request for assay description from the PubChem database.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter will contain the assay description retrieved from the PubChem database.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_5_GetDownloadUrl_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_5_GetDownloadUrl_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetDownloadUrl"/>
+    <profile:hasOutput rdf:resource="#PUG_5_GetDownloadUrl_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetDownloadUrlResponse"/>
+    <profile:hasPrecondition>Inputs must be present and valid.</profile:hasPrecondition>
+    <profile:hasResult>Operation completes and returns the specified outputs.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_6_GetEntrezKey_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_6_GetEntrezKey_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetEntrezKey"/>
+    <profile:hasOutput rdf:resource="#PUG_6_GetEntrezKey_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetEntrezKeyResponse"/>
+    <profile:hasPrecondition>The user must provide valid input parameters in the specified format for the GetEntrezKey operation.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a response containing the Entrez key corresponding to the input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_7_GetEntrezUrl_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_7_GetEntrezUrl_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetEntrezUrl"/>
+    <profile:hasOutput rdf:resource="#PUG_7_GetEntrezUrl_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetEntrezUrlResponse"/>
+    <profile:hasPrecondition>The input parameters must be a valid URL from the PubChem website for GetEntrezUrl operation.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters will contain a valid URL from the PubChem website in the GetEntrezUrlResponse format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_8_GetIDList_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_8_GetIDList_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetIDList"/>
+    <profile:hasOutput rdf:resource="#PUG_8_GetIDList_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetIDListResponse"/>
+    <profile:hasPrecondition>The input parameters must conform to the structure defined by the http://pubchem.ncbi.nlm.nih.gov/ GetIDList schema.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters will adhere to the structure specified by the http://pubchem.ncbi.nlm.nih.gov/ GetIDListResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_9_GetListItemsCount_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_9_GetListItemsCount_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetListItemsCount"/>
+    <profile:hasOutput rdf:resource="#PUG_9_GetListItemsCount_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetListItemsCountResponse"/>
+    <profile:hasPrecondition>The input parameters must be provided in the specified format for the PubChem GetListItemsCount operation.</profile:hasPrecondition>
+    <profile:hasResult>The output will contain the count of items in the list specified in the input parameters for the PubChem GetListItemsCount operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_10_GetOperationStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_10_GetOperationStatus_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetOperationStatus"/>
+    <profile:hasOutput rdf:resource="#PUG_10_GetOperationStatus_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetOperationStatusResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid request for operation status from the PubChem web service.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter will contain the response with the current status of the requested operation from the PubChem web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_11_GetStandardizedCID_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_11_GetStandardizedCID_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedCID"/>
+    <profile:hasOutput rdf:resource="#PUG_11_GetStandardizedCID_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedCIDResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid PubChem compound identifier.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the standardized PubChem compound identifier in the response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_12_GetStandardizedStructure_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_12_GetStandardizedStructure_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedStructure"/>
+    <profile:hasOutput rdf:resource="#PUG_12_GetStandardizedStructure_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedStructureResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid request for the standardized structure from the PubChem database.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the standardized structure response from the PubChem database.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_13_GetStandardizedStructureBase64_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_13_GetStandardizedStructureBase64_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedStructureBase64"/>
+    <profile:hasOutput rdf:resource="#PUG_13_GetStandardizedStructureBase64_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedStructureBase64Response"/>
+    <profile:hasPrecondition>The input parameter must be a valid structure in Base64 format from the PubChem database.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the standardized structure in Base64 format as a response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_14_GetStatusMessage_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_14_GetStatusMessage_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStatusMessage"/>
+    <profile:hasOutput rdf:resource="#PUG_14_GetStatusMessage_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStatusMessageResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameter must be a valid request for status message retrieval from the PubChem database.</profile:hasPrecondition>
+    <profile:hasResult>The status message corresponding to the input request is returned as the output response from the web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_15_IdentitySearch_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_15_IdentitySearch_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__IdentitySearch"/>
+    <profile:hasOutput rdf:resource="#PUG_15_IdentitySearch_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__IdentitySearchResponse"/>
+    <profile:hasPrecondition>The input parameters for the IdentitySearch operation must be provided in the specified format from the PubChem website.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for the IdentitySearch operation will be returned in the specified format from the PubChem website.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_16_IDExchange_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_16_IDExchange_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__IDExchange"/>
+    <profile:hasOutput rdf:resource="#PUG_16_IDExchange_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__IDExchangeResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid identifier from the PubChem database.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response containing the exchanged identifier from the PubChem database.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_17_InputAssay_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_17_InputAssay_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputAssay"/>
+    <profile:hasOutput rdf:resource="#PUG_17_InputAssay_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputAssayResponse"/>
+    <profile:hasPrecondition>The input parameters must conform to the structure defined by the http://pubchem.ncbi.nlm.nih.gov/ InputAssay schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response conforming to the structure defined by the http://pubchem.ncbi.nlm.nih.gov/ InputAssayResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_18_InputEntrez_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_18_InputEntrez_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputEntrez"/>
+    <profile:hasOutput rdf:resource="#PUG_18_InputEntrez_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputEntrezResponse"/>
+    <profile:hasPrecondition>The user must provide valid input parameters in the specified format for the InputEntrez operation.</profile:hasPrecondition>
+    <profile:hasResult>The service will process the input parameters and generate a response in the specified format for the InputEntrez operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_19_InputList_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_19_InputList_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputList"/>
+    <profile:hasOutput rdf:resource="#PUG_19_InputList_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListResponse"/>
+    <profile:hasPrecondition>The input list must adhere to the specified format defined by the http://pubchem.ncbi.nlm.nih.gov/ schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response in the same format as the input list defined by the http://pubchem.ncbi.nlm.nih.gov/ schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_20_InputListString_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_20_InputListString_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListString"/>
+    <profile:hasOutput rdf:resource="#PUG_20_InputListString_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListStringResponse"/>
+    <profile:hasPrecondition>The input list of strings must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The service will process the input list of strings and provide a response in the same format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_21_InputListText_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_21_InputListText_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListText"/>
+    <profile:hasOutput rdf:resource="#PUG_21_InputListText_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListTextResponse"/>
+    <profile:hasPrecondition>The web service requires an input list of text data in a specific format from the PubChem database.</profile:hasPrecondition>
+    <profile:hasResult>The web service will process the input list of text data and provide a response in the same format from the PubChem database.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_22_InputStructure_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_22_InputStructure_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputStructure"/>
+    <profile:hasOutput rdf:resource="#PUG_22_InputStructure_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputStructureResponse"/>
+    <profile:hasPrecondition>The input must conform to the structure specified by the http://pubchem.ncbi.nlm.nih.gov/ InputStructure schema.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a response conforming to the structure specified by the http://pubchem.ncbi.nlm.nih.gov/ InputStructureResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_23_InputStructureBase64_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_23_InputStructureBase64_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputStructureBase64"/>
+    <profile:hasOutput rdf:resource="#PUG_23_InputStructureBase64_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputStructureBase64Response"/>
+    <profile:hasPrecondition>The input parameter must be a Base64-encoded structure from the PubChem database.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a response containing the Base64-encoded structure from the PubChem database.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_24_MFSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_24_MFSearch_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__MFSearch"/>
+    <profile:hasOutput rdf:resource="#PUG_24_MFSearch_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__MFSearchResponse"/>
+    <profile:hasPrecondition>The input parameters for MFSearch must be provided in the format specified by http://pubchem.ncbi.nlm.nih.gov/.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters in MFSearchResponse will be generated according to the format specified by http://pubchem.ncbi.nlm.nih.gov/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_25_ScoreMatrix_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_25_ScoreMatrix_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__ScoreMatrix"/>
+    <profile:hasOutput rdf:resource="#PUG_25_ScoreMatrix_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__ScoreMatrixResponse"/>
+    <profile:hasPrecondition>The ScoreMatrix input parameter must be provided in the request in the format specified by http://pubchem.ncbi.nlm.nih.gov/.</profile:hasPrecondition>
+    <profile:hasResult>The ScoreMatrixResponse output parameter will be returned in the format specified by http://pubchem.ncbi.nlm.nih.gov/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_26_SimilaritySearch2D_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_26_SimilaritySearch2D_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__SimilaritySearch2D"/>
+    <profile:hasOutput rdf:resource="#PUG_26_SimilaritySearch2D_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__SimilaritySearch2DResponse"/>
+    <profile:hasPrecondition>The input parameters for the SimilaritySearch2D operation must be provided in the specified format from the PubChem database.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for the SimilaritySearch2D operation will be returned in the specified format from the PubChem database.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_27_Standardize_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_27_Standardize_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__Standardize"/>
+    <profile:hasOutput rdf:resource="#PUG_27_Standardize_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__StandardizeResponse"/>
+    <profile:hasPrecondition>The input parameters must conform to the structure defined by the Standardize service from the PubChem API.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters will be standardized according to the PubChem API specifications.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_28_SubstructureSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_28_SubstructureSearch_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__SubstructureSearch"/>
+    <profile:hasOutput rdf:resource="#PUG_28_SubstructureSearch_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__SubstructureSearchResponse"/>
+    <profile:hasPrecondition>The input for SubstructureSearch must be provided in the format specified by http://pubchem.ncbi.nlm.nih.gov/.</profile:hasPrecondition>
+    <profile:hasResult>The output for SubstructureSearch will be returned in the format specified by http://pubchem.ncbi.nlm.nih.gov/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#PUG_29_SuperstructureSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#PUG_29_SuperstructureSearch_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__SuperstructureSearch"/>
+    <profile:hasOutput rdf:resource="#PUG_29_SuperstructureSearch_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__SuperstructureSearchResponse"/>
+    <profile:hasPrecondition>The input for SuperstructureSearch must be provided in the format specified by http://pubchem.ncbi.nlm.nih.gov/.</profile:hasPrecondition>
+    <profile:hasResult>The output for SuperstructureSearch will be returned in the format specified by http://pubchem.ncbi.nlm.nih.gov/.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="PUG_Composite">
+    <process:composedOf rdf:resource="#PUG_0_AssayDownload_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_1_Download_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_2_GetAssayColumnDescription_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_3_GetAssayColumnDescriptions_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_4_GetAssayDescription_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_5_GetDownloadUrl_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_6_GetEntrezKey_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_7_GetEntrezUrl_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_8_GetIDList_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_9_GetListItemsCount_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_10_GetOperationStatus_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_11_GetStandardizedCID_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_12_GetStandardizedStructure_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_13_GetStandardizedStructureBase64_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_14_GetStatusMessage_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_15_IdentitySearch_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_16_IDExchange_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_17_InputAssay_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_18_InputEntrez_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_19_InputList_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_20_InputListString_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_21_InputListText_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_22_InputStructure_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_23_InputStructureBase64_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_24_MFSearch_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_25_ScoreMatrix_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_26_SimilaritySearch2D_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_27_Standardize_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_28_SubstructureSearch_Atomic"/>
+    <process:composedOf rdf:resource="#PUG_29_SuperstructureSearch_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="PUG_0_AssayDownload_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__AssayDownload">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}AssayDownload</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_0_AssayDownload_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__AssayDownloadResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}AssayDownloadResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_1_Download_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__Download">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}Download</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_1_Download_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__DownloadResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}DownloadResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_2_GetAssayColumnDescription_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayColumnDescription">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetAssayColumnDescription</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_2_GetAssayColumnDescription_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayColumnDescriptionResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetAssayColumnDescriptionResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_3_GetAssayColumnDescriptions_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayColumnDescriptions">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetAssayColumnDescriptions</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_3_GetAssayColumnDescriptions_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayColumnDescriptionsResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetAssayColumnDescriptionsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_4_GetAssayDescription_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayDescription">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetAssayDescription</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_4_GetAssayDescription_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayDescriptionResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetAssayDescriptionResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_5_GetDownloadUrl_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetDownloadUrl">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetDownloadUrl</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_5_GetDownloadUrl_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetDownloadUrlResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetDownloadUrlResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_6_GetEntrezKey_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetEntrezKey">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetEntrezKey</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_6_GetEntrezKey_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetEntrezKeyResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetEntrezKeyResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_7_GetEntrezUrl_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetEntrezUrl">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetEntrezUrl</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_7_GetEntrezUrl_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetEntrezUrlResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetEntrezUrlResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_8_GetIDList_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetIDList">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetIDList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_8_GetIDList_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetIDListResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetIDListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_9_GetListItemsCount_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetListItemsCount">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetListItemsCount</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_9_GetListItemsCount_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetListItemsCountResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetListItemsCountResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_10_GetOperationStatus_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetOperationStatus">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetOperationStatus</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_10_GetOperationStatus_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetOperationStatusResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetOperationStatusResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_11_GetStandardizedCID_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedCID">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetStandardizedCID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_11_GetStandardizedCID_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedCIDResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetStandardizedCIDResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_12_GetStandardizedStructure_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedStructure">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetStandardizedStructure</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_12_GetStandardizedStructure_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedStructureResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetStandardizedStructureResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_13_GetStandardizedStructureBase64_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedStructureBase64">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetStandardizedStructureBase64</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_13_GetStandardizedStructureBase64_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedStructureBase64Response">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetStandardizedStructureBase64Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_14_GetStatusMessage_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStatusMessage">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetStatusMessage</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_14_GetStatusMessage_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStatusMessageResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}GetStatusMessageResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_15_IdentitySearch_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__IdentitySearch">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}IdentitySearch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_15_IdentitySearch_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__IdentitySearchResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}IdentitySearchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_16_IDExchange_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__IDExchange">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}IDExchange</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_16_IDExchange_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__IDExchangeResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}IDExchangeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_17_InputAssay_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputAssay">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}InputAssay</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_17_InputAssay_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputAssayResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}InputAssayResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_18_InputEntrez_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputEntrez">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}InputEntrez</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_18_InputEntrez_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputEntrezResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}InputEntrezResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_19_InputList_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputList">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}InputList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_19_InputList_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}InputListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_20_InputListString_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListString">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}InputListString</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_20_InputListString_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListStringResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}InputListStringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_21_InputListText_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListText">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}InputListText</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_21_InputListText_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListTextResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}InputListTextResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_22_InputStructure_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputStructure">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}InputStructure</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_22_InputStructure_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputStructureResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}InputStructureResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_23_InputStructureBase64_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputStructureBase64">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}InputStructureBase64</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_23_InputStructureBase64_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputStructureBase64Response">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}InputStructureBase64Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_24_MFSearch_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__MFSearch">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}MFSearch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_24_MFSearch_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__MFSearchResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}MFSearchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_25_ScoreMatrix_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__ScoreMatrix">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}ScoreMatrix</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_25_ScoreMatrix_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__ScoreMatrixResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}ScoreMatrixResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_26_SimilaritySearch2D_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__SimilaritySearch2D">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}SimilaritySearch2D</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_26_SimilaritySearch2D_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__SimilaritySearch2DResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}SimilaritySearch2DResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_27_Standardize_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__Standardize">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}Standardize</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_27_Standardize_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__StandardizeResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}StandardizeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_28_SubstructureSearch_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__SubstructureSearch">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}SubstructureSearch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_28_SubstructureSearch_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__SubstructureSearchResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}SubstructureSearchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="PUG_29_SuperstructureSearch_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__SuperstructureSearch">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}SuperstructureSearch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="PUG_29_SuperstructureSearch_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__SuperstructureSearchResponse">
+    <process:parameterType>parameters:{http://pubchem.ncbi.nlm.nih.gov/}SuperstructureSearchResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="PUG_0_AssayDownload_Atomic">
+    <process:hasName>AssayDownload</process:hasName>
+    <process:hasInput rdf:resource="#PUG_0_AssayDownload_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__AssayDownload"/>
+    <process:hasOutput rdf:resource="#PUG_0_AssayDownload_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__AssayDownloadResponse"/>
+    <process:hasPrecondition>The user must provide parameters for the AssayDownload operation in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The system will return a response containing the AssayDownload data based on the provided parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_1_Download_Atomic">
+    <process:hasName>Download</process:hasName>
+    <process:hasInput rdf:resource="#PUG_1_Download_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__Download"/>
+    <process:hasOutput rdf:resource="#PUG_1_Download_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__DownloadResponse"/>
+    <process:hasPrecondition>The web service endpoint must support the Download operation from the specified URL.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a DownloadResponse containing the requested data.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_2_GetAssayColumnDescription_Atomic">
+    <process:hasName>GetAssayColumnDescription</process:hasName>
+    <process:hasInput rdf:resource="#PUG_2_GetAssayColumnDescription_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayColumnDescription"/>
+    <process:hasOutput rdf:resource="#PUG_2_GetAssayColumnDescription_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayColumnDescriptionResponse"/>
+    <process:hasPrecondition>The input parameters must conform to the structure defined by the http://pubchem.ncbi.nlm.nih.gov/ GetAssayColumnDescription schema.</process:hasPrecondition>
+    <process:hasEffect>The output parameters will adhere to the structure specified by the http://pubchem.ncbi.nlm.nih.gov/ GetAssayColumnDescriptionResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_3_GetAssayColumnDescriptions_Atomic">
+    <process:hasName>GetAssayColumnDescriptions</process:hasName>
+    <process:hasInput rdf:resource="#PUG_3_GetAssayColumnDescriptions_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayColumnDescriptions"/>
+    <process:hasOutput rdf:resource="#PUG_3_GetAssayColumnDescriptions_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayColumnDescriptionsResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters must conform to the specified format for GetAssayColumnDescriptions.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing assay column descriptions based on the input parameters provided.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_4_GetAssayDescription_Atomic">
+    <process:hasName>GetAssayDescription</process:hasName>
+    <process:hasInput rdf:resource="#PUG_4_GetAssayDescription_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayDescription"/>
+    <process:hasOutput rdf:resource="#PUG_4_GetAssayDescription_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetAssayDescriptionResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid request for assay description from the PubChem database.</process:hasPrecondition>
+    <process:hasEffect>The output parameter will contain the assay description retrieved from the PubChem database.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_5_GetDownloadUrl_Atomic">
+    <process:hasName>GetDownloadUrl</process:hasName>
+    <process:hasInput rdf:resource="#PUG_5_GetDownloadUrl_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetDownloadUrl"/>
+    <process:hasOutput rdf:resource="#PUG_5_GetDownloadUrl_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetDownloadUrlResponse"/>
+    <process:hasPrecondition>Inputs must be present and valid.</process:hasPrecondition>
+    <process:hasEffect>Operation completes and returns the specified outputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_6_GetEntrezKey_Atomic">
+    <process:hasName>GetEntrezKey</process:hasName>
+    <process:hasInput rdf:resource="#PUG_6_GetEntrezKey_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetEntrezKey"/>
+    <process:hasOutput rdf:resource="#PUG_6_GetEntrezKey_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetEntrezKeyResponse"/>
+    <process:hasPrecondition>The user must provide valid input parameters in the specified format for the GetEntrezKey operation.</process:hasPrecondition>
+    <process:hasEffect>The service will return a response containing the Entrez key corresponding to the input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_7_GetEntrezUrl_Atomic">
+    <process:hasName>GetEntrezUrl</process:hasName>
+    <process:hasInput rdf:resource="#PUG_7_GetEntrezUrl_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetEntrezUrl"/>
+    <process:hasOutput rdf:resource="#PUG_7_GetEntrezUrl_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetEntrezUrlResponse"/>
+    <process:hasPrecondition>The input parameters must be a valid URL from the PubChem website for GetEntrezUrl operation.</process:hasPrecondition>
+    <process:hasEffect>The output parameters will contain a valid URL from the PubChem website in the GetEntrezUrlResponse format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_8_GetIDList_Atomic">
+    <process:hasName>GetIDList</process:hasName>
+    <process:hasInput rdf:resource="#PUG_8_GetIDList_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetIDList"/>
+    <process:hasOutput rdf:resource="#PUG_8_GetIDList_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetIDListResponse"/>
+    <process:hasPrecondition>The input parameters must conform to the structure defined by the http://pubchem.ncbi.nlm.nih.gov/ GetIDList schema.</process:hasPrecondition>
+    <process:hasEffect>The output parameters will adhere to the structure specified by the http://pubchem.ncbi.nlm.nih.gov/ GetIDListResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_9_GetListItemsCount_Atomic">
+    <process:hasName>GetListItemsCount</process:hasName>
+    <process:hasInput rdf:resource="#PUG_9_GetListItemsCount_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetListItemsCount"/>
+    <process:hasOutput rdf:resource="#PUG_9_GetListItemsCount_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetListItemsCountResponse"/>
+    <process:hasPrecondition>The input parameters must be provided in the specified format for the PubChem GetListItemsCount operation.</process:hasPrecondition>
+    <process:hasEffect>The output will contain the count of items in the list specified in the input parameters for the PubChem GetListItemsCount operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_10_GetOperationStatus_Atomic">
+    <process:hasName>GetOperationStatus</process:hasName>
+    <process:hasInput rdf:resource="#PUG_10_GetOperationStatus_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetOperationStatus"/>
+    <process:hasOutput rdf:resource="#PUG_10_GetOperationStatus_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetOperationStatusResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid request for operation status from the PubChem web service.</process:hasPrecondition>
+    <process:hasEffect>The output parameter will contain the response with the current status of the requested operation from the PubChem web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_11_GetStandardizedCID_Atomic">
+    <process:hasName>GetStandardizedCID</process:hasName>
+    <process:hasInput rdf:resource="#PUG_11_GetStandardizedCID_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedCID"/>
+    <process:hasOutput rdf:resource="#PUG_11_GetStandardizedCID_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedCIDResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid PubChem compound identifier.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the standardized PubChem compound identifier in the response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_12_GetStandardizedStructure_Atomic">
+    <process:hasName>GetStandardizedStructure</process:hasName>
+    <process:hasInput rdf:resource="#PUG_12_GetStandardizedStructure_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedStructure"/>
+    <process:hasOutput rdf:resource="#PUG_12_GetStandardizedStructure_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedStructureResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid request for the standardized structure from the PubChem database.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the standardized structure response from the PubChem database.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_13_GetStandardizedStructureBase64_Atomic">
+    <process:hasName>GetStandardizedStructureBase64</process:hasName>
+    <process:hasInput rdf:resource="#PUG_13_GetStandardizedStructureBase64_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedStructureBase64"/>
+    <process:hasOutput rdf:resource="#PUG_13_GetStandardizedStructureBase64_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStandardizedStructureBase64Response"/>
+    <process:hasPrecondition>The input parameter must be a valid structure in Base64 format from the PubChem database.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the standardized structure in Base64 format as a response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_14_GetStatusMessage_Atomic">
+    <process:hasName>GetStatusMessage</process:hasName>
+    <process:hasInput rdf:resource="#PUG_14_GetStatusMessage_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStatusMessage"/>
+    <process:hasOutput rdf:resource="#PUG_14_GetStatusMessage_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__GetStatusMessageResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameter must be a valid request for status message retrieval from the PubChem database.</process:hasPrecondition>
+    <process:hasEffect>The status message corresponding to the input request is returned as the output response from the web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_15_IdentitySearch_Atomic">
+    <process:hasName>IdentitySearch</process:hasName>
+    <process:hasInput rdf:resource="#PUG_15_IdentitySearch_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__IdentitySearch"/>
+    <process:hasOutput rdf:resource="#PUG_15_IdentitySearch_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__IdentitySearchResponse"/>
+    <process:hasPrecondition>The input parameters for the IdentitySearch operation must be provided in the specified format from the PubChem website.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for the IdentitySearch operation will be returned in the specified format from the PubChem website.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_16_IDExchange_Atomic">
+    <process:hasName>IDExchange</process:hasName>
+    <process:hasInput rdf:resource="#PUG_16_IDExchange_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__IDExchange"/>
+    <process:hasOutput rdf:resource="#PUG_16_IDExchange_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__IDExchangeResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid identifier from the PubChem database.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response containing the exchanged identifier from the PubChem database.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_17_InputAssay_Atomic">
+    <process:hasName>InputAssay</process:hasName>
+    <process:hasInput rdf:resource="#PUG_17_InputAssay_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputAssay"/>
+    <process:hasOutput rdf:resource="#PUG_17_InputAssay_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputAssayResponse"/>
+    <process:hasPrecondition>The input parameters must conform to the structure defined by the http://pubchem.ncbi.nlm.nih.gov/ InputAssay schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response conforming to the structure defined by the http://pubchem.ncbi.nlm.nih.gov/ InputAssayResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_18_InputEntrez_Atomic">
+    <process:hasName>InputEntrez</process:hasName>
+    <process:hasInput rdf:resource="#PUG_18_InputEntrez_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputEntrez"/>
+    <process:hasOutput rdf:resource="#PUG_18_InputEntrez_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputEntrezResponse"/>
+    <process:hasPrecondition>The user must provide valid input parameters in the specified format for the InputEntrez operation.</process:hasPrecondition>
+    <process:hasEffect>The service will process the input parameters and generate a response in the specified format for the InputEntrez operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_19_InputList_Atomic">
+    <process:hasName>InputList</process:hasName>
+    <process:hasInput rdf:resource="#PUG_19_InputList_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputList"/>
+    <process:hasOutput rdf:resource="#PUG_19_InputList_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListResponse"/>
+    <process:hasPrecondition>The input list must adhere to the specified format defined by the http://pubchem.ncbi.nlm.nih.gov/ schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response in the same format as the input list defined by the http://pubchem.ncbi.nlm.nih.gov/ schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_20_InputListString_Atomic">
+    <process:hasName>InputListString</process:hasName>
+    <process:hasInput rdf:resource="#PUG_20_InputListString_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListString"/>
+    <process:hasOutput rdf:resource="#PUG_20_InputListString_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListStringResponse"/>
+    <process:hasPrecondition>The input list of strings must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The service will process the input list of strings and provide a response in the same format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_21_InputListText_Atomic">
+    <process:hasName>InputListText</process:hasName>
+    <process:hasInput rdf:resource="#PUG_21_InputListText_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListText"/>
+    <process:hasOutput rdf:resource="#PUG_21_InputListText_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputListTextResponse"/>
+    <process:hasPrecondition>The web service requires an input list of text data in a specific format from the PubChem database.</process:hasPrecondition>
+    <process:hasEffect>The web service will process the input list of text data and provide a response in the same format from the PubChem database.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_22_InputStructure_Atomic">
+    <process:hasName>InputStructure</process:hasName>
+    <process:hasInput rdf:resource="#PUG_22_InputStructure_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputStructure"/>
+    <process:hasOutput rdf:resource="#PUG_22_InputStructure_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputStructureResponse"/>
+    <process:hasPrecondition>The input must conform to the structure specified by the http://pubchem.ncbi.nlm.nih.gov/ InputStructure schema.</process:hasPrecondition>
+    <process:hasEffect>The service will return a response conforming to the structure specified by the http://pubchem.ncbi.nlm.nih.gov/ InputStructureResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_23_InputStructureBase64_Atomic">
+    <process:hasName>InputStructureBase64</process:hasName>
+    <process:hasInput rdf:resource="#PUG_23_InputStructureBase64_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__InputStructureBase64"/>
+    <process:hasOutput rdf:resource="#PUG_23_InputStructureBase64_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__InputStructureBase64Response"/>
+    <process:hasPrecondition>The input parameter must be a Base64-encoded structure from the PubChem database.</process:hasPrecondition>
+    <process:hasEffect>The service will return a response containing the Base64-encoded structure from the PubChem database.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_24_MFSearch_Atomic">
+    <process:hasName>MFSearch</process:hasName>
+    <process:hasInput rdf:resource="#PUG_24_MFSearch_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__MFSearch"/>
+    <process:hasOutput rdf:resource="#PUG_24_MFSearch_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__MFSearchResponse"/>
+    <process:hasPrecondition>The input parameters for MFSearch must be provided in the format specified by http://pubchem.ncbi.nlm.nih.gov/.</process:hasPrecondition>
+    <process:hasEffect>The output parameters in MFSearchResponse will be generated according to the format specified by http://pubchem.ncbi.nlm.nih.gov/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_25_ScoreMatrix_Atomic">
+    <process:hasName>ScoreMatrix</process:hasName>
+    <process:hasInput rdf:resource="#PUG_25_ScoreMatrix_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__ScoreMatrix"/>
+    <process:hasOutput rdf:resource="#PUG_25_ScoreMatrix_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__ScoreMatrixResponse"/>
+    <process:hasPrecondition>The ScoreMatrix input parameter must be provided in the request in the format specified by http://pubchem.ncbi.nlm.nih.gov/.</process:hasPrecondition>
+    <process:hasEffect>The ScoreMatrixResponse output parameter will be returned in the format specified by http://pubchem.ncbi.nlm.nih.gov/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_26_SimilaritySearch2D_Atomic">
+    <process:hasName>SimilaritySearch2D</process:hasName>
+    <process:hasInput rdf:resource="#PUG_26_SimilaritySearch2D_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__SimilaritySearch2D"/>
+    <process:hasOutput rdf:resource="#PUG_26_SimilaritySearch2D_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__SimilaritySearch2DResponse"/>
+    <process:hasPrecondition>The input parameters for the SimilaritySearch2D operation must be provided in the specified format from the PubChem database.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for the SimilaritySearch2D operation will be returned in the specified format from the PubChem database.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_27_Standardize_Atomic">
+    <process:hasName>Standardize</process:hasName>
+    <process:hasInput rdf:resource="#PUG_27_Standardize_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__Standardize"/>
+    <process:hasOutput rdf:resource="#PUG_27_Standardize_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__StandardizeResponse"/>
+    <process:hasPrecondition>The input parameters must conform to the structure defined by the Standardize service from the PubChem API.</process:hasPrecondition>
+    <process:hasEffect>The output parameters will be standardized according to the PubChem API specifications.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_28_SubstructureSearch_Atomic">
+    <process:hasName>SubstructureSearch</process:hasName>
+    <process:hasInput rdf:resource="#PUG_28_SubstructureSearch_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__SubstructureSearch"/>
+    <process:hasOutput rdf:resource="#PUG_28_SubstructureSearch_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__SubstructureSearchResponse"/>
+    <process:hasPrecondition>The input for SubstructureSearch must be provided in the format specified by http://pubchem.ncbi.nlm.nih.gov/.</process:hasPrecondition>
+    <process:hasEffect>The output for SubstructureSearch will be returned in the format specified by http://pubchem.ncbi.nlm.nih.gov/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="PUG_29_SuperstructureSearch_Atomic">
+    <process:hasName>SuperstructureSearch</process:hasName>
+    <process:hasInput rdf:resource="#PUG_29_SuperstructureSearch_Atomic_input_parameters__http___pubchem.ncbi.nlm.nih.gov__SuperstructureSearch"/>
+    <process:hasOutput rdf:resource="#PUG_29_SuperstructureSearch_Atomic_output_parameters__http___pubchem.ncbi.nlm.nih.gov__SuperstructureSearchResponse"/>
+    <process:hasPrecondition>The input for SuperstructureSearch must be provided in the format specified by http://pubchem.ncbi.nlm.nih.gov/.</process:hasPrecondition>
+    <process:hasEffect>The output for SuperstructureSearch will be returned in the format specified by http://pubchem.ncbi.nlm.nih.gov/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="PUG_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_0_AssayDownload_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_1_Download_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_2_GetAssayColumnDescription_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_3_GetAssayColumnDescriptions_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_4_GetAssayDescription_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_5_GetDownloadUrl_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_6_GetEntrezKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_7_GetEntrezUrl_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_8_GetIDList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_9_GetListItemsCount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_10_GetOperationStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_11_GetStandardizedCID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_12_GetStandardizedStructure_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_13_GetStandardizedStructureBase64_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_14_GetStatusMessage_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_15_IdentitySearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_16_IDExchange_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_17_InputAssay_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_18_InputEntrez_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_19_InputList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_20_InputListString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_21_InputListText_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_22_InputStructure_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_23_InputStructureBase64_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_24_MFSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_25_ScoreMatrix_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_26_SimilaritySearch2D_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_27_Standardize_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_28_SubstructureSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#PUG_29_SuperstructureSearch_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_0_AssayDownload_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_0_AssayDownload_Atomic"/>
+    <grounding:wsdlOperationName>AssayDownload</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AssayDownloadSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AssayDownloadSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_1_Download_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_1_Download_Atomic"/>
+    <grounding:wsdlOperationName>Download</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DownloadSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DownloadSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_2_GetAssayColumnDescription_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_2_GetAssayColumnDescription_Atomic"/>
+    <grounding:wsdlOperationName>GetAssayColumnDescription</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAssayColumnDescriptionSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAssayColumnDescriptionSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_3_GetAssayColumnDescriptions_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_3_GetAssayColumnDescriptions_Atomic"/>
+    <grounding:wsdlOperationName>GetAssayColumnDescriptions</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAssayColumnDescriptionsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAssayColumnDescriptionsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_4_GetAssayDescription_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_4_GetAssayDescription_Atomic"/>
+    <grounding:wsdlOperationName>GetAssayDescription</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetAssayDescriptionSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetAssayDescriptionSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_5_GetDownloadUrl_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_5_GetDownloadUrl_Atomic"/>
+    <grounding:wsdlOperationName>GetDownloadUrl</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDownloadUrlSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDownloadUrlSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_6_GetEntrezKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_6_GetEntrezKey_Atomic"/>
+    <grounding:wsdlOperationName>GetEntrezKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetEntrezKeySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetEntrezKeySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_7_GetEntrezUrl_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_7_GetEntrezUrl_Atomic"/>
+    <grounding:wsdlOperationName>GetEntrezUrl</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetEntrezUrlSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetEntrezUrlSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_8_GetIDList_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_8_GetIDList_Atomic"/>
+    <grounding:wsdlOperationName>GetIDList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetIDListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetIDListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_9_GetListItemsCount_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_9_GetListItemsCount_Atomic"/>
+    <grounding:wsdlOperationName>GetListItemsCount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetListItemsCountSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetListItemsCountSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_10_GetOperationStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_10_GetOperationStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetOperationStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetOperationStatusSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetOperationStatusSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_11_GetStandardizedCID_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_11_GetStandardizedCID_Atomic"/>
+    <grounding:wsdlOperationName>GetStandardizedCID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStandardizedCIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStandardizedCIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_12_GetStandardizedStructure_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_12_GetStandardizedStructure_Atomic"/>
+    <grounding:wsdlOperationName>GetStandardizedStructure</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStandardizedStructureSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStandardizedStructureSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_13_GetStandardizedStructureBase64_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_13_GetStandardizedStructureBase64_Atomic"/>
+    <grounding:wsdlOperationName>GetStandardizedStructureBase64</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStandardizedStructureBase64SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStandardizedStructureBase64SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_14_GetStatusMessage_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_14_GetStatusMessage_Atomic"/>
+    <grounding:wsdlOperationName>GetStatusMessage</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStatusMessageSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStatusMessageSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_15_IdentitySearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_15_IdentitySearch_Atomic"/>
+    <grounding:wsdlOperationName>IdentitySearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IdentitySearchSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IdentitySearchSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_16_IDExchange_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_16_IDExchange_Atomic"/>
+    <grounding:wsdlOperationName>IDExchange</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IDExchangeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IDExchangeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_17_InputAssay_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_17_InputAssay_Atomic"/>
+    <grounding:wsdlOperationName>InputAssay</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>InputAssaySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>InputAssaySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_18_InputEntrez_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_18_InputEntrez_Atomic"/>
+    <grounding:wsdlOperationName>InputEntrez</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>InputEntrezSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>InputEntrezSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_19_InputList_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_19_InputList_Atomic"/>
+    <grounding:wsdlOperationName>InputList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>InputListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>InputListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_20_InputListString_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_20_InputListString_Atomic"/>
+    <grounding:wsdlOperationName>InputListString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>InputListStringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>InputListStringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_21_InputListText_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_21_InputListText_Atomic"/>
+    <grounding:wsdlOperationName>InputListText</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>InputListTextSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>InputListTextSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_22_InputStructure_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_22_InputStructure_Atomic"/>
+    <grounding:wsdlOperationName>InputStructure</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>InputStructureSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>InputStructureSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_23_InputStructureBase64_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_23_InputStructureBase64_Atomic"/>
+    <grounding:wsdlOperationName>InputStructureBase64</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>InputStructureBase64SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>InputStructureBase64SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_24_MFSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_24_MFSearch_Atomic"/>
+    <grounding:wsdlOperationName>MFSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>MFSearchSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>MFSearchSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_25_ScoreMatrix_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_25_ScoreMatrix_Atomic"/>
+    <grounding:wsdlOperationName>ScoreMatrix</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ScoreMatrixSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ScoreMatrixSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_26_SimilaritySearch2D_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_26_SimilaritySearch2D_Atomic"/>
+    <grounding:wsdlOperationName>SimilaritySearch2D</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SimilaritySearch2DSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SimilaritySearch2DSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_27_Standardize_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_27_Standardize_Atomic"/>
+    <grounding:wsdlOperationName>Standardize</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>StandardizeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>StandardizeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_28_SubstructureSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_28_SubstructureSearch_Atomic"/>
+    <grounding:wsdlOperationName>SubstructureSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SubstructureSearchSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SubstructureSearchSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="PUG_29_SuperstructureSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#PUG_29_SuperstructureSearch_Atomic"/>
+    <grounding:wsdlOperationName>SuperstructureSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>PUGSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>PUGSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4370_4369.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SuperstructureSearchSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SuperstructureSearchSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Website">
+    <service:presents rdf:resource="#Website_Profile"/>
+    <service:describedBy rdf:resource="#Website_Composite"/>
+    <service:supports rdf:resource="#Website_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Website_Profile">
+    <profile:serviceName>Website</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Website"/>
+    <profile:hasProcess rdf:resource="#Website_0_GetSiteName_Atomic"/>
+    <profile:hasInput rdf:resource="#Website_0_GetSiteName_Atomic_input_parameters__http___tempuri.org__GetSiteName"/>
+    <profile:hasOutput rdf:resource="#Website_0_GetSiteName_Atomic_output_parameters__http___tempuri.org__GetSiteNameResponse"/>
+    <profile:hasPrecondition>Inputs must be present and valid.</profile:hasPrecondition>
+    <profile:hasResult>Operation completes and returns the specified outputs.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Website_Composite">
+    <process:composedOf rdf:resource="#Website_0_GetSiteName_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Website_0_GetSiteName_Atomic_input_parameters__http___tempuri.org__GetSiteName">
+    <process:parameterType>parameters:{http://tempuri.org/}GetSiteName</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Website_0_GetSiteName_Atomic_output_parameters__http___tempuri.org__GetSiteNameResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetSiteNameResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Website_0_GetSiteName_Atomic">
+    <process:hasName>GetSiteName</process:hasName>
+    <process:hasInput rdf:resource="#Website_0_GetSiteName_Atomic_input_parameters__http___tempuri.org__GetSiteName"/>
+    <process:hasOutput rdf:resource="#Website_0_GetSiteName_Atomic_output_parameters__http___tempuri.org__GetSiteNameResponse"/>
+    <process:hasPrecondition>Inputs must be present and valid.</process:hasPrecondition>
+    <process:hasEffect>Operation completes and returns the specified outputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Website_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Website_0_GetSiteName_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Website_0_GetSiteName_Grounding">
+    <grounding:owlsProcess rdf:resource="#Website_0_GetSiteName_Atomic"/>
+    <grounding:wsdlOperationName>GetSiteName</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WebsiteSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WebsiteSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4496_4495.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSiteNameSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSiteNameSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

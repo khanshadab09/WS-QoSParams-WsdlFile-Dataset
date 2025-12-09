@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="NewsLookNews">
+    <service:presents rdf:resource="#NewsLookNews_Profile"/>
+    <service:describedBy rdf:resource="#NewsLookNews_Composite"/>
+    <service:supports rdf:resource="#NewsLookNews_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="NewsLookNews_Profile">
+    <profile:serviceName>NewsLookNews</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#NewsLookNews"/>
+    <profile:hasProcess rdf:resource="#NewsLookNews_0_TestConnection_Atomic"/>
+    <profile:hasInput rdf:resource="#NewsLookNews_0_TestConnection_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_TestConnection"/>
+    <profile:hasOutput rdf:resource="#NewsLookNews_0_TestConnection_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_TestConnectionResponse"/>
+    <profile:hasPrecondition>The web service at www.ghytred.com/NewsLook/MessageServer must be accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The TestConnection operation will send a request to the specified web service and receive a TestConnectionResponse as output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NewsLookNews_1_List_Atomic"/>
+    <profile:hasInput rdf:resource="#NewsLookNews_1_List_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_List"/>
+    <profile:hasOutput rdf:resource="#NewsLookNews_1_List_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_ListResponse"/>
+    <profile:hasPrecondition>The web service must be accessible at the specified endpoint www.ghytred.com/NewsLook/MessageServer.</profile:hasPrecondition>
+    <profile:hasResult>The List operation will return a ListResponse as specified in the output parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NewsLookNews_2_Article_Atomic"/>
+    <profile:hasInput rdf:resource="#NewsLookNews_2_Article_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_Article"/>
+    <profile:hasOutput rdf:resource="#NewsLookNews_2_Article_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_ArticleResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid article in the specified format from the designated web service endpoint.</profile:hasPrecondition>
+    <profile:hasResult>The operation will process the article and generate a response in the specified format to be returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NewsLookNews_3_Group_Atomic"/>
+    <profile:hasInput rdf:resource="#NewsLookNews_3_Group_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_Group"/>
+    <profile:hasOutput rdf:resource="#NewsLookNews_3_Group_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_GroupResponse"/>
+    <profile:hasPrecondition>The web service must receive a valid request to group messages from the specified server.</profile:hasPrecondition>
+    <profile:hasResult>The web service will process the request and return a response containing the grouped messages from the server.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NewsLookNews_4_Post_Atomic"/>
+    <profile:hasInput rdf:resource="#NewsLookNews_4_Post_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_Post"/>
+    <profile:hasOutput rdf:resource="#NewsLookNews_4_Post_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_PostResponse"/>
+    <profile:hasPrecondition>The web service must be accessible at www.ghytred.com/NewsLook/MessageServer to accept the Post request.</profile:hasPrecondition>
+    <profile:hasResult>Upon successful execution of the Post operation, a response will be returned to the client from www.ghytred.com/NewsLook/MessageServer.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="NewsLookNews_Composite">
+    <process:composedOf rdf:resource="#NewsLookNews_0_TestConnection_Atomic"/>
+    <process:composedOf rdf:resource="#NewsLookNews_1_List_Atomic"/>
+    <process:composedOf rdf:resource="#NewsLookNews_2_Article_Atomic"/>
+    <process:composedOf rdf:resource="#NewsLookNews_3_Group_Atomic"/>
+    <process:composedOf rdf:resource="#NewsLookNews_4_Post_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="NewsLookNews_0_TestConnection_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_TestConnection">
+    <process:parameterType>parameters:{www.ghytred.com/NewsLook/MessageServer}TestConnection</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NewsLookNews_0_TestConnection_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_TestConnectionResponse">
+    <process:parameterType>parameters:{www.ghytred.com/NewsLook/MessageServer}TestConnectionResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NewsLookNews_1_List_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_List">
+    <process:parameterType>parameters:{www.ghytred.com/NewsLook/MessageServer}List</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NewsLookNews_1_List_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_ListResponse">
+    <process:parameterType>parameters:{www.ghytred.com/NewsLook/MessageServer}ListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NewsLookNews_2_Article_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_Article">
+    <process:parameterType>parameters:{www.ghytred.com/NewsLook/MessageServer}Article</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NewsLookNews_2_Article_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_ArticleResponse">
+    <process:parameterType>parameters:{www.ghytred.com/NewsLook/MessageServer}ArticleResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NewsLookNews_3_Group_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_Group">
+    <process:parameterType>parameters:{www.ghytred.com/NewsLook/MessageServer}Group</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NewsLookNews_3_Group_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_GroupResponse">
+    <process:parameterType>parameters:{www.ghytred.com/NewsLook/MessageServer}GroupResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NewsLookNews_4_Post_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_Post">
+    <process:parameterType>parameters:{www.ghytred.com/NewsLook/MessageServer}Post</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NewsLookNews_4_Post_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_PostResponse">
+    <process:parameterType>parameters:{www.ghytred.com/NewsLook/MessageServer}PostResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="NewsLookNews_0_TestConnection_Atomic">
+    <process:hasName>TestConnection</process:hasName>
+    <process:hasInput rdf:resource="#NewsLookNews_0_TestConnection_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_TestConnection"/>
+    <process:hasOutput rdf:resource="#NewsLookNews_0_TestConnection_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_TestConnectionResponse"/>
+    <process:hasPrecondition>The web service at www.ghytred.com/NewsLook/MessageServer must be accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The TestConnection operation will send a request to the specified web service and receive a TestConnectionResponse as output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NewsLookNews_1_List_Atomic">
+    <process:hasName>List</process:hasName>
+    <process:hasInput rdf:resource="#NewsLookNews_1_List_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_List"/>
+    <process:hasOutput rdf:resource="#NewsLookNews_1_List_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_ListResponse"/>
+    <process:hasPrecondition>The web service must be accessible at the specified endpoint www.ghytred.com/NewsLook/MessageServer.</process:hasPrecondition>
+    <process:hasEffect>The List operation will return a ListResponse as specified in the output parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NewsLookNews_2_Article_Atomic">
+    <process:hasName>Article</process:hasName>
+    <process:hasInput rdf:resource="#NewsLookNews_2_Article_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_Article"/>
+    <process:hasOutput rdf:resource="#NewsLookNews_2_Article_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_ArticleResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid article in the specified format from the designated web service endpoint.</process:hasPrecondition>
+    <process:hasEffect>The operation will process the article and generate a response in the specified format to be returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NewsLookNews_3_Group_Atomic">
+    <process:hasName>Group</process:hasName>
+    <process:hasInput rdf:resource="#NewsLookNews_3_Group_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_Group"/>
+    <process:hasOutput rdf:resource="#NewsLookNews_3_Group_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_GroupResponse"/>
+    <process:hasPrecondition>The web service must receive a valid request to group messages from the specified server.</process:hasPrecondition>
+    <process:hasEffect>The web service will process the request and return a response containing the grouped messages from the server.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NewsLookNews_4_Post_Atomic">
+    <process:hasName>Post</process:hasName>
+    <process:hasInput rdf:resource="#NewsLookNews_4_Post_Atomic_input_parameters__www.ghytred.com_NewsLook_MessageServer_Post"/>
+    <process:hasOutput rdf:resource="#NewsLookNews_4_Post_Atomic_output_parameters__www.ghytred.com_NewsLook_MessageServer_PostResponse"/>
+    <process:hasPrecondition>The web service must be accessible at www.ghytred.com/NewsLook/MessageServer to accept the Post request.</process:hasPrecondition>
+    <process:hasEffect>Upon successful execution of the Post operation, a response will be returned to the client from www.ghytred.com/NewsLook/MessageServer.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="NewsLookNews_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsLookNews_0_TestConnection_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsLookNews_1_List_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsLookNews_2_Article_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsLookNews_3_Group_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NewsLookNews_4_Post_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsLookNews_0_TestConnection_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsLookNews_0_TestConnection_Atomic"/>
+    <grounding:wsdlOperationName>TestConnection</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsLookNewsSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsLookNewsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4811_4810.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>TestConnectionSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>TestConnectionSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsLookNews_1_List_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsLookNews_1_List_Atomic"/>
+    <grounding:wsdlOperationName>List</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsLookNewsSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsLookNewsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4811_4810.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsLookNews_2_Article_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsLookNews_2_Article_Atomic"/>
+    <grounding:wsdlOperationName>Article</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsLookNewsSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsLookNewsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4811_4810.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ArticleSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ArticleSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsLookNews_3_Group_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsLookNews_3_Group_Atomic"/>
+    <grounding:wsdlOperationName>Group</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsLookNewsSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsLookNewsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4811_4810.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GroupSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GroupSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NewsLookNews_4_Post_Grounding">
+    <grounding:owlsProcess rdf:resource="#NewsLookNews_4_Post_Atomic"/>
+    <grounding:wsdlOperationName>Post</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NewsLookNewsSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NewsLookNewsSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4811_4810.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PostSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PostSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,398 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="MyWebService">
+    <service:presents rdf:resource="#MyWebService_Profile"/>
+    <service:describedBy rdf:resource="#MyWebService_Composite"/>
+    <service:supports rdf:resource="#MyWebService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="MyWebService_Profile">
+    <profile:serviceName>MyWebService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#MyWebService"/>
+    <profile:hasProcess rdf:resource="#MyWebService_0_ReturnTime_Atomic"/>
+    <profile:hasOutput rdf:resource="#MyWebService_0_ReturnTime_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <profile:hasPrecondition>The web service for ReturnTime is accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The ReturnTime operation will provide a string representing the current time from the specified URL.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#MyWebService_1_SayHelloWorld_Atomic"/>
+    <profile:hasOutput rdf:resource="#MyWebService_1_SayHelloWorld_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a string "Hello, World!" in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#MyWebService_2_Add_Atomic"/>
+    <profile:hasInput rdf:resource="#MyWebService_2_Add_Atomic_input_a__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#MyWebService_2_Add_Atomic_input_b__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#MyWebService_2_Add_Atomic_output_Body__http___RyanRusson.com__int"/>
+    <profile:hasPrecondition>Both inputs a and b must be valid strings in order to perform the addition operation.</profile:hasPrecondition>
+    <profile:hasResult>The result of adding the two input strings a and b will be returned as an integer in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#MyWebService_3_UnProfanitizer_Atomic"/>
+    <profile:hasInput rdf:resource="#MyWebService_3_UnProfanitizer_Atomic_input_strInput__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#MyWebService_3_UnProfanitizer_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <profile:hasPrecondition>The input string contains profane language that needs to be sanitized.</profile:hasPrecondition>
+    <profile:hasResult>The output string is a sanitized version of the input string with all profane language removed.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#MyWebService_4_ReturnTime_Atomic"/>
+    <profile:hasInput rdf:resource="#MyWebService_4_ReturnTime_Atomic_input_parameters__http___RyanRusson.com__ReturnTime"/>
+    <profile:hasOutput rdf:resource="#MyWebService_4_ReturnTime_Atomic_output_parameters__http___RyanRusson.com__ReturnTimeResponse"/>
+    <profile:hasPrecondition>Inputs must be present and valid.</profile:hasPrecondition>
+    <profile:hasResult>Operation completes and returns the specified outputs.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#MyWebService_5_SayHelloWorld_Atomic"/>
+    <profile:hasInput rdf:resource="#MyWebService_5_SayHelloWorld_Atomic_input_parameters__http___RyanRusson.com__SayHelloWorld"/>
+    <profile:hasOutput rdf:resource="#MyWebService_5_SayHelloWorld_Atomic_output_parameters__http___RyanRusson.com__SayHelloWorldResponse"/>
+    <profile:hasPrecondition>The input parameter for SayHelloWorld must be provided in the specified format from http://RyanRusson.com/.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter SayHelloWorldResponse will be returned in the specified format from http://RyanRusson.com/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#MyWebService_6_Add_Atomic"/>
+    <profile:hasInput rdf:resource="#MyWebService_6_Add_Atomic_input_parameters__http___RyanRusson.com__Add"/>
+    <profile:hasOutput rdf:resource="#MyWebService_6_Add_Atomic_output_parameters__http___RyanRusson.com__AddResponse"/>
+    <profile:hasPrecondition>The input parameters for the Add operation must be provided in the specified format defined by the http://RyanRusson.com/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for the Add operation will be returned in the specified format defined by the http://RyanRusson.com/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#MyWebService_7_UnProfanitizer_Atomic"/>
+    <profile:hasInput rdf:resource="#MyWebService_7_UnProfanitizer_Atomic_input_parameters__http___RyanRusson.com__UnProfanitizer"/>
+    <profile:hasOutput rdf:resource="#MyWebService_7_UnProfanitizer_Atomic_output_parameters__http___RyanRusson.com__UnProfanitizerResponse"/>
+    <profile:hasPrecondition>The input parameter for UnProfanitizer must contain profane language that needs to be sanitized.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter for UnProfanitizerResponse will contain the sanitized version of the profane language.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#MyWebService_8_ReturnTime_Atomic"/>
+    <profile:hasOutput rdf:resource="#MyWebService_8_ReturnTime_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <profile:hasPrecondition>The web service for ReturnTime is accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a string containing the current time from http://RyanRusson.com/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#MyWebService_9_SayHelloWorld_Atomic"/>
+    <profile:hasOutput rdf:resource="#MyWebService_9_SayHelloWorld_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <profile:hasPrecondition>The web service "SayHelloWorld" must be available and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a string containing the message "Hello, World!" from the specified namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#MyWebService_10_Add_Atomic"/>
+    <profile:hasInput rdf:resource="#MyWebService_10_Add_Atomic_input_a__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#MyWebService_10_Add_Atomic_input_b__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#MyWebService_10_Add_Atomic_output_Body__http___RyanRusson.com__int"/>
+    <profile:hasPrecondition>The inputs a and b must be valid strings according to the XML Schema specification.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the sum of the two input strings as an integer value in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#MyWebService_11_UnProfanitizer_Atomic"/>
+    <profile:hasInput rdf:resource="#MyWebService_11_UnProfanitizer_Atomic_input_strInput__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#MyWebService_11_UnProfanitizer_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <profile:hasPrecondition>The input string contains profane language that needs to be sanitized.</profile:hasPrecondition>
+    <profile:hasResult>The output string is a sanitized version of the input string with all profanity removed.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="MyWebService_Composite">
+    <process:composedOf rdf:resource="#MyWebService_0_ReturnTime_Atomic"/>
+    <process:composedOf rdf:resource="#MyWebService_1_SayHelloWorld_Atomic"/>
+    <process:composedOf rdf:resource="#MyWebService_2_Add_Atomic"/>
+    <process:composedOf rdf:resource="#MyWebService_3_UnProfanitizer_Atomic"/>
+    <process:composedOf rdf:resource="#MyWebService_4_ReturnTime_Atomic"/>
+    <process:composedOf rdf:resource="#MyWebService_5_SayHelloWorld_Atomic"/>
+    <process:composedOf rdf:resource="#MyWebService_6_Add_Atomic"/>
+    <process:composedOf rdf:resource="#MyWebService_7_UnProfanitizer_Atomic"/>
+    <process:composedOf rdf:resource="#MyWebService_8_ReturnTime_Atomic"/>
+    <process:composedOf rdf:resource="#MyWebService_9_SayHelloWorld_Atomic"/>
+    <process:composedOf rdf:resource="#MyWebService_10_Add_Atomic"/>
+    <process:composedOf rdf:resource="#MyWebService_11_UnProfanitizer_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Output rdf:ID="MyWebService_0_ReturnTime_Atomic_output_Body__http___RyanRusson.com__string">
+    <process:parameterType>Body:{http://RyanRusson.com/}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="MyWebService_1_SayHelloWorld_Atomic_output_Body__http___RyanRusson.com__string">
+    <process:parameterType>Body:{http://RyanRusson.com/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="MyWebService_2_Add_Atomic_input_a__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>a:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="MyWebService_2_Add_Atomic_input_b__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>b:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="MyWebService_2_Add_Atomic_output_Body__http___RyanRusson.com__int">
+    <process:parameterType>Body:{http://RyanRusson.com/}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="MyWebService_3_UnProfanitizer_Atomic_input_strInput__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strInput:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="MyWebService_3_UnProfanitizer_Atomic_output_Body__http___RyanRusson.com__string">
+    <process:parameterType>Body:{http://RyanRusson.com/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="MyWebService_4_ReturnTime_Atomic_input_parameters__http___RyanRusson.com__ReturnTime">
+    <process:parameterType>parameters:{http://RyanRusson.com/}ReturnTime</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="MyWebService_4_ReturnTime_Atomic_output_parameters__http___RyanRusson.com__ReturnTimeResponse">
+    <process:parameterType>parameters:{http://RyanRusson.com/}ReturnTimeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="MyWebService_5_SayHelloWorld_Atomic_input_parameters__http___RyanRusson.com__SayHelloWorld">
+    <process:parameterType>parameters:{http://RyanRusson.com/}SayHelloWorld</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="MyWebService_5_SayHelloWorld_Atomic_output_parameters__http___RyanRusson.com__SayHelloWorldResponse">
+    <process:parameterType>parameters:{http://RyanRusson.com/}SayHelloWorldResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="MyWebService_6_Add_Atomic_input_parameters__http___RyanRusson.com__Add">
+    <process:parameterType>parameters:{http://RyanRusson.com/}Add</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="MyWebService_6_Add_Atomic_output_parameters__http___RyanRusson.com__AddResponse">
+    <process:parameterType>parameters:{http://RyanRusson.com/}AddResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="MyWebService_7_UnProfanitizer_Atomic_input_parameters__http___RyanRusson.com__UnProfanitizer">
+    <process:parameterType>parameters:{http://RyanRusson.com/}UnProfanitizer</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="MyWebService_7_UnProfanitizer_Atomic_output_parameters__http___RyanRusson.com__UnProfanitizerResponse">
+    <process:parameterType>parameters:{http://RyanRusson.com/}UnProfanitizerResponse</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="MyWebService_8_ReturnTime_Atomic_output_Body__http___RyanRusson.com__string">
+    <process:parameterType>Body:{http://RyanRusson.com/}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="MyWebService_9_SayHelloWorld_Atomic_output_Body__http___RyanRusson.com__string">
+    <process:parameterType>Body:{http://RyanRusson.com/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="MyWebService_10_Add_Atomic_input_a__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>a:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="MyWebService_10_Add_Atomic_input_b__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>b:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="MyWebService_10_Add_Atomic_output_Body__http___RyanRusson.com__int">
+    <process:parameterType>Body:{http://RyanRusson.com/}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="MyWebService_11_UnProfanitizer_Atomic_input_strInput__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>strInput:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="MyWebService_11_UnProfanitizer_Atomic_output_Body__http___RyanRusson.com__string">
+    <process:parameterType>Body:{http://RyanRusson.com/}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="MyWebService_0_ReturnTime_Atomic">
+    <process:hasName>ReturnTime</process:hasName>
+    <process:hasOutput rdf:resource="#MyWebService_0_ReturnTime_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <process:hasPrecondition>The web service for ReturnTime is accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The ReturnTime operation will provide a string representing the current time from the specified URL.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="MyWebService_1_SayHelloWorld_Atomic">
+    <process:hasName>SayHelloWorld</process:hasName>
+    <process:hasOutput rdf:resource="#MyWebService_1_SayHelloWorld_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a string "Hello, World!" in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="MyWebService_2_Add_Atomic">
+    <process:hasName>Add</process:hasName>
+    <process:hasInput rdf:resource="#MyWebService_2_Add_Atomic_input_a__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#MyWebService_2_Add_Atomic_input_b__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#MyWebService_2_Add_Atomic_output_Body__http___RyanRusson.com__int"/>
+    <process:hasPrecondition>Both inputs a and b must be valid strings in order to perform the addition operation.</process:hasPrecondition>
+    <process:hasEffect>The result of adding the two input strings a and b will be returned as an integer in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="MyWebService_3_UnProfanitizer_Atomic">
+    <process:hasName>UnProfanitizer</process:hasName>
+    <process:hasInput rdf:resource="#MyWebService_3_UnProfanitizer_Atomic_input_strInput__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#MyWebService_3_UnProfanitizer_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <process:hasPrecondition>The input string contains profane language that needs to be sanitized.</process:hasPrecondition>
+    <process:hasEffect>The output string is a sanitized version of the input string with all profane language removed.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="MyWebService_4_ReturnTime_Atomic">
+    <process:hasName>ReturnTime</process:hasName>
+    <process:hasInput rdf:resource="#MyWebService_4_ReturnTime_Atomic_input_parameters__http___RyanRusson.com__ReturnTime"/>
+    <process:hasOutput rdf:resource="#MyWebService_4_ReturnTime_Atomic_output_parameters__http___RyanRusson.com__ReturnTimeResponse"/>
+    <process:hasPrecondition>Inputs must be present and valid.</process:hasPrecondition>
+    <process:hasEffect>Operation completes and returns the specified outputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="MyWebService_5_SayHelloWorld_Atomic">
+    <process:hasName>SayHelloWorld</process:hasName>
+    <process:hasInput rdf:resource="#MyWebService_5_SayHelloWorld_Atomic_input_parameters__http___RyanRusson.com__SayHelloWorld"/>
+    <process:hasOutput rdf:resource="#MyWebService_5_SayHelloWorld_Atomic_output_parameters__http___RyanRusson.com__SayHelloWorldResponse"/>
+    <process:hasPrecondition>The input parameter for SayHelloWorld must be provided in the specified format from http://RyanRusson.com/.</process:hasPrecondition>
+    <process:hasEffect>The output parameter SayHelloWorldResponse will be returned in the specified format from http://RyanRusson.com/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="MyWebService_6_Add_Atomic">
+    <process:hasName>Add</process:hasName>
+    <process:hasInput rdf:resource="#MyWebService_6_Add_Atomic_input_parameters__http___RyanRusson.com__Add"/>
+    <process:hasOutput rdf:resource="#MyWebService_6_Add_Atomic_output_parameters__http___RyanRusson.com__AddResponse"/>
+    <process:hasPrecondition>The input parameters for the Add operation must be provided in the specified format defined by the http://RyanRusson.com/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for the Add operation will be returned in the specified format defined by the http://RyanRusson.com/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="MyWebService_7_UnProfanitizer_Atomic">
+    <process:hasName>UnProfanitizer</process:hasName>
+    <process:hasInput rdf:resource="#MyWebService_7_UnProfanitizer_Atomic_input_parameters__http___RyanRusson.com__UnProfanitizer"/>
+    <process:hasOutput rdf:resource="#MyWebService_7_UnProfanitizer_Atomic_output_parameters__http___RyanRusson.com__UnProfanitizerResponse"/>
+    <process:hasPrecondition>The input parameter for UnProfanitizer must contain profane language that needs to be sanitized.</process:hasPrecondition>
+    <process:hasEffect>The output parameter for UnProfanitizerResponse will contain the sanitized version of the profane language.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="MyWebService_8_ReturnTime_Atomic">
+    <process:hasName>ReturnTime</process:hasName>
+    <process:hasOutput rdf:resource="#MyWebService_8_ReturnTime_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <process:hasPrecondition>The web service for ReturnTime is accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a string containing the current time from http://RyanRusson.com/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="MyWebService_9_SayHelloWorld_Atomic">
+    <process:hasName>SayHelloWorld</process:hasName>
+    <process:hasOutput rdf:resource="#MyWebService_9_SayHelloWorld_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <process:hasPrecondition>The web service "SayHelloWorld" must be available and accessible.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a string containing the message "Hello, World!" from the specified namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="MyWebService_10_Add_Atomic">
+    <process:hasName>Add</process:hasName>
+    <process:hasInput rdf:resource="#MyWebService_10_Add_Atomic_input_a__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#MyWebService_10_Add_Atomic_input_b__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#MyWebService_10_Add_Atomic_output_Body__http___RyanRusson.com__int"/>
+    <process:hasPrecondition>The inputs a and b must be valid strings according to the XML Schema specification.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the sum of the two input strings as an integer value in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="MyWebService_11_UnProfanitizer_Atomic">
+    <process:hasName>UnProfanitizer</process:hasName>
+    <process:hasInput rdf:resource="#MyWebService_11_UnProfanitizer_Atomic_input_strInput__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#MyWebService_11_UnProfanitizer_Atomic_output_Body__http___RyanRusson.com__string"/>
+    <process:hasPrecondition>The input string contains profane language that needs to be sanitized.</process:hasPrecondition>
+    <process:hasEffect>The output string is a sanitized version of the input string with all profanity removed.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="MyWebService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#MyWebService_0_ReturnTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#MyWebService_1_SayHelloWorld_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#MyWebService_2_Add_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#MyWebService_3_UnProfanitizer_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#MyWebService_4_ReturnTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#MyWebService_5_SayHelloWorld_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#MyWebService_6_Add_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#MyWebService_7_UnProfanitizer_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#MyWebService_8_ReturnTime_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#MyWebService_9_SayHelloWorld_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#MyWebService_10_Add_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#MyWebService_11_UnProfanitizer_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="MyWebService_0_ReturnTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#MyWebService_0_ReturnTime_Atomic"/>
+    <grounding:wsdlOperationName>ReturnTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MyWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MyWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5758_5757.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReturnTimeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReturnTimeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="MyWebService_1_SayHelloWorld_Grounding">
+    <grounding:owlsProcess rdf:resource="#MyWebService_1_SayHelloWorld_Atomic"/>
+    <grounding:wsdlOperationName>SayHelloWorld</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MyWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MyWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5758_5757.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SayHelloWorldHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SayHelloWorldHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="MyWebService_2_Add_Grounding">
+    <grounding:owlsProcess rdf:resource="#MyWebService_2_Add_Atomic"/>
+    <grounding:wsdlOperationName>Add</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MyWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MyWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5758_5757.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="MyWebService_3_UnProfanitizer_Grounding">
+    <grounding:owlsProcess rdf:resource="#MyWebService_3_UnProfanitizer_Atomic"/>
+    <grounding:wsdlOperationName>UnProfanitizer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MyWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MyWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5758_5757.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UnProfanitizerHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UnProfanitizerHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="MyWebService_4_ReturnTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#MyWebService_4_ReturnTime_Atomic"/>
+    <grounding:wsdlOperationName>ReturnTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MyWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MyWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5758_5757.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReturnTimeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReturnTimeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="MyWebService_5_SayHelloWorld_Grounding">
+    <grounding:owlsProcess rdf:resource="#MyWebService_5_SayHelloWorld_Atomic"/>
+    <grounding:wsdlOperationName>SayHelloWorld</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MyWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MyWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5758_5757.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SayHelloWorldSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SayHelloWorldSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="MyWebService_6_Add_Grounding">
+    <grounding:owlsProcess rdf:resource="#MyWebService_6_Add_Atomic"/>
+    <grounding:wsdlOperationName>Add</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MyWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MyWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5758_5757.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="MyWebService_7_UnProfanitizer_Grounding">
+    <grounding:owlsProcess rdf:resource="#MyWebService_7_UnProfanitizer_Atomic"/>
+    <grounding:wsdlOperationName>UnProfanitizer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MyWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MyWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5758_5757.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UnProfanitizerSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UnProfanitizerSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="MyWebService_8_ReturnTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#MyWebService_8_ReturnTime_Atomic"/>
+    <grounding:wsdlOperationName>ReturnTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MyWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MyWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5758_5757.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReturnTimeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReturnTimeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="MyWebService_9_SayHelloWorld_Grounding">
+    <grounding:owlsProcess rdf:resource="#MyWebService_9_SayHelloWorld_Atomic"/>
+    <grounding:wsdlOperationName>SayHelloWorld</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MyWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MyWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5758_5757.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SayHelloWorldHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SayHelloWorldHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="MyWebService_10_Add_Grounding">
+    <grounding:owlsProcess rdf:resource="#MyWebService_10_Add_Atomic"/>
+    <grounding:wsdlOperationName>Add</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MyWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MyWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5758_5757.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AddHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AddHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="MyWebService_11_UnProfanitizer_Grounding">
+    <grounding:owlsProcess rdf:resource="#MyWebService_11_UnProfanitizer_Atomic"/>
+    <grounding:wsdlOperationName>UnProfanitizer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>MyWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>MyWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5758_5757.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UnProfanitizerHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UnProfanitizerHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

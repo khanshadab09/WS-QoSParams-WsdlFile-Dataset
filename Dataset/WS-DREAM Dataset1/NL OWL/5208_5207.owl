@@ -1,0 +1,408 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ELMdb">
+    <service:presents rdf:resource="#ELMdb_Profile"/>
+    <service:describedBy rdf:resource="#ELMdb_Composite"/>
+    <service:supports rdf:resource="#ELMdb_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ELMdb_Profile">
+    <profile:serviceName>ELMdb</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ELMdb"/>
+    <profile:hasProcess rdf:resource="#ELMdb_0_getAllELMs_Atomic"/>
+    <profile:hasInput rdf:resource="#ELMdb_0_getAllELMs_Atomic_input_parameters__http___elm.eu.org_ELMdb_getAllELMs"/>
+    <profile:hasOutput rdf:resource="#ELMdb_0_getAllELMs_Atomic_output_parameters__http___elm.eu.org_ELMdb_getAllELMsResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the getAllELMs parameter must be provided.</profile:hasPrecondition>
+    <profile:hasResult>The getAllELMsResponse containing all ELMs from the ELM database will be returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ELMdb_1_getELM_Atomic"/>
+    <profile:hasInput rdf:resource="#ELMdb_1_getELM_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELM"/>
+    <profile:hasOutput rdf:resource="#ELMdb_1_getELM_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid request for ELM data from the ELM database.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response containing the requested ELM data from the ELM database.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ELMdb_2_getELMByIdentifier_Atomic"/>
+    <profile:hasInput rdf:resource="#ELMdb_2_getELMByIdentifier_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELMByIdentifier"/>
+    <profile:hasOutput rdf:resource="#ELMdb_2_getELMByIdentifier_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMByIdentifierResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid ELM identifier from the ELM database.</profile:hasPrecondition>
+    <profile:hasResult>The operation retrieves the ELM information corresponding to the provided identifier.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ELMdb_3_getELMsByTextSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#ELMdb_3_getELMsByTextSearch_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELMsByTextSearch"/>
+    <profile:hasOutput rdf:resource="#ELMdb_3_getELMsByTextSearch_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMsByTextSearchResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for searching ELMs by text must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the ELMs matching the text search criteria.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ELMdb_4_getELMsBySequenceMatch_Atomic"/>
+    <profile:hasInput rdf:resource="#ELMdb_4_getELMsBySequenceMatch_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELMsBySequenceMatch"/>
+    <profile:hasOutput rdf:resource="#ELMdb_4_getELMsBySequenceMatch_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMsBySequenceMatchResponse"/>
+    <profile:hasPrecondition>The input sequence match parameters must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The response will contain the matching ELMs based on the provided sequence match parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ELMdb_5_getAllELMInstances_Atomic"/>
+    <profile:hasInput rdf:resource="#ELMdb_5_getAllELMInstances_Atomic_input_parameters__http___elm.eu.org_ELMdb_getAllELMInstances"/>
+    <profile:hasOutput rdf:resource="#ELMdb_5_getAllELMInstances_Atomic_output_parameters__http___elm.eu.org_ELMdb_getAllELMInstancesResponse"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves all instances of ELM (Eukaryotic Linear Motif) from the ELM database.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ELMdb_6_getELMInstance_Atomic"/>
+    <profile:hasInput rdf:resource="#ELMdb_6_getELMInstance_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELMInstance"/>
+    <profile:hasOutput rdf:resource="#ELMdb_6_getELMInstance_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMInstanceResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid request for retrieving an ELM instance from the ELM database.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter will contain the response with the requested ELM instance from the ELM database.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ELMdb_7_getAllFunctionalSites_Atomic"/>
+    <profile:hasInput rdf:resource="#ELMdb_7_getAllFunctionalSites_Atomic_input_parameters__http___elm.eu.org_ELMdb_getAllFunctionalSites"/>
+    <profile:hasOutput rdf:resource="#ELMdb_7_getAllFunctionalSites_Atomic_output_parameters__http___elm.eu.org_ELMdb_getAllFunctionalSitesResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the getAllFunctionalSites parameter must be provided.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing all functional sites from the ELM database.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ELMdb_8_getFunctionalSite_Atomic"/>
+    <profile:hasInput rdf:resource="#ELMdb_8_getFunctionalSite_Atomic_input_parameters__http___elm.eu.org_ELMdb_getFunctionalSite"/>
+    <profile:hasOutput rdf:resource="#ELMdb_8_getFunctionalSite_Atomic_output_parameters__http___elm.eu.org_ELMdb_getFunctionalSiteResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid functional site identifier from the ELM database.</profile:hasPrecondition>
+    <profile:hasResult>The operation retrieves information about the specified functional site from the ELM database and returns it in the response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ELMdb_9_getFunctionalSitesByTextSearch_Atomic"/>
+    <profile:hasInput rdf:resource="#ELMdb_9_getFunctionalSitesByTextSearch_Atomic_input_parameters__http___elm.eu.org_ELMdb_getFunctionalSitesByTextSearch"/>
+    <profile:hasOutput rdf:resource="#ELMdb_9_getFunctionalSitesByTextSearch_Atomic_output_parameters__http___elm.eu.org_ELMdb_getFunctionalSitesByTextSearchResponse"/>
+    <profile:hasPrecondition>The user must provide a text search query for functional sites in the ELM database.</profile:hasPrecondition>
+    <profile:hasResult>The operation will retrieve functional sites matching the provided text search query from the ELM database.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ELMdb_10_getELMInstanceBySequenceMatch_Atomic"/>
+    <profile:hasInput rdf:resource="#ELMdb_10_getELMInstanceBySequenceMatch_Atomic_input_parameter__http___elm.eu.org_ELMdb_getELMInstanceBySequenceMatch"/>
+    <profile:hasOutput rdf:resource="#ELMdb_10_getELMInstanceBySequenceMatch_Atomic_output_parameter__http___elm.eu.org_ELMdb_getELMInstanceBySequenceMatchResponse"/>
+    <profile:hasPrecondition>The web service must support the operation getELMInstanceBySequenceMatch with input parameter of type {http://elm.eu.org/ELMdb}getELMInstanceBySequenceMatch.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return an output parameter of type {http://elm.eu.org/ELMdb}getELMInstanceBySequenceMatchResponse upon successful execution of the operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ELMdb_11_GetELMInstanceBySequenceAccession_Atomic"/>
+    <profile:hasInput rdf:resource="#ELMdb_11_GetELMInstanceBySequenceAccession_Atomic_input_parameter__http___elm.eu.org_ELMdb_getELMInstanceBySequenceAccession"/>
+    <profile:hasOutput rdf:resource="#ELMdb_11_GetELMInstanceBySequenceAccession_Atomic_output_parameter__http___elm.eu.org_ELMdb_getELMInstanceBySequenceAccessionResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid ELM sequence accession.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the corresponding ELM instance based on the input sequence accession.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ELMdb_Composite">
+    <process:composedOf rdf:resource="#ELMdb_0_getAllELMs_Atomic"/>
+    <process:composedOf rdf:resource="#ELMdb_1_getELM_Atomic"/>
+    <process:composedOf rdf:resource="#ELMdb_2_getELMByIdentifier_Atomic"/>
+    <process:composedOf rdf:resource="#ELMdb_3_getELMsByTextSearch_Atomic"/>
+    <process:composedOf rdf:resource="#ELMdb_4_getELMsBySequenceMatch_Atomic"/>
+    <process:composedOf rdf:resource="#ELMdb_5_getAllELMInstances_Atomic"/>
+    <process:composedOf rdf:resource="#ELMdb_6_getELMInstance_Atomic"/>
+    <process:composedOf rdf:resource="#ELMdb_7_getAllFunctionalSites_Atomic"/>
+    <process:composedOf rdf:resource="#ELMdb_8_getFunctionalSite_Atomic"/>
+    <process:composedOf rdf:resource="#ELMdb_9_getFunctionalSitesByTextSearch_Atomic"/>
+    <process:composedOf rdf:resource="#ELMdb_10_getELMInstanceBySequenceMatch_Atomic"/>
+    <process:composedOf rdf:resource="#ELMdb_11_GetELMInstanceBySequenceAccession_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ELMdb_0_getAllELMs_Atomic_input_parameters__http___elm.eu.org_ELMdb_getAllELMs">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getAllELMs</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ELMdb_0_getAllELMs_Atomic_output_parameters__http___elm.eu.org_ELMdb_getAllELMsResponse">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getAllELMsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ELMdb_1_getELM_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELM">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getELM</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ELMdb_1_getELM_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMResponse">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getELMResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ELMdb_2_getELMByIdentifier_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELMByIdentifier">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getELMByIdentifier</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ELMdb_2_getELMByIdentifier_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMByIdentifierResponse">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getELMByIdentifierResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ELMdb_3_getELMsByTextSearch_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELMsByTextSearch">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getELMsByTextSearch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ELMdb_3_getELMsByTextSearch_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMsByTextSearchResponse">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getELMsByTextSearchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ELMdb_4_getELMsBySequenceMatch_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELMsBySequenceMatch">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getELMsBySequenceMatch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ELMdb_4_getELMsBySequenceMatch_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMsBySequenceMatchResponse">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getELMsBySequenceMatchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ELMdb_5_getAllELMInstances_Atomic_input_parameters__http___elm.eu.org_ELMdb_getAllELMInstances">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getAllELMInstances</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ELMdb_5_getAllELMInstances_Atomic_output_parameters__http___elm.eu.org_ELMdb_getAllELMInstancesResponse">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getAllELMInstancesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ELMdb_6_getELMInstance_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELMInstance">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getELMInstance</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ELMdb_6_getELMInstance_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMInstanceResponse">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getELMInstanceResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ELMdb_7_getAllFunctionalSites_Atomic_input_parameters__http___elm.eu.org_ELMdb_getAllFunctionalSites">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getAllFunctionalSites</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ELMdb_7_getAllFunctionalSites_Atomic_output_parameters__http___elm.eu.org_ELMdb_getAllFunctionalSitesResponse">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getAllFunctionalSitesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ELMdb_8_getFunctionalSite_Atomic_input_parameters__http___elm.eu.org_ELMdb_getFunctionalSite">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getFunctionalSite</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ELMdb_8_getFunctionalSite_Atomic_output_parameters__http___elm.eu.org_ELMdb_getFunctionalSiteResponse">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getFunctionalSiteResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ELMdb_9_getFunctionalSitesByTextSearch_Atomic_input_parameters__http___elm.eu.org_ELMdb_getFunctionalSitesByTextSearch">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getFunctionalSitesByTextSearch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ELMdb_9_getFunctionalSitesByTextSearch_Atomic_output_parameters__http___elm.eu.org_ELMdb_getFunctionalSitesByTextSearchResponse">
+    <process:parameterType>parameters:{http://elm.eu.org/ELMdb}getFunctionalSitesByTextSearchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ELMdb_10_getELMInstanceBySequenceMatch_Atomic_input_parameter__http___elm.eu.org_ELMdb_getELMInstanceBySequenceMatch">
+    <process:parameterType>parameter:{http://elm.eu.org/ELMdb}getELMInstanceBySequenceMatch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ELMdb_10_getELMInstanceBySequenceMatch_Atomic_output_parameter__http___elm.eu.org_ELMdb_getELMInstanceBySequenceMatchResponse">
+    <process:parameterType>parameter:{http://elm.eu.org/ELMdb}getELMInstanceBySequenceMatchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ELMdb_11_GetELMInstanceBySequenceAccession_Atomic_input_parameter__http___elm.eu.org_ELMdb_getELMInstanceBySequenceAccession">
+    <process:parameterType>parameter:{http://elm.eu.org/ELMdb}getELMInstanceBySequenceAccession</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ELMdb_11_GetELMInstanceBySequenceAccession_Atomic_output_parameter__http___elm.eu.org_ELMdb_getELMInstanceBySequenceAccessionResponse">
+    <process:parameterType>parameter:{http://elm.eu.org/ELMdb}getELMInstanceBySequenceAccessionResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ELMdb_0_getAllELMs_Atomic">
+    <process:hasName>getAllELMs</process:hasName>
+    <process:hasInput rdf:resource="#ELMdb_0_getAllELMs_Atomic_input_parameters__http___elm.eu.org_ELMdb_getAllELMs"/>
+    <process:hasOutput rdf:resource="#ELMdb_0_getAllELMs_Atomic_output_parameters__http___elm.eu.org_ELMdb_getAllELMsResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the getAllELMs parameter must be provided.</process:hasPrecondition>
+    <process:hasEffect>The getAllELMsResponse containing all ELMs from the ELM database will be returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ELMdb_1_getELM_Atomic">
+    <process:hasName>getELM</process:hasName>
+    <process:hasInput rdf:resource="#ELMdb_1_getELM_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELM"/>
+    <process:hasOutput rdf:resource="#ELMdb_1_getELM_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid request for ELM data from the ELM database.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response containing the requested ELM data from the ELM database.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ELMdb_2_getELMByIdentifier_Atomic">
+    <process:hasName>getELMByIdentifier</process:hasName>
+    <process:hasInput rdf:resource="#ELMdb_2_getELMByIdentifier_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELMByIdentifier"/>
+    <process:hasOutput rdf:resource="#ELMdb_2_getELMByIdentifier_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMByIdentifierResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid ELM identifier from the ELM database.</process:hasPrecondition>
+    <process:hasEffect>The operation retrieves the ELM information corresponding to the provided identifier.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ELMdb_3_getELMsByTextSearch_Atomic">
+    <process:hasName>getELMsByTextSearch</process:hasName>
+    <process:hasInput rdf:resource="#ELMdb_3_getELMsByTextSearch_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELMsByTextSearch"/>
+    <process:hasOutput rdf:resource="#ELMdb_3_getELMsByTextSearch_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMsByTextSearchResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for searching ELMs by text must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the ELMs matching the text search criteria.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ELMdb_4_getELMsBySequenceMatch_Atomic">
+    <process:hasName>getELMsBySequenceMatch</process:hasName>
+    <process:hasInput rdf:resource="#ELMdb_4_getELMsBySequenceMatch_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELMsBySequenceMatch"/>
+    <process:hasOutput rdf:resource="#ELMdb_4_getELMsBySequenceMatch_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMsBySequenceMatchResponse"/>
+    <process:hasPrecondition>The input sequence match parameters must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The response will contain the matching ELMs based on the provided sequence match parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ELMdb_5_getAllELMInstances_Atomic">
+    <process:hasName>getAllELMInstances</process:hasName>
+    <process:hasInput rdf:resource="#ELMdb_5_getAllELMInstances_Atomic_input_parameters__http___elm.eu.org_ELMdb_getAllELMInstances"/>
+    <process:hasOutput rdf:resource="#ELMdb_5_getAllELMInstances_Atomic_output_parameters__http___elm.eu.org_ELMdb_getAllELMInstancesResponse"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>Retrieves all instances of ELM (Eukaryotic Linear Motif) from the ELM database.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ELMdb_6_getELMInstance_Atomic">
+    <process:hasName>getELMInstance</process:hasName>
+    <process:hasInput rdf:resource="#ELMdb_6_getELMInstance_Atomic_input_parameters__http___elm.eu.org_ELMdb_getELMInstance"/>
+    <process:hasOutput rdf:resource="#ELMdb_6_getELMInstance_Atomic_output_parameters__http___elm.eu.org_ELMdb_getELMInstanceResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid request for retrieving an ELM instance from the ELM database.</process:hasPrecondition>
+    <process:hasEffect>The output parameter will contain the response with the requested ELM instance from the ELM database.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ELMdb_7_getAllFunctionalSites_Atomic">
+    <process:hasName>getAllFunctionalSites</process:hasName>
+    <process:hasInput rdf:resource="#ELMdb_7_getAllFunctionalSites_Atomic_input_parameters__http___elm.eu.org_ELMdb_getAllFunctionalSites"/>
+    <process:hasOutput rdf:resource="#ELMdb_7_getAllFunctionalSites_Atomic_output_parameters__http___elm.eu.org_ELMdb_getAllFunctionalSitesResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the getAllFunctionalSites parameter must be provided.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing all functional sites from the ELM database.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ELMdb_8_getFunctionalSite_Atomic">
+    <process:hasName>getFunctionalSite</process:hasName>
+    <process:hasInput rdf:resource="#ELMdb_8_getFunctionalSite_Atomic_input_parameters__http___elm.eu.org_ELMdb_getFunctionalSite"/>
+    <process:hasOutput rdf:resource="#ELMdb_8_getFunctionalSite_Atomic_output_parameters__http___elm.eu.org_ELMdb_getFunctionalSiteResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid functional site identifier from the ELM database.</process:hasPrecondition>
+    <process:hasEffect>The operation retrieves information about the specified functional site from the ELM database and returns it in the response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ELMdb_9_getFunctionalSitesByTextSearch_Atomic">
+    <process:hasName>getFunctionalSitesByTextSearch</process:hasName>
+    <process:hasInput rdf:resource="#ELMdb_9_getFunctionalSitesByTextSearch_Atomic_input_parameters__http___elm.eu.org_ELMdb_getFunctionalSitesByTextSearch"/>
+    <process:hasOutput rdf:resource="#ELMdb_9_getFunctionalSitesByTextSearch_Atomic_output_parameters__http___elm.eu.org_ELMdb_getFunctionalSitesByTextSearchResponse"/>
+    <process:hasPrecondition>The user must provide a text search query for functional sites in the ELM database.</process:hasPrecondition>
+    <process:hasEffect>The operation will retrieve functional sites matching the provided text search query from the ELM database.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ELMdb_10_getELMInstanceBySequenceMatch_Atomic">
+    <process:hasName>getELMInstanceBySequenceMatch</process:hasName>
+    <process:hasInput rdf:resource="#ELMdb_10_getELMInstanceBySequenceMatch_Atomic_input_parameter__http___elm.eu.org_ELMdb_getELMInstanceBySequenceMatch"/>
+    <process:hasOutput rdf:resource="#ELMdb_10_getELMInstanceBySequenceMatch_Atomic_output_parameter__http___elm.eu.org_ELMdb_getELMInstanceBySequenceMatchResponse"/>
+    <process:hasPrecondition>The web service must support the operation getELMInstanceBySequenceMatch with input parameter of type {http://elm.eu.org/ELMdb}getELMInstanceBySequenceMatch.</process:hasPrecondition>
+    <process:hasEffect>The web service will return an output parameter of type {http://elm.eu.org/ELMdb}getELMInstanceBySequenceMatchResponse upon successful execution of the operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ELMdb_11_GetELMInstanceBySequenceAccession_Atomic">
+    <process:hasName>GetELMInstanceBySequenceAccession</process:hasName>
+    <process:hasInput rdf:resource="#ELMdb_11_GetELMInstanceBySequenceAccession_Atomic_input_parameter__http___elm.eu.org_ELMdb_getELMInstanceBySequenceAccession"/>
+    <process:hasOutput rdf:resource="#ELMdb_11_GetELMInstanceBySequenceAccession_Atomic_output_parameter__http___elm.eu.org_ELMdb_getELMInstanceBySequenceAccessionResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid ELM sequence accession.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the corresponding ELM instance based on the input sequence accession.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ELMdb_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ELMdb_0_getAllELMs_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ELMdb_1_getELM_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ELMdb_2_getELMByIdentifier_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ELMdb_3_getELMsByTextSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ELMdb_4_getELMsBySequenceMatch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ELMdb_5_getAllELMInstances_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ELMdb_6_getELMInstance_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ELMdb_7_getAllFunctionalSites_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ELMdb_8_getFunctionalSite_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ELMdb_9_getFunctionalSitesByTextSearch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ELMdb_10_getELMInstanceBySequenceMatch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ELMdb_11_GetELMInstanceBySequenceAccession_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ELMdb_0_getAllELMs_Grounding">
+    <grounding:owlsProcess rdf:resource="#ELMdb_0_getAllELMs_Atomic"/>
+    <grounding:wsdlOperationName>getAllELMs</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ELMdbBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ELMdb</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5208_5207.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAllELMsRequestMsg</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAllELMsResponseMsg</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ELMdb_1_getELM_Grounding">
+    <grounding:owlsProcess rdf:resource="#ELMdb_1_getELM_Atomic"/>
+    <grounding:wsdlOperationName>getELM</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ELMdbBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ELMdb</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5208_5207.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getELMRequestMsg</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getELMResponseMsg</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ELMdb_2_getELMByIdentifier_Grounding">
+    <grounding:owlsProcess rdf:resource="#ELMdb_2_getELMByIdentifier_Atomic"/>
+    <grounding:wsdlOperationName>getELMByIdentifier</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ELMdbBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ELMdb</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5208_5207.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getELMByIdentifierRequestMsg</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getELMByIdentifierResponseMsg</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ELMdb_3_getELMsByTextSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#ELMdb_3_getELMsByTextSearch_Atomic"/>
+    <grounding:wsdlOperationName>getELMsByTextSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ELMdbBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ELMdb</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5208_5207.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getELMsByTextSearchRequestMsg</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getELMsByTextSearchResponseMsg</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ELMdb_4_getELMsBySequenceMatch_Grounding">
+    <grounding:owlsProcess rdf:resource="#ELMdb_4_getELMsBySequenceMatch_Atomic"/>
+    <grounding:wsdlOperationName>getELMsBySequenceMatch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ELMdbBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ELMdb</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5208_5207.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getELMsBySequenceMatchRequestMsg</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getELMsBySequenceMatchResponseMsg</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ELMdb_5_getAllELMInstances_Grounding">
+    <grounding:owlsProcess rdf:resource="#ELMdb_5_getAllELMInstances_Atomic"/>
+    <grounding:wsdlOperationName>getAllELMInstances</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ELMdbBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ELMdb</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5208_5207.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAllELMInstancesRequestMsg</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAllELMInstancesResponseMsg</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ELMdb_6_getELMInstance_Grounding">
+    <grounding:owlsProcess rdf:resource="#ELMdb_6_getELMInstance_Atomic"/>
+    <grounding:wsdlOperationName>getELMInstance</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ELMdbBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ELMdb</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5208_5207.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getELMInstanceRequestMsg</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getELMInstanceResponseMsg</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ELMdb_7_getAllFunctionalSites_Grounding">
+    <grounding:owlsProcess rdf:resource="#ELMdb_7_getAllFunctionalSites_Atomic"/>
+    <grounding:wsdlOperationName>getAllFunctionalSites</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ELMdbBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ELMdb</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5208_5207.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAllFunctionalSitesRequestMsg</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAllFunctionalSitesResponseMsg</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ELMdb_8_getFunctionalSite_Grounding">
+    <grounding:owlsProcess rdf:resource="#ELMdb_8_getFunctionalSite_Atomic"/>
+    <grounding:wsdlOperationName>getFunctionalSite</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ELMdbBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ELMdb</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5208_5207.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getFunctionalSiteRequestMsg</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getFunctionalSiteResponseMsg</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ELMdb_9_getFunctionalSitesByTextSearch_Grounding">
+    <grounding:owlsProcess rdf:resource="#ELMdb_9_getFunctionalSitesByTextSearch_Atomic"/>
+    <grounding:wsdlOperationName>getFunctionalSitesByTextSearch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ELMdbBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ELMdb</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5208_5207.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getFunctionalSitesByTextSearchRequestMsg</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getFunctionalSitesByTextSearchResponseMsg</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ELMdb_10_getELMInstanceBySequenceMatch_Grounding">
+    <grounding:owlsProcess rdf:resource="#ELMdb_10_getELMInstanceBySequenceMatch_Atomic"/>
+    <grounding:wsdlOperationName>getELMInstanceBySequenceMatch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ELMdbBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ELMdb</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5208_5207.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getELMInstanceBySequenceMatchRequestMsg</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getELMInstanceBySequenceMatchResponseMsg</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ELMdb_11_GetELMInstanceBySequenceAccession_Grounding">
+    <grounding:owlsProcess rdf:resource="#ELMdb_11_GetELMInstanceBySequenceAccession_Atomic"/>
+    <grounding:wsdlOperationName>GetELMInstanceBySequenceAccession</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ELMdbBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ELMdb</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5208_5207.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getELMInstanceBySequenceAccessionRequestMsg</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getELMInstanceBySequenceAccessionResponseMsg</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

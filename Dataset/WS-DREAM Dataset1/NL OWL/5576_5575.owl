@@ -1,0 +1,727 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="LBInterestRates">
+    <service:presents rdf:resource="#LBInterestRates_Profile"/>
+    <service:describedBy rdf:resource="#LBInterestRates_Composite"/>
+    <service:supports rdf:resource="#LBInterestRates_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="LBInterestRates_Profile">
+    <profile:serviceName>LBInterestRates</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#LBInterestRates"/>
+    <profile:hasProcess rdf:resource="#LBInterestRates_0_getLBInterestRateTypes_Atomic"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_0_getLBInterestRateTypes_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The web service for retrieving interest rate types is accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The response containing the list of interest rate types is returned in the body of the message.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_1_getLatestLBInterestRate_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_1_getLatestLBInterestRate_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_1_getLatestLBInterestRate_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_decimal"/>
+    <profile:hasPrecondition>The web service must be accessible and the RateType parameter must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The latest interest rate for the specified RateType will be returned as a decimal value in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_2_getLBInterestRate_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_2_getLBInterestRate_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_2_getLBInterestRate_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_2_getLBInterestRate_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_decimal"/>
+    <profile:hasPrecondition>The web service must be accessible and the inputs RateType and Date must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the interest rate for the specified RateType and Date in decimal format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_3_getLBInterestRatesByDate_XmlString_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_3_getLBInterestRatesByDate_XmlString_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_3_getLBInterestRatesByDate_XmlString_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_string"/>
+    <profile:hasPrecondition>The input Date must be in the format specified by the XML Schema definition for strings.</profile:hasPrecondition>
+    <profile:hasResult>The output Body will contain the interest rates data in the format specified by the LBInterestRates web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic_input_DateHigh__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic_input_DateLow__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_string"/>
+    <profile:hasPrecondition>The web service requires valid input parameters DateHigh, DateLow, and RateType in string format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a string containing the interest rates for the specified RateType within the DateHigh and DateLow range.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_5_getLBInterestRatesByDate_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_5_getLBInterestRatesByDate_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_5_getLBInterestRatesByDate_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The input date must be in the format specified by the XML Schema definition for strings.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the interest rates for LB (Lending Bank) corresponding to the provided date.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_6_getLBInterestRatesByRateType_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_6_getLBInterestRatesByRateType_Atomic_input_DateHigh__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_6_getLBInterestRatesByRateType_Atomic_input_DateLow__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_6_getLBInterestRatesByRateType_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_6_getLBInterestRatesByRateType_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The system has access to a database of interest rates for a specific rate type.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves the interest rates within the specified date range and rate type.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_7_getLBInterestRateTypes_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_7_getLBInterestRateTypes_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRateTypes"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_7_getLBInterestRateTypes_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRateTypesResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters must conform to the specified format for LBInterestRates.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the interest rate types for LBInterestRates.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_8_getLatestLBInterestRate_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_8_getLatestLBInterestRate_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLatestLBInterestRate"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_8_getLatestLBInterestRate_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLatestLBInterestRateResponse"/>
+    <profile:hasPrecondition>The web service must have access to the latest LB interest rate data.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the latest LB interest rate in the response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_9_getLBInterestRate_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_9_getLBInterestRate_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRate"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_9_getLBInterestRate_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRateResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters must conform to the specified format for getLBInterestRate.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the interest rate information in the format specified by getLBInterestRateResponse.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_10_getLBInterestRatesByDate_XmlString_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_10_getLBInterestRatesByDate_XmlString_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByDate_XmlString"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_10_getLBInterestRatesByDate_XmlString_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByDate_XmlStringResponse"/>
+    <profile:hasPrecondition>The input XML string must conform to the specified format for retrieving LB interest rates by date.</profile:hasPrecondition>
+    <profile:hasResult>The output XML string will contain the LB interest rates corresponding to the provided date.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_11_getLBInterestRatesByRateType_XmlString_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_11_getLBInterestRatesByRateType_XmlString_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByRateType_XmlString"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_11_getLBInterestRatesByRateType_XmlString_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByRateType_XmlStringResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid XML string conforming to the specified schema for LBInterestRates.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response containing interest rates based on the provided rate type in the input XML string.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_12_getLBInterestRatesByDate_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_12_getLBInterestRatesByDate_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByDate"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_12_getLBInterestRatesByDate_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByDateResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for getLBInterestRatesByDate must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the interest rates for the specified date in the response format specified.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_13_getLBInterestRatesByRateType_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_13_getLBInterestRatesByRateType_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByRateType"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_13_getLBInterestRatesByRateType_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByRateTypeResponse"/>
+    <profile:hasPrecondition>The web service must support the operation getLBInterestRatesByRateType.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the interest rates based on the specified rate type.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_14_getLBInterestRateTypes_Atomic"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_14_getLBInterestRateTypes_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The web service for retrieving interest rate types on LB platform is accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The web service successfully returns the list of interest rate types available on LB platform.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_15_getLatestLBInterestRate_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_15_getLatestLBInterestRate_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_15_getLatestLBInterestRate_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_decimal"/>
+    <profile:hasPrecondition>The web service must be accessible and the RateType parameter must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The latest interest rate for the specified RateType will be returned as a decimal value in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_16_getLBInterestRate_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_16_getLBInterestRate_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_16_getLBInterestRate_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_16_getLBInterestRate_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_decimal"/>
+    <profile:hasPrecondition>The web service requires the RateType and Date inputs to be provided in string format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the decimal value representing the interest rate for the specified RateType and Date.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_17_getLBInterestRatesByDate_XmlString_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_17_getLBInterestRatesByDate_XmlString_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_17_getLBInterestRatesByDate_XmlString_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_string"/>
+    <profile:hasPrecondition>The input Date must be a valid string in the format specified by the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The output Body will contain a string representing the interest rates data retrieved from the LBInterestRates web service for the specified date.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic_input_DateHigh__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic_input_DateLow__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_string"/>
+    <profile:hasPrecondition>The input parameters DateHigh, DateLow, and RateType must be valid strings conforming to the specified XML schema.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a string containing LB interest rates for the specified RateType within the DateHigh and DateLow range.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_19_getLBInterestRatesByDate_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_19_getLBInterestRatesByDate_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_19_getLBInterestRatesByDate_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The input Date must be in the format specified by the XML Schema definition for strings.</profile:hasPrecondition>
+    <profile:hasResult>The operation retrieves the interest rates for LB (Lending Bank) corresponding to the provided date.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LBInterestRates_20_getLBInterestRatesByRateType_Atomic"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_20_getLBInterestRatesByRateType_Atomic_input_DateHigh__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_20_getLBInterestRatesByRateType_Atomic_input_DateLow__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LBInterestRates_20_getLBInterestRatesByRateType_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LBInterestRates_20_getLBInterestRatesByRateType_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The system has access to a database containing interest rates data for the specified date range and rate type.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves the interest rates for the specified rate type within the given date range.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="LBInterestRates_Composite">
+    <process:composedOf rdf:resource="#LBInterestRates_0_getLBInterestRateTypes_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_1_getLatestLBInterestRate_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_2_getLBInterestRate_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_3_getLBInterestRatesByDate_XmlString_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_5_getLBInterestRatesByDate_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_6_getLBInterestRatesByRateType_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_7_getLBInterestRateTypes_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_8_getLatestLBInterestRate_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_9_getLBInterestRate_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_10_getLBInterestRatesByDate_XmlString_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_11_getLBInterestRatesByRateType_XmlString_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_12_getLBInterestRatesByDate_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_13_getLBInterestRatesByRateType_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_14_getLBInterestRateTypes_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_15_getLatestLBInterestRate_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_16_getLBInterestRate_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_17_getLBInterestRatesByDate_XmlString_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_19_getLBInterestRatesByDate_Atomic"/>
+    <process:composedOf rdf:resource="#LBInterestRates_20_getLBInterestRatesByRateType_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Output rdf:ID="LBInterestRates_0_getLBInterestRateTypes_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_1_getLatestLBInterestRate_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>RateType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_1_getLatestLBInterestRate_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_decimal">
+    <process:parameterType>Body:{http://webservices.lb.lt/LBInterestRates}decimal</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_2_getLBInterestRate_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>RateType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LBInterestRates_2_getLBInterestRate_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Date:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_2_getLBInterestRate_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_decimal">
+    <process:parameterType>Body:{http://webservices.lb.lt/LBInterestRates}decimal</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_3_getLBInterestRatesByDate_XmlString_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Date:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_3_getLBInterestRatesByDate_XmlString_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_string">
+    <process:parameterType>Body:{http://webservices.lb.lt/LBInterestRates}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic_input_DateHigh__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>DateHigh:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic_input_DateLow__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>DateLow:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>RateType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_string">
+    <process:parameterType>Body:{http://webservices.lb.lt/LBInterestRates}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_5_getLBInterestRatesByDate_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Date:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_5_getLBInterestRatesByDate_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_6_getLBInterestRatesByRateType_Atomic_input_DateHigh__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>DateHigh:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LBInterestRates_6_getLBInterestRatesByRateType_Atomic_input_DateLow__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>DateLow:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LBInterestRates_6_getLBInterestRatesByRateType_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>RateType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_6_getLBInterestRatesByRateType_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_7_getLBInterestRateTypes_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRateTypes">
+    <process:parameterType>parameters:{http://webservices.lb.lt/LBInterestRates}getLBInterestRateTypes</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_7_getLBInterestRateTypes_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRateTypesResponse">
+    <process:parameterType>parameters:{http://webservices.lb.lt/LBInterestRates}getLBInterestRateTypesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_8_getLatestLBInterestRate_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLatestLBInterestRate">
+    <process:parameterType>parameters:{http://webservices.lb.lt/LBInterestRates}getLatestLBInterestRate</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_8_getLatestLBInterestRate_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLatestLBInterestRateResponse">
+    <process:parameterType>parameters:{http://webservices.lb.lt/LBInterestRates}getLatestLBInterestRateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_9_getLBInterestRate_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRate">
+    <process:parameterType>parameters:{http://webservices.lb.lt/LBInterestRates}getLBInterestRate</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_9_getLBInterestRate_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRateResponse">
+    <process:parameterType>parameters:{http://webservices.lb.lt/LBInterestRates}getLBInterestRateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_10_getLBInterestRatesByDate_XmlString_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByDate_XmlString">
+    <process:parameterType>parameters:{http://webservices.lb.lt/LBInterestRates}getLBInterestRatesByDate_XmlString</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_10_getLBInterestRatesByDate_XmlString_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByDate_XmlStringResponse">
+    <process:parameterType>parameters:{http://webservices.lb.lt/LBInterestRates}getLBInterestRatesByDate_XmlStringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_11_getLBInterestRatesByRateType_XmlString_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByRateType_XmlString">
+    <process:parameterType>parameters:{http://webservices.lb.lt/LBInterestRates}getLBInterestRatesByRateType_XmlString</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_11_getLBInterestRatesByRateType_XmlString_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByRateType_XmlStringResponse">
+    <process:parameterType>parameters:{http://webservices.lb.lt/LBInterestRates}getLBInterestRatesByRateType_XmlStringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_12_getLBInterestRatesByDate_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByDate">
+    <process:parameterType>parameters:{http://webservices.lb.lt/LBInterestRates}getLBInterestRatesByDate</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_12_getLBInterestRatesByDate_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByDateResponse">
+    <process:parameterType>parameters:{http://webservices.lb.lt/LBInterestRates}getLBInterestRatesByDateResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_13_getLBInterestRatesByRateType_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByRateType">
+    <process:parameterType>parameters:{http://webservices.lb.lt/LBInterestRates}getLBInterestRatesByRateType</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_13_getLBInterestRatesByRateType_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByRateTypeResponse">
+    <process:parameterType>parameters:{http://webservices.lb.lt/LBInterestRates}getLBInterestRatesByRateTypeResponse</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="LBInterestRates_14_getLBInterestRateTypes_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_15_getLatestLBInterestRate_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>RateType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_15_getLatestLBInterestRate_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_decimal">
+    <process:parameterType>Body:{http://webservices.lb.lt/LBInterestRates}decimal</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_16_getLBInterestRate_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>RateType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LBInterestRates_16_getLBInterestRate_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Date:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_16_getLBInterestRate_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_decimal">
+    <process:parameterType>Body:{http://webservices.lb.lt/LBInterestRates}decimal</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_17_getLBInterestRatesByDate_XmlString_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Date:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_17_getLBInterestRatesByDate_XmlString_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_string">
+    <process:parameterType>Body:{http://webservices.lb.lt/LBInterestRates}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic_input_DateHigh__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>DateHigh:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic_input_DateLow__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>DateLow:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>RateType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_string">
+    <process:parameterType>Body:{http://webservices.lb.lt/LBInterestRates}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_19_getLBInterestRatesByDate_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Date:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_19_getLBInterestRatesByDate_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LBInterestRates_20_getLBInterestRatesByRateType_Atomic_input_DateHigh__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>DateHigh:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LBInterestRates_20_getLBInterestRatesByRateType_Atomic_input_DateLow__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>DateLow:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LBInterestRates_20_getLBInterestRatesByRateType_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>RateType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LBInterestRates_20_getLBInterestRatesByRateType_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_0_getLBInterestRateTypes_Atomic">
+    <process:hasName>getLBInterestRateTypes</process:hasName>
+    <process:hasOutput rdf:resource="#LBInterestRates_0_getLBInterestRateTypes_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The web service for retrieving interest rate types is accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The response containing the list of interest rate types is returned in the body of the message.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_1_getLatestLBInterestRate_Atomic">
+    <process:hasName>getLatestLBInterestRate</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_1_getLatestLBInterestRate_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_1_getLatestLBInterestRate_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_decimal"/>
+    <process:hasPrecondition>The web service must be accessible and the RateType parameter must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The latest interest rate for the specified RateType will be returned as a decimal value in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_2_getLBInterestRate_Atomic">
+    <process:hasName>getLBInterestRate</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_2_getLBInterestRate_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LBInterestRates_2_getLBInterestRate_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_2_getLBInterestRate_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_decimal"/>
+    <process:hasPrecondition>The web service must be accessible and the inputs RateType and Date must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the interest rate for the specified RateType and Date in decimal format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_3_getLBInterestRatesByDate_XmlString_Atomic">
+    <process:hasName>getLBInterestRatesByDate_XmlString</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_3_getLBInterestRatesByDate_XmlString_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_3_getLBInterestRatesByDate_XmlString_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_string"/>
+    <process:hasPrecondition>The input Date must be in the format specified by the XML Schema definition for strings.</process:hasPrecondition>
+    <process:hasEffect>The output Body will contain the interest rates data in the format specified by the LBInterestRates web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic">
+    <process:hasName>getLBInterestRatesByRateType_XmlString</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic_input_DateHigh__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic_input_DateLow__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_string"/>
+    <process:hasPrecondition>The web service requires valid input parameters DateHigh, DateLow, and RateType in string format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a string containing the interest rates for the specified RateType within the DateHigh and DateLow range.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_5_getLBInterestRatesByDate_Atomic">
+    <process:hasName>getLBInterestRatesByDate</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_5_getLBInterestRatesByDate_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_5_getLBInterestRatesByDate_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The input date must be in the format specified by the XML Schema definition for strings.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the interest rates for LB (Lending Bank) corresponding to the provided date.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_6_getLBInterestRatesByRateType_Atomic">
+    <process:hasName>getLBInterestRatesByRateType</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_6_getLBInterestRatesByRateType_Atomic_input_DateHigh__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LBInterestRates_6_getLBInterestRatesByRateType_Atomic_input_DateLow__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LBInterestRates_6_getLBInterestRatesByRateType_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_6_getLBInterestRatesByRateType_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The system has access to a database of interest rates for a specific rate type.</process:hasPrecondition>
+    <process:hasEffect>Retrieves the interest rates within the specified date range and rate type.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_7_getLBInterestRateTypes_Atomic">
+    <process:hasName>getLBInterestRateTypes</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_7_getLBInterestRateTypes_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRateTypes"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_7_getLBInterestRateTypes_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRateTypesResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters must conform to the specified format for LBInterestRates.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the interest rate types for LBInterestRates.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_8_getLatestLBInterestRate_Atomic">
+    <process:hasName>getLatestLBInterestRate</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_8_getLatestLBInterestRate_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLatestLBInterestRate"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_8_getLatestLBInterestRate_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLatestLBInterestRateResponse"/>
+    <process:hasPrecondition>The web service must have access to the latest LB interest rate data.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the latest LB interest rate in the response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_9_getLBInterestRate_Atomic">
+    <process:hasName>getLBInterestRate</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_9_getLBInterestRate_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRate"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_9_getLBInterestRate_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRateResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters must conform to the specified format for getLBInterestRate.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the interest rate information in the format specified by getLBInterestRateResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_10_getLBInterestRatesByDate_XmlString_Atomic">
+    <process:hasName>getLBInterestRatesByDate_XmlString</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_10_getLBInterestRatesByDate_XmlString_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByDate_XmlString"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_10_getLBInterestRatesByDate_XmlString_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByDate_XmlStringResponse"/>
+    <process:hasPrecondition>The input XML string must conform to the specified format for retrieving LB interest rates by date.</process:hasPrecondition>
+    <process:hasEffect>The output XML string will contain the LB interest rates corresponding to the provided date.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_11_getLBInterestRatesByRateType_XmlString_Atomic">
+    <process:hasName>getLBInterestRatesByRateType_XmlString</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_11_getLBInterestRatesByRateType_XmlString_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByRateType_XmlString"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_11_getLBInterestRatesByRateType_XmlString_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByRateType_XmlStringResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid XML string conforming to the specified schema for LBInterestRates.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response containing interest rates based on the provided rate type in the input XML string.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_12_getLBInterestRatesByDate_Atomic">
+    <process:hasName>getLBInterestRatesByDate</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_12_getLBInterestRatesByDate_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByDate"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_12_getLBInterestRatesByDate_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByDateResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for getLBInterestRatesByDate must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the interest rates for the specified date in the response format specified.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_13_getLBInterestRatesByRateType_Atomic">
+    <process:hasName>getLBInterestRatesByRateType</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_13_getLBInterestRatesByRateType_Atomic_input_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByRateType"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_13_getLBInterestRatesByRateType_Atomic_output_parameters__http___webservices.lb.lt_LBInterestRates_getLBInterestRatesByRateTypeResponse"/>
+    <process:hasPrecondition>The web service must support the operation getLBInterestRatesByRateType.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the interest rates based on the specified rate type.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_14_getLBInterestRateTypes_Atomic">
+    <process:hasName>getLBInterestRateTypes</process:hasName>
+    <process:hasOutput rdf:resource="#LBInterestRates_14_getLBInterestRateTypes_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The web service for retrieving interest rate types on LB platform is accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The web service successfully returns the list of interest rate types available on LB platform.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_15_getLatestLBInterestRate_Atomic">
+    <process:hasName>getLatestLBInterestRate</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_15_getLatestLBInterestRate_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_15_getLatestLBInterestRate_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_decimal"/>
+    <process:hasPrecondition>The web service must be accessible and the RateType parameter must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The latest interest rate for the specified RateType will be returned as a decimal value in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_16_getLBInterestRate_Atomic">
+    <process:hasName>getLBInterestRate</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_16_getLBInterestRate_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LBInterestRates_16_getLBInterestRate_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_16_getLBInterestRate_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_decimal"/>
+    <process:hasPrecondition>The web service requires the RateType and Date inputs to be provided in string format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the decimal value representing the interest rate for the specified RateType and Date.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_17_getLBInterestRatesByDate_XmlString_Atomic">
+    <process:hasName>getLBInterestRatesByDate_XmlString</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_17_getLBInterestRatesByDate_XmlString_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_17_getLBInterestRatesByDate_XmlString_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_string"/>
+    <process:hasPrecondition>The input Date must be a valid string in the format specified by the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The output Body will contain a string representing the interest rates data retrieved from the LBInterestRates web service for the specified date.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic">
+    <process:hasName>getLBInterestRatesByRateType_XmlString</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic_input_DateHigh__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic_input_DateLow__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic_output_Body__http___webservices.lb.lt_LBInterestRates_string"/>
+    <process:hasPrecondition>The input parameters DateHigh, DateLow, and RateType must be valid strings conforming to the specified XML schema.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a string containing LB interest rates for the specified RateType within the DateHigh and DateLow range.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_19_getLBInterestRatesByDate_Atomic">
+    <process:hasName>getLBInterestRatesByDate</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_19_getLBInterestRatesByDate_Atomic_input_Date__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_19_getLBInterestRatesByDate_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The input Date must be in the format specified by the XML Schema definition for strings.</process:hasPrecondition>
+    <process:hasEffect>The operation retrieves the interest rates for LB (Lending Bank) corresponding to the provided date.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LBInterestRates_20_getLBInterestRatesByRateType_Atomic">
+    <process:hasName>getLBInterestRatesByRateType</process:hasName>
+    <process:hasInput rdf:resource="#LBInterestRates_20_getLBInterestRatesByRateType_Atomic_input_DateHigh__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LBInterestRates_20_getLBInterestRatesByRateType_Atomic_input_DateLow__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LBInterestRates_20_getLBInterestRatesByRateType_Atomic_input_RateType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LBInterestRates_20_getLBInterestRatesByRateType_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The system has access to a database containing interest rates data for the specified date range and rate type.</process:hasPrecondition>
+    <process:hasEffect>Retrieves the interest rates for the specified rate type within the given date range.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="LBInterestRates_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_0_getLBInterestRateTypes_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_1_getLatestLBInterestRate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_2_getLBInterestRate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_3_getLBInterestRatesByDate_XmlString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_5_getLBInterestRatesByDate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_6_getLBInterestRatesByRateType_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_7_getLBInterestRateTypes_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_8_getLatestLBInterestRate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_9_getLBInterestRate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_10_getLBInterestRatesByDate_XmlString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_11_getLBInterestRatesByRateType_XmlString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_12_getLBInterestRatesByDate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_13_getLBInterestRatesByRateType_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_14_getLBInterestRateTypes_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_15_getLatestLBInterestRate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_16_getLBInterestRate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_17_getLBInterestRatesByDate_XmlString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_19_getLBInterestRatesByDate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LBInterestRates_20_getLBInterestRatesByRateType_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_0_getLBInterestRateTypes_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_0_getLBInterestRateTypes_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRateTypes</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRateTypesHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRateTypesHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_1_getLatestLBInterestRate_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_1_getLatestLBInterestRate_Atomic"/>
+    <grounding:wsdlOperationName>getLatestLBInterestRate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLatestLBInterestRateHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLatestLBInterestRateHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_2_getLBInterestRate_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_2_getLBInterestRate_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRateHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRateHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_3_getLBInterestRatesByDate_XmlString_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_3_getLBInterestRatesByDate_XmlString_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRatesByDate_XmlString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRatesByDate_XmlStringHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRatesByDate_XmlStringHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_4_getLBInterestRatesByRateType_XmlString_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRatesByRateType_XmlString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRatesByRateType_XmlStringHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRatesByRateType_XmlStringHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_5_getLBInterestRatesByDate_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_5_getLBInterestRatesByDate_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRatesByDate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRatesByDateHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRatesByDateHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_6_getLBInterestRatesByRateType_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_6_getLBInterestRatesByRateType_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRatesByRateType</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRatesByRateTypeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRatesByRateTypeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_7_getLBInterestRateTypes_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_7_getLBInterestRateTypes_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRateTypes</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRateTypesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRateTypesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_8_getLatestLBInterestRate_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_8_getLatestLBInterestRate_Atomic"/>
+    <grounding:wsdlOperationName>getLatestLBInterestRate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLatestLBInterestRateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLatestLBInterestRateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_9_getLBInterestRate_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_9_getLBInterestRate_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_10_getLBInterestRatesByDate_XmlString_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_10_getLBInterestRatesByDate_XmlString_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRatesByDate_XmlString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRatesByDate_XmlStringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRatesByDate_XmlStringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_11_getLBInterestRatesByRateType_XmlString_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_11_getLBInterestRatesByRateType_XmlString_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRatesByRateType_XmlString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRatesByRateType_XmlStringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRatesByRateType_XmlStringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_12_getLBInterestRatesByDate_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_12_getLBInterestRatesByDate_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRatesByDate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRatesByDateSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRatesByDateSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_13_getLBInterestRatesByRateType_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_13_getLBInterestRatesByRateType_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRatesByRateType</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRatesByRateTypeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRatesByRateTypeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_14_getLBInterestRateTypes_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_14_getLBInterestRateTypes_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRateTypes</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRateTypesHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRateTypesHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_15_getLatestLBInterestRate_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_15_getLatestLBInterestRate_Atomic"/>
+    <grounding:wsdlOperationName>getLatestLBInterestRate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLatestLBInterestRateHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLatestLBInterestRateHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_16_getLBInterestRate_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_16_getLBInterestRate_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRateHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRateHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_17_getLBInterestRatesByDate_XmlString_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_17_getLBInterestRatesByDate_XmlString_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRatesByDate_XmlString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRatesByDate_XmlStringHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRatesByDate_XmlStringHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_18_getLBInterestRatesByRateType_XmlString_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRatesByRateType_XmlString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRatesByRateType_XmlStringHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRatesByRateType_XmlStringHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_19_getLBInterestRatesByDate_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_19_getLBInterestRatesByDate_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRatesByDate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRatesByDateHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRatesByDateHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LBInterestRates_20_getLBInterestRatesByRateType_Grounding">
+    <grounding:owlsProcess rdf:resource="#LBInterestRates_20_getLBInterestRatesByRateType_Atomic"/>
+    <grounding:wsdlOperationName>getLBInterestRatesByRateType</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LBInterestRatesHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LBInterestRatesHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5576_5575.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getLBInterestRatesByRateTypeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getLBInterestRatesByRateTypeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

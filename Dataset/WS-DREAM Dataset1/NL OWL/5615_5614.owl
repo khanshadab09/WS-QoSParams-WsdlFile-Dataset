@@ -1,0 +1,262 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="LookupBookData">
+    <service:presents rdf:resource="#LookupBookData_Profile"/>
+    <service:describedBy rdf:resource="#LookupBookData_Composite"/>
+    <service:supports rdf:resource="#LookupBookData_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="LookupBookData_Profile">
+    <profile:serviceName>LookupBookData</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#LookupBookData"/>
+    <profile:hasProcess rdf:resource="#LookupBookData_0_BookDetailsByISBN_Atomic"/>
+    <profile:hasInput rdf:resource="#LookupBookData_0_BookDetailsByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LookupBookData_0_BookDetailsByISBN_Atomic_input_AccountCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LookupBookData_0_BookDetailsByISBN_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LookupBookData_0_BookDetailsByISBN_Atomic_output_Body__http___services.pickabook.co.uk_webservices_string"/>
+    <profile:hasPrecondition>The user must provide a valid ISBN, AccountCode, and LicenseKey to access the BookDetailsByISBN operation.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the details of the book corresponding to the provided ISBN in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LookupBookData_1_StockDetailsByISBN_Atomic"/>
+    <profile:hasInput rdf:resource="#LookupBookData_1_StockDetailsByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LookupBookData_1_StockDetailsByISBN_Atomic_input_AccountCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LookupBookData_1_StockDetailsByISBN_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LookupBookData_1_StockDetailsByISBN_Atomic_output_Body__http___services.pickabook.co.uk_webservices_string"/>
+    <profile:hasPrecondition>The user must provide a valid ISBN, AccountCode, and LicenseKey for accessing the StockDetailsByISBN operation.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the stock details of a book identified by the provided ISBN for the specified account using the given license key.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LookupBookData_2_BookDetailsByISBN_Atomic"/>
+    <profile:hasInput rdf:resource="#LookupBookData_2_BookDetailsByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LookupBookData_2_BookDetailsByISBN_Atomic_input_AccountCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LookupBookData_2_BookDetailsByISBN_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LookupBookData_2_BookDetailsByISBN_Atomic_output_Body__http___services.pickabook.co.uk_webservices_string"/>
+    <profile:hasPrecondition>The ISBN, AccountCode, and LicenseKey must be provided as input parameters for the operation to retrieve book details.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the book details in the response body as a string.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LookupBookData_3_StockDetailsByISBN_Atomic"/>
+    <profile:hasInput rdf:resource="#LookupBookData_3_StockDetailsByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LookupBookData_3_StockDetailsByISBN_Atomic_input_AccountCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#LookupBookData_3_StockDetailsByISBN_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#LookupBookData_3_StockDetailsByISBN_Atomic_output_Body__http___services.pickabook.co.uk_webservices_string"/>
+    <profile:hasPrecondition>The user must provide a valid ISBN, AccountCode, and LicenseKey parameters.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the stock details of a book identified by the provided ISBN for the specified AccountCode using the provided LicenseKey.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LookupBookData_4_BookDetailsByISBN_Atomic"/>
+    <profile:hasInput rdf:resource="#LookupBookData_4_BookDetailsByISBN_Atomic_input_parameters__http___services.pickabook.co.uk_webservices_BookDetailsByISBN"/>
+    <profile:hasOutput rdf:resource="#LookupBookData_4_BookDetailsByISBN_Atomic_output_parameters__http___services.pickabook.co.uk_webservices_BookDetailsByISBNResponse"/>
+    <profile:hasPrecondition>The provided ISBN must correspond to a valid book in the PickABook database.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves and returns the details of the book associated with the provided ISBN.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#LookupBookData_5_StockDetailsByISBN_Atomic"/>
+    <profile:hasInput rdf:resource="#LookupBookData_5_StockDetailsByISBN_Atomic_input_parameters__http___services.pickabook.co.uk_webservices_StockDetailsByISBN"/>
+    <profile:hasOutput rdf:resource="#LookupBookData_5_StockDetailsByISBN_Atomic_output_parameters__http___services.pickabook.co.uk_webservices_StockDetailsByISBNResponse"/>
+    <profile:hasPrecondition>The ISBN number of the book must be provided as input parameter for the operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the stock details of the book corresponding to the provided ISBN number.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="LookupBookData_Composite">
+    <process:composedOf rdf:resource="#LookupBookData_0_BookDetailsByISBN_Atomic"/>
+    <process:composedOf rdf:resource="#LookupBookData_1_StockDetailsByISBN_Atomic"/>
+    <process:composedOf rdf:resource="#LookupBookData_2_BookDetailsByISBN_Atomic"/>
+    <process:composedOf rdf:resource="#LookupBookData_3_StockDetailsByISBN_Atomic"/>
+    <process:composedOf rdf:resource="#LookupBookData_4_BookDetailsByISBN_Atomic"/>
+    <process:composedOf rdf:resource="#LookupBookData_5_StockDetailsByISBN_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="LookupBookData_0_BookDetailsByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ISBN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LookupBookData_0_BookDetailsByISBN_Atomic_input_AccountCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AccountCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LookupBookData_0_BookDetailsByISBN_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LookupBookData_0_BookDetailsByISBN_Atomic_output_Body__http___services.pickabook.co.uk_webservices_string">
+    <process:parameterType>Body:{http://services.pickabook.co.uk/webservices}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LookupBookData_1_StockDetailsByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ISBN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LookupBookData_1_StockDetailsByISBN_Atomic_input_AccountCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AccountCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LookupBookData_1_StockDetailsByISBN_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LookupBookData_1_StockDetailsByISBN_Atomic_output_Body__http___services.pickabook.co.uk_webservices_string">
+    <process:parameterType>Body:{http://services.pickabook.co.uk/webservices}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LookupBookData_2_BookDetailsByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ISBN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LookupBookData_2_BookDetailsByISBN_Atomic_input_AccountCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AccountCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LookupBookData_2_BookDetailsByISBN_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LookupBookData_2_BookDetailsByISBN_Atomic_output_Body__http___services.pickabook.co.uk_webservices_string">
+    <process:parameterType>Body:{http://services.pickabook.co.uk/webservices}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LookupBookData_3_StockDetailsByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ISBN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LookupBookData_3_StockDetailsByISBN_Atomic_input_AccountCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>AccountCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="LookupBookData_3_StockDetailsByISBN_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LicenseKey:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LookupBookData_3_StockDetailsByISBN_Atomic_output_Body__http___services.pickabook.co.uk_webservices_string">
+    <process:parameterType>Body:{http://services.pickabook.co.uk/webservices}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LookupBookData_4_BookDetailsByISBN_Atomic_input_parameters__http___services.pickabook.co.uk_webservices_BookDetailsByISBN">
+    <process:parameterType>parameters:{http://services.pickabook.co.uk/webservices}BookDetailsByISBN</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LookupBookData_4_BookDetailsByISBN_Atomic_output_parameters__http___services.pickabook.co.uk_webservices_BookDetailsByISBNResponse">
+    <process:parameterType>parameters:{http://services.pickabook.co.uk/webservices}BookDetailsByISBNResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="LookupBookData_5_StockDetailsByISBN_Atomic_input_parameters__http___services.pickabook.co.uk_webservices_StockDetailsByISBN">
+    <process:parameterType>parameters:{http://services.pickabook.co.uk/webservices}StockDetailsByISBN</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="LookupBookData_5_StockDetailsByISBN_Atomic_output_parameters__http___services.pickabook.co.uk_webservices_StockDetailsByISBNResponse">
+    <process:parameterType>parameters:{http://services.pickabook.co.uk/webservices}StockDetailsByISBNResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="LookupBookData_0_BookDetailsByISBN_Atomic">
+    <process:hasName>BookDetailsByISBN</process:hasName>
+    <process:hasInput rdf:resource="#LookupBookData_0_BookDetailsByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LookupBookData_0_BookDetailsByISBN_Atomic_input_AccountCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LookupBookData_0_BookDetailsByISBN_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LookupBookData_0_BookDetailsByISBN_Atomic_output_Body__http___services.pickabook.co.uk_webservices_string"/>
+    <process:hasPrecondition>The user must provide a valid ISBN, AccountCode, and LicenseKey to access the BookDetailsByISBN operation.</process:hasPrecondition>
+    <process:hasEffect>The service will return the details of the book corresponding to the provided ISBN in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LookupBookData_1_StockDetailsByISBN_Atomic">
+    <process:hasName>StockDetailsByISBN</process:hasName>
+    <process:hasInput rdf:resource="#LookupBookData_1_StockDetailsByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LookupBookData_1_StockDetailsByISBN_Atomic_input_AccountCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LookupBookData_1_StockDetailsByISBN_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LookupBookData_1_StockDetailsByISBN_Atomic_output_Body__http___services.pickabook.co.uk_webservices_string"/>
+    <process:hasPrecondition>The user must provide a valid ISBN, AccountCode, and LicenseKey for accessing the StockDetailsByISBN operation.</process:hasPrecondition>
+    <process:hasEffect>The service will return the stock details of a book identified by the provided ISBN for the specified account using the given license key.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LookupBookData_2_BookDetailsByISBN_Atomic">
+    <process:hasName>BookDetailsByISBN</process:hasName>
+    <process:hasInput rdf:resource="#LookupBookData_2_BookDetailsByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LookupBookData_2_BookDetailsByISBN_Atomic_input_AccountCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LookupBookData_2_BookDetailsByISBN_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LookupBookData_2_BookDetailsByISBN_Atomic_output_Body__http___services.pickabook.co.uk_webservices_string"/>
+    <process:hasPrecondition>The ISBN, AccountCode, and LicenseKey must be provided as input parameters for the operation to retrieve book details.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the book details in the response body as a string.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LookupBookData_3_StockDetailsByISBN_Atomic">
+    <process:hasName>StockDetailsByISBN</process:hasName>
+    <process:hasInput rdf:resource="#LookupBookData_3_StockDetailsByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LookupBookData_3_StockDetailsByISBN_Atomic_input_AccountCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#LookupBookData_3_StockDetailsByISBN_Atomic_input_LicenseKey__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#LookupBookData_3_StockDetailsByISBN_Atomic_output_Body__http___services.pickabook.co.uk_webservices_string"/>
+    <process:hasPrecondition>The user must provide a valid ISBN, AccountCode, and LicenseKey parameters.</process:hasPrecondition>
+    <process:hasEffect>The service will return the stock details of a book identified by the provided ISBN for the specified AccountCode using the provided LicenseKey.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LookupBookData_4_BookDetailsByISBN_Atomic">
+    <process:hasName>BookDetailsByISBN</process:hasName>
+    <process:hasInput rdf:resource="#LookupBookData_4_BookDetailsByISBN_Atomic_input_parameters__http___services.pickabook.co.uk_webservices_BookDetailsByISBN"/>
+    <process:hasOutput rdf:resource="#LookupBookData_4_BookDetailsByISBN_Atomic_output_parameters__http___services.pickabook.co.uk_webservices_BookDetailsByISBNResponse"/>
+    <process:hasPrecondition>The provided ISBN must correspond to a valid book in the PickABook database.</process:hasPrecondition>
+    <process:hasEffect>Retrieves and returns the details of the book associated with the provided ISBN.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="LookupBookData_5_StockDetailsByISBN_Atomic">
+    <process:hasName>StockDetailsByISBN</process:hasName>
+    <process:hasInput rdf:resource="#LookupBookData_5_StockDetailsByISBN_Atomic_input_parameters__http___services.pickabook.co.uk_webservices_StockDetailsByISBN"/>
+    <process:hasOutput rdf:resource="#LookupBookData_5_StockDetailsByISBN_Atomic_output_parameters__http___services.pickabook.co.uk_webservices_StockDetailsByISBNResponse"/>
+    <process:hasPrecondition>The ISBN number of the book must be provided as input parameter for the operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the stock details of the book corresponding to the provided ISBN number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="LookupBookData_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LookupBookData_0_BookDetailsByISBN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LookupBookData_1_StockDetailsByISBN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LookupBookData_2_BookDetailsByISBN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LookupBookData_3_StockDetailsByISBN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LookupBookData_4_BookDetailsByISBN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#LookupBookData_5_StockDetailsByISBN_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LookupBookData_0_BookDetailsByISBN_Grounding">
+    <grounding:owlsProcess rdf:resource="#LookupBookData_0_BookDetailsByISBN_Atomic"/>
+    <grounding:wsdlOperationName>BookDetailsByISBN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupBookDataHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupBookDataHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5615_5614.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BookDetailsByISBNHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BookDetailsByISBNHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LookupBookData_1_StockDetailsByISBN_Grounding">
+    <grounding:owlsProcess rdf:resource="#LookupBookData_1_StockDetailsByISBN_Atomic"/>
+    <grounding:wsdlOperationName>StockDetailsByISBN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupBookDataHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupBookDataHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5615_5614.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>StockDetailsByISBNHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>StockDetailsByISBNHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LookupBookData_2_BookDetailsByISBN_Grounding">
+    <grounding:owlsProcess rdf:resource="#LookupBookData_2_BookDetailsByISBN_Atomic"/>
+    <grounding:wsdlOperationName>BookDetailsByISBN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupBookDataHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupBookDataHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5615_5614.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BookDetailsByISBNHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BookDetailsByISBNHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LookupBookData_3_StockDetailsByISBN_Grounding">
+    <grounding:owlsProcess rdf:resource="#LookupBookData_3_StockDetailsByISBN_Atomic"/>
+    <grounding:wsdlOperationName>StockDetailsByISBN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupBookDataHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupBookDataHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5615_5614.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>StockDetailsByISBNHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>StockDetailsByISBNHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LookupBookData_4_BookDetailsByISBN_Grounding">
+    <grounding:owlsProcess rdf:resource="#LookupBookData_4_BookDetailsByISBN_Atomic"/>
+    <grounding:wsdlOperationName>BookDetailsByISBN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupBookDataSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupBookDataSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5615_5614.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>BookDetailsByISBNSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>BookDetailsByISBNSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="LookupBookData_5_StockDetailsByISBN_Grounding">
+    <grounding:owlsProcess rdf:resource="#LookupBookData_5_StockDetailsByISBN_Atomic"/>
+    <grounding:wsdlOperationName>StockDetailsByISBN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LookupBookDataSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LookupBookDataSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5615_5614.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>StockDetailsByISBNSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>StockDetailsByISBNSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

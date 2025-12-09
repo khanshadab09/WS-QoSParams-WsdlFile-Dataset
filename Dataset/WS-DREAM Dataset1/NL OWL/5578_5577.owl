@@ -1,0 +1,2043 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Litas">
+    <service:presents rdf:resource="#Litas_Profile"/>
+    <service:describedBy rdf:resource="#Litas_Composite"/>
+    <service:supports rdf:resource="#Litas_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Litas_Profile">
+    <profile:serviceName>Litas</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Litas"/>
+    <profile:hasProcess rdf:resource="#Litas_0_CheckIBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_0_CheckIBAN_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_0_CheckIBAN_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The input IBAN must be a valid string conforming to the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will verify the validity of the provided IBAN.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_1_CheckIBAN_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_1_CheckIBAN_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_1_CheckIBAN_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The input IBAN string must conform to the format specified by the XML Schema definition for strings.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a string in the format specified by the Lithuanian Bank's function for litas currency.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_2_CheckParticipant_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_2_CheckParticipant_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_2_CheckParticipant_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_2_CheckParticipant_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The web service must have access to a database or service containing participant information.</profile:hasPrecondition>
+    <profile:hasResult>The web service will verify the existence of the participant in the system and provide a response with the participant's details if found.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_3_CheckParticipant_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_3_CheckParticipant_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_3_CheckParticipant_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_3_CheckParticipant_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The web service must be accessible and the input Participant and System parameters must be valid strings in the specified XML schema format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing a string in the specified format from the Body output parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_4_ParticipantName_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_4_ParticipantName_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_4_ParticipantName_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_4_ParticipantName_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The input Participant must be a valid string according to the XML Schema definition, and the input System must be a valid string according to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a string in the format specified by the XML Schema definition for the Body output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_5_CheckAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_5_CheckAccount_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_5_CheckAccount_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_5_CheckAccount_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The Participant must provide a valid string and the IBAN must be a valid string conforming to the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will check the account associated with the provided IBAN for the specified Participant.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_6_CheckAccount_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_6_CheckAccount_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_6_CheckAccount_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_6_CheckAccount_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The Participant and IBAN strings must be provided in the specified XML schema format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a string representing the account details in the specified currency format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_7_CheckAccountSystem_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_7_CheckAccountSystem_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_7_CheckAccountSystem_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_7_CheckAccountSystem_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_7_CheckAccountSystem_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The Participant, IBAN, and System parameters must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The system will check the account information based on the provided Participant, IBAN, and System details.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_8_CheckAccountSystem_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_8_CheckAccountSystem_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_8_CheckAccountSystem_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_8_CheckAccountSystem_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_8_CheckAccountSystem_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The Participant, IBAN, and System inputs must be provided in string format according to the specified XML schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a string in the specified format as the Body output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_9_LTIBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_9_LTIBAN_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_9_LTIBAN_Atomic_input_BankCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_9_LTIBAN_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The input Account and BankCode must be valid strings conforming to the specified XML schema.</profile:hasPrecondition>
+    <profile:hasResult>The LTIBAN operation will return a string in the Body output conforming to the specified format from the LB web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_10_IBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_10_IBAN_Atomic_input_BBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_10_IBAN_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_10_IBAN_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The BBAN and Country inputs must be provided in order to generate an IBAN.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the IBAN in the specified currency format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_11_IBAN_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_11_IBAN_String_Atomic_input_BBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_11_IBAN_String_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_11_IBAN_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The BBAN and Country inputs must be provided in the specified XML schema format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the IBAN string in the specified currency format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_12_CheckParticipantAccountType_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_12_CheckParticipantAccountType_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_12_CheckParticipantAccountType_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_12_CheckParticipantAccountType_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_12_CheckParticipantAccountType_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The CurrencyCode, Type, and Participant parameters must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The account type of the specified participant in the given currency will be checked.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_13_CheckParticipantAccountType_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_13_CheckParticipantAccountType_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_13_CheckParticipantAccountType_String_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_13_CheckParticipantAccountType_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_13_CheckParticipantAccountType_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The web service requires the input parameters CurrencyCode, Type, and Participant to be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the account type of the participant in the specified currency as a string.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_14_CheckParticipantAccountNumber_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_14_CheckParticipantAccountNumber_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_14_CheckParticipantAccountNumber_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_14_CheckParticipantAccountNumber_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_14_CheckParticipantAccountNumber_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided in the specified data types.</profile:hasPrecondition>
+    <profile:hasResult>The participant's account number will be verified for the given currency and IBAN.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_15_CheckParticipantAccountNumber_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_15_CheckParticipantAccountNumber_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_15_CheckParticipantAccountNumber_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_15_CheckParticipantAccountNumber_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_15_CheckParticipantAccountNumber_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided as input parameters in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the account number associated with the participant in the specified currency.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_16_CheckParticipantSubAccountNumber_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_16_CheckParticipantSubAccountNumber_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_16_CheckParticipantSubAccountNumber_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_16_CheckParticipantSubAccountNumber_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_16_CheckParticipantSubAccountNumber_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided in the specified data types.</profile:hasPrecondition>
+    <profile:hasResult>The sub-account number of the participant's IBAN will be checked for validity.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_17_CheckParticipantSubAccountNumber_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_17_CheckParticipantSubAccountNumber_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_17_CheckParticipantSubAccountNumber_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_17_CheckParticipantSubAccountNumber_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_17_CheckParticipantSubAccountNumber_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided as input parameters in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The sub-account number of the participant associated with the provided IBAN and currency code will be checked and returned as output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_18_Participant_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_18_Participant_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_18_Participant_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The IBAN provided must be a valid string according to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an unknown body in response to the provided IBAN.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_19_CheckIBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_19_CheckIBAN_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckIBAN"/>
+    <profile:hasOutput rdf:resource="#Litas_19_CheckIBAN_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckIBANResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid IBAN number in Lithuanian currency format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response indicating whether the provided IBAN number is valid or not.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_20_CheckIBAN_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_20_CheckIBAN_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckIBAN_String"/>
+    <profile:hasOutput rdf:resource="#Litas_20_CheckIBAN_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckIBAN_StringResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid IBAN string conforming to the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response indicating whether the provided IBAN string is valid.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_21_CheckParticipant_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_21_CheckParticipant_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipant"/>
+    <profile:hasOutput rdf:resource="#Litas_21_CheckParticipant_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid participant in the system.</profile:hasPrecondition>
+    <profile:hasResult>The system will return a response confirming the validity of the participant.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_22_CheckParticipant_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_22_CheckParticipant_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipant_String"/>
+    <profile:hasOutput rdf:resource="#Litas_22_CheckParticipant_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipant_StringResponse"/>
+    <profile:hasPrecondition>The input parameter must be a string representing a participant to be checked in the system.</profile:hasPrecondition>
+    <profile:hasResult>The system will return a response indicating the status of the participant after the check operation is performed.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_23_ParticipantName_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_23_ParticipantName_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_ParticipantName_String"/>
+    <profile:hasOutput rdf:resource="#Litas_23_ParticipantName_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_ParticipantName_StringResponse"/>
+    <profile:hasPrecondition>The input parameter ParticipantName_String must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the ParticipantName_String value.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_24_CheckAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_24_CheckAccount_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckAccount"/>
+    <profile:hasOutput rdf:resource="#Litas_24_CheckAccount_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountResponse"/>
+    <profile:hasPrecondition>The user must provide the necessary parameters in the specified format for the CheckAccount operation.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a response containing the account information in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_25_CheckAccount_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_25_CheckAccount_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckAccount_String"/>
+    <profile:hasOutput rdf:resource="#Litas_25_CheckAccount_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckAccount_StringResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid string representing a specific account in the Lithuanian currency system.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response containing information related to the specified account in the Lithuanian currency system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_26_CheckAccountSystem_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_26_CheckAccountSystem_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountSystem"/>
+    <profile:hasOutput rdf:resource="#Litas_26_CheckAccountSystem_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountSystemResponse"/>
+    <profile:hasPrecondition>The user must provide the necessary parameters for the CheckAccountSystem operation in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The system will return a response containing the account system information after processing the request.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_27_CheckAccountSystem_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_27_CheckAccountSystem_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountSystem_String"/>
+    <profile:hasOutput rdf:resource="#Litas_27_CheckAccountSystem_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountSystem_StringResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameter must be in the format specified by the namespace http://www.lb.lt/funkcijos/litas.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response in the format specified by the namespace http://www.lb.lt/funkcijos/litas.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_28_LTIBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_28_LTIBAN_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_LTIBAN"/>
+    <profile:hasOutput rdf:resource="#Litas_28_LTIBAN_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_LTIBANResponse"/>
+    <profile:hasPrecondition>The input parameter LTIBAN must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the LTIBAN information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_29_IBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_29_IBAN_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_IBAN"/>
+    <profile:hasOutput rdf:resource="#Litas_29_IBAN_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_IBANResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid IBAN (International Bank Account Number) in the format specified by http://www.lb.lt/funkcijos/litas.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response containing the IBAN in the format specified by http://www.lb.lt/funkcijos/litas.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_30_IBAN_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_30_IBAN_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_IBAN_String"/>
+    <profile:hasOutput rdf:resource="#Litas_30_IBAN_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_IBAN_StringResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid IBAN string conforming to the format specified by the http://www.lb.lt/funkcijos/litas namespace.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response containing the IBAN string in the format specified by the http://www.lb.lt/funkcijos/litas namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_31_CheckParticipantAccountType_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_31_CheckParticipantAccountType_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountType"/>
+    <profile:hasOutput rdf:resource="#Litas_31_CheckParticipantAccountType_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountTypeResponse"/>
+    <profile:hasPrecondition>The web service must receive a valid request containing the participant's account type information in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will provide a response containing the checked participant's account type information in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_32_CheckParticipantAccountType_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_32_CheckParticipantAccountType_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountType_String"/>
+    <profile:hasOutput rdf:resource="#Litas_32_CheckParticipantAccountType_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountType_StringResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid participant account type in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response containing the participant account type information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_33_CheckParticipantAccountNumber_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_33_CheckParticipantAccountNumber_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountNumber"/>
+    <profile:hasOutput rdf:resource="#Litas_33_CheckParticipantAccountNumber_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountNumberResponse"/>
+    <profile:hasPrecondition>The input parameter must contain a valid participant account number in the format specified by http://www.lb.lt/funkcijos/litas.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter will contain the response related to the participant account number check as specified by http://www.lb.lt/funkcijos/litas.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_34_CheckParticipantAccountNumber_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_34_CheckParticipantAccountNumber_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountNumber_String"/>
+    <profile:hasOutput rdf:resource="#Litas_34_CheckParticipantAccountNumber_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountNumber_StringResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid participant account number in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response containing the result of checking the validity of the participant account number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_35_CheckParticipantSubAccountNumber_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_35_CheckParticipantSubAccountNumber_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantSubAccountNumber"/>
+    <profile:hasOutput rdf:resource="#Litas_35_CheckParticipantSubAccountNumber_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantSubAccountNumberResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid participant sub-account number in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response indicating the validity of the participant sub-account number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_36_CheckParticipantSubAccountNumber_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_36_CheckParticipantSubAccountNumber_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantSubAccountNumber_String"/>
+    <profile:hasOutput rdf:resource="#Litas_36_CheckParticipantSubAccountNumber_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantSubAccountNumber_StringResponse"/>
+    <profile:hasPrecondition>The input parameter for the CheckParticipantSubAccountNumber_String operation must be provided in the specified format according to the http://www.lb.lt/funkcijos/litas namespace.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response in the specified format according to the http://www.lb.lt/funkcijos/litas namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_37_Participant_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_37_Participant_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_Participant"/>
+    <profile:hasOutput rdf:resource="#Litas_37_Participant_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_ParticipantResponse"/>
+    <profile:hasPrecondition>The web service request must include a parameter specifying a participant in the format defined by http://www.lb.lt/funkcijos/litas.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing information about the specified participant in the format defined by http://www.lb.lt/funkcijos/litas.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_38_CheckIBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_38_CheckIBAN_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_38_CheckIBAN_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The input IBAN must be a valid string conforming to the format specified by the XML Schema definition for strings.</profile:hasPrecondition>
+    <profile:hasResult>The operation will validate the input IBAN to ensure it follows the correct format and structure.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_39_CheckIBAN_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_39_CheckIBAN_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_39_CheckIBAN_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The input IBAN string must be provided in the correct format according to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a string in the specified format from the Bank of Lithuania's web service after checking the validity of the provided IBAN.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_40_CheckParticipant_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_40_CheckParticipant_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_40_CheckParticipant_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_40_CheckParticipant_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The participant and system identifiers must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will verify the existence and validity of the participant in the specified system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_41_CheckParticipant_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_41_CheckParticipant_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_41_CheckParticipant_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_41_CheckParticipant_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The input Participant and System strings must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a string value in the specified Litas format as the output Body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_42_ParticipantName_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_42_ParticipantName_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_42_ParticipantName_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_42_ParticipantName_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The web service requires a valid input for Participant in the form of a string and System in the form of a string according to the specified XML schema.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response in the form of a string conforming to the specified XML schema for the Body output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_43_CheckAccount_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_43_CheckAccount_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_43_CheckAccount_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_43_CheckAccount_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The Participant and IBAN must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will check the account associated with the provided IBAN for the specified Participant.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_44_CheckAccount_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_44_CheckAccount_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_44_CheckAccount_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_44_CheckAccount_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The Participant and IBAN must be provided as input parameters in string format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the account information in string format according to the specified IBAN.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_45_CheckAccountSystem_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_45_CheckAccountSystem_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_45_CheckAccountSystem_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_45_CheckAccountSystem_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_45_CheckAccountSystem_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The participant, IBAN, and System parameters must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The system will check the account information associated with the provided IBAN in the specified system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_46_CheckAccountSystem_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_46_CheckAccountSystem_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_46_CheckAccountSystem_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_46_CheckAccountSystem_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_46_CheckAccountSystem_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The Participant, IBAN, and System inputs must be provided in string format according to the specified XML schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the account information in string format based on the provided IBAN and System.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_47_LTIBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_47_LTIBAN_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_47_LTIBAN_Atomic_input_BankCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_47_LTIBAN_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The Account and BankCode inputs must be valid strings conforming to the specified XML schema.</profile:hasPrecondition>
+    <profile:hasResult>The web service operation LTIBAN will return a string value in the Body output conforming to the specified schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_48_IBAN_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_48_IBAN_Atomic_input_BBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_48_IBAN_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_48_IBAN_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The BBAN and Country inputs must be provided in order to generate an IBAN.</profile:hasPrecondition>
+    <profile:hasResult>The IBAN corresponding to the provided BBAN and Country will be returned in the Body output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_49_IBAN_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_49_IBAN_String_Atomic_input_BBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_49_IBAN_String_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_49_IBAN_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The BBAN and Country inputs must be provided in the specified XML schema format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the IBAN string in the specified Lithuanian currency format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_50_CheckParticipantAccountType_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_50_CheckParticipantAccountType_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_50_CheckParticipantAccountType_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_50_CheckParticipantAccountType_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_50_CheckParticipantAccountType_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The web service must have access to the participant's account information and support the specified currency code and account type.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the account type of the specified participant in the specified currency.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_51_CheckParticipantAccountType_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_51_CheckParticipantAccountType_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_51_CheckParticipantAccountType_String_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_51_CheckParticipantAccountType_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_51_CheckParticipantAccountType_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The web service requires the input of CurrencyCode, Type, and Participant in string format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the account type of the participant in Lithuanian litas currency as a string.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_52_CheckParticipantAccountNumber_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_52_CheckParticipantAccountNumber_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_52_CheckParticipantAccountNumber_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_52_CheckParticipantAccountNumber_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_52_CheckParticipantAccountNumber_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided in the specified data types.</profile:hasPrecondition>
+    <profile:hasResult>The participant's account number will be checked for validity in the specified currency.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_53_CheckParticipantAccountNumber_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_53_CheckParticipantAccountNumber_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_53_CheckParticipantAccountNumber_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_53_CheckParticipantAccountNumber_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_53_CheckParticipantAccountNumber_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the account number associated with the provided Participant and IBAN in the specified currency.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_54_CheckParticipantSubAccountNumber_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_54_CheckParticipantSubAccountNumber_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_54_CheckParticipantSubAccountNumber_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_54_CheckParticipantSubAccountNumber_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_54_CheckParticipantSubAccountNumber_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The sub-account number of the participant's IBAN in the specified currency will be checked.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_55_CheckParticipantSubAccountNumber_String_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_55_CheckParticipantSubAccountNumber_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_55_CheckParticipantSubAccountNumber_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Litas_55_CheckParticipantSubAccountNumber_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_55_CheckParticipantSubAccountNumber_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <profile:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided as input parameters in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The corresponding sub-account number for the participant's IBAN in the specified currency will be returned as output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Litas_56_Participant_Atomic"/>
+    <profile:hasInput rdf:resource="#Litas_56_Participant_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Litas_56_Participant_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The IBAN input must be a valid string according to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an unknown body in response.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Litas_Composite">
+    <process:composedOf rdf:resource="#Litas_0_CheckIBAN_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_1_CheckIBAN_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_2_CheckParticipant_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_3_CheckParticipant_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_4_ParticipantName_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_5_CheckAccount_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_6_CheckAccount_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_7_CheckAccountSystem_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_8_CheckAccountSystem_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_9_LTIBAN_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_10_IBAN_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_11_IBAN_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_12_CheckParticipantAccountType_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_13_CheckParticipantAccountType_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_14_CheckParticipantAccountNumber_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_15_CheckParticipantAccountNumber_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_16_CheckParticipantSubAccountNumber_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_17_CheckParticipantSubAccountNumber_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_18_Participant_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_19_CheckIBAN_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_20_CheckIBAN_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_21_CheckParticipant_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_22_CheckParticipant_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_23_ParticipantName_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_24_CheckAccount_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_25_CheckAccount_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_26_CheckAccountSystem_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_27_CheckAccountSystem_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_28_LTIBAN_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_29_IBAN_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_30_IBAN_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_31_CheckParticipantAccountType_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_32_CheckParticipantAccountType_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_33_CheckParticipantAccountNumber_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_34_CheckParticipantAccountNumber_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_35_CheckParticipantSubAccountNumber_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_36_CheckParticipantSubAccountNumber_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_37_Participant_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_38_CheckIBAN_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_39_CheckIBAN_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_40_CheckParticipant_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_41_CheckParticipant_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_42_ParticipantName_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_43_CheckAccount_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_44_CheckAccount_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_45_CheckAccountSystem_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_46_CheckAccountSystem_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_47_LTIBAN_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_48_IBAN_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_49_IBAN_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_50_CheckParticipantAccountType_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_51_CheckParticipantAccountType_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_52_CheckParticipantAccountNumber_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_53_CheckParticipantAccountNumber_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_54_CheckParticipantSubAccountNumber_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_55_CheckParticipantSubAccountNumber_String_Atomic"/>
+    <process:composedOf rdf:resource="#Litas_56_Participant_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Litas_0_CheckIBAN_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_0_CheckIBAN_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_1_CheckIBAN_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_1_CheckIBAN_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_2_CheckParticipant_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_2_CheckParticipant_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>System:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_2_CheckParticipant_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_3_CheckParticipant_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_3_CheckParticipant_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>System:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_3_CheckParticipant_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_4_ParticipantName_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_4_ParticipantName_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>System:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_4_ParticipantName_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_5_CheckAccount_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_5_CheckAccount_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_5_CheckAccount_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_6_CheckAccount_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_6_CheckAccount_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_6_CheckAccount_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_7_CheckAccountSystem_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_7_CheckAccountSystem_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_7_CheckAccountSystem_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>System:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_7_CheckAccountSystem_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_8_CheckAccountSystem_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_8_CheckAccountSystem_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_8_CheckAccountSystem_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>System:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_8_CheckAccountSystem_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_9_LTIBAN_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_9_LTIBAN_Atomic_input_BankCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BankCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_9_LTIBAN_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_10_IBAN_Atomic_input_BBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_10_IBAN_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_10_IBAN_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_11_IBAN_String_Atomic_input_BBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_11_IBAN_String_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_11_IBAN_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_12_CheckParticipantAccountType_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CurrencyCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_12_CheckParticipantAccountType_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_12_CheckParticipantAccountType_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_12_CheckParticipantAccountType_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_13_CheckParticipantAccountType_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CurrencyCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_13_CheckParticipantAccountType_String_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_13_CheckParticipantAccountType_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_13_CheckParticipantAccountType_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_14_CheckParticipantAccountNumber_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CurrencyCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_14_CheckParticipantAccountNumber_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_14_CheckParticipantAccountNumber_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_14_CheckParticipantAccountNumber_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_15_CheckParticipantAccountNumber_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CurrencyCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_15_CheckParticipantAccountNumber_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_15_CheckParticipantAccountNumber_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_15_CheckParticipantAccountNumber_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_16_CheckParticipantSubAccountNumber_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CurrencyCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_16_CheckParticipantSubAccountNumber_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_16_CheckParticipantSubAccountNumber_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_16_CheckParticipantSubAccountNumber_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_17_CheckParticipantSubAccountNumber_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CurrencyCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_17_CheckParticipantSubAccountNumber_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_17_CheckParticipantSubAccountNumber_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_17_CheckParticipantSubAccountNumber_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_18_Participant_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_18_Participant_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_19_CheckIBAN_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckIBAN">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckIBAN</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_19_CheckIBAN_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckIBANResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckIBANResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_20_CheckIBAN_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckIBAN_String">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckIBAN_String</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_20_CheckIBAN_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckIBAN_StringResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckIBAN_StringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_21_CheckParticipant_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipant">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipant</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_21_CheckParticipant_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipantResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_22_CheckParticipant_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipant_String">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipant_String</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_22_CheckParticipant_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipant_StringResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipant_StringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_23_ParticipantName_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_ParticipantName_String">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}ParticipantName_String</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_23_ParticipantName_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_ParticipantName_StringResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}ParticipantName_StringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_24_CheckAccount_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckAccount">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckAccount</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_24_CheckAccount_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckAccountResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_25_CheckAccount_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckAccount_String">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckAccount_String</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_25_CheckAccount_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckAccount_StringResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckAccount_StringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_26_CheckAccountSystem_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountSystem">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckAccountSystem</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_26_CheckAccountSystem_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountSystemResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckAccountSystemResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_27_CheckAccountSystem_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountSystem_String">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckAccountSystem_String</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_27_CheckAccountSystem_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountSystem_StringResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckAccountSystem_StringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_28_LTIBAN_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_LTIBAN">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}LTIBAN</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_28_LTIBAN_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_LTIBANResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}LTIBANResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_29_IBAN_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_IBAN">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}IBAN</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_29_IBAN_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_IBANResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}IBANResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_30_IBAN_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_IBAN_String">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}IBAN_String</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_30_IBAN_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_IBAN_StringResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}IBAN_StringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_31_CheckParticipantAccountType_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountType">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipantAccountType</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_31_CheckParticipantAccountType_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountTypeResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipantAccountTypeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_32_CheckParticipantAccountType_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountType_String">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipantAccountType_String</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_32_CheckParticipantAccountType_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountType_StringResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipantAccountType_StringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_33_CheckParticipantAccountNumber_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountNumber">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipantAccountNumber</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_33_CheckParticipantAccountNumber_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountNumberResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipantAccountNumberResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_34_CheckParticipantAccountNumber_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountNumber_String">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipantAccountNumber_String</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_34_CheckParticipantAccountNumber_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountNumber_StringResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipantAccountNumber_StringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_35_CheckParticipantSubAccountNumber_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantSubAccountNumber">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipantSubAccountNumber</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_35_CheckParticipantSubAccountNumber_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantSubAccountNumberResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipantSubAccountNumberResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_36_CheckParticipantSubAccountNumber_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantSubAccountNumber_String">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipantSubAccountNumber_String</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_36_CheckParticipantSubAccountNumber_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantSubAccountNumber_StringResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}CheckParticipantSubAccountNumber_StringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_37_Participant_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_Participant">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}Participant</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_37_Participant_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_ParticipantResponse">
+    <process:parameterType>parameters:{http://www.lb.lt/funkcijos/litas}ParticipantResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_38_CheckIBAN_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_38_CheckIBAN_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_39_CheckIBAN_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_39_CheckIBAN_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_40_CheckParticipant_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_40_CheckParticipant_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>System:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_40_CheckParticipant_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_41_CheckParticipant_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_41_CheckParticipant_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>System:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_41_CheckParticipant_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_42_ParticipantName_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_42_ParticipantName_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>System:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_42_ParticipantName_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_43_CheckAccount_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_43_CheckAccount_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_43_CheckAccount_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_44_CheckAccount_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_44_CheckAccount_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_44_CheckAccount_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_45_CheckAccountSystem_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_45_CheckAccountSystem_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_45_CheckAccountSystem_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>System:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_45_CheckAccountSystem_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_46_CheckAccountSystem_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_46_CheckAccountSystem_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_46_CheckAccountSystem_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>System:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_46_CheckAccountSystem_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_47_LTIBAN_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Account:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_47_LTIBAN_Atomic_input_BankCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BankCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_47_LTIBAN_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_48_IBAN_Atomic_input_BBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_48_IBAN_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_48_IBAN_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_49_IBAN_String_Atomic_input_BBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_49_IBAN_String_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_49_IBAN_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_50_CheckParticipantAccountType_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CurrencyCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_50_CheckParticipantAccountType_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_50_CheckParticipantAccountType_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_50_CheckParticipantAccountType_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_51_CheckParticipantAccountType_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CurrencyCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_51_CheckParticipantAccountType_String_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Type:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_51_CheckParticipantAccountType_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_51_CheckParticipantAccountType_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_52_CheckParticipantAccountNumber_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CurrencyCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_52_CheckParticipantAccountNumber_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_52_CheckParticipantAccountNumber_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_52_CheckParticipantAccountNumber_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_53_CheckParticipantAccountNumber_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CurrencyCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_53_CheckParticipantAccountNumber_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_53_CheckParticipantAccountNumber_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_53_CheckParticipantAccountNumber_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_54_CheckParticipantSubAccountNumber_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CurrencyCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_54_CheckParticipantSubAccountNumber_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_54_CheckParticipantSubAccountNumber_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_54_CheckParticipantSubAccountNumber_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_55_CheckParticipantSubAccountNumber_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CurrencyCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_55_CheckParticipantSubAccountNumber_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Participant:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Litas_55_CheckParticipantSubAccountNumber_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_55_CheckParticipantSubAccountNumber_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string">
+    <process:parameterType>Body:{http://www.lb.lt/funkcijos/litas}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Litas_56_Participant_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>IBAN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Litas_56_Participant_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Litas_0_CheckIBAN_Atomic">
+    <process:hasName>CheckIBAN</process:hasName>
+    <process:hasInput rdf:resource="#Litas_0_CheckIBAN_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_0_CheckIBAN_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The input IBAN must be a valid string conforming to the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will verify the validity of the provided IBAN.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_1_CheckIBAN_String_Atomic">
+    <process:hasName>CheckIBAN_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_1_CheckIBAN_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_1_CheckIBAN_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The input IBAN string must conform to the format specified by the XML Schema definition for strings.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a string in the format specified by the Lithuanian Bank's function for litas currency.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_2_CheckParticipant_Atomic">
+    <process:hasName>CheckParticipant</process:hasName>
+    <process:hasInput rdf:resource="#Litas_2_CheckParticipant_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_2_CheckParticipant_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_2_CheckParticipant_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The web service must have access to a database or service containing participant information.</process:hasPrecondition>
+    <process:hasEffect>The web service will verify the existence of the participant in the system and provide a response with the participant's details if found.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_3_CheckParticipant_String_Atomic">
+    <process:hasName>CheckParticipant_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_3_CheckParticipant_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_3_CheckParticipant_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_3_CheckParticipant_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The web service must be accessible and the input Participant and System parameters must be valid strings in the specified XML schema format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing a string in the specified format from the Body output parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_4_ParticipantName_String_Atomic">
+    <process:hasName>ParticipantName_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_4_ParticipantName_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_4_ParticipantName_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_4_ParticipantName_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The input Participant must be a valid string according to the XML Schema definition, and the input System must be a valid string according to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a string in the format specified by the XML Schema definition for the Body output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_5_CheckAccount_Atomic">
+    <process:hasName>CheckAccount</process:hasName>
+    <process:hasInput rdf:resource="#Litas_5_CheckAccount_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_5_CheckAccount_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_5_CheckAccount_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The Participant must provide a valid string and the IBAN must be a valid string conforming to the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will check the account associated with the provided IBAN for the specified Participant.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_6_CheckAccount_String_Atomic">
+    <process:hasName>CheckAccount_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_6_CheckAccount_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_6_CheckAccount_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_6_CheckAccount_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The Participant and IBAN strings must be provided in the specified XML schema format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a string representing the account details in the specified currency format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_7_CheckAccountSystem_Atomic">
+    <process:hasName>CheckAccountSystem</process:hasName>
+    <process:hasInput rdf:resource="#Litas_7_CheckAccountSystem_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_7_CheckAccountSystem_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_7_CheckAccountSystem_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_7_CheckAccountSystem_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The Participant, IBAN, and System parameters must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The system will check the account information based on the provided Participant, IBAN, and System details.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_8_CheckAccountSystem_String_Atomic">
+    <process:hasName>CheckAccountSystem_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_8_CheckAccountSystem_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_8_CheckAccountSystem_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_8_CheckAccountSystem_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_8_CheckAccountSystem_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The Participant, IBAN, and System inputs must be provided in string format according to the specified XML schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a string in the specified format as the Body output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_9_LTIBAN_Atomic">
+    <process:hasName>LTIBAN</process:hasName>
+    <process:hasInput rdf:resource="#Litas_9_LTIBAN_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_9_LTIBAN_Atomic_input_BankCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_9_LTIBAN_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The input Account and BankCode must be valid strings conforming to the specified XML schema.</process:hasPrecondition>
+    <process:hasEffect>The LTIBAN operation will return a string in the Body output conforming to the specified format from the LB web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_10_IBAN_Atomic">
+    <process:hasName>IBAN</process:hasName>
+    <process:hasInput rdf:resource="#Litas_10_IBAN_Atomic_input_BBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_10_IBAN_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_10_IBAN_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The BBAN and Country inputs must be provided in order to generate an IBAN.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the IBAN in the specified currency format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_11_IBAN_String_Atomic">
+    <process:hasName>IBAN_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_11_IBAN_String_Atomic_input_BBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_11_IBAN_String_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_11_IBAN_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The BBAN and Country inputs must be provided in the specified XML schema format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the IBAN string in the specified currency format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_12_CheckParticipantAccountType_Atomic">
+    <process:hasName>CheckParticipantAccountType</process:hasName>
+    <process:hasInput rdf:resource="#Litas_12_CheckParticipantAccountType_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_12_CheckParticipantAccountType_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_12_CheckParticipantAccountType_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_12_CheckParticipantAccountType_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The CurrencyCode, Type, and Participant parameters must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The account type of the specified participant in the given currency will be checked.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_13_CheckParticipantAccountType_String_Atomic">
+    <process:hasName>CheckParticipantAccountType_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_13_CheckParticipantAccountType_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_13_CheckParticipantAccountType_String_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_13_CheckParticipantAccountType_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_13_CheckParticipantAccountType_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The web service requires the input parameters CurrencyCode, Type, and Participant to be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the account type of the participant in the specified currency as a string.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_14_CheckParticipantAccountNumber_Atomic">
+    <process:hasName>CheckParticipantAccountNumber</process:hasName>
+    <process:hasInput rdf:resource="#Litas_14_CheckParticipantAccountNumber_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_14_CheckParticipantAccountNumber_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_14_CheckParticipantAccountNumber_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_14_CheckParticipantAccountNumber_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided in the specified data types.</process:hasPrecondition>
+    <process:hasEffect>The participant's account number will be verified for the given currency and IBAN.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_15_CheckParticipantAccountNumber_String_Atomic">
+    <process:hasName>CheckParticipantAccountNumber_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_15_CheckParticipantAccountNumber_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_15_CheckParticipantAccountNumber_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_15_CheckParticipantAccountNumber_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_15_CheckParticipantAccountNumber_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided as input parameters in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The service will return the account number associated with the participant in the specified currency.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_16_CheckParticipantSubAccountNumber_Atomic">
+    <process:hasName>CheckParticipantSubAccountNumber</process:hasName>
+    <process:hasInput rdf:resource="#Litas_16_CheckParticipantSubAccountNumber_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_16_CheckParticipantSubAccountNumber_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_16_CheckParticipantSubAccountNumber_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_16_CheckParticipantSubAccountNumber_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided in the specified data types.</process:hasPrecondition>
+    <process:hasEffect>The sub-account number of the participant's IBAN will be checked for validity.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_17_CheckParticipantSubAccountNumber_String_Atomic">
+    <process:hasName>CheckParticipantSubAccountNumber_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_17_CheckParticipantSubAccountNumber_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_17_CheckParticipantSubAccountNumber_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_17_CheckParticipantSubAccountNumber_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_17_CheckParticipantSubAccountNumber_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided as input parameters in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The sub-account number of the participant associated with the provided IBAN and currency code will be checked and returned as output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_18_Participant_Atomic">
+    <process:hasName>Participant</process:hasName>
+    <process:hasInput rdf:resource="#Litas_18_Participant_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_18_Participant_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The IBAN provided must be a valid string according to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an unknown body in response to the provided IBAN.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_19_CheckIBAN_Atomic">
+    <process:hasName>CheckIBAN</process:hasName>
+    <process:hasInput rdf:resource="#Litas_19_CheckIBAN_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckIBAN"/>
+    <process:hasOutput rdf:resource="#Litas_19_CheckIBAN_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckIBANResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid IBAN number in Lithuanian currency format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response indicating whether the provided IBAN number is valid or not.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_20_CheckIBAN_String_Atomic">
+    <process:hasName>CheckIBAN_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_20_CheckIBAN_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckIBAN_String"/>
+    <process:hasOutput rdf:resource="#Litas_20_CheckIBAN_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckIBAN_StringResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid IBAN string conforming to the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response indicating whether the provided IBAN string is valid.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_21_CheckParticipant_Atomic">
+    <process:hasName>CheckParticipant</process:hasName>
+    <process:hasInput rdf:resource="#Litas_21_CheckParticipant_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipant"/>
+    <process:hasOutput rdf:resource="#Litas_21_CheckParticipant_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid participant in the system.</process:hasPrecondition>
+    <process:hasEffect>The system will return a response confirming the validity of the participant.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_22_CheckParticipant_String_Atomic">
+    <process:hasName>CheckParticipant_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_22_CheckParticipant_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipant_String"/>
+    <process:hasOutput rdf:resource="#Litas_22_CheckParticipant_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipant_StringResponse"/>
+    <process:hasPrecondition>The input parameter must be a string representing a participant to be checked in the system.</process:hasPrecondition>
+    <process:hasEffect>The system will return a response indicating the status of the participant after the check operation is performed.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_23_ParticipantName_String_Atomic">
+    <process:hasName>ParticipantName_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_23_ParticipantName_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_ParticipantName_String"/>
+    <process:hasOutput rdf:resource="#Litas_23_ParticipantName_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_ParticipantName_StringResponse"/>
+    <process:hasPrecondition>The input parameter ParticipantName_String must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the ParticipantName_String value.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_24_CheckAccount_Atomic">
+    <process:hasName>CheckAccount</process:hasName>
+    <process:hasInput rdf:resource="#Litas_24_CheckAccount_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckAccount"/>
+    <process:hasOutput rdf:resource="#Litas_24_CheckAccount_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountResponse"/>
+    <process:hasPrecondition>The user must provide the necessary parameters in the specified format for the CheckAccount operation.</process:hasPrecondition>
+    <process:hasEffect>The service will return a response containing the account information in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_25_CheckAccount_String_Atomic">
+    <process:hasName>CheckAccount_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_25_CheckAccount_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckAccount_String"/>
+    <process:hasOutput rdf:resource="#Litas_25_CheckAccount_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckAccount_StringResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid string representing a specific account in the Lithuanian currency system.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response containing information related to the specified account in the Lithuanian currency system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_26_CheckAccountSystem_Atomic">
+    <process:hasName>CheckAccountSystem</process:hasName>
+    <process:hasInput rdf:resource="#Litas_26_CheckAccountSystem_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountSystem"/>
+    <process:hasOutput rdf:resource="#Litas_26_CheckAccountSystem_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountSystemResponse"/>
+    <process:hasPrecondition>The user must provide the necessary parameters for the CheckAccountSystem operation in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The system will return a response containing the account system information after processing the request.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_27_CheckAccountSystem_String_Atomic">
+    <process:hasName>CheckAccountSystem_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_27_CheckAccountSystem_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountSystem_String"/>
+    <process:hasOutput rdf:resource="#Litas_27_CheckAccountSystem_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckAccountSystem_StringResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameter must be in the format specified by the namespace http://www.lb.lt/funkcijos/litas.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response in the format specified by the namespace http://www.lb.lt/funkcijos/litas.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_28_LTIBAN_Atomic">
+    <process:hasName>LTIBAN</process:hasName>
+    <process:hasInput rdf:resource="#Litas_28_LTIBAN_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_LTIBAN"/>
+    <process:hasOutput rdf:resource="#Litas_28_LTIBAN_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_LTIBANResponse"/>
+    <process:hasPrecondition>The input parameter LTIBAN must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the LTIBAN information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_29_IBAN_Atomic">
+    <process:hasName>IBAN</process:hasName>
+    <process:hasInput rdf:resource="#Litas_29_IBAN_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_IBAN"/>
+    <process:hasOutput rdf:resource="#Litas_29_IBAN_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_IBANResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid IBAN (International Bank Account Number) in the format specified by http://www.lb.lt/funkcijos/litas.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response containing the IBAN in the format specified by http://www.lb.lt/funkcijos/litas.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_30_IBAN_String_Atomic">
+    <process:hasName>IBAN_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_30_IBAN_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_IBAN_String"/>
+    <process:hasOutput rdf:resource="#Litas_30_IBAN_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_IBAN_StringResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid IBAN string conforming to the format specified by the http://www.lb.lt/funkcijos/litas namespace.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response containing the IBAN string in the format specified by the http://www.lb.lt/funkcijos/litas namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_31_CheckParticipantAccountType_Atomic">
+    <process:hasName>CheckParticipantAccountType</process:hasName>
+    <process:hasInput rdf:resource="#Litas_31_CheckParticipantAccountType_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountType"/>
+    <process:hasOutput rdf:resource="#Litas_31_CheckParticipantAccountType_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountTypeResponse"/>
+    <process:hasPrecondition>The web service must receive a valid request containing the participant's account type information in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will provide a response containing the checked participant's account type information in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_32_CheckParticipantAccountType_String_Atomic">
+    <process:hasName>CheckParticipantAccountType_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_32_CheckParticipantAccountType_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountType_String"/>
+    <process:hasOutput rdf:resource="#Litas_32_CheckParticipantAccountType_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountType_StringResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid participant account type in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response containing the participant account type information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_33_CheckParticipantAccountNumber_Atomic">
+    <process:hasName>CheckParticipantAccountNumber</process:hasName>
+    <process:hasInput rdf:resource="#Litas_33_CheckParticipantAccountNumber_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountNumber"/>
+    <process:hasOutput rdf:resource="#Litas_33_CheckParticipantAccountNumber_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountNumberResponse"/>
+    <process:hasPrecondition>The input parameter must contain a valid participant account number in the format specified by http://www.lb.lt/funkcijos/litas.</process:hasPrecondition>
+    <process:hasEffect>The output parameter will contain the response related to the participant account number check as specified by http://www.lb.lt/funkcijos/litas.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_34_CheckParticipantAccountNumber_String_Atomic">
+    <process:hasName>CheckParticipantAccountNumber_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_34_CheckParticipantAccountNumber_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountNumber_String"/>
+    <process:hasOutput rdf:resource="#Litas_34_CheckParticipantAccountNumber_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantAccountNumber_StringResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid participant account number in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response containing the result of checking the validity of the participant account number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_35_CheckParticipantSubAccountNumber_Atomic">
+    <process:hasName>CheckParticipantSubAccountNumber</process:hasName>
+    <process:hasInput rdf:resource="#Litas_35_CheckParticipantSubAccountNumber_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantSubAccountNumber"/>
+    <process:hasOutput rdf:resource="#Litas_35_CheckParticipantSubAccountNumber_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantSubAccountNumberResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid participant sub-account number in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response indicating the validity of the participant sub-account number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_36_CheckParticipantSubAccountNumber_String_Atomic">
+    <process:hasName>CheckParticipantSubAccountNumber_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_36_CheckParticipantSubAccountNumber_String_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantSubAccountNumber_String"/>
+    <process:hasOutput rdf:resource="#Litas_36_CheckParticipantSubAccountNumber_String_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_CheckParticipantSubAccountNumber_StringResponse"/>
+    <process:hasPrecondition>The input parameter for the CheckParticipantSubAccountNumber_String operation must be provided in the specified format according to the http://www.lb.lt/funkcijos/litas namespace.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response in the specified format according to the http://www.lb.lt/funkcijos/litas namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_37_Participant_Atomic">
+    <process:hasName>Participant</process:hasName>
+    <process:hasInput rdf:resource="#Litas_37_Participant_Atomic_input_parameters__http___www.lb.lt_funkcijos_litas_Participant"/>
+    <process:hasOutput rdf:resource="#Litas_37_Participant_Atomic_output_parameters__http___www.lb.lt_funkcijos_litas_ParticipantResponse"/>
+    <process:hasPrecondition>The web service request must include a parameter specifying a participant in the format defined by http://www.lb.lt/funkcijos/litas.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing information about the specified participant in the format defined by http://www.lb.lt/funkcijos/litas.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_38_CheckIBAN_Atomic">
+    <process:hasName>CheckIBAN</process:hasName>
+    <process:hasInput rdf:resource="#Litas_38_CheckIBAN_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_38_CheckIBAN_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The input IBAN must be a valid string conforming to the format specified by the XML Schema definition for strings.</process:hasPrecondition>
+    <process:hasEffect>The operation will validate the input IBAN to ensure it follows the correct format and structure.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_39_CheckIBAN_String_Atomic">
+    <process:hasName>CheckIBAN_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_39_CheckIBAN_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_39_CheckIBAN_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The input IBAN string must be provided in the correct format according to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a string in the specified format from the Bank of Lithuania's web service after checking the validity of the provided IBAN.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_40_CheckParticipant_Atomic">
+    <process:hasName>CheckParticipant</process:hasName>
+    <process:hasInput rdf:resource="#Litas_40_CheckParticipant_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_40_CheckParticipant_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_40_CheckParticipant_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The participant and system identifiers must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will verify the existence and validity of the participant in the specified system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_41_CheckParticipant_String_Atomic">
+    <process:hasName>CheckParticipant_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_41_CheckParticipant_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_41_CheckParticipant_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_41_CheckParticipant_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The input Participant and System strings must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a string value in the specified Litas format as the output Body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_42_ParticipantName_String_Atomic">
+    <process:hasName>ParticipantName_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_42_ParticipantName_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_42_ParticipantName_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_42_ParticipantName_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The web service requires a valid input for Participant in the form of a string and System in the form of a string according to the specified XML schema.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response in the form of a string conforming to the specified XML schema for the Body output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_43_CheckAccount_Atomic">
+    <process:hasName>CheckAccount</process:hasName>
+    <process:hasInput rdf:resource="#Litas_43_CheckAccount_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_43_CheckAccount_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_43_CheckAccount_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The Participant and IBAN must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will check the account associated with the provided IBAN for the specified Participant.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_44_CheckAccount_String_Atomic">
+    <process:hasName>CheckAccount_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_44_CheckAccount_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_44_CheckAccount_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_44_CheckAccount_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The Participant and IBAN must be provided as input parameters in string format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the account information in string format according to the specified IBAN.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_45_CheckAccountSystem_Atomic">
+    <process:hasName>CheckAccountSystem</process:hasName>
+    <process:hasInput rdf:resource="#Litas_45_CheckAccountSystem_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_45_CheckAccountSystem_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_45_CheckAccountSystem_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_45_CheckAccountSystem_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The participant, IBAN, and System parameters must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The system will check the account information associated with the provided IBAN in the specified system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_46_CheckAccountSystem_String_Atomic">
+    <process:hasName>CheckAccountSystem_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_46_CheckAccountSystem_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_46_CheckAccountSystem_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_46_CheckAccountSystem_String_Atomic_input_System__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_46_CheckAccountSystem_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The Participant, IBAN, and System inputs must be provided in string format according to the specified XML schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the account information in string format based on the provided IBAN and System.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_47_LTIBAN_Atomic">
+    <process:hasName>LTIBAN</process:hasName>
+    <process:hasInput rdf:resource="#Litas_47_LTIBAN_Atomic_input_Account__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_47_LTIBAN_Atomic_input_BankCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_47_LTIBAN_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The Account and BankCode inputs must be valid strings conforming to the specified XML schema.</process:hasPrecondition>
+    <process:hasEffect>The web service operation LTIBAN will return a string value in the Body output conforming to the specified schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_48_IBAN_Atomic">
+    <process:hasName>IBAN</process:hasName>
+    <process:hasInput rdf:resource="#Litas_48_IBAN_Atomic_input_BBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_48_IBAN_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_48_IBAN_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The BBAN and Country inputs must be provided in order to generate an IBAN.</process:hasPrecondition>
+    <process:hasEffect>The IBAN corresponding to the provided BBAN and Country will be returned in the Body output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_49_IBAN_String_Atomic">
+    <process:hasName>IBAN_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_49_IBAN_String_Atomic_input_BBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_49_IBAN_String_Atomic_input_Country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_49_IBAN_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The BBAN and Country inputs must be provided in the specified XML schema format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the IBAN string in the specified Lithuanian currency format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_50_CheckParticipantAccountType_Atomic">
+    <process:hasName>CheckParticipantAccountType</process:hasName>
+    <process:hasInput rdf:resource="#Litas_50_CheckParticipantAccountType_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_50_CheckParticipantAccountType_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_50_CheckParticipantAccountType_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_50_CheckParticipantAccountType_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The web service must have access to the participant's account information and support the specified currency code and account type.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the account type of the specified participant in the specified currency.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_51_CheckParticipantAccountType_String_Atomic">
+    <process:hasName>CheckParticipantAccountType_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_51_CheckParticipantAccountType_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_51_CheckParticipantAccountType_String_Atomic_input_Type__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_51_CheckParticipantAccountType_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_51_CheckParticipantAccountType_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The web service requires the input of CurrencyCode, Type, and Participant in string format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the account type of the participant in Lithuanian litas currency as a string.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_52_CheckParticipantAccountNumber_Atomic">
+    <process:hasName>CheckParticipantAccountNumber</process:hasName>
+    <process:hasInput rdf:resource="#Litas_52_CheckParticipantAccountNumber_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_52_CheckParticipantAccountNumber_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_52_CheckParticipantAccountNumber_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_52_CheckParticipantAccountNumber_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided in the specified data types.</process:hasPrecondition>
+    <process:hasEffect>The participant's account number will be checked for validity in the specified currency.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_53_CheckParticipantAccountNumber_String_Atomic">
+    <process:hasName>CheckParticipantAccountNumber_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_53_CheckParticipantAccountNumber_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_53_CheckParticipantAccountNumber_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_53_CheckParticipantAccountNumber_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_53_CheckParticipantAccountNumber_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The service will return the account number associated with the provided Participant and IBAN in the specified currency.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_54_CheckParticipantSubAccountNumber_Atomic">
+    <process:hasName>CheckParticipantSubAccountNumber</process:hasName>
+    <process:hasInput rdf:resource="#Litas_54_CheckParticipantSubAccountNumber_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_54_CheckParticipantSubAccountNumber_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_54_CheckParticipantSubAccountNumber_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_54_CheckParticipantSubAccountNumber_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The sub-account number of the participant's IBAN in the specified currency will be checked.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_55_CheckParticipantSubAccountNumber_String_Atomic">
+    <process:hasName>CheckParticipantSubAccountNumber_String</process:hasName>
+    <process:hasInput rdf:resource="#Litas_55_CheckParticipantSubAccountNumber_String_Atomic_input_CurrencyCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_55_CheckParticipantSubAccountNumber_String_Atomic_input_Participant__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Litas_55_CheckParticipantSubAccountNumber_String_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_55_CheckParticipantSubAccountNumber_String_Atomic_output_Body__http___www.lb.lt_funkcijos_litas_string"/>
+    <process:hasPrecondition>The CurrencyCode, Participant, and IBAN must be provided as input parameters in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The corresponding sub-account number for the participant's IBAN in the specified currency will be returned as output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Litas_56_Participant_Atomic">
+    <process:hasName>Participant</process:hasName>
+    <process:hasInput rdf:resource="#Litas_56_Participant_Atomic_input_IBAN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Litas_56_Participant_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The IBAN input must be a valid string according to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an unknown body in response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Litas_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_0_CheckIBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_1_CheckIBAN_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_2_CheckParticipant_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_3_CheckParticipant_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_4_ParticipantName_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_5_CheckAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_6_CheckAccount_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_7_CheckAccountSystem_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_8_CheckAccountSystem_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_9_LTIBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_10_IBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_11_IBAN_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_12_CheckParticipantAccountType_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_13_CheckParticipantAccountType_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_14_CheckParticipantAccountNumber_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_15_CheckParticipantAccountNumber_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_16_CheckParticipantSubAccountNumber_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_17_CheckParticipantSubAccountNumber_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_18_Participant_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_19_CheckIBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_20_CheckIBAN_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_21_CheckParticipant_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_22_CheckParticipant_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_23_ParticipantName_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_24_CheckAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_25_CheckAccount_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_26_CheckAccountSystem_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_27_CheckAccountSystem_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_28_LTIBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_29_IBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_30_IBAN_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_31_CheckParticipantAccountType_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_32_CheckParticipantAccountType_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_33_CheckParticipantAccountNumber_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_34_CheckParticipantAccountNumber_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_35_CheckParticipantSubAccountNumber_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_36_CheckParticipantSubAccountNumber_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_37_Participant_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_38_CheckIBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_39_CheckIBAN_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_40_CheckParticipant_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_41_CheckParticipant_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_42_ParticipantName_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_43_CheckAccount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_44_CheckAccount_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_45_CheckAccountSystem_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_46_CheckAccountSystem_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_47_LTIBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_48_IBAN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_49_IBAN_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_50_CheckParticipantAccountType_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_51_CheckParticipantAccountType_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_52_CheckParticipantAccountNumber_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_53_CheckParticipantAccountNumber_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_54_CheckParticipantSubAccountNumber_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_55_CheckParticipantSubAccountNumber_String_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Litas_56_Participant_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_0_CheckIBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_0_CheckIBAN_Atomic"/>
+    <grounding:wsdlOperationName>CheckIBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckIBANHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckIBANHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_1_CheckIBAN_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_1_CheckIBAN_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckIBAN_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckIBAN_StringHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckIBAN_StringHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_2_CheckParticipant_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_2_CheckParticipant_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipant</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_3_CheckParticipant_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_3_CheckParticipant_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipant_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipant_StringHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipant_StringHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_4_ParticipantName_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_4_ParticipantName_String_Atomic"/>
+    <grounding:wsdlOperationName>ParticipantName_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ParticipantName_StringHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ParticipantName_StringHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_5_CheckAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_5_CheckAccount_Atomic"/>
+    <grounding:wsdlOperationName>CheckAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAccountHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAccountHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_6_CheckAccount_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_6_CheckAccount_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckAccount_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAccount_StringHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAccount_StringHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_7_CheckAccountSystem_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_7_CheckAccountSystem_Atomic"/>
+    <grounding:wsdlOperationName>CheckAccountSystem</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAccountSystemHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAccountSystemHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_8_CheckAccountSystem_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_8_CheckAccountSystem_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckAccountSystem_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAccountSystem_StringHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAccountSystem_StringHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_9_LTIBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_9_LTIBAN_Atomic"/>
+    <grounding:wsdlOperationName>LTIBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LTIBANHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LTIBANHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_10_IBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_10_IBAN_Atomic"/>
+    <grounding:wsdlOperationName>IBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IBANHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IBANHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_11_IBAN_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_11_IBAN_String_Atomic"/>
+    <grounding:wsdlOperationName>IBAN_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IBAN_StringHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IBAN_StringHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_12_CheckParticipantAccountType_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_12_CheckParticipantAccountType_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantAccountType</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantAccountTypeHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantAccountTypeHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_13_CheckParticipantAccountType_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_13_CheckParticipantAccountType_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantAccountType_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantAccountType_StringHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantAccountType_StringHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_14_CheckParticipantAccountNumber_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_14_CheckParticipantAccountNumber_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantAccountNumber</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantAccountNumberHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantAccountNumberHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_15_CheckParticipantAccountNumber_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_15_CheckParticipantAccountNumber_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantAccountNumber_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantAccountNumber_StringHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantAccountNumber_StringHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_16_CheckParticipantSubAccountNumber_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_16_CheckParticipantSubAccountNumber_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantSubAccountNumber</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantSubAccountNumberHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantSubAccountNumberHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_17_CheckParticipantSubAccountNumber_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_17_CheckParticipantSubAccountNumber_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantSubAccountNumber_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantSubAccountNumber_StringHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantSubAccountNumber_StringHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_18_Participant_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_18_Participant_Atomic"/>
+    <grounding:wsdlOperationName>Participant</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ParticipantHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ParticipantHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_19_CheckIBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_19_CheckIBAN_Atomic"/>
+    <grounding:wsdlOperationName>CheckIBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckIBANSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckIBANSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_20_CheckIBAN_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_20_CheckIBAN_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckIBAN_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckIBAN_StringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckIBAN_StringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_21_CheckParticipant_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_21_CheckParticipant_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipant</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_22_CheckParticipant_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_22_CheckParticipant_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipant_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipant_StringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipant_StringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_23_ParticipantName_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_23_ParticipantName_String_Atomic"/>
+    <grounding:wsdlOperationName>ParticipantName_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ParticipantName_StringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ParticipantName_StringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_24_CheckAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_24_CheckAccount_Atomic"/>
+    <grounding:wsdlOperationName>CheckAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAccountSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAccountSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_25_CheckAccount_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_25_CheckAccount_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckAccount_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAccount_StringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAccount_StringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_26_CheckAccountSystem_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_26_CheckAccountSystem_Atomic"/>
+    <grounding:wsdlOperationName>CheckAccountSystem</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAccountSystemSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAccountSystemSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_27_CheckAccountSystem_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_27_CheckAccountSystem_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckAccountSystem_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAccountSystem_StringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAccountSystem_StringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_28_LTIBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_28_LTIBAN_Atomic"/>
+    <grounding:wsdlOperationName>LTIBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LTIBANSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LTIBANSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_29_IBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_29_IBAN_Atomic"/>
+    <grounding:wsdlOperationName>IBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IBANSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IBANSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_30_IBAN_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_30_IBAN_String_Atomic"/>
+    <grounding:wsdlOperationName>IBAN_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IBAN_StringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IBAN_StringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_31_CheckParticipantAccountType_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_31_CheckParticipantAccountType_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantAccountType</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantAccountTypeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantAccountTypeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_32_CheckParticipantAccountType_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_32_CheckParticipantAccountType_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantAccountType_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantAccountType_StringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantAccountType_StringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_33_CheckParticipantAccountNumber_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_33_CheckParticipantAccountNumber_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantAccountNumber</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantAccountNumberSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantAccountNumberSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_34_CheckParticipantAccountNumber_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_34_CheckParticipantAccountNumber_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantAccountNumber_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantAccountNumber_StringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantAccountNumber_StringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_35_CheckParticipantSubAccountNumber_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_35_CheckParticipantSubAccountNumber_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantSubAccountNumber</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantSubAccountNumberSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantSubAccountNumberSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_36_CheckParticipantSubAccountNumber_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_36_CheckParticipantSubAccountNumber_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantSubAccountNumber_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantSubAccountNumber_StringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantSubAccountNumber_StringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_37_Participant_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_37_Participant_Atomic"/>
+    <grounding:wsdlOperationName>Participant</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ParticipantSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ParticipantSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_38_CheckIBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_38_CheckIBAN_Atomic"/>
+    <grounding:wsdlOperationName>CheckIBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckIBANHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckIBANHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_39_CheckIBAN_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_39_CheckIBAN_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckIBAN_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckIBAN_StringHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckIBAN_StringHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_40_CheckParticipant_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_40_CheckParticipant_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipant</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_41_CheckParticipant_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_41_CheckParticipant_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipant_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipant_StringHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipant_StringHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_42_ParticipantName_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_42_ParticipantName_String_Atomic"/>
+    <grounding:wsdlOperationName>ParticipantName_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ParticipantName_StringHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ParticipantName_StringHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_43_CheckAccount_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_43_CheckAccount_Atomic"/>
+    <grounding:wsdlOperationName>CheckAccount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAccountHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAccountHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_44_CheckAccount_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_44_CheckAccount_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckAccount_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAccount_StringHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAccount_StringHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_45_CheckAccountSystem_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_45_CheckAccountSystem_Atomic"/>
+    <grounding:wsdlOperationName>CheckAccountSystem</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAccountSystemHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAccountSystemHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_46_CheckAccountSystem_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_46_CheckAccountSystem_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckAccountSystem_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckAccountSystem_StringHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckAccountSystem_StringHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_47_LTIBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_47_LTIBAN_Atomic"/>
+    <grounding:wsdlOperationName>LTIBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LTIBANHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LTIBANHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_48_IBAN_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_48_IBAN_Atomic"/>
+    <grounding:wsdlOperationName>IBAN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IBANHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IBANHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_49_IBAN_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_49_IBAN_String_Atomic"/>
+    <grounding:wsdlOperationName>IBAN_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>IBAN_StringHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>IBAN_StringHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_50_CheckParticipantAccountType_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_50_CheckParticipantAccountType_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantAccountType</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantAccountTypeHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantAccountTypeHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_51_CheckParticipantAccountType_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_51_CheckParticipantAccountType_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantAccountType_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantAccountType_StringHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantAccountType_StringHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_52_CheckParticipantAccountNumber_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_52_CheckParticipantAccountNumber_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantAccountNumber</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantAccountNumberHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantAccountNumberHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_53_CheckParticipantAccountNumber_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_53_CheckParticipantAccountNumber_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantAccountNumber_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantAccountNumber_StringHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantAccountNumber_StringHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_54_CheckParticipantSubAccountNumber_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_54_CheckParticipantSubAccountNumber_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantSubAccountNumber</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantSubAccountNumberHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantSubAccountNumberHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_55_CheckParticipantSubAccountNumber_String_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_55_CheckParticipantSubAccountNumber_String_Atomic"/>
+    <grounding:wsdlOperationName>CheckParticipantSubAccountNumber_String</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CheckParticipantSubAccountNumber_StringHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CheckParticipantSubAccountNumber_StringHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Litas_56_Participant_Grounding">
+    <grounding:owlsProcess rdf:resource="#Litas_56_Participant_Atomic"/>
+    <grounding:wsdlOperationName>Participant</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>LitasHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>LitasHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5578_5577.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ParticipantHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ParticipantHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

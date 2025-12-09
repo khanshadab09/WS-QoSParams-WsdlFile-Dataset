@@ -1,0 +1,920 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Service1">
+    <service:presents rdf:resource="#Service1_Profile"/>
+    <service:describedBy rdf:resource="#Service1_Composite"/>
+    <service:supports rdf:resource="#Service1_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Service1_Profile">
+    <profile:serviceName>Service1</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Service1"/>
+    <profile:hasProcess rdf:resource="#Service1_0_PDecodeKey_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_0_PDecodeKey_Atomic_input_pCodeKey__http___tempuri.org_AbstractTypes_StringArray"/>
+    <profile:hasOutput rdf:resource="#Service1_0_PDecodeKey_Atomic_output_Body__http___tempuri.org__string"/>
+    <profile:hasPrecondition>The input parameter pCodeKey must be a valid array of strings conforming to the {http://tempuri.org/AbstractTypes}StringArray schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation PDecodeKey will return a string value in the Body output conforming to the {http://tempuri.org/}string schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_1_GetKey_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_1_GetKey_Atomic_input_pAccount__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_1_GetKey_Atomic_input_pUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Service1_1_GetKey_Atomic_output_Body__http___tempuri.org__base64Binary"/>
+    <profile:hasPrecondition>The web service requires valid input parameters for the account and user in string format.</profile:hasPrecondition>
+    <profile:hasResult>The web service returns a base64 encoded binary key in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_2_Login_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_2_Login_Atomic_input_pPW__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_2_Login_Atomic_input_pKey__http___tempuri.org_AbstractTypes_StringArray"/>
+    <profile:hasOutput rdf:resource="#Service1_2_Login_Atomic_output_Body__http___tempuri.org__base64Binary"/>
+    <profile:hasPrecondition>The user must provide a valid password and key in order to login.</profile:hasPrecondition>
+    <profile:hasResult>Upon successful login, a base64 encoded binary response will be returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_3_Logout_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_3_Logout_Atomic_input_pKey__http___tempuri.org_AbstractTypes_StringArray"/>
+    <profile:hasOutput rdf:resource="#Service1_3_Logout_Atomic_output_Body__http___tempuri.org__base64Binary"/>
+    <profile:hasPrecondition>The user must be currently logged in with a valid session key.</profile:hasPrecondition>
+    <profile:hasResult>The user's session will be terminated and they will be logged out of the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_4_SendSMTPMail_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_4_SendSMTPMail_Atomic_input_pfrom__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_4_SendSMTPMail_Atomic_input_pData__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_4_SendSMTPMail_Atomic_input_pTo__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_4_SendSMTPMail_Atomic_input_pSubject__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Service1_4_SendSMTPMail_Atomic_output_Body__http___tempuri.org__int"/>
+    <profile:hasPrecondition>The input parameters pfrom, pData, pTo, and pSubject must be provided in the specified data types.</profile:hasPrecondition>
+    <profile:hasResult>The operation will send an email with the specified data and return an integer value as the output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_5_SendATMail_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_5_SendATMail_Atomic_input_pOrganization__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_5_SendATMail_Atomic_input_pComposeUTCDateTime__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_5_SendATMail_Atomic_input_pMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_5_SendATMail_Atomic_input_pAccountID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_5_SendATMail_Atomic_input_pRecipientUnitIDs__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_5_SendATMail_Atomic_input_pSubject__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Service1_5_SendATMail_Atomic_output_Body__http___tempuri.org__int"/>
+    <profile:hasPrecondition>The input parameters must be valid and properly formatted according to the specified data types.</profile:hasPrecondition>
+    <profile:hasResult>The email with the specified details is sent successfully, and the response contains an integer value as confirmation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_6_GetUnitMessages_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_6_GetUnitMessages_Atomic_input_pUnitID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_6_GetUnitMessages_Atomic_input_pSince__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_6_GetUnitMessages_Atomic_input_Credentials__http___tempuri.org_AbstractTypes_StringArray"/>
+    <profile:hasOutput rdf:resource="#Service1_6_GetUnitMessages_Atomic_output_Body__http___tempuri.org__ArrayOfStUnitEMail"/>
+    <profile:hasPrecondition>The user must provide a valid unit ID, a timestamp for the messages since, and valid credentials in the form of a string array.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of unit email messages based on the provided unit ID and timestamp, accessible with the provided credentials.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_7_GetUnitMessages2_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_7_GetUnitMessages2_Atomic_input_pUnitID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_7_GetUnitMessages2_Atomic_input_pSince__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_7_GetUnitMessages2_Atomic_input_Credentials__http___tempuri.org_AbstractTypes_StringArray"/>
+    <profile:hasOutput rdf:resource="#Service1_7_GetUnitMessages2_Atomic_output_Body__http___tempuri.org__ArrayOfStUnitEMail2"/>
+    <profile:hasPrecondition>The user must provide a valid unit ID, a timestamp, and valid credentials in order to retrieve unit messages.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of unit email messages that have been received since the specified timestamp.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_8_PDecodeKey_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_8_PDecodeKey_Atomic_input_parameters__http___tempuri.org__PDecodeKey"/>
+    <profile:hasOutput rdf:resource="#Service1_8_PDecodeKey_Atomic_output_parameters__http___tempuri.org__PDecodeKeyResponse"/>
+    <profile:hasPrecondition>The input parameter for PDecodeKey must be provided in the specified format {http://tempuri.org/}.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter for PDecodeKeyResponse will be returned in the specified format {http://tempuri.org/}.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_9_GetKey_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_9_GetKey_Atomic_input_parameters__http___tempuri.org__GetKey"/>
+    <profile:hasOutput rdf:resource="#Service1_9_GetKey_Atomic_output_parameters__http___tempuri.org__GetKeyResponse"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The GetKey operation will retrieve a key as specified in the input parameters and return it in the GetKeyResponse output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_10_Login_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_10_Login_Atomic_input_parameters__http___tempuri.org__Login"/>
+    <profile:hasOutput rdf:resource="#Service1_10_Login_Atomic_output_parameters__http___tempuri.org__LoginResponse"/>
+    <profile:hasPrecondition>The user must provide valid login credentials in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The system will authenticate the user and provide a response indicating the success or failure of the login attempt.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_11_Logout_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_11_Logout_Atomic_input_parameters__http___tempuri.org__Logout"/>
+    <profile:hasOutput rdf:resource="#Service1_11_Logout_Atomic_output_parameters__http___tempuri.org__LogoutResponse"/>
+    <profile:hasPrecondition>The user must be currently logged in to the system.</profile:hasPrecondition>
+    <profile:hasResult>The user is successfully logged out of the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_12_SendSMTPMail_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_12_SendSMTPMail_Atomic_input_parameters__http___tempuri.org__SendSMTPMail"/>
+    <profile:hasOutput rdf:resource="#Service1_12_SendSMTPMail_Atomic_output_parameters__http___tempuri.org__SendSMTPMailResponse"/>
+    <profile:hasPrecondition>The input parameters for sending an SMTP mail must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will send an SMTP mail and return a response in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_13_SendATMail_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_13_SendATMail_Atomic_input_parameters__http___tempuri.org__SendATMail"/>
+    <profile:hasOutput rdf:resource="#Service1_13_SendATMail_Atomic_output_parameters__http___tempuri.org__SendATMailResponse"/>
+    <profile:hasPrecondition>The required input parameters for sending an email using the SendATMail web service must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The SendATMail web service will process the input parameters and generate a response in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_14_GetUnitMessages_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_14_GetUnitMessages_Atomic_input_parameters__http___tempuri.org__GetUnitMessages"/>
+    <profile:hasOutput rdf:resource="#Service1_14_GetUnitMessages_Atomic_output_parameters__http___tempuri.org__GetUnitMessagesResponse"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves unit messages based on the provided parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_15_GetUnitMessages2_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_15_GetUnitMessages2_Atomic_input_parameters__http___tempuri.org__GetUnitMessages2"/>
+    <profile:hasOutput rdf:resource="#Service1_15_GetUnitMessages2_Atomic_output_parameters__http___tempuri.org__GetUnitMessages2Response"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetUnitMessages2 must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the unit messages based on the provided input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_16_PDecodeKey_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_16_PDecodeKey_Atomic_input_pCodeKey__http___tempuri.org_AbstractTypes_StringArray"/>
+    <profile:hasOutput rdf:resource="#Service1_16_PDecodeKey_Atomic_output_Body__http___tempuri.org__string"/>
+    <profile:hasPrecondition>The input parameter pCodeKey must be a valid array of strings in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation PDecodeKey will return a string value in the Body output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_17_GetKey_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_17_GetKey_Atomic_input_pAccount__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_17_GetKey_Atomic_input_pUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Service1_17_GetKey_Atomic_output_Body__http___tempuri.org__base64Binary"/>
+    <profile:hasPrecondition>The user must provide a valid account and user ID as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the key associated with the provided account and user ID in base64 binary format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_18_Login_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_18_Login_Atomic_input_pPW__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_18_Login_Atomic_input_pKey__http___tempuri.org_AbstractTypes_StringArray"/>
+    <profile:hasOutput rdf:resource="#Service1_18_Login_Atomic_output_Body__http___tempuri.org__base64Binary"/>
+    <profile:hasPrecondition>The user must provide a valid password and key in order to authenticate for login.</profile:hasPrecondition>
+    <profile:hasResult>Upon successful authentication, a base64 encoded binary response containing the user's data will be returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_19_Logout_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_19_Logout_Atomic_input_pKey__http___tempuri.org_AbstractTypes_StringArray"/>
+    <profile:hasOutput rdf:resource="#Service1_19_Logout_Atomic_output_Body__http___tempuri.org__base64Binary"/>
+    <profile:hasPrecondition>The user must be currently logged in to the system.</profile:hasPrecondition>
+    <profile:hasResult>The user is successfully logged out and their session is terminated.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_20_SendSMTPMail_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_20_SendSMTPMail_Atomic_input_pfrom__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_20_SendSMTPMail_Atomic_input_pData__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_20_SendSMTPMail_Atomic_input_pTo__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_20_SendSMTPMail_Atomic_input_pSubject__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Service1_20_SendSMTPMail_Atomic_output_Body__http___tempuri.org__int"/>
+    <profile:hasPrecondition>The input parameters pfrom, pData, pTo, and pSubject must be provided in the specified XML schema format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will send an SMTP email with the specified data and return an integer as the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_21_SendATMail_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_21_SendATMail_Atomic_input_pOrganization__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_21_SendATMail_Atomic_input_pComposeUTCDateTime__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_21_SendATMail_Atomic_input_pMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_21_SendATMail_Atomic_input_pAccountID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_21_SendATMail_Atomic_input_pRecipientUnitIDs__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_21_SendATMail_Atomic_input_pSubject__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#Service1_21_SendATMail_Atomic_output_Body__http___tempuri.org__int"/>
+    <profile:hasPrecondition>The required input parameters for sending an email, such as organization, date, message, account ID, recipient unit IDs, and subject, must be provided in the specified data format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will send an email and return an integer value as a response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_22_GetUnitMessages_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_22_GetUnitMessages_Atomic_input_pUnitID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_22_GetUnitMessages_Atomic_input_pSince__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_22_GetUnitMessages_Atomic_input_Credentials__http___tempuri.org_AbstractTypes_StringArray"/>
+    <profile:hasOutput rdf:resource="#Service1_22_GetUnitMessages_Atomic_output_Body__http___tempuri.org__ArrayOfStUnitEMail"/>
+    <profile:hasPrecondition>The user must provide a valid unit ID, a timestamp for the messages since, and valid credentials in the form of a StringArray.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of unit email messages based on the provided unit ID and timestamp.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service1_23_GetUnitMessages2_Atomic"/>
+    <profile:hasInput rdf:resource="#Service1_23_GetUnitMessages2_Atomic_input_pUnitID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_23_GetUnitMessages2_Atomic_input_pSince__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#Service1_23_GetUnitMessages2_Atomic_input_Credentials__http___tempuri.org_AbstractTypes_StringArray"/>
+    <profile:hasOutput rdf:resource="#Service1_23_GetUnitMessages2_Atomic_output_Body__http___tempuri.org__ArrayOfStUnitEMail2"/>
+    <profile:hasPrecondition>The user must provide a valid unit ID, a valid timestamp, and valid credentials in order to retrieve unit messages.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of unit emails based on the provided unit ID and timestamp.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Service1_Composite">
+    <process:composedOf rdf:resource="#Service1_0_PDecodeKey_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_1_GetKey_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_2_Login_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_3_Logout_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_4_SendSMTPMail_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_5_SendATMail_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_6_GetUnitMessages_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_7_GetUnitMessages2_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_8_PDecodeKey_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_9_GetKey_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_10_Login_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_11_Logout_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_12_SendSMTPMail_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_13_SendATMail_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_14_GetUnitMessages_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_15_GetUnitMessages2_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_16_PDecodeKey_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_17_GetKey_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_18_Login_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_19_Logout_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_20_SendSMTPMail_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_21_SendATMail_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_22_GetUnitMessages_Atomic"/>
+    <process:composedOf rdf:resource="#Service1_23_GetUnitMessages2_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Service1_0_PDecodeKey_Atomic_input_pCodeKey__http___tempuri.org_AbstractTypes_StringArray">
+    <process:parameterType>pCodeKey:{http://tempuri.org/AbstractTypes}StringArray</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_0_PDecodeKey_Atomic_output_Body__http___tempuri.org__string">
+    <process:parameterType>Body:{http://tempuri.org/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_1_GetKey_Atomic_input_pAccount__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pAccount:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_1_GetKey_Atomic_input_pUser__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pUser:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_1_GetKey_Atomic_output_Body__http___tempuri.org__base64Binary">
+    <process:parameterType>Body:{http://tempuri.org/}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_2_Login_Atomic_input_pPW__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pPW:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_2_Login_Atomic_input_pKey__http___tempuri.org_AbstractTypes_StringArray">
+    <process:parameterType>pKey:{http://tempuri.org/AbstractTypes}StringArray</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_2_Login_Atomic_output_Body__http___tempuri.org__base64Binary">
+    <process:parameterType>Body:{http://tempuri.org/}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_3_Logout_Atomic_input_pKey__http___tempuri.org_AbstractTypes_StringArray">
+    <process:parameterType>pKey:{http://tempuri.org/AbstractTypes}StringArray</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_3_Logout_Atomic_output_Body__http___tempuri.org__base64Binary">
+    <process:parameterType>Body:{http://tempuri.org/}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_4_SendSMTPMail_Atomic_input_pfrom__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pfrom:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_4_SendSMTPMail_Atomic_input_pData__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pData:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_4_SendSMTPMail_Atomic_input_pTo__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pTo:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_4_SendSMTPMail_Atomic_input_pSubject__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pSubject:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_4_SendSMTPMail_Atomic_output_Body__http___tempuri.org__int">
+    <process:parameterType>Body:{http://tempuri.org/}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_5_SendATMail_Atomic_input_pOrganization__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pOrganization:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_5_SendATMail_Atomic_input_pComposeUTCDateTime__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pComposeUTCDateTime:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_5_SendATMail_Atomic_input_pMessage__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pMessage:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_5_SendATMail_Atomic_input_pAccountID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pAccountID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_5_SendATMail_Atomic_input_pRecipientUnitIDs__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pRecipientUnitIDs:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_5_SendATMail_Atomic_input_pSubject__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pSubject:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_5_SendATMail_Atomic_output_Body__http___tempuri.org__int">
+    <process:parameterType>Body:{http://tempuri.org/}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_6_GetUnitMessages_Atomic_input_pUnitID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pUnitID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_6_GetUnitMessages_Atomic_input_pSince__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pSince:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_6_GetUnitMessages_Atomic_input_Credentials__http___tempuri.org_AbstractTypes_StringArray">
+    <process:parameterType>Credentials:{http://tempuri.org/AbstractTypes}StringArray</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_6_GetUnitMessages_Atomic_output_Body__http___tempuri.org__ArrayOfStUnitEMail">
+    <process:parameterType>Body:{http://tempuri.org/}ArrayOfStUnitEMail</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_7_GetUnitMessages2_Atomic_input_pUnitID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pUnitID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_7_GetUnitMessages2_Atomic_input_pSince__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pSince:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_7_GetUnitMessages2_Atomic_input_Credentials__http___tempuri.org_AbstractTypes_StringArray">
+    <process:parameterType>Credentials:{http://tempuri.org/AbstractTypes}StringArray</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_7_GetUnitMessages2_Atomic_output_Body__http___tempuri.org__ArrayOfStUnitEMail2">
+    <process:parameterType>Body:{http://tempuri.org/}ArrayOfStUnitEMail2</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_8_PDecodeKey_Atomic_input_parameters__http___tempuri.org__PDecodeKey">
+    <process:parameterType>parameters:{http://tempuri.org/}PDecodeKey</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_8_PDecodeKey_Atomic_output_parameters__http___tempuri.org__PDecodeKeyResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}PDecodeKeyResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_9_GetKey_Atomic_input_parameters__http___tempuri.org__GetKey">
+    <process:parameterType>parameters:{http://tempuri.org/}GetKey</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_9_GetKey_Atomic_output_parameters__http___tempuri.org__GetKeyResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetKeyResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_10_Login_Atomic_input_parameters__http___tempuri.org__Login">
+    <process:parameterType>parameters:{http://tempuri.org/}Login</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_10_Login_Atomic_output_parameters__http___tempuri.org__LoginResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}LoginResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_11_Logout_Atomic_input_parameters__http___tempuri.org__Logout">
+    <process:parameterType>parameters:{http://tempuri.org/}Logout</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_11_Logout_Atomic_output_parameters__http___tempuri.org__LogoutResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}LogoutResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_12_SendSMTPMail_Atomic_input_parameters__http___tempuri.org__SendSMTPMail">
+    <process:parameterType>parameters:{http://tempuri.org/}SendSMTPMail</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_12_SendSMTPMail_Atomic_output_parameters__http___tempuri.org__SendSMTPMailResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}SendSMTPMailResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_13_SendATMail_Atomic_input_parameters__http___tempuri.org__SendATMail">
+    <process:parameterType>parameters:{http://tempuri.org/}SendATMail</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_13_SendATMail_Atomic_output_parameters__http___tempuri.org__SendATMailResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}SendATMailResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_14_GetUnitMessages_Atomic_input_parameters__http___tempuri.org__GetUnitMessages">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUnitMessages</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_14_GetUnitMessages_Atomic_output_parameters__http___tempuri.org__GetUnitMessagesResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUnitMessagesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_15_GetUnitMessages2_Atomic_input_parameters__http___tempuri.org__GetUnitMessages2">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUnitMessages2</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_15_GetUnitMessages2_Atomic_output_parameters__http___tempuri.org__GetUnitMessages2Response">
+    <process:parameterType>parameters:{http://tempuri.org/}GetUnitMessages2Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_16_PDecodeKey_Atomic_input_pCodeKey__http___tempuri.org_AbstractTypes_StringArray">
+    <process:parameterType>pCodeKey:{http://tempuri.org/AbstractTypes}StringArray</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_16_PDecodeKey_Atomic_output_Body__http___tempuri.org__string">
+    <process:parameterType>Body:{http://tempuri.org/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_17_GetKey_Atomic_input_pAccount__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pAccount:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_17_GetKey_Atomic_input_pUser__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pUser:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_17_GetKey_Atomic_output_Body__http___tempuri.org__base64Binary">
+    <process:parameterType>Body:{http://tempuri.org/}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_18_Login_Atomic_input_pPW__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pPW:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_18_Login_Atomic_input_pKey__http___tempuri.org_AbstractTypes_StringArray">
+    <process:parameterType>pKey:{http://tempuri.org/AbstractTypes}StringArray</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_18_Login_Atomic_output_Body__http___tempuri.org__base64Binary">
+    <process:parameterType>Body:{http://tempuri.org/}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_19_Logout_Atomic_input_pKey__http___tempuri.org_AbstractTypes_StringArray">
+    <process:parameterType>pKey:{http://tempuri.org/AbstractTypes}StringArray</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_19_Logout_Atomic_output_Body__http___tempuri.org__base64Binary">
+    <process:parameterType>Body:{http://tempuri.org/}base64Binary</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_20_SendSMTPMail_Atomic_input_pfrom__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pfrom:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_20_SendSMTPMail_Atomic_input_pData__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pData:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_20_SendSMTPMail_Atomic_input_pTo__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pTo:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_20_SendSMTPMail_Atomic_input_pSubject__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pSubject:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_20_SendSMTPMail_Atomic_output_Body__http___tempuri.org__int">
+    <process:parameterType>Body:{http://tempuri.org/}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_21_SendATMail_Atomic_input_pOrganization__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pOrganization:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_21_SendATMail_Atomic_input_pComposeUTCDateTime__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pComposeUTCDateTime:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_21_SendATMail_Atomic_input_pMessage__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pMessage:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_21_SendATMail_Atomic_input_pAccountID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pAccountID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_21_SendATMail_Atomic_input_pRecipientUnitIDs__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pRecipientUnitIDs:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_21_SendATMail_Atomic_input_pSubject__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pSubject:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_21_SendATMail_Atomic_output_Body__http___tempuri.org__int">
+    <process:parameterType>Body:{http://tempuri.org/}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_22_GetUnitMessages_Atomic_input_pUnitID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pUnitID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_22_GetUnitMessages_Atomic_input_pSince__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pSince:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_22_GetUnitMessages_Atomic_input_Credentials__http___tempuri.org_AbstractTypes_StringArray">
+    <process:parameterType>Credentials:{http://tempuri.org/AbstractTypes}StringArray</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_22_GetUnitMessages_Atomic_output_Body__http___tempuri.org__ArrayOfStUnitEMail">
+    <process:parameterType>Body:{http://tempuri.org/}ArrayOfStUnitEMail</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service1_23_GetUnitMessages2_Atomic_input_pUnitID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pUnitID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_23_GetUnitMessages2_Atomic_input_pSince__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>pSince:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="Service1_23_GetUnitMessages2_Atomic_input_Credentials__http___tempuri.org_AbstractTypes_StringArray">
+    <process:parameterType>Credentials:{http://tempuri.org/AbstractTypes}StringArray</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service1_23_GetUnitMessages2_Atomic_output_Body__http___tempuri.org__ArrayOfStUnitEMail2">
+    <process:parameterType>Body:{http://tempuri.org/}ArrayOfStUnitEMail2</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Service1_0_PDecodeKey_Atomic">
+    <process:hasName>PDecodeKey</process:hasName>
+    <process:hasInput rdf:resource="#Service1_0_PDecodeKey_Atomic_input_pCodeKey__http___tempuri.org_AbstractTypes_StringArray"/>
+    <process:hasOutput rdf:resource="#Service1_0_PDecodeKey_Atomic_output_Body__http___tempuri.org__string"/>
+    <process:hasPrecondition>The input parameter pCodeKey must be a valid array of strings conforming to the {http://tempuri.org/AbstractTypes}StringArray schema.</process:hasPrecondition>
+    <process:hasEffect>The operation PDecodeKey will return a string value in the Body output conforming to the {http://tempuri.org/}string schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_1_GetKey_Atomic">
+    <process:hasName>GetKey</process:hasName>
+    <process:hasInput rdf:resource="#Service1_1_GetKey_Atomic_input_pAccount__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_1_GetKey_Atomic_input_pUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Service1_1_GetKey_Atomic_output_Body__http___tempuri.org__base64Binary"/>
+    <process:hasPrecondition>The web service requires valid input parameters for the account and user in string format.</process:hasPrecondition>
+    <process:hasEffect>The web service returns a base64 encoded binary key in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_2_Login_Atomic">
+    <process:hasName>Login</process:hasName>
+    <process:hasInput rdf:resource="#Service1_2_Login_Atomic_input_pPW__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_2_Login_Atomic_input_pKey__http___tempuri.org_AbstractTypes_StringArray"/>
+    <process:hasOutput rdf:resource="#Service1_2_Login_Atomic_output_Body__http___tempuri.org__base64Binary"/>
+    <process:hasPrecondition>The user must provide a valid password and key in order to login.</process:hasPrecondition>
+    <process:hasEffect>Upon successful login, a base64 encoded binary response will be returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_3_Logout_Atomic">
+    <process:hasName>Logout</process:hasName>
+    <process:hasInput rdf:resource="#Service1_3_Logout_Atomic_input_pKey__http___tempuri.org_AbstractTypes_StringArray"/>
+    <process:hasOutput rdf:resource="#Service1_3_Logout_Atomic_output_Body__http___tempuri.org__base64Binary"/>
+    <process:hasPrecondition>The user must be currently logged in with a valid session key.</process:hasPrecondition>
+    <process:hasEffect>The user's session will be terminated and they will be logged out of the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_4_SendSMTPMail_Atomic">
+    <process:hasName>SendSMTPMail</process:hasName>
+    <process:hasInput rdf:resource="#Service1_4_SendSMTPMail_Atomic_input_pfrom__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_4_SendSMTPMail_Atomic_input_pData__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_4_SendSMTPMail_Atomic_input_pTo__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_4_SendSMTPMail_Atomic_input_pSubject__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Service1_4_SendSMTPMail_Atomic_output_Body__http___tempuri.org__int"/>
+    <process:hasPrecondition>The input parameters pfrom, pData, pTo, and pSubject must be provided in the specified data types.</process:hasPrecondition>
+    <process:hasEffect>The operation will send an email with the specified data and return an integer value as the output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_5_SendATMail_Atomic">
+    <process:hasName>SendATMail</process:hasName>
+    <process:hasInput rdf:resource="#Service1_5_SendATMail_Atomic_input_pOrganization__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_5_SendATMail_Atomic_input_pComposeUTCDateTime__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_5_SendATMail_Atomic_input_pMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_5_SendATMail_Atomic_input_pAccountID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_5_SendATMail_Atomic_input_pRecipientUnitIDs__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_5_SendATMail_Atomic_input_pSubject__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Service1_5_SendATMail_Atomic_output_Body__http___tempuri.org__int"/>
+    <process:hasPrecondition>The input parameters must be valid and properly formatted according to the specified data types.</process:hasPrecondition>
+    <process:hasEffect>The email with the specified details is sent successfully, and the response contains an integer value as confirmation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_6_GetUnitMessages_Atomic">
+    <process:hasName>GetUnitMessages</process:hasName>
+    <process:hasInput rdf:resource="#Service1_6_GetUnitMessages_Atomic_input_pUnitID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_6_GetUnitMessages_Atomic_input_pSince__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_6_GetUnitMessages_Atomic_input_Credentials__http___tempuri.org_AbstractTypes_StringArray"/>
+    <process:hasOutput rdf:resource="#Service1_6_GetUnitMessages_Atomic_output_Body__http___tempuri.org__ArrayOfStUnitEMail"/>
+    <process:hasPrecondition>The user must provide a valid unit ID, a timestamp for the messages since, and valid credentials in the form of a string array.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of unit email messages based on the provided unit ID and timestamp, accessible with the provided credentials.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_7_GetUnitMessages2_Atomic">
+    <process:hasName>GetUnitMessages2</process:hasName>
+    <process:hasInput rdf:resource="#Service1_7_GetUnitMessages2_Atomic_input_pUnitID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_7_GetUnitMessages2_Atomic_input_pSince__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_7_GetUnitMessages2_Atomic_input_Credentials__http___tempuri.org_AbstractTypes_StringArray"/>
+    <process:hasOutput rdf:resource="#Service1_7_GetUnitMessages2_Atomic_output_Body__http___tempuri.org__ArrayOfStUnitEMail2"/>
+    <process:hasPrecondition>The user must provide a valid unit ID, a timestamp, and valid credentials in order to retrieve unit messages.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of unit email messages that have been received since the specified timestamp.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_8_PDecodeKey_Atomic">
+    <process:hasName>PDecodeKey</process:hasName>
+    <process:hasInput rdf:resource="#Service1_8_PDecodeKey_Atomic_input_parameters__http___tempuri.org__PDecodeKey"/>
+    <process:hasOutput rdf:resource="#Service1_8_PDecodeKey_Atomic_output_parameters__http___tempuri.org__PDecodeKeyResponse"/>
+    <process:hasPrecondition>The input parameter for PDecodeKey must be provided in the specified format {http://tempuri.org/}.</process:hasPrecondition>
+    <process:hasEffect>The output parameter for PDecodeKeyResponse will be returned in the specified format {http://tempuri.org/}.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_9_GetKey_Atomic">
+    <process:hasName>GetKey</process:hasName>
+    <process:hasInput rdf:resource="#Service1_9_GetKey_Atomic_input_parameters__http___tempuri.org__GetKey"/>
+    <process:hasOutput rdf:resource="#Service1_9_GetKey_Atomic_output_parameters__http___tempuri.org__GetKeyResponse"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The GetKey operation will retrieve a key as specified in the input parameters and return it in the GetKeyResponse output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_10_Login_Atomic">
+    <process:hasName>Login</process:hasName>
+    <process:hasInput rdf:resource="#Service1_10_Login_Atomic_input_parameters__http___tempuri.org__Login"/>
+    <process:hasOutput rdf:resource="#Service1_10_Login_Atomic_output_parameters__http___tempuri.org__LoginResponse"/>
+    <process:hasPrecondition>The user must provide valid login credentials in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The system will authenticate the user and provide a response indicating the success or failure of the login attempt.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_11_Logout_Atomic">
+    <process:hasName>Logout</process:hasName>
+    <process:hasInput rdf:resource="#Service1_11_Logout_Atomic_input_parameters__http___tempuri.org__Logout"/>
+    <process:hasOutput rdf:resource="#Service1_11_Logout_Atomic_output_parameters__http___tempuri.org__LogoutResponse"/>
+    <process:hasPrecondition>The user must be currently logged in to the system.</process:hasPrecondition>
+    <process:hasEffect>The user is successfully logged out of the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_12_SendSMTPMail_Atomic">
+    <process:hasName>SendSMTPMail</process:hasName>
+    <process:hasInput rdf:resource="#Service1_12_SendSMTPMail_Atomic_input_parameters__http___tempuri.org__SendSMTPMail"/>
+    <process:hasOutput rdf:resource="#Service1_12_SendSMTPMail_Atomic_output_parameters__http___tempuri.org__SendSMTPMailResponse"/>
+    <process:hasPrecondition>The input parameters for sending an SMTP mail must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will send an SMTP mail and return a response in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_13_SendATMail_Atomic">
+    <process:hasName>SendATMail</process:hasName>
+    <process:hasInput rdf:resource="#Service1_13_SendATMail_Atomic_input_parameters__http___tempuri.org__SendATMail"/>
+    <process:hasOutput rdf:resource="#Service1_13_SendATMail_Atomic_output_parameters__http___tempuri.org__SendATMailResponse"/>
+    <process:hasPrecondition>The required input parameters for sending an email using the SendATMail web service must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The SendATMail web service will process the input parameters and generate a response in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_14_GetUnitMessages_Atomic">
+    <process:hasName>GetUnitMessages</process:hasName>
+    <process:hasInput rdf:resource="#Service1_14_GetUnitMessages_Atomic_input_parameters__http___tempuri.org__GetUnitMessages"/>
+    <process:hasOutput rdf:resource="#Service1_14_GetUnitMessages_Atomic_output_parameters__http___tempuri.org__GetUnitMessagesResponse"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>Retrieves unit messages based on the provided parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_15_GetUnitMessages2_Atomic">
+    <process:hasName>GetUnitMessages2</process:hasName>
+    <process:hasInput rdf:resource="#Service1_15_GetUnitMessages2_Atomic_input_parameters__http___tempuri.org__GetUnitMessages2"/>
+    <process:hasOutput rdf:resource="#Service1_15_GetUnitMessages2_Atomic_output_parameters__http___tempuri.org__GetUnitMessages2Response"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetUnitMessages2 must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the unit messages based on the provided input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_16_PDecodeKey_Atomic">
+    <process:hasName>PDecodeKey</process:hasName>
+    <process:hasInput rdf:resource="#Service1_16_PDecodeKey_Atomic_input_pCodeKey__http___tempuri.org_AbstractTypes_StringArray"/>
+    <process:hasOutput rdf:resource="#Service1_16_PDecodeKey_Atomic_output_Body__http___tempuri.org__string"/>
+    <process:hasPrecondition>The input parameter pCodeKey must be a valid array of strings in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation PDecodeKey will return a string value in the Body output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_17_GetKey_Atomic">
+    <process:hasName>GetKey</process:hasName>
+    <process:hasInput rdf:resource="#Service1_17_GetKey_Atomic_input_pAccount__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_17_GetKey_Atomic_input_pUser__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Service1_17_GetKey_Atomic_output_Body__http___tempuri.org__base64Binary"/>
+    <process:hasPrecondition>The user must provide a valid account and user ID as input parameters.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the key associated with the provided account and user ID in base64 binary format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_18_Login_Atomic">
+    <process:hasName>Login</process:hasName>
+    <process:hasInput rdf:resource="#Service1_18_Login_Atomic_input_pPW__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_18_Login_Atomic_input_pKey__http___tempuri.org_AbstractTypes_StringArray"/>
+    <process:hasOutput rdf:resource="#Service1_18_Login_Atomic_output_Body__http___tempuri.org__base64Binary"/>
+    <process:hasPrecondition>The user must provide a valid password and key in order to authenticate for login.</process:hasPrecondition>
+    <process:hasEffect>Upon successful authentication, a base64 encoded binary response containing the user's data will be returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_19_Logout_Atomic">
+    <process:hasName>Logout</process:hasName>
+    <process:hasInput rdf:resource="#Service1_19_Logout_Atomic_input_pKey__http___tempuri.org_AbstractTypes_StringArray"/>
+    <process:hasOutput rdf:resource="#Service1_19_Logout_Atomic_output_Body__http___tempuri.org__base64Binary"/>
+    <process:hasPrecondition>The user must be currently logged in to the system.</process:hasPrecondition>
+    <process:hasEffect>The user is successfully logged out and their session is terminated.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_20_SendSMTPMail_Atomic">
+    <process:hasName>SendSMTPMail</process:hasName>
+    <process:hasInput rdf:resource="#Service1_20_SendSMTPMail_Atomic_input_pfrom__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_20_SendSMTPMail_Atomic_input_pData__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_20_SendSMTPMail_Atomic_input_pTo__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_20_SendSMTPMail_Atomic_input_pSubject__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Service1_20_SendSMTPMail_Atomic_output_Body__http___tempuri.org__int"/>
+    <process:hasPrecondition>The input parameters pfrom, pData, pTo, and pSubject must be provided in the specified XML schema format.</process:hasPrecondition>
+    <process:hasEffect>The operation will send an SMTP email with the specified data and return an integer as the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_21_SendATMail_Atomic">
+    <process:hasName>SendATMail</process:hasName>
+    <process:hasInput rdf:resource="#Service1_21_SendATMail_Atomic_input_pOrganization__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_21_SendATMail_Atomic_input_pComposeUTCDateTime__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_21_SendATMail_Atomic_input_pMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_21_SendATMail_Atomic_input_pAccountID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_21_SendATMail_Atomic_input_pRecipientUnitIDs__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_21_SendATMail_Atomic_input_pSubject__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#Service1_21_SendATMail_Atomic_output_Body__http___tempuri.org__int"/>
+    <process:hasPrecondition>The required input parameters for sending an email, such as organization, date, message, account ID, recipient unit IDs, and subject, must be provided in the specified data format.</process:hasPrecondition>
+    <process:hasEffect>The operation will send an email and return an integer value as a response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_22_GetUnitMessages_Atomic">
+    <process:hasName>GetUnitMessages</process:hasName>
+    <process:hasInput rdf:resource="#Service1_22_GetUnitMessages_Atomic_input_pUnitID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_22_GetUnitMessages_Atomic_input_pSince__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_22_GetUnitMessages_Atomic_input_Credentials__http___tempuri.org_AbstractTypes_StringArray"/>
+    <process:hasOutput rdf:resource="#Service1_22_GetUnitMessages_Atomic_output_Body__http___tempuri.org__ArrayOfStUnitEMail"/>
+    <process:hasPrecondition>The user must provide a valid unit ID, a timestamp for the messages since, and valid credentials in the form of a StringArray.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of unit email messages based on the provided unit ID and timestamp.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service1_23_GetUnitMessages2_Atomic">
+    <process:hasName>GetUnitMessages2</process:hasName>
+    <process:hasInput rdf:resource="#Service1_23_GetUnitMessages2_Atomic_input_pUnitID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_23_GetUnitMessages2_Atomic_input_pSince__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#Service1_23_GetUnitMessages2_Atomic_input_Credentials__http___tempuri.org_AbstractTypes_StringArray"/>
+    <process:hasOutput rdf:resource="#Service1_23_GetUnitMessages2_Atomic_output_Body__http___tempuri.org__ArrayOfStUnitEMail2"/>
+    <process:hasPrecondition>The user must provide a valid unit ID, a valid timestamp, and valid credentials in order to retrieve unit messages.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of unit emails based on the provided unit ID and timestamp.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Service1_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_0_PDecodeKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_1_GetKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_2_Login_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_3_Logout_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_4_SendSMTPMail_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_5_SendATMail_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_6_GetUnitMessages_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_7_GetUnitMessages2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_8_PDecodeKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_9_GetKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_10_Login_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_11_Logout_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_12_SendSMTPMail_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_13_SendATMail_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_14_GetUnitMessages_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_15_GetUnitMessages2_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_16_PDecodeKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_17_GetKey_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_18_Login_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_19_Logout_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_20_SendSMTPMail_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_21_SendATMail_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_22_GetUnitMessages_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service1_23_GetUnitMessages2_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_0_PDecodeKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_0_PDecodeKey_Atomic"/>
+    <grounding:wsdlOperationName>PDecodeKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PDecodeKeyHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PDecodeKeyHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_1_GetKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_1_GetKey_Atomic"/>
+    <grounding:wsdlOperationName>GetKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeyHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeyHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_2_Login_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_2_Login_Atomic"/>
+    <grounding:wsdlOperationName>Login</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LoginHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LoginHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_3_Logout_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_3_Logout_Atomic"/>
+    <grounding:wsdlOperationName>Logout</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoutHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoutHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_4_SendSMTPMail_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_4_SendSMTPMail_Atomic"/>
+    <grounding:wsdlOperationName>SendSMTPMail</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMTPMailHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMTPMailHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_5_SendATMail_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_5_SendATMail_Atomic"/>
+    <grounding:wsdlOperationName>SendATMail</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendATMailHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendATMailHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_6_GetUnitMessages_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_6_GetUnitMessages_Atomic"/>
+    <grounding:wsdlOperationName>GetUnitMessages</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUnitMessagesHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUnitMessagesHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_7_GetUnitMessages2_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_7_GetUnitMessages2_Atomic"/>
+    <grounding:wsdlOperationName>GetUnitMessages2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUnitMessages2HttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUnitMessages2HttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_8_PDecodeKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_8_PDecodeKey_Atomic"/>
+    <grounding:wsdlOperationName>PDecodeKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1Soap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1Soap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PDecodeKeySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PDecodeKeySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_9_GetKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_9_GetKey_Atomic"/>
+    <grounding:wsdlOperationName>GetKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1Soap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1Soap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_10_Login_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_10_Login_Atomic"/>
+    <grounding:wsdlOperationName>Login</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1Soap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1Soap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LoginSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LoginSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_11_Logout_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_11_Logout_Atomic"/>
+    <grounding:wsdlOperationName>Logout</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1Soap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1Soap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoutSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoutSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_12_SendSMTPMail_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_12_SendSMTPMail_Atomic"/>
+    <grounding:wsdlOperationName>SendSMTPMail</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1Soap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1Soap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMTPMailSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMTPMailSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_13_SendATMail_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_13_SendATMail_Atomic"/>
+    <grounding:wsdlOperationName>SendATMail</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1Soap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1Soap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendATMailSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendATMailSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_14_GetUnitMessages_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_14_GetUnitMessages_Atomic"/>
+    <grounding:wsdlOperationName>GetUnitMessages</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1Soap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1Soap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUnitMessagesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUnitMessagesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_15_GetUnitMessages2_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_15_GetUnitMessages2_Atomic"/>
+    <grounding:wsdlOperationName>GetUnitMessages2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1Soap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1Soap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUnitMessages2SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUnitMessages2SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_16_PDecodeKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_16_PDecodeKey_Atomic"/>
+    <grounding:wsdlOperationName>PDecodeKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PDecodeKeyHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PDecodeKeyHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_17_GetKey_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_17_GetKey_Atomic"/>
+    <grounding:wsdlOperationName>GetKey</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetKeyHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetKeyHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_18_Login_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_18_Login_Atomic"/>
+    <grounding:wsdlOperationName>Login</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LoginHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LoginHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_19_Logout_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_19_Logout_Atomic"/>
+    <grounding:wsdlOperationName>Logout</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoutHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoutHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_20_SendSMTPMail_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_20_SendSMTPMail_Atomic"/>
+    <grounding:wsdlOperationName>SendSMTPMail</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMTPMailHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMTPMailHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_21_SendATMail_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_21_SendATMail_Atomic"/>
+    <grounding:wsdlOperationName>SendATMail</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendATMailHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendATMailHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_22_GetUnitMessages_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_22_GetUnitMessages_Atomic"/>
+    <grounding:wsdlOperationName>GetUnitMessages</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUnitMessagesHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUnitMessagesHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service1_23_GetUnitMessages2_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service1_23_GetUnitMessages2_Atomic"/>
+    <grounding:wsdlOperationName>GetUnitMessages2</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>Service1HttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Service1HttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/4211_4210.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUnitMessages2HttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUnitMessages2HttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="DoFooService">
+    <service:presents rdf:resource="#DoFooService_Profile"/>
+    <service:describedBy rdf:resource="#DoFooService_Composite"/>
+    <service:supports rdf:resource="#DoFooService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="DoFooService_Profile">
+    <profile:serviceName>DoFooService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#DoFooService"/>
+    <profile:hasProcess rdf:resource="#DoFooService_0_DoFoo_Atomic"/>
+    <profile:hasInput rdf:resource="#DoFooService_0_DoFoo_Atomic_input_parameters__http___sample.org_pocketsoap_DoFoo"/>
+    <profile:hasOutput rdf:resource="#DoFooService_0_DoFoo_Atomic_output_parameters__http___sample.org_pocketsoap_DoFooResponse"/>
+    <profile:hasPrecondition>The input parameters for the DoFoo operation must be provided in the specified format from the namespace http://sample.org/pocketsoap.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for the DoFoo operation will be returned in the specified format from the namespace http://sample.org/pocketsoap.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="DoFooService_Composite">
+    <process:composedOf rdf:resource="#DoFooService_0_DoFoo_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="DoFooService_0_DoFoo_Atomic_input_parameters__http___sample.org_pocketsoap_DoFoo">
+    <process:parameterType>parameters:{http://sample.org/pocketsoap}DoFoo</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DoFooService_0_DoFoo_Atomic_output_parameters__http___sample.org_pocketsoap_DoFooResponse">
+    <process:parameterType>parameters:{http://sample.org/pocketsoap}DoFooResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="DoFooService_0_DoFoo_Atomic">
+    <process:hasName>DoFoo</process:hasName>
+    <process:hasInput rdf:resource="#DoFooService_0_DoFoo_Atomic_input_parameters__http___sample.org_pocketsoap_DoFoo"/>
+    <process:hasOutput rdf:resource="#DoFooService_0_DoFoo_Atomic_output_parameters__http___sample.org_pocketsoap_DoFooResponse"/>
+    <process:hasPrecondition>The input parameters for the DoFoo operation must be provided in the specified format from the namespace http://sample.org/pocketsoap.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for the DoFoo operation will be returned in the specified format from the namespace http://sample.org/pocketsoap.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="DoFooService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DoFooService_0_DoFoo_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DoFooService_0_DoFoo_Grounding">
+    <grounding:owlsProcess rdf:resource="#DoFooService_0_DoFoo_Atomic"/>
+    <grounding:wsdlOperationName>DoFoo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>Soap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5759_5758.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DoFooRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DoFooResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

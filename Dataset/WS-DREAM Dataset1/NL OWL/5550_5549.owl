@@ -1,0 +1,434 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="order">
+    <service:presents rdf:resource="#order_Profile"/>
+    <service:describedBy rdf:resource="#order_Composite"/>
+    <service:supports rdf:resource="#order_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="order_Profile">
+    <profile:serviceName>order</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#order"/>
+    <profile:hasProcess rdf:resource="#order_0_createOrder_Atomic"/>
+    <profile:hasInput rdf:resource="#order_0_createOrder_Atomic_input_Order__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#order_0_createOrder_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#order_0_createOrder_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_0_createOrder_Atomic_output_downloadxml__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_0_createOrder_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_0_createOrder_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_0_createOrder_Atomic_output_orderNum__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user must provide the necessary input parameters including Order, externalOrder, and secret in the specified data format.</profile:hasPrecondition>
+    <profile:hasResult>Upon successful execution, the operation will create a new order, generate an order number, and provide downloadxml, returnStatus, and returnMessage as output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#order_1_isProductDownloaded_Atomic"/>
+    <profile:hasInput rdf:resource="#order_1_isProductDownloaded_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#order_1_isProductDownloaded_Atomic_input_ref__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#order_1_isProductDownloaded_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_1_isProductDownloaded_Atomic_output_isDownloaded__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasOutput rdf:resource="#order_1_isProductDownloaded_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_1_isProductDownloaded_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The externalOrder, ref, and secret parameters must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a boolean value indicating whether the product associated with the provided parameters has been downloaded, along with status and message information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#order_2_cancelOrder_Atomic"/>
+    <profile:hasInput rdf:resource="#order_2_cancelOrder_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#order_2_cancelOrder_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_2_cancelOrder_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_2_cancelOrder_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The externalOrder and secret parameters must be provided for the cancelOrder operation to be executed.</profile:hasPrecondition>
+    <profile:hasResult>The cancelOrder operation will return a status and message indicating the outcome of the cancellation request.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#order_3_cancelSubscription_Atomic"/>
+    <profile:hasInput rdf:resource="#order_3_cancelSubscription_Atomic_input_partnerOrderNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#order_3_cancelSubscription_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#order_3_cancelSubscription_Atomic_input_subscriptionId__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#order_3_cancelSubscription_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_3_cancelSubscription_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The user must provide a valid partner order number, secret key, and subscription ID for cancellation.</profile:hasPrecondition>
+    <profile:hasResult>The subscription associated with the provided details will be canceled, and the status and message of the cancellation will be returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#order_4_getCrossUpSell_Atomic"/>
+    <profile:hasInput rdf:resource="#order_4_getCrossUpSell_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#order_4_getCrossUpSell_Atomic_input_productDescriptionLang__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#order_4_getCrossUpSell_Atomic_input_cart__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_4_getCrossUpSell_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_4_getCrossUpSell_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_4_getCrossUpSell_Atomic_output_productList__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The user must provide a valid secret key, product description language, and cart information for the request to be processed.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a status, message, and a list of cross-selling products related to the items in the cart.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#order_5_getOrderData_Atomic"/>
+    <profile:hasInput rdf:resource="#order_5_getOrderData_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#order_5_getOrderData_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_5_getOrderData_Atomic_output_downloadxml__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_5_getOrderData_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_5_getOrderData_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_5_getOrderData_Atomic_output_orderNum__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user must provide a valid external order identifier and a secret key for authentication.</profile:hasPrecondition>
+    <profile:hasResult>The system will retrieve the order data associated with the provided external order identifier and return it along with the status, message, and order number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#order_6_getAllOrders_Atomic"/>
+    <profile:hasInput rdf:resource="#order_6_getAllOrders_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#order_6_getAllOrders_Atomic_input_email__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_6_getAllOrders_Atomic_output_downloadxml__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_6_getAllOrders_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_6_getAllOrders_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_6_getAllOrders_Atomic_output_orderNum__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user must provide a valid secret and email to access the getAllOrders operation.</profile:hasPrecondition>
+    <profile:hasResult>The getAllOrders operation will return the XML file for download along with the status, message, and order number associated with the orders.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#order_7_updateDownloadTime_Atomic"/>
+    <profile:hasInput rdf:resource="#order_7_updateDownloadTime_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#order_7_updateDownloadTime_Atomic_input_days__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#order_7_updateDownloadTime_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_7_updateDownloadTime_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_7_updateDownloadTime_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#order_7_updateDownloadTime_Atomic_output_newDownloadEndDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The externalOrder must be a valid string, days must be a non-negative integer, and secret must be a valid string.</profile:hasPrecondition>
+    <profile:hasResult>Updates the download end date based on the input days and returns the status, message, and the new download end date.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="order_Composite">
+    <process:composedOf rdf:resource="#order_0_createOrder_Atomic"/>
+    <process:composedOf rdf:resource="#order_1_isProductDownloaded_Atomic"/>
+    <process:composedOf rdf:resource="#order_2_cancelOrder_Atomic"/>
+    <process:composedOf rdf:resource="#order_3_cancelSubscription_Atomic"/>
+    <process:composedOf rdf:resource="#order_4_getCrossUpSell_Atomic"/>
+    <process:composedOf rdf:resource="#order_5_getOrderData_Atomic"/>
+    <process:composedOf rdf:resource="#order_6_getAllOrders_Atomic"/>
+    <process:composedOf rdf:resource="#order_7_updateDownloadTime_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="order_0_createOrder_Atomic_input_Order__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Order:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="order_0_createOrder_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>externalOrder:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="order_0_createOrder_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>secret:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="order_0_createOrder_Atomic_output_downloadxml__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>downloadxml:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_0_createOrder_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnStatus:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_0_createOrder_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnMessage:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_0_createOrder_Atomic_output_orderNum__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>orderNum:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="order_1_isProductDownloaded_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>externalOrder:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="order_1_isProductDownloaded_Atomic_input_ref__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ref:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="order_1_isProductDownloaded_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>secret:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="order_1_isProductDownloaded_Atomic_output_isDownloaded__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>isDownloaded:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_1_isProductDownloaded_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnStatus:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_1_isProductDownloaded_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnMessage:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="order_2_cancelOrder_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>externalOrder:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="order_2_cancelOrder_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>secret:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="order_2_cancelOrder_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnStatus:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_2_cancelOrder_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnMessage:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="order_3_cancelSubscription_Atomic_input_partnerOrderNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>partnerOrderNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="order_3_cancelSubscription_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>secret:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="order_3_cancelSubscription_Atomic_input_subscriptionId__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>subscriptionId:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="order_3_cancelSubscription_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnStatus:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_3_cancelSubscription_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnMessage:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="order_4_getCrossUpSell_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>secret:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="order_4_getCrossUpSell_Atomic_input_productDescriptionLang__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>productDescriptionLang:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="order_4_getCrossUpSell_Atomic_input_cart__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>cart:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="order_4_getCrossUpSell_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnStatus:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_4_getCrossUpSell_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnMessage:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_4_getCrossUpSell_Atomic_output_productList__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>productList:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="order_5_getOrderData_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>externalOrder:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="order_5_getOrderData_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>secret:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="order_5_getOrderData_Atomic_output_downloadxml__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>downloadxml:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_5_getOrderData_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnStatus:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_5_getOrderData_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnMessage:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_5_getOrderData_Atomic_output_orderNum__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>orderNum:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="order_6_getAllOrders_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>secret:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="order_6_getAllOrders_Atomic_input_email__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>email:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="order_6_getAllOrders_Atomic_output_downloadxml__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>downloadxml:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_6_getAllOrders_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnStatus:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_6_getAllOrders_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnMessage:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_6_getAllOrders_Atomic_output_orderNum__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>orderNum:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="order_7_updateDownloadTime_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>externalOrder:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="order_7_updateDownloadTime_Atomic_input_days__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>days:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="order_7_updateDownloadTime_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>secret:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="order_7_updateDownloadTime_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnStatus:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_7_updateDownloadTime_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnMessage:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="order_7_updateDownloadTime_Atomic_output_newDownloadEndDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>newDownloadEndDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="order_0_createOrder_Atomic">
+    <process:hasName>createOrder</process:hasName>
+    <process:hasInput rdf:resource="#order_0_createOrder_Atomic_input_Order__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#order_0_createOrder_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#order_0_createOrder_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_0_createOrder_Atomic_output_downloadxml__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_0_createOrder_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_0_createOrder_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_0_createOrder_Atomic_output_orderNum__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user must provide the necessary input parameters including Order, externalOrder, and secret in the specified data format.</process:hasPrecondition>
+    <process:hasEffect>Upon successful execution, the operation will create a new order, generate an order number, and provide downloadxml, returnStatus, and returnMessage as output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="order_1_isProductDownloaded_Atomic">
+    <process:hasName>isProductDownloaded</process:hasName>
+    <process:hasInput rdf:resource="#order_1_isProductDownloaded_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#order_1_isProductDownloaded_Atomic_input_ref__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#order_1_isProductDownloaded_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_1_isProductDownloaded_Atomic_output_isDownloaded__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasOutput rdf:resource="#order_1_isProductDownloaded_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_1_isProductDownloaded_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The externalOrder, ref, and secret parameters must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a boolean value indicating whether the product associated with the provided parameters has been downloaded, along with status and message information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="order_2_cancelOrder_Atomic">
+    <process:hasName>cancelOrder</process:hasName>
+    <process:hasInput rdf:resource="#order_2_cancelOrder_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#order_2_cancelOrder_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_2_cancelOrder_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_2_cancelOrder_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The externalOrder and secret parameters must be provided for the cancelOrder operation to be executed.</process:hasPrecondition>
+    <process:hasEffect>The cancelOrder operation will return a status and message indicating the outcome of the cancellation request.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="order_3_cancelSubscription_Atomic">
+    <process:hasName>cancelSubscription</process:hasName>
+    <process:hasInput rdf:resource="#order_3_cancelSubscription_Atomic_input_partnerOrderNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#order_3_cancelSubscription_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#order_3_cancelSubscription_Atomic_input_subscriptionId__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#order_3_cancelSubscription_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_3_cancelSubscription_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The user must provide a valid partner order number, secret key, and subscription ID for cancellation.</process:hasPrecondition>
+    <process:hasEffect>The subscription associated with the provided details will be canceled, and the status and message of the cancellation will be returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="order_4_getCrossUpSell_Atomic">
+    <process:hasName>getCrossUpSell</process:hasName>
+    <process:hasInput rdf:resource="#order_4_getCrossUpSell_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#order_4_getCrossUpSell_Atomic_input_productDescriptionLang__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#order_4_getCrossUpSell_Atomic_input_cart__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_4_getCrossUpSell_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_4_getCrossUpSell_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_4_getCrossUpSell_Atomic_output_productList__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The user must provide a valid secret key, product description language, and cart information for the request to be processed.</process:hasPrecondition>
+    <process:hasEffect>The service will return a status, message, and a list of cross-selling products related to the items in the cart.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="order_5_getOrderData_Atomic">
+    <process:hasName>getOrderData</process:hasName>
+    <process:hasInput rdf:resource="#order_5_getOrderData_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#order_5_getOrderData_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_5_getOrderData_Atomic_output_downloadxml__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_5_getOrderData_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_5_getOrderData_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_5_getOrderData_Atomic_output_orderNum__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user must provide a valid external order identifier and a secret key for authentication.</process:hasPrecondition>
+    <process:hasEffect>The system will retrieve the order data associated with the provided external order identifier and return it along with the status, message, and order number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="order_6_getAllOrders_Atomic">
+    <process:hasName>getAllOrders</process:hasName>
+    <process:hasInput rdf:resource="#order_6_getAllOrders_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#order_6_getAllOrders_Atomic_input_email__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_6_getAllOrders_Atomic_output_downloadxml__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_6_getAllOrders_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_6_getAllOrders_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_6_getAllOrders_Atomic_output_orderNum__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user must provide a valid secret and email to access the getAllOrders operation.</process:hasPrecondition>
+    <process:hasEffect>The getAllOrders operation will return the XML file for download along with the status, message, and order number associated with the orders.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="order_7_updateDownloadTime_Atomic">
+    <process:hasName>updateDownloadTime</process:hasName>
+    <process:hasInput rdf:resource="#order_7_updateDownloadTime_Atomic_input_externalOrder__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#order_7_updateDownloadTime_Atomic_input_days__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#order_7_updateDownloadTime_Atomic_input_secret__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_7_updateDownloadTime_Atomic_output_returnStatus__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_7_updateDownloadTime_Atomic_output_returnMessage__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#order_7_updateDownloadTime_Atomic_output_newDownloadEndDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The externalOrder must be a valid string, days must be a non-negative integer, and secret must be a valid string.</process:hasPrecondition>
+    <process:hasEffect>Updates the download end date based on the input days and returns the status, message, and the new download end date.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="order_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#order_0_createOrder_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#order_1_isProductDownloaded_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#order_2_cancelOrder_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#order_3_cancelSubscription_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#order_4_getCrossUpSell_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#order_5_getOrderData_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#order_6_getAllOrders_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#order_7_updateDownloadTime_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="order_0_createOrder_Grounding">
+    <grounding:owlsProcess rdf:resource="#order_0_createOrder_Atomic"/>
+    <grounding:wsdlOperationName>createOrder</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>orderSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>order</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5550_5549.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>createOrderRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>createOrderResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="order_1_isProductDownloaded_Grounding">
+    <grounding:owlsProcess rdf:resource="#order_1_isProductDownloaded_Atomic"/>
+    <grounding:wsdlOperationName>isProductDownloaded</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>orderSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>order</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5550_5549.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>isProductDownloadedRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>isProductDownloadedResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="order_2_cancelOrder_Grounding">
+    <grounding:owlsProcess rdf:resource="#order_2_cancelOrder_Atomic"/>
+    <grounding:wsdlOperationName>cancelOrder</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>orderSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>order</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5550_5549.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>cancelOrderRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>cancelOrderResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="order_3_cancelSubscription_Grounding">
+    <grounding:owlsProcess rdf:resource="#order_3_cancelSubscription_Atomic"/>
+    <grounding:wsdlOperationName>cancelSubscription</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>orderSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>order</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5550_5549.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>cancelSubscriptionRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>cancelSubscriptionResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="order_4_getCrossUpSell_Grounding">
+    <grounding:owlsProcess rdf:resource="#order_4_getCrossUpSell_Atomic"/>
+    <grounding:wsdlOperationName>getCrossUpSell</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>orderSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>order</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5550_5549.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getCrossUpSellRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getCrossUpSellResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="order_5_getOrderData_Grounding">
+    <grounding:owlsProcess rdf:resource="#order_5_getOrderData_Atomic"/>
+    <grounding:wsdlOperationName>getOrderData</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>orderSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>order</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5550_5549.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getOrderDataRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getOrderDataResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="order_6_getAllOrders_Grounding">
+    <grounding:owlsProcess rdf:resource="#order_6_getAllOrders_Atomic"/>
+    <grounding:wsdlOperationName>getAllOrders</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>orderSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>order</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5550_5549.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getAllOrdersRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getAllOrdersResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="order_7_updateDownloadTime_Grounding">
+    <grounding:owlsProcess rdf:resource="#order_7_updateDownloadTime_Atomic"/>
+    <grounding:wsdlOperationName>updateDownloadTime</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>orderSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>order</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/5550_5549.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>updateDownloadTimeRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>updateDownloadTimeResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
