@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="SendServiceNoHeader">
+    <service:presents rdf:resource="#SendServiceNoHeader_Profile"/>
+    <service:describedBy rdf:resource="#SendServiceNoHeader_Composite"/>
+    <service:supports rdf:resource="#SendServiceNoHeader_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="SendServiceNoHeader_Profile">
+    <profile:serviceName>SendServiceNoHeader</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#SendServiceNoHeader"/>
+    <profile:hasProcess rdf:resource="#SendServiceNoHeader_0_SendMessage_Atomic"/>
+    <profile:hasInput rdf:resource="#SendServiceNoHeader_0_SendMessage_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessage"/>
+    <profile:hasOutput rdf:resource="#SendServiceNoHeader_0_SendMessage_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageResponse"/>
+    <profile:hasPrecondition>The SendMessage operation requires the input parameters to be in the format specified by com.esendex.ems.soapinterface.</profile:hasPrecondition>
+    <profile:hasResult>Upon successful execution of the SendMessage operation, a response will be generated in the format specified by com.esendex.ems.soapinterface.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SendServiceNoHeader_1_SendMessageFull_Atomic"/>
+    <profile:hasInput rdf:resource="#SendServiceNoHeader_1_SendMessageFull_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessageFull"/>
+    <profile:hasOutput rdf:resource="#SendServiceNoHeader_1_SendMessageFull_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageFullResponse"/>
+    <profile:hasPrecondition>The input parameters for SendMessageFull must be provided in the com.esendex.ems.soapinterface format.</profile:hasPrecondition>
+    <profile:hasResult>The operation SendMessageFull will return output parameters in the com.esendex.ems.soapinterface format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SendServiceNoHeader_2_SendMessageMultipleRecipients_Atomic"/>
+    <profile:hasInput rdf:resource="#SendServiceNoHeader_2_SendMessageMultipleRecipients_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessageMultipleRecipients"/>
+    <profile:hasOutput rdf:resource="#SendServiceNoHeader_2_SendMessageMultipleRecipients_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageMultipleRecipientsResponse"/>
+    <profile:hasPrecondition>The input parameters must include a list of multiple recipients for the message to be sent.</profile:hasPrecondition>
+    <profile:hasResult>The operation will send the message to all the specified recipients and provide a response confirming the delivery.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SendServiceNoHeader_3_SendMessageMultipleRecipientsFull_Atomic"/>
+    <profile:hasInput rdf:resource="#SendServiceNoHeader_3_SendMessageMultipleRecipientsFull_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessageMultipleRecipientsFull"/>
+    <profile:hasOutput rdf:resource="#SendServiceNoHeader_3_SendMessageMultipleRecipientsFull_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageMultipleRecipientsFullResponse"/>
+    <profile:hasPrecondition>The SendMessageMultipleRecipientsFull operation requires input parameters in the com.esendex.ems.soapinterface format.</profile:hasPrecondition>
+    <profile:hasResult>The operation SendMessageMultipleRecipientsFullResponse will provide output parameters in the com.esendex.ems.soapinterface format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SendServiceNoHeader_4_SendMessageBatch_Atomic"/>
+    <profile:hasInput rdf:resource="#SendServiceNoHeader_4_SendMessageBatch_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessageBatch"/>
+    <profile:hasOutput rdf:resource="#SendServiceNoHeader_4_SendMessageBatch_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageBatchResponse"/>
+    <profile:hasPrecondition>The SendMessageBatch operation requires a valid input message batch in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The SendMessageBatch operation sends the message batch and returns a response indicating the success or failure of the operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SendServiceNoHeader_5_GetMessageStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#SendServiceNoHeader_5_GetMessageStatus_Atomic_input_parameters__com.esendex.ems.soapinterface_GetMessageStatus"/>
+    <profile:hasOutput rdf:resource="#SendServiceNoHeader_5_GetMessageStatus_Atomic_output_parameters__com.esendex.ems.soapinterface_GetMessageStatusResponse"/>
+    <profile:hasPrecondition>The GetMessageStatus operation requires a valid message identifier as input parameter.</profile:hasPrecondition>
+    <profile:hasResult>The GetMessageStatus operation returns the status of the specified message as output parameter.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="SendServiceNoHeader_Composite">
+    <process:composedOf rdf:resource="#SendServiceNoHeader_0_SendMessage_Atomic"/>
+    <process:composedOf rdf:resource="#SendServiceNoHeader_1_SendMessageFull_Atomic"/>
+    <process:composedOf rdf:resource="#SendServiceNoHeader_2_SendMessageMultipleRecipients_Atomic"/>
+    <process:composedOf rdf:resource="#SendServiceNoHeader_3_SendMessageMultipleRecipientsFull_Atomic"/>
+    <process:composedOf rdf:resource="#SendServiceNoHeader_4_SendMessageBatch_Atomic"/>
+    <process:composedOf rdf:resource="#SendServiceNoHeader_5_GetMessageStatus_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="SendServiceNoHeader_0_SendMessage_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessage">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}SendMessage</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SendServiceNoHeader_0_SendMessage_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageResponse">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}SendMessageResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SendServiceNoHeader_1_SendMessageFull_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessageFull">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}SendMessageFull</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SendServiceNoHeader_1_SendMessageFull_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageFullResponse">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}SendMessageFullResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SendServiceNoHeader_2_SendMessageMultipleRecipients_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessageMultipleRecipients">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}SendMessageMultipleRecipients</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SendServiceNoHeader_2_SendMessageMultipleRecipients_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageMultipleRecipientsResponse">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}SendMessageMultipleRecipientsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SendServiceNoHeader_3_SendMessageMultipleRecipientsFull_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessageMultipleRecipientsFull">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}SendMessageMultipleRecipientsFull</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SendServiceNoHeader_3_SendMessageMultipleRecipientsFull_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageMultipleRecipientsFullResponse">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}SendMessageMultipleRecipientsFullResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SendServiceNoHeader_4_SendMessageBatch_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessageBatch">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}SendMessageBatch</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SendServiceNoHeader_4_SendMessageBatch_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageBatchResponse">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}SendMessageBatchResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SendServiceNoHeader_5_GetMessageStatus_Atomic_input_parameters__com.esendex.ems.soapinterface_GetMessageStatus">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}GetMessageStatus</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SendServiceNoHeader_5_GetMessageStatus_Atomic_output_parameters__com.esendex.ems.soapinterface_GetMessageStatusResponse">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}GetMessageStatusResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="SendServiceNoHeader_0_SendMessage_Atomic">
+    <process:hasName>SendMessage</process:hasName>
+    <process:hasInput rdf:resource="#SendServiceNoHeader_0_SendMessage_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessage"/>
+    <process:hasOutput rdf:resource="#SendServiceNoHeader_0_SendMessage_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageResponse"/>
+    <process:hasPrecondition>The SendMessage operation requires the input parameters to be in the format specified by com.esendex.ems.soapinterface.</process:hasPrecondition>
+    <process:hasEffect>Upon successful execution of the SendMessage operation, a response will be generated in the format specified by com.esendex.ems.soapinterface.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SendServiceNoHeader_1_SendMessageFull_Atomic">
+    <process:hasName>SendMessageFull</process:hasName>
+    <process:hasInput rdf:resource="#SendServiceNoHeader_1_SendMessageFull_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessageFull"/>
+    <process:hasOutput rdf:resource="#SendServiceNoHeader_1_SendMessageFull_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageFullResponse"/>
+    <process:hasPrecondition>The input parameters for SendMessageFull must be provided in the com.esendex.ems.soapinterface format.</process:hasPrecondition>
+    <process:hasEffect>The operation SendMessageFull will return output parameters in the com.esendex.ems.soapinterface format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SendServiceNoHeader_2_SendMessageMultipleRecipients_Atomic">
+    <process:hasName>SendMessageMultipleRecipients</process:hasName>
+    <process:hasInput rdf:resource="#SendServiceNoHeader_2_SendMessageMultipleRecipients_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessageMultipleRecipients"/>
+    <process:hasOutput rdf:resource="#SendServiceNoHeader_2_SendMessageMultipleRecipients_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageMultipleRecipientsResponse"/>
+    <process:hasPrecondition>The input parameters must include a list of multiple recipients for the message to be sent.</process:hasPrecondition>
+    <process:hasEffect>The operation will send the message to all the specified recipients and provide a response confirming the delivery.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SendServiceNoHeader_3_SendMessageMultipleRecipientsFull_Atomic">
+    <process:hasName>SendMessageMultipleRecipientsFull</process:hasName>
+    <process:hasInput rdf:resource="#SendServiceNoHeader_3_SendMessageMultipleRecipientsFull_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessageMultipleRecipientsFull"/>
+    <process:hasOutput rdf:resource="#SendServiceNoHeader_3_SendMessageMultipleRecipientsFull_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageMultipleRecipientsFullResponse"/>
+    <process:hasPrecondition>The SendMessageMultipleRecipientsFull operation requires input parameters in the com.esendex.ems.soapinterface format.</process:hasPrecondition>
+    <process:hasEffect>The operation SendMessageMultipleRecipientsFullResponse will provide output parameters in the com.esendex.ems.soapinterface format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SendServiceNoHeader_4_SendMessageBatch_Atomic">
+    <process:hasName>SendMessageBatch</process:hasName>
+    <process:hasInput rdf:resource="#SendServiceNoHeader_4_SendMessageBatch_Atomic_input_parameters__com.esendex.ems.soapinterface_SendMessageBatch"/>
+    <process:hasOutput rdf:resource="#SendServiceNoHeader_4_SendMessageBatch_Atomic_output_parameters__com.esendex.ems.soapinterface_SendMessageBatchResponse"/>
+    <process:hasPrecondition>The SendMessageBatch operation requires a valid input message batch in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The SendMessageBatch operation sends the message batch and returns a response indicating the success or failure of the operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SendServiceNoHeader_5_GetMessageStatus_Atomic">
+    <process:hasName>GetMessageStatus</process:hasName>
+    <process:hasInput rdf:resource="#SendServiceNoHeader_5_GetMessageStatus_Atomic_input_parameters__com.esendex.ems.soapinterface_GetMessageStatus"/>
+    <process:hasOutput rdf:resource="#SendServiceNoHeader_5_GetMessageStatus_Atomic_output_parameters__com.esendex.ems.soapinterface_GetMessageStatusResponse"/>
+    <process:hasPrecondition>The GetMessageStatus operation requires a valid message identifier as input parameter.</process:hasPrecondition>
+    <process:hasEffect>The GetMessageStatus operation returns the status of the specified message as output parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="SendServiceNoHeader_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SendServiceNoHeader_0_SendMessage_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SendServiceNoHeader_1_SendMessageFull_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SendServiceNoHeader_2_SendMessageMultipleRecipients_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SendServiceNoHeader_3_SendMessageMultipleRecipientsFull_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SendServiceNoHeader_4_SendMessageBatch_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SendServiceNoHeader_5_GetMessageStatus_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SendServiceNoHeader_0_SendMessage_Grounding">
+    <grounding:owlsProcess rdf:resource="#SendServiceNoHeader_0_SendMessage_Atomic"/>
+    <grounding:wsdlOperationName>SendMessage</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SendServiceNoHeaderSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SendServiceNoHeaderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/579_SendServiceNoHeader.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendMessageSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendMessageSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SendServiceNoHeader_1_SendMessageFull_Grounding">
+    <grounding:owlsProcess rdf:resource="#SendServiceNoHeader_1_SendMessageFull_Atomic"/>
+    <grounding:wsdlOperationName>SendMessageFull</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SendServiceNoHeaderSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SendServiceNoHeaderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/579_SendServiceNoHeader.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendMessageFullSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendMessageFullSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SendServiceNoHeader_2_SendMessageMultipleRecipients_Grounding">
+    <grounding:owlsProcess rdf:resource="#SendServiceNoHeader_2_SendMessageMultipleRecipients_Atomic"/>
+    <grounding:wsdlOperationName>SendMessageMultipleRecipients</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SendServiceNoHeaderSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SendServiceNoHeaderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/579_SendServiceNoHeader.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendMessageMultipleRecipientsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendMessageMultipleRecipientsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SendServiceNoHeader_3_SendMessageMultipleRecipientsFull_Grounding">
+    <grounding:owlsProcess rdf:resource="#SendServiceNoHeader_3_SendMessageMultipleRecipientsFull_Atomic"/>
+    <grounding:wsdlOperationName>SendMessageMultipleRecipientsFull</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SendServiceNoHeaderSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SendServiceNoHeaderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/579_SendServiceNoHeader.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendMessageMultipleRecipientsFullSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendMessageMultipleRecipientsFullSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SendServiceNoHeader_4_SendMessageBatch_Grounding">
+    <grounding:owlsProcess rdf:resource="#SendServiceNoHeader_4_SendMessageBatch_Atomic"/>
+    <grounding:wsdlOperationName>SendMessageBatch</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SendServiceNoHeaderSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SendServiceNoHeaderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/579_SendServiceNoHeader.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendMessageBatchSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendMessageBatchSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SendServiceNoHeader_5_GetMessageStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#SendServiceNoHeader_5_GetMessageStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetMessageStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SendServiceNoHeaderSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SendServiceNoHeaderSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/579_SendServiceNoHeader.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetMessageStatusSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetMessageStatusSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,2159 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ABAService">
+    <service:presents rdf:resource="#ABAService_Profile"/>
+    <service:describedBy rdf:resource="#ABAService_Composite"/>
+    <service:supports rdf:resource="#ABAService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ABAService_Profile">
+    <profile:serviceName>ABAService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ABAService"/>
+    <profile:hasProcess rdf:resource="#ABAService_0_ValidateABA_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_0_ValidateABA_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_0_ValidateABA_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_0_ValidateABA_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <profile:hasPrecondition>The input ABA number and token must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will validate the ABA number using the provided token and return a boolean value indicating the validation result.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_1_VerifyABA_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_1_VerifyABA_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_1_VerifyABA_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_1_VerifyABA_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <profile:hasPrecondition>The input string "aba" and the authentication token must be provided for verification.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a boolean value indicating whether the ABA number is valid.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_2_VerifyWire_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_2_VerifyWire_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_2_VerifyWire_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_2_VerifyWire_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <profile:hasPrecondition>The inputs aba and token must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation VerifyWire will return a boolean value in the Body output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_3_GetBanksForEW_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_3_GetBanksForEW_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_3_GetBanksForEW_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_3_GetBanksForEW_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the name of the bank associated with the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_4_GetBanksXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_4_GetBanksXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_4_GetBanksXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_4_GetBanksXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the bank information in XML format based on the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_5_GetBanksPrimarySortXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_5_GetBanksPrimarySortXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_5_GetBanksPrimarySortXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_5_GetBanksPrimarySortXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</profile:hasPrecondition>
+    <profile:hasResult>Returns the primary sorting information of banks in XML format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_6_GetBanksXML_W3C_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_6_GetBanksXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_6_GetBanksXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_6_GetBanksXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid token for authentication.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a string containing the bank information in XML format according to the W3C standard.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_7_GetBanksWithWireXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_7_GetBanksWithWireXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_7_GetBanksWithWireXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_7_GetBanksWithWireXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the bank details in XML format based on the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_8_GetBanksWithWireXML_W3C_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_8_GetBanksWithWireXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_8_GetBanksWithWireXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_8_GetBanksWithWireXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the corresponding bank details in XML format as specified by the W3C standard.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_9_GetBanksFullXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_9_GetBanksFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_9_GetBanksFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_9_GetBanksFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a full XML representation of the banks associated with the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_10_GetBanksFullXML_W3C_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_10_GetBanksFullXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_10_GetBanksFullXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_10_GetBanksFullXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid token for authentication.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a full XML representation of the banks associated with the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_11_GetPrimaryBankWithWireFullXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_11_GetPrimaryBankWithWireFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_11_GetPrimaryBankWithWireFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_11_GetPrimaryBankWithWireFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the primary bank associated with the provided ABA number in full XML format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_12_GetPrimaryBankFullXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_12_GetPrimaryBankFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_12_GetPrimaryBankFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_12_GetPrimaryBankFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the full XML representation of the primary bank associated with the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_13_GetBanksFullWithWireXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_13_GetBanksFullWithWireXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_13_GetBanksFullWithWireXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_13_GetBanksFullWithWireXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a full list of banks with wire transfer information in XML format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_14_GetBanksFullWithWireXML_W3C_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_14_GetBanksFullWithWireXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_14_GetBanksFullWithWireXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_14_GetBanksFullWithWireXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must have a valid token to access the GetBanksFullWithWireXML_W3C operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a list of banks with full wire information in XML format based on the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_15_FindASCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_15_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_15_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_15_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int"/>
+    <profile:hasPrecondition>The serial number and payee code must be provided as input parameters for the operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation returns the company ID as an integer value.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_16_FindCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_16_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_16_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int"/>
+    <profile:hasPrecondition>The input wildcard must be a valid string conforming to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The output Body will return an integer representing the Company ID found based on the provided wildcard string.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_17_GetCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_17_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_17_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int"/>
+    <profile:hasPrecondition>The user must provide a valid authentication token in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the unique identifier of the company as an integer value.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_18_Logoff_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_18_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The provided token must be a valid authentication token for an active session.</profile:hasPrecondition>
+    <profile:hasResult>The user will be successfully logged out of the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_19_Logon_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_19_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_19_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_19_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_19_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid company ID, password, and username for authentication.</profile:hasPrecondition>
+    <profile:hasResult>Upon successful authentication, the system will return a string response containing the user's access token.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_20_RequiredLogon_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_20_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_20_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <profile:hasPrecondition>The user must provide a valid authentication token in the form of a string.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a boolean value indicating whether the user is successfully logged on.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_21_ValidateABA_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_21_ValidateABA_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_21_ValidateABA_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_21_ValidateABA_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <profile:hasPrecondition>The input ABA number and token must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The system will return a boolean value indicating whether the provided ABA number is valid.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_22_VerifyABA_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_22_VerifyABA_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_22_VerifyABA_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_22_VerifyABA_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <profile:hasPrecondition>The input ABA number and token must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a boolean value indicating whether the ABA number is valid.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_23_VerifyWire_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_23_VerifyWire_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_23_VerifyWire_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_23_VerifyWire_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <profile:hasPrecondition>The input parameters aba and token must be provided in the specified data types.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a boolean value indicating the verification status of the wire based on the provided inputs.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_24_GetBanksForEW_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_24_GetBanksForEW_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_24_GetBanksForEW_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_24_GetBanksForEW_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a string containing the list of banks associated with the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_25_GetBanksXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_25_GetBanksXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_25_GetBanksXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_25_GetBanksXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves the XML representation of banks associated with the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_26_GetBanksPrimarySortXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_26_GetBanksPrimarySortXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_26_GetBanksPrimarySortXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_26_GetBanksPrimarySortXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the primary sort code for the specified bank in XML format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_27_GetBanksXML_W3C_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_27_GetBanksXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_27_GetBanksXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_27_GetBanksXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token to access the GetBanksXML_W3C operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a string containing the bank information in XML format from the Lyonsreg ABA web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_28_GetBanksWithWireXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_28_GetBanksWithWireXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_28_GetBanksWithWireXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_28_GetBanksWithWireXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must have a valid authentication token to access the GetBanksWithWireXML operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a list of banks with wire transfer capabilities in XML format based on the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_29_GetBanksWithWireXML_W3C_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_29_GetBanksWithWireXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_29_GetBanksWithWireXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_29_GetBanksWithWireXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must have a valid token to access the GetBanksWithWireXML_W3C operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a list of banks with wire transfer capabilities in XML format based on the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_30_GetBanksFullXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_30_GetBanksFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_30_GetBanksFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_30_GetBanksFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the full XML representation of the banks associated with the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_31_GetBanksFullXML_W3C_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_31_GetBanksFullXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_31_GetBanksFullXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_31_GetBanksFullXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must have a valid ABA number and a valid authentication token to access the web service.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a full XML representation of the banks associated with the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_32_GetPrimaryBankWithWireFullXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_32_GetPrimaryBankWithWireFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_32_GetPrimaryBankWithWireFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_32_GetPrimaryBankWithWireFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves the primary bank information in full XML format based on the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_33_GetPrimaryBankFullXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_33_GetPrimaryBankFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_33_GetPrimaryBankFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_33_GetPrimaryBankFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid ABA number and a valid authentication token to access the GetPrimaryBankFullXML operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the full XML representation of the primary bank associated with the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_34_GetBanksFullWithWireXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_34_GetBanksFullWithWireXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_34_GetBanksFullWithWireXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_34_GetBanksFullWithWireXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must have a valid token to access the GetBanksFullWithWireXML operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a list of banks with full details in XML format based on the provided ABA number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_35_GetBanksFullWithWireXML_W3C_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_35_GetBanksFullWithWireXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_35_GetBanksFullWithWireXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_35_GetBanksFullWithWireXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must have a valid token to access the web service.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a list of banks with full wire information in XML format conforming to W3C standards.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_36_FindASCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_36_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_36_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_36_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int"/>
+    <profile:hasPrecondition>The serial number and payee code must be provided as input parameters in string format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an integer representing the company ID associated with the provided serial number and payee code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_37_FindCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_37_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_37_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int"/>
+    <profile:hasPrecondition>The input wildcard must be a valid string conforming to the XML Schema definition for strings.</profile:hasPrecondition>
+    <profile:hasResult>The output Body will contain an integer representing the ID of the company found based on the input wildcard.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_38_GetCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_38_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_38_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int"/>
+    <profile:hasPrecondition>The user must provide a valid token in the form of a string.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the company ID as an integer from the ABAService web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_39_Logoff_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_39_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The user must provide a valid authentication token in order to log off from the system.</profile:hasPrecondition>
+    <profile:hasResult>The user's session will be terminated and they will be logged out of the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_40_Logon_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_40_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_40_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ABAService_40_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_40_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <profile:hasPrecondition>The user must provide a valid company ID, password, and username for authentication.</profile:hasPrecondition>
+    <profile:hasResult>Upon successful authentication, the system will return a string response containing the user's session information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_41_RequiredLogon_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_41_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ABAService_41_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <profile:hasPrecondition>The user must provide a valid token in the form of a string.</profile:hasPrecondition>
+    <profile:hasResult>The system will return a boolean value indicating whether the logon is required.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_42_ValidateABA_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_42_ValidateABA_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_ValidateABA"/>
+    <profile:hasOutput rdf:resource="#ABAService_42_ValidateABA_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_ValidateABAResponse"/>
+    <profile:hasPrecondition>The input parameters must adhere to the specified format for the ABA validation web service.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters will contain the response from the ABA validation service based on the input provided.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_43_VerifyABA_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_43_VerifyABA_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_VerifyABA"/>
+    <profile:hasOutput rdf:resource="#ABAService_43_VerifyABA_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_VerifyABAResponse"/>
+    <profile:hasPrecondition>The input parameters must adhere to the specified structure defined by the {http://www.lyonsreg.com/WebService/ABAService}VerifyABA format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response conforming to the structure defined by {http://www.lyonsreg.com/WebService/ABAService}VerifyABAResponse.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_44_VerifyWire_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_44_VerifyWire_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_VerifyWire"/>
+    <profile:hasOutput rdf:resource="#ABAService_44_VerifyWire_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_VerifyWireResponse"/>
+    <profile:hasPrecondition>The input parameters for VerifyWire must conform to the specified structure defined by the http://www.lyonsreg.com/WebService/ABAService namespace.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for VerifyWireResponse will adhere to the defined structure specified by the http://www.lyonsreg.com/WebService/ABAService namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_45_GetBanksForEW_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_45_GetBanksForEW_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksForEW"/>
+    <profile:hasOutput rdf:resource="#ABAService_45_GetBanksForEW_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksForEWResponse"/>
+    <profile:hasPrecondition>The input parameters for GetBanksForEW must be provided in the specified format under http://www.lyonsreg.com/WebService/ABAService namespace.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for GetBanksForEWResponse will be generated in the specified format under http://www.lyonsreg.com/WebService/ABAService namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_46_GetBanksXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_46_GetBanksXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksXML"/>
+    <profile:hasOutput rdf:resource="#ABAService_46_GetBanksXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksXMLResponse"/>
+    <profile:hasPrecondition>The client must provide the necessary parameters in the specified format for the GetBanksXML operation.</profile:hasPrecondition>
+    <profile:hasResult>The server will return the GetBanksXMLResponse in the specified format based on the provided parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_47_GetBanksPrimarySortXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_47_GetBanksPrimarySortXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksPrimarySortXML"/>
+    <profile:hasOutput rdf:resource="#ABAService_47_GetBanksPrimarySortXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksPrimarySortXMLResponse"/>
+    <profile:hasPrecondition>The client must provide a request for retrieving primary bank sorting information in XML format.</profile:hasPrecondition>
+    <profile:hasResult>The server will respond with the primary bank sorting information in XML format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_48_GetBanksXML_W3C_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_48_GetBanksXML_W3C_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksXML_W3C"/>
+    <profile:hasOutput rdf:resource="#ABAService_48_GetBanksXML_W3C_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksXML_W3CResponse"/>
+    <profile:hasPrecondition>The client must provide the necessary parameters in the specified format for the GetBanksXML_W3C operation.</profile:hasPrecondition>
+    <profile:hasResult>The server will return the response in the specified format for the GetBanksXML_W3C operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_49_GetBanksWithWireXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_49_GetBanksWithWireXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksWithWireXML"/>
+    <profile:hasOutput rdf:resource="#ABAService_49_GetBanksWithWireXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksWithWireXMLResponse"/>
+    <profile:hasPrecondition>The input parameters must be in the format specified by the GetBanksWithWireXML operation of the ABAService web service.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters will be in the format specified by the GetBanksWithWireXMLResponse operation of the ABAService web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_50_GetBanksWithWireXML_W3C_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_50_GetBanksWithWireXML_W3C_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksWithWireXML_W3C"/>
+    <profile:hasOutput rdf:resource="#ABAService_50_GetBanksWithWireXML_W3C_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksWithWireXML_W3CResponse"/>
+    <profile:hasPrecondition>The input parameters must conform to the specified W3C XML schema for GetBanksWithWireXML operation.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters will be in compliance with the W3C XML schema for GetBanksWithWireXMLResponse.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_51_GetBanksFullXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_51_GetBanksFullXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullXML"/>
+    <profile:hasOutput rdf:resource="#ABAService_51_GetBanksFullXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullXMLResponse"/>
+    <profile:hasPrecondition>The client must provide the necessary parameters for the GetBanksFullXML operation in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The server will return the response containing the full XML data of banks as specified in the GetBanksFullXMLResponse parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_52_GetBanksFullXML_W3C_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_52_GetBanksFullXML_W3C_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullXML_W3C"/>
+    <profile:hasOutput rdf:resource="#ABAService_52_GetBanksFullXML_W3C_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullXML_W3CResponse"/>
+    <profile:hasPrecondition>The client must provide valid input parameters for the GetBanksFullXML_W3C operation.</profile:hasPrecondition>
+    <profile:hasResult>The server will return a response containing the full XML data for banks in compliance with the W3C standards.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_53_GetPrimaryBankWithWireFullXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_53_GetPrimaryBankWithWireFullXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetPrimaryBankWithWireFullXML"/>
+    <profile:hasOutput rdf:resource="#ABAService_53_GetPrimaryBankWithWireFullXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetPrimaryBankWithWireFullXMLResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid request for retrieving primary bank information with wire details in XML format.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter will contain the response with the primary bank information including wire details in XML format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_54_GetPrimaryBankFullXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_54_GetPrimaryBankFullXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetPrimaryBankFullXML"/>
+    <profile:hasOutput rdf:resource="#ABAService_54_GetPrimaryBankFullXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetPrimaryBankFullXMLResponse"/>
+    <profile:hasPrecondition>The client must provide the necessary parameters for the GetPrimaryBankFullXML operation in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The server will return the full XML response containing information about the primary bank as specified in the input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_55_GetBanksFullWithWireXML_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_55_GetBanksFullWithWireXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullWithWireXML"/>
+    <profile:hasOutput rdf:resource="#ABAService_55_GetBanksFullWithWireXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullWithWireXMLResponse"/>
+    <profile:hasPrecondition>The client must provide valid input parameters conforming to the specified XML schema for GetBanksFullWithWireXML.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a response containing detailed information about banks with wire transfer capabilities in XML format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_56_GetBanksFullWithWireXML_W3C_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_56_GetBanksFullWithWireXML_W3C_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullWithWireXML_W3C"/>
+    <profile:hasOutput rdf:resource="#ABAService_56_GetBanksFullWithWireXML_W3C_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullWithWireXML_W3CResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetBanksFullWithWireXML_W3C must be valid.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing a full list of banks with wire transfer information in XML format according to the W3C standards.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_57_FindASCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_57_FindASCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_FindASCompanyID"/>
+    <profile:hasOutput rdf:resource="#ABAService_57_FindASCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_FindASCompanyIDResponse"/>
+    <profile:hasPrecondition>The input parameter for FindASCompanyID must be provided in the specified format from the Lyonsreg ABAService web service.</profile:hasPrecondition>
+    <profile:hasResult>The FindASCompanyID operation will return a response in the specified format from the Lyonsreg ABAService web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_58_FindCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_58_FindCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_FindCompanyID"/>
+    <profile:hasOutput rdf:resource="#ABAService_58_FindCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_FindCompanyIDResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for FindCompanyID must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The FindCompanyID operation will be executed and the response containing the company ID will be returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_59_GetCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_59_GetCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetCompanyID"/>
+    <profile:hasOutput rdf:resource="#ABAService_59_GetCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetCompanyIDResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetCompanyID must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the Company ID in the specified response format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_60_Logoff_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_60_Logoff_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_Logoff"/>
+    <profile:hasOutput rdf:resource="#ABAService_60_Logoff_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_LogoffResponse"/>
+    <profile:hasPrecondition>The user must be currently logged in to the ABA service.</profile:hasPrecondition>
+    <profile:hasResult>The user is successfully logged out of the ABA service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_61_Logon_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_61_Logon_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_Logon"/>
+    <profile:hasOutput rdf:resource="#ABAService_61_Logon_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_LogonResponse"/>
+    <profile:hasPrecondition>The user must provide valid credentials in the Logon parameters for authentication.</profile:hasPrecondition>
+    <profile:hasResult>Upon successful authentication, the system will return a LogonResponse in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ABAService_62_RequiredLogon_Atomic"/>
+    <profile:hasInput rdf:resource="#ABAService_62_RequiredLogon_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_RequiredLogon"/>
+    <profile:hasOutput rdf:resource="#ABAService_62_RequiredLogon_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_RequiredLogonResponse"/>
+    <profile:hasPrecondition>The user must provide valid login credentials in the RequiredLogon parameters.</profile:hasPrecondition>
+    <profile:hasResult>The system will authenticate the user and grant access to the requested service in the RequiredLogonResponse parameters.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ABAService_Composite">
+    <process:composedOf rdf:resource="#ABAService_0_ValidateABA_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_1_VerifyABA_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_2_VerifyWire_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_3_GetBanksForEW_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_4_GetBanksXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_5_GetBanksPrimarySortXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_6_GetBanksXML_W3C_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_7_GetBanksWithWireXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_8_GetBanksWithWireXML_W3C_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_9_GetBanksFullXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_10_GetBanksFullXML_W3C_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_11_GetPrimaryBankWithWireFullXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_12_GetPrimaryBankFullXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_13_GetBanksFullWithWireXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_14_GetBanksFullWithWireXML_W3C_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_15_FindASCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_16_FindCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_17_GetCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_18_Logoff_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_19_Logon_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_20_RequiredLogon_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_21_ValidateABA_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_22_VerifyABA_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_23_VerifyWire_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_24_GetBanksForEW_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_25_GetBanksXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_26_GetBanksPrimarySortXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_27_GetBanksXML_W3C_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_28_GetBanksWithWireXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_29_GetBanksWithWireXML_W3C_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_30_GetBanksFullXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_31_GetBanksFullXML_W3C_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_32_GetPrimaryBankWithWireFullXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_33_GetPrimaryBankFullXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_34_GetBanksFullWithWireXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_35_GetBanksFullWithWireXML_W3C_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_36_FindASCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_37_FindCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_38_GetCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_39_Logoff_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_40_Logon_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_41_RequiredLogon_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_42_ValidateABA_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_43_VerifyABA_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_44_VerifyWire_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_45_GetBanksForEW_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_46_GetBanksXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_47_GetBanksPrimarySortXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_48_GetBanksXML_W3C_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_49_GetBanksWithWireXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_50_GetBanksWithWireXML_W3C_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_51_GetBanksFullXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_52_GetBanksFullXML_W3C_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_53_GetPrimaryBankWithWireFullXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_54_GetPrimaryBankFullXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_55_GetBanksFullWithWireXML_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_56_GetBanksFullWithWireXML_W3C_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_57_FindASCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_58_FindCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_59_GetCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_60_Logoff_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_61_Logon_Atomic"/>
+    <process:composedOf rdf:resource="#ABAService_62_RequiredLogon_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ABAService_0_ValidateABA_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_0_ValidateABA_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_0_ValidateABA_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_1_VerifyABA_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_1_VerifyABA_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_1_VerifyABA_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_2_VerifyWire_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_2_VerifyWire_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_2_VerifyWire_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_3_GetBanksForEW_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_3_GetBanksForEW_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_3_GetBanksForEW_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_4_GetBanksXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_4_GetBanksXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_4_GetBanksXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_5_GetBanksPrimarySortXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_5_GetBanksPrimarySortXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_5_GetBanksPrimarySortXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_6_GetBanksXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_6_GetBanksXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_6_GetBanksXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_7_GetBanksWithWireXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_7_GetBanksWithWireXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_7_GetBanksWithWireXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_8_GetBanksWithWireXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_8_GetBanksWithWireXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_8_GetBanksWithWireXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_9_GetBanksFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_9_GetBanksFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_9_GetBanksFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_10_GetBanksFullXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_10_GetBanksFullXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_10_GetBanksFullXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_11_GetPrimaryBankWithWireFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_11_GetPrimaryBankWithWireFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_11_GetPrimaryBankWithWireFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_12_GetPrimaryBankFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_12_GetPrimaryBankFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_12_GetPrimaryBankFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_13_GetBanksFullWithWireXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_13_GetBanksFullWithWireXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_13_GetBanksFullWithWireXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_14_GetBanksFullWithWireXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_14_GetBanksFullWithWireXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_14_GetBanksFullWithWireXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_15_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>serialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_15_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>payeeCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_15_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_16_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wildcard:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_16_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_17_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_17_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_18_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_19_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>companyID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_19_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_19_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_19_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_20_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_20_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_21_ValidateABA_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_21_ValidateABA_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_21_ValidateABA_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_22_VerifyABA_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_22_VerifyABA_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_22_VerifyABA_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_23_VerifyWire_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_23_VerifyWire_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_23_VerifyWire_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_24_GetBanksForEW_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_24_GetBanksForEW_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_24_GetBanksForEW_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_25_GetBanksXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_25_GetBanksXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_25_GetBanksXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_26_GetBanksPrimarySortXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_26_GetBanksPrimarySortXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_26_GetBanksPrimarySortXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_27_GetBanksXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_27_GetBanksXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_27_GetBanksXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_28_GetBanksWithWireXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_28_GetBanksWithWireXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_28_GetBanksWithWireXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_29_GetBanksWithWireXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_29_GetBanksWithWireXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_29_GetBanksWithWireXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_30_GetBanksFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_30_GetBanksFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_30_GetBanksFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_31_GetBanksFullXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_31_GetBanksFullXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_31_GetBanksFullXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_32_GetPrimaryBankWithWireFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_32_GetPrimaryBankWithWireFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_32_GetPrimaryBankWithWireFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_33_GetPrimaryBankFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_33_GetPrimaryBankFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_33_GetPrimaryBankFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_34_GetBanksFullWithWireXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_34_GetBanksFullWithWireXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_34_GetBanksFullWithWireXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_35_GetBanksFullWithWireXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>aba:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_35_GetBanksFullWithWireXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_35_GetBanksFullWithWireXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_36_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>serialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_36_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>payeeCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_36_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_37_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wildcard:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_37_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_38_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_38_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_39_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_40_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>companyID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_40_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ABAService_40_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_40_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_41_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_41_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebService/ABAService}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_42_ValidateABA_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_ValidateABA">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}ValidateABA</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_42_ValidateABA_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_ValidateABAResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}ValidateABAResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_43_VerifyABA_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_VerifyABA">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}VerifyABA</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_43_VerifyABA_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_VerifyABAResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}VerifyABAResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_44_VerifyWire_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_VerifyWire">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}VerifyWire</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_44_VerifyWire_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_VerifyWireResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}VerifyWireResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_45_GetBanksForEW_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksForEW">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksForEW</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_45_GetBanksForEW_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksForEWResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksForEWResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_46_GetBanksXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksXML">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksXML</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_46_GetBanksXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksXMLResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksXMLResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_47_GetBanksPrimarySortXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksPrimarySortXML">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksPrimarySortXML</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_47_GetBanksPrimarySortXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksPrimarySortXMLResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksPrimarySortXMLResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_48_GetBanksXML_W3C_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksXML_W3C">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksXML_W3C</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_48_GetBanksXML_W3C_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksXML_W3CResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksXML_W3CResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_49_GetBanksWithWireXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksWithWireXML">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksWithWireXML</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_49_GetBanksWithWireXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksWithWireXMLResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksWithWireXMLResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_50_GetBanksWithWireXML_W3C_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksWithWireXML_W3C">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksWithWireXML_W3C</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_50_GetBanksWithWireXML_W3C_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksWithWireXML_W3CResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksWithWireXML_W3CResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_51_GetBanksFullXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullXML">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksFullXML</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_51_GetBanksFullXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullXMLResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksFullXMLResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_52_GetBanksFullXML_W3C_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullXML_W3C">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksFullXML_W3C</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_52_GetBanksFullXML_W3C_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullXML_W3CResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksFullXML_W3CResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_53_GetPrimaryBankWithWireFullXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetPrimaryBankWithWireFullXML">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetPrimaryBankWithWireFullXML</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_53_GetPrimaryBankWithWireFullXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetPrimaryBankWithWireFullXMLResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetPrimaryBankWithWireFullXMLResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_54_GetPrimaryBankFullXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetPrimaryBankFullXML">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetPrimaryBankFullXML</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_54_GetPrimaryBankFullXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetPrimaryBankFullXMLResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetPrimaryBankFullXMLResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_55_GetBanksFullWithWireXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullWithWireXML">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksFullWithWireXML</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_55_GetBanksFullWithWireXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullWithWireXMLResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksFullWithWireXMLResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_56_GetBanksFullWithWireXML_W3C_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullWithWireXML_W3C">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksFullWithWireXML_W3C</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_56_GetBanksFullWithWireXML_W3C_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullWithWireXML_W3CResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetBanksFullWithWireXML_W3CResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_57_FindASCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_FindASCompanyID">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}FindASCompanyID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_57_FindASCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_FindASCompanyIDResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}FindASCompanyIDResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_58_FindCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_FindCompanyID">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}FindCompanyID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_58_FindCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_FindCompanyIDResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}FindCompanyIDResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_59_GetCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetCompanyID">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetCompanyID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_59_GetCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetCompanyIDResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}GetCompanyIDResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_60_Logoff_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_Logoff">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}Logoff</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_60_Logoff_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_LogoffResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}LogoffResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_61_Logon_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_Logon">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}Logon</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_61_Logon_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_LogonResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}LogonResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ABAService_62_RequiredLogon_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_RequiredLogon">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}RequiredLogon</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ABAService_62_RequiredLogon_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_RequiredLogonResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebService/ABAService}RequiredLogonResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ABAService_0_ValidateABA_Atomic">
+    <process:hasName>ValidateABA</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_0_ValidateABA_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_0_ValidateABA_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_0_ValidateABA_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <process:hasPrecondition>The input ABA number and token must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will validate the ABA number using the provided token and return a boolean value indicating the validation result.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_1_VerifyABA_Atomic">
+    <process:hasName>VerifyABA</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_1_VerifyABA_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_1_VerifyABA_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_1_VerifyABA_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <process:hasPrecondition>The input string "aba" and the authentication token must be provided for verification.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a boolean value indicating whether the ABA number is valid.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_2_VerifyWire_Atomic">
+    <process:hasName>VerifyWire</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_2_VerifyWire_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_2_VerifyWire_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_2_VerifyWire_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <process:hasPrecondition>The inputs aba and token must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation VerifyWire will return a boolean value in the Body output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_3_GetBanksForEW_Atomic">
+    <process:hasName>GetBanksForEW</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_3_GetBanksForEW_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_3_GetBanksForEW_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_3_GetBanksForEW_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the name of the bank associated with the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_4_GetBanksXML_Atomic">
+    <process:hasName>GetBanksXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_4_GetBanksXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_4_GetBanksXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_4_GetBanksXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the bank information in XML format based on the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_5_GetBanksPrimarySortXML_Atomic">
+    <process:hasName>GetBanksPrimarySortXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_5_GetBanksPrimarySortXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_5_GetBanksPrimarySortXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_5_GetBanksPrimarySortXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</process:hasPrecondition>
+    <process:hasEffect>Returns the primary sorting information of banks in XML format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_6_GetBanksXML_W3C_Atomic">
+    <process:hasName>GetBanksXML_W3C</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_6_GetBanksXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_6_GetBanksXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_6_GetBanksXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid token for authentication.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a string containing the bank information in XML format according to the W3C standard.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_7_GetBanksWithWireXML_Atomic">
+    <process:hasName>GetBanksWithWireXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_7_GetBanksWithWireXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_7_GetBanksWithWireXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_7_GetBanksWithWireXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the bank details in XML format based on the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_8_GetBanksWithWireXML_W3C_Atomic">
+    <process:hasName>GetBanksWithWireXML_W3C</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_8_GetBanksWithWireXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_8_GetBanksWithWireXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_8_GetBanksWithWireXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the corresponding bank details in XML format as specified by the W3C standard.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_9_GetBanksFullXML_Atomic">
+    <process:hasName>GetBanksFullXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_9_GetBanksFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_9_GetBanksFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_9_GetBanksFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a full XML representation of the banks associated with the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_10_GetBanksFullXML_W3C_Atomic">
+    <process:hasName>GetBanksFullXML_W3C</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_10_GetBanksFullXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_10_GetBanksFullXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_10_GetBanksFullXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid token for authentication.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a full XML representation of the banks associated with the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_11_GetPrimaryBankWithWireFullXML_Atomic">
+    <process:hasName>GetPrimaryBankWithWireFullXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_11_GetPrimaryBankWithWireFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_11_GetPrimaryBankWithWireFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_11_GetPrimaryBankWithWireFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the primary bank associated with the provided ABA number in full XML format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_12_GetPrimaryBankFullXML_Atomic">
+    <process:hasName>GetPrimaryBankFullXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_12_GetPrimaryBankFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_12_GetPrimaryBankFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_12_GetPrimaryBankFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the full XML representation of the primary bank associated with the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_13_GetBanksFullWithWireXML_Atomic">
+    <process:hasName>GetBanksFullWithWireXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_13_GetBanksFullWithWireXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_13_GetBanksFullWithWireXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_13_GetBanksFullWithWireXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a full list of banks with wire transfer information in XML format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_14_GetBanksFullWithWireXML_W3C_Atomic">
+    <process:hasName>GetBanksFullWithWireXML_W3C</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_14_GetBanksFullWithWireXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_14_GetBanksFullWithWireXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_14_GetBanksFullWithWireXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must have a valid token to access the GetBanksFullWithWireXML_W3C operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a list of banks with full wire information in XML format based on the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_15_FindASCompanyID_Atomic">
+    <process:hasName>FindASCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_15_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_15_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_15_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int"/>
+    <process:hasPrecondition>The serial number and payee code must be provided as input parameters for the operation.</process:hasPrecondition>
+    <process:hasEffect>The operation returns the company ID as an integer value.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_16_FindCompanyID_Atomic">
+    <process:hasName>FindCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_16_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_16_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int"/>
+    <process:hasPrecondition>The input wildcard must be a valid string conforming to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The output Body will return an integer representing the Company ID found based on the provided wildcard string.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_17_GetCompanyID_Atomic">
+    <process:hasName>GetCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_17_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_17_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int"/>
+    <process:hasPrecondition>The user must provide a valid authentication token in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the unique identifier of the company as an integer value.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_18_Logoff_Atomic">
+    <process:hasName>Logoff</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_18_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The provided token must be a valid authentication token for an active session.</process:hasPrecondition>
+    <process:hasEffect>The user will be successfully logged out of the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_19_Logon_Atomic">
+    <process:hasName>Logon</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_19_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_19_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_19_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_19_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid company ID, password, and username for authentication.</process:hasPrecondition>
+    <process:hasEffect>Upon successful authentication, the system will return a string response containing the user's access token.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_20_RequiredLogon_Atomic">
+    <process:hasName>RequiredLogon</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_20_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_20_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <process:hasPrecondition>The user must provide a valid authentication token in the form of a string.</process:hasPrecondition>
+    <process:hasEffect>The service will return a boolean value indicating whether the user is successfully logged on.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_21_ValidateABA_Atomic">
+    <process:hasName>ValidateABA</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_21_ValidateABA_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_21_ValidateABA_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_21_ValidateABA_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <process:hasPrecondition>The input ABA number and token must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The system will return a boolean value indicating whether the provided ABA number is valid.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_22_VerifyABA_Atomic">
+    <process:hasName>VerifyABA</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_22_VerifyABA_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_22_VerifyABA_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_22_VerifyABA_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <process:hasPrecondition>The input ABA number and token must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a boolean value indicating whether the ABA number is valid.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_23_VerifyWire_Atomic">
+    <process:hasName>VerifyWire</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_23_VerifyWire_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_23_VerifyWire_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_23_VerifyWire_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <process:hasPrecondition>The input parameters aba and token must be provided in the specified data types.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a boolean value indicating the verification status of the wire based on the provided inputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_24_GetBanksForEW_Atomic">
+    <process:hasName>GetBanksForEW</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_24_GetBanksForEW_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_24_GetBanksForEW_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_24_GetBanksForEW_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a string containing the list of banks associated with the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_25_GetBanksXML_Atomic">
+    <process:hasName>GetBanksXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_25_GetBanksXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_25_GetBanksXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_25_GetBanksXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</process:hasPrecondition>
+    <process:hasEffect>Retrieves the XML representation of banks associated with the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_26_GetBanksPrimarySortXML_Atomic">
+    <process:hasName>GetBanksPrimarySortXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_26_GetBanksPrimarySortXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_26_GetBanksPrimarySortXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_26_GetBanksPrimarySortXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the primary sort code for the specified bank in XML format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_27_GetBanksXML_W3C_Atomic">
+    <process:hasName>GetBanksXML_W3C</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_27_GetBanksXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_27_GetBanksXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_27_GetBanksXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token to access the GetBanksXML_W3C operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a string containing the bank information in XML format from the Lyonsreg ABA web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_28_GetBanksWithWireXML_Atomic">
+    <process:hasName>GetBanksWithWireXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_28_GetBanksWithWireXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_28_GetBanksWithWireXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_28_GetBanksWithWireXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must have a valid authentication token to access the GetBanksWithWireXML operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a list of banks with wire transfer capabilities in XML format based on the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_29_GetBanksWithWireXML_W3C_Atomic">
+    <process:hasName>GetBanksWithWireXML_W3C</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_29_GetBanksWithWireXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_29_GetBanksWithWireXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_29_GetBanksWithWireXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must have a valid token to access the GetBanksWithWireXML_W3C operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a list of banks with wire transfer capabilities in XML format based on the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_30_GetBanksFullXML_Atomic">
+    <process:hasName>GetBanksFullXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_30_GetBanksFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_30_GetBanksFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_30_GetBanksFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the full XML representation of the banks associated with the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_31_GetBanksFullXML_W3C_Atomic">
+    <process:hasName>GetBanksFullXML_W3C</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_31_GetBanksFullXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_31_GetBanksFullXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_31_GetBanksFullXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must have a valid ABA number and a valid authentication token to access the web service.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a full XML representation of the banks associated with the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_32_GetPrimaryBankWithWireFullXML_Atomic">
+    <process:hasName>GetPrimaryBankWithWireFullXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_32_GetPrimaryBankWithWireFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_32_GetPrimaryBankWithWireFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_32_GetPrimaryBankWithWireFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token.</process:hasPrecondition>
+    <process:hasEffect>Retrieves the primary bank information in full XML format based on the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_33_GetPrimaryBankFullXML_Atomic">
+    <process:hasName>GetPrimaryBankFullXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_33_GetPrimaryBankFullXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_33_GetPrimaryBankFullXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_33_GetPrimaryBankFullXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid ABA number and a valid authentication token to access the GetPrimaryBankFullXML operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the full XML representation of the primary bank associated with the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_34_GetBanksFullWithWireXML_Atomic">
+    <process:hasName>GetBanksFullWithWireXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_34_GetBanksFullWithWireXML_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_34_GetBanksFullWithWireXML_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_34_GetBanksFullWithWireXML_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must have a valid token to access the GetBanksFullWithWireXML operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a list of banks with full details in XML format based on the provided ABA number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_35_GetBanksFullWithWireXML_W3C_Atomic">
+    <process:hasName>GetBanksFullWithWireXML_W3C</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_35_GetBanksFullWithWireXML_W3C_Atomic_input_aba__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_35_GetBanksFullWithWireXML_W3C_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_35_GetBanksFullWithWireXML_W3C_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must have a valid token to access the web service.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a list of banks with full wire information in XML format conforming to W3C standards.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_36_FindASCompanyID_Atomic">
+    <process:hasName>FindASCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_36_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_36_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_36_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int"/>
+    <process:hasPrecondition>The serial number and payee code must be provided as input parameters in string format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an integer representing the company ID associated with the provided serial number and payee code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_37_FindCompanyID_Atomic">
+    <process:hasName>FindCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_37_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_37_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int"/>
+    <process:hasPrecondition>The input wildcard must be a valid string conforming to the XML Schema definition for strings.</process:hasPrecondition>
+    <process:hasEffect>The output Body will contain an integer representing the ID of the company found based on the input wildcard.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_38_GetCompanyID_Atomic">
+    <process:hasName>GetCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_38_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_38_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_int"/>
+    <process:hasPrecondition>The user must provide a valid token in the form of a string.</process:hasPrecondition>
+    <process:hasEffect>The service will return the company ID as an integer from the ABAService web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_39_Logoff_Atomic">
+    <process:hasName>Logoff</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_39_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The user must provide a valid authentication token in order to log off from the system.</process:hasPrecondition>
+    <process:hasEffect>The user's session will be terminated and they will be logged out of the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_40_Logon_Atomic">
+    <process:hasName>Logon</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_40_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_40_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ABAService_40_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_40_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_string"/>
+    <process:hasPrecondition>The user must provide a valid company ID, password, and username for authentication.</process:hasPrecondition>
+    <process:hasEffect>Upon successful authentication, the system will return a string response containing the user's session information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_41_RequiredLogon_Atomic">
+    <process:hasName>RequiredLogon</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_41_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ABAService_41_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebService_ABAService_boolean"/>
+    <process:hasPrecondition>The user must provide a valid token in the form of a string.</process:hasPrecondition>
+    <process:hasEffect>The system will return a boolean value indicating whether the logon is required.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_42_ValidateABA_Atomic">
+    <process:hasName>ValidateABA</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_42_ValidateABA_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_ValidateABA"/>
+    <process:hasOutput rdf:resource="#ABAService_42_ValidateABA_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_ValidateABAResponse"/>
+    <process:hasPrecondition>The input parameters must adhere to the specified format for the ABA validation web service.</process:hasPrecondition>
+    <process:hasEffect>The output parameters will contain the response from the ABA validation service based on the input provided.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_43_VerifyABA_Atomic">
+    <process:hasName>VerifyABA</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_43_VerifyABA_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_VerifyABA"/>
+    <process:hasOutput rdf:resource="#ABAService_43_VerifyABA_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_VerifyABAResponse"/>
+    <process:hasPrecondition>The input parameters must adhere to the specified structure defined by the {http://www.lyonsreg.com/WebService/ABAService}VerifyABA format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response conforming to the structure defined by {http://www.lyonsreg.com/WebService/ABAService}VerifyABAResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_44_VerifyWire_Atomic">
+    <process:hasName>VerifyWire</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_44_VerifyWire_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_VerifyWire"/>
+    <process:hasOutput rdf:resource="#ABAService_44_VerifyWire_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_VerifyWireResponse"/>
+    <process:hasPrecondition>The input parameters for VerifyWire must conform to the specified structure defined by the http://www.lyonsreg.com/WebService/ABAService namespace.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for VerifyWireResponse will adhere to the defined structure specified by the http://www.lyonsreg.com/WebService/ABAService namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_45_GetBanksForEW_Atomic">
+    <process:hasName>GetBanksForEW</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_45_GetBanksForEW_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksForEW"/>
+    <process:hasOutput rdf:resource="#ABAService_45_GetBanksForEW_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksForEWResponse"/>
+    <process:hasPrecondition>The input parameters for GetBanksForEW must be provided in the specified format under http://www.lyonsreg.com/WebService/ABAService namespace.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for GetBanksForEWResponse will be generated in the specified format under http://www.lyonsreg.com/WebService/ABAService namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_46_GetBanksXML_Atomic">
+    <process:hasName>GetBanksXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_46_GetBanksXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksXML"/>
+    <process:hasOutput rdf:resource="#ABAService_46_GetBanksXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksXMLResponse"/>
+    <process:hasPrecondition>The client must provide the necessary parameters in the specified format for the GetBanksXML operation.</process:hasPrecondition>
+    <process:hasEffect>The server will return the GetBanksXMLResponse in the specified format based on the provided parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_47_GetBanksPrimarySortXML_Atomic">
+    <process:hasName>GetBanksPrimarySortXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_47_GetBanksPrimarySortXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksPrimarySortXML"/>
+    <process:hasOutput rdf:resource="#ABAService_47_GetBanksPrimarySortXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksPrimarySortXMLResponse"/>
+    <process:hasPrecondition>The client must provide a request for retrieving primary bank sorting information in XML format.</process:hasPrecondition>
+    <process:hasEffect>The server will respond with the primary bank sorting information in XML format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_48_GetBanksXML_W3C_Atomic">
+    <process:hasName>GetBanksXML_W3C</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_48_GetBanksXML_W3C_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksXML_W3C"/>
+    <process:hasOutput rdf:resource="#ABAService_48_GetBanksXML_W3C_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksXML_W3CResponse"/>
+    <process:hasPrecondition>The client must provide the necessary parameters in the specified format for the GetBanksXML_W3C operation.</process:hasPrecondition>
+    <process:hasEffect>The server will return the response in the specified format for the GetBanksXML_W3C operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_49_GetBanksWithWireXML_Atomic">
+    <process:hasName>GetBanksWithWireXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_49_GetBanksWithWireXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksWithWireXML"/>
+    <process:hasOutput rdf:resource="#ABAService_49_GetBanksWithWireXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksWithWireXMLResponse"/>
+    <process:hasPrecondition>The input parameters must be in the format specified by the GetBanksWithWireXML operation of the ABAService web service.</process:hasPrecondition>
+    <process:hasEffect>The output parameters will be in the format specified by the GetBanksWithWireXMLResponse operation of the ABAService web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_50_GetBanksWithWireXML_W3C_Atomic">
+    <process:hasName>GetBanksWithWireXML_W3C</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_50_GetBanksWithWireXML_W3C_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksWithWireXML_W3C"/>
+    <process:hasOutput rdf:resource="#ABAService_50_GetBanksWithWireXML_W3C_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksWithWireXML_W3CResponse"/>
+    <process:hasPrecondition>The input parameters must conform to the specified W3C XML schema for GetBanksWithWireXML operation.</process:hasPrecondition>
+    <process:hasEffect>The output parameters will be in compliance with the W3C XML schema for GetBanksWithWireXMLResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_51_GetBanksFullXML_Atomic">
+    <process:hasName>GetBanksFullXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_51_GetBanksFullXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullXML"/>
+    <process:hasOutput rdf:resource="#ABAService_51_GetBanksFullXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullXMLResponse"/>
+    <process:hasPrecondition>The client must provide the necessary parameters for the GetBanksFullXML operation in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The server will return the response containing the full XML data of banks as specified in the GetBanksFullXMLResponse parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_52_GetBanksFullXML_W3C_Atomic">
+    <process:hasName>GetBanksFullXML_W3C</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_52_GetBanksFullXML_W3C_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullXML_W3C"/>
+    <process:hasOutput rdf:resource="#ABAService_52_GetBanksFullXML_W3C_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullXML_W3CResponse"/>
+    <process:hasPrecondition>The client must provide valid input parameters for the GetBanksFullXML_W3C operation.</process:hasPrecondition>
+    <process:hasEffect>The server will return a response containing the full XML data for banks in compliance with the W3C standards.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_53_GetPrimaryBankWithWireFullXML_Atomic">
+    <process:hasName>GetPrimaryBankWithWireFullXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_53_GetPrimaryBankWithWireFullXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetPrimaryBankWithWireFullXML"/>
+    <process:hasOutput rdf:resource="#ABAService_53_GetPrimaryBankWithWireFullXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetPrimaryBankWithWireFullXMLResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid request for retrieving primary bank information with wire details in XML format.</process:hasPrecondition>
+    <process:hasEffect>The output parameter will contain the response with the primary bank information including wire details in XML format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_54_GetPrimaryBankFullXML_Atomic">
+    <process:hasName>GetPrimaryBankFullXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_54_GetPrimaryBankFullXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetPrimaryBankFullXML"/>
+    <process:hasOutput rdf:resource="#ABAService_54_GetPrimaryBankFullXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetPrimaryBankFullXMLResponse"/>
+    <process:hasPrecondition>The client must provide the necessary parameters for the GetPrimaryBankFullXML operation in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The server will return the full XML response containing information about the primary bank as specified in the input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_55_GetBanksFullWithWireXML_Atomic">
+    <process:hasName>GetBanksFullWithWireXML</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_55_GetBanksFullWithWireXML_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullWithWireXML"/>
+    <process:hasOutput rdf:resource="#ABAService_55_GetBanksFullWithWireXML_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullWithWireXMLResponse"/>
+    <process:hasPrecondition>The client must provide valid input parameters conforming to the specified XML schema for GetBanksFullWithWireXML.</process:hasPrecondition>
+    <process:hasEffect>The service will return a response containing detailed information about banks with wire transfer capabilities in XML format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_56_GetBanksFullWithWireXML_W3C_Atomic">
+    <process:hasName>GetBanksFullWithWireXML_W3C</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_56_GetBanksFullWithWireXML_W3C_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullWithWireXML_W3C"/>
+    <process:hasOutput rdf:resource="#ABAService_56_GetBanksFullWithWireXML_W3C_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetBanksFullWithWireXML_W3CResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetBanksFullWithWireXML_W3C must be valid.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing a full list of banks with wire transfer information in XML format according to the W3C standards.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_57_FindASCompanyID_Atomic">
+    <process:hasName>FindASCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_57_FindASCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_FindASCompanyID"/>
+    <process:hasOutput rdf:resource="#ABAService_57_FindASCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_FindASCompanyIDResponse"/>
+    <process:hasPrecondition>The input parameter for FindASCompanyID must be provided in the specified format from the Lyonsreg ABAService web service.</process:hasPrecondition>
+    <process:hasEffect>The FindASCompanyID operation will return a response in the specified format from the Lyonsreg ABAService web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_58_FindCompanyID_Atomic">
+    <process:hasName>FindCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_58_FindCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_FindCompanyID"/>
+    <process:hasOutput rdf:resource="#ABAService_58_FindCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_FindCompanyIDResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for FindCompanyID must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The FindCompanyID operation will be executed and the response containing the company ID will be returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_59_GetCompanyID_Atomic">
+    <process:hasName>GetCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_59_GetCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_GetCompanyID"/>
+    <process:hasOutput rdf:resource="#ABAService_59_GetCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_GetCompanyIDResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetCompanyID must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the Company ID in the specified response format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_60_Logoff_Atomic">
+    <process:hasName>Logoff</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_60_Logoff_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_Logoff"/>
+    <process:hasOutput rdf:resource="#ABAService_60_Logoff_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_LogoffResponse"/>
+    <process:hasPrecondition>The user must be currently logged in to the ABA service.</process:hasPrecondition>
+    <process:hasEffect>The user is successfully logged out of the ABA service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_61_Logon_Atomic">
+    <process:hasName>Logon</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_61_Logon_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_Logon"/>
+    <process:hasOutput rdf:resource="#ABAService_61_Logon_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_LogonResponse"/>
+    <process:hasPrecondition>The user must provide valid credentials in the Logon parameters for authentication.</process:hasPrecondition>
+    <process:hasEffect>Upon successful authentication, the system will return a LogonResponse in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ABAService_62_RequiredLogon_Atomic">
+    <process:hasName>RequiredLogon</process:hasName>
+    <process:hasInput rdf:resource="#ABAService_62_RequiredLogon_Atomic_input_parameters__http___www.lyonsreg.com_WebService_ABAService_RequiredLogon"/>
+    <process:hasOutput rdf:resource="#ABAService_62_RequiredLogon_Atomic_output_parameters__http___www.lyonsreg.com_WebService_ABAService_RequiredLogonResponse"/>
+    <process:hasPrecondition>The user must provide valid login credentials in the RequiredLogon parameters.</process:hasPrecondition>
+    <process:hasEffect>The system will authenticate the user and grant access to the requested service in the RequiredLogonResponse parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ABAService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_0_ValidateABA_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_1_VerifyABA_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_2_VerifyWire_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_3_GetBanksForEW_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_4_GetBanksXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_5_GetBanksPrimarySortXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_6_GetBanksXML_W3C_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_7_GetBanksWithWireXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_8_GetBanksWithWireXML_W3C_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_9_GetBanksFullXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_10_GetBanksFullXML_W3C_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_11_GetPrimaryBankWithWireFullXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_12_GetPrimaryBankFullXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_13_GetBanksFullWithWireXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_14_GetBanksFullWithWireXML_W3C_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_15_FindASCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_16_FindCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_17_GetCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_18_Logoff_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_19_Logon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_20_RequiredLogon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_21_ValidateABA_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_22_VerifyABA_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_23_VerifyWire_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_24_GetBanksForEW_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_25_GetBanksXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_26_GetBanksPrimarySortXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_27_GetBanksXML_W3C_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_28_GetBanksWithWireXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_29_GetBanksWithWireXML_W3C_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_30_GetBanksFullXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_31_GetBanksFullXML_W3C_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_32_GetPrimaryBankWithWireFullXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_33_GetPrimaryBankFullXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_34_GetBanksFullWithWireXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_35_GetBanksFullWithWireXML_W3C_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_36_FindASCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_37_FindCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_38_GetCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_39_Logoff_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_40_Logon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_41_RequiredLogon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_42_ValidateABA_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_43_VerifyABA_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_44_VerifyWire_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_45_GetBanksForEW_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_46_GetBanksXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_47_GetBanksPrimarySortXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_48_GetBanksXML_W3C_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_49_GetBanksWithWireXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_50_GetBanksWithWireXML_W3C_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_51_GetBanksFullXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_52_GetBanksFullXML_W3C_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_53_GetPrimaryBankWithWireFullXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_54_GetPrimaryBankFullXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_55_GetBanksFullWithWireXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_56_GetBanksFullWithWireXML_W3C_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_57_FindASCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_58_FindCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_59_GetCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_60_Logoff_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_61_Logon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ABAService_62_RequiredLogon_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_0_ValidateABA_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_0_ValidateABA_Atomic"/>
+    <grounding:wsdlOperationName>ValidateABA</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateABAHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateABAHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_1_VerifyABA_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_1_VerifyABA_Atomic"/>
+    <grounding:wsdlOperationName>VerifyABA</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VerifyABAHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VerifyABAHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_2_VerifyWire_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_2_VerifyWire_Atomic"/>
+    <grounding:wsdlOperationName>VerifyWire</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VerifyWireHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VerifyWireHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_3_GetBanksForEW_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_3_GetBanksForEW_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksForEW</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksForEWHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksForEWHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_4_GetBanksXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_4_GetBanksXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksXMLHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksXMLHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_5_GetBanksPrimarySortXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_5_GetBanksPrimarySortXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksPrimarySortXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksPrimarySortXMLHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksPrimarySortXMLHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_6_GetBanksXML_W3C_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_6_GetBanksXML_W3C_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksXML_W3C</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksXML_W3CHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksXML_W3CHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_7_GetBanksWithWireXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_7_GetBanksWithWireXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksWithWireXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksWithWireXMLHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksWithWireXMLHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_8_GetBanksWithWireXML_W3C_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_8_GetBanksWithWireXML_W3C_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksWithWireXML_W3C</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksWithWireXML_W3CHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksWithWireXML_W3CHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_9_GetBanksFullXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_9_GetBanksFullXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksFullXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksFullXMLHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksFullXMLHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_10_GetBanksFullXML_W3C_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_10_GetBanksFullXML_W3C_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksFullXML_W3C</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksFullXML_W3CHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksFullXML_W3CHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_11_GetPrimaryBankWithWireFullXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_11_GetPrimaryBankWithWireFullXML_Atomic"/>
+    <grounding:wsdlOperationName>GetPrimaryBankWithWireFullXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetPrimaryBankWithWireFullXMLHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetPrimaryBankWithWireFullXMLHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_12_GetPrimaryBankFullXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_12_GetPrimaryBankFullXML_Atomic"/>
+    <grounding:wsdlOperationName>GetPrimaryBankFullXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetPrimaryBankFullXMLHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetPrimaryBankFullXMLHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_13_GetBanksFullWithWireXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_13_GetBanksFullWithWireXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksFullWithWireXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksFullWithWireXMLHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksFullWithWireXMLHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_14_GetBanksFullWithWireXML_W3C_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_14_GetBanksFullWithWireXML_W3C_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksFullWithWireXML_W3C</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksFullWithWireXML_W3CHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksFullWithWireXML_W3CHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_15_FindASCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_15_FindASCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindASCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindASCompanyIDHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindASCompanyIDHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_16_FindCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_16_FindCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindCompanyIDHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindCompanyIDHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_17_GetCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_17_GetCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>GetCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCompanyIDHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCompanyIDHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_18_Logoff_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_18_Logoff_Atomic"/>
+    <grounding:wsdlOperationName>Logoff</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoffHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoffHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_19_Logon_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_19_Logon_Atomic"/>
+    <grounding:wsdlOperationName>Logon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogonHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogonHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_20_RequiredLogon_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_20_RequiredLogon_Atomic"/>
+    <grounding:wsdlOperationName>RequiredLogon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RequiredLogonHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RequiredLogonHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_21_ValidateABA_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_21_ValidateABA_Atomic"/>
+    <grounding:wsdlOperationName>ValidateABA</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateABAHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateABAHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_22_VerifyABA_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_22_VerifyABA_Atomic"/>
+    <grounding:wsdlOperationName>VerifyABA</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VerifyABAHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VerifyABAHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_23_VerifyWire_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_23_VerifyWire_Atomic"/>
+    <grounding:wsdlOperationName>VerifyWire</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VerifyWireHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VerifyWireHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_24_GetBanksForEW_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_24_GetBanksForEW_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksForEW</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksForEWHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksForEWHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_25_GetBanksXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_25_GetBanksXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksXMLHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksXMLHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_26_GetBanksPrimarySortXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_26_GetBanksPrimarySortXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksPrimarySortXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksPrimarySortXMLHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksPrimarySortXMLHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_27_GetBanksXML_W3C_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_27_GetBanksXML_W3C_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksXML_W3C</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksXML_W3CHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksXML_W3CHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_28_GetBanksWithWireXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_28_GetBanksWithWireXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksWithWireXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksWithWireXMLHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksWithWireXMLHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_29_GetBanksWithWireXML_W3C_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_29_GetBanksWithWireXML_W3C_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksWithWireXML_W3C</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksWithWireXML_W3CHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksWithWireXML_W3CHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_30_GetBanksFullXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_30_GetBanksFullXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksFullXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksFullXMLHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksFullXMLHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_31_GetBanksFullXML_W3C_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_31_GetBanksFullXML_W3C_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksFullXML_W3C</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksFullXML_W3CHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksFullXML_W3CHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_32_GetPrimaryBankWithWireFullXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_32_GetPrimaryBankWithWireFullXML_Atomic"/>
+    <grounding:wsdlOperationName>GetPrimaryBankWithWireFullXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetPrimaryBankWithWireFullXMLHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetPrimaryBankWithWireFullXMLHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_33_GetPrimaryBankFullXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_33_GetPrimaryBankFullXML_Atomic"/>
+    <grounding:wsdlOperationName>GetPrimaryBankFullXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetPrimaryBankFullXMLHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetPrimaryBankFullXMLHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_34_GetBanksFullWithWireXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_34_GetBanksFullWithWireXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksFullWithWireXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksFullWithWireXMLHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksFullWithWireXMLHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_35_GetBanksFullWithWireXML_W3C_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_35_GetBanksFullWithWireXML_W3C_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksFullWithWireXML_W3C</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksFullWithWireXML_W3CHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksFullWithWireXML_W3CHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_36_FindASCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_36_FindASCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindASCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindASCompanyIDHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindASCompanyIDHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_37_FindCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_37_FindCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindCompanyIDHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindCompanyIDHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_38_GetCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_38_GetCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>GetCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCompanyIDHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCompanyIDHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_39_Logoff_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_39_Logoff_Atomic"/>
+    <grounding:wsdlOperationName>Logoff</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoffHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoffHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_40_Logon_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_40_Logon_Atomic"/>
+    <grounding:wsdlOperationName>Logon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogonHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogonHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_41_RequiredLogon_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_41_RequiredLogon_Atomic"/>
+    <grounding:wsdlOperationName>RequiredLogon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RequiredLogonHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RequiredLogonHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_42_ValidateABA_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_42_ValidateABA_Atomic"/>
+    <grounding:wsdlOperationName>ValidateABA</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ValidateABASoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ValidateABASoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_43_VerifyABA_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_43_VerifyABA_Atomic"/>
+    <grounding:wsdlOperationName>VerifyABA</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VerifyABASoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VerifyABASoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_44_VerifyWire_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_44_VerifyWire_Atomic"/>
+    <grounding:wsdlOperationName>VerifyWire</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VerifyWireSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VerifyWireSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_45_GetBanksForEW_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_45_GetBanksForEW_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksForEW</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksForEWSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksForEWSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_46_GetBanksXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_46_GetBanksXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksXMLSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksXMLSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_47_GetBanksPrimarySortXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_47_GetBanksPrimarySortXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksPrimarySortXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksPrimarySortXMLSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksPrimarySortXMLSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_48_GetBanksXML_W3C_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_48_GetBanksXML_W3C_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksXML_W3C</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksXML_W3CSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksXML_W3CSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_49_GetBanksWithWireXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_49_GetBanksWithWireXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksWithWireXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksWithWireXMLSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksWithWireXMLSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_50_GetBanksWithWireXML_W3C_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_50_GetBanksWithWireXML_W3C_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksWithWireXML_W3C</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksWithWireXML_W3CSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksWithWireXML_W3CSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_51_GetBanksFullXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_51_GetBanksFullXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksFullXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksFullXMLSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksFullXMLSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_52_GetBanksFullXML_W3C_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_52_GetBanksFullXML_W3C_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksFullXML_W3C</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksFullXML_W3CSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksFullXML_W3CSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_53_GetPrimaryBankWithWireFullXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_53_GetPrimaryBankWithWireFullXML_Atomic"/>
+    <grounding:wsdlOperationName>GetPrimaryBankWithWireFullXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetPrimaryBankWithWireFullXMLSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetPrimaryBankWithWireFullXMLSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_54_GetPrimaryBankFullXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_54_GetPrimaryBankFullXML_Atomic"/>
+    <grounding:wsdlOperationName>GetPrimaryBankFullXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetPrimaryBankFullXMLSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetPrimaryBankFullXMLSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_55_GetBanksFullWithWireXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_55_GetBanksFullWithWireXML_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksFullWithWireXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksFullWithWireXMLSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksFullWithWireXMLSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_56_GetBanksFullWithWireXML_W3C_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_56_GetBanksFullWithWireXML_W3C_Atomic"/>
+    <grounding:wsdlOperationName>GetBanksFullWithWireXML_W3C</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBanksFullWithWireXML_W3CSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBanksFullWithWireXML_W3CSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_57_FindASCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_57_FindASCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindASCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindASCompanyIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindASCompanyIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_58_FindCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_58_FindCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindCompanyIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindCompanyIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_59_GetCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_59_GetCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>GetCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCompanyIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCompanyIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_60_Logoff_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_60_Logoff_Atomic"/>
+    <grounding:wsdlOperationName>Logoff</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoffSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoffSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_61_Logon_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_61_Logon_Atomic"/>
+    <grounding:wsdlOperationName>Logon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogonSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogonSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ABAService_62_RequiredLogon_Grounding">
+    <grounding:owlsProcess rdf:resource="#ABAService_62_RequiredLogon_Atomic"/>
+    <grounding:wsdlOperationName>RequiredLogon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ABAServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ABAServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/644_ABAService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RequiredLogonSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RequiredLogonSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

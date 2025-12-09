@@ -1,0 +1,456 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="NetworkNode">
+    <service:presents rdf:resource="#NetworkNode_Profile"/>
+    <service:describedBy rdf:resource="#NetworkNode_Composite"/>
+    <service:supports rdf:resource="#NetworkNode_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="NetworkNode_Profile">
+    <profile:serviceName>NetworkNode</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#NetworkNode"/>
+    <profile:hasProcess rdf:resource="#NetworkNode_0_Authenticate_Atomic"/>
+    <profile:hasInput rdf:resource="#NetworkNode_0_Authenticate_Atomic_input_credential__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_0_Authenticate_Atomic_input_authenticationMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_0_Authenticate_Atomic_input_userId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#NetworkNode_0_Authenticate_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The user must provide valid credentials, authentication method, and user ID.</profile:hasPrecondition>
+    <profile:hasResult>The system will return a string indicating the success or failure of the authentication process.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NetworkNode_1_Submit_Atomic"/>
+    <profile:hasInput rdf:resource="#NetworkNode_1_Submit_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_1_Submit_Atomic_input_dataflow__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_1_Submit_Atomic_input_documents__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayofDoc"/>
+    <profile:hasInput rdf:resource="#NetworkNode_1_Submit_Atomic_input_transactionId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#NetworkNode_1_Submit_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The user must provide a valid security token, dataflow, an array of documents, and a transaction ID to submit the request.</profile:hasPrecondition>
+    <profile:hasResult>The system will process the submitted data and return a response string.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NetworkNode_2_GetStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#NetworkNode_2_GetStatus_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_2_GetStatus_Atomic_input_transactionId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#NetworkNode_2_GetStatus_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The user must provide a valid security token and a transaction ID as inputs.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the status of the transaction as a string.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NetworkNode_3_Notify_Atomic"/>
+    <profile:hasInput rdf:resource="#NetworkNode_3_Notify_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_3_Notify_Atomic_input_dataflow__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_3_Notify_Atomic_input_documents__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayofDoc"/>
+    <profile:hasInput rdf:resource="#NetworkNode_3_Notify_Atomic_input_nodeAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#NetworkNode_3_Notify_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The user must provide a valid security token, dataflow, an array of documents, and a valid node address.</profile:hasPrecondition>
+    <profile:hasResult>The operation will notify the specified node address with the provided dataflow and documents, returning a success message.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NetworkNode_4_Download_Atomic"/>
+    <profile:hasInput rdf:resource="#NetworkNode_4_Download_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_4_Download_Atomic_input_dataflow__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_4_Download_Atomic_input_documents__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayofDoc"/>
+    <profile:hasInput rdf:resource="#NetworkNode_4_Download_Atomic_input_transactionId__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#NetworkNode_4_Download_Atomic_output_documents__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayofDoc"/>
+    <profile:hasPrecondition>The user must provide a valid security token, dataflow identifier, array of documents, and transaction ID for the download operation to proceed.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of documents based on the provided inputs.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NetworkNode_5_Query_Atomic"/>
+    <profile:hasInput rdf:resource="#NetworkNode_5_Query_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_5_Query_Atomic_input_request__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_5_Query_Atomic_input_maxRows__http___www.w3.org_2001_XMLSchema_integer"/>
+    <profile:hasInput rdf:resource="#NetworkNode_5_Query_Atomic_input_parameters__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayOfstring"/>
+    <profile:hasInput rdf:resource="#NetworkNode_5_Query_Atomic_input_rowId__http___www.w3.org_2001_XMLSchema_integer"/>
+    <profile:hasOutput rdf:resource="#NetworkNode_5_Query_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The securityToken provided must be valid and authorized to access the requested information.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a string containing the query result based on the provided inputs.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NetworkNode_6_Solicit_Atomic"/>
+    <profile:hasInput rdf:resource="#NetworkNode_6_Solicit_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_6_Solicit_Atomic_input_request__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_6_Solicit_Atomic_input_returnURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_6_Solicit_Atomic_input_parameters__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayOfstring"/>
+    <profile:hasOutput rdf:resource="#NetworkNode_6_Solicit_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The user must provide a valid security token and request along with a return URL and parameters in the specified data formats.</profile:hasPrecondition>
+    <profile:hasResult>The operation will process the request and return a response string based on the provided inputs.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NetworkNode_7_Execute_Atomic"/>
+    <profile:hasInput rdf:resource="#NetworkNode_7_Execute_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_7_Execute_Atomic_input_request__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_7_Execute_Atomic_input_parameters__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayOfstring"/>
+    <profile:hasOutput rdf:resource="#NetworkNode_7_Execute_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The security token, request, and parameters must be provided in the specified data formats.</profile:hasPrecondition>
+    <profile:hasResult>The operation will be executed and return a string response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NetworkNode_8_NodePing_Atomic"/>
+    <profile:hasInput rdf:resource="#NetworkNode_8_NodePing_Atomic_input_Hello__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#NetworkNode_8_NodePing_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The input parameter "Hello" must be a string conforming to the XML Schema definition specified by http://www.w3.org/2001/XMLSchema.</profile:hasPrecondition>
+    <profile:hasResult>The operation "NodePing" will return a string conforming to the XML Schema definition specified by http://www.w3.org/2001/XMLSchema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NetworkNode_9_GetServices_Atomic"/>
+    <profile:hasInput rdf:resource="#NetworkNode_9_GetServices_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#NetworkNode_9_GetServices_Atomic_input_serviceType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#NetworkNode_9_GetServices_Atomic_output_return__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayOfstring"/>
+    <profile:hasPrecondition>The user must provide a valid security token and specify the service type to retrieve available services.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of strings containing the services that match the specified service type.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="NetworkNode_Composite">
+    <process:composedOf rdf:resource="#NetworkNode_0_Authenticate_Atomic"/>
+    <process:composedOf rdf:resource="#NetworkNode_1_Submit_Atomic"/>
+    <process:composedOf rdf:resource="#NetworkNode_2_GetStatus_Atomic"/>
+    <process:composedOf rdf:resource="#NetworkNode_3_Notify_Atomic"/>
+    <process:composedOf rdf:resource="#NetworkNode_4_Download_Atomic"/>
+    <process:composedOf rdf:resource="#NetworkNode_5_Query_Atomic"/>
+    <process:composedOf rdf:resource="#NetworkNode_6_Solicit_Atomic"/>
+    <process:composedOf rdf:resource="#NetworkNode_7_Execute_Atomic"/>
+    <process:composedOf rdf:resource="#NetworkNode_8_NodePing_Atomic"/>
+    <process:composedOf rdf:resource="#NetworkNode_9_GetServices_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="NetworkNode_0_Authenticate_Atomic_input_credential__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>credential:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_0_Authenticate_Atomic_input_authenticationMethod__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>authenticationMethod:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_0_Authenticate_Atomic_input_userId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NetworkNode_0_Authenticate_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NetworkNode_1_Submit_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>securityToken:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_1_Submit_Atomic_input_dataflow__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>dataflow:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_1_Submit_Atomic_input_documents__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayofDoc">
+    <process:parameterType>documents:{http://www.ExchangeNetwork.net/schema/v1.0/node.xsd}ArrayofDoc</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_1_Submit_Atomic_input_transactionId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>transactionId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NetworkNode_1_Submit_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NetworkNode_2_GetStatus_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>securityToken:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_2_GetStatus_Atomic_input_transactionId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>transactionId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NetworkNode_2_GetStatus_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NetworkNode_3_Notify_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>securityToken:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_3_Notify_Atomic_input_dataflow__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>dataflow:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_3_Notify_Atomic_input_documents__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayofDoc">
+    <process:parameterType>documents:{http://www.ExchangeNetwork.net/schema/v1.0/node.xsd}ArrayofDoc</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_3_Notify_Atomic_input_nodeAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>nodeAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NetworkNode_3_Notify_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NetworkNode_4_Download_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>securityToken:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_4_Download_Atomic_input_dataflow__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>dataflow:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_4_Download_Atomic_input_documents__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayofDoc">
+    <process:parameterType>documents:{http://www.ExchangeNetwork.net/schema/v1.0/node.xsd}ArrayofDoc</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_4_Download_Atomic_input_transactionId__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>transactionId:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NetworkNode_4_Download_Atomic_output_documents__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayofDoc">
+    <process:parameterType>documents:{http://www.ExchangeNetwork.net/schema/v1.0/node.xsd}ArrayofDoc</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NetworkNode_5_Query_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>securityToken:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_5_Query_Atomic_input_request__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>request:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_5_Query_Atomic_input_maxRows__http___www.w3.org_2001_XMLSchema_integer">
+    <process:parameterType>maxRows:{http://www.w3.org/2001/XMLSchema}integer</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_5_Query_Atomic_input_parameters__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayOfstring">
+    <process:parameterType>parameters:{http://www.ExchangeNetwork.net/schema/v1.0/node.xsd}ArrayOfstring</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_5_Query_Atomic_input_rowId__http___www.w3.org_2001_XMLSchema_integer">
+    <process:parameterType>rowId:{http://www.w3.org/2001/XMLSchema}integer</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NetworkNode_5_Query_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NetworkNode_6_Solicit_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>securityToken:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_6_Solicit_Atomic_input_request__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>request:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_6_Solicit_Atomic_input_returnURL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>returnURL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_6_Solicit_Atomic_input_parameters__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayOfstring">
+    <process:parameterType>parameters:{http://www.ExchangeNetwork.net/schema/v1.0/node.xsd}ArrayOfstring</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NetworkNode_6_Solicit_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NetworkNode_7_Execute_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>securityToken:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_7_Execute_Atomic_input_request__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>request:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_7_Execute_Atomic_input_parameters__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayOfstring">
+    <process:parameterType>parameters:{http://www.ExchangeNetwork.net/schema/v1.0/node.xsd}ArrayOfstring</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NetworkNode_7_Execute_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NetworkNode_8_NodePing_Atomic_input_Hello__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Hello:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NetworkNode_8_NodePing_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NetworkNode_9_GetServices_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>securityToken:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="NetworkNode_9_GetServices_Atomic_input_serviceType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>serviceType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NetworkNode_9_GetServices_Atomic_output_return__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayOfstring">
+    <process:parameterType>return:{http://www.ExchangeNetwork.net/schema/v1.0/node.xsd}ArrayOfstring</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="NetworkNode_0_Authenticate_Atomic">
+    <process:hasName>Authenticate</process:hasName>
+    <process:hasInput rdf:resource="#NetworkNode_0_Authenticate_Atomic_input_credential__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_0_Authenticate_Atomic_input_authenticationMethod__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_0_Authenticate_Atomic_input_userId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#NetworkNode_0_Authenticate_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The user must provide valid credentials, authentication method, and user ID.</process:hasPrecondition>
+    <process:hasEffect>The system will return a string indicating the success or failure of the authentication process.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NetworkNode_1_Submit_Atomic">
+    <process:hasName>Submit</process:hasName>
+    <process:hasInput rdf:resource="#NetworkNode_1_Submit_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_1_Submit_Atomic_input_dataflow__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_1_Submit_Atomic_input_documents__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayofDoc"/>
+    <process:hasInput rdf:resource="#NetworkNode_1_Submit_Atomic_input_transactionId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#NetworkNode_1_Submit_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The user must provide a valid security token, dataflow, an array of documents, and a transaction ID to submit the request.</process:hasPrecondition>
+    <process:hasEffect>The system will process the submitted data and return a response string.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NetworkNode_2_GetStatus_Atomic">
+    <process:hasName>GetStatus</process:hasName>
+    <process:hasInput rdf:resource="#NetworkNode_2_GetStatus_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_2_GetStatus_Atomic_input_transactionId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#NetworkNode_2_GetStatus_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The user must provide a valid security token and a transaction ID as inputs.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the status of the transaction as a string.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NetworkNode_3_Notify_Atomic">
+    <process:hasName>Notify</process:hasName>
+    <process:hasInput rdf:resource="#NetworkNode_3_Notify_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_3_Notify_Atomic_input_dataflow__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_3_Notify_Atomic_input_documents__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayofDoc"/>
+    <process:hasInput rdf:resource="#NetworkNode_3_Notify_Atomic_input_nodeAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#NetworkNode_3_Notify_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The user must provide a valid security token, dataflow, an array of documents, and a valid node address.</process:hasPrecondition>
+    <process:hasEffect>The operation will notify the specified node address with the provided dataflow and documents, returning a success message.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NetworkNode_4_Download_Atomic">
+    <process:hasName>Download</process:hasName>
+    <process:hasInput rdf:resource="#NetworkNode_4_Download_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_4_Download_Atomic_input_dataflow__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_4_Download_Atomic_input_documents__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayofDoc"/>
+    <process:hasInput rdf:resource="#NetworkNode_4_Download_Atomic_input_transactionId__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#NetworkNode_4_Download_Atomic_output_documents__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayofDoc"/>
+    <process:hasPrecondition>The user must provide a valid security token, dataflow identifier, array of documents, and transaction ID for the download operation to proceed.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of documents based on the provided inputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NetworkNode_5_Query_Atomic">
+    <process:hasName>Query</process:hasName>
+    <process:hasInput rdf:resource="#NetworkNode_5_Query_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_5_Query_Atomic_input_request__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_5_Query_Atomic_input_maxRows__http___www.w3.org_2001_XMLSchema_integer"/>
+    <process:hasInput rdf:resource="#NetworkNode_5_Query_Atomic_input_parameters__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayOfstring"/>
+    <process:hasInput rdf:resource="#NetworkNode_5_Query_Atomic_input_rowId__http___www.w3.org_2001_XMLSchema_integer"/>
+    <process:hasOutput rdf:resource="#NetworkNode_5_Query_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The securityToken provided must be valid and authorized to access the requested information.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a string containing the query result based on the provided inputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NetworkNode_6_Solicit_Atomic">
+    <process:hasName>Solicit</process:hasName>
+    <process:hasInput rdf:resource="#NetworkNode_6_Solicit_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_6_Solicit_Atomic_input_request__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_6_Solicit_Atomic_input_returnURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_6_Solicit_Atomic_input_parameters__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayOfstring"/>
+    <process:hasOutput rdf:resource="#NetworkNode_6_Solicit_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The user must provide a valid security token and request along with a return URL and parameters in the specified data formats.</process:hasPrecondition>
+    <process:hasEffect>The operation will process the request and return a response string based on the provided inputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NetworkNode_7_Execute_Atomic">
+    <process:hasName>Execute</process:hasName>
+    <process:hasInput rdf:resource="#NetworkNode_7_Execute_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_7_Execute_Atomic_input_request__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_7_Execute_Atomic_input_parameters__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayOfstring"/>
+    <process:hasOutput rdf:resource="#NetworkNode_7_Execute_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The security token, request, and parameters must be provided in the specified data formats.</process:hasPrecondition>
+    <process:hasEffect>The operation will be executed and return a string response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NetworkNode_8_NodePing_Atomic">
+    <process:hasName>NodePing</process:hasName>
+    <process:hasInput rdf:resource="#NetworkNode_8_NodePing_Atomic_input_Hello__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#NetworkNode_8_NodePing_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The input parameter "Hello" must be a string conforming to the XML Schema definition specified by http://www.w3.org/2001/XMLSchema.</process:hasPrecondition>
+    <process:hasEffect>The operation "NodePing" will return a string conforming to the XML Schema definition specified by http://www.w3.org/2001/XMLSchema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NetworkNode_9_GetServices_Atomic">
+    <process:hasName>GetServices</process:hasName>
+    <process:hasInput rdf:resource="#NetworkNode_9_GetServices_Atomic_input_securityToken__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#NetworkNode_9_GetServices_Atomic_input_serviceType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#NetworkNode_9_GetServices_Atomic_output_return__http___www.ExchangeNetwork.net_schema_v1.0_node.xsd_ArrayOfstring"/>
+    <process:hasPrecondition>The user must provide a valid security token and specify the service type to retrieve available services.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of strings containing the services that match the specified service type.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="NetworkNode_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NetworkNode_0_Authenticate_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NetworkNode_1_Submit_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NetworkNode_2_GetStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NetworkNode_3_Notify_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NetworkNode_4_Download_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NetworkNode_5_Query_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NetworkNode_6_Solicit_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NetworkNode_7_Execute_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NetworkNode_8_NodePing_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NetworkNode_9_GetServices_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NetworkNode_0_Authenticate_Grounding">
+    <grounding:owlsProcess rdf:resource="#NetworkNode_0_Authenticate_Atomic"/>
+    <grounding:wsdlOperationName>Authenticate</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NetworkNodeBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NetworkNodePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/869_NetworkNode.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Authenticate</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AuthenticateResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NetworkNode_1_Submit_Grounding">
+    <grounding:owlsProcess rdf:resource="#NetworkNode_1_Submit_Atomic"/>
+    <grounding:wsdlOperationName>Submit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NetworkNodeBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NetworkNodePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/869_NetworkNode.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Submit</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SubmitResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NetworkNode_2_GetStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#NetworkNode_2_GetStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NetworkNodeBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NetworkNodePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/869_NetworkNode.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStatus</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStatusResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NetworkNode_3_Notify_Grounding">
+    <grounding:owlsProcess rdf:resource="#NetworkNode_3_Notify_Atomic"/>
+    <grounding:wsdlOperationName>Notify</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NetworkNodeBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NetworkNodePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/869_NetworkNode.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Notify</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>NotifyResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NetworkNode_4_Download_Grounding">
+    <grounding:owlsProcess rdf:resource="#NetworkNode_4_Download_Atomic"/>
+    <grounding:wsdlOperationName>Download</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NetworkNodeBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NetworkNodePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/869_NetworkNode.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Download</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DownloadResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NetworkNode_5_Query_Grounding">
+    <grounding:owlsProcess rdf:resource="#NetworkNode_5_Query_Atomic"/>
+    <grounding:wsdlOperationName>Query</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NetworkNodeBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NetworkNodePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/869_NetworkNode.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Query</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>QueryResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NetworkNode_6_Solicit_Grounding">
+    <grounding:owlsProcess rdf:resource="#NetworkNode_6_Solicit_Atomic"/>
+    <grounding:wsdlOperationName>Solicit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NetworkNodeBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NetworkNodePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/869_NetworkNode.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Solicit</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SolicitResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NetworkNode_7_Execute_Grounding">
+    <grounding:owlsProcess rdf:resource="#NetworkNode_7_Execute_Atomic"/>
+    <grounding:wsdlOperationName>Execute</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NetworkNodeBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NetworkNodePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/869_NetworkNode.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Execute</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ExecuteResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NetworkNode_8_NodePing_Grounding">
+    <grounding:owlsProcess rdf:resource="#NetworkNode_8_NodePing_Atomic"/>
+    <grounding:wsdlOperationName>NodePing</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NetworkNodeBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NetworkNodePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/869_NetworkNode.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>NodePing</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>NodePingResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NetworkNode_9_GetServices_Grounding">
+    <grounding:owlsProcess rdf:resource="#NetworkNode_9_GetServices_Atomic"/>
+    <grounding:wsdlOperationName>GetServices</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NetworkNodeBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NetworkNodePortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/869_NetworkNode.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetServices</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetServicesResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

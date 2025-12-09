@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="AreaService">
+    <service:presents rdf:resource="#AreaService_Profile"/>
+    <service:describedBy rdf:resource="#AreaService_Composite"/>
+    <service:supports rdf:resource="#AreaService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="AreaService_Profile">
+    <profile:serviceName>AreaService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#AreaService"/>
+    <profile:hasProcess rdf:resource="#AreaService_0_CalculateRectArea_Atomic"/>
+    <profile:hasInput rdf:resource="#AreaService_0_CalculateRectArea_Atomic_input_parameters__http___tempuri.org_AreaService__parameters"/>
+    <profile:hasOutput rdf:resource="#AreaService_0_CalculateRectArea_Atomic_output_area__http___tempuri.org_AreaService__area"/>
+    <profile:hasPrecondition>The input parameters must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will calculate the area of a rectangle based on the input parameters and return the result.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="AreaService_Composite">
+    <process:composedOf rdf:resource="#AreaService_0_CalculateRectArea_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="AreaService_0_CalculateRectArea_Atomic_input_parameters__http___tempuri.org_AreaService__parameters">
+    <process:parameterType>parameters:{http://tempuri.org/AreaService/}parameters</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AreaService_0_CalculateRectArea_Atomic_output_area__http___tempuri.org_AreaService__area">
+    <process:parameterType>area:{http://tempuri.org/AreaService/}area</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="AreaService_0_CalculateRectArea_Atomic">
+    <process:hasName>CalculateRectArea</process:hasName>
+    <process:hasInput rdf:resource="#AreaService_0_CalculateRectArea_Atomic_input_parameters__http___tempuri.org_AreaService__parameters"/>
+    <process:hasOutput rdf:resource="#AreaService_0_CalculateRectArea_Atomic_output_area__http___tempuri.org_AreaService__area"/>
+    <process:hasPrecondition>The input parameters must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will calculate the area of a rectangle based on the input parameters and return the result.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="AreaService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AreaService_0_CalculateRectArea_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AreaService_0_CalculateRectArea_Grounding">
+    <grounding:owlsProcess rdf:resource="#AreaService_0_CalculateRectArea_Atomic"/>
+    <grounding:wsdlOperationName>CalculateRectArea</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AreaServiceSOAP</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AreaService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/133_AreaService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CalculateRectAreaRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CalculateRectAreaResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

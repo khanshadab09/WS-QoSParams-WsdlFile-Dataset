@@ -1,0 +1,1199 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="OFACService">
+    <service:presents rdf:resource="#OFACService_Profile"/>
+    <service:describedBy rdf:resource="#OFACService_Composite"/>
+    <service:supports rdf:resource="#OFACService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="OFACService_Profile">
+    <profile:serviceName>OFACService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#OFACService"/>
+    <profile:hasProcess rdf:resource="#OFACService_0_OFACLogonScanNameXML_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_0_OFACLogonScanNameXML_Atomic_input_companyID__http___www.lyonsreg.com_WebServices_OFACService_companyID"/>
+    <profile:hasInput rdf:resource="#OFACService_0_OFACLogonScanNameXML_Atomic_input_password__http___www.lyonsreg.com_WebServices_OFACService_password"/>
+    <profile:hasInput rdf:resource="#OFACService_0_OFACLogonScanNameXML_Atomic_input_name__http___www.lyonsreg.com_WebServices_OFACService_name"/>
+    <profile:hasInput rdf:resource="#OFACService_0_OFACLogonScanNameXML_Atomic_input_userName__http___www.lyonsreg.com_WebServices_OFACService_userName"/>
+    <profile:hasOutput rdf:resource="#OFACService_0_OFACLogonScanNameXML_Atomic_output_OFACLogonScanNameXMLResult__http___www.lyonsreg.com_WebServices_OFACService_OFACLogonScanNameXMLResult"/>
+    <profile:hasPrecondition>The user must provide valid company credentials and the name to be scanned for OFAC compliance.</profile:hasPrecondition>
+    <profile:hasResult>The system will authenticate the user and scan the provided name against the OFAC database, returning the scan results.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_1_OFACLogonScanName_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_1_OFACLogonScanName_Atomic_input_companyID__http___www.lyonsreg.com_WebServices_OFACService_companyID"/>
+    <profile:hasInput rdf:resource="#OFACService_1_OFACLogonScanName_Atomic_input_password__http___www.lyonsreg.com_WebServices_OFACService_password"/>
+    <profile:hasInput rdf:resource="#OFACService_1_OFACLogonScanName_Atomic_input_name__http___www.lyonsreg.com_WebServices_OFACService_name"/>
+    <profile:hasInput rdf:resource="#OFACService_1_OFACLogonScanName_Atomic_input_userName__http___www.lyonsreg.com_WebServices_OFACService_userName"/>
+    <profile:hasOutput rdf:resource="#OFACService_1_OFACLogonScanName_Atomic_output_OFACLogonScanNameResult__http___www.lyonsreg.com_WebServices_OFACService_OFACLogonScanNameResult"/>
+    <profile:hasPrecondition>The user must provide valid company credentials and the name to be scanned for OFAC compliance.</profile:hasPrecondition>
+    <profile:hasResult>The system will authenticate the user, scan the provided name against OFAC lists, and return the scan results.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_2_OFACScanName_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_2_OFACScanName_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_OFACScanName"/>
+    <profile:hasOutput rdf:resource="#OFACService_2_OFACScanName_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_OFACScanNameResponse"/>
+    <profile:hasPrecondition>The input parameter for OFACScanName must be provided in the specified format from the LyonsReg OFACService web service.</profile:hasPrecondition>
+    <profile:hasResult>The OFACScanName operation will return a response in the specified format from the LyonsReg OFACService web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_3_OFACScanCountry_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_3_OFACScanCountry_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_OFACScanCountry"/>
+    <profile:hasOutput rdf:resource="#OFACService_3_OFACScanCountry_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_OFACScanCountryResponse"/>
+    <profile:hasPrecondition>The input parameter for OFACScanCountry must be in the format specified by the OFACService web service.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter for OFACScanCountryResponse will be generated according to the response format defined by the OFACService web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_4_CountryList_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_4_CountryList_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_CountryList"/>
+    <profile:hasOutput rdf:resource="#OFACService_4_CountryList_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_CountryListResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameter CountryList must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing a list of countries.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_5_FindASCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_5_FindASCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_FindASCompanyID"/>
+    <profile:hasOutput rdf:resource="#OFACService_5_FindASCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_FindASCompanyIDResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid company ID in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter will contain the corresponding response for the provided company ID.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_6_FindCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_6_FindCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_FindCompanyID"/>
+    <profile:hasOutput rdf:resource="#OFACService_6_FindCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_FindCompanyIDResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid company identifier in the OFACService web service.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter will contain the corresponding company ID from the OFACService web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_7_GetCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_7_GetCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_GetCompanyID"/>
+    <profile:hasOutput rdf:resource="#OFACService_7_GetCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_GetCompanyIDResponse"/>
+    <profile:hasPrecondition>The user must provide a valid input parameter for the GetCompanyID operation in the OFACService web service.</profile:hasPrecondition>
+    <profile:hasResult>The GetCompanyID operation will return the corresponding company ID in the response parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_8_Logoff_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_8_Logoff_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_Logoff"/>
+    <profile:hasOutput rdf:resource="#OFACService_8_Logoff_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_LogoffResponse"/>
+    <profile:hasPrecondition>The user must be currently logged in to the OFAC web service.</profile:hasPrecondition>
+    <profile:hasResult>The user will be successfully logged off from the OFAC web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_9_Logon_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_9_Logon_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_Logon"/>
+    <profile:hasOutput rdf:resource="#OFACService_9_Logon_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_LogonResponse"/>
+    <profile:hasPrecondition>The user must provide valid credentials for authentication in the Logon request.</profile:hasPrecondition>
+    <profile:hasResult>The system will authenticate the user and provide a response confirming successful logon or indicating authentication failure.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_10_RequiredLogon_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_10_RequiredLogon_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_RequiredLogon"/>
+    <profile:hasOutput rdf:resource="#OFACService_10_RequiredLogon_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_RequiredLogonResponse"/>
+    <profile:hasPrecondition>The user must provide valid login credentials in the RequiredLogon parameters.</profile:hasPrecondition>
+    <profile:hasResult>The system will authenticate the user and return a response in the RequiredLogonResponse parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_11_OFACLogonScanNameXML_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_11_OFACLogonScanNameXML_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_11_OFACLogonScanNameXML_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_11_OFACLogonScanNameXML_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_11_OFACLogonScanNameXML_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_11_OFACLogonScanNameXML_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The user must have valid credentials to access the OFAC scanning service.</profile:hasPrecondition>
+    <profile:hasResult>The system will scan the provided name against the OFAC list and return the results.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_12_OFACLogonScanName_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_12_OFACLogonScanName_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_12_OFACLogonScanName_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_12_OFACLogonScanName_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_12_OFACLogonScanName_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_12_OFACLogonScanName_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <profile:hasPrecondition>The user must provide valid credentials (companyID and password) to access the OFAC scanning service.</profile:hasPrecondition>
+    <profile:hasResult>The service will scan the provided name against the OFAC list and return the result as a string in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_13_OFACScanName_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_13_OFACScanName_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_13_OFACScanName_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_13_OFACScanName_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <profile:hasPrecondition>The user must have a valid token to access the OFACScanName operation.</profile:hasPrecondition>
+    <profile:hasResult>The service will scan the provided name for any matches against the OFAC list and return the result as a string.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_14_OFACScanCountry_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_14_OFACScanCountry_Atomic_input_country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_14_OFACScanCountry_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_14_OFACScanCountry_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_14_OFACScanCountry_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <profile:hasPrecondition>The user must have a valid token to access the OFACScanCountry operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will scan the specified country against the OFAC list and return a string response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_15_CountryList_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_15_CountryList_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_15_CountryList_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <profile:hasPrecondition>The user must provide a valid authentication token in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a list of countries in the body of the response in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_16_FindASCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_16_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_16_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_16_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int"/>
+    <profile:hasPrecondition>The serial number and payee code must be provided as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the company ID as an integer value.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_17_FindCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_17_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_17_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int"/>
+    <profile:hasPrecondition>The input wildcard must be a valid string conforming to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation returns an integer representing the Company ID from the specified web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_18_GetCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_18_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_18_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int"/>
+    <profile:hasPrecondition>The user must provide a valid authentication token in the form of a string.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the company ID as an integer from the OFAC web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_19_Logoff_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_19_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The provided token must be a valid authentication token for an active user session.</profile:hasPrecondition>
+    <profile:hasResult>The user session associated with the provided token will be terminated, logging the user out of the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_20_Logon_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_20_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_20_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_20_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_20_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <profile:hasPrecondition>The user must provide a valid company ID, password, and username for authentication.</profile:hasPrecondition>
+    <profile:hasResult>Upon successful authentication, the system will return a string containing the user's information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_21_RequiredLogon_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_21_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_21_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_boolean"/>
+    <profile:hasPrecondition>The user must provide a valid authentication token in order to access the service.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a boolean value indicating whether the user is successfully logged on.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_22_OFACLogonScanNameXML_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_22_OFACLogonScanNameXML_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_22_OFACLogonScanNameXML_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_22_OFACLogonScanNameXML_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_22_OFACLogonScanNameXML_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_22_OFACLogonScanNameXML_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The user must have valid credentials to access the OFACLogonScanNameXML operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will scan the provided name against the OFAC list and return an unknown body response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_23_OFACLogonScanName_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_23_OFACLogonScanName_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_23_OFACLogonScanName_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_23_OFACLogonScanName_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_23_OFACLogonScanName_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_23_OFACLogonScanName_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <profile:hasPrecondition>The user must provide valid credentials (companyID and password) to access the OFAC scanning service.</profile:hasPrecondition>
+    <profile:hasResult>The service will scan the provided name against the OFAC list and return the result in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_24_OFACScanName_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_24_OFACScanName_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_24_OFACScanName_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_24_OFACScanName_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <profile:hasPrecondition>The user must provide a name as a string and a valid token for authentication.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a string response containing information related to OFAC screening for the provided name.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_25_OFACScanCountry_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_25_OFACScanCountry_Atomic_input_country__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_25_OFACScanCountry_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_25_OFACScanCountry_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_25_OFACScanCountry_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <profile:hasPrecondition>The user must have a valid token to access the OFACScanCountry operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will scan the specified country against the Office of Foreign Assets Control (OFAC) list and return the result as a string.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_26_CountryList_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_26_CountryList_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_26_CountryList_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <profile:hasPrecondition>The user must provide a valid token to access the CountryList operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a list of countries in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_27_FindASCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_27_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_27_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_27_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int"/>
+    <profile:hasPrecondition>The serial number and payee code must be provided as input parameters in string format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an integer value representing the company ID associated with the provided serial number and payee code.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_28_FindCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_28_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_28_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int"/>
+    <profile:hasPrecondition>The wildcard input must be a valid string conforming to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an integer representing the Company ID from the specified web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_29_GetCompanyID_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_29_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_29_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int"/>
+    <profile:hasPrecondition>The user must provide a valid authentication token in the form of a string.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the unique company ID as an integer from the OFAC web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_30_Logoff_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_30_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The provided token must be valid and associated with an active user session.</profile:hasPrecondition>
+    <profile:hasResult>The user session corresponding to the provided token will be terminated, logging the user out of the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_31_Logon_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_31_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_31_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#OFACService_31_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_31_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <profile:hasPrecondition>The user must provide valid company ID, password, and username for authentication.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a string response containing the user's logon information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#OFACService_32_RequiredLogon_Atomic"/>
+    <profile:hasInput rdf:resource="#OFACService_32_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#OFACService_32_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_boolean"/>
+    <profile:hasPrecondition>The user must provide a valid authentication token in the form of a string.</profile:hasPrecondition>
+    <profile:hasResult>The system will return a boolean value indicating whether the user is successfully logged on.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="OFACService_Composite">
+    <process:composedOf rdf:resource="#OFACService_0_OFACLogonScanNameXML_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_1_OFACLogonScanName_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_2_OFACScanName_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_3_OFACScanCountry_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_4_CountryList_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_5_FindASCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_6_FindCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_7_GetCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_8_Logoff_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_9_Logon_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_10_RequiredLogon_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_11_OFACLogonScanNameXML_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_12_OFACLogonScanName_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_13_OFACScanName_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_14_OFACScanCountry_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_15_CountryList_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_16_FindASCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_17_FindCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_18_GetCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_19_Logoff_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_20_Logon_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_21_RequiredLogon_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_22_OFACLogonScanNameXML_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_23_OFACLogonScanName_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_24_OFACScanName_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_25_OFACScanCountry_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_26_CountryList_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_27_FindASCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_28_FindCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_29_GetCompanyID_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_30_Logoff_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_31_Logon_Atomic"/>
+    <process:composedOf rdf:resource="#OFACService_32_RequiredLogon_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="OFACService_0_OFACLogonScanNameXML_Atomic_input_companyID__http___www.lyonsreg.com_WebServices_OFACService_companyID">
+    <process:parameterType>companyID:{http://www.lyonsreg.com/WebServices/OFACService}companyID</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_0_OFACLogonScanNameXML_Atomic_input_password__http___www.lyonsreg.com_WebServices_OFACService_password">
+    <process:parameterType>password:{http://www.lyonsreg.com/WebServices/OFACService}password</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_0_OFACLogonScanNameXML_Atomic_input_name__http___www.lyonsreg.com_WebServices_OFACService_name">
+    <process:parameterType>name:{http://www.lyonsreg.com/WebServices/OFACService}name</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_0_OFACLogonScanNameXML_Atomic_input_userName__http___www.lyonsreg.com_WebServices_OFACService_userName">
+    <process:parameterType>userName:{http://www.lyonsreg.com/WebServices/OFACService}userName</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_0_OFACLogonScanNameXML_Atomic_output_OFACLogonScanNameXMLResult__http___www.lyonsreg.com_WebServices_OFACService_OFACLogonScanNameXMLResult">
+    <process:parameterType>OFACLogonScanNameXMLResult:{http://www.lyonsreg.com/WebServices/OFACService}OFACLogonScanNameXMLResult</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_1_OFACLogonScanName_Atomic_input_companyID__http___www.lyonsreg.com_WebServices_OFACService_companyID">
+    <process:parameterType>companyID:{http://www.lyonsreg.com/WebServices/OFACService}companyID</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_1_OFACLogonScanName_Atomic_input_password__http___www.lyonsreg.com_WebServices_OFACService_password">
+    <process:parameterType>password:{http://www.lyonsreg.com/WebServices/OFACService}password</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_1_OFACLogonScanName_Atomic_input_name__http___www.lyonsreg.com_WebServices_OFACService_name">
+    <process:parameterType>name:{http://www.lyonsreg.com/WebServices/OFACService}name</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_1_OFACLogonScanName_Atomic_input_userName__http___www.lyonsreg.com_WebServices_OFACService_userName">
+    <process:parameterType>userName:{http://www.lyonsreg.com/WebServices/OFACService}userName</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_1_OFACLogonScanName_Atomic_output_OFACLogonScanNameResult__http___www.lyonsreg.com_WebServices_OFACService_OFACLogonScanNameResult">
+    <process:parameterType>OFACLogonScanNameResult:{http://www.lyonsreg.com/WebServices/OFACService}OFACLogonScanNameResult</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_2_OFACScanName_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_OFACScanName">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}OFACScanName</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_2_OFACScanName_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_OFACScanNameResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}OFACScanNameResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_3_OFACScanCountry_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_OFACScanCountry">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}OFACScanCountry</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_3_OFACScanCountry_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_OFACScanCountryResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}OFACScanCountryResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_4_CountryList_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_CountryList">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}CountryList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_4_CountryList_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_CountryListResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}CountryListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_5_FindASCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_FindASCompanyID">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}FindASCompanyID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_5_FindASCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_FindASCompanyIDResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}FindASCompanyIDResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_6_FindCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_FindCompanyID">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}FindCompanyID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_6_FindCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_FindCompanyIDResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}FindCompanyIDResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_7_GetCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_GetCompanyID">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}GetCompanyID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_7_GetCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_GetCompanyIDResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}GetCompanyIDResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_8_Logoff_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_Logoff">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}Logoff</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_8_Logoff_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_LogoffResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}LogoffResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_9_Logon_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_Logon">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}Logon</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_9_Logon_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_LogonResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}LogonResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_10_RequiredLogon_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_RequiredLogon">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}RequiredLogon</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_10_RequiredLogon_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_RequiredLogonResponse">
+    <process:parameterType>parameters:{http://www.lyonsreg.com/WebServices/OFACService}RequiredLogonResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_11_OFACLogonScanNameXML_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>companyID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_11_OFACLogonScanNameXML_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_11_OFACLogonScanNameXML_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>name:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_11_OFACLogonScanNameXML_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_11_OFACLogonScanNameXML_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_12_OFACLogonScanName_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>companyID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_12_OFACLogonScanName_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_12_OFACLogonScanName_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>name:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_12_OFACLogonScanName_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_12_OFACLogonScanName_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_13_OFACScanName_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>name:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_13_OFACScanName_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_13_OFACScanName_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_14_OFACScanCountry_Atomic_input_country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_14_OFACScanCountry_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>name:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_14_OFACScanCountry_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_14_OFACScanCountry_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_15_CountryList_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_15_CountryList_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_16_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>serialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_16_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>payeeCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_16_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_17_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wildcard:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_17_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_18_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_18_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_19_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_20_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>companyID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_20_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_20_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_20_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_21_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_21_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_boolean">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_22_OFACLogonScanNameXML_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>companyID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_22_OFACLogonScanNameXML_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_22_OFACLogonScanNameXML_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>name:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_22_OFACLogonScanNameXML_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_22_OFACLogonScanNameXML_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_23_OFACLogonScanName_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>companyID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_23_OFACLogonScanName_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_23_OFACLogonScanName_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>name:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_23_OFACLogonScanName_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_23_OFACLogonScanName_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_24_OFACScanName_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>name:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_24_OFACScanName_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_24_OFACScanName_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_25_OFACScanCountry_Atomic_input_country__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>country:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_25_OFACScanCountry_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>name:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_25_OFACScanCountry_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_25_OFACScanCountry_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_26_CountryList_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_26_CountryList_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_27_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>serialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_27_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>payeeCode:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_27_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_28_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>wildcard:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_28_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_29_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_29_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_30_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_31_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>companyID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_31_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="OFACService_31_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>userName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_31_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="OFACService_32_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>token:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="OFACService_32_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_boolean">
+    <process:parameterType>Body:{http://www.lyonsreg.com/WebServices/OFACService}boolean</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="OFACService_0_OFACLogonScanNameXML_Atomic">
+    <process:hasName>OFACLogonScanNameXML</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_0_OFACLogonScanNameXML_Atomic_input_companyID__http___www.lyonsreg.com_WebServices_OFACService_companyID"/>
+    <process:hasInput rdf:resource="#OFACService_0_OFACLogonScanNameXML_Atomic_input_password__http___www.lyonsreg.com_WebServices_OFACService_password"/>
+    <process:hasInput rdf:resource="#OFACService_0_OFACLogonScanNameXML_Atomic_input_name__http___www.lyonsreg.com_WebServices_OFACService_name"/>
+    <process:hasInput rdf:resource="#OFACService_0_OFACLogonScanNameXML_Atomic_input_userName__http___www.lyonsreg.com_WebServices_OFACService_userName"/>
+    <process:hasOutput rdf:resource="#OFACService_0_OFACLogonScanNameXML_Atomic_output_OFACLogonScanNameXMLResult__http___www.lyonsreg.com_WebServices_OFACService_OFACLogonScanNameXMLResult"/>
+    <process:hasPrecondition>The user must provide valid company credentials and the name to be scanned for OFAC compliance.</process:hasPrecondition>
+    <process:hasEffect>The system will authenticate the user and scan the provided name against the OFAC database, returning the scan results.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_1_OFACLogonScanName_Atomic">
+    <process:hasName>OFACLogonScanName</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_1_OFACLogonScanName_Atomic_input_companyID__http___www.lyonsreg.com_WebServices_OFACService_companyID"/>
+    <process:hasInput rdf:resource="#OFACService_1_OFACLogonScanName_Atomic_input_password__http___www.lyonsreg.com_WebServices_OFACService_password"/>
+    <process:hasInput rdf:resource="#OFACService_1_OFACLogonScanName_Atomic_input_name__http___www.lyonsreg.com_WebServices_OFACService_name"/>
+    <process:hasInput rdf:resource="#OFACService_1_OFACLogonScanName_Atomic_input_userName__http___www.lyonsreg.com_WebServices_OFACService_userName"/>
+    <process:hasOutput rdf:resource="#OFACService_1_OFACLogonScanName_Atomic_output_OFACLogonScanNameResult__http___www.lyonsreg.com_WebServices_OFACService_OFACLogonScanNameResult"/>
+    <process:hasPrecondition>The user must provide valid company credentials and the name to be scanned for OFAC compliance.</process:hasPrecondition>
+    <process:hasEffect>The system will authenticate the user, scan the provided name against OFAC lists, and return the scan results.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_2_OFACScanName_Atomic">
+    <process:hasName>OFACScanName</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_2_OFACScanName_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_OFACScanName"/>
+    <process:hasOutput rdf:resource="#OFACService_2_OFACScanName_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_OFACScanNameResponse"/>
+    <process:hasPrecondition>The input parameter for OFACScanName must be provided in the specified format from the LyonsReg OFACService web service.</process:hasPrecondition>
+    <process:hasEffect>The OFACScanName operation will return a response in the specified format from the LyonsReg OFACService web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_3_OFACScanCountry_Atomic">
+    <process:hasName>OFACScanCountry</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_3_OFACScanCountry_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_OFACScanCountry"/>
+    <process:hasOutput rdf:resource="#OFACService_3_OFACScanCountry_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_OFACScanCountryResponse"/>
+    <process:hasPrecondition>The input parameter for OFACScanCountry must be in the format specified by the OFACService web service.</process:hasPrecondition>
+    <process:hasEffect>The output parameter for OFACScanCountryResponse will be generated according to the response format defined by the OFACService web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_4_CountryList_Atomic">
+    <process:hasName>CountryList</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_4_CountryList_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_CountryList"/>
+    <process:hasOutput rdf:resource="#OFACService_4_CountryList_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_CountryListResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameter CountryList must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing a list of countries.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_5_FindASCompanyID_Atomic">
+    <process:hasName>FindASCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_5_FindASCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_FindASCompanyID"/>
+    <process:hasOutput rdf:resource="#OFACService_5_FindASCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_FindASCompanyIDResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid company ID in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The output parameter will contain the corresponding response for the provided company ID.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_6_FindCompanyID_Atomic">
+    <process:hasName>FindCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_6_FindCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_FindCompanyID"/>
+    <process:hasOutput rdf:resource="#OFACService_6_FindCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_FindCompanyIDResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid company identifier in the OFACService web service.</process:hasPrecondition>
+    <process:hasEffect>The output parameter will contain the corresponding company ID from the OFACService web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_7_GetCompanyID_Atomic">
+    <process:hasName>GetCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_7_GetCompanyID_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_GetCompanyID"/>
+    <process:hasOutput rdf:resource="#OFACService_7_GetCompanyID_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_GetCompanyIDResponse"/>
+    <process:hasPrecondition>The user must provide a valid input parameter for the GetCompanyID operation in the OFACService web service.</process:hasPrecondition>
+    <process:hasEffect>The GetCompanyID operation will return the corresponding company ID in the response parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_8_Logoff_Atomic">
+    <process:hasName>Logoff</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_8_Logoff_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_Logoff"/>
+    <process:hasOutput rdf:resource="#OFACService_8_Logoff_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_LogoffResponse"/>
+    <process:hasPrecondition>The user must be currently logged in to the OFAC web service.</process:hasPrecondition>
+    <process:hasEffect>The user will be successfully logged off from the OFAC web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_9_Logon_Atomic">
+    <process:hasName>Logon</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_9_Logon_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_Logon"/>
+    <process:hasOutput rdf:resource="#OFACService_9_Logon_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_LogonResponse"/>
+    <process:hasPrecondition>The user must provide valid credentials for authentication in the Logon request.</process:hasPrecondition>
+    <process:hasEffect>The system will authenticate the user and provide a response confirming successful logon or indicating authentication failure.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_10_RequiredLogon_Atomic">
+    <process:hasName>RequiredLogon</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_10_RequiredLogon_Atomic_input_parameters__http___www.lyonsreg.com_WebServices_OFACService_RequiredLogon"/>
+    <process:hasOutput rdf:resource="#OFACService_10_RequiredLogon_Atomic_output_parameters__http___www.lyonsreg.com_WebServices_OFACService_RequiredLogonResponse"/>
+    <process:hasPrecondition>The user must provide valid login credentials in the RequiredLogon parameters.</process:hasPrecondition>
+    <process:hasEffect>The system will authenticate the user and return a response in the RequiredLogonResponse parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_11_OFACLogonScanNameXML_Atomic">
+    <process:hasName>OFACLogonScanNameXML</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_11_OFACLogonScanNameXML_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_11_OFACLogonScanNameXML_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_11_OFACLogonScanNameXML_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_11_OFACLogonScanNameXML_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_11_OFACLogonScanNameXML_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The user must have valid credentials to access the OFAC scanning service.</process:hasPrecondition>
+    <process:hasEffect>The system will scan the provided name against the OFAC list and return the results.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_12_OFACLogonScanName_Atomic">
+    <process:hasName>OFACLogonScanName</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_12_OFACLogonScanName_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_12_OFACLogonScanName_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_12_OFACLogonScanName_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_12_OFACLogonScanName_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_12_OFACLogonScanName_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <process:hasPrecondition>The user must provide valid credentials (companyID and password) to access the OFAC scanning service.</process:hasPrecondition>
+    <process:hasEffect>The service will scan the provided name against the OFAC list and return the result as a string in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_13_OFACScanName_Atomic">
+    <process:hasName>OFACScanName</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_13_OFACScanName_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_13_OFACScanName_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_13_OFACScanName_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <process:hasPrecondition>The user must have a valid token to access the OFACScanName operation.</process:hasPrecondition>
+    <process:hasEffect>The service will scan the provided name for any matches against the OFAC list and return the result as a string.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_14_OFACScanCountry_Atomic">
+    <process:hasName>OFACScanCountry</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_14_OFACScanCountry_Atomic_input_country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_14_OFACScanCountry_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_14_OFACScanCountry_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_14_OFACScanCountry_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <process:hasPrecondition>The user must have a valid token to access the OFACScanCountry operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will scan the specified country against the OFAC list and return a string response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_15_CountryList_Atomic">
+    <process:hasName>CountryList</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_15_CountryList_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_15_CountryList_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <process:hasPrecondition>The user must provide a valid authentication token in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a list of countries in the body of the response in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_16_FindASCompanyID_Atomic">
+    <process:hasName>FindASCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_16_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_16_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_16_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int"/>
+    <process:hasPrecondition>The serial number and payee code must be provided as input parameters.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the company ID as an integer value.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_17_FindCompanyID_Atomic">
+    <process:hasName>FindCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_17_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_17_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int"/>
+    <process:hasPrecondition>The input wildcard must be a valid string conforming to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation returns an integer representing the Company ID from the specified web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_18_GetCompanyID_Atomic">
+    <process:hasName>GetCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_18_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_18_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int"/>
+    <process:hasPrecondition>The user must provide a valid authentication token in the form of a string.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the company ID as an integer from the OFAC web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_19_Logoff_Atomic">
+    <process:hasName>Logoff</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_19_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The provided token must be a valid authentication token for an active user session.</process:hasPrecondition>
+    <process:hasEffect>The user session associated with the provided token will be terminated, logging the user out of the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_20_Logon_Atomic">
+    <process:hasName>Logon</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_20_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_20_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_20_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_20_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <process:hasPrecondition>The user must provide a valid company ID, password, and username for authentication.</process:hasPrecondition>
+    <process:hasEffect>Upon successful authentication, the system will return a string containing the user's information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_21_RequiredLogon_Atomic">
+    <process:hasName>RequiredLogon</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_21_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_21_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_boolean"/>
+    <process:hasPrecondition>The user must provide a valid authentication token in order to access the service.</process:hasPrecondition>
+    <process:hasEffect>The service will return a boolean value indicating whether the user is successfully logged on.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_22_OFACLogonScanNameXML_Atomic">
+    <process:hasName>OFACLogonScanNameXML</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_22_OFACLogonScanNameXML_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_22_OFACLogonScanNameXML_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_22_OFACLogonScanNameXML_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_22_OFACLogonScanNameXML_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_22_OFACLogonScanNameXML_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The user must have valid credentials to access the OFACLogonScanNameXML operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will scan the provided name against the OFAC list and return an unknown body response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_23_OFACLogonScanName_Atomic">
+    <process:hasName>OFACLogonScanName</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_23_OFACLogonScanName_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_23_OFACLogonScanName_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_23_OFACLogonScanName_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_23_OFACLogonScanName_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_23_OFACLogonScanName_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <process:hasPrecondition>The user must provide valid credentials (companyID and password) to access the OFAC scanning service.</process:hasPrecondition>
+    <process:hasEffect>The service will scan the provided name against the OFAC list and return the result in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_24_OFACScanName_Atomic">
+    <process:hasName>OFACScanName</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_24_OFACScanName_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_24_OFACScanName_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_24_OFACScanName_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <process:hasPrecondition>The user must provide a name as a string and a valid token for authentication.</process:hasPrecondition>
+    <process:hasEffect>The service will return a string response containing information related to OFAC screening for the provided name.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_25_OFACScanCountry_Atomic">
+    <process:hasName>OFACScanCountry</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_25_OFACScanCountry_Atomic_input_country__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_25_OFACScanCountry_Atomic_input_name__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_25_OFACScanCountry_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_25_OFACScanCountry_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <process:hasPrecondition>The user must have a valid token to access the OFACScanCountry operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will scan the specified country against the Office of Foreign Assets Control (OFAC) list and return the result as a string.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_26_CountryList_Atomic">
+    <process:hasName>CountryList</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_26_CountryList_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_26_CountryList_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <process:hasPrecondition>The user must provide a valid token to access the CountryList operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a list of countries in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_27_FindASCompanyID_Atomic">
+    <process:hasName>FindASCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_27_FindASCompanyID_Atomic_input_serialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_27_FindASCompanyID_Atomic_input_payeeCode__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_27_FindASCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int"/>
+    <process:hasPrecondition>The serial number and payee code must be provided as input parameters in string format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an integer value representing the company ID associated with the provided serial number and payee code.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_28_FindCompanyID_Atomic">
+    <process:hasName>FindCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_28_FindCompanyID_Atomic_input_wildcard__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_28_FindCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int"/>
+    <process:hasPrecondition>The wildcard input must be a valid string conforming to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an integer representing the Company ID from the specified web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_29_GetCompanyID_Atomic">
+    <process:hasName>GetCompanyID</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_29_GetCompanyID_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_29_GetCompanyID_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_int"/>
+    <process:hasPrecondition>The user must provide a valid authentication token in the form of a string.</process:hasPrecondition>
+    <process:hasEffect>The service will return the unique company ID as an integer from the OFAC web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_30_Logoff_Atomic">
+    <process:hasName>Logoff</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_30_Logoff_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The provided token must be valid and associated with an active user session.</process:hasPrecondition>
+    <process:hasEffect>The user session corresponding to the provided token will be terminated, logging the user out of the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_31_Logon_Atomic">
+    <process:hasName>Logon</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_31_Logon_Atomic_input_companyID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_31_Logon_Atomic_input_password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#OFACService_31_Logon_Atomic_input_userName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_31_Logon_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_string"/>
+    <process:hasPrecondition>The user must provide valid company ID, password, and username for authentication.</process:hasPrecondition>
+    <process:hasEffect>The service will return a string response containing the user's logon information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="OFACService_32_RequiredLogon_Atomic">
+    <process:hasName>RequiredLogon</process:hasName>
+    <process:hasInput rdf:resource="#OFACService_32_RequiredLogon_Atomic_input_token__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#OFACService_32_RequiredLogon_Atomic_output_Body__http___www.lyonsreg.com_WebServices_OFACService_boolean"/>
+    <process:hasPrecondition>The user must provide a valid authentication token in the form of a string.</process:hasPrecondition>
+    <process:hasEffect>The system will return a boolean value indicating whether the user is successfully logged on.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="OFACService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_0_OFACLogonScanNameXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_1_OFACLogonScanName_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_2_OFACScanName_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_3_OFACScanCountry_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_4_CountryList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_5_FindASCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_6_FindCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_7_GetCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_8_Logoff_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_9_Logon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_10_RequiredLogon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_11_OFACLogonScanNameXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_12_OFACLogonScanName_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_13_OFACScanName_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_14_OFACScanCountry_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_15_CountryList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_16_FindASCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_17_FindCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_18_GetCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_19_Logoff_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_20_Logon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_21_RequiredLogon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_22_OFACLogonScanNameXML_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_23_OFACLogonScanName_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_24_OFACScanName_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_25_OFACScanCountry_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_26_CountryList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_27_FindASCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_28_FindCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_29_GetCompanyID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_30_Logoff_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_31_Logon_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#OFACService_32_RequiredLogon_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_0_OFACLogonScanNameXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_0_OFACLogonScanNameXML_Atomic"/>
+    <grounding:wsdlOperationName>OFACLogonScanNameXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OFACLogonScanNameXMLSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OFACLogonScanNameXMLSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_1_OFACLogonScanName_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_1_OFACLogonScanName_Atomic"/>
+    <grounding:wsdlOperationName>OFACLogonScanName</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OFACLogonScanNameSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OFACLogonScanNameSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_2_OFACScanName_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_2_OFACScanName_Atomic"/>
+    <grounding:wsdlOperationName>OFACScanName</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OFACScanNameSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OFACScanNameSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_3_OFACScanCountry_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_3_OFACScanCountry_Atomic"/>
+    <grounding:wsdlOperationName>OFACScanCountry</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OFACScanCountrySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OFACScanCountrySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_4_CountryList_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_4_CountryList_Atomic"/>
+    <grounding:wsdlOperationName>CountryList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CountryListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CountryListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_5_FindASCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_5_FindASCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindASCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindASCompanyIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindASCompanyIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_6_FindCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_6_FindCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindCompanyIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindCompanyIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_7_GetCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_7_GetCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>GetCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCompanyIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCompanyIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_8_Logoff_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_8_Logoff_Atomic"/>
+    <grounding:wsdlOperationName>Logoff</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoffSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoffSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_9_Logon_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_9_Logon_Atomic"/>
+    <grounding:wsdlOperationName>Logon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogonSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogonSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_10_RequiredLogon_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_10_RequiredLogon_Atomic"/>
+    <grounding:wsdlOperationName>RequiredLogon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RequiredLogonSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RequiredLogonSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_11_OFACLogonScanNameXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_11_OFACLogonScanNameXML_Atomic"/>
+    <grounding:wsdlOperationName>OFACLogonScanNameXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OFACLogonScanNameXMLHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OFACLogonScanNameXMLHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_12_OFACLogonScanName_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_12_OFACLogonScanName_Atomic"/>
+    <grounding:wsdlOperationName>OFACLogonScanName</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OFACLogonScanNameHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OFACLogonScanNameHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_13_OFACScanName_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_13_OFACScanName_Atomic"/>
+    <grounding:wsdlOperationName>OFACScanName</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OFACScanNameHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OFACScanNameHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_14_OFACScanCountry_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_14_OFACScanCountry_Atomic"/>
+    <grounding:wsdlOperationName>OFACScanCountry</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OFACScanCountryHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OFACScanCountryHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_15_CountryList_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_15_CountryList_Atomic"/>
+    <grounding:wsdlOperationName>CountryList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CountryListHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CountryListHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_16_FindASCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_16_FindASCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindASCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindASCompanyIDHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindASCompanyIDHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_17_FindCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_17_FindCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindCompanyIDHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindCompanyIDHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_18_GetCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_18_GetCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>GetCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCompanyIDHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCompanyIDHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_19_Logoff_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_19_Logoff_Atomic"/>
+    <grounding:wsdlOperationName>Logoff</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoffHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoffHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_20_Logon_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_20_Logon_Atomic"/>
+    <grounding:wsdlOperationName>Logon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogonHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogonHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_21_RequiredLogon_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_21_RequiredLogon_Atomic"/>
+    <grounding:wsdlOperationName>RequiredLogon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RequiredLogonHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RequiredLogonHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_22_OFACLogonScanNameXML_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_22_OFACLogonScanNameXML_Atomic"/>
+    <grounding:wsdlOperationName>OFACLogonScanNameXML</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OFACLogonScanNameXMLHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OFACLogonScanNameXMLHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_23_OFACLogonScanName_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_23_OFACLogonScanName_Atomic"/>
+    <grounding:wsdlOperationName>OFACLogonScanName</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OFACLogonScanNameHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OFACLogonScanNameHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_24_OFACScanName_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_24_OFACScanName_Atomic"/>
+    <grounding:wsdlOperationName>OFACScanName</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OFACScanNameHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OFACScanNameHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_25_OFACScanCountry_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_25_OFACScanCountry_Atomic"/>
+    <grounding:wsdlOperationName>OFACScanCountry</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>OFACScanCountryHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>OFACScanCountryHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_26_CountryList_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_26_CountryList_Atomic"/>
+    <grounding:wsdlOperationName>CountryList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CountryListHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CountryListHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_27_FindASCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_27_FindASCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindASCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindASCompanyIDHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindASCompanyIDHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_28_FindCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_28_FindCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>FindCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FindCompanyIDHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FindCompanyIDHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_29_GetCompanyID_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_29_GetCompanyID_Atomic"/>
+    <grounding:wsdlOperationName>GetCompanyID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCompanyIDHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCompanyIDHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_30_Logoff_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_30_Logoff_Atomic"/>
+    <grounding:wsdlOperationName>Logoff</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogoffHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogoffHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_31_Logon_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_31_Logon_Atomic"/>
+    <grounding:wsdlOperationName>Logon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LogonHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LogonHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="OFACService_32_RequiredLogon_Grounding">
+    <grounding:owlsProcess rdf:resource="#OFACService_32_RequiredLogon_Atomic"/>
+    <grounding:wsdlOperationName>RequiredLogon</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>OFACServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>OFACServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/800_OFACService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RequiredLogonHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RequiredLogonHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

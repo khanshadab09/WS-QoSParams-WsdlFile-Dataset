@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="BookInfoService">
+    <service:presents rdf:resource="#BookInfoService_Profile"/>
+    <service:describedBy rdf:resource="#BookInfoService_Composite"/>
+    <service:supports rdf:resource="#BookInfoService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="BookInfoService_Profile">
+    <profile:serviceName>BookInfoService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#BookInfoService"/>
+    <profile:hasProcess rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic"/>
+    <profile:hasInput rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic_input_CustomerSubAccount__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic_input_LoginName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic_input_CustomerAccount__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic_input_LoginPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic_output_Body__GetBookInfoByISBN_BookInfoResponseType"/>
+    <profile:hasPrecondition>The user must provide valid credentials and a valid ISBN number to access book information.</profile:hasPrecondition>
+    <profile:hasResult>The service will return detailed information about the book corresponding to the provided ISBN number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic"/>
+    <profile:hasInput rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic_input_CustomerSubAccount__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic_input_LoginName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic_input_CustomerAccount__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic_input_LoginPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic_output_Body__GetBookInfoByISBN_BookInfoResponseType"/>
+    <profile:hasPrecondition>The user must provide valid authentication credentials and a valid ISBN for the book.</profile:hasPrecondition>
+    <profile:hasResult>The service will return detailed information about the book corresponding to the provided ISBN.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BookInfoService_2_GetBookInfoByISBN_Atomic"/>
+    <profile:hasInput rdf:resource="#BookInfoService_2_GetBookInfoByISBN_Atomic_input_parameters__GetBookInfoByISBN_GetBookInfoByISBN"/>
+    <profile:hasOutput rdf:resource="#BookInfoService_2_GetBookInfoByISBN_Atomic_output_parameters__GetBookInfoByISBN_GetBookInfoByISBNResponse"/>
+    <profile:hasPrecondition>The provided ISBN must be valid and exist in the database.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves detailed information about a book based on the provided ISBN.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="BookInfoService_Composite">
+    <process:composedOf rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic"/>
+    <process:composedOf rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic"/>
+    <process:composedOf rdf:resource="#BookInfoService_2_GetBookInfoByISBN_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="BookInfoService_0_GetBookInfoByISBN_Atomic_input_CustomerSubAccount__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CustomerSubAccount:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BookInfoService_0_GetBookInfoByISBN_Atomic_input_LoginName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LoginName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BookInfoService_0_GetBookInfoByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ISBN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BookInfoService_0_GetBookInfoByISBN_Atomic_input_CustomerAccount__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CustomerAccount:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BookInfoService_0_GetBookInfoByISBN_Atomic_input_LoginPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LoginPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BookInfoService_0_GetBookInfoByISBN_Atomic_output_Body__GetBookInfoByISBN_BookInfoResponseType">
+    <process:parameterType>Body:{GetBookInfoByISBN}BookInfoResponseType</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BookInfoService_1_GetBookInfoByISBN_Atomic_input_CustomerSubAccount__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CustomerSubAccount:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BookInfoService_1_GetBookInfoByISBN_Atomic_input_LoginName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LoginName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BookInfoService_1_GetBookInfoByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ISBN:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BookInfoService_1_GetBookInfoByISBN_Atomic_input_CustomerAccount__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CustomerAccount:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BookInfoService_1_GetBookInfoByISBN_Atomic_input_LoginPassword__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>LoginPassword:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BookInfoService_1_GetBookInfoByISBN_Atomic_output_Body__GetBookInfoByISBN_BookInfoResponseType">
+    <process:parameterType>Body:{GetBookInfoByISBN}BookInfoResponseType</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BookInfoService_2_GetBookInfoByISBN_Atomic_input_parameters__GetBookInfoByISBN_GetBookInfoByISBN">
+    <process:parameterType>parameters:{GetBookInfoByISBN}GetBookInfoByISBN</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BookInfoService_2_GetBookInfoByISBN_Atomic_output_parameters__GetBookInfoByISBN_GetBookInfoByISBNResponse">
+    <process:parameterType>parameters:{GetBookInfoByISBN}GetBookInfoByISBNResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="BookInfoService_0_GetBookInfoByISBN_Atomic">
+    <process:hasName>GetBookInfoByISBN</process:hasName>
+    <process:hasInput rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic_input_CustomerSubAccount__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic_input_LoginName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic_input_CustomerAccount__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic_input_LoginPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic_output_Body__GetBookInfoByISBN_BookInfoResponseType"/>
+    <process:hasPrecondition>The user must provide valid credentials and a valid ISBN number to access book information.</process:hasPrecondition>
+    <process:hasEffect>The service will return detailed information about the book corresponding to the provided ISBN number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BookInfoService_1_GetBookInfoByISBN_Atomic">
+    <process:hasName>GetBookInfoByISBN</process:hasName>
+    <process:hasInput rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic_input_CustomerSubAccount__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic_input_LoginName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic_input_ISBN__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic_input_CustomerAccount__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic_input_LoginPassword__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic_output_Body__GetBookInfoByISBN_BookInfoResponseType"/>
+    <process:hasPrecondition>The user must provide valid authentication credentials and a valid ISBN for the book.</process:hasPrecondition>
+    <process:hasEffect>The service will return detailed information about the book corresponding to the provided ISBN.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BookInfoService_2_GetBookInfoByISBN_Atomic">
+    <process:hasName>GetBookInfoByISBN</process:hasName>
+    <process:hasInput rdf:resource="#BookInfoService_2_GetBookInfoByISBN_Atomic_input_parameters__GetBookInfoByISBN_GetBookInfoByISBN"/>
+    <process:hasOutput rdf:resource="#BookInfoService_2_GetBookInfoByISBN_Atomic_output_parameters__GetBookInfoByISBN_GetBookInfoByISBNResponse"/>
+    <process:hasPrecondition>The provided ISBN must be valid and exist in the database.</process:hasPrecondition>
+    <process:hasEffect>Retrieves detailed information about a book based on the provided ISBN.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="BookInfoService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BookInfoService_2_GetBookInfoByISBN_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BookInfoService_0_GetBookInfoByISBN_Grounding">
+    <grounding:owlsProcess rdf:resource="#BookInfoService_0_GetBookInfoByISBN_Atomic"/>
+    <grounding:wsdlOperationName>GetBookInfoByISBN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BookInfoServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BookInfoServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/189_BookInfoService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBookInfoByISBNHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBookInfoByISBNHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BookInfoService_1_GetBookInfoByISBN_Grounding">
+    <grounding:owlsProcess rdf:resource="#BookInfoService_1_GetBookInfoByISBN_Atomic"/>
+    <grounding:wsdlOperationName>GetBookInfoByISBN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BookInfoServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BookInfoServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/189_BookInfoService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBookInfoByISBNHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBookInfoByISBNHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BookInfoService_2_GetBookInfoByISBN_Grounding">
+    <grounding:owlsProcess rdf:resource="#BookInfoService_2_GetBookInfoByISBN_Atomic"/>
+    <grounding:wsdlOperationName>GetBookInfoByISBN</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BookInfoServiceSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BookInfoServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/189_BookInfoService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBookInfoByISBNSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBookInfoByISBNSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

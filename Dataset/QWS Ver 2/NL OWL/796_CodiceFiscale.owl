@@ -1,0 +1,448 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="CodiceFiscale">
+    <service:presents rdf:resource="#CodiceFiscale_Profile"/>
+    <service:describedBy rdf:resource="#CodiceFiscale_Composite"/>
+    <service:supports rdf:resource="#CodiceFiscale_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="CodiceFiscale_Profile">
+    <profile:serviceName>CodiceFiscale</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#CodiceFiscale"/>
+    <profile:hasProcess rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_ComuneNascita__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_Nome__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_Sesso__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_Cognome__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_DataNascita__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <profile:hasPrecondition>The input parameters ComuneNascita, Nome, Sesso, Cognome, and DataNascita must be provided in the specified data types.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the CodiceFiscale (Italian fiscal code) as a string in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CodiceFiscale_1_CodiceComune_Atomic"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_1_CodiceComune_Atomic_input_NomeComune__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CodiceFiscale_1_CodiceComune_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <profile:hasPrecondition>The input NomeComune must be a valid string according to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation CodiceComune will return a string representing the Codice Fiscale for the specified Comune.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CodiceFiscale_2_NomeComune_Atomic"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_2_NomeComune_Atomic_input_CodiceComune__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CodiceFiscale_2_NomeComune_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <profile:hasPrecondition>The input CodiceComune must be a valid string according to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The output Body will contain a string representing the CodiceFiscale related to the provided CodiceComune.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CodiceFiscale_3_ControllaCodiceFiscale_Atomic"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_3_ControllaCodiceFiscale_Atomic_input_CodiceFiscale__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CodiceFiscale_3_ControllaCodiceFiscale_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <profile:hasPrecondition>The input CodiceFiscale must be a valid string conforming to the format specified by the http://www.w3.org/2001/XMLSchema schema.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a string in the Body output conforming to the format specified by the http://webservices.dotnethell.it/CodiceFiscale schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CodiceFiscale_4_CalcolaCodiceFiscale_Atomic"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_4_CalcolaCodiceFiscale_Atomic_input_parameters__http___webservices.dotnethell.it_CodiceFiscale_CalcolaCodiceFiscale"/>
+    <profile:hasOutput rdf:resource="#CodiceFiscale_4_CalcolaCodiceFiscale_Atomic_output_parameters__http___webservices.dotnethell.it_CodiceFiscale_CalcolaCodiceFiscaleResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid set of personal information required for calculating the Italian "Codice Fiscale" (fiscal code).</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the calculated "Codice Fiscale" based on the provided personal information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CodiceFiscale_5_CodiceComune_Atomic"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_5_CodiceComune_Atomic_input_parameters__http___webservices.dotnethell.it_CodiceFiscale_CodiceComune"/>
+    <profile:hasOutput rdf:resource="#CodiceFiscale_5_CodiceComune_Atomic_output_parameters__http___webservices.dotnethell.it_CodiceFiscale_CodiceComuneResponse"/>
+    <profile:hasPrecondition>The input parameter CodiceComune must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The operation CodiceComune will return a response containing the CodiceComune information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CodiceFiscale_6_NomeComune_Atomic"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_6_NomeComune_Atomic_input_parameters__http___webservices.dotnethell.it_CodiceFiscale_NomeComune"/>
+    <profile:hasOutput rdf:resource="#CodiceFiscale_6_NomeComune_Atomic_output_parameters__http___webservices.dotnethell.it_CodiceFiscale_NomeComuneResponse"/>
+    <profile:hasPrecondition>The input parameter {http://webservices.dotnethell.it/CodiceFiscale}NomeComune must be provided for the operation NomeComune.</profile:hasPrecondition>
+    <profile:hasResult>The operation NomeComune will return a response containing the {http://webservices.dotnethell.it/CodiceFiscale}NomeComuneResponse parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CodiceFiscale_7_ControllaCodiceFiscale_Atomic"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_7_ControllaCodiceFiscale_Atomic_input_parameters__http___webservices.dotnethell.it_CodiceFiscale_ControllaCodiceFiscale"/>
+    <profile:hasOutput rdf:resource="#CodiceFiscale_7_ControllaCodiceFiscale_Atomic_output_parameters__http___webservices.dotnethell.it_CodiceFiscale_ControllaCodiceFiscaleResponse"/>
+    <profile:hasPrecondition>The input parameter ControllaCodiceFiscale must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The ControllaCodiceFiscaleResponse containing the result of the Codice Fiscale validation is returned as output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_ComuneNascita__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_Nome__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_Sesso__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_Cognome__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_DataNascita__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <profile:hasPrecondition>The input parameters ComuneNascita, Nome, Sesso, Cognome, and DataNascita must be provided in the specified data types.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the CodiceFiscale (Italian tax code) as a string in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CodiceFiscale_9_CodiceComune_Atomic"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_9_CodiceComune_Atomic_input_NomeComune__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CodiceFiscale_9_CodiceComune_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <profile:hasPrecondition>The input NomeComune must be a valid string according to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation CodiceComune will return a string representing the CodiceFiscale related to the input NomeComune.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CodiceFiscale_10_NomeComune_Atomic"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_10_NomeComune_Atomic_input_CodiceComune__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CodiceFiscale_10_NomeComune_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <profile:hasPrecondition>The input CodiceComune must be a valid string according to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation NomeComune will return a string in the Body output conforming to the CodiceFiscale web service specification.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#CodiceFiscale_11_ControllaCodiceFiscale_Atomic"/>
+    <profile:hasInput rdf:resource="#CodiceFiscale_11_ControllaCodiceFiscale_Atomic_input_CodiceFiscale__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#CodiceFiscale_11_ControllaCodiceFiscale_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <profile:hasPrecondition>The input CodiceFiscale must be a valid string conforming to the format specified by the XML Schema definition for strings.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a string in the specified format from the CodiceFiscale namespace.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="CodiceFiscale_Composite">
+    <process:composedOf rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic"/>
+    <process:composedOf rdf:resource="#CodiceFiscale_1_CodiceComune_Atomic"/>
+    <process:composedOf rdf:resource="#CodiceFiscale_2_NomeComune_Atomic"/>
+    <process:composedOf rdf:resource="#CodiceFiscale_3_ControllaCodiceFiscale_Atomic"/>
+    <process:composedOf rdf:resource="#CodiceFiscale_4_CalcolaCodiceFiscale_Atomic"/>
+    <process:composedOf rdf:resource="#CodiceFiscale_5_CodiceComune_Atomic"/>
+    <process:composedOf rdf:resource="#CodiceFiscale_6_NomeComune_Atomic"/>
+    <process:composedOf rdf:resource="#CodiceFiscale_7_ControllaCodiceFiscale_Atomic"/>
+    <process:composedOf rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic"/>
+    <process:composedOf rdf:resource="#CodiceFiscale_9_CodiceComune_Atomic"/>
+    <process:composedOf rdf:resource="#CodiceFiscale_10_NomeComune_Atomic"/>
+    <process:composedOf rdf:resource="#CodiceFiscale_11_ControllaCodiceFiscale_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_ComuneNascita__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ComuneNascita:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_Nome__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Nome:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_Sesso__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Sesso:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_Cognome__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Cognome:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_DataNascita__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>DataNascita:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string">
+    <process:parameterType>Body:{http://webservices.dotnethell.it/CodiceFiscale}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CodiceFiscale_1_CodiceComune_Atomic_input_NomeComune__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>NomeComune:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CodiceFiscale_1_CodiceComune_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string">
+    <process:parameterType>Body:{http://webservices.dotnethell.it/CodiceFiscale}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CodiceFiscale_2_NomeComune_Atomic_input_CodiceComune__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CodiceComune:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CodiceFiscale_2_NomeComune_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string">
+    <process:parameterType>Body:{http://webservices.dotnethell.it/CodiceFiscale}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CodiceFiscale_3_ControllaCodiceFiscale_Atomic_input_CodiceFiscale__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CodiceFiscale:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CodiceFiscale_3_ControllaCodiceFiscale_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string">
+    <process:parameterType>Body:{http://webservices.dotnethell.it/CodiceFiscale}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CodiceFiscale_4_CalcolaCodiceFiscale_Atomic_input_parameters__http___webservices.dotnethell.it_CodiceFiscale_CalcolaCodiceFiscale">
+    <process:parameterType>parameters:{http://webservices.dotnethell.it/CodiceFiscale}CalcolaCodiceFiscale</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CodiceFiscale_4_CalcolaCodiceFiscale_Atomic_output_parameters__http___webservices.dotnethell.it_CodiceFiscale_CalcolaCodiceFiscaleResponse">
+    <process:parameterType>parameters:{http://webservices.dotnethell.it/CodiceFiscale}CalcolaCodiceFiscaleResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CodiceFiscale_5_CodiceComune_Atomic_input_parameters__http___webservices.dotnethell.it_CodiceFiscale_CodiceComune">
+    <process:parameterType>parameters:{http://webservices.dotnethell.it/CodiceFiscale}CodiceComune</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CodiceFiscale_5_CodiceComune_Atomic_output_parameters__http___webservices.dotnethell.it_CodiceFiscale_CodiceComuneResponse">
+    <process:parameterType>parameters:{http://webservices.dotnethell.it/CodiceFiscale}CodiceComuneResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CodiceFiscale_6_NomeComune_Atomic_input_parameters__http___webservices.dotnethell.it_CodiceFiscale_NomeComune">
+    <process:parameterType>parameters:{http://webservices.dotnethell.it/CodiceFiscale}NomeComune</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CodiceFiscale_6_NomeComune_Atomic_output_parameters__http___webservices.dotnethell.it_CodiceFiscale_NomeComuneResponse">
+    <process:parameterType>parameters:{http://webservices.dotnethell.it/CodiceFiscale}NomeComuneResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CodiceFiscale_7_ControllaCodiceFiscale_Atomic_input_parameters__http___webservices.dotnethell.it_CodiceFiscale_ControllaCodiceFiscale">
+    <process:parameterType>parameters:{http://webservices.dotnethell.it/CodiceFiscale}ControllaCodiceFiscale</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CodiceFiscale_7_ControllaCodiceFiscale_Atomic_output_parameters__http___webservices.dotnethell.it_CodiceFiscale_ControllaCodiceFiscaleResponse">
+    <process:parameterType>parameters:{http://webservices.dotnethell.it/CodiceFiscale}ControllaCodiceFiscaleResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_ComuneNascita__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ComuneNascita:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_Nome__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Nome:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_Sesso__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Sesso:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_Cognome__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Cognome:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_DataNascita__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>DataNascita:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string">
+    <process:parameterType>Body:{http://webservices.dotnethell.it/CodiceFiscale}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CodiceFiscale_9_CodiceComune_Atomic_input_NomeComune__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>NomeComune:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CodiceFiscale_9_CodiceComune_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string">
+    <process:parameterType>Body:{http://webservices.dotnethell.it/CodiceFiscale}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CodiceFiscale_10_NomeComune_Atomic_input_CodiceComune__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CodiceComune:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CodiceFiscale_10_NomeComune_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string">
+    <process:parameterType>Body:{http://webservices.dotnethell.it/CodiceFiscale}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="CodiceFiscale_11_ControllaCodiceFiscale_Atomic_input_CodiceFiscale__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>CodiceFiscale:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="CodiceFiscale_11_ControllaCodiceFiscale_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string">
+    <process:parameterType>Body:{http://webservices.dotnethell.it/CodiceFiscale}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="CodiceFiscale_0_CalcolaCodiceFiscale_Atomic">
+    <process:hasName>CalcolaCodiceFiscale</process:hasName>
+    <process:hasInput rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_ComuneNascita__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_Nome__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_Sesso__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_Cognome__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_input_DataNascita__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <process:hasPrecondition>The input parameters ComuneNascita, Nome, Sesso, Cognome, and DataNascita must be provided in the specified data types.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the CodiceFiscale (Italian fiscal code) as a string in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CodiceFiscale_1_CodiceComune_Atomic">
+    <process:hasName>CodiceComune</process:hasName>
+    <process:hasInput rdf:resource="#CodiceFiscale_1_CodiceComune_Atomic_input_NomeComune__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CodiceFiscale_1_CodiceComune_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <process:hasPrecondition>The input NomeComune must be a valid string according to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation CodiceComune will return a string representing the Codice Fiscale for the specified Comune.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CodiceFiscale_2_NomeComune_Atomic">
+    <process:hasName>NomeComune</process:hasName>
+    <process:hasInput rdf:resource="#CodiceFiscale_2_NomeComune_Atomic_input_CodiceComune__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CodiceFiscale_2_NomeComune_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <process:hasPrecondition>The input CodiceComune must be a valid string according to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The output Body will contain a string representing the CodiceFiscale related to the provided CodiceComune.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CodiceFiscale_3_ControllaCodiceFiscale_Atomic">
+    <process:hasName>ControllaCodiceFiscale</process:hasName>
+    <process:hasInput rdf:resource="#CodiceFiscale_3_ControllaCodiceFiscale_Atomic_input_CodiceFiscale__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CodiceFiscale_3_ControllaCodiceFiscale_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <process:hasPrecondition>The input CodiceFiscale must be a valid string conforming to the format specified by the http://www.w3.org/2001/XMLSchema schema.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a string in the Body output conforming to the format specified by the http://webservices.dotnethell.it/CodiceFiscale schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CodiceFiscale_4_CalcolaCodiceFiscale_Atomic">
+    <process:hasName>CalcolaCodiceFiscale</process:hasName>
+    <process:hasInput rdf:resource="#CodiceFiscale_4_CalcolaCodiceFiscale_Atomic_input_parameters__http___webservices.dotnethell.it_CodiceFiscale_CalcolaCodiceFiscale"/>
+    <process:hasOutput rdf:resource="#CodiceFiscale_4_CalcolaCodiceFiscale_Atomic_output_parameters__http___webservices.dotnethell.it_CodiceFiscale_CalcolaCodiceFiscaleResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid set of personal information required for calculating the Italian "Codice Fiscale" (fiscal code).</process:hasPrecondition>
+    <process:hasEffect>The operation will return the calculated "Codice Fiscale" based on the provided personal information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CodiceFiscale_5_CodiceComune_Atomic">
+    <process:hasName>CodiceComune</process:hasName>
+    <process:hasInput rdf:resource="#CodiceFiscale_5_CodiceComune_Atomic_input_parameters__http___webservices.dotnethell.it_CodiceFiscale_CodiceComune"/>
+    <process:hasOutput rdf:resource="#CodiceFiscale_5_CodiceComune_Atomic_output_parameters__http___webservices.dotnethell.it_CodiceFiscale_CodiceComuneResponse"/>
+    <process:hasPrecondition>The input parameter CodiceComune must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The operation CodiceComune will return a response containing the CodiceComune information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CodiceFiscale_6_NomeComune_Atomic">
+    <process:hasName>NomeComune</process:hasName>
+    <process:hasInput rdf:resource="#CodiceFiscale_6_NomeComune_Atomic_input_parameters__http___webservices.dotnethell.it_CodiceFiscale_NomeComune"/>
+    <process:hasOutput rdf:resource="#CodiceFiscale_6_NomeComune_Atomic_output_parameters__http___webservices.dotnethell.it_CodiceFiscale_NomeComuneResponse"/>
+    <process:hasPrecondition>The input parameter {http://webservices.dotnethell.it/CodiceFiscale}NomeComune must be provided for the operation NomeComune.</process:hasPrecondition>
+    <process:hasEffect>The operation NomeComune will return a response containing the {http://webservices.dotnethell.it/CodiceFiscale}NomeComuneResponse parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CodiceFiscale_7_ControllaCodiceFiscale_Atomic">
+    <process:hasName>ControllaCodiceFiscale</process:hasName>
+    <process:hasInput rdf:resource="#CodiceFiscale_7_ControllaCodiceFiscale_Atomic_input_parameters__http___webservices.dotnethell.it_CodiceFiscale_ControllaCodiceFiscale"/>
+    <process:hasOutput rdf:resource="#CodiceFiscale_7_ControllaCodiceFiscale_Atomic_output_parameters__http___webservices.dotnethell.it_CodiceFiscale_ControllaCodiceFiscaleResponse"/>
+    <process:hasPrecondition>The input parameter ControllaCodiceFiscale must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The ControllaCodiceFiscaleResponse containing the result of the Codice Fiscale validation is returned as output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CodiceFiscale_8_CalcolaCodiceFiscale_Atomic">
+    <process:hasName>CalcolaCodiceFiscale</process:hasName>
+    <process:hasInput rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_ComuneNascita__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_Nome__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_Sesso__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_Cognome__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_input_DataNascita__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <process:hasPrecondition>The input parameters ComuneNascita, Nome, Sesso, Cognome, and DataNascita must be provided in the specified data types.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the CodiceFiscale (Italian tax code) as a string in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CodiceFiscale_9_CodiceComune_Atomic">
+    <process:hasName>CodiceComune</process:hasName>
+    <process:hasInput rdf:resource="#CodiceFiscale_9_CodiceComune_Atomic_input_NomeComune__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CodiceFiscale_9_CodiceComune_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <process:hasPrecondition>The input NomeComune must be a valid string according to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation CodiceComune will return a string representing the CodiceFiscale related to the input NomeComune.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CodiceFiscale_10_NomeComune_Atomic">
+    <process:hasName>NomeComune</process:hasName>
+    <process:hasInput rdf:resource="#CodiceFiscale_10_NomeComune_Atomic_input_CodiceComune__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CodiceFiscale_10_NomeComune_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <process:hasPrecondition>The input CodiceComune must be a valid string according to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation NomeComune will return a string in the Body output conforming to the CodiceFiscale web service specification.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="CodiceFiscale_11_ControllaCodiceFiscale_Atomic">
+    <process:hasName>ControllaCodiceFiscale</process:hasName>
+    <process:hasInput rdf:resource="#CodiceFiscale_11_ControllaCodiceFiscale_Atomic_input_CodiceFiscale__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#CodiceFiscale_11_ControllaCodiceFiscale_Atomic_output_Body__http___webservices.dotnethell.it_CodiceFiscale_string"/>
+    <process:hasPrecondition>The input CodiceFiscale must be a valid string conforming to the format specified by the XML Schema definition for strings.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a string in the specified format from the CodiceFiscale namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="CodiceFiscale_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CodiceFiscale_1_CodiceComune_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CodiceFiscale_2_NomeComune_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CodiceFiscale_3_ControllaCodiceFiscale_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CodiceFiscale_4_CalcolaCodiceFiscale_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CodiceFiscale_5_CodiceComune_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CodiceFiscale_6_NomeComune_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CodiceFiscale_7_ControllaCodiceFiscale_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CodiceFiscale_9_CodiceComune_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CodiceFiscale_10_NomeComune_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#CodiceFiscale_11_ControllaCodiceFiscale_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CodiceFiscale_0_CalcolaCodiceFiscale_Grounding">
+    <grounding:owlsProcess rdf:resource="#CodiceFiscale_0_CalcolaCodiceFiscale_Atomic"/>
+    <grounding:wsdlOperationName>CalcolaCodiceFiscale</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CodiceFiscaleHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CodiceFiscaleHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/796_CodiceFiscale.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CalcolaCodiceFiscaleHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CalcolaCodiceFiscaleHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CodiceFiscale_1_CodiceComune_Grounding">
+    <grounding:owlsProcess rdf:resource="#CodiceFiscale_1_CodiceComune_Atomic"/>
+    <grounding:wsdlOperationName>CodiceComune</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CodiceFiscaleHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CodiceFiscaleHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/796_CodiceFiscale.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CodiceComuneHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CodiceComuneHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CodiceFiscale_2_NomeComune_Grounding">
+    <grounding:owlsProcess rdf:resource="#CodiceFiscale_2_NomeComune_Atomic"/>
+    <grounding:wsdlOperationName>NomeComune</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CodiceFiscaleHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CodiceFiscaleHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/796_CodiceFiscale.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>NomeComuneHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>NomeComuneHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CodiceFiscale_3_ControllaCodiceFiscale_Grounding">
+    <grounding:owlsProcess rdf:resource="#CodiceFiscale_3_ControllaCodiceFiscale_Atomic"/>
+    <grounding:wsdlOperationName>ControllaCodiceFiscale</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CodiceFiscaleHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CodiceFiscaleHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/796_CodiceFiscale.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ControllaCodiceFiscaleHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ControllaCodiceFiscaleHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CodiceFiscale_4_CalcolaCodiceFiscale_Grounding">
+    <grounding:owlsProcess rdf:resource="#CodiceFiscale_4_CalcolaCodiceFiscale_Atomic"/>
+    <grounding:wsdlOperationName>CalcolaCodiceFiscale</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CodiceFiscaleSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CodiceFiscaleSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/796_CodiceFiscale.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CalcolaCodiceFiscaleSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CalcolaCodiceFiscaleSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CodiceFiscale_5_CodiceComune_Grounding">
+    <grounding:owlsProcess rdf:resource="#CodiceFiscale_5_CodiceComune_Atomic"/>
+    <grounding:wsdlOperationName>CodiceComune</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CodiceFiscaleSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CodiceFiscaleSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/796_CodiceFiscale.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CodiceComuneSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CodiceComuneSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CodiceFiscale_6_NomeComune_Grounding">
+    <grounding:owlsProcess rdf:resource="#CodiceFiscale_6_NomeComune_Atomic"/>
+    <grounding:wsdlOperationName>NomeComune</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CodiceFiscaleSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CodiceFiscaleSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/796_CodiceFiscale.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>NomeComuneSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>NomeComuneSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CodiceFiscale_7_ControllaCodiceFiscale_Grounding">
+    <grounding:owlsProcess rdf:resource="#CodiceFiscale_7_ControllaCodiceFiscale_Atomic"/>
+    <grounding:wsdlOperationName>ControllaCodiceFiscale</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CodiceFiscaleSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CodiceFiscaleSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/796_CodiceFiscale.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ControllaCodiceFiscaleSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ControllaCodiceFiscaleSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CodiceFiscale_8_CalcolaCodiceFiscale_Grounding">
+    <grounding:owlsProcess rdf:resource="#CodiceFiscale_8_CalcolaCodiceFiscale_Atomic"/>
+    <grounding:wsdlOperationName>CalcolaCodiceFiscale</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CodiceFiscaleHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CodiceFiscaleHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/796_CodiceFiscale.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CalcolaCodiceFiscaleHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CalcolaCodiceFiscaleHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CodiceFiscale_9_CodiceComune_Grounding">
+    <grounding:owlsProcess rdf:resource="#CodiceFiscale_9_CodiceComune_Atomic"/>
+    <grounding:wsdlOperationName>CodiceComune</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CodiceFiscaleHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CodiceFiscaleHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/796_CodiceFiscale.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CodiceComuneHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CodiceComuneHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CodiceFiscale_10_NomeComune_Grounding">
+    <grounding:owlsProcess rdf:resource="#CodiceFiscale_10_NomeComune_Atomic"/>
+    <grounding:wsdlOperationName>NomeComune</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CodiceFiscaleHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CodiceFiscaleHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/796_CodiceFiscale.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>NomeComuneHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>NomeComuneHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="CodiceFiscale_11_ControllaCodiceFiscale_Grounding">
+    <grounding:owlsProcess rdf:resource="#CodiceFiscale_11_ControllaCodiceFiscale_Atomic"/>
+    <grounding:wsdlOperationName>ControllaCodiceFiscale</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>CodiceFiscaleHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>CodiceFiscaleHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/796_CodiceFiscale.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ControllaCodiceFiscaleHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ControllaCodiceFiscaleHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

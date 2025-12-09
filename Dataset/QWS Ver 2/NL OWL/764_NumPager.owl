@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="NumPager">
+    <service:presents rdf:resource="#NumPager_Profile"/>
+    <service:describedBy rdf:resource="#NumPager_Composite"/>
+    <service:supports rdf:resource="#NumPager_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="NumPager_Profile">
+    <profile:serviceName>NumPager</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#NumPager"/>
+    <profile:hasProcess rdf:resource="#NumPager_0_SetSearchString_Atomic"/>
+    <profile:hasInput rdf:resource="#NumPager_0_SetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__SetSearchString"/>
+    <profile:hasOutput rdf:resource="#NumPager_0_SetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__SetSearchStringResponse"/>
+    <profile:hasPrecondition>The input parameter for SetSearchString must be provided in the specified format from http://ws.AcrossCommunications.com/.</profile:hasPrecondition>
+    <profile:hasResult>The operation SetSearchString will return a response in the specified format from http://ws.AcrossCommunications.com/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NumPager_1_GetSearchString_Atomic"/>
+    <profile:hasInput rdf:resource="#NumPager_1_GetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__GetSearchString"/>
+    <profile:hasOutput rdf:resource="#NumPager_1_GetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__GetSearchStringResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetSearchString must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the search string based on the input parameters provided.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NumPager_2_Release_Atomic"/>
+    <profile:hasInput rdf:resource="#NumPager_2_Release_Atomic_input_parameters__http___ws.AcrossCommunications.com__Release"/>
+    <profile:hasOutput rdf:resource="#NumPager_2_Release_Atomic_output_parameters__http___ws.AcrossCommunications.com__ReleaseResponse"/>
+    <profile:hasPrecondition>The system must have a valid authentication token to access the Release operation.</profile:hasPrecondition>
+    <profile:hasResult>The Release operation will be executed, and a response containing the status of the release process will be returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NumPager_3_Send_Atomic"/>
+    <profile:hasInput rdf:resource="#NumPager_3_Send_Atomic_input_parameters__http___ws.AcrossCommunications.com__Send"/>
+    <profile:hasOutput rdf:resource="#NumPager_3_Send_Atomic_output_parameters__http___ws.AcrossCommunications.com__SendResponse"/>
+    <profile:hasPrecondition>The web service at http://ws.AcrossCommunications.com/ is accessible and the necessary authentication credentials are provided.</profile:hasPrecondition>
+    <profile:hasResult>The Send operation is executed successfully, and a response is returned from the web service at http://ws.AcrossCommunications.com/.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="NumPager_Composite">
+    <process:composedOf rdf:resource="#NumPager_0_SetSearchString_Atomic"/>
+    <process:composedOf rdf:resource="#NumPager_1_GetSearchString_Atomic"/>
+    <process:composedOf rdf:resource="#NumPager_2_Release_Atomic"/>
+    <process:composedOf rdf:resource="#NumPager_3_Send_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="NumPager_0_SetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__SetSearchString">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}SetSearchString</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NumPager_0_SetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__SetSearchStringResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}SetSearchStringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NumPager_1_GetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__GetSearchString">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}GetSearchString</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NumPager_1_GetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__GetSearchStringResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}GetSearchStringResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NumPager_2_Release_Atomic_input_parameters__http___ws.AcrossCommunications.com__Release">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}Release</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NumPager_2_Release_Atomic_output_parameters__http___ws.AcrossCommunications.com__ReleaseResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}ReleaseResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="NumPager_3_Send_Atomic_input_parameters__http___ws.AcrossCommunications.com__Send">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}Send</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="NumPager_3_Send_Atomic_output_parameters__http___ws.AcrossCommunications.com__SendResponse">
+    <process:parameterType>parameters:{http://ws.AcrossCommunications.com/}SendResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="NumPager_0_SetSearchString_Atomic">
+    <process:hasName>SetSearchString</process:hasName>
+    <process:hasInput rdf:resource="#NumPager_0_SetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__SetSearchString"/>
+    <process:hasOutput rdf:resource="#NumPager_0_SetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__SetSearchStringResponse"/>
+    <process:hasPrecondition>The input parameter for SetSearchString must be provided in the specified format from http://ws.AcrossCommunications.com/.</process:hasPrecondition>
+    <process:hasEffect>The operation SetSearchString will return a response in the specified format from http://ws.AcrossCommunications.com/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NumPager_1_GetSearchString_Atomic">
+    <process:hasName>GetSearchString</process:hasName>
+    <process:hasInput rdf:resource="#NumPager_1_GetSearchString_Atomic_input_parameters__http___ws.AcrossCommunications.com__GetSearchString"/>
+    <process:hasOutput rdf:resource="#NumPager_1_GetSearchString_Atomic_output_parameters__http___ws.AcrossCommunications.com__GetSearchStringResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetSearchString must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the search string based on the input parameters provided.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NumPager_2_Release_Atomic">
+    <process:hasName>Release</process:hasName>
+    <process:hasInput rdf:resource="#NumPager_2_Release_Atomic_input_parameters__http___ws.AcrossCommunications.com__Release"/>
+    <process:hasOutput rdf:resource="#NumPager_2_Release_Atomic_output_parameters__http___ws.AcrossCommunications.com__ReleaseResponse"/>
+    <process:hasPrecondition>The system must have a valid authentication token to access the Release operation.</process:hasPrecondition>
+    <process:hasEffect>The Release operation will be executed, and a response containing the status of the release process will be returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NumPager_3_Send_Atomic">
+    <process:hasName>Send</process:hasName>
+    <process:hasInput rdf:resource="#NumPager_3_Send_Atomic_input_parameters__http___ws.AcrossCommunications.com__Send"/>
+    <process:hasOutput rdf:resource="#NumPager_3_Send_Atomic_output_parameters__http___ws.AcrossCommunications.com__SendResponse"/>
+    <process:hasPrecondition>The web service at http://ws.AcrossCommunications.com/ is accessible and the necessary authentication credentials are provided.</process:hasPrecondition>
+    <process:hasEffect>The Send operation is executed successfully, and a response is returned from the web service at http://ws.AcrossCommunications.com/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="NumPager_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NumPager_0_SetSearchString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NumPager_1_GetSearchString_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NumPager_2_Release_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NumPager_3_Send_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NumPager_0_SetSearchString_Grounding">
+    <grounding:owlsProcess rdf:resource="#NumPager_0_SetSearchString_Atomic"/>
+    <grounding:wsdlOperationName>SetSearchString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NumPagerSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NumPagerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/764_NumPager.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SetSearchStringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SetSearchStringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NumPager_1_GetSearchString_Grounding">
+    <grounding:owlsProcess rdf:resource="#NumPager_1_GetSearchString_Atomic"/>
+    <grounding:wsdlOperationName>GetSearchString</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NumPagerSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NumPagerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/764_NumPager.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSearchStringSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSearchStringSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NumPager_2_Release_Grounding">
+    <grounding:owlsProcess rdf:resource="#NumPager_2_Release_Atomic"/>
+    <grounding:wsdlOperationName>Release</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NumPagerSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NumPagerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/764_NumPager.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ReleaseSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ReleaseSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NumPager_3_Send_Grounding">
+    <grounding:owlsProcess rdf:resource="#NumPager_3_Send_Atomic"/>
+    <grounding:wsdlOperationName>Send</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NumPagerSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NumPagerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/764_NumPager.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

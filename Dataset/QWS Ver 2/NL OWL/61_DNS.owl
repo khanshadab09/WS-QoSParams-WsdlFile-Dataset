@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="DNS">
+    <service:presents rdf:resource="#DNS_Profile"/>
+    <service:describedBy rdf:resource="#DNS_Composite"/>
+    <service:supports rdf:resource="#DNS_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="DNS_Profile">
+    <profile:serviceName>DNS</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#DNS"/>
+    <profile:hasProcess rdf:resource="#DNS_0_DNSLookup_Atomic"/>
+    <profile:hasInput rdf:resource="#DNS_0_DNSLookup_Atomic_input_parameters__http___tempuri.org__DNSLookup"/>
+    <profile:hasOutput rdf:resource="#DNS_0_DNSLookup_Atomic_output_parameters__http___tempuri.org__DNSLookupResponse"/>
+    <profile:hasPrecondition>The input parameter for DNSLookup must be provided in the specified format {http://tempuri.org/}DNSLookup.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the DNSLookupResponse in the specified format {http://tempuri.org/}DNSLookupResponse.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#DNS_1_GetRemainingHits_Atomic"/>
+    <profile:hasInput rdf:resource="#DNS_1_GetRemainingHits_Atomic_input_parameters__http___ws.strikeiron.com_GetRemainingHits"/>
+    <profile:hasOutput rdf:resource="#DNS_1_GetRemainingHits_Atomic_output_parameters__http___ws.strikeiron.com_GetRemainingHitsResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have a valid API key to access the GetRemainingHits operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the remaining number of hits allowed for the user's API key.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="DNS_Composite">
+    <process:composedOf rdf:resource="#DNS_0_DNSLookup_Atomic"/>
+    <process:composedOf rdf:resource="#DNS_1_GetRemainingHits_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="DNS_0_DNSLookup_Atomic_input_parameters__http___tempuri.org__DNSLookup">
+    <process:parameterType>parameters:{http://tempuri.org/}DNSLookup</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DNS_0_DNSLookup_Atomic_output_parameters__http___tempuri.org__DNSLookupResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}DNSLookupResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="DNS_1_GetRemainingHits_Atomic_input_parameters__http___ws.strikeiron.com_GetRemainingHits">
+    <process:parameterType>parameters:{http://ws.strikeiron.com}GetRemainingHits</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="DNS_1_GetRemainingHits_Atomic_output_parameters__http___ws.strikeiron.com_GetRemainingHitsResponse">
+    <process:parameterType>parameters:{http://ws.strikeiron.com}GetRemainingHitsResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="DNS_0_DNSLookup_Atomic">
+    <process:hasName>DNSLookup</process:hasName>
+    <process:hasInput rdf:resource="#DNS_0_DNSLookup_Atomic_input_parameters__http___tempuri.org__DNSLookup"/>
+    <process:hasOutput rdf:resource="#DNS_0_DNSLookup_Atomic_output_parameters__http___tempuri.org__DNSLookupResponse"/>
+    <process:hasPrecondition>The input parameter for DNSLookup must be provided in the specified format {http://tempuri.org/}DNSLookup.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the DNSLookupResponse in the specified format {http://tempuri.org/}DNSLookupResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="DNS_1_GetRemainingHits_Atomic">
+    <process:hasName>GetRemainingHits</process:hasName>
+    <process:hasInput rdf:resource="#DNS_1_GetRemainingHits_Atomic_input_parameters__http___ws.strikeiron.com_GetRemainingHits"/>
+    <process:hasOutput rdf:resource="#DNS_1_GetRemainingHits_Atomic_output_parameters__http___ws.strikeiron.com_GetRemainingHitsResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have a valid API key to access the GetRemainingHits operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the remaining number of hits allowed for the user's API key.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="DNS_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DNS_0_DNSLookup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#DNS_1_GetRemainingHits_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DNS_0_DNSLookup_Grounding">
+    <grounding:owlsProcess rdf:resource="#DNS_0_DNSLookup_Atomic"/>
+    <grounding:wsdlOperationName>DNSLookup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DNSSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DNSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/61_DNS.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DNSLookupSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DNSLookupSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="DNS_1_GetRemainingHits_Grounding">
+    <grounding:owlsProcess rdf:resource="#DNS_1_GetRemainingHits_Atomic"/>
+    <grounding:wsdlOperationName>GetRemainingHits</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>DNSSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>DNSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/61_DNS.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRemainingHitsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRemainingHitsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

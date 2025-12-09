@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="NavneNumreBasis">
+    <service:presents rdf:resource="#NavneNumreBasis_Profile"/>
+    <service:describedBy rdf:resource="#NavneNumreBasis_Composite"/>
+    <service:supports rdf:resource="#NavneNumreBasis_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="NavneNumreBasis_Profile">
+    <profile:serviceName>NavneNumreBasis</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#NavneNumreBasis"/>
+    <profile:hasProcess rdf:resource="#NavneNumreBasis_0_lookupSubscribers_Atomic"/>
+    <profile:hasPrecondition>The web service has a valid and up-to-date list of subscribers.</profile:hasPrecondition>
+    <profile:hasResult>The web service retrieves and provides information about the subscribers.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NavneNumreBasis_1_lookupSubscribersByID_Atomic"/>
+    <profile:hasPrecondition>The system has a valid and active database of subscribers.</profile:hasPrecondition>
+    <profile:hasResult>The system retrieves and displays the subscriber information based on the provided ID.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NavneNumreBasis_2_lookupSubscribers_Atomic"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves a list of subscribers from the database.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#NavneNumreBasis_3_lookupSubscribersByID_Atomic"/>
+    <profile:hasPrecondition>The system has a valid subscriber ID to look up.</profile:hasPrecondition>
+    <profile:hasResult>The system retrieves and provides information about the subscriber with the given ID.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="NavneNumreBasis_Composite">
+    <process:composedOf rdf:resource="#NavneNumreBasis_0_lookupSubscribers_Atomic"/>
+    <process:composedOf rdf:resource="#NavneNumreBasis_1_lookupSubscribersByID_Atomic"/>
+    <process:composedOf rdf:resource="#NavneNumreBasis_2_lookupSubscribers_Atomic"/>
+    <process:composedOf rdf:resource="#NavneNumreBasis_3_lookupSubscribersByID_Atomic"/>
+  </process:CompositeProcess>
+
+
+  <process:AtomicProcess rdf:ID="NavneNumreBasis_0_lookupSubscribers_Atomic">
+    <process:hasName>lookupSubscribers</process:hasName>
+    <process:hasPrecondition>The web service has a valid and up-to-date list of subscribers.</process:hasPrecondition>
+    <process:hasEffect>The web service retrieves and provides information about the subscribers.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NavneNumreBasis_1_lookupSubscribersByID_Atomic">
+    <process:hasName>lookupSubscribersByID</process:hasName>
+    <process:hasPrecondition>The system has a valid and active database of subscribers.</process:hasPrecondition>
+    <process:hasEffect>The system retrieves and displays the subscriber information based on the provided ID.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NavneNumreBasis_2_lookupSubscribers_Atomic">
+    <process:hasName>lookupSubscribers</process:hasName>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>Retrieves a list of subscribers from the database.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="NavneNumreBasis_3_lookupSubscribersByID_Atomic">
+    <process:hasName>lookupSubscribersByID</process:hasName>
+    <process:hasPrecondition>The system has a valid subscriber ID to look up.</process:hasPrecondition>
+    <process:hasEffect>The system retrieves and provides information about the subscriber with the given ID.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="NavneNumreBasis_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NavneNumreBasis_0_lookupSubscribers_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NavneNumreBasis_1_lookupSubscribersByID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NavneNumreBasis_2_lookupSubscribers_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#NavneNumreBasis_3_lookupSubscribersByID_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NavneNumreBasis_0_lookupSubscribers_Grounding">
+    <grounding:owlsProcess rdf:resource="#NavneNumreBasis_0_lookupSubscribers_Atomic"/>
+    <grounding:wsdlOperationName>lookupSubscribers</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NavneNumreBasisBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NavneNumreBasis</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/802_NavneNumreBasis.wsdl</grounding:wsdlDocument>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NavneNumreBasis_1_lookupSubscribersByID_Grounding">
+    <grounding:owlsProcess rdf:resource="#NavneNumreBasis_1_lookupSubscribersByID_Atomic"/>
+    <grounding:wsdlOperationName>lookupSubscribersByID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NavneNumreBasisBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NavneNumreBasis</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/802_NavneNumreBasis.wsdl</grounding:wsdlDocument>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NavneNumreBasis_2_lookupSubscribers_Grounding">
+    <grounding:owlsProcess rdf:resource="#NavneNumreBasis_2_lookupSubscribers_Atomic"/>
+    <grounding:wsdlOperationName>lookupSubscribers</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NavneNumreBasisBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NavneNumreBasis</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/802_NavneNumreBasis.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>NavneNumreBasis_lookupSubscribers</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>NavneNumreBasis_lookupSubscribersResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="NavneNumreBasis_3_lookupSubscribersByID_Grounding">
+    <grounding:owlsProcess rdf:resource="#NavneNumreBasis_3_lookupSubscribersByID_Atomic"/>
+    <grounding:wsdlOperationName>lookupSubscribersByID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NavneNumreBasisBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NavneNumreBasis</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/802_NavneNumreBasis.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>NavneNumreBasis_lookupSubscriberByID</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>NavneNumreBasis_lookupSubscriberByIDResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

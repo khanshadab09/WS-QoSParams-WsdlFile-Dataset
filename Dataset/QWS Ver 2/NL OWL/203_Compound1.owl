@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Compound1">
+    <service:presents rdf:resource="#Compound1_Profile"/>
+    <service:describedBy rdf:resource="#Compound1_Composite"/>
+    <service:supports rdf:resource="#Compound1_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Compound1_Profile">
+    <profile:serviceName>Compound1</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Compound1"/>
+    <profile:hasProcess rdf:resource="#Compound1_0_echoPerson_Atomic"/>
+    <profile:hasInput rdf:resource="#Compound1_0_echoPerson_Atomic_input_x__http___soapinterop.org_xsd_x_Person"/>
+    <profile:hasOutput rdf:resource="#Compound1_0_echoPerson_Atomic_output_Result__http___soapinterop.org_xsd_result_Person"/>
+    <profile:hasPrecondition>The input x must be a valid XML instance of the x_Person type defined in the http://soapinterop.org/xsd namespace.</profile:hasPrecondition>
+    <profile:hasResult>The operation echoPerson will return a Result containing an XML instance of the result_Person type defined in the http://soapinterop.org/xsd namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Compound1_1_echoDocument_Atomic"/>
+    <profile:hasInput rdf:resource="#Compound1_1_echoDocument_Atomic_input_x__http___soapinterop.org_xsd_x_Document"/>
+    <profile:hasOutput rdf:resource="#Compound1_1_echoDocument_Atomic_output_Result__http___soapinterop.org_xsd_result_Document"/>
+    <profile:hasPrecondition>The input x_Document must conform to the specified XML schema defined by http://soapinterop.org/xsd.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a result_Document conforming to the XML schema defined by http://soapinterop.org/xsd.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Compound1_Composite">
+    <process:composedOf rdf:resource="#Compound1_0_echoPerson_Atomic"/>
+    <process:composedOf rdf:resource="#Compound1_1_echoDocument_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Compound1_0_echoPerson_Atomic_input_x__http___soapinterop.org_xsd_x_Person">
+    <process:parameterType>x:{http://soapinterop.org/xsd}x_Person</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Compound1_0_echoPerson_Atomic_output_Result__http___soapinterop.org_xsd_result_Person">
+    <process:parameterType>Result:{http://soapinterop.org/xsd}result_Person</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Compound1_1_echoDocument_Atomic_input_x__http___soapinterop.org_xsd_x_Document">
+    <process:parameterType>x:{http://soapinterop.org/xsd}x_Document</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Compound1_1_echoDocument_Atomic_output_Result__http___soapinterop.org_xsd_result_Document">
+    <process:parameterType>Result:{http://soapinterop.org/xsd}result_Document</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Compound1_0_echoPerson_Atomic">
+    <process:hasName>echoPerson</process:hasName>
+    <process:hasInput rdf:resource="#Compound1_0_echoPerson_Atomic_input_x__http___soapinterop.org_xsd_x_Person"/>
+    <process:hasOutput rdf:resource="#Compound1_0_echoPerson_Atomic_output_Result__http___soapinterop.org_xsd_result_Person"/>
+    <process:hasPrecondition>The input x must be a valid XML instance of the x_Person type defined in the http://soapinterop.org/xsd namespace.</process:hasPrecondition>
+    <process:hasEffect>The operation echoPerson will return a Result containing an XML instance of the result_Person type defined in the http://soapinterop.org/xsd namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Compound1_1_echoDocument_Atomic">
+    <process:hasName>echoDocument</process:hasName>
+    <process:hasInput rdf:resource="#Compound1_1_echoDocument_Atomic_input_x__http___soapinterop.org_xsd_x_Document"/>
+    <process:hasOutput rdf:resource="#Compound1_1_echoDocument_Atomic_output_Result__http___soapinterop.org_xsd_result_Document"/>
+    <process:hasPrecondition>The input x_Document must conform to the specified XML schema defined by http://soapinterop.org/xsd.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a result_Document conforming to the XML schema defined by http://soapinterop.org/xsd.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Compound1_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Compound1_0_echoPerson_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Compound1_1_echoDocument_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Compound1_0_echoPerson_Grounding">
+    <grounding:owlsProcess rdf:resource="#Compound1_0_echoPerson_Atomic"/>
+    <grounding:wsdlOperationName>echoPerson</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SoapInteropCompound1Binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SoapInteropCompound1PortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/203_Compound1.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>echoPerson</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>echoPersonResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Compound1_1_echoDocument_Grounding">
+    <grounding:owlsProcess rdf:resource="#Compound1_1_echoDocument_Atomic"/>
+    <grounding:wsdlOperationName>echoDocument</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SoapInteropCompound1Binding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SoapInteropCompound1PortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/203_Compound1.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>echoDocument</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>echoDocumentResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

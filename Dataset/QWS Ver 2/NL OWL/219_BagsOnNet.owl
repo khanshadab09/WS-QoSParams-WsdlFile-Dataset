@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="BagsOnNet">
+    <service:presents rdf:resource="#BagsOnNet_Profile"/>
+    <service:describedBy rdf:resource="#BagsOnNet_Composite"/>
+    <service:supports rdf:resource="#BagsOnNet_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="BagsOnNet_Profile">
+    <profile:serviceName>BagsOnNet</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#BagsOnNet"/>
+    <profile:hasProcess rdf:resource="#BagsOnNet_0_GetUPSFreight_Atomic"/>
+    <profile:hasInput rdf:resource="#BagsOnNet_0_GetUPSFreight_Atomic_input_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_GetUPSFreight"/>
+    <profile:hasOutput rdf:resource="#BagsOnNet_0_GetUPSFreight_Atomic_output_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_GetUPSFreightResponse"/>
+    <profile:hasPrecondition>The input parameters for GetUPSFreight request must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters in the GetUPSFreightResponse will be returned according to the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BagsOnNet_1_TimeInTransit_Atomic"/>
+    <profile:hasInput rdf:resource="#BagsOnNet_1_TimeInTransit_Atomic_input_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_TimeInTransit"/>
+    <profile:hasOutput rdf:resource="#BagsOnNet_1_TimeInTransit_Atomic_output_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_TimeInTransitResponse"/>
+    <profile:hasPrecondition>The TimeInTransit request must contain valid parameters in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The TimeInTransit operation will return a response containing transit time information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BagsOnNet_2_WhenMyOrderWillShip_Atomic"/>
+    <profile:hasInput rdf:resource="#BagsOnNet_2_WhenMyOrderWillShip_Atomic_input_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_WhenMyOrderWillShip"/>
+    <profile:hasOutput rdf:resource="#BagsOnNet_2_WhenMyOrderWillShip_Atomic_output_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_WhenMyOrderWillShipResponse"/>
+    <profile:hasPrecondition>The user must provide the necessary order details to retrieve the shipping information.</profile:hasPrecondition>
+    <profile:hasResult>The system will return the estimated shipping date for the specified order.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="BagsOnNet_Composite">
+    <process:composedOf rdf:resource="#BagsOnNet_0_GetUPSFreight_Atomic"/>
+    <process:composedOf rdf:resource="#BagsOnNet_1_TimeInTransit_Atomic"/>
+    <process:composedOf rdf:resource="#BagsOnNet_2_WhenMyOrderWillShip_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="BagsOnNet_0_GetUPSFreight_Atomic_input_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_GetUPSFreight">
+    <process:parameterType>parameters:{http://tempuri.org/www.BagOnNet.com/BagsOnNet}GetUPSFreight</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BagsOnNet_0_GetUPSFreight_Atomic_output_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_GetUPSFreightResponse">
+    <process:parameterType>parameters:{http://tempuri.org/www.BagOnNet.com/BagsOnNet}GetUPSFreightResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BagsOnNet_1_TimeInTransit_Atomic_input_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_TimeInTransit">
+    <process:parameterType>parameters:{http://tempuri.org/www.BagOnNet.com/BagsOnNet}TimeInTransit</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BagsOnNet_1_TimeInTransit_Atomic_output_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_TimeInTransitResponse">
+    <process:parameterType>parameters:{http://tempuri.org/www.BagOnNet.com/BagsOnNet}TimeInTransitResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BagsOnNet_2_WhenMyOrderWillShip_Atomic_input_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_WhenMyOrderWillShip">
+    <process:parameterType>parameters:{http://tempuri.org/www.BagOnNet.com/BagsOnNet}WhenMyOrderWillShip</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BagsOnNet_2_WhenMyOrderWillShip_Atomic_output_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_WhenMyOrderWillShipResponse">
+    <process:parameterType>parameters:{http://tempuri.org/www.BagOnNet.com/BagsOnNet}WhenMyOrderWillShipResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="BagsOnNet_0_GetUPSFreight_Atomic">
+    <process:hasName>GetUPSFreight</process:hasName>
+    <process:hasInput rdf:resource="#BagsOnNet_0_GetUPSFreight_Atomic_input_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_GetUPSFreight"/>
+    <process:hasOutput rdf:resource="#BagsOnNet_0_GetUPSFreight_Atomic_output_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_GetUPSFreightResponse"/>
+    <process:hasPrecondition>The input parameters for GetUPSFreight request must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The output parameters in the GetUPSFreightResponse will be returned according to the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BagsOnNet_1_TimeInTransit_Atomic">
+    <process:hasName>TimeInTransit</process:hasName>
+    <process:hasInput rdf:resource="#BagsOnNet_1_TimeInTransit_Atomic_input_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_TimeInTransit"/>
+    <process:hasOutput rdf:resource="#BagsOnNet_1_TimeInTransit_Atomic_output_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_TimeInTransitResponse"/>
+    <process:hasPrecondition>The TimeInTransit request must contain valid parameters in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The TimeInTransit operation will return a response containing transit time information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BagsOnNet_2_WhenMyOrderWillShip_Atomic">
+    <process:hasName>WhenMyOrderWillShip</process:hasName>
+    <process:hasInput rdf:resource="#BagsOnNet_2_WhenMyOrderWillShip_Atomic_input_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_WhenMyOrderWillShip"/>
+    <process:hasOutput rdf:resource="#BagsOnNet_2_WhenMyOrderWillShip_Atomic_output_parameters__http___tempuri.org_www.BagOnNet.com_BagsOnNet_WhenMyOrderWillShipResponse"/>
+    <process:hasPrecondition>The user must provide the necessary order details to retrieve the shipping information.</process:hasPrecondition>
+    <process:hasEffect>The system will return the estimated shipping date for the specified order.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="BagsOnNet_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BagsOnNet_0_GetUPSFreight_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BagsOnNet_1_TimeInTransit_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BagsOnNet_2_WhenMyOrderWillShip_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BagsOnNet_0_GetUPSFreight_Grounding">
+    <grounding:owlsProcess rdf:resource="#BagsOnNet_0_GetUPSFreight_Atomic"/>
+    <grounding:wsdlOperationName>GetUPSFreight</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BagsOnNetSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BagsOnNetSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/219_BagsOnNet.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUPSFreightSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUPSFreightSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BagsOnNet_1_TimeInTransit_Grounding">
+    <grounding:owlsProcess rdf:resource="#BagsOnNet_1_TimeInTransit_Atomic"/>
+    <grounding:wsdlOperationName>TimeInTransit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BagsOnNetSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BagsOnNetSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/219_BagsOnNet.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>TimeInTransitSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>TimeInTransitSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BagsOnNet_2_WhenMyOrderWillShip_Grounding">
+    <grounding:owlsProcess rdf:resource="#BagsOnNet_2_WhenMyOrderWillShip_Atomic"/>
+    <grounding:wsdlOperationName>WhenMyOrderWillShip</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BagsOnNetSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BagsOnNetSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/219_BagsOnNet.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>WhenMyOrderWillShipSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>WhenMyOrderWillShipSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,847 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="cweather">
+    <service:presents rdf:resource="#cweather_Profile"/>
+    <service:describedBy rdf:resource="#cweather_Composite"/>
+    <service:supports rdf:resource="#cweather_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="cweather_Profile">
+    <profile:serviceName>cweather</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#cweather"/>
+    <profile:hasProcess rdf:resource="#cweather_0_GetSuffix_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_0_GetSuffix_Atomic_input_Suffix__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_0_GetSuffix_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_0_GetSuffix_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_0_GetSuffix_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#cweather_0_GetSuffix_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <profile:hasPrecondition>The user must provide a valid UserID and Password to access the web service.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a DataSet containing the suffix corresponding to the provided InquireURL.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_1_GetSuffixTotal_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_1_GetSuffixTotal_Atomic_input_Suffix__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_1_GetSuffixTotal_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_1_GetSuffixTotal_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_1_GetSuffixTotal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#cweather_1_GetSuffixTotal_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_long"/>
+    <profile:hasPrecondition>The user must provide a valid Suffix, InquireURL, UserID, and Password inputs.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a long integer value as the total suffix count.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_2_GetUDDITotal_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_2_GetUDDITotal_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_2_GetUDDITotal_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_2_GetUDDITotal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#cweather_2_GetUDDITotal_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_long"/>
+    <profile:hasPrecondition>The user must have a valid URL, UserID, and Password to access the service.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the total UDDI count as a long integer.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_3_GetUDDISummary_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_3_GetUDDISummary_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_3_GetUDDISummary_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_3_GetUDDISummary_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#cweather_3_GetUDDISummary_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <profile:hasPrecondition>The user must provide a valid InquireURL, UserID, and Password in the specified XML schema format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a DataSet containing the summary of UDDI information retrieved from the specified URL using the provided credentials.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_4_GetUDDIAnalysis_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_4_GetUDDIAnalysis_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_4_GetUDDIAnalysis_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_4_GetUDDIAnalysis_Atomic_input_HTMLFormat__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_4_GetUDDIAnalysis_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#cweather_4_GetUDDIAnalysis_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <profile:hasPrecondition>The user must provide a valid URL, UserID, HTMLFormat, and Password for the analysis request.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a DataSet containing the analysis results in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_5_GetUDDIRegistries_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_5_GetUDDIRegistries_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_5_GetUDDIRegistries_Atomic_input_HTMLFormat__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_5_GetUDDIRegistries_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#cweather_5_GetUDDIRegistries_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <profile:hasPrecondition>The user must provide a valid UserID, Password, and specify the desired HTMLFormat for the request.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a DataSet containing information about UDDI registries in the specified HTMLFormat.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_6_GetUserID_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_6_GetUserID_Atomic_input_EmailAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_6_GetUserID_Atomic_input_Name__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#cweather_6_GetUserID_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_string"/>
+    <profile:hasPrecondition>The user must provide a valid EmailAddress and Name in order to retrieve the UserID.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the UserID associated with the provided EmailAddress and Name in the response Body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_7_GetSuffix_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_7_GetSuffix_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetSuffix"/>
+    <profile:hasOutput rdf:resource="#cweather_7_GetSuffix_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetSuffixResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameter for GetSuffix must be provided.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the suffix information based on the input parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_8_GetSuffixTotal_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_8_GetSuffixTotal_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetSuffixTotal"/>
+    <profile:hasOutput rdf:resource="#cweather_8_GetSuffixTotal_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetSuffixTotalResponse"/>
+    <profile:hasPrecondition>The web service endpoint for GetSuffixTotal is accessible and the required input parameters are provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service returns the total suffix count as specified in the response format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_9_GetUDDITotal_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_9_GetUDDITotal_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDITotal"/>
+    <profile:hasOutput rdf:resource="#cweather_9_GetUDDITotal_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDITotalResponse"/>
+    <profile:hasPrecondition>The web service endpoint http://www.soapengine.com/lucin/salcentral/cweather.asmx must be accessible and configured to receive requests for the GetUDDITotal operation.</profile:hasPrecondition>
+    <profile:hasResult>The GetUDDITotal operation will be executed, and the response will be returned through the web service endpoint http://www.soapengine.com/lucin/salcentral/cweather.asmx.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_10_GetUDDISummary_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_10_GetUDDISummary_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDISummary"/>
+    <profile:hasOutput rdf:resource="#cweather_10_GetUDDISummary_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDISummaryResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetUDDISummary must be valid.</profile:hasPrecondition>
+    <profile:hasResult>The output will contain a summary of UDDI information retrieved from the web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_11_GetUDDIAnalysis_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_11_GetUDDIAnalysis_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDIAnalysis"/>
+    <profile:hasOutput rdf:resource="#cweather_11_GetUDDIAnalysis_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDIAnalysisResponse"/>
+    <profile:hasPrecondition>The web service must support UDDI analysis for the specified input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the UDDI analysis results in the specified output parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_12_GetUDDIRegistries_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_12_GetUDDIRegistries_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDIRegistries"/>
+    <profile:hasOutput rdf:resource="#cweather_12_GetUDDIRegistries_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDIRegistriesResponse"/>
+    <profile:hasPrecondition>The web service must support UDDI registry functionality.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves the UDDI registries associated with the specified web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_13_GetUserID_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_13_GetUserID_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUserID"/>
+    <profile:hasOutput rdf:resource="#cweather_13_GetUserID_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUserIDResponse"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the user ID from the specified input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_14_GetSuffix_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_14_GetSuffix_Atomic_input_Suffix__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_14_GetSuffix_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_14_GetSuffix_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_14_GetSuffix_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#cweather_14_GetSuffix_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <profile:hasPrecondition>The user must provide a valid UserID and Password for authentication.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a DataSet containing the suffix for the specified URL.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_15_GetSuffixTotal_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_15_GetSuffixTotal_Atomic_input_Suffix__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_15_GetSuffixTotal_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_15_GetSuffixTotal_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_15_GetSuffixTotal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#cweather_15_GetSuffixTotal_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_long"/>
+    <profile:hasPrecondition>The user must provide a valid Suffix, InquireURL, UserID, and Password to access the service.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the total value of the specified suffix from the provided URL using the given credentials.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_16_GetUDDITotal_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_16_GetUDDITotal_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_16_GetUDDITotal_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_16_GetUDDITotal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#cweather_16_GetUDDITotal_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_long"/>
+    <profile:hasPrecondition>The user must provide a valid URL, UserID, and Password for authentication.</profile:hasPrecondition>
+    <profile:hasResult>Returns the total UDDI count as a long integer value from the specified URL using the provided credentials.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_17_GetUDDISummary_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_17_GetUDDISummary_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_17_GetUDDISummary_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_17_GetUDDISummary_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#cweather_17_GetUDDISummary_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <profile:hasPrecondition>The user must provide a valid InquireURL, UserID, and Password in the specified XML Schema format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a DataSet in the specified SOAP engine format containing the summary of the UDDI service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_18_GetUDDIAnalysis_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_18_GetUDDIAnalysis_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_18_GetUDDIAnalysis_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_18_GetUDDIAnalysis_Atomic_input_HTMLFormat__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_18_GetUDDIAnalysis_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#cweather_18_GetUDDIAnalysis_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <profile:hasPrecondition>The user must provide a valid URL, UserID, HTML format, and Password for the analysis request.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a DataSet in the specified format containing the UDDI analysis results.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_19_GetUDDIRegistries_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_19_GetUDDIRegistries_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_19_GetUDDIRegistries_Atomic_input_HTMLFormat__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_19_GetUDDIRegistries_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#cweather_19_GetUDDIRegistries_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <profile:hasPrecondition>The user must provide a valid UserID, HTMLFormat, and Password inputs for authentication.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a DataSet containing the UDDI registries in the specified HTML format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#cweather_20_GetUserID_Atomic"/>
+    <profile:hasInput rdf:resource="#cweather_20_GetUserID_Atomic_input_EmailAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#cweather_20_GetUserID_Atomic_input_Name__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#cweather_20_GetUserID_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_string"/>
+    <profile:hasPrecondition>The user must provide a valid EmailAddress and Name in order to retrieve the UserID.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the UserID associated with the provided EmailAddress and Name in the response body.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="cweather_Composite">
+    <process:composedOf rdf:resource="#cweather_0_GetSuffix_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_1_GetSuffixTotal_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_2_GetUDDITotal_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_3_GetUDDISummary_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_4_GetUDDIAnalysis_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_5_GetUDDIRegistries_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_6_GetUserID_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_7_GetSuffix_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_8_GetSuffixTotal_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_9_GetUDDITotal_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_10_GetUDDISummary_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_11_GetUDDIAnalysis_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_12_GetUDDIRegistries_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_13_GetUserID_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_14_GetSuffix_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_15_GetSuffixTotal_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_16_GetUDDITotal_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_17_GetUDDISummary_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_18_GetUDDIAnalysis_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_19_GetUDDIRegistries_Atomic"/>
+    <process:composedOf rdf:resource="#cweather_20_GetUserID_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="cweather_0_GetSuffix_Atomic_input_Suffix__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Suffix:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_0_GetSuffix_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>InquireURL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_0_GetSuffix_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_0_GetSuffix_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_0_GetSuffix_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet">
+    <process:parameterType>Body:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_1_GetSuffixTotal_Atomic_input_Suffix__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Suffix:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_1_GetSuffixTotal_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>InquireURL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_1_GetSuffixTotal_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_1_GetSuffixTotal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_1_GetSuffixTotal_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_long">
+    <process:parameterType>Body:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}long</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_2_GetUDDITotal_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>InquireURL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_2_GetUDDITotal_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_2_GetUDDITotal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_2_GetUDDITotal_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_long">
+    <process:parameterType>Body:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}long</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_3_GetUDDISummary_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>InquireURL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_3_GetUDDISummary_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_3_GetUDDISummary_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_3_GetUDDISummary_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet">
+    <process:parameterType>Body:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_4_GetUDDIAnalysis_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>InquireURL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_4_GetUDDIAnalysis_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_4_GetUDDIAnalysis_Atomic_input_HTMLFormat__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>HTMLFormat:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_4_GetUDDIAnalysis_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_4_GetUDDIAnalysis_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet">
+    <process:parameterType>Body:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_5_GetUDDIRegistries_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_5_GetUDDIRegistries_Atomic_input_HTMLFormat__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>HTMLFormat:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_5_GetUDDIRegistries_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_5_GetUDDIRegistries_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet">
+    <process:parameterType>Body:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_6_GetUserID_Atomic_input_EmailAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>EmailAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_6_GetUserID_Atomic_input_Name__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Name:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_6_GetUserID_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_string">
+    <process:parameterType>Body:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_7_GetSuffix_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetSuffix">
+    <process:parameterType>parameters:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}GetSuffix</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_7_GetSuffix_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetSuffixResponse">
+    <process:parameterType>parameters:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}GetSuffixResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_8_GetSuffixTotal_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetSuffixTotal">
+    <process:parameterType>parameters:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}GetSuffixTotal</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_8_GetSuffixTotal_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetSuffixTotalResponse">
+    <process:parameterType>parameters:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}GetSuffixTotalResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_9_GetUDDITotal_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDITotal">
+    <process:parameterType>parameters:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}GetUDDITotal</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_9_GetUDDITotal_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDITotalResponse">
+    <process:parameterType>parameters:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}GetUDDITotalResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_10_GetUDDISummary_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDISummary">
+    <process:parameterType>parameters:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}GetUDDISummary</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_10_GetUDDISummary_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDISummaryResponse">
+    <process:parameterType>parameters:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}GetUDDISummaryResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_11_GetUDDIAnalysis_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDIAnalysis">
+    <process:parameterType>parameters:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}GetUDDIAnalysis</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_11_GetUDDIAnalysis_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDIAnalysisResponse">
+    <process:parameterType>parameters:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}GetUDDIAnalysisResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_12_GetUDDIRegistries_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDIRegistries">
+    <process:parameterType>parameters:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}GetUDDIRegistries</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_12_GetUDDIRegistries_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDIRegistriesResponse">
+    <process:parameterType>parameters:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}GetUDDIRegistriesResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_13_GetUserID_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUserID">
+    <process:parameterType>parameters:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}GetUserID</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_13_GetUserID_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUserIDResponse">
+    <process:parameterType>parameters:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}GetUserIDResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_14_GetSuffix_Atomic_input_Suffix__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Suffix:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_14_GetSuffix_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>InquireURL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_14_GetSuffix_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_14_GetSuffix_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_14_GetSuffix_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet">
+    <process:parameterType>Body:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_15_GetSuffixTotal_Atomic_input_Suffix__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Suffix:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_15_GetSuffixTotal_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>InquireURL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_15_GetSuffixTotal_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_15_GetSuffixTotal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_15_GetSuffixTotal_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_long">
+    <process:parameterType>Body:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}long</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_16_GetUDDITotal_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>InquireURL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_16_GetUDDITotal_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_16_GetUDDITotal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_16_GetUDDITotal_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_long">
+    <process:parameterType>Body:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}long</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_17_GetUDDISummary_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>InquireURL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_17_GetUDDISummary_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_17_GetUDDISummary_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_17_GetUDDISummary_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet">
+    <process:parameterType>Body:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_18_GetUDDIAnalysis_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>InquireURL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_18_GetUDDIAnalysis_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_18_GetUDDIAnalysis_Atomic_input_HTMLFormat__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>HTMLFormat:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_18_GetUDDIAnalysis_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_18_GetUDDIAnalysis_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet">
+    <process:parameterType>Body:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_19_GetUDDIRegistries_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>UserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_19_GetUDDIRegistries_Atomic_input_HTMLFormat__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>HTMLFormat:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_19_GetUDDIRegistries_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Password:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_19_GetUDDIRegistries_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet">
+    <process:parameterType>Body:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="cweather_20_GetUserID_Atomic_input_EmailAddress__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>EmailAddress:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="cweather_20_GetUserID_Atomic_input_Name__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Name:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="cweather_20_GetUserID_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_string">
+    <process:parameterType>Body:{http://www.soapengine.com/lucin/salcentral/cweather.asmx}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="cweather_0_GetSuffix_Atomic">
+    <process:hasName>GetSuffix</process:hasName>
+    <process:hasInput rdf:resource="#cweather_0_GetSuffix_Atomic_input_Suffix__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_0_GetSuffix_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_0_GetSuffix_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_0_GetSuffix_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#cweather_0_GetSuffix_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <process:hasPrecondition>The user must provide a valid UserID and Password to access the web service.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a DataSet containing the suffix corresponding to the provided InquireURL.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_1_GetSuffixTotal_Atomic">
+    <process:hasName>GetSuffixTotal</process:hasName>
+    <process:hasInput rdf:resource="#cweather_1_GetSuffixTotal_Atomic_input_Suffix__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_1_GetSuffixTotal_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_1_GetSuffixTotal_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_1_GetSuffixTotal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#cweather_1_GetSuffixTotal_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_long"/>
+    <process:hasPrecondition>The user must provide a valid Suffix, InquireURL, UserID, and Password inputs.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a long integer value as the total suffix count.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_2_GetUDDITotal_Atomic">
+    <process:hasName>GetUDDITotal</process:hasName>
+    <process:hasInput rdf:resource="#cweather_2_GetUDDITotal_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_2_GetUDDITotal_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_2_GetUDDITotal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#cweather_2_GetUDDITotal_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_long"/>
+    <process:hasPrecondition>The user must have a valid URL, UserID, and Password to access the service.</process:hasPrecondition>
+    <process:hasEffect>The service will return the total UDDI count as a long integer.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_3_GetUDDISummary_Atomic">
+    <process:hasName>GetUDDISummary</process:hasName>
+    <process:hasInput rdf:resource="#cweather_3_GetUDDISummary_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_3_GetUDDISummary_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_3_GetUDDISummary_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#cweather_3_GetUDDISummary_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <process:hasPrecondition>The user must provide a valid InquireURL, UserID, and Password in the specified XML schema format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a DataSet containing the summary of UDDI information retrieved from the specified URL using the provided credentials.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_4_GetUDDIAnalysis_Atomic">
+    <process:hasName>GetUDDIAnalysis</process:hasName>
+    <process:hasInput rdf:resource="#cweather_4_GetUDDIAnalysis_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_4_GetUDDIAnalysis_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_4_GetUDDIAnalysis_Atomic_input_HTMLFormat__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_4_GetUDDIAnalysis_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#cweather_4_GetUDDIAnalysis_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <process:hasPrecondition>The user must provide a valid URL, UserID, HTMLFormat, and Password for the analysis request.</process:hasPrecondition>
+    <process:hasEffect>The service will return a DataSet containing the analysis results in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_5_GetUDDIRegistries_Atomic">
+    <process:hasName>GetUDDIRegistries</process:hasName>
+    <process:hasInput rdf:resource="#cweather_5_GetUDDIRegistries_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_5_GetUDDIRegistries_Atomic_input_HTMLFormat__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_5_GetUDDIRegistries_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#cweather_5_GetUDDIRegistries_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <process:hasPrecondition>The user must provide a valid UserID, Password, and specify the desired HTMLFormat for the request.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a DataSet containing information about UDDI registries in the specified HTMLFormat.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_6_GetUserID_Atomic">
+    <process:hasName>GetUserID</process:hasName>
+    <process:hasInput rdf:resource="#cweather_6_GetUserID_Atomic_input_EmailAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_6_GetUserID_Atomic_input_Name__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#cweather_6_GetUserID_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_string"/>
+    <process:hasPrecondition>The user must provide a valid EmailAddress and Name in order to retrieve the UserID.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the UserID associated with the provided EmailAddress and Name in the response Body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_7_GetSuffix_Atomic">
+    <process:hasName>GetSuffix</process:hasName>
+    <process:hasInput rdf:resource="#cweather_7_GetSuffix_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetSuffix"/>
+    <process:hasOutput rdf:resource="#cweather_7_GetSuffix_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetSuffixResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameter for GetSuffix must be provided.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the suffix information based on the input parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_8_GetSuffixTotal_Atomic">
+    <process:hasName>GetSuffixTotal</process:hasName>
+    <process:hasInput rdf:resource="#cweather_8_GetSuffixTotal_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetSuffixTotal"/>
+    <process:hasOutput rdf:resource="#cweather_8_GetSuffixTotal_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetSuffixTotalResponse"/>
+    <process:hasPrecondition>The web service endpoint for GetSuffixTotal is accessible and the required input parameters are provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service returns the total suffix count as specified in the response format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_9_GetUDDITotal_Atomic">
+    <process:hasName>GetUDDITotal</process:hasName>
+    <process:hasInput rdf:resource="#cweather_9_GetUDDITotal_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDITotal"/>
+    <process:hasOutput rdf:resource="#cweather_9_GetUDDITotal_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDITotalResponse"/>
+    <process:hasPrecondition>The web service endpoint http://www.soapengine.com/lucin/salcentral/cweather.asmx must be accessible and configured to receive requests for the GetUDDITotal operation.</process:hasPrecondition>
+    <process:hasEffect>The GetUDDITotal operation will be executed, and the response will be returned through the web service endpoint http://www.soapengine.com/lucin/salcentral/cweather.asmx.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_10_GetUDDISummary_Atomic">
+    <process:hasName>GetUDDISummary</process:hasName>
+    <process:hasInput rdf:resource="#cweather_10_GetUDDISummary_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDISummary"/>
+    <process:hasOutput rdf:resource="#cweather_10_GetUDDISummary_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDISummaryResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetUDDISummary must be valid.</process:hasPrecondition>
+    <process:hasEffect>The output will contain a summary of UDDI information retrieved from the web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_11_GetUDDIAnalysis_Atomic">
+    <process:hasName>GetUDDIAnalysis</process:hasName>
+    <process:hasInput rdf:resource="#cweather_11_GetUDDIAnalysis_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDIAnalysis"/>
+    <process:hasOutput rdf:resource="#cweather_11_GetUDDIAnalysis_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDIAnalysisResponse"/>
+    <process:hasPrecondition>The web service must support UDDI analysis for the specified input parameters.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the UDDI analysis results in the specified output parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_12_GetUDDIRegistries_Atomic">
+    <process:hasName>GetUDDIRegistries</process:hasName>
+    <process:hasInput rdf:resource="#cweather_12_GetUDDIRegistries_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDIRegistries"/>
+    <process:hasOutput rdf:resource="#cweather_12_GetUDDIRegistries_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUDDIRegistriesResponse"/>
+    <process:hasPrecondition>The web service must support UDDI registry functionality.</process:hasPrecondition>
+    <process:hasEffect>Retrieves the UDDI registries associated with the specified web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_13_GetUserID_Atomic">
+    <process:hasName>GetUserID</process:hasName>
+    <process:hasInput rdf:resource="#cweather_13_GetUserID_Atomic_input_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUserID"/>
+    <process:hasOutput rdf:resource="#cweather_13_GetUserID_Atomic_output_parameters__http___www.soapengine.com_lucin_salcentral_cweather.asmx_GetUserIDResponse"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the user ID from the specified input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_14_GetSuffix_Atomic">
+    <process:hasName>GetSuffix</process:hasName>
+    <process:hasInput rdf:resource="#cweather_14_GetSuffix_Atomic_input_Suffix__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_14_GetSuffix_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_14_GetSuffix_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_14_GetSuffix_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#cweather_14_GetSuffix_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <process:hasPrecondition>The user must provide a valid UserID and Password for authentication.</process:hasPrecondition>
+    <process:hasEffect>The service will return a DataSet containing the suffix for the specified URL.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_15_GetSuffixTotal_Atomic">
+    <process:hasName>GetSuffixTotal</process:hasName>
+    <process:hasInput rdf:resource="#cweather_15_GetSuffixTotal_Atomic_input_Suffix__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_15_GetSuffixTotal_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_15_GetSuffixTotal_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_15_GetSuffixTotal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#cweather_15_GetSuffixTotal_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_long"/>
+    <process:hasPrecondition>The user must provide a valid Suffix, InquireURL, UserID, and Password to access the service.</process:hasPrecondition>
+    <process:hasEffect>The service will return the total value of the specified suffix from the provided URL using the given credentials.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_16_GetUDDITotal_Atomic">
+    <process:hasName>GetUDDITotal</process:hasName>
+    <process:hasInput rdf:resource="#cweather_16_GetUDDITotal_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_16_GetUDDITotal_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_16_GetUDDITotal_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#cweather_16_GetUDDITotal_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_long"/>
+    <process:hasPrecondition>The user must provide a valid URL, UserID, and Password for authentication.</process:hasPrecondition>
+    <process:hasEffect>Returns the total UDDI count as a long integer value from the specified URL using the provided credentials.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_17_GetUDDISummary_Atomic">
+    <process:hasName>GetUDDISummary</process:hasName>
+    <process:hasInput rdf:resource="#cweather_17_GetUDDISummary_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_17_GetUDDISummary_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_17_GetUDDISummary_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#cweather_17_GetUDDISummary_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <process:hasPrecondition>The user must provide a valid InquireURL, UserID, and Password in the specified XML Schema format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a DataSet in the specified SOAP engine format containing the summary of the UDDI service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_18_GetUDDIAnalysis_Atomic">
+    <process:hasName>GetUDDIAnalysis</process:hasName>
+    <process:hasInput rdf:resource="#cweather_18_GetUDDIAnalysis_Atomic_input_InquireURL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_18_GetUDDIAnalysis_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_18_GetUDDIAnalysis_Atomic_input_HTMLFormat__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_18_GetUDDIAnalysis_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#cweather_18_GetUDDIAnalysis_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <process:hasPrecondition>The user must provide a valid URL, UserID, HTML format, and Password for the analysis request.</process:hasPrecondition>
+    <process:hasEffect>The service will return a DataSet in the specified format containing the UDDI analysis results.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_19_GetUDDIRegistries_Atomic">
+    <process:hasName>GetUDDIRegistries</process:hasName>
+    <process:hasInput rdf:resource="#cweather_19_GetUDDIRegistries_Atomic_input_UserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_19_GetUDDIRegistries_Atomic_input_HTMLFormat__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_19_GetUDDIRegistries_Atomic_input_Password__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#cweather_19_GetUDDIRegistries_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_DataSet"/>
+    <process:hasPrecondition>The user must provide a valid UserID, HTMLFormat, and Password inputs for authentication.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a DataSet containing the UDDI registries in the specified HTML format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="cweather_20_GetUserID_Atomic">
+    <process:hasName>GetUserID</process:hasName>
+    <process:hasInput rdf:resource="#cweather_20_GetUserID_Atomic_input_EmailAddress__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#cweather_20_GetUserID_Atomic_input_Name__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#cweather_20_GetUserID_Atomic_output_Body__http___www.soapengine.com_lucin_salcentral_cweather.asmx_string"/>
+    <process:hasPrecondition>The user must provide a valid EmailAddress and Name in order to retrieve the UserID.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the UserID associated with the provided EmailAddress and Name in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="cweather_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_0_GetSuffix_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_1_GetSuffixTotal_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_2_GetUDDITotal_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_3_GetUDDISummary_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_4_GetUDDIAnalysis_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_5_GetUDDIRegistries_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_6_GetUserID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_7_GetSuffix_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_8_GetSuffixTotal_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_9_GetUDDITotal_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_10_GetUDDISummary_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_11_GetUDDIAnalysis_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_12_GetUDDIRegistries_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_13_GetUserID_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_14_GetSuffix_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_15_GetSuffixTotal_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_16_GetUDDITotal_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_17_GetUDDISummary_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_18_GetUDDIAnalysis_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_19_GetUDDIRegistries_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#cweather_20_GetUserID_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_0_GetSuffix_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_0_GetSuffix_Atomic"/>
+    <grounding:wsdlOperationName>GetSuffix</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSuffixHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSuffixHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_1_GetSuffixTotal_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_1_GetSuffixTotal_Atomic"/>
+    <grounding:wsdlOperationName>GetSuffixTotal</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSuffixTotalHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSuffixTotalHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_2_GetUDDITotal_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_2_GetUDDITotal_Atomic"/>
+    <grounding:wsdlOperationName>GetUDDITotal</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUDDITotalHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUDDITotalHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_3_GetUDDISummary_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_3_GetUDDISummary_Atomic"/>
+    <grounding:wsdlOperationName>GetUDDISummary</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUDDISummaryHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUDDISummaryHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_4_GetUDDIAnalysis_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_4_GetUDDIAnalysis_Atomic"/>
+    <grounding:wsdlOperationName>GetUDDIAnalysis</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUDDIAnalysisHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUDDIAnalysisHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_5_GetUDDIRegistries_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_5_GetUDDIRegistries_Atomic"/>
+    <grounding:wsdlOperationName>GetUDDIRegistries</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUDDIRegistriesHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUDDIRegistriesHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_6_GetUserID_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_6_GetUserID_Atomic"/>
+    <grounding:wsdlOperationName>GetUserID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserIDHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserIDHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_7_GetSuffix_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_7_GetSuffix_Atomic"/>
+    <grounding:wsdlOperationName>GetSuffix</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSuffixSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSuffixSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_8_GetSuffixTotal_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_8_GetSuffixTotal_Atomic"/>
+    <grounding:wsdlOperationName>GetSuffixTotal</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSuffixTotalSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSuffixTotalSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_9_GetUDDITotal_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_9_GetUDDITotal_Atomic"/>
+    <grounding:wsdlOperationName>GetUDDITotal</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUDDITotalSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUDDITotalSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_10_GetUDDISummary_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_10_GetUDDISummary_Atomic"/>
+    <grounding:wsdlOperationName>GetUDDISummary</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUDDISummarySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUDDISummarySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_11_GetUDDIAnalysis_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_11_GetUDDIAnalysis_Atomic"/>
+    <grounding:wsdlOperationName>GetUDDIAnalysis</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUDDIAnalysisSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUDDIAnalysisSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_12_GetUDDIRegistries_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_12_GetUDDIRegistries_Atomic"/>
+    <grounding:wsdlOperationName>GetUDDIRegistries</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUDDIRegistriesSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUDDIRegistriesSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_13_GetUserID_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_13_GetUserID_Atomic"/>
+    <grounding:wsdlOperationName>GetUserID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserIDSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserIDSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_14_GetSuffix_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_14_GetSuffix_Atomic"/>
+    <grounding:wsdlOperationName>GetSuffix</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSuffixHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSuffixHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_15_GetSuffixTotal_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_15_GetSuffixTotal_Atomic"/>
+    <grounding:wsdlOperationName>GetSuffixTotal</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSuffixTotalHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSuffixTotalHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_16_GetUDDITotal_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_16_GetUDDITotal_Atomic"/>
+    <grounding:wsdlOperationName>GetUDDITotal</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUDDITotalHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUDDITotalHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_17_GetUDDISummary_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_17_GetUDDISummary_Atomic"/>
+    <grounding:wsdlOperationName>GetUDDISummary</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUDDISummaryHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUDDISummaryHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_18_GetUDDIAnalysis_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_18_GetUDDIAnalysis_Atomic"/>
+    <grounding:wsdlOperationName>GetUDDIAnalysis</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUDDIAnalysisHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUDDIAnalysisHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_19_GetUDDIRegistries_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_19_GetUDDIRegistries_Atomic"/>
+    <grounding:wsdlOperationName>GetUDDIRegistries</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUDDIRegistriesHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUDDIRegistriesHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="cweather_20_GetUserID_Grounding">
+    <grounding:owlsProcess rdf:resource="#cweather_20_GetUserID_Atomic"/>
+    <grounding:wsdlOperationName>GetUserID</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>cweatherHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>cweatherHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/39_cweather.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUserIDHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUserIDHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

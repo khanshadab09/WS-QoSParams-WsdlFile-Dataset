@@ -1,0 +1,688 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="pbx">
+    <service:presents rdf:resource="#pbx_Profile"/>
+    <service:describedBy rdf:resource="#pbx_Composite"/>
+    <service:supports rdf:resource="#pbx_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="pbx_Profile">
+    <profile:serviceName>pbx</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#pbx"/>
+    <profile:hasProcess rdf:resource="#pbx_0_Version_Atomic"/>
+    <profile:hasOutput rdf:resource="#pbx_0_Version_Atomic_output_GatekeeperID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#pbx_0_Version_Atomic_output_SerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#pbx_0_Version_Atomic_output_WSDLVersion__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#pbx_0_Version_Atomic_output_FirmwareVersion__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#pbx_0_Version_Atomic_output_Location__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The system must have access to the necessary data sources to retrieve the information related to the GatekeeperID, SerialNumber, WSDLVersion, FirmwareVersion, and Location.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the GatekeeperID, SerialNumber, WSDLVersion, FirmwareVersion, and Location of the web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_1_Echo_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_1_Echo_Atomic_input_session__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#pbx_1_Echo_Atomic_input_key__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#pbx_1_Echo_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The session and key inputs must be integers according to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an integer value as specified in the XML Schema definition.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_2_Admin_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_2_Admin_Atomic_input_xml__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#pbx_2_Admin_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The input XML string must adhere to the XML Schema definition specified by http://www.w3.org/2001/XMLSchema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an XML string conforming to the XML Schema definition specified by http://www.w3.org/2001/XMLSchema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_3_Initialize_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_3_Initialize_Atomic_input_appl__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#pbx_3_Initialize_Atomic_input_user__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#pbx_3_Initialize_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#pbx_3_Initialize_Atomic_output_key__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The input parameters 'appl' and 'user' must be valid strings conforming to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation initializes and returns an integer value as 'return' and a key as 'key'.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_4_End_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_4_End_Atomic_input_session__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The input session must be a valid integer according to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation "End" will terminate the session without producing any output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_5_Poll_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_5_Poll_Atomic_input_session__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasOutput rdf:resource="#pbx_5_Poll_Atomic_output_return__http___innovaphone.com_pbx_AnyInfo"/>
+    <profile:hasPrecondition>The session ID must be provided as an integer value.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return any information related to the session from the PBX system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_6_UserInitialize_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_6_UserInitialize_Atomic_input_session__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#pbx_6_UserInitialize_Atomic_input_user__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#pbx_6_UserInitialize_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The session ID and user name must be provided as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The operation initializes the user with the given session ID and user name, returning an integer value as confirmation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_7_UserEnd_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_7_UserEnd_Atomic_input_user__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user input must be an integer according to the XML Schema definition.</profile:hasPrecondition>
+    <profile:hasResult>The operation does not produce any output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_8_UserCall_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_8_UserCall_Atomic_input_e164__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#pbx_8_UserCall_Atomic_input_reg__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#pbx_8_UserCall_Atomic_input_cn__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#pbx_8_UserCall_Atomic_input_h323__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#pbx_8_UserCall_Atomic_input_user__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#pbx_8_UserCall_Atomic_input_info__http___innovaphone.com_pbx_InfoArray"/>
+    <profile:hasOutput rdf:resource="#pbx_8_UserCall_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The UserCall operation requires valid input parameters including e164, reg, cn, h323, user, and info.</profile:hasPrecondition>
+    <profile:hasResult>The UserCall operation returns an integer value as output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_9_UserClear_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_9_UserClear_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#pbx_9_UserClear_Atomic_input_cause__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#pbx_9_UserClear_Atomic_input_info__http___innovaphone.com_pbx_InfoArray"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to clear the specified information.</profile:hasPrecondition>
+    <profile:hasResult>Clears the specified information associated with the user, based on the provided input parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_10_UserConnect_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_10_UserConnect_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user must provide an integer value for the call parameter.</profile:hasPrecondition>
+    <profile:hasResult>The operation will establish a connection for the user.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_11_UserPickup_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_11_UserPickup_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#pbx_11_UserPickup_Atomic_input_reg__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#pbx_11_UserPickup_Atomic_input_cn__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#pbx_11_UserPickup_Atomic_input_user__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#pbx_11_UserPickup_Atomic_input_group__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#pbx_11_UserPickup_Atomic_input_info__http___innovaphone.com_pbx_InfoArray"/>
+    <profile:hasOutput rdf:resource="#pbx_11_UserPickup_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The user must be authorized to pick up the call specified by the input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The specified call is picked up by the user and the return value indicates the success of the operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_12_UserRedirect_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_12_UserRedirect_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#pbx_12_UserRedirect_Atomic_input_e164__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#pbx_12_UserRedirect_Atomic_input_cn__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#pbx_12_UserRedirect_Atomic_input_h323__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#pbx_12_UserRedirect_Atomic_input_info__http___innovaphone.com_pbx_InfoArray"/>
+    <profile:hasOutput rdf:resource="#pbx_12_UserRedirect_Atomic_output_return__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasPrecondition>The input parameters must include an integer, a string in E.164 format, a string for caller's name, a string for H.323 address, and an array of information in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a boolean value indicating the success of redirecting the user.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_13_UserReroute_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_13_UserReroute_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#pbx_13_UserReroute_Atomic_input_e164__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#pbx_13_UserReroute_Atomic_input_cn__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#pbx_13_UserReroute_Atomic_input_h323__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#pbx_13_UserReroute_Atomic_input_info__http___innovaphone.com_pbx_InfoArray"/>
+    <profile:hasOutput rdf:resource="#pbx_13_UserReroute_Atomic_output_return__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <profile:hasPrecondition>The UserReroute operation requires valid input parameters including an integer call, a string e164, a string cn, a string h323, and an InfoArray object.</profile:hasPrecondition>
+    <profile:hasResult>The UserReroute operation will return a boolean value indicating the success or failure of the rerouting process.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_14_UserTransfer_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_14_UserTransfer_Atomic_input_a__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#pbx_14_UserTransfer_Atomic_input_b__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The web service requires two integer inputs, a and b, in order to perform the UserTransfer operation.</profile:hasPrecondition>
+    <profile:hasResult>The UserTransfer operation does not produce any output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_15_UserCtrlCall_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_15_UserCtrlCall_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#pbx_15_UserCtrlCall_Atomic_input_info__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#pbx_15_UserCtrlCall_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The UserCtrlCall operation requires an integer input for 'call' and a string input for 'info'.</profile:hasPrecondition>
+    <profile:hasResult>The operation returns a string output as specified in the 'return' parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pbx_16_UserCtComplete_Atomic"/>
+    <profile:hasInput rdf:resource="#pbx_16_UserCtComplete_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#pbx_16_UserCtComplete_Atomic_input_e164__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#pbx_16_UserCtComplete_Atomic_input_h323__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The user must provide an integer value for the call parameter, and valid string values for the e164 and h323 parameters.</profile:hasPrecondition>
+    <profile:hasResult>The operation will mark the user's completion status without returning any output.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="pbx_Composite">
+    <process:composedOf rdf:resource="#pbx_0_Version_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_1_Echo_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_2_Admin_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_3_Initialize_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_4_End_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_5_Poll_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_6_UserInitialize_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_7_UserEnd_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_8_UserCall_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_9_UserClear_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_10_UserConnect_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_11_UserPickup_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_12_UserRedirect_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_13_UserReroute_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_14_UserTransfer_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_15_UserCtrlCall_Atomic"/>
+    <process:composedOf rdf:resource="#pbx_16_UserCtComplete_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Output rdf:ID="pbx_0_Version_Atomic_output_GatekeeperID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>GatekeeperID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="pbx_0_Version_Atomic_output_SerialNumber__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>SerialNumber:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="pbx_0_Version_Atomic_output_WSDLVersion__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>WSDLVersion:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="pbx_0_Version_Atomic_output_FirmwareVersion__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FirmwareVersion:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="pbx_0_Version_Atomic_output_Location__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Location:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="pbx_1_Echo_Atomic_input_session__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>session:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_1_Echo_Atomic_input_key__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>key:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="pbx_1_Echo_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="pbx_2_Admin_Atomic_input_xml__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>xml:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="pbx_2_Admin_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="pbx_3_Initialize_Atomic_input_appl__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>appl:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_3_Initialize_Atomic_input_user__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>user:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="pbx_3_Initialize_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="pbx_3_Initialize_Atomic_output_key__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>key:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="pbx_4_End_Atomic_input_session__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>session:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_5_Poll_Atomic_input_session__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>session:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="pbx_5_Poll_Atomic_output_return__http___innovaphone.com_pbx_AnyInfo">
+    <process:parameterType>return:{http://innovaphone.com/pbx}AnyInfo</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="pbx_6_UserInitialize_Atomic_input_session__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>session:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_6_UserInitialize_Atomic_input_user__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>user:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="pbx_6_UserInitialize_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="pbx_7_UserEnd_Atomic_input_user__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>user:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_8_UserCall_Atomic_input_e164__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>e164:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_8_UserCall_Atomic_input_reg__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>reg:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_8_UserCall_Atomic_input_cn__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>cn:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_8_UserCall_Atomic_input_h323__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>h323:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_8_UserCall_Atomic_input_user__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>user:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_8_UserCall_Atomic_input_info__http___innovaphone.com_pbx_InfoArray">
+    <process:parameterType>info:{http://innovaphone.com/pbx}InfoArray</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="pbx_8_UserCall_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="pbx_9_UserClear_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>call:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_9_UserClear_Atomic_input_cause__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>cause:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_9_UserClear_Atomic_input_info__http___innovaphone.com_pbx_InfoArray">
+    <process:parameterType>info:{http://innovaphone.com/pbx}InfoArray</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_10_UserConnect_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>call:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_11_UserPickup_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>call:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_11_UserPickup_Atomic_input_reg__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>reg:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_11_UserPickup_Atomic_input_cn__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>cn:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_11_UserPickup_Atomic_input_user__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>user:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_11_UserPickup_Atomic_input_group__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>group:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_11_UserPickup_Atomic_input_info__http___innovaphone.com_pbx_InfoArray">
+    <process:parameterType>info:{http://innovaphone.com/pbx}InfoArray</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="pbx_11_UserPickup_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="pbx_12_UserRedirect_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>call:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_12_UserRedirect_Atomic_input_e164__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>e164:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_12_UserRedirect_Atomic_input_cn__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>cn:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_12_UserRedirect_Atomic_input_h323__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>h323:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_12_UserRedirect_Atomic_input_info__http___innovaphone.com_pbx_InfoArray">
+    <process:parameterType>info:{http://innovaphone.com/pbx}InfoArray</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="pbx_12_UserRedirect_Atomic_output_return__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="pbx_13_UserReroute_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>call:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_13_UserReroute_Atomic_input_e164__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>e164:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_13_UserReroute_Atomic_input_cn__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>cn:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_13_UserReroute_Atomic_input_h323__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>h323:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_13_UserReroute_Atomic_input_info__http___innovaphone.com_pbx_InfoArray">
+    <process:parameterType>info:{http://innovaphone.com/pbx}InfoArray</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="pbx_13_UserReroute_Atomic_output_return__http___www.w3.org_2001_XMLSchema_boolean">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}boolean</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="pbx_14_UserTransfer_Atomic_input_a__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>a:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_14_UserTransfer_Atomic_input_b__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>b:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_15_UserCtrlCall_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>call:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_15_UserCtrlCall_Atomic_input_info__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>info:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="pbx_15_UserCtrlCall_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>return:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="pbx_16_UserCtComplete_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>call:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_16_UserCtComplete_Atomic_input_e164__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>e164:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="pbx_16_UserCtComplete_Atomic_input_h323__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>h323:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+
+  <process:AtomicProcess rdf:ID="pbx_0_Version_Atomic">
+    <process:hasName>Version</process:hasName>
+    <process:hasOutput rdf:resource="#pbx_0_Version_Atomic_output_GatekeeperID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#pbx_0_Version_Atomic_output_SerialNumber__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#pbx_0_Version_Atomic_output_WSDLVersion__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#pbx_0_Version_Atomic_output_FirmwareVersion__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#pbx_0_Version_Atomic_output_Location__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The system must have access to the necessary data sources to retrieve the information related to the GatekeeperID, SerialNumber, WSDLVersion, FirmwareVersion, and Location.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the GatekeeperID, SerialNumber, WSDLVersion, FirmwareVersion, and Location of the web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_1_Echo_Atomic">
+    <process:hasName>Echo</process:hasName>
+    <process:hasInput rdf:resource="#pbx_1_Echo_Atomic_input_session__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#pbx_1_Echo_Atomic_input_key__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#pbx_1_Echo_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The session and key inputs must be integers according to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an integer value as specified in the XML Schema definition.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_2_Admin_Atomic">
+    <process:hasName>Admin</process:hasName>
+    <process:hasInput rdf:resource="#pbx_2_Admin_Atomic_input_xml__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#pbx_2_Admin_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The input XML string must adhere to the XML Schema definition specified by http://www.w3.org/2001/XMLSchema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an XML string conforming to the XML Schema definition specified by http://www.w3.org/2001/XMLSchema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_3_Initialize_Atomic">
+    <process:hasName>Initialize</process:hasName>
+    <process:hasInput rdf:resource="#pbx_3_Initialize_Atomic_input_appl__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#pbx_3_Initialize_Atomic_input_user__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#pbx_3_Initialize_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#pbx_3_Initialize_Atomic_output_key__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The input parameters 'appl' and 'user' must be valid strings conforming to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation initializes and returns an integer value as 'return' and a key as 'key'.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_4_End_Atomic">
+    <process:hasName>End</process:hasName>
+    <process:hasInput rdf:resource="#pbx_4_End_Atomic_input_session__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The input session must be a valid integer according to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation "End" will terminate the session without producing any output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_5_Poll_Atomic">
+    <process:hasName>Poll</process:hasName>
+    <process:hasInput rdf:resource="#pbx_5_Poll_Atomic_input_session__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasOutput rdf:resource="#pbx_5_Poll_Atomic_output_return__http___innovaphone.com_pbx_AnyInfo"/>
+    <process:hasPrecondition>The session ID must be provided as an integer value.</process:hasPrecondition>
+    <process:hasEffect>The operation will return any information related to the session from the PBX system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_6_UserInitialize_Atomic">
+    <process:hasName>UserInitialize</process:hasName>
+    <process:hasInput rdf:resource="#pbx_6_UserInitialize_Atomic_input_session__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#pbx_6_UserInitialize_Atomic_input_user__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#pbx_6_UserInitialize_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The session ID and user name must be provided as input parameters.</process:hasPrecondition>
+    <process:hasEffect>The operation initializes the user with the given session ID and user name, returning an integer value as confirmation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_7_UserEnd_Atomic">
+    <process:hasName>UserEnd</process:hasName>
+    <process:hasInput rdf:resource="#pbx_7_UserEnd_Atomic_input_user__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user input must be an integer according to the XML Schema definition.</process:hasPrecondition>
+    <process:hasEffect>The operation does not produce any output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_8_UserCall_Atomic">
+    <process:hasName>UserCall</process:hasName>
+    <process:hasInput rdf:resource="#pbx_8_UserCall_Atomic_input_e164__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#pbx_8_UserCall_Atomic_input_reg__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#pbx_8_UserCall_Atomic_input_cn__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#pbx_8_UserCall_Atomic_input_h323__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#pbx_8_UserCall_Atomic_input_user__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#pbx_8_UserCall_Atomic_input_info__http___innovaphone.com_pbx_InfoArray"/>
+    <process:hasOutput rdf:resource="#pbx_8_UserCall_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The UserCall operation requires valid input parameters including e164, reg, cn, h323, user, and info.</process:hasPrecondition>
+    <process:hasEffect>The UserCall operation returns an integer value as output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_9_UserClear_Atomic">
+    <process:hasName>UserClear</process:hasName>
+    <process:hasInput rdf:resource="#pbx_9_UserClear_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#pbx_9_UserClear_Atomic_input_cause__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#pbx_9_UserClear_Atomic_input_info__http___innovaphone.com_pbx_InfoArray"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to clear the specified information.</process:hasPrecondition>
+    <process:hasEffect>Clears the specified information associated with the user, based on the provided input parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_10_UserConnect_Atomic">
+    <process:hasName>UserConnect</process:hasName>
+    <process:hasInput rdf:resource="#pbx_10_UserConnect_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user must provide an integer value for the call parameter.</process:hasPrecondition>
+    <process:hasEffect>The operation will establish a connection for the user.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_11_UserPickup_Atomic">
+    <process:hasName>UserPickup</process:hasName>
+    <process:hasInput rdf:resource="#pbx_11_UserPickup_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#pbx_11_UserPickup_Atomic_input_reg__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#pbx_11_UserPickup_Atomic_input_cn__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#pbx_11_UserPickup_Atomic_input_user__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#pbx_11_UserPickup_Atomic_input_group__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#pbx_11_UserPickup_Atomic_input_info__http___innovaphone.com_pbx_InfoArray"/>
+    <process:hasOutput rdf:resource="#pbx_11_UserPickup_Atomic_output_return__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The user must be authorized to pick up the call specified by the input parameters.</process:hasPrecondition>
+    <process:hasEffect>The specified call is picked up by the user and the return value indicates the success of the operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_12_UserRedirect_Atomic">
+    <process:hasName>UserRedirect</process:hasName>
+    <process:hasInput rdf:resource="#pbx_12_UserRedirect_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#pbx_12_UserRedirect_Atomic_input_e164__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#pbx_12_UserRedirect_Atomic_input_cn__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#pbx_12_UserRedirect_Atomic_input_h323__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#pbx_12_UserRedirect_Atomic_input_info__http___innovaphone.com_pbx_InfoArray"/>
+    <process:hasOutput rdf:resource="#pbx_12_UserRedirect_Atomic_output_return__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasPrecondition>The input parameters must include an integer, a string in E.164 format, a string for caller's name, a string for H.323 address, and an array of information in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a boolean value indicating the success of redirecting the user.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_13_UserReroute_Atomic">
+    <process:hasName>UserReroute</process:hasName>
+    <process:hasInput rdf:resource="#pbx_13_UserReroute_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#pbx_13_UserReroute_Atomic_input_e164__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#pbx_13_UserReroute_Atomic_input_cn__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#pbx_13_UserReroute_Atomic_input_h323__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#pbx_13_UserReroute_Atomic_input_info__http___innovaphone.com_pbx_InfoArray"/>
+    <process:hasOutput rdf:resource="#pbx_13_UserReroute_Atomic_output_return__http___www.w3.org_2001_XMLSchema_boolean"/>
+    <process:hasPrecondition>The UserReroute operation requires valid input parameters including an integer call, a string e164, a string cn, a string h323, and an InfoArray object.</process:hasPrecondition>
+    <process:hasEffect>The UserReroute operation will return a boolean value indicating the success or failure of the rerouting process.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_14_UserTransfer_Atomic">
+    <process:hasName>UserTransfer</process:hasName>
+    <process:hasInput rdf:resource="#pbx_14_UserTransfer_Atomic_input_a__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#pbx_14_UserTransfer_Atomic_input_b__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The web service requires two integer inputs, a and b, in order to perform the UserTransfer operation.</process:hasPrecondition>
+    <process:hasEffect>The UserTransfer operation does not produce any output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_15_UserCtrlCall_Atomic">
+    <process:hasName>UserCtrlCall</process:hasName>
+    <process:hasInput rdf:resource="#pbx_15_UserCtrlCall_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#pbx_15_UserCtrlCall_Atomic_input_info__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#pbx_15_UserCtrlCall_Atomic_output_return__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The UserCtrlCall operation requires an integer input for 'call' and a string input for 'info'.</process:hasPrecondition>
+    <process:hasEffect>The operation returns a string output as specified in the 'return' parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pbx_16_UserCtComplete_Atomic">
+    <process:hasName>UserCtComplete</process:hasName>
+    <process:hasInput rdf:resource="#pbx_16_UserCtComplete_Atomic_input_call__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#pbx_16_UserCtComplete_Atomic_input_e164__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#pbx_16_UserCtComplete_Atomic_input_h323__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The user must provide an integer value for the call parameter, and valid string values for the e164 and h323 parameters.</process:hasPrecondition>
+    <process:hasEffect>The operation will mark the user's completion status without returning any output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="pbx_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_0_Version_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_1_Echo_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_2_Admin_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_3_Initialize_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_4_End_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_5_Poll_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_6_UserInitialize_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_7_UserEnd_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_8_UserCall_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_9_UserClear_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_10_UserConnect_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_11_UserPickup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_12_UserRedirect_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_13_UserReroute_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_14_UserTransfer_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_15_UserCtrlCall_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pbx_16_UserCtComplete_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_0_Version_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_0_Version_Atomic"/>
+    <grounding:wsdlOperationName>Version</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VersionRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VersionResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_1_Echo_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_1_Echo_Atomic"/>
+    <grounding:wsdlOperationName>Echo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>EchoRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>EchoResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_2_Admin_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_2_Admin_Atomic"/>
+    <grounding:wsdlOperationName>Admin</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AdminRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AdminResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_3_Initialize_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_3_Initialize_Atomic"/>
+    <grounding:wsdlOperationName>Initialize</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>InitializeRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>InitializeResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_4_End_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_4_End_Atomic"/>
+    <grounding:wsdlOperationName>End</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>EndRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>EndResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_5_Poll_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_5_Poll_Atomic"/>
+    <grounding:wsdlOperationName>Poll</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PollRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PollResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_6_UserInitialize_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_6_UserInitialize_Atomic"/>
+    <grounding:wsdlOperationName>UserInitialize</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UserInitializeRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UserInitializeResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_7_UserEnd_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_7_UserEnd_Atomic"/>
+    <grounding:wsdlOperationName>UserEnd</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UserEndRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UserEndResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_8_UserCall_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_8_UserCall_Atomic"/>
+    <grounding:wsdlOperationName>UserCall</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UserCallRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UserCallResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_9_UserClear_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_9_UserClear_Atomic"/>
+    <grounding:wsdlOperationName>UserClear</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UserClearRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UserClearResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_10_UserConnect_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_10_UserConnect_Atomic"/>
+    <grounding:wsdlOperationName>UserConnect</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UserConnectRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UserConnectResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_11_UserPickup_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_11_UserPickup_Atomic"/>
+    <grounding:wsdlOperationName>UserPickup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UserPickupRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UserPickupResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_12_UserRedirect_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_12_UserRedirect_Atomic"/>
+    <grounding:wsdlOperationName>UserRedirect</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UserRedirectRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UserRedirectResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_13_UserReroute_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_13_UserReroute_Atomic"/>
+    <grounding:wsdlOperationName>UserReroute</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UserRerouteRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UserRerouteResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_14_UserTransfer_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_14_UserTransfer_Atomic"/>
+    <grounding:wsdlOperationName>UserTransfer</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UserTransferRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UserTransferResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_15_UserCtrlCall_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_15_UserCtrlCall_Atomic"/>
+    <grounding:wsdlOperationName>UserCtrlCall</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UserCtrlCallRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UserCtrlCallResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pbx_16_UserCtComplete_Grounding">
+    <grounding:owlsProcess rdf:resource="#pbx_16_UserCtComplete_Atomic"/>
+    <grounding:wsdlOperationName>UserCtComplete</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pbxBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pbxPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/325_pbx.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UserCtCompleteRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UserCtCompleteResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

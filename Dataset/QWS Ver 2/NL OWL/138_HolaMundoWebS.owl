@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="HolaMundoWebS">
+    <service:presents rdf:resource="#HolaMundoWebS_Profile"/>
+    <service:describedBy rdf:resource="#HolaMundoWebS_Composite"/>
+    <service:supports rdf:resource="#HolaMundoWebS_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="HolaMundoWebS_Profile">
+    <profile:serviceName>HolaMundoWebS</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#HolaMundoWebS"/>
+    <profile:hasProcess rdf:resource="#HolaMundoWebS_0_Saludar_Atomic"/>
+    <profile:hasInput rdf:resource="#HolaMundoWebS_0_Saludar_Atomic_input_parameters__elGuille_Saludar"/>
+    <profile:hasOutput rdf:resource="#HolaMundoWebS_0_Saludar_Atomic_output_parameters__elGuille_SaludarResponse"/>
+    <profile:hasPrecondition>The web service must receive a parameter named "elGuille" to execute the Saludar operation.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing a greeting to the specified "elGuille" parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#HolaMundoWebS_1_Saludo_Atomic"/>
+    <profile:hasInput rdf:resource="#HolaMundoWebS_1_Saludo_Atomic_input_parameters__elGuille_Saludo"/>
+    <profile:hasOutput rdf:resource="#HolaMundoWebS_1_Saludo_Atomic_output_parameters__elGuille_SaludoResponse"/>
+    <profile:hasPrecondition>The input parameter "elGuille" must be provided in the request for the Saludo operation.</profile:hasPrecondition>
+    <profile:hasResult>The Saludo operation will return a response containing a greeting for the provided "elGuille" parameter.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="HolaMundoWebS_Composite">
+    <process:composedOf rdf:resource="#HolaMundoWebS_0_Saludar_Atomic"/>
+    <process:composedOf rdf:resource="#HolaMundoWebS_1_Saludo_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="HolaMundoWebS_0_Saludar_Atomic_input_parameters__elGuille_Saludar">
+    <process:parameterType>parameters:{elGuille}Saludar</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="HolaMundoWebS_0_Saludar_Atomic_output_parameters__elGuille_SaludarResponse">
+    <process:parameterType>parameters:{elGuille}SaludarResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="HolaMundoWebS_1_Saludo_Atomic_input_parameters__elGuille_Saludo">
+    <process:parameterType>parameters:{elGuille}Saludo</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="HolaMundoWebS_1_Saludo_Atomic_output_parameters__elGuille_SaludoResponse">
+    <process:parameterType>parameters:{elGuille}SaludoResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="HolaMundoWebS_0_Saludar_Atomic">
+    <process:hasName>Saludar</process:hasName>
+    <process:hasInput rdf:resource="#HolaMundoWebS_0_Saludar_Atomic_input_parameters__elGuille_Saludar"/>
+    <process:hasOutput rdf:resource="#HolaMundoWebS_0_Saludar_Atomic_output_parameters__elGuille_SaludarResponse"/>
+    <process:hasPrecondition>The web service must receive a parameter named "elGuille" to execute the Saludar operation.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing a greeting to the specified "elGuille" parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="HolaMundoWebS_1_Saludo_Atomic">
+    <process:hasName>Saludo</process:hasName>
+    <process:hasInput rdf:resource="#HolaMundoWebS_1_Saludo_Atomic_input_parameters__elGuille_Saludo"/>
+    <process:hasOutput rdf:resource="#HolaMundoWebS_1_Saludo_Atomic_output_parameters__elGuille_SaludoResponse"/>
+    <process:hasPrecondition>The input parameter "elGuille" must be provided in the request for the Saludo operation.</process:hasPrecondition>
+    <process:hasEffect>The Saludo operation will return a response containing a greeting for the provided "elGuille" parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="HolaMundoWebS_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#HolaMundoWebS_0_Saludar_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#HolaMundoWebS_1_Saludo_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="HolaMundoWebS_0_Saludar_Grounding">
+    <grounding:owlsProcess rdf:resource="#HolaMundoWebS_0_Saludar_Atomic"/>
+    <grounding:wsdlOperationName>Saludar</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>HolaMundoWebSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>HolaMundoWebSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/138_HolaMundoWebS.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SaludarSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SaludarSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="HolaMundoWebS_1_Saludo_Grounding">
+    <grounding:owlsProcess rdf:resource="#HolaMundoWebS_1_Saludo_Atomic"/>
+    <grounding:wsdlOperationName>Saludo</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>HolaMundoWebSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>HolaMundoWebSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/138_HolaMundoWebS.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SaludoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SaludoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

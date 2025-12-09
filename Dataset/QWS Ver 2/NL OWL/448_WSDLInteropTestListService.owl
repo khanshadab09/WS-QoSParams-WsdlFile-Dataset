@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="WSDLInteropTestListService">
+    <service:presents rdf:resource="#WSDLInteropTestListService_Profile"/>
+    <service:describedBy rdf:resource="#WSDLInteropTestListService_Composite"/>
+    <service:supports rdf:resource="#WSDLInteropTestListService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="WSDLInteropTestListService_Profile">
+    <profile:serviceName>WSDLInteropTestListService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#WSDLInteropTestListService"/>
+    <profile:hasProcess rdf:resource="#WSDLInteropTestListService_0_echoLinkedList_Atomic"/>
+    <profile:hasInput rdf:resource="#WSDLInteropTestListService_0_echoLinkedList_Atomic_input_param0__http___soapinterop.org_xsd_List"/>
+    <profile:hasOutput rdf:resource="#WSDLInteropTestListService_0_echoLinkedList_Atomic_output_return__http___soapinterop.org_xsd_List"/>
+    <profile:hasPrecondition>The input parameter must be a valid XML list conforming to the specified schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an XML list as output following the same schema structure.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="WSDLInteropTestListService_Composite">
+    <process:composedOf rdf:resource="#WSDLInteropTestListService_0_echoLinkedList_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="WSDLInteropTestListService_0_echoLinkedList_Atomic_input_param0__http___soapinterop.org_xsd_List">
+    <process:parameterType>param0:{http://soapinterop.org/xsd}List</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WSDLInteropTestListService_0_echoLinkedList_Atomic_output_return__http___soapinterop.org_xsd_List">
+    <process:parameterType>return:{http://soapinterop.org/xsd}List</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="WSDLInteropTestListService_0_echoLinkedList_Atomic">
+    <process:hasName>echoLinkedList</process:hasName>
+    <process:hasInput rdf:resource="#WSDLInteropTestListService_0_echoLinkedList_Atomic_input_param0__http___soapinterop.org_xsd_List"/>
+    <process:hasOutput rdf:resource="#WSDLInteropTestListService_0_echoLinkedList_Atomic_output_return__http___soapinterop.org_xsd_List"/>
+    <process:hasPrecondition>The input parameter must be a valid XML list conforming to the specified schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an XML list as output following the same schema structure.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="WSDLInteropTestListService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WSDLInteropTestListService_0_echoLinkedList_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLInteropTestListService_0_echoLinkedList_Grounding">
+    <grounding:owlsProcess rdf:resource="#WSDLInteropTestListService_0_echoLinkedList_Atomic"/>
+    <grounding:wsdlOperationName>echoLinkedList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WSDLInteropTestListBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WSDLInteropTestListPortType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/448_WSDLInteropTestListService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>echoLinkedList</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>echoLinkedListResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

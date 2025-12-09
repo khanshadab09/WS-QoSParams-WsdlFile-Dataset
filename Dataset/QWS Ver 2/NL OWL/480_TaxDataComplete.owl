@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="TaxDataComplete">
+    <service:presents rdf:resource="#TaxDataComplete_Profile"/>
+    <service:describedBy rdf:resource="#TaxDataComplete_Composite"/>
+    <service:supports rdf:resource="#TaxDataComplete_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="TaxDataComplete_Profile">
+    <profile:serviceName>TaxDataComplete</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#TaxDataComplete"/>
+    <profile:hasProcess rdf:resource="#TaxDataComplete_0_GetUSATaxRatesByZipCode_Atomic"/>
+    <profile:hasInput rdf:resource="#TaxDataComplete_0_GetUSATaxRatesByZipCode_Atomic_input_parameters__http___www.strikeiron.com_GetUSATaxRatesByZipCode"/>
+    <profile:hasOutput rdf:resource="#TaxDataComplete_0_GetUSATaxRatesByZipCode_Atomic_output_parameters__http___www.strikeiron.com_GetUSATaxRatesByZipCodeResponse"/>
+    <profile:hasPrecondition>The user provides a valid USA zip code as input parameter for the GetUSATaxRatesByZipCode operation.</profile:hasPrecondition>
+    <profile:hasResult>The service returns the corresponding tax rates for the provided zip code in the GetUSATaxRatesByZipCodeResponse output parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TaxDataComplete_1_GetCanadaTaxRatesByProvince_Atomic"/>
+    <profile:hasInput rdf:resource="#TaxDataComplete_1_GetCanadaTaxRatesByProvince_Atomic_input_parameters__http___www.strikeiron.com_GetCanadaTaxRatesByProvince"/>
+    <profile:hasOutput rdf:resource="#TaxDataComplete_1_GetCanadaTaxRatesByProvince_Atomic_output_parameters__http___www.strikeiron.com_GetCanadaTaxRatesByProvinceResponse"/>
+    <profile:hasPrecondition>The user must provide a valid province name as input parameter for the GetCanadaTaxRatesByProvince operation.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the tax rates specific to the provided province in the GetCanadaTaxRatesByProvinceResponse output parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TaxDataComplete_2_GetRemainingHits_Atomic"/>
+    <profile:hasInput rdf:resource="#TaxDataComplete_2_GetRemainingHits_Atomic_input_parameters__http___ws.strikeiron.com_GetRemainingHits"/>
+    <profile:hasOutput rdf:resource="#TaxDataComplete_2_GetRemainingHits_Atomic_output_parameters__http___ws.strikeiron.com_GetRemainingHitsResponse"/>
+    <profile:hasPrecondition>The user must have a valid API key to access the GetRemainingHits operation from the StrikeIron web service.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the remaining number of hits allowed for the user's API key.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="TaxDataComplete_Composite">
+    <process:composedOf rdf:resource="#TaxDataComplete_0_GetUSATaxRatesByZipCode_Atomic"/>
+    <process:composedOf rdf:resource="#TaxDataComplete_1_GetCanadaTaxRatesByProvince_Atomic"/>
+    <process:composedOf rdf:resource="#TaxDataComplete_2_GetRemainingHits_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="TaxDataComplete_0_GetUSATaxRatesByZipCode_Atomic_input_parameters__http___www.strikeiron.com_GetUSATaxRatesByZipCode">
+    <process:parameterType>parameters:{http://www.strikeiron.com}GetUSATaxRatesByZipCode</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TaxDataComplete_0_GetUSATaxRatesByZipCode_Atomic_output_parameters__http___www.strikeiron.com_GetUSATaxRatesByZipCodeResponse">
+    <process:parameterType>parameters:{http://www.strikeiron.com}GetUSATaxRatesByZipCodeResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TaxDataComplete_1_GetCanadaTaxRatesByProvince_Atomic_input_parameters__http___www.strikeiron.com_GetCanadaTaxRatesByProvince">
+    <process:parameterType>parameters:{http://www.strikeiron.com}GetCanadaTaxRatesByProvince</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TaxDataComplete_1_GetCanadaTaxRatesByProvince_Atomic_output_parameters__http___www.strikeiron.com_GetCanadaTaxRatesByProvinceResponse">
+    <process:parameterType>parameters:{http://www.strikeiron.com}GetCanadaTaxRatesByProvinceResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TaxDataComplete_2_GetRemainingHits_Atomic_input_parameters__http___ws.strikeiron.com_GetRemainingHits">
+    <process:parameterType>parameters:{http://ws.strikeiron.com}GetRemainingHits</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TaxDataComplete_2_GetRemainingHits_Atomic_output_parameters__http___ws.strikeiron.com_GetRemainingHitsResponse">
+    <process:parameterType>parameters:{http://ws.strikeiron.com}GetRemainingHitsResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="TaxDataComplete_0_GetUSATaxRatesByZipCode_Atomic">
+    <process:hasName>GetUSATaxRatesByZipCode</process:hasName>
+    <process:hasInput rdf:resource="#TaxDataComplete_0_GetUSATaxRatesByZipCode_Atomic_input_parameters__http___www.strikeiron.com_GetUSATaxRatesByZipCode"/>
+    <process:hasOutput rdf:resource="#TaxDataComplete_0_GetUSATaxRatesByZipCode_Atomic_output_parameters__http___www.strikeiron.com_GetUSATaxRatesByZipCodeResponse"/>
+    <process:hasPrecondition>The user provides a valid USA zip code as input parameter for the GetUSATaxRatesByZipCode operation.</process:hasPrecondition>
+    <process:hasEffect>The service returns the corresponding tax rates for the provided zip code in the GetUSATaxRatesByZipCodeResponse output parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TaxDataComplete_1_GetCanadaTaxRatesByProvince_Atomic">
+    <process:hasName>GetCanadaTaxRatesByProvince</process:hasName>
+    <process:hasInput rdf:resource="#TaxDataComplete_1_GetCanadaTaxRatesByProvince_Atomic_input_parameters__http___www.strikeiron.com_GetCanadaTaxRatesByProvince"/>
+    <process:hasOutput rdf:resource="#TaxDataComplete_1_GetCanadaTaxRatesByProvince_Atomic_output_parameters__http___www.strikeiron.com_GetCanadaTaxRatesByProvinceResponse"/>
+    <process:hasPrecondition>The user must provide a valid province name as input parameter for the GetCanadaTaxRatesByProvince operation.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the tax rates specific to the provided province in the GetCanadaTaxRatesByProvinceResponse output parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TaxDataComplete_2_GetRemainingHits_Atomic">
+    <process:hasName>GetRemainingHits</process:hasName>
+    <process:hasInput rdf:resource="#TaxDataComplete_2_GetRemainingHits_Atomic_input_parameters__http___ws.strikeiron.com_GetRemainingHits"/>
+    <process:hasOutput rdf:resource="#TaxDataComplete_2_GetRemainingHits_Atomic_output_parameters__http___ws.strikeiron.com_GetRemainingHitsResponse"/>
+    <process:hasPrecondition>The user must have a valid API key to access the GetRemainingHits operation from the StrikeIron web service.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the remaining number of hits allowed for the user's API key.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="TaxDataComplete_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TaxDataComplete_0_GetUSATaxRatesByZipCode_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TaxDataComplete_1_GetCanadaTaxRatesByProvince_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TaxDataComplete_2_GetRemainingHits_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TaxDataComplete_0_GetUSATaxRatesByZipCode_Grounding">
+    <grounding:owlsProcess rdf:resource="#TaxDataComplete_0_GetUSATaxRatesByZipCode_Atomic"/>
+    <grounding:wsdlOperationName>GetUSATaxRatesByZipCode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TaxDataCompleteSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TaxDataCompleteSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/480_TaxDataComplete.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetUSATaxRatesByZipCodeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetUSATaxRatesByZipCodeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TaxDataComplete_1_GetCanadaTaxRatesByProvince_Grounding">
+    <grounding:owlsProcess rdf:resource="#TaxDataComplete_1_GetCanadaTaxRatesByProvince_Atomic"/>
+    <grounding:wsdlOperationName>GetCanadaTaxRatesByProvince</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TaxDataCompleteSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TaxDataCompleteSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/480_TaxDataComplete.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetCanadaTaxRatesByProvinceSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetCanadaTaxRatesByProvinceSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TaxDataComplete_2_GetRemainingHits_Grounding">
+    <grounding:owlsProcess rdf:resource="#TaxDataComplete_2_GetRemainingHits_Atomic"/>
+    <grounding:wsdlOperationName>GetRemainingHits</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TaxDataCompleteSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TaxDataCompleteSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/480_TaxDataComplete.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRemainingHitsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRemainingHitsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
