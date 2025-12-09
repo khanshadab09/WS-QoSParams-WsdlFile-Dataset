@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Noticias">
+    <service:presents rdf:resource="#Noticias_Profile"/>
+    <service:describedBy rdf:resource="#Noticias_Composite"/>
+    <service:supports rdf:resource="#Noticias_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Noticias_Profile">
+    <profile:serviceName>Noticias</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Noticias"/>
+    <profile:hasProcess rdf:resource="#Noticias_0_ListaNoticias_Atomic"/>
+    <profile:hasInput rdf:resource="#Noticias_0_ListaNoticias_Atomic_input_parameters__http___europapress.es_ListaNoticias"/>
+    <profile:hasOutput rdf:resource="#Noticias_0_ListaNoticias_Atomic_output_parameters__http___europapress.es_ListaNoticiasResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and properly configured to receive requests related to the ListaNoticias operation.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing a list of news items from the specified source http://europapress.es.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Noticias_1_DownloadAdjunto_Atomic"/>
+    <profile:hasInput rdf:resource="#Noticias_1_DownloadAdjunto_Atomic_input_parameters__http___europapress.es_DownloadAdjunto"/>
+    <profile:hasOutput rdf:resource="#Noticias_1_DownloadAdjunto_Atomic_output_parameters__http___europapress.es_DownloadAdjuntoResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the specified input parameters for downloading an attachment from europapress.es must be valid.</profile:hasPrecondition>
+    <profile:hasResult>The web service will successfully download the specified attachment from europapress.es and return a response with the download information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Noticias_2_ObtenerAccesos_Atomic"/>
+    <profile:hasInput rdf:resource="#Noticias_2_ObtenerAccesos_Atomic_input_parameters__http___europapress.es_ObtenerAccesos"/>
+    <profile:hasOutput rdf:resource="#Noticias_2_ObtenerAccesos_Atomic_output_parameters__http___europapress.es_ObtenerAccesosResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and properly configured to receive requests.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the requested access information from europapress.es.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Noticias_Composite">
+    <process:composedOf rdf:resource="#Noticias_0_ListaNoticias_Atomic"/>
+    <process:composedOf rdf:resource="#Noticias_1_DownloadAdjunto_Atomic"/>
+    <process:composedOf rdf:resource="#Noticias_2_ObtenerAccesos_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Noticias_0_ListaNoticias_Atomic_input_parameters__http___europapress.es_ListaNoticias">
+    <process:parameterType>parameters:{http://europapress.es}ListaNoticias</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Noticias_0_ListaNoticias_Atomic_output_parameters__http___europapress.es_ListaNoticiasResponse">
+    <process:parameterType>parameters:{http://europapress.es}ListaNoticiasResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Noticias_1_DownloadAdjunto_Atomic_input_parameters__http___europapress.es_DownloadAdjunto">
+    <process:parameterType>parameters:{http://europapress.es}DownloadAdjunto</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Noticias_1_DownloadAdjunto_Atomic_output_parameters__http___europapress.es_DownloadAdjuntoResponse">
+    <process:parameterType>parameters:{http://europapress.es}DownloadAdjuntoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Noticias_2_ObtenerAccesos_Atomic_input_parameters__http___europapress.es_ObtenerAccesos">
+    <process:parameterType>parameters:{http://europapress.es}ObtenerAccesos</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Noticias_2_ObtenerAccesos_Atomic_output_parameters__http___europapress.es_ObtenerAccesosResponse">
+    <process:parameterType>parameters:{http://europapress.es}ObtenerAccesosResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Noticias_0_ListaNoticias_Atomic">
+    <process:hasName>ListaNoticias</process:hasName>
+    <process:hasInput rdf:resource="#Noticias_0_ListaNoticias_Atomic_input_parameters__http___europapress.es_ListaNoticias"/>
+    <process:hasOutput rdf:resource="#Noticias_0_ListaNoticias_Atomic_output_parameters__http___europapress.es_ListaNoticiasResponse"/>
+    <process:hasPrecondition>The web service must be accessible and properly configured to receive requests related to the ListaNoticias operation.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing a list of news items from the specified source http://europapress.es.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Noticias_1_DownloadAdjunto_Atomic">
+    <process:hasName>DownloadAdjunto</process:hasName>
+    <process:hasInput rdf:resource="#Noticias_1_DownloadAdjunto_Atomic_input_parameters__http___europapress.es_DownloadAdjunto"/>
+    <process:hasOutput rdf:resource="#Noticias_1_DownloadAdjunto_Atomic_output_parameters__http___europapress.es_DownloadAdjuntoResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the specified input parameters for downloading an attachment from europapress.es must be valid.</process:hasPrecondition>
+    <process:hasEffect>The web service will successfully download the specified attachment from europapress.es and return a response with the download information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Noticias_2_ObtenerAccesos_Atomic">
+    <process:hasName>ObtenerAccesos</process:hasName>
+    <process:hasInput rdf:resource="#Noticias_2_ObtenerAccesos_Atomic_input_parameters__http___europapress.es_ObtenerAccesos"/>
+    <process:hasOutput rdf:resource="#Noticias_2_ObtenerAccesos_Atomic_output_parameters__http___europapress.es_ObtenerAccesosResponse"/>
+    <process:hasPrecondition>The web service must be accessible and properly configured to receive requests.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the requested access information from europapress.es.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Noticias_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Noticias_0_ListaNoticias_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Noticias_1_DownloadAdjunto_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Noticias_2_ObtenerAccesos_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Noticias_0_ListaNoticias_Grounding">
+    <grounding:owlsProcess rdf:resource="#Noticias_0_ListaNoticias_Atomic"/>
+    <grounding:wsdlOperationName>ListaNoticias</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NoticiasSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NoticiasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2439_2438.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ListaNoticiasSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ListaNoticiasSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Noticias_1_DownloadAdjunto_Grounding">
+    <grounding:owlsProcess rdf:resource="#Noticias_1_DownloadAdjunto_Atomic"/>
+    <grounding:wsdlOperationName>DownloadAdjunto</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NoticiasSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NoticiasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2439_2438.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>DownloadAdjuntoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>DownloadAdjuntoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Noticias_2_ObtenerAccesos_Grounding">
+    <grounding:owlsProcess rdf:resource="#Noticias_2_ObtenerAccesos_Atomic"/>
+    <grounding:wsdlOperationName>ObtenerAccesos</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>NoticiasSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>NoticiasSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2439_2438.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ObtenerAccesosSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ObtenerAccesosSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

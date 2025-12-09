@@ -1,0 +1,528 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ServiceSMS">
+    <service:presents rdf:resource="#ServiceSMS_Profile"/>
+    <service:describedBy rdf:resource="#ServiceSMS_Composite"/>
+    <service:supports rdf:resource="#ServiceSMS_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ServiceSMS_Profile">
+    <profile:serviceName>ServiceSMS</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ServiceSMS"/>
+    <profile:hasProcess rdf:resource="#ServiceSMS_0_SendSMS_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_input_senderPhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_input_receivePhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_input_smsContent__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_output_Body__http___webservice.youiwe.co.kr__string"/>
+    <profile:hasPrecondition>The sender must provide valid authentication credentials (memID and memPwd) to send the SMS.</profile:hasPrecondition>
+    <profile:hasResult>The SMS with the specified content will be sent from the sender's phone to the receiver's phone.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_senderPhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_receivePhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_reserveTime__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_smsContent__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_reserveDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_output_Body__http___webservice.youiwe.co.kr__string"/>
+    <profile:hasPrecondition>The sender's phone number, receiver's phone number, reservation time, SMS content, member password, reservation date, and member ID must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The system will send an SMS reservation confirmation to the specified receiver phone number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_2_GetRemainCount_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_2_GetRemainCount_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_2_GetRemainCount_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_2_GetRemainCount_Atomic_output_Body__http___webservice.youiwe.co.kr__int"/>
+    <profile:hasPrecondition>The user must provide a valid member password and member ID as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the remaining count as an integer value in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_3_GetWeeklyLimit_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_3_GetWeeklyLimit_Atomic_input_smsID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_3_GetWeeklyLimit_Atomic_input_smsPW__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_3_GetWeeklyLimit_Atomic_output_Body__http___webservice.youiwe.co.kr__string"/>
+    <profile:hasPrecondition>The user must provide a valid smsID and smsPW for authentication.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the weekly limit as a string in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_4_SendSMS_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_4_SendSMS_Atomic_input_parameters__http___webservice.youiwe.co.kr__SendSMS"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_4_SendSMS_Atomic_output_parameters__http___webservice.youiwe.co.kr__SendSMSResponse"/>
+    <profile:hasPrecondition>The SendSMS operation requires the input parameters to be in the format specified by the http://webservice.youiwe.co.kr/ SendSMS schema.</profile:hasPrecondition>
+    <profile:hasResult>The SendSMS operation will return a response in the format specified by the http://webservice.youiwe.co.kr/ SendSMSResponse schema.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_5_SendSMSReserve_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_5_SendSMSReserve_Atomic_input_parameters__http___webservice.youiwe.co.kr__SendSMSReserve"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_5_SendSMSReserve_Atomic_output_parameters__http___webservice.youiwe.co.kr__SendSMSReserveResponse"/>
+    <profile:hasPrecondition>The SendSMSReserve operation requires valid input parameters from the http://webservice.youiwe.co.kr/ namespace.</profile:hasPrecondition>
+    <profile:hasResult>The SendSMSReserve operation will generate a response with output parameters from the http://webservice.youiwe.co.kr/ namespace.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_6_GetRemainCount_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_6_GetRemainCount_Atomic_input_parameters__http___webservice.youiwe.co.kr__GetRemainCount"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_6_GetRemainCount_Atomic_output_parameters__http___webservice.youiwe.co.kr__GetRemainCountResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetRemainCount must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the remaining count as specified in the GetRemainCountResponse output parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_7_GetWeeklyLimit_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_7_GetWeeklyLimit_Atomic_input_parameters__http___webservice.youiwe.co.kr__GetWeeklyLimit"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_7_GetWeeklyLimit_Atomic_output_parameters__http___webservice.youiwe.co.kr__GetWeeklyLimitResponse"/>
+    <profile:hasPrecondition>The user must provide the necessary parameters for the GetWeeklyLimit operation from the specified web service endpoint.</profile:hasPrecondition>
+    <profile:hasResult>The GetWeeklyLimit operation will return the weekly limit information as specified in the response parameters from the web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_8_SendSMS_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_8_SendSMS_Atomic_input_senderPhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_8_SendSMS_Atomic_input_receivePhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_8_SendSMS_Atomic_input_smsContent__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_8_SendSMS_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_8_SendSMS_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_8_SendSMS_Atomic_output_Body__http___webservice.youiwe.co.kr__string"/>
+    <profile:hasPrecondition>The sender must provide valid authentication credentials (memID and memPwd) to send the SMS.</profile:hasPrecondition>
+    <profile:hasResult>The SMS message with the specified content will be sent from the sender's phone to the receiver's phone.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_input_senderPhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_input_receivePhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_input_reserveTime__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_input_smsContent__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_input_reserveDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_output_Body__http___webservice.youiwe.co.kr__string"/>
+    <profile:hasPrecondition>The sender's phone number, receiver's phone number, reservation time, SMS content, member password, reservation date, and member ID must be provided as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The system will send an SMS reservation confirmation to the specified receiver's phone number.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_10_GetRemainCount_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_10_GetRemainCount_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_10_GetRemainCount_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_10_GetRemainCount_Atomic_output_Body__http___webservice.youiwe.co.kr__int"/>
+    <profile:hasPrecondition>The user must provide a valid member password and member ID as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the remaining count as an integer value in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_11_GetWeeklyLimit_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_11_GetWeeklyLimit_Atomic_input_smsID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_11_GetWeeklyLimit_Atomic_input_smsPW__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_11_GetWeeklyLimit_Atomic_output_Body__http___webservice.youiwe.co.kr__string"/>
+    <profile:hasPrecondition>The user must provide a valid smsID and smsPW to access the GetWeeklyLimit operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return the weekly limit as a string in the response body.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ServiceSMS_Composite">
+    <process:composedOf rdf:resource="#ServiceSMS_0_SendSMS_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_2_GetRemainCount_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_3_GetWeeklyLimit_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_4_SendSMS_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_5_SendSMSReserve_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_6_GetRemainCount_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_7_GetWeeklyLimit_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_8_SendSMS_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_10_GetRemainCount_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_11_GetWeeklyLimit_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ServiceSMS_0_SendSMS_Atomic_input_senderPhone__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>senderPhone:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_0_SendSMS_Atomic_input_receivePhone__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>receivePhone:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_0_SendSMS_Atomic_input_smsContent__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>smsContent:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_0_SendSMS_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>memPwd:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_0_SendSMS_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>memID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_0_SendSMS_Atomic_output_Body__http___webservice.youiwe.co.kr__string">
+    <process:parameterType>Body:{http://webservice.youiwe.co.kr/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_1_SendSMSReserve_Atomic_input_senderPhone__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>senderPhone:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_1_SendSMSReserve_Atomic_input_receivePhone__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>receivePhone:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_1_SendSMSReserve_Atomic_input_reserveTime__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>reserveTime:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_1_SendSMSReserve_Atomic_input_smsContent__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>smsContent:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_1_SendSMSReserve_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>memPwd:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_1_SendSMSReserve_Atomic_input_reserveDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>reserveDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_1_SendSMSReserve_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>memID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_1_SendSMSReserve_Atomic_output_Body__http___webservice.youiwe.co.kr__string">
+    <process:parameterType>Body:{http://webservice.youiwe.co.kr/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_2_GetRemainCount_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>memPwd:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_2_GetRemainCount_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>memID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_2_GetRemainCount_Atomic_output_Body__http___webservice.youiwe.co.kr__int">
+    <process:parameterType>Body:{http://webservice.youiwe.co.kr/}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_3_GetWeeklyLimit_Atomic_input_smsID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>smsID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_3_GetWeeklyLimit_Atomic_input_smsPW__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>smsPW:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_3_GetWeeklyLimit_Atomic_output_Body__http___webservice.youiwe.co.kr__string">
+    <process:parameterType>Body:{http://webservice.youiwe.co.kr/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_4_SendSMS_Atomic_input_parameters__http___webservice.youiwe.co.kr__SendSMS">
+    <process:parameterType>parameters:{http://webservice.youiwe.co.kr/}SendSMS</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_4_SendSMS_Atomic_output_parameters__http___webservice.youiwe.co.kr__SendSMSResponse">
+    <process:parameterType>parameters:{http://webservice.youiwe.co.kr/}SendSMSResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_5_SendSMSReserve_Atomic_input_parameters__http___webservice.youiwe.co.kr__SendSMSReserve">
+    <process:parameterType>parameters:{http://webservice.youiwe.co.kr/}SendSMSReserve</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_5_SendSMSReserve_Atomic_output_parameters__http___webservice.youiwe.co.kr__SendSMSReserveResponse">
+    <process:parameterType>parameters:{http://webservice.youiwe.co.kr/}SendSMSReserveResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_6_GetRemainCount_Atomic_input_parameters__http___webservice.youiwe.co.kr__GetRemainCount">
+    <process:parameterType>parameters:{http://webservice.youiwe.co.kr/}GetRemainCount</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_6_GetRemainCount_Atomic_output_parameters__http___webservice.youiwe.co.kr__GetRemainCountResponse">
+    <process:parameterType>parameters:{http://webservice.youiwe.co.kr/}GetRemainCountResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_7_GetWeeklyLimit_Atomic_input_parameters__http___webservice.youiwe.co.kr__GetWeeklyLimit">
+    <process:parameterType>parameters:{http://webservice.youiwe.co.kr/}GetWeeklyLimit</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_7_GetWeeklyLimit_Atomic_output_parameters__http___webservice.youiwe.co.kr__GetWeeklyLimitResponse">
+    <process:parameterType>parameters:{http://webservice.youiwe.co.kr/}GetWeeklyLimitResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_8_SendSMS_Atomic_input_senderPhone__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>senderPhone:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_8_SendSMS_Atomic_input_receivePhone__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>receivePhone:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_8_SendSMS_Atomic_input_smsContent__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>smsContent:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_8_SendSMS_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>memPwd:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_8_SendSMS_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>memID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_8_SendSMS_Atomic_output_Body__http___webservice.youiwe.co.kr__string">
+    <process:parameterType>Body:{http://webservice.youiwe.co.kr/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_9_SendSMSReserve_Atomic_input_senderPhone__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>senderPhone:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_9_SendSMSReserve_Atomic_input_receivePhone__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>receivePhone:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_9_SendSMSReserve_Atomic_input_reserveTime__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>reserveTime:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_9_SendSMSReserve_Atomic_input_smsContent__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>smsContent:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_9_SendSMSReserve_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>memPwd:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_9_SendSMSReserve_Atomic_input_reserveDate__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>reserveDate:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_9_SendSMSReserve_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>memID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_9_SendSMSReserve_Atomic_output_Body__http___webservice.youiwe.co.kr__string">
+    <process:parameterType>Body:{http://webservice.youiwe.co.kr/}string</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_10_GetRemainCount_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>memPwd:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_10_GetRemainCount_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>memID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_10_GetRemainCount_Atomic_output_Body__http___webservice.youiwe.co.kr__int">
+    <process:parameterType>Body:{http://webservice.youiwe.co.kr/}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_11_GetWeeklyLimit_Atomic_input_smsID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>smsID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ServiceSMS_11_GetWeeklyLimit_Atomic_input_smsPW__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>smsPW:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_11_GetWeeklyLimit_Atomic_output_Body__http___webservice.youiwe.co.kr__string">
+    <process:parameterType>Body:{http://webservice.youiwe.co.kr/}string</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_0_SendSMS_Atomic">
+    <process:hasName>SendSMS</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_input_senderPhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_input_receivePhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_input_smsContent__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_output_Body__http___webservice.youiwe.co.kr__string"/>
+    <process:hasPrecondition>The sender must provide valid authentication credentials (memID and memPwd) to send the SMS.</process:hasPrecondition>
+    <process:hasEffect>The SMS with the specified content will be sent from the sender's phone to the receiver's phone.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_1_SendSMSReserve_Atomic">
+    <process:hasName>SendSMSReserve</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_senderPhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_receivePhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_reserveTime__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_smsContent__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_reserveDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_output_Body__http___webservice.youiwe.co.kr__string"/>
+    <process:hasPrecondition>The sender's phone number, receiver's phone number, reservation time, SMS content, member password, reservation date, and member ID must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The system will send an SMS reservation confirmation to the specified receiver phone number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_2_GetRemainCount_Atomic">
+    <process:hasName>GetRemainCount</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_2_GetRemainCount_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_2_GetRemainCount_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_2_GetRemainCount_Atomic_output_Body__http___webservice.youiwe.co.kr__int"/>
+    <process:hasPrecondition>The user must provide a valid member password and member ID as input parameters.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the remaining count as an integer value in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_3_GetWeeklyLimit_Atomic">
+    <process:hasName>GetWeeklyLimit</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_3_GetWeeklyLimit_Atomic_input_smsID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_3_GetWeeklyLimit_Atomic_input_smsPW__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_3_GetWeeklyLimit_Atomic_output_Body__http___webservice.youiwe.co.kr__string"/>
+    <process:hasPrecondition>The user must provide a valid smsID and smsPW for authentication.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the weekly limit as a string in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_4_SendSMS_Atomic">
+    <process:hasName>SendSMS</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_4_SendSMS_Atomic_input_parameters__http___webservice.youiwe.co.kr__SendSMS"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_4_SendSMS_Atomic_output_parameters__http___webservice.youiwe.co.kr__SendSMSResponse"/>
+    <process:hasPrecondition>The SendSMS operation requires the input parameters to be in the format specified by the http://webservice.youiwe.co.kr/ SendSMS schema.</process:hasPrecondition>
+    <process:hasEffect>The SendSMS operation will return a response in the format specified by the http://webservice.youiwe.co.kr/ SendSMSResponse schema.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_5_SendSMSReserve_Atomic">
+    <process:hasName>SendSMSReserve</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_5_SendSMSReserve_Atomic_input_parameters__http___webservice.youiwe.co.kr__SendSMSReserve"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_5_SendSMSReserve_Atomic_output_parameters__http___webservice.youiwe.co.kr__SendSMSReserveResponse"/>
+    <process:hasPrecondition>The SendSMSReserve operation requires valid input parameters from the http://webservice.youiwe.co.kr/ namespace.</process:hasPrecondition>
+    <process:hasEffect>The SendSMSReserve operation will generate a response with output parameters from the http://webservice.youiwe.co.kr/ namespace.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_6_GetRemainCount_Atomic">
+    <process:hasName>GetRemainCount</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_6_GetRemainCount_Atomic_input_parameters__http___webservice.youiwe.co.kr__GetRemainCount"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_6_GetRemainCount_Atomic_output_parameters__http___webservice.youiwe.co.kr__GetRemainCountResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetRemainCount must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the remaining count as specified in the GetRemainCountResponse output parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_7_GetWeeklyLimit_Atomic">
+    <process:hasName>GetWeeklyLimit</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_7_GetWeeklyLimit_Atomic_input_parameters__http___webservice.youiwe.co.kr__GetWeeklyLimit"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_7_GetWeeklyLimit_Atomic_output_parameters__http___webservice.youiwe.co.kr__GetWeeklyLimitResponse"/>
+    <process:hasPrecondition>The user must provide the necessary parameters for the GetWeeklyLimit operation from the specified web service endpoint.</process:hasPrecondition>
+    <process:hasEffect>The GetWeeklyLimit operation will return the weekly limit information as specified in the response parameters from the web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_8_SendSMS_Atomic">
+    <process:hasName>SendSMS</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_8_SendSMS_Atomic_input_senderPhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_8_SendSMS_Atomic_input_receivePhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_8_SendSMS_Atomic_input_smsContent__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_8_SendSMS_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_8_SendSMS_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_8_SendSMS_Atomic_output_Body__http___webservice.youiwe.co.kr__string"/>
+    <process:hasPrecondition>The sender must provide valid authentication credentials (memID and memPwd) to send the SMS.</process:hasPrecondition>
+    <process:hasEffect>The SMS message with the specified content will be sent from the sender's phone to the receiver's phone.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_9_SendSMSReserve_Atomic">
+    <process:hasName>SendSMSReserve</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_input_senderPhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_input_receivePhone__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_input_reserveTime__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_input_smsContent__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_input_reserveDate__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic_output_Body__http___webservice.youiwe.co.kr__string"/>
+    <process:hasPrecondition>The sender's phone number, receiver's phone number, reservation time, SMS content, member password, reservation date, and member ID must be provided as input parameters.</process:hasPrecondition>
+    <process:hasEffect>The system will send an SMS reservation confirmation to the specified receiver's phone number.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_10_GetRemainCount_Atomic">
+    <process:hasName>GetRemainCount</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_10_GetRemainCount_Atomic_input_memPwd__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_10_GetRemainCount_Atomic_input_memID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_10_GetRemainCount_Atomic_output_Body__http___webservice.youiwe.co.kr__int"/>
+    <process:hasPrecondition>The user must provide a valid member password and member ID as input parameters.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the remaining count as an integer value in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_11_GetWeeklyLimit_Atomic">
+    <process:hasName>GetWeeklyLimit</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_11_GetWeeklyLimit_Atomic_input_smsID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#ServiceSMS_11_GetWeeklyLimit_Atomic_input_smsPW__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_11_GetWeeklyLimit_Atomic_output_Body__http___webservice.youiwe.co.kr__string"/>
+    <process:hasPrecondition>The user must provide a valid smsID and smsPW to access the GetWeeklyLimit operation.</process:hasPrecondition>
+    <process:hasEffect>The operation will return the weekly limit as a string in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ServiceSMS_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_0_SendSMS_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_1_SendSMSReserve_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_2_GetRemainCount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_3_GetWeeklyLimit_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_4_SendSMS_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_5_SendSMSReserve_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_6_GetRemainCount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_7_GetWeeklyLimit_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_8_SendSMS_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_9_SendSMSReserve_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_10_GetRemainCount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_11_GetWeeklyLimit_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_0_SendSMS_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_0_SendSMS_Atomic"/>
+    <grounding:wsdlOperationName>SendSMS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2230_2229.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMSHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMSHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_1_SendSMSReserve_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic"/>
+    <grounding:wsdlOperationName>SendSMSReserve</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2230_2229.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMSReserveHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMSReserveHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_2_GetRemainCount_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_2_GetRemainCount_Atomic"/>
+    <grounding:wsdlOperationName>GetRemainCount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2230_2229.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRemainCountHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRemainCountHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_3_GetWeeklyLimit_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_3_GetWeeklyLimit_Atomic"/>
+    <grounding:wsdlOperationName>GetWeeklyLimit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2230_2229.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWeeklyLimitHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWeeklyLimitHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_4_SendSMS_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_4_SendSMS_Atomic"/>
+    <grounding:wsdlOperationName>SendSMS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2230_2229.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMSSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMSSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_5_SendSMSReserve_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_5_SendSMSReserve_Atomic"/>
+    <grounding:wsdlOperationName>SendSMSReserve</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2230_2229.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMSReserveSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMSReserveSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_6_GetRemainCount_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_6_GetRemainCount_Atomic"/>
+    <grounding:wsdlOperationName>GetRemainCount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2230_2229.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRemainCountSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRemainCountSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_7_GetWeeklyLimit_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_7_GetWeeklyLimit_Atomic"/>
+    <grounding:wsdlOperationName>GetWeeklyLimit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2230_2229.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWeeklyLimitSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWeeklyLimitSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_8_SendSMS_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_8_SendSMS_Atomic"/>
+    <grounding:wsdlOperationName>SendSMS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2230_2229.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMSHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMSHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_9_SendSMSReserve_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_9_SendSMSReserve_Atomic"/>
+    <grounding:wsdlOperationName>SendSMSReserve</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2230_2229.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMSReserveHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMSReserveHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_10_GetRemainCount_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_10_GetRemainCount_Atomic"/>
+    <grounding:wsdlOperationName>GetRemainCount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2230_2229.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRemainCountHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRemainCountHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_11_GetWeeklyLimit_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_11_GetWeeklyLimit_Atomic"/>
+    <grounding:wsdlOperationName>GetWeeklyLimit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2230_2229.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWeeklyLimitHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWeeklyLimitHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

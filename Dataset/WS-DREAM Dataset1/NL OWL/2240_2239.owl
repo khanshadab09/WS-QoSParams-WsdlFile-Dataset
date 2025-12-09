@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="pathwayDBSer">
+    <service:presents rdf:resource="#pathwayDBSer_Profile"/>
+    <service:describedBy rdf:resource="#pathwayDBSer_Composite"/>
+    <service:supports rdf:resource="#pathwayDBSer_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="pathwayDBSer_Profile">
+    <profile:serviceName>pathwayDBSer</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#pathwayDBSer"/>
+    <profile:hasProcess rdf:resource="#pathwayDBSer_0_GetStpGraphList_Atomic"/>
+    <profile:hasInput rdf:resource="#pathwayDBSer_0_GetStpGraphList_Atomic_input_parameters__http___interviewer.inha.ac.kr_stpWebService__GetStpGraphList"/>
+    <profile:hasOutput rdf:resource="#pathwayDBSer_0_GetStpGraphList_Atomic_output_parameters__http___interviewer.inha.ac.kr_stpWebService__GetStpGraphListResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetStpGraphList must be correctly formatted.</profile:hasPrecondition>
+    <profile:hasResult>The GetStpGraphListResponse containing the list of STP graphs will be returned as output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pathwayDBSer_1_GetStpGraph_Atomic"/>
+    <profile:hasInput rdf:resource="#pathwayDBSer_1_GetStpGraph_Atomic_input_parameters__http___interviewer.inha.ac.kr_stpWebService__GetStpGraph"/>
+    <profile:hasOutput rdf:resource="#pathwayDBSer_1_GetStpGraph_Atomic_output_parameters__http___interviewer.inha.ac.kr_stpWebService__GetStpGraphResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetStpGraph must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The GetStpGraph operation will be executed and the response will be returned in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#pathwayDBSer_2_UploadStpGraph_Atomic"/>
+    <profile:hasInput rdf:resource="#pathwayDBSer_2_UploadStpGraph_Atomic_input_parameters__http___interviewer.inha.ac.kr_stpWebService__UploadStpGraph"/>
+    <profile:hasOutput rdf:resource="#pathwayDBSer_2_UploadStpGraph_Atomic_output_parameters__http___interviewer.inha.ac.kr_stpWebService__UploadStpGraphResponse"/>
+    <profile:hasPrecondition>The user must have a valid authentication token to access the UploadStpGraph operation.</profile:hasPrecondition>
+    <profile:hasResult>The UploadStpGraph operation will store the uploaded STP graph data and return a response confirming the successful upload.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="pathwayDBSer_Composite">
+    <process:composedOf rdf:resource="#pathwayDBSer_0_GetStpGraphList_Atomic"/>
+    <process:composedOf rdf:resource="#pathwayDBSer_1_GetStpGraph_Atomic"/>
+    <process:composedOf rdf:resource="#pathwayDBSer_2_UploadStpGraph_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="pathwayDBSer_0_GetStpGraphList_Atomic_input_parameters__http___interviewer.inha.ac.kr_stpWebService__GetStpGraphList">
+    <process:parameterType>parameters:{http://interviewer.inha.ac.kr/stpWebService/}GetStpGraphList</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="pathwayDBSer_0_GetStpGraphList_Atomic_output_parameters__http___interviewer.inha.ac.kr_stpWebService__GetStpGraphListResponse">
+    <process:parameterType>parameters:{http://interviewer.inha.ac.kr/stpWebService/}GetStpGraphListResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="pathwayDBSer_1_GetStpGraph_Atomic_input_parameters__http___interviewer.inha.ac.kr_stpWebService__GetStpGraph">
+    <process:parameterType>parameters:{http://interviewer.inha.ac.kr/stpWebService/}GetStpGraph</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="pathwayDBSer_1_GetStpGraph_Atomic_output_parameters__http___interviewer.inha.ac.kr_stpWebService__GetStpGraphResponse">
+    <process:parameterType>parameters:{http://interviewer.inha.ac.kr/stpWebService/}GetStpGraphResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="pathwayDBSer_2_UploadStpGraph_Atomic_input_parameters__http___interviewer.inha.ac.kr_stpWebService__UploadStpGraph">
+    <process:parameterType>parameters:{http://interviewer.inha.ac.kr/stpWebService/}UploadStpGraph</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="pathwayDBSer_2_UploadStpGraph_Atomic_output_parameters__http___interviewer.inha.ac.kr_stpWebService__UploadStpGraphResponse">
+    <process:parameterType>parameters:{http://interviewer.inha.ac.kr/stpWebService/}UploadStpGraphResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="pathwayDBSer_0_GetStpGraphList_Atomic">
+    <process:hasName>GetStpGraphList</process:hasName>
+    <process:hasInput rdf:resource="#pathwayDBSer_0_GetStpGraphList_Atomic_input_parameters__http___interviewer.inha.ac.kr_stpWebService__GetStpGraphList"/>
+    <process:hasOutput rdf:resource="#pathwayDBSer_0_GetStpGraphList_Atomic_output_parameters__http___interviewer.inha.ac.kr_stpWebService__GetStpGraphListResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetStpGraphList must be correctly formatted.</process:hasPrecondition>
+    <process:hasEffect>The GetStpGraphListResponse containing the list of STP graphs will be returned as output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pathwayDBSer_1_GetStpGraph_Atomic">
+    <process:hasName>GetStpGraph</process:hasName>
+    <process:hasInput rdf:resource="#pathwayDBSer_1_GetStpGraph_Atomic_input_parameters__http___interviewer.inha.ac.kr_stpWebService__GetStpGraph"/>
+    <process:hasOutput rdf:resource="#pathwayDBSer_1_GetStpGraph_Atomic_output_parameters__http___interviewer.inha.ac.kr_stpWebService__GetStpGraphResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetStpGraph must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The GetStpGraph operation will be executed and the response will be returned in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="pathwayDBSer_2_UploadStpGraph_Atomic">
+    <process:hasName>UploadStpGraph</process:hasName>
+    <process:hasInput rdf:resource="#pathwayDBSer_2_UploadStpGraph_Atomic_input_parameters__http___interviewer.inha.ac.kr_stpWebService__UploadStpGraph"/>
+    <process:hasOutput rdf:resource="#pathwayDBSer_2_UploadStpGraph_Atomic_output_parameters__http___interviewer.inha.ac.kr_stpWebService__UploadStpGraphResponse"/>
+    <process:hasPrecondition>The user must have a valid authentication token to access the UploadStpGraph operation.</process:hasPrecondition>
+    <process:hasEffect>The UploadStpGraph operation will store the uploaded STP graph data and return a response confirming the successful upload.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="pathwayDBSer_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pathwayDBSer_0_GetStpGraphList_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pathwayDBSer_1_GetStpGraph_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#pathwayDBSer_2_UploadStpGraph_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pathwayDBSer_0_GetStpGraphList_Grounding">
+    <grounding:owlsProcess rdf:resource="#pathwayDBSer_0_GetStpGraphList_Atomic"/>
+    <grounding:wsdlOperationName>GetStpGraphList</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pathwayDBSerSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pathwayDBSerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2240_2239.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStpGraphListSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStpGraphListSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pathwayDBSer_1_GetStpGraph_Grounding">
+    <grounding:owlsProcess rdf:resource="#pathwayDBSer_1_GetStpGraph_Atomic"/>
+    <grounding:wsdlOperationName>GetStpGraph</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pathwayDBSerSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pathwayDBSerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2240_2239.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetStpGraphSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetStpGraphSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="pathwayDBSer_2_UploadStpGraph_Grounding">
+    <grounding:owlsProcess rdf:resource="#pathwayDBSer_2_UploadStpGraph_Atomic"/>
+    <grounding:wsdlOperationName>UploadStpGraph</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>pathwayDBSerSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>pathwayDBSerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2240_2239.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UploadStpGraphSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UploadStpGraphSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

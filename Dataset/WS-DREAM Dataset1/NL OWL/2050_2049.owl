@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="BulletinClient">
+    <service:presents rdf:resource="#BulletinClient_Profile"/>
+    <service:describedBy rdf:resource="#BulletinClient_Composite"/>
+    <service:supports rdf:resource="#BulletinClient_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="BulletinClient_Profile">
+    <profile:serviceName>BulletinClient</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#BulletinClient"/>
+    <profile:hasProcess rdf:resource="#BulletinClient_0_send_Atomic"/>
+    <profile:hasInput rdf:resource="#BulletinClient_0_send_Atomic_input_environment__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#BulletinClient_0_send_Atomic_input_application__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BulletinClient_0_send_Atomic_input_message__urn_bulletinwireless.com_appconnect_1.0_Message"/>
+    <profile:hasOutput rdf:resource="#BulletinClient_0_send_Atomic_output_sendReturn__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The input environment must be an integer, the application must be a string, and the message must adhere to the specified Message schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation sends the message and returns an integer as a confirmation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BulletinClient_1_sendStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#BulletinClient_1_sendStatus_Atomic_input_environment__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasInput rdf:resource="#BulletinClient_1_sendStatus_Atomic_input_application__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#BulletinClient_1_sendStatus_Atomic_input_status__urn_bulletinwireless.com_appconnect_1.0_MessageStatus"/>
+    <profile:hasOutput rdf:resource="#BulletinClient_1_sendStatus_Atomic_output_sendStatusReturn__http___www.w3.org_2001_XMLSchema_int"/>
+    <profile:hasPrecondition>The input parameters environment, application, and status must be provided in the specified data types.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an integer value as sendStatusReturn.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="BulletinClient_Composite">
+    <process:composedOf rdf:resource="#BulletinClient_0_send_Atomic"/>
+    <process:composedOf rdf:resource="#BulletinClient_1_sendStatus_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="BulletinClient_0_send_Atomic_input_environment__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>environment:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BulletinClient_0_send_Atomic_input_application__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>application:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BulletinClient_0_send_Atomic_input_message__urn_bulletinwireless.com_appconnect_1.0_Message">
+    <process:parameterType>message:{urn:bulletinwireless.com/appconnect/1.0}Message</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BulletinClient_0_send_Atomic_output_sendReturn__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>sendReturn:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BulletinClient_1_sendStatus_Atomic_input_environment__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>environment:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BulletinClient_1_sendStatus_Atomic_input_application__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>application:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="BulletinClient_1_sendStatus_Atomic_input_status__urn_bulletinwireless.com_appconnect_1.0_MessageStatus">
+    <process:parameterType>status:{urn:bulletinwireless.com/appconnect/1.0}MessageStatus</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BulletinClient_1_sendStatus_Atomic_output_sendStatusReturn__http___www.w3.org_2001_XMLSchema_int">
+    <process:parameterType>sendStatusReturn:{http://www.w3.org/2001/XMLSchema}int</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="BulletinClient_0_send_Atomic">
+    <process:hasName>send</process:hasName>
+    <process:hasInput rdf:resource="#BulletinClient_0_send_Atomic_input_environment__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#BulletinClient_0_send_Atomic_input_application__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BulletinClient_0_send_Atomic_input_message__urn_bulletinwireless.com_appconnect_1.0_Message"/>
+    <process:hasOutput rdf:resource="#BulletinClient_0_send_Atomic_output_sendReturn__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The input environment must be an integer, the application must be a string, and the message must adhere to the specified Message schema.</process:hasPrecondition>
+    <process:hasEffect>The operation sends the message and returns an integer as a confirmation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BulletinClient_1_sendStatus_Atomic">
+    <process:hasName>sendStatus</process:hasName>
+    <process:hasInput rdf:resource="#BulletinClient_1_sendStatus_Atomic_input_environment__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasInput rdf:resource="#BulletinClient_1_sendStatus_Atomic_input_application__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#BulletinClient_1_sendStatus_Atomic_input_status__urn_bulletinwireless.com_appconnect_1.0_MessageStatus"/>
+    <process:hasOutput rdf:resource="#BulletinClient_1_sendStatus_Atomic_output_sendStatusReturn__http___www.w3.org_2001_XMLSchema_int"/>
+    <process:hasPrecondition>The input parameters environment, application, and status must be provided in the specified data types.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an integer value as sendStatusReturn.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="BulletinClient_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BulletinClient_0_send_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BulletinClient_1_sendStatus_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BulletinClient_0_send_Grounding">
+    <grounding:owlsProcess rdf:resource="#BulletinClient_0_send_Atomic"/>
+    <grounding:wsdlOperationName>send</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BulletinClientSoapSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BulletinClientImpl</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2050_2049.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>sendRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>sendResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BulletinClient_1_sendStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#BulletinClient_1_sendStatus_Atomic"/>
+    <grounding:wsdlOperationName>sendStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BulletinClientSoapSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BulletinClientImpl</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2050_2049.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>sendStatusRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>sendStatusResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

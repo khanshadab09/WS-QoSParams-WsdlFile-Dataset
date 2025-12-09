@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ServiceSMS">
+    <service:presents rdf:resource="#ServiceSMS_Profile"/>
+    <service:describedBy rdf:resource="#ServiceSMS_Composite"/>
+    <service:supports rdf:resource="#ServiceSMS_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ServiceSMS_Profile">
+    <profile:serviceName>ServiceSMS</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ServiceSMS"/>
+    <profile:hasProcess rdf:resource="#ServiceSMS_0_SendSMS_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_input_parameters__http___webservice.tongkni.co.kr__SendSMS"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_output_parameters__http___webservice.tongkni.co.kr__SendSMSResponse"/>
+    <profile:hasPrecondition>The input parameters for SendSMS must be provided in the specified format from http://webservice.tongkni.co.kr/.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response in the specified format from http://webservice.tongkni.co.kr/.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_parameters__http___webservice.tongkni.co.kr__SendSMSReserve"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_output_parameters__http___webservice.tongkni.co.kr__SendSMSReserveResponse"/>
+    <profile:hasPrecondition>The SendSMSReserve operation requires valid input parameters in the specified format from the Tongkni web service.</profile:hasPrecondition>
+    <profile:hasResult>The SendSMSReserve operation will return a response in the specified format from the Tongkni web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_2_SendSMSCallBack_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_2_SendSMSCallBack_Atomic_input_parameters__http___webservice.tongkni.co.kr__SendSMSCallBack"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_2_SendSMSCallBack_Atomic_output_parameters__http___webservice.tongkni.co.kr__SendSMSCallBackResponse"/>
+    <profile:hasPrecondition>The input parameters for SendSMSCallBack must be provided in the specified format from the Tongkni web service.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for SendSMSCallBackResponse will be generated in the specified format for the Tongkni web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_3_SendSMSCallBackReserve_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_3_SendSMSCallBackReserve_Atomic_input_parameters__http___webservice.tongkni.co.kr__SendSMSCallBackReserve"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_3_SendSMSCallBackReserve_Atomic_output_parameters__http___webservice.tongkni.co.kr__SendSMSCallBackReserveResponse"/>
+    <profile:hasPrecondition>The input parameters for SendSMSCallBackReserve must be provided in the specified format from the Tongkni web service.</profile:hasPrecondition>
+    <profile:hasResult>Upon successful execution, the SendSMSCallBackReserve operation will return a response in the specified format from the Tongkni web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_4_GetRemainCount_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_4_GetRemainCount_Atomic_input_parameters__http___webservice.tongkni.co.kr__GetRemainCount"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_4_GetRemainCount_Atomic_output_parameters__http___webservice.tongkni.co.kr__GetRemainCountResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for GetRemainCount must be provided.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return the remaining count based on the input parameters provided.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ServiceSMS_5_GetWeeklyLimit_Atomic"/>
+    <profile:hasInput rdf:resource="#ServiceSMS_5_GetWeeklyLimit_Atomic_input_parameters__http___webservice.tongkni.co.kr__GetWeeklyLimit"/>
+    <profile:hasOutput rdf:resource="#ServiceSMS_5_GetWeeklyLimit_Atomic_output_parameters__http___webservice.tongkni.co.kr__GetWeeklyLimitResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have the necessary permissions to access the GetWeeklyLimit operation.</profile:hasPrecondition>
+    <profile:hasResult>The GetWeeklyLimit operation will return the weekly limit information for the user.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ServiceSMS_Composite">
+    <process:composedOf rdf:resource="#ServiceSMS_0_SendSMS_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_2_SendSMSCallBack_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_3_SendSMSCallBackReserve_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_4_GetRemainCount_Atomic"/>
+    <process:composedOf rdf:resource="#ServiceSMS_5_GetWeeklyLimit_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ServiceSMS_0_SendSMS_Atomic_input_parameters__http___webservice.tongkni.co.kr__SendSMS">
+    <process:parameterType>parameters:{http://webservice.tongkni.co.kr/}SendSMS</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_0_SendSMS_Atomic_output_parameters__http___webservice.tongkni.co.kr__SendSMSResponse">
+    <process:parameterType>parameters:{http://webservice.tongkni.co.kr/}SendSMSResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_1_SendSMSReserve_Atomic_input_parameters__http___webservice.tongkni.co.kr__SendSMSReserve">
+    <process:parameterType>parameters:{http://webservice.tongkni.co.kr/}SendSMSReserve</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_1_SendSMSReserve_Atomic_output_parameters__http___webservice.tongkni.co.kr__SendSMSReserveResponse">
+    <process:parameterType>parameters:{http://webservice.tongkni.co.kr/}SendSMSReserveResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_2_SendSMSCallBack_Atomic_input_parameters__http___webservice.tongkni.co.kr__SendSMSCallBack">
+    <process:parameterType>parameters:{http://webservice.tongkni.co.kr/}SendSMSCallBack</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_2_SendSMSCallBack_Atomic_output_parameters__http___webservice.tongkni.co.kr__SendSMSCallBackResponse">
+    <process:parameterType>parameters:{http://webservice.tongkni.co.kr/}SendSMSCallBackResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_3_SendSMSCallBackReserve_Atomic_input_parameters__http___webservice.tongkni.co.kr__SendSMSCallBackReserve">
+    <process:parameterType>parameters:{http://webservice.tongkni.co.kr/}SendSMSCallBackReserve</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_3_SendSMSCallBackReserve_Atomic_output_parameters__http___webservice.tongkni.co.kr__SendSMSCallBackReserveResponse">
+    <process:parameterType>parameters:{http://webservice.tongkni.co.kr/}SendSMSCallBackReserveResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_4_GetRemainCount_Atomic_input_parameters__http___webservice.tongkni.co.kr__GetRemainCount">
+    <process:parameterType>parameters:{http://webservice.tongkni.co.kr/}GetRemainCount</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_4_GetRemainCount_Atomic_output_parameters__http___webservice.tongkni.co.kr__GetRemainCountResponse">
+    <process:parameterType>parameters:{http://webservice.tongkni.co.kr/}GetRemainCountResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ServiceSMS_5_GetWeeklyLimit_Atomic_input_parameters__http___webservice.tongkni.co.kr__GetWeeklyLimit">
+    <process:parameterType>parameters:{http://webservice.tongkni.co.kr/}GetWeeklyLimit</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ServiceSMS_5_GetWeeklyLimit_Atomic_output_parameters__http___webservice.tongkni.co.kr__GetWeeklyLimitResponse">
+    <process:parameterType>parameters:{http://webservice.tongkni.co.kr/}GetWeeklyLimitResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_0_SendSMS_Atomic">
+    <process:hasName>SendSMS</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_input_parameters__http___webservice.tongkni.co.kr__SendSMS"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_0_SendSMS_Atomic_output_parameters__http___webservice.tongkni.co.kr__SendSMSResponse"/>
+    <process:hasPrecondition>The input parameters for SendSMS must be provided in the specified format from http://webservice.tongkni.co.kr/.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response in the specified format from http://webservice.tongkni.co.kr/.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_1_SendSMSReserve_Atomic">
+    <process:hasName>SendSMSReserve</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_input_parameters__http___webservice.tongkni.co.kr__SendSMSReserve"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic_output_parameters__http___webservice.tongkni.co.kr__SendSMSReserveResponse"/>
+    <process:hasPrecondition>The SendSMSReserve operation requires valid input parameters in the specified format from the Tongkni web service.</process:hasPrecondition>
+    <process:hasEffect>The SendSMSReserve operation will return a response in the specified format from the Tongkni web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_2_SendSMSCallBack_Atomic">
+    <process:hasName>SendSMSCallBack</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_2_SendSMSCallBack_Atomic_input_parameters__http___webservice.tongkni.co.kr__SendSMSCallBack"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_2_SendSMSCallBack_Atomic_output_parameters__http___webservice.tongkni.co.kr__SendSMSCallBackResponse"/>
+    <process:hasPrecondition>The input parameters for SendSMSCallBack must be provided in the specified format from the Tongkni web service.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for SendSMSCallBackResponse will be generated in the specified format for the Tongkni web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_3_SendSMSCallBackReserve_Atomic">
+    <process:hasName>SendSMSCallBackReserve</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_3_SendSMSCallBackReserve_Atomic_input_parameters__http___webservice.tongkni.co.kr__SendSMSCallBackReserve"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_3_SendSMSCallBackReserve_Atomic_output_parameters__http___webservice.tongkni.co.kr__SendSMSCallBackReserveResponse"/>
+    <process:hasPrecondition>The input parameters for SendSMSCallBackReserve must be provided in the specified format from the Tongkni web service.</process:hasPrecondition>
+    <process:hasEffect>Upon successful execution, the SendSMSCallBackReserve operation will return a response in the specified format from the Tongkni web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_4_GetRemainCount_Atomic">
+    <process:hasName>GetRemainCount</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_4_GetRemainCount_Atomic_input_parameters__http___webservice.tongkni.co.kr__GetRemainCount"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_4_GetRemainCount_Atomic_output_parameters__http___webservice.tongkni.co.kr__GetRemainCountResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for GetRemainCount must be provided.</process:hasPrecondition>
+    <process:hasEffect>The web service will return the remaining count based on the input parameters provided.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ServiceSMS_5_GetWeeklyLimit_Atomic">
+    <process:hasName>GetWeeklyLimit</process:hasName>
+    <process:hasInput rdf:resource="#ServiceSMS_5_GetWeeklyLimit_Atomic_input_parameters__http___webservice.tongkni.co.kr__GetWeeklyLimit"/>
+    <process:hasOutput rdf:resource="#ServiceSMS_5_GetWeeklyLimit_Atomic_output_parameters__http___webservice.tongkni.co.kr__GetWeeklyLimitResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have the necessary permissions to access the GetWeeklyLimit operation.</process:hasPrecondition>
+    <process:hasEffect>The GetWeeklyLimit operation will return the weekly limit information for the user.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ServiceSMS_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_0_SendSMS_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_1_SendSMSReserve_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_2_SendSMSCallBack_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_3_SendSMSCallBackReserve_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_4_GetRemainCount_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ServiceSMS_5_GetWeeklyLimit_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_0_SendSMS_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_0_SendSMS_Atomic"/>
+    <grounding:wsdlOperationName>SendSMS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2250_2249.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMSSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMSSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_1_SendSMSReserve_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_1_SendSMSReserve_Atomic"/>
+    <grounding:wsdlOperationName>SendSMSReserve</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2250_2249.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMSReserveSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMSReserveSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_2_SendSMSCallBack_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_2_SendSMSCallBack_Atomic"/>
+    <grounding:wsdlOperationName>SendSMSCallBack</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2250_2249.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMSCallBackSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMSCallBackSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_3_SendSMSCallBackReserve_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_3_SendSMSCallBackReserve_Atomic"/>
+    <grounding:wsdlOperationName>SendSMSCallBackReserve</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2250_2249.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendSMSCallBackReserveSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendSMSCallBackReserveSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_4_GetRemainCount_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_4_GetRemainCount_Atomic"/>
+    <grounding:wsdlOperationName>GetRemainCount</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2250_2249.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetRemainCountSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetRemainCountSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ServiceSMS_5_GetWeeklyLimit_Grounding">
+    <grounding:owlsProcess rdf:resource="#ServiceSMS_5_GetWeeklyLimit_Atomic"/>
+    <grounding:wsdlOperationName>GetWeeklyLimit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSMSSoap12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSMSSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2250_2249.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetWeeklyLimitSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetWeeklyLimitSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
