@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="RenderServer3D">
+    <service:presents rdf:resource="#RenderServer3D_Profile"/>
+    <service:describedBy rdf:resource="#RenderServer3D_Composite"/>
+    <service:supports rdf:resource="#RenderServer3D_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="RenderServer3D_Profile">
+    <profile:serviceName>RenderServer3D</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#RenderServer3D"/>
+    <profile:hasProcess rdf:resource="#RenderServer3D_0_RenderURL_Atomic"/>
+    <profile:hasInput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_input_FontSize__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_input_ExportType__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_input_BGColor__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_input_Text__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_input_TextColor__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_input_Font__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_input_Template__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_output_Height__http___www.w3.org_2001_XMLSchema_long"/>
+    <profile:hasOutput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_output_Width__http___www.w3.org_2001_XMLSchema_long"/>
+    <profile:hasOutput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_output_URL__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasPrecondition>The input parameters FontSize, ExportType, BGColor, Text, TextColor, Font, and Template must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will generate a URL with the rendered image based on the provided input parameters, and return the Height, Width, and URL of the rendered image.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#RenderServer3D_1_GetTemplates_Atomic"/>
+    <profile:hasOutput rdf:resource="#RenderServer3D_1_GetTemplates_Atomic_output_Templates__http___soap.xara.com_type_ArrayOfstring"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a list of templates in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#RenderServer3D_2_GetFonts_Atomic"/>
+    <profile:hasOutput rdf:resource="#RenderServer3D_2_GetFonts_Atomic_output_Fonts__http___soap.xara.com_type_ArrayOfstring"/>
+    <profile:hasPrecondition>The web service for retrieving fonts is running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The operation returns a list of fonts in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#RenderServer3D_3_GetExportTypes_Atomic"/>
+    <profile:hasOutput rdf:resource="#RenderServer3D_3_GetExportTypes_Atomic_output_ExportTypes__http___soap.xara.com_type_ArrayOfstring"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a list of export types in the form of an array of strings.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="RenderServer3D_Composite">
+    <process:composedOf rdf:resource="#RenderServer3D_0_RenderURL_Atomic"/>
+    <process:composedOf rdf:resource="#RenderServer3D_1_GetTemplates_Atomic"/>
+    <process:composedOf rdf:resource="#RenderServer3D_2_GetFonts_Atomic"/>
+    <process:composedOf rdf:resource="#RenderServer3D_3_GetExportTypes_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="RenderServer3D_0_RenderURL_Atomic_input_FontSize__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>FontSize:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="RenderServer3D_0_RenderURL_Atomic_input_ExportType__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>ExportType:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="RenderServer3D_0_RenderURL_Atomic_input_BGColor__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>BGColor:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="RenderServer3D_0_RenderURL_Atomic_input_Text__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Text:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="RenderServer3D_0_RenderURL_Atomic_input_TextColor__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>TextColor:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="RenderServer3D_0_RenderURL_Atomic_input_Font__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Font:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="RenderServer3D_0_RenderURL_Atomic_input_Template__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>Template:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="RenderServer3D_0_RenderURL_Atomic_output_Height__http___www.w3.org_2001_XMLSchema_long">
+    <process:parameterType>Height:{http://www.w3.org/2001/XMLSchema}long</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="RenderServer3D_0_RenderURL_Atomic_output_Width__http___www.w3.org_2001_XMLSchema_long">
+    <process:parameterType>Width:{http://www.w3.org/2001/XMLSchema}long</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="RenderServer3D_0_RenderURL_Atomic_output_URL__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>URL:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="RenderServer3D_1_GetTemplates_Atomic_output_Templates__http___soap.xara.com_type_ArrayOfstring">
+    <process:parameterType>Templates:{http://soap.xara.com/type}ArrayOfstring</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="RenderServer3D_2_GetFonts_Atomic_output_Fonts__http___soap.xara.com_type_ArrayOfstring">
+    <process:parameterType>Fonts:{http://soap.xara.com/type}ArrayOfstring</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="RenderServer3D_3_GetExportTypes_Atomic_output_ExportTypes__http___soap.xara.com_type_ArrayOfstring">
+    <process:parameterType>ExportTypes:{http://soap.xara.com/type}ArrayOfstring</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="RenderServer3D_0_RenderURL_Atomic">
+    <process:hasName>RenderURL</process:hasName>
+    <process:hasInput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_input_FontSize__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_input_ExportType__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_input_BGColor__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_input_Text__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_input_TextColor__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_input_Font__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_input_Template__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_output_Height__http___www.w3.org_2001_XMLSchema_long"/>
+    <process:hasOutput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_output_Width__http___www.w3.org_2001_XMLSchema_long"/>
+    <process:hasOutput rdf:resource="#RenderServer3D_0_RenderURL_Atomic_output_URL__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasPrecondition>The input parameters FontSize, ExportType, BGColor, Text, TextColor, Font, and Template must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will generate a URL with the rendered image based on the provided input parameters, and return the Height, Width, and URL of the rendered image.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="RenderServer3D_1_GetTemplates_Atomic">
+    <process:hasName>GetTemplates</process:hasName>
+    <process:hasOutput rdf:resource="#RenderServer3D_1_GetTemplates_Atomic_output_Templates__http___soap.xara.com_type_ArrayOfstring"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a list of templates in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="RenderServer3D_2_GetFonts_Atomic">
+    <process:hasName>GetFonts</process:hasName>
+    <process:hasOutput rdf:resource="#RenderServer3D_2_GetFonts_Atomic_output_Fonts__http___soap.xara.com_type_ArrayOfstring"/>
+    <process:hasPrecondition>The web service for retrieving fonts is running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The operation returns a list of fonts in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="RenderServer3D_3_GetExportTypes_Atomic">
+    <process:hasName>GetExportTypes</process:hasName>
+    <process:hasOutput rdf:resource="#RenderServer3D_3_GetExportTypes_Atomic_output_ExportTypes__http___soap.xara.com_type_ArrayOfstring"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a list of export types in the form of an array of strings.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="RenderServer3D_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#RenderServer3D_0_RenderURL_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#RenderServer3D_1_GetTemplates_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#RenderServer3D_2_GetFonts_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#RenderServer3D_3_GetExportTypes_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="RenderServer3D_0_RenderURL_Grounding">
+    <grounding:owlsProcess rdf:resource="#RenderServer3D_0_RenderURL_Atomic"/>
+    <grounding:wsdlOperationName>RenderURL</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>RenderServer3DSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>RenderServer3DSoapPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2469_RenderServer3D.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RenderServer3D.RenderURL</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RenderServer3D.RenderURLResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="RenderServer3D_1_GetTemplates_Grounding">
+    <grounding:owlsProcess rdf:resource="#RenderServer3D_1_GetTemplates_Atomic"/>
+    <grounding:wsdlOperationName>GetTemplates</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>RenderServer3DSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>RenderServer3DSoapPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2469_RenderServer3D.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RenderServer3D.GetTemplates</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RenderServer3D.GetTemplatesResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="RenderServer3D_2_GetFonts_Grounding">
+    <grounding:owlsProcess rdf:resource="#RenderServer3D_2_GetFonts_Atomic"/>
+    <grounding:wsdlOperationName>GetFonts</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>RenderServer3DSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>RenderServer3DSoapPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2469_RenderServer3D.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RenderServer3D.GetFonts</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RenderServer3D.GetFontsResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="RenderServer3D_3_GetExportTypes_Grounding">
+    <grounding:owlsProcess rdf:resource="#RenderServer3D_3_GetExportTypes_Atomic"/>
+    <grounding:wsdlOperationName>GetExportTypes</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>RenderServer3DSoapBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>RenderServer3DSoapPort</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2469_RenderServer3D.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RenderServer3D.GetExportTypes</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RenderServer3D.GetExportTypesResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

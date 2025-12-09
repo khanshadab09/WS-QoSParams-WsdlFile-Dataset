@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="FaxMessagingService">
+    <service:presents rdf:resource="#FaxMessagingService_Profile"/>
+    <service:describedBy rdf:resource="#FaxMessagingService_Composite"/>
+    <service:supports rdf:resource="#FaxMessagingService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="FaxMessagingService_Profile">
+    <profile:serviceName>FaxMessagingService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#FaxMessagingService"/>
+    <profile:hasProcess rdf:resource="#FaxMessagingService_0_SendFax_Atomic"/>
+    <profile:hasInput rdf:resource="#FaxMessagingService_0_SendFax_Atomic_input_parameters__Messaging_WebServices_Outbound_Fax_1.0_SendFax"/>
+    <profile:hasOutput rdf:resource="#FaxMessagingService_0_SendFax_Atomic_output_parameters__Messaging_WebServices_Outbound_Fax_1.0_SendFaxResponse"/>
+    <profile:hasPrecondition>The SendFax operation requires the sender to provide the necessary fax details and recipient information in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The SendFax operation will send the fax to the designated recipient and provide a response indicating the status of the fax transmission.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#FaxMessagingService_1_GetJobStatus_Atomic"/>
+    <profile:hasInput rdf:resource="#FaxMessagingService_1_GetJobStatus_Atomic_input_parameters__Messaging_WebServices_Outbound_Fax_1.0_GetJobStatus"/>
+    <profile:hasOutput rdf:resource="#FaxMessagingService_1_GetJobStatus_Atomic_output_parameters__Messaging_WebServices_Outbound_Fax_1.0_GetJobStatusResponse"/>
+    <profile:hasPrecondition>The web service must support the Messaging/WebServices/Outbound/Fax/1.0 specification for GetJobStatus operation.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response conforming to the Messaging/WebServices/Outbound/Fax/1.0 specification for GetJobStatus.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#FaxMessagingService_2_RequestJobCDR_Atomic"/>
+    <profile:hasInput rdf:resource="#FaxMessagingService_2_RequestJobCDR_Atomic_input_parameters__Messaging_WebServices_Outbound_Fax_1.0_RequestJobCDR"/>
+    <profile:hasOutput rdf:resource="#FaxMessagingService_2_RequestJobCDR_Atomic_output_parameters__Messaging_WebServices_Outbound_Fax_1.0_RequestJobCDRResponse"/>
+    <profile:hasPrecondition>The system must have access to the Messaging/WebServices/Outbound/Fax/1.0 service for RequestJobCDR operation to be initiated.</profile:hasPrecondition>
+    <profile:hasResult>The system will generate a response in the form of Messaging/WebServices/Outbound/Fax/1.0 RequestJobCDRResponse after processing the request.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#FaxMessagingService_3_RequestJobResend_Atomic"/>
+    <profile:hasInput rdf:resource="#FaxMessagingService_3_RequestJobResend_Atomic_input_parameters__Messaging_WebServices_Outbound_Fax_1.0_RequestJobResend"/>
+    <profile:hasOutput rdf:resource="#FaxMessagingService_3_RequestJobResend_Atomic_output_parameters__Messaging_WebServices_Outbound_Fax_1.0_RequestJobResendResponse"/>
+    <profile:hasPrecondition>The system must have a job to resend in the outbound fax web service.</profile:hasPrecondition>
+    <profile:hasResult>The system will resend the specified job and provide a response confirming the action.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="FaxMessagingService_Composite">
+    <process:composedOf rdf:resource="#FaxMessagingService_0_SendFax_Atomic"/>
+    <process:composedOf rdf:resource="#FaxMessagingService_1_GetJobStatus_Atomic"/>
+    <process:composedOf rdf:resource="#FaxMessagingService_2_RequestJobCDR_Atomic"/>
+    <process:composedOf rdf:resource="#FaxMessagingService_3_RequestJobResend_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="FaxMessagingService_0_SendFax_Atomic_input_parameters__Messaging_WebServices_Outbound_Fax_1.0_SendFax">
+    <process:parameterType>parameters:{Messaging/WebServices/Outbound/Fax/1.0}SendFax</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="FaxMessagingService_0_SendFax_Atomic_output_parameters__Messaging_WebServices_Outbound_Fax_1.0_SendFaxResponse">
+    <process:parameterType>parameters:{Messaging/WebServices/Outbound/Fax/1.0}SendFaxResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="FaxMessagingService_1_GetJobStatus_Atomic_input_parameters__Messaging_WebServices_Outbound_Fax_1.0_GetJobStatus">
+    <process:parameterType>parameters:{Messaging/WebServices/Outbound/Fax/1.0}GetJobStatus</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="FaxMessagingService_1_GetJobStatus_Atomic_output_parameters__Messaging_WebServices_Outbound_Fax_1.0_GetJobStatusResponse">
+    <process:parameterType>parameters:{Messaging/WebServices/Outbound/Fax/1.0}GetJobStatusResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="FaxMessagingService_2_RequestJobCDR_Atomic_input_parameters__Messaging_WebServices_Outbound_Fax_1.0_RequestJobCDR">
+    <process:parameterType>parameters:{Messaging/WebServices/Outbound/Fax/1.0}RequestJobCDR</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="FaxMessagingService_2_RequestJobCDR_Atomic_output_parameters__Messaging_WebServices_Outbound_Fax_1.0_RequestJobCDRResponse">
+    <process:parameterType>parameters:{Messaging/WebServices/Outbound/Fax/1.0}RequestJobCDRResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="FaxMessagingService_3_RequestJobResend_Atomic_input_parameters__Messaging_WebServices_Outbound_Fax_1.0_RequestJobResend">
+    <process:parameterType>parameters:{Messaging/WebServices/Outbound/Fax/1.0}RequestJobResend</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="FaxMessagingService_3_RequestJobResend_Atomic_output_parameters__Messaging_WebServices_Outbound_Fax_1.0_RequestJobResendResponse">
+    <process:parameterType>parameters:{Messaging/WebServices/Outbound/Fax/1.0}RequestJobResendResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="FaxMessagingService_0_SendFax_Atomic">
+    <process:hasName>SendFax</process:hasName>
+    <process:hasInput rdf:resource="#FaxMessagingService_0_SendFax_Atomic_input_parameters__Messaging_WebServices_Outbound_Fax_1.0_SendFax"/>
+    <process:hasOutput rdf:resource="#FaxMessagingService_0_SendFax_Atomic_output_parameters__Messaging_WebServices_Outbound_Fax_1.0_SendFaxResponse"/>
+    <process:hasPrecondition>The SendFax operation requires the sender to provide the necessary fax details and recipient information in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The SendFax operation will send the fax to the designated recipient and provide a response indicating the status of the fax transmission.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="FaxMessagingService_1_GetJobStatus_Atomic">
+    <process:hasName>GetJobStatus</process:hasName>
+    <process:hasInput rdf:resource="#FaxMessagingService_1_GetJobStatus_Atomic_input_parameters__Messaging_WebServices_Outbound_Fax_1.0_GetJobStatus"/>
+    <process:hasOutput rdf:resource="#FaxMessagingService_1_GetJobStatus_Atomic_output_parameters__Messaging_WebServices_Outbound_Fax_1.0_GetJobStatusResponse"/>
+    <process:hasPrecondition>The web service must support the Messaging/WebServices/Outbound/Fax/1.0 specification for GetJobStatus operation.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response conforming to the Messaging/WebServices/Outbound/Fax/1.0 specification for GetJobStatus.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="FaxMessagingService_2_RequestJobCDR_Atomic">
+    <process:hasName>RequestJobCDR</process:hasName>
+    <process:hasInput rdf:resource="#FaxMessagingService_2_RequestJobCDR_Atomic_input_parameters__Messaging_WebServices_Outbound_Fax_1.0_RequestJobCDR"/>
+    <process:hasOutput rdf:resource="#FaxMessagingService_2_RequestJobCDR_Atomic_output_parameters__Messaging_WebServices_Outbound_Fax_1.0_RequestJobCDRResponse"/>
+    <process:hasPrecondition>The system must have access to the Messaging/WebServices/Outbound/Fax/1.0 service for RequestJobCDR operation to be initiated.</process:hasPrecondition>
+    <process:hasEffect>The system will generate a response in the form of Messaging/WebServices/Outbound/Fax/1.0 RequestJobCDRResponse after processing the request.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="FaxMessagingService_3_RequestJobResend_Atomic">
+    <process:hasName>RequestJobResend</process:hasName>
+    <process:hasInput rdf:resource="#FaxMessagingService_3_RequestJobResend_Atomic_input_parameters__Messaging_WebServices_Outbound_Fax_1.0_RequestJobResend"/>
+    <process:hasOutput rdf:resource="#FaxMessagingService_3_RequestJobResend_Atomic_output_parameters__Messaging_WebServices_Outbound_Fax_1.0_RequestJobResendResponse"/>
+    <process:hasPrecondition>The system must have a job to resend in the outbound fax web service.</process:hasPrecondition>
+    <process:hasEffect>The system will resend the specified job and provide a response confirming the action.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="FaxMessagingService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#FaxMessagingService_0_SendFax_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#FaxMessagingService_1_GetJobStatus_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#FaxMessagingService_2_RequestJobCDR_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#FaxMessagingService_3_RequestJobResend_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="FaxMessagingService_0_SendFax_Grounding">
+    <grounding:owlsProcess rdf:resource="#FaxMessagingService_0_SendFax_Atomic"/>
+    <grounding:wsdlOperationName>SendFax</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FaxMessagingServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FaxMessagingServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2412_FaxMessagingService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendFaxSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendFaxSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="FaxMessagingService_1_GetJobStatus_Grounding">
+    <grounding:owlsProcess rdf:resource="#FaxMessagingService_1_GetJobStatus_Atomic"/>
+    <grounding:wsdlOperationName>GetJobStatus</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FaxMessagingServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FaxMessagingServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2412_FaxMessagingService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetJobStatusSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetJobStatusSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="FaxMessagingService_2_RequestJobCDR_Grounding">
+    <grounding:owlsProcess rdf:resource="#FaxMessagingService_2_RequestJobCDR_Atomic"/>
+    <grounding:wsdlOperationName>RequestJobCDR</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FaxMessagingServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FaxMessagingServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2412_FaxMessagingService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RequestJobCDRSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RequestJobCDRSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="FaxMessagingService_3_RequestJobResend_Grounding">
+    <grounding:owlsProcess rdf:resource="#FaxMessagingService_3_RequestJobResend_Atomic"/>
+    <grounding:wsdlOperationName>RequestJobResend</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>FaxMessagingServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>FaxMessagingServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2412_FaxMessagingService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>RequestJobResendSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>RequestJobResendSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

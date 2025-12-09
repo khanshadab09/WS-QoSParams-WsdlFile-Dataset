@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="AccountEventHandler">
+    <service:presents rdf:resource="#AccountEventHandler_Profile"/>
+    <service:describedBy rdf:resource="#AccountEventHandler_Composite"/>
+    <service:supports rdf:resource="#AccountEventHandler_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="AccountEventHandler_Profile">
+    <profile:serviceName>AccountEventHandler</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#AccountEventHandler"/>
+    <profile:hasProcess rdf:resource="#AccountEventHandler_0_MessageReceived_Atomic"/>
+    <profile:hasInput rdf:resource="#AccountEventHandler_0_MessageReceived_Atomic_input_parameters__com.esendex.ems.soapinterface_MessageReceived"/>
+    <profile:hasOutput rdf:resource="#AccountEventHandler_0_MessageReceived_Atomic_output_parameters__com.esendex.ems.soapinterface_MessageReceivedResponse"/>
+    <profile:hasPrecondition>The web service receives a message from the client.</profile:hasPrecondition>
+    <profile:hasResult>The web service processes the received message and generates a response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AccountEventHandler_1_MessageEvent_Atomic"/>
+    <profile:hasInput rdf:resource="#AccountEventHandler_1_MessageEvent_Atomic_input_parameters__com.esendex.ems.soapinterface_MessageEvent"/>
+    <profile:hasOutput rdf:resource="#AccountEventHandler_1_MessageEvent_Atomic_output_parameters__com.esendex.ems.soapinterface_MessageEventResponse"/>
+    <profile:hasPrecondition>The input MessageEvent must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will process the MessageEvent and generate a response in the specified MessageEventResponse format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AccountEventHandler_2_SubscriptionEvent_Atomic"/>
+    <profile:hasInput rdf:resource="#AccountEventHandler_2_SubscriptionEvent_Atomic_input_parameters__com.esendex.ems.soapinterface_SubscriptionEvent"/>
+    <profile:hasOutput rdf:resource="#AccountEventHandler_2_SubscriptionEvent_Atomic_output_parameters__com.esendex.ems.soapinterface_SubscriptionEventResponse"/>
+    <profile:hasPrecondition>The input SubscriptionEvent must be provided with all required parameters.</profile:hasPrecondition>
+    <profile:hasResult>The service will process the SubscriptionEvent and generate a corresponding SubscriptionEventResponse as output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#AccountEventHandler_3_MessageError_Atomic"/>
+    <profile:hasInput rdf:resource="#AccountEventHandler_3_MessageError_Atomic_input_parameters__com.esendex.ems.soapinterface_MessageError"/>
+    <profile:hasOutput rdf:resource="#AccountEventHandler_3_MessageError_Atomic_output_parameters__com.esendex.ems.soapinterface_MessageErrorResponse"/>
+    <profile:hasPrecondition>The input message for the MessageError operation must be in the format specified by com.esendex.ems.soapinterface.</profile:hasPrecondition>
+    <profile:hasResult>The output response for the MessageError operation will be in the format specified by com.esendex.ems.soapinterface.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="AccountEventHandler_Composite">
+    <process:composedOf rdf:resource="#AccountEventHandler_0_MessageReceived_Atomic"/>
+    <process:composedOf rdf:resource="#AccountEventHandler_1_MessageEvent_Atomic"/>
+    <process:composedOf rdf:resource="#AccountEventHandler_2_SubscriptionEvent_Atomic"/>
+    <process:composedOf rdf:resource="#AccountEventHandler_3_MessageError_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="AccountEventHandler_0_MessageReceived_Atomic_input_parameters__com.esendex.ems.soapinterface_MessageReceived">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}MessageReceived</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AccountEventHandler_0_MessageReceived_Atomic_output_parameters__com.esendex.ems.soapinterface_MessageReceivedResponse">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}MessageReceivedResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AccountEventHandler_1_MessageEvent_Atomic_input_parameters__com.esendex.ems.soapinterface_MessageEvent">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}MessageEvent</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AccountEventHandler_1_MessageEvent_Atomic_output_parameters__com.esendex.ems.soapinterface_MessageEventResponse">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}MessageEventResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AccountEventHandler_2_SubscriptionEvent_Atomic_input_parameters__com.esendex.ems.soapinterface_SubscriptionEvent">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}SubscriptionEvent</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AccountEventHandler_2_SubscriptionEvent_Atomic_output_parameters__com.esendex.ems.soapinterface_SubscriptionEventResponse">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}SubscriptionEventResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="AccountEventHandler_3_MessageError_Atomic_input_parameters__com.esendex.ems.soapinterface_MessageError">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}MessageError</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="AccountEventHandler_3_MessageError_Atomic_output_parameters__com.esendex.ems.soapinterface_MessageErrorResponse">
+    <process:parameterType>parameters:{com.esendex.ems.soapinterface}MessageErrorResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="AccountEventHandler_0_MessageReceived_Atomic">
+    <process:hasName>MessageReceived</process:hasName>
+    <process:hasInput rdf:resource="#AccountEventHandler_0_MessageReceived_Atomic_input_parameters__com.esendex.ems.soapinterface_MessageReceived"/>
+    <process:hasOutput rdf:resource="#AccountEventHandler_0_MessageReceived_Atomic_output_parameters__com.esendex.ems.soapinterface_MessageReceivedResponse"/>
+    <process:hasPrecondition>The web service receives a message from the client.</process:hasPrecondition>
+    <process:hasEffect>The web service processes the received message and generates a response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AccountEventHandler_1_MessageEvent_Atomic">
+    <process:hasName>MessageEvent</process:hasName>
+    <process:hasInput rdf:resource="#AccountEventHandler_1_MessageEvent_Atomic_input_parameters__com.esendex.ems.soapinterface_MessageEvent"/>
+    <process:hasOutput rdf:resource="#AccountEventHandler_1_MessageEvent_Atomic_output_parameters__com.esendex.ems.soapinterface_MessageEventResponse"/>
+    <process:hasPrecondition>The input MessageEvent must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The operation will process the MessageEvent and generate a response in the specified MessageEventResponse format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AccountEventHandler_2_SubscriptionEvent_Atomic">
+    <process:hasName>SubscriptionEvent</process:hasName>
+    <process:hasInput rdf:resource="#AccountEventHandler_2_SubscriptionEvent_Atomic_input_parameters__com.esendex.ems.soapinterface_SubscriptionEvent"/>
+    <process:hasOutput rdf:resource="#AccountEventHandler_2_SubscriptionEvent_Atomic_output_parameters__com.esendex.ems.soapinterface_SubscriptionEventResponse"/>
+    <process:hasPrecondition>The input SubscriptionEvent must be provided with all required parameters.</process:hasPrecondition>
+    <process:hasEffect>The service will process the SubscriptionEvent and generate a corresponding SubscriptionEventResponse as output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="AccountEventHandler_3_MessageError_Atomic">
+    <process:hasName>MessageError</process:hasName>
+    <process:hasInput rdf:resource="#AccountEventHandler_3_MessageError_Atomic_input_parameters__com.esendex.ems.soapinterface_MessageError"/>
+    <process:hasOutput rdf:resource="#AccountEventHandler_3_MessageError_Atomic_output_parameters__com.esendex.ems.soapinterface_MessageErrorResponse"/>
+    <process:hasPrecondition>The input message for the MessageError operation must be in the format specified by com.esendex.ems.soapinterface.</process:hasPrecondition>
+    <process:hasEffect>The output response for the MessageError operation will be in the format specified by com.esendex.ems.soapinterface.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="AccountEventHandler_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AccountEventHandler_0_MessageReceived_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AccountEventHandler_1_MessageEvent_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AccountEventHandler_2_SubscriptionEvent_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#AccountEventHandler_3_MessageError_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AccountEventHandler_0_MessageReceived_Grounding">
+    <grounding:owlsProcess rdf:resource="#AccountEventHandler_0_MessageReceived_Atomic"/>
+    <grounding:wsdlOperationName>MessageReceived</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AccountEventHandlerSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AccountEventHandlerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2281_AccountEventHandler.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>MessageReceivedSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>MessageReceivedSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AccountEventHandler_1_MessageEvent_Grounding">
+    <grounding:owlsProcess rdf:resource="#AccountEventHandler_1_MessageEvent_Atomic"/>
+    <grounding:wsdlOperationName>MessageEvent</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AccountEventHandlerSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AccountEventHandlerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2281_AccountEventHandler.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>MessageEventSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>MessageEventSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AccountEventHandler_2_SubscriptionEvent_Grounding">
+    <grounding:owlsProcess rdf:resource="#AccountEventHandler_2_SubscriptionEvent_Atomic"/>
+    <grounding:wsdlOperationName>SubscriptionEvent</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AccountEventHandlerSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AccountEventHandlerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2281_AccountEventHandler.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SubscriptionEventSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SubscriptionEventSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="AccountEventHandler_3_MessageError_Grounding">
+    <grounding:owlsProcess rdf:resource="#AccountEventHandler_3_MessageError_Atomic"/>
+    <grounding:wsdlOperationName>MessageError</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AccountEventHandlerSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AccountEventHandlerSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2281_AccountEventHandler.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>MessageErrorSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>MessageErrorSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

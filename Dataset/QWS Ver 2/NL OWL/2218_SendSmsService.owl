@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="SendSmsService">
+    <service:presents rdf:resource="#SendSmsService_Profile"/>
+    <service:describedBy rdf:resource="#SendSmsService_Composite"/>
+    <service:supports rdf:resource="#SendSmsService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="SendSmsService_Profile">
+    <profile:serviceName>SendSmsService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#SendSmsService"/>
+    <profile:hasProcess rdf:resource="#SendSmsService_0_SoapSendSms_Atomic"/>
+    <profile:hasInput rdf:resource="#SendSmsService_0_SoapSendSms_Atomic_input_parameters__http___soap.sendsms.aql.com_SoapSendSms"/>
+    <profile:hasOutput rdf:resource="#SendSmsService_0_SoapSendSms_Atomic_output_parameters__http___soap.sendsms.aql.com_SoapSendSmsResponse"/>
+    <profile:hasPrecondition>The SoapSendSms operation requires a valid SOAP request containing the necessary parameters for sending an SMS via the aql.com service.</profile:hasPrecondition>
+    <profile:hasResult>The SoapSendSms operation returns a SOAP response confirming the status of the SMS sending process through the aql.com service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SendSmsService_1_SoapSendBinarySms_Atomic"/>
+    <profile:hasInput rdf:resource="#SendSmsService_1_SoapSendBinarySms_Atomic_input_parameters__http___soap.sendsms.aql.com_SoapSendBinarySms"/>
+    <profile:hasOutput rdf:resource="#SendSmsService_1_SoapSendBinarySms_Atomic_output_parameters__http___soap.sendsms.aql.com_SoapSendBinarySmsResponse"/>
+    <profile:hasPrecondition>The SoapSendBinarySms operation parameters must be provided in the specified format {http://soap.sendsms.aql.com}.</profile:hasPrecondition>
+    <profile:hasResult>The operation will send a binary SMS message and return a response in the specified format {http://soap.sendsms.aql.com}.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SendSmsService_2_SoapSendWapPush_Atomic"/>
+    <profile:hasInput rdf:resource="#SendSmsService_2_SoapSendWapPush_Atomic_input_parameters__http___soap.sendsms.aql.com_SoapSendWapPush"/>
+    <profile:hasOutput rdf:resource="#SendSmsService_2_SoapSendWapPush_Atomic_output_parameters__http___soap.sendsms.aql.com_SoapSendWapPushResponse"/>
+    <profile:hasPrecondition>The input parameters for SoapSendWapPush must conform to the specified structure defined by http://soap.sendsms.aql.com.</profile:hasPrecondition>
+    <profile:hasResult>The operation SoapSendWapPush will generate a response according to the structure defined by http://soap.sendsms.aql.com.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#SendSmsService_3_SoapSendMMSNot_Atomic"/>
+    <profile:hasInput rdf:resource="#SendSmsService_3_SoapSendMMSNot_Atomic_input_parameters__http___soap.sendsms.aql.com_SoapSendMMSNot"/>
+    <profile:hasOutput rdf:resource="#SendSmsService_3_SoapSendMMSNot_Atomic_output_parameters__http___soap.sendsms.aql.com_SoapSendMMSNotResponse"/>
+    <profile:hasPrecondition>The SoapSendMMSNot operation must be invoked with the specified parameters from http://soap.sendsms.aql.com.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response containing the parameters specified for SoapSendMMSNot from http://soap.sendsms.aql.com.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="SendSmsService_Composite">
+    <process:composedOf rdf:resource="#SendSmsService_0_SoapSendSms_Atomic"/>
+    <process:composedOf rdf:resource="#SendSmsService_1_SoapSendBinarySms_Atomic"/>
+    <process:composedOf rdf:resource="#SendSmsService_2_SoapSendWapPush_Atomic"/>
+    <process:composedOf rdf:resource="#SendSmsService_3_SoapSendMMSNot_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="SendSmsService_0_SoapSendSms_Atomic_input_parameters__http___soap.sendsms.aql.com_SoapSendSms">
+    <process:parameterType>parameters:{http://soap.sendsms.aql.com}SoapSendSms</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SendSmsService_0_SoapSendSms_Atomic_output_parameters__http___soap.sendsms.aql.com_SoapSendSmsResponse">
+    <process:parameterType>parameters:{http://soap.sendsms.aql.com}SoapSendSmsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SendSmsService_1_SoapSendBinarySms_Atomic_input_parameters__http___soap.sendsms.aql.com_SoapSendBinarySms">
+    <process:parameterType>parameters:{http://soap.sendsms.aql.com}SoapSendBinarySms</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SendSmsService_1_SoapSendBinarySms_Atomic_output_parameters__http___soap.sendsms.aql.com_SoapSendBinarySmsResponse">
+    <process:parameterType>parameters:{http://soap.sendsms.aql.com}SoapSendBinarySmsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SendSmsService_2_SoapSendWapPush_Atomic_input_parameters__http___soap.sendsms.aql.com_SoapSendWapPush">
+    <process:parameterType>parameters:{http://soap.sendsms.aql.com}SoapSendWapPush</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SendSmsService_2_SoapSendWapPush_Atomic_output_parameters__http___soap.sendsms.aql.com_SoapSendWapPushResponse">
+    <process:parameterType>parameters:{http://soap.sendsms.aql.com}SoapSendWapPushResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="SendSmsService_3_SoapSendMMSNot_Atomic_input_parameters__http___soap.sendsms.aql.com_SoapSendMMSNot">
+    <process:parameterType>parameters:{http://soap.sendsms.aql.com}SoapSendMMSNot</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="SendSmsService_3_SoapSendMMSNot_Atomic_output_parameters__http___soap.sendsms.aql.com_SoapSendMMSNotResponse">
+    <process:parameterType>parameters:{http://soap.sendsms.aql.com}SoapSendMMSNotResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="SendSmsService_0_SoapSendSms_Atomic">
+    <process:hasName>SoapSendSms</process:hasName>
+    <process:hasInput rdf:resource="#SendSmsService_0_SoapSendSms_Atomic_input_parameters__http___soap.sendsms.aql.com_SoapSendSms"/>
+    <process:hasOutput rdf:resource="#SendSmsService_0_SoapSendSms_Atomic_output_parameters__http___soap.sendsms.aql.com_SoapSendSmsResponse"/>
+    <process:hasPrecondition>The SoapSendSms operation requires a valid SOAP request containing the necessary parameters for sending an SMS via the aql.com service.</process:hasPrecondition>
+    <process:hasEffect>The SoapSendSms operation returns a SOAP response confirming the status of the SMS sending process through the aql.com service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SendSmsService_1_SoapSendBinarySms_Atomic">
+    <process:hasName>SoapSendBinarySms</process:hasName>
+    <process:hasInput rdf:resource="#SendSmsService_1_SoapSendBinarySms_Atomic_input_parameters__http___soap.sendsms.aql.com_SoapSendBinarySms"/>
+    <process:hasOutput rdf:resource="#SendSmsService_1_SoapSendBinarySms_Atomic_output_parameters__http___soap.sendsms.aql.com_SoapSendBinarySmsResponse"/>
+    <process:hasPrecondition>The SoapSendBinarySms operation parameters must be provided in the specified format {http://soap.sendsms.aql.com}.</process:hasPrecondition>
+    <process:hasEffect>The operation will send a binary SMS message and return a response in the specified format {http://soap.sendsms.aql.com}.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SendSmsService_2_SoapSendWapPush_Atomic">
+    <process:hasName>SoapSendWapPush</process:hasName>
+    <process:hasInput rdf:resource="#SendSmsService_2_SoapSendWapPush_Atomic_input_parameters__http___soap.sendsms.aql.com_SoapSendWapPush"/>
+    <process:hasOutput rdf:resource="#SendSmsService_2_SoapSendWapPush_Atomic_output_parameters__http___soap.sendsms.aql.com_SoapSendWapPushResponse"/>
+    <process:hasPrecondition>The input parameters for SoapSendWapPush must conform to the specified structure defined by http://soap.sendsms.aql.com.</process:hasPrecondition>
+    <process:hasEffect>The operation SoapSendWapPush will generate a response according to the structure defined by http://soap.sendsms.aql.com.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="SendSmsService_3_SoapSendMMSNot_Atomic">
+    <process:hasName>SoapSendMMSNot</process:hasName>
+    <process:hasInput rdf:resource="#SendSmsService_3_SoapSendMMSNot_Atomic_input_parameters__http___soap.sendsms.aql.com_SoapSendMMSNot"/>
+    <process:hasOutput rdf:resource="#SendSmsService_3_SoapSendMMSNot_Atomic_output_parameters__http___soap.sendsms.aql.com_SoapSendMMSNotResponse"/>
+    <process:hasPrecondition>The SoapSendMMSNot operation must be invoked with the specified parameters from http://soap.sendsms.aql.com.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response containing the parameters specified for SoapSendMMSNot from http://soap.sendsms.aql.com.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="SendSmsService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SendSmsService_0_SoapSendSms_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SendSmsService_1_SoapSendBinarySms_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SendSmsService_2_SoapSendWapPush_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#SendSmsService_3_SoapSendMMSNot_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SendSmsService_0_SoapSendSms_Grounding">
+    <grounding:owlsProcess rdf:resource="#SendSmsService_0_SoapSendSms_Atomic"/>
+    <grounding:wsdlOperationName>SoapSendSms</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SendSmsSoapHttpBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SendSmsService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2218_SendSmsService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>sendsmsmessage</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>sendsmsresponsemessage</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SendSmsService_1_SoapSendBinarySms_Grounding">
+    <grounding:owlsProcess rdf:resource="#SendSmsService_1_SoapSendBinarySms_Atomic"/>
+    <grounding:wsdlOperationName>SoapSendBinarySms</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SendSmsSoapHttpBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SendSmsService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2218_SendSmsService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>sendbinarysmsmessage</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>sendbinarysmsresponsemessage</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SendSmsService_2_SoapSendWapPush_Grounding">
+    <grounding:owlsProcess rdf:resource="#SendSmsService_2_SoapSendWapPush_Atomic"/>
+    <grounding:wsdlOperationName>SoapSendWapPush</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SendSmsSoapHttpBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SendSmsService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2218_SendSmsService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>sendwappushmessage</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>sendwappushresponsemessage</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="SendSmsService_3_SoapSendMMSNot_Grounding">
+    <grounding:owlsProcess rdf:resource="#SendSmsService_3_SoapSendMMSNot_Atomic"/>
+    <grounding:wsdlOperationName>SoapSendMMSNot</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>SendSmsSoapHttpBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>SendSmsService</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2218_SendSmsService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>sendmmsnotmessage</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>sendmmsnotresponsemessage</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ConfigEditingService">
+    <service:presents rdf:resource="#ConfigEditingService_Profile"/>
+    <service:describedBy rdf:resource="#ConfigEditingService_Composite"/>
+    <service:supports rdf:resource="#ConfigEditingService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ConfigEditingService_Profile">
+    <profile:serviceName>ConfigEditingService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ConfigEditingService"/>
+    <profile:hasProcess rdf:resource="#ConfigEditingService_0_GetSiteConfig_Atomic"/>
+    <profile:hasOutput rdf:resource="#ConfigEditingService_0_GetSiteConfig_Atomic_output_GetSiteConfigResult__urn_schemas-newtelligence-com_dasblog_config-services_siteConfig"/>
+    <profile:hasPrecondition>The service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The site configuration information will be retrieved and returned as the output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ConfigEditingService_1_UpdateSiteConfig_Atomic"/>
+    <profile:hasInput rdf:resource="#ConfigEditingService_1_UpdateSiteConfig_Atomic_input_siteConfig__urn_newtelligence-com_dasblog_config_siteConfig"/>
+    <profile:hasPrecondition>The site configuration specified by siteConfig must exist in the system.</profile:hasPrecondition>
+    <profile:hasResult>The site configuration is updated with the new values provided in siteConfig.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ConfigEditingService_2_EnumBlogrolls_Atomic"/>
+    <profile:hasOutput rdf:resource="#ConfigEditingService_2_EnumBlogrolls_Atomic_output_EnumBlogrollsResult__urn_schemas-newtelligence-com_dasblog_config-services_EnumBlogrollsResult"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a list of blogrolls in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ConfigEditingService_3_GetBlogroll_Atomic"/>
+    <profile:hasInput rdf:resource="#ConfigEditingService_3_GetBlogroll_Atomic_input_blogRollName__urn_schemas-newtelligence-com_dasblog_config-services_blogRollName"/>
+    <profile:hasOutput rdf:resource="#ConfigEditingService_3_GetBlogroll_Atomic_output_GetBlogrollResult__urn_schemas-newtelligence-com_dasblog_config-services_GetBlogrollResult"/>
+    <profile:hasPrecondition>The blogRollName must be provided in the input for the GetBlogroll operation.</profile:hasPrecondition>
+    <profile:hasResult>The GetBlogroll operation will return a GetBlogrollResult based on the provided blogRollName.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ConfigEditingService_4_PostBlogroll_Atomic"/>
+    <profile:hasInput rdf:resource="#ConfigEditingService_4_PostBlogroll_Atomic_input_blogRollName__urn_schemas-newtelligence-com_dasblog_config-services_blogRollName"/>
+    <profile:hasInput rdf:resource="#ConfigEditingService_4_PostBlogroll_Atomic_input_blogRoll__urn_schemas-newtelligence-com_dasblog_config-services_blogRoll"/>
+    <profile:hasPrecondition>The blogRollName and blogRoll inputs must conform to the specified schema {urn:schemas-newtelligence-com:dasblog:config-services}.</profile:hasPrecondition>
+    <profile:hasResult>The PostBlogroll operation will successfully create a new blogroll entry with the provided blogRollName and blogRoll inputs.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ConfigEditingService_5_GetSiteConfig_Atomic"/>
+    <profile:hasOutput rdf:resource="#ConfigEditingService_5_GetSiteConfig_Atomic_output_Body__urn_newtelligence-com_dasblog_config_SiteConfig"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The SiteConfig information will be retrieved and returned in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ConfigEditingService_6_EnumBlogrolls_Atomic"/>
+    <profile:hasOutput rdf:resource="#ConfigEditingService_6_EnumBlogrolls_Atomic_output_Body__urn_schemas-newtelligence-com_dasblog_config-services_ArrayOfString"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of blogroll URLs in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ConfigEditingService_7_GetBlogroll_Atomic"/>
+    <profile:hasInput rdf:resource="#ConfigEditingService_7_GetBlogroll_Atomic_input_blogRollName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#ConfigEditingService_7_GetBlogroll_Atomic_output_Body_unknown"/>
+    <profile:hasPrecondition>The blogroll name provided must be a valid string in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>Retrieves the blogroll data associated with the provided blogroll name.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ConfigEditingService_Composite">
+    <process:composedOf rdf:resource="#ConfigEditingService_0_GetSiteConfig_Atomic"/>
+    <process:composedOf rdf:resource="#ConfigEditingService_1_UpdateSiteConfig_Atomic"/>
+    <process:composedOf rdf:resource="#ConfigEditingService_2_EnumBlogrolls_Atomic"/>
+    <process:composedOf rdf:resource="#ConfigEditingService_3_GetBlogroll_Atomic"/>
+    <process:composedOf rdf:resource="#ConfigEditingService_4_PostBlogroll_Atomic"/>
+    <process:composedOf rdf:resource="#ConfigEditingService_5_GetSiteConfig_Atomic"/>
+    <process:composedOf rdf:resource="#ConfigEditingService_6_EnumBlogrolls_Atomic"/>
+    <process:composedOf rdf:resource="#ConfigEditingService_7_GetBlogroll_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Output rdf:ID="ConfigEditingService_0_GetSiteConfig_Atomic_output_GetSiteConfigResult__urn_schemas-newtelligence-com_dasblog_config-services_siteConfig">
+    <process:parameterType>GetSiteConfigResult:{urn:schemas-newtelligence-com:dasblog:config-services}siteConfig</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ConfigEditingService_1_UpdateSiteConfig_Atomic_input_siteConfig__urn_newtelligence-com_dasblog_config_siteConfig">
+    <process:parameterType>siteConfig:{urn:newtelligence-com:dasblog:config}siteConfig</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ConfigEditingService_2_EnumBlogrolls_Atomic_output_EnumBlogrollsResult__urn_schemas-newtelligence-com_dasblog_config-services_EnumBlogrollsResult">
+    <process:parameterType>EnumBlogrollsResult:{urn:schemas-newtelligence-com:dasblog:config-services}EnumBlogrollsResult</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ConfigEditingService_3_GetBlogroll_Atomic_input_blogRollName__urn_schemas-newtelligence-com_dasblog_config-services_blogRollName">
+    <process:parameterType>blogRollName:{urn:schemas-newtelligence-com:dasblog:config-services}blogRollName</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ConfigEditingService_3_GetBlogroll_Atomic_output_GetBlogrollResult__urn_schemas-newtelligence-com_dasblog_config-services_GetBlogrollResult">
+    <process:parameterType>GetBlogrollResult:{urn:schemas-newtelligence-com:dasblog:config-services}GetBlogrollResult</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ConfigEditingService_4_PostBlogroll_Atomic_input_blogRollName__urn_schemas-newtelligence-com_dasblog_config-services_blogRollName">
+    <process:parameterType>blogRollName:{urn:schemas-newtelligence-com:dasblog:config-services}blogRollName</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="ConfigEditingService_4_PostBlogroll_Atomic_input_blogRoll__urn_schemas-newtelligence-com_dasblog_config-services_blogRoll">
+    <process:parameterType>blogRoll:{urn:schemas-newtelligence-com:dasblog:config-services}blogRoll</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ConfigEditingService_5_GetSiteConfig_Atomic_output_Body__urn_newtelligence-com_dasblog_config_SiteConfig">
+    <process:parameterType>Body:{urn:newtelligence-com:dasblog:config}SiteConfig</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="ConfigEditingService_6_EnumBlogrolls_Atomic_output_Body__urn_schemas-newtelligence-com_dasblog_config-services_ArrayOfString">
+    <process:parameterType>Body:{urn:schemas-newtelligence-com:dasblog:config-services}ArrayOfString</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ConfigEditingService_7_GetBlogroll_Atomic_input_blogRollName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>blogRollName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ConfigEditingService_7_GetBlogroll_Atomic_output_Body_unknown">
+    <process:parameterType>Body:unknown</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ConfigEditingService_0_GetSiteConfig_Atomic">
+    <process:hasName>GetSiteConfig</process:hasName>
+    <process:hasOutput rdf:resource="#ConfigEditingService_0_GetSiteConfig_Atomic_output_GetSiteConfigResult__urn_schemas-newtelligence-com_dasblog_config-services_siteConfig"/>
+    <process:hasPrecondition>The service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The site configuration information will be retrieved and returned as the output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ConfigEditingService_1_UpdateSiteConfig_Atomic">
+    <process:hasName>UpdateSiteConfig</process:hasName>
+    <process:hasInput rdf:resource="#ConfigEditingService_1_UpdateSiteConfig_Atomic_input_siteConfig__urn_newtelligence-com_dasblog_config_siteConfig"/>
+    <process:hasPrecondition>The site configuration specified by siteConfig must exist in the system.</process:hasPrecondition>
+    <process:hasEffect>The site configuration is updated with the new values provided in siteConfig.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ConfigEditingService_2_EnumBlogrolls_Atomic">
+    <process:hasName>EnumBlogrolls</process:hasName>
+    <process:hasOutput rdf:resource="#ConfigEditingService_2_EnumBlogrolls_Atomic_output_EnumBlogrollsResult__urn_schemas-newtelligence-com_dasblog_config-services_EnumBlogrollsResult"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a list of blogrolls in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ConfigEditingService_3_GetBlogroll_Atomic">
+    <process:hasName>GetBlogroll</process:hasName>
+    <process:hasInput rdf:resource="#ConfigEditingService_3_GetBlogroll_Atomic_input_blogRollName__urn_schemas-newtelligence-com_dasblog_config-services_blogRollName"/>
+    <process:hasOutput rdf:resource="#ConfigEditingService_3_GetBlogroll_Atomic_output_GetBlogrollResult__urn_schemas-newtelligence-com_dasblog_config-services_GetBlogrollResult"/>
+    <process:hasPrecondition>The blogRollName must be provided in the input for the GetBlogroll operation.</process:hasPrecondition>
+    <process:hasEffect>The GetBlogroll operation will return a GetBlogrollResult based on the provided blogRollName.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ConfigEditingService_4_PostBlogroll_Atomic">
+    <process:hasName>PostBlogroll</process:hasName>
+    <process:hasInput rdf:resource="#ConfigEditingService_4_PostBlogroll_Atomic_input_blogRollName__urn_schemas-newtelligence-com_dasblog_config-services_blogRollName"/>
+    <process:hasInput rdf:resource="#ConfigEditingService_4_PostBlogroll_Atomic_input_blogRoll__urn_schemas-newtelligence-com_dasblog_config-services_blogRoll"/>
+    <process:hasPrecondition>The blogRollName and blogRoll inputs must conform to the specified schema {urn:schemas-newtelligence-com:dasblog:config-services}.</process:hasPrecondition>
+    <process:hasEffect>The PostBlogroll operation will successfully create a new blogroll entry with the provided blogRollName and blogRoll inputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ConfigEditingService_5_GetSiteConfig_Atomic">
+    <process:hasName>GetSiteConfig</process:hasName>
+    <process:hasOutput rdf:resource="#ConfigEditingService_5_GetSiteConfig_Atomic_output_Body__urn_newtelligence-com_dasblog_config_SiteConfig"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The SiteConfig information will be retrieved and returned in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ConfigEditingService_6_EnumBlogrolls_Atomic">
+    <process:hasName>EnumBlogrolls</process:hasName>
+    <process:hasOutput rdf:resource="#ConfigEditingService_6_EnumBlogrolls_Atomic_output_Body__urn_schemas-newtelligence-com_dasblog_config-services_ArrayOfString"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of blogroll URLs in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ConfigEditingService_7_GetBlogroll_Atomic">
+    <process:hasName>GetBlogroll</process:hasName>
+    <process:hasInput rdf:resource="#ConfigEditingService_7_GetBlogroll_Atomic_input_blogRollName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#ConfigEditingService_7_GetBlogroll_Atomic_output_Body_unknown"/>
+    <process:hasPrecondition>The blogroll name provided must be a valid string in the specified format.</process:hasPrecondition>
+    <process:hasEffect>Retrieves the blogroll data associated with the provided blogroll name.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ConfigEditingService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ConfigEditingService_0_GetSiteConfig_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ConfigEditingService_1_UpdateSiteConfig_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ConfigEditingService_2_EnumBlogrolls_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ConfigEditingService_3_GetBlogroll_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ConfigEditingService_4_PostBlogroll_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ConfigEditingService_5_GetSiteConfig_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ConfigEditingService_6_EnumBlogrolls_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ConfigEditingService_7_GetBlogroll_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ConfigEditingService_0_GetSiteConfig_Grounding">
+    <grounding:owlsProcess rdf:resource="#ConfigEditingService_0_GetSiteConfig_Atomic"/>
+    <grounding:wsdlOperationName>GetSiteConfig</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ConfigEditingServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ConfigEditingServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2109_ConfigEditingService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSiteConfigSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSiteConfigSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ConfigEditingService_1_UpdateSiteConfig_Grounding">
+    <grounding:owlsProcess rdf:resource="#ConfigEditingService_1_UpdateSiteConfig_Atomic"/>
+    <grounding:wsdlOperationName>UpdateSiteConfig</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ConfigEditingServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ConfigEditingServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2109_ConfigEditingService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>UpdateSiteConfigSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>UpdateSiteConfigSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ConfigEditingService_2_EnumBlogrolls_Grounding">
+    <grounding:owlsProcess rdf:resource="#ConfigEditingService_2_EnumBlogrolls_Atomic"/>
+    <grounding:wsdlOperationName>EnumBlogrolls</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ConfigEditingServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ConfigEditingServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2109_ConfigEditingService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>EnumBlogrollsSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>EnumBlogrollsSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ConfigEditingService_3_GetBlogroll_Grounding">
+    <grounding:owlsProcess rdf:resource="#ConfigEditingService_3_GetBlogroll_Atomic"/>
+    <grounding:wsdlOperationName>GetBlogroll</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ConfigEditingServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ConfigEditingServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2109_ConfigEditingService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBlogrollSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBlogrollSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ConfigEditingService_4_PostBlogroll_Grounding">
+    <grounding:owlsProcess rdf:resource="#ConfigEditingService_4_PostBlogroll_Atomic"/>
+    <grounding:wsdlOperationName>PostBlogroll</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ConfigEditingServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ConfigEditingServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2109_ConfigEditingService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PostBlogrollSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PostBlogrollSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ConfigEditingService_5_GetSiteConfig_Grounding">
+    <grounding:owlsProcess rdf:resource="#ConfigEditingService_5_GetSiteConfig_Atomic"/>
+    <grounding:wsdlOperationName>GetSiteConfig</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ConfigEditingServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ConfigEditingServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2109_ConfigEditingService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetSiteConfigHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetSiteConfigHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ConfigEditingService_6_EnumBlogrolls_Grounding">
+    <grounding:owlsProcess rdf:resource="#ConfigEditingService_6_EnumBlogrolls_Atomic"/>
+    <grounding:wsdlOperationName>EnumBlogrolls</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ConfigEditingServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ConfigEditingServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2109_ConfigEditingService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>EnumBlogrollsHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>EnumBlogrollsHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ConfigEditingService_7_GetBlogroll_Grounding">
+    <grounding:owlsProcess rdf:resource="#ConfigEditingService_7_GetBlogroll_Atomic"/>
+    <grounding:wsdlOperationName>GetBlogroll</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ConfigEditingServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ConfigEditingServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/2109_ConfigEditingService.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetBlogrollHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetBlogrollHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
