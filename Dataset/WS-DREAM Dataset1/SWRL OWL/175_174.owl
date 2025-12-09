@@ -1,0 +1,811 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="wsCFP">
+    <service:presents rdf:resource="#wsCFP_Profile"/>
+    <service:describedBy rdf:resource="#wsCFP_Composite"/>
+    <service:supports rdf:resource="#wsCFP_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="wsCFP_Profile">
+    <profile:serviceName>wsCFP</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#wsCFP"/>
+    <profile:hasProcess rdf:resource="#wsCFP_0_autenticaUsuarioExterno_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_0_autenticaUsuarioExterno_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_autenticaUsuarioExterno"/>
+    <profile:hasOutput rdf:resource="#wsCFP_0_autenticaUsuarioExterno_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_autenticaUsuarioExternoResponse"/>
+    <profile:hasPrecondition>The external user must provide valid authentication credentials to access the external authentication service.</profile:hasPrecondition>
+    <profile:hasResult>The external user is successfully authenticated and granted access to the external system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_1_transmitirNotasFiscais_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_1_transmitirNotasFiscais_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_transmitirNotasFiscais"/>
+    <profile:hasOutput rdf:resource="#wsCFP_1_transmitirNotasFiscais_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_transmitirNotasFiscaisResponse"/>
+    <profile:hasPrecondition>The system has valid electronic invoices ready for transmission.</profile:hasPrecondition>
+    <profile:hasResult>The electronic invoices are successfully transmitted to the SEFAZ server in Bahia, Brazil.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_2_imprimirNotaFiscal_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_2_imprimirNotaFiscal_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_imprimirNotaFiscal"/>
+    <profile:hasOutput rdf:resource="#wsCFP_2_imprimirNotaFiscal_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_imprimirNotaFiscalResponse"/>
+    <profile:hasPrecondition>The web service endpoint at compralegal.sefaz.ba.gov.br must be accessible and properly configured.</profile:hasPrecondition>
+    <profile:hasResult>The operation imprimirNotaFiscal will be executed, generating a response in the form of imprimirNotaFiscalResponse from the same endpoint.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_3_obterNotaFiscal_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_3_obterNotaFiscal_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterNotaFiscal"/>
+    <profile:hasOutput rdf:resource="#wsCFP_3_obterNotaFiscal_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterNotaFiscalResponse"/>
+    <profile:hasPrecondition>The web service endpoint compralegal.sefaz.ba.gov.br must be accessible and functional.</profile:hasPrecondition>
+    <profile:hasResult>The operation obterNotaFiscal will retrieve a valid nota fiscal from the SEFAZ Bahia web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_4_validacaoCredito_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_4_validacaoCredito_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacaoCredito"/>
+    <profile:hasOutput rdf:resource="#wsCFP_4_validacaoCredito_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacaoCreditoResponse"/>
+    <profile:hasPrecondition>The input parameters for the web service validacaoCredito must be provided in the specified format from compralegal.sefaz.ba.gov.br.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for the web service validacaoCreditoResponse will be generated in the specified format for compralegal.sefaz.ba.gov.br.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_5_validacaoSituacaoContribuinte_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_5_validacaoSituacaoContribuinte_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacaoSituacaoContribuinte"/>
+    <profile:hasOutput rdf:resource="#wsCFP_5_validacaoSituacaoContribuinte_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacaoSituacaoContribuinteResponse"/>
+    <profile:hasPrecondition>The input parameters for the operation validacaoSituacaoContribuinte must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for the operation validacaoSituacaoContribuinteResponse will be returned according to the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_6_obterMotivoCancelamento_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_6_obterMotivoCancelamento_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterMotivoCancelamento"/>
+    <profile:hasOutput rdf:resource="#wsCFP_6_obterMotivoCancelamento_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterMotivoCancelamentoResponse"/>
+    <profile:hasPrecondition>The web service endpoint compralegal.sefaz.ba.gov.br must be accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The response containing the cancellation reason will be returned upon successful invocation of the obterMotivoCancelamento operation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_7_consultaNotasFiscais_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_7_consultaNotasFiscais_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_consultaNotasFiscais"/>
+    <profile:hasOutput rdf:resource="#wsCFP_7_consultaNotasFiscais_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_consultaNotasFiscaisResponse"/>
+    <profile:hasPrecondition>The web service endpoint compralegal.sefaz.ba.gov.br must be accessible and properly configured to receive the consultaNotasFiscais request.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a consultaNotasFiscaisResponse containing the requested information from the SEFAZ Bahia.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_8_cancelarNotaFiscal_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_8_cancelarNotaFiscal_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_cancelarNotaFiscal"/>
+    <profile:hasOutput rdf:resource="#wsCFP_8_cancelarNotaFiscal_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_cancelarNotaFiscalResponse"/>
+    <profile:hasPrecondition>The system must have a valid nota fiscal to cancel.</profile:hasPrecondition>
+    <profile:hasResult>The nota fiscal will be successfully canceled in the SEFAZ Bahia system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_9_obterParametroImpressao_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_9_obterParametroImpressao_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterParametroImpressao"/>
+    <profile:hasOutput rdf:resource="#wsCFP_9_obterParametroImpressao_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterParametroImpressaoResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameters for obtaining the printing parameter must be correctly formatted.</profile:hasPrecondition>
+    <profile:hasResult>The response will contain the printing parameter information retrieved from the specified web service endpoint.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_10_VerificaLiberacaoFornecedor_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_10_VerificaLiberacaoFornecedor_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_VerificaLiberacaoFornecedor"/>
+    <profile:hasOutput rdf:resource="#wsCFP_10_VerificaLiberacaoFornecedor_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_VerificaLiberacaoFornecedorResponse"/>
+    <profile:hasPrecondition>The web service must receive a request to verify the release of a supplier on the SEFAZ Bahia website.</profile:hasPrecondition>
+    <profile:hasResult>The web service will provide a response confirming the verification of the supplier's release on the SEFAZ Bahia website.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_11_obterversao_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_11_obterversao_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterversao"/>
+    <profile:hasOutput rdf:resource="#wsCFP_11_obterversao_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterversaoResponse"/>
+    <profile:hasPrecondition>The web service endpoint compralegal.sefaz.ba.gov.br must be accessible and functioning properly.</profile:hasPrecondition>
+    <profile:hasResult>The response containing the version information for the web service operation obterversao will be returned successfully.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_12_consultaNotasFiscais_V02_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_12_consultaNotasFiscais_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_consultaNotasFiscais_V02"/>
+    <profile:hasOutput rdf:resource="#wsCFP_12_consultaNotasFiscais_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_consultaNotasFiscais_V02Response"/>
+    <profile:hasPrecondition>The user must provide valid input parameters for the consultaNotasFiscais_V02 operation.</profile:hasPrecondition>
+    <profile:hasResult>The system will return a response containing information related to the requested fiscal notes.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_13_imprimirNotaFiscal_V02_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_13_imprimirNotaFiscal_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_imprimirNotaFiscal_V02"/>
+    <profile:hasOutput rdf:resource="#wsCFP_13_imprimirNotaFiscal_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_imprimirNotaFiscal_V02Response"/>
+    <profile:hasPrecondition>The web service endpoint for imprimirNotaFiscal_V02 is accessible and the input parameters conform to the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The imprimirNotaFiscal_V02Response containing the requested nota fiscal is generated and returned successfully.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_14_transmitirNotasFiscais_V02_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_14_transmitirNotasFiscais_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_transmitirNotasFiscais_V02"/>
+    <profile:hasOutput rdf:resource="#wsCFP_14_transmitirNotasFiscais_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_transmitirNotasFiscais_V02Response"/>
+    <profile:hasPrecondition>The web service endpoint at compralegal.sefaz.ba.gov.br for transmitting fiscal notes V02 is accessible and properly configured.</profile:hasPrecondition>
+    <profile:hasResult>The response from the web service endpoint at compralegal.sefaz.ba.gov.br for transmitting fiscal notes V02 is successfully received.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_15_obterMotivoCancelamento_V02_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_15_obterMotivoCancelamento_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterMotivoCancelamento_V02"/>
+    <profile:hasOutput rdf:resource="#wsCFP_15_obterMotivoCancelamento_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterMotivoCancelamento_V02Response"/>
+    <profile:hasPrecondition>The web service endpoint compralegal.sefaz.ba.gov.br must be accessible and properly configured to receive requests for obterMotivoCancelamento_V02.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the cancellation reason when the obterMotivoCancelamento_V02 operation is successfully invoked.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_16_cancelarNotaFiscal_V02_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_16_cancelarNotaFiscal_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_cancelarNotaFiscal_V02"/>
+    <profile:hasOutput rdf:resource="#wsCFP_16_cancelarNotaFiscal_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_cancelarNotaFiscal_V02Response"/>
+    <profile:hasPrecondition>The web service must receive a valid request to cancel a fiscal note in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will process the request and return a response confirming the cancellation of the fiscal note.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_17_VerificaLiberacaoFornecedor_V02_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_17_VerificaLiberacaoFornecedor_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_VerificaLiberacaoFornecedor_V02"/>
+    <profile:hasOutput rdf:resource="#wsCFP_17_VerificaLiberacaoFornecedor_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_VerificaLiberacaoFornecedor_V02Response"/>
+    <profile:hasPrecondition>The web service VerificaLiberacaoFornecedor_V02 is accessible and properly configured.</profile:hasPrecondition>
+    <profile:hasResult>The VerificaLiberacaoFornecedor_V02Response containing the verification result of the supplier's release is returned.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_18_validacao_situacao_contribuinte_V02_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_18_validacao_situacao_contribuinte_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacao_situacao_contribuinte_V02"/>
+    <profile:hasOutput rdf:resource="#wsCFP_18_validacao_situacao_contribuinte_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacao_situacao_contribuinte_V02Response"/>
+    <profile:hasPrecondition>The input parameters for validacao_situacao_contribuinte_V02 are correctly formatted and comply with the expected data types.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for validacao_situacao_contribuinte_V02Response are generated with the validated information regarding the taxpayer's situation.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_19_validacaoSituacaoContribuinte_V02_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_19_validacaoSituacaoContribuinte_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacaoSituacaoContribuinte_V02"/>
+    <profile:hasOutput rdf:resource="#wsCFP_19_validacaoSituacaoContribuinte_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacaoSituacaoContribuinte_V02Response"/>
+    <profile:hasPrecondition>The input parameters for the operation validacaoSituacaoContribuinte_V02 are correctly formatted according to the specified schema.</profile:hasPrecondition>
+    <profile:hasResult>The output parameters for the operation validacaoSituacaoContribuinte_V02Response are generated based on the input parameters and comply with the expected response format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_20_inclui_nota_nao_transmitida_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_20_inclui_nota_nao_transmitida_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_inclui_nota_nao_transmitida"/>
+    <profile:hasOutput rdf:resource="#wsCFP_20_inclui_nota_nao_transmitida_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_inclui_nota_nao_transmitidaResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the necessary authentication credentials must be provided.</profile:hasPrecondition>
+    <profile:hasResult>The operation "inclui_nota_nao_transmitida" will be executed, potentially adding a non-transmitted note to the system.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_21_incluir_controle_nf_sem_autenticacao_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_21_incluir_controle_nf_sem_autenticacao_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_incluir_controle_nf_sem_autenticacao"/>
+    <profile:hasOutput rdf:resource="#wsCFP_21_incluir_controle_nf_sem_autenticacao_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_incluir_controle_nf_sem_autenticacaoResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and properly configured to receive requests for including non-authenticated invoice control in the system.</profile:hasPrecondition>
+    <profile:hasResult>The web service will process the request to include non-authenticated invoice control and provide a response confirming the operation completion.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_22_verifica_usuario_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_22_verifica_usuario_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_verifica_usuario"/>
+    <profile:hasOutput rdf:resource="#wsCFP_22_verifica_usuario_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_verifica_usuarioResponse"/>
+    <profile:hasPrecondition>The web service endpoint compralegal.sefaz.ba.gov.br must be accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The verifica_usuario operation will be executed and a response will be returned from the web service endpoint compralegal.sefaz.ba.gov.br.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_23_validacaoCredito_V02_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_23_validacaoCredito_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacaoCredito_V02"/>
+    <profile:hasOutput rdf:resource="#wsCFP_23_validacaoCredito_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacaoCredito_V02Response"/>
+    <profile:hasPrecondition>The input parameters for the operation validacaoCredito_V02 must adhere to the semantic description provided by compralegal.sefaz.ba.gov.br.</profile:hasPrecondition>
+    <profile:hasResult>The operation validacaoCredito_V02 will return output parameters according to the semantic description provided by compralegal.sefaz.ba.gov.br.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#wsCFP_24_autenticaUsuarioSEFAZ_Atomic"/>
+    <profile:hasInput rdf:resource="#wsCFP_24_autenticaUsuarioSEFAZ_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_autenticaUsuarioSEFAZ"/>
+    <profile:hasOutput rdf:resource="#wsCFP_24_autenticaUsuarioSEFAZ_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_autenticaUsuarioSEFAZResponse"/>
+    <profile:hasPrecondition>The user must provide valid credentials to authenticate with the SEFAZ system.</profile:hasPrecondition>
+    <profile:hasResult>The SEFAZ system will verify the provided credentials and return a response indicating successful or unsuccessful authentication.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="wsCFP_Composite">
+    <process:composedOf rdf:resource="#wsCFP_0_autenticaUsuarioExterno_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_1_transmitirNotasFiscais_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_2_imprimirNotaFiscal_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_3_obterNotaFiscal_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_4_validacaoCredito_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_5_validacaoSituacaoContribuinte_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_6_obterMotivoCancelamento_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_7_consultaNotasFiscais_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_8_cancelarNotaFiscal_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_9_obterParametroImpressao_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_10_VerificaLiberacaoFornecedor_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_11_obterversao_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_12_consultaNotasFiscais_V02_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_13_imprimirNotaFiscal_V02_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_14_transmitirNotasFiscais_V02_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_15_obterMotivoCancelamento_V02_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_16_cancelarNotaFiscal_V02_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_17_VerificaLiberacaoFornecedor_V02_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_18_validacao_situacao_contribuinte_V02_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_19_validacaoSituacaoContribuinte_V02_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_20_inclui_nota_nao_transmitida_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_21_incluir_controle_nf_sem_autenticacao_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_22_verifica_usuario_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_23_validacaoCredito_V02_Atomic"/>
+    <process:composedOf rdf:resource="#wsCFP_24_autenticaUsuarioSEFAZ_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="wsCFP_0_autenticaUsuarioExterno_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_autenticaUsuarioExterno">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}autenticaUsuarioExterno</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_0_autenticaUsuarioExterno_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_autenticaUsuarioExternoResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}autenticaUsuarioExternoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_1_transmitirNotasFiscais_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_transmitirNotasFiscais">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}transmitirNotasFiscais</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_1_transmitirNotasFiscais_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_transmitirNotasFiscaisResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}transmitirNotasFiscaisResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_2_imprimirNotaFiscal_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_imprimirNotaFiscal">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}imprimirNotaFiscal</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_2_imprimirNotaFiscal_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_imprimirNotaFiscalResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}imprimirNotaFiscalResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_3_obterNotaFiscal_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterNotaFiscal">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}obterNotaFiscal</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_3_obterNotaFiscal_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterNotaFiscalResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}obterNotaFiscalResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_4_validacaoCredito_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacaoCredito">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}validacaoCredito</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_4_validacaoCredito_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacaoCreditoResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}validacaoCreditoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_5_validacaoSituacaoContribuinte_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacaoSituacaoContribuinte">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}validacaoSituacaoContribuinte</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_5_validacaoSituacaoContribuinte_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacaoSituacaoContribuinteResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}validacaoSituacaoContribuinteResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_6_obterMotivoCancelamento_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterMotivoCancelamento">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}obterMotivoCancelamento</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_6_obterMotivoCancelamento_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterMotivoCancelamentoResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}obterMotivoCancelamentoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_7_consultaNotasFiscais_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_consultaNotasFiscais">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}consultaNotasFiscais</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_7_consultaNotasFiscais_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_consultaNotasFiscaisResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}consultaNotasFiscaisResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_8_cancelarNotaFiscal_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_cancelarNotaFiscal">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}cancelarNotaFiscal</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_8_cancelarNotaFiscal_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_cancelarNotaFiscalResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}cancelarNotaFiscalResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_9_obterParametroImpressao_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterParametroImpressao">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}obterParametroImpressao</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_9_obterParametroImpressao_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterParametroImpressaoResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}obterParametroImpressaoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_10_VerificaLiberacaoFornecedor_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_VerificaLiberacaoFornecedor">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}VerificaLiberacaoFornecedor</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_10_VerificaLiberacaoFornecedor_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_VerificaLiberacaoFornecedorResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}VerificaLiberacaoFornecedorResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_11_obterversao_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterversao">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}obterversao</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_11_obterversao_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterversaoResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}obterversaoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_12_consultaNotasFiscais_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_consultaNotasFiscais_V02">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}consultaNotasFiscais_V02</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_12_consultaNotasFiscais_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_consultaNotasFiscais_V02Response">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}consultaNotasFiscais_V02Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_13_imprimirNotaFiscal_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_imprimirNotaFiscal_V02">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}imprimirNotaFiscal_V02</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_13_imprimirNotaFiscal_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_imprimirNotaFiscal_V02Response">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}imprimirNotaFiscal_V02Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_14_transmitirNotasFiscais_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_transmitirNotasFiscais_V02">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}transmitirNotasFiscais_V02</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_14_transmitirNotasFiscais_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_transmitirNotasFiscais_V02Response">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}transmitirNotasFiscais_V02Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_15_obterMotivoCancelamento_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterMotivoCancelamento_V02">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}obterMotivoCancelamento_V02</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_15_obterMotivoCancelamento_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterMotivoCancelamento_V02Response">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}obterMotivoCancelamento_V02Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_16_cancelarNotaFiscal_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_cancelarNotaFiscal_V02">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}cancelarNotaFiscal_V02</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_16_cancelarNotaFiscal_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_cancelarNotaFiscal_V02Response">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}cancelarNotaFiscal_V02Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_17_VerificaLiberacaoFornecedor_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_VerificaLiberacaoFornecedor_V02">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}VerificaLiberacaoFornecedor_V02</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_17_VerificaLiberacaoFornecedor_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_VerificaLiberacaoFornecedor_V02Response">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}VerificaLiberacaoFornecedor_V02Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_18_validacao_situacao_contribuinte_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacao_situacao_contribuinte_V02">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}validacao_situacao_contribuinte_V02</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_18_validacao_situacao_contribuinte_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacao_situacao_contribuinte_V02Response">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}validacao_situacao_contribuinte_V02Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_19_validacaoSituacaoContribuinte_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacaoSituacaoContribuinte_V02">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}validacaoSituacaoContribuinte_V02</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_19_validacaoSituacaoContribuinte_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacaoSituacaoContribuinte_V02Response">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}validacaoSituacaoContribuinte_V02Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_20_inclui_nota_nao_transmitida_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_inclui_nota_nao_transmitida">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}inclui_nota_nao_transmitida</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_20_inclui_nota_nao_transmitida_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_inclui_nota_nao_transmitidaResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}inclui_nota_nao_transmitidaResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_21_incluir_controle_nf_sem_autenticacao_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_incluir_controle_nf_sem_autenticacao">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}incluir_controle_nf_sem_autenticacao</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_21_incluir_controle_nf_sem_autenticacao_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_incluir_controle_nf_sem_autenticacaoResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}incluir_controle_nf_sem_autenticacaoResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_22_verifica_usuario_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_verifica_usuario">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}verifica_usuario</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_22_verifica_usuario_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_verifica_usuarioResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}verifica_usuarioResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_23_validacaoCredito_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacaoCredito_V02">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}validacaoCredito_V02</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_23_validacaoCredito_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacaoCredito_V02Response">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}validacaoCredito_V02Response</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="wsCFP_24_autenticaUsuarioSEFAZ_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_autenticaUsuarioSEFAZ">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}autenticaUsuarioSEFAZ</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="wsCFP_24_autenticaUsuarioSEFAZ_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_autenticaUsuarioSEFAZResponse">
+    <process:parameterType>parameters:{compralegal.sefaz.ba.gov.br}autenticaUsuarioSEFAZResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="wsCFP_0_autenticaUsuarioExterno_Atomic">
+    <process:hasName>autenticaUsuarioExterno</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_0_autenticaUsuarioExterno_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_autenticaUsuarioExterno"/>
+    <process:hasOutput rdf:resource="#wsCFP_0_autenticaUsuarioExterno_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_autenticaUsuarioExternoResponse"/>
+    <process:hasPrecondition>The external user must provide valid authentication credentials to access the external authentication service.</process:hasPrecondition>
+    <process:hasEffect>The external user is successfully authenticated and granted access to the external system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_1_transmitirNotasFiscais_Atomic">
+    <process:hasName>transmitirNotasFiscais</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_1_transmitirNotasFiscais_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_transmitirNotasFiscais"/>
+    <process:hasOutput rdf:resource="#wsCFP_1_transmitirNotasFiscais_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_transmitirNotasFiscaisResponse"/>
+    <process:hasPrecondition>The system has valid electronic invoices ready for transmission.</process:hasPrecondition>
+    <process:hasEffect>The electronic invoices are successfully transmitted to the SEFAZ server in Bahia, Brazil.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_2_imprimirNotaFiscal_Atomic">
+    <process:hasName>imprimirNotaFiscal</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_2_imprimirNotaFiscal_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_imprimirNotaFiscal"/>
+    <process:hasOutput rdf:resource="#wsCFP_2_imprimirNotaFiscal_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_imprimirNotaFiscalResponse"/>
+    <process:hasPrecondition>The web service endpoint at compralegal.sefaz.ba.gov.br must be accessible and properly configured.</process:hasPrecondition>
+    <process:hasEffect>The operation imprimirNotaFiscal will be executed, generating a response in the form of imprimirNotaFiscalResponse from the same endpoint.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_3_obterNotaFiscal_Atomic">
+    <process:hasName>obterNotaFiscal</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_3_obterNotaFiscal_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterNotaFiscal"/>
+    <process:hasOutput rdf:resource="#wsCFP_3_obterNotaFiscal_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterNotaFiscalResponse"/>
+    <process:hasPrecondition>The web service endpoint compralegal.sefaz.ba.gov.br must be accessible and functional.</process:hasPrecondition>
+    <process:hasEffect>The operation obterNotaFiscal will retrieve a valid nota fiscal from the SEFAZ Bahia web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_4_validacaoCredito_Atomic">
+    <process:hasName>validacaoCredito</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_4_validacaoCredito_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacaoCredito"/>
+    <process:hasOutput rdf:resource="#wsCFP_4_validacaoCredito_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacaoCreditoResponse"/>
+    <process:hasPrecondition>The input parameters for the web service validacaoCredito must be provided in the specified format from compralegal.sefaz.ba.gov.br.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for the web service validacaoCreditoResponse will be generated in the specified format for compralegal.sefaz.ba.gov.br.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_5_validacaoSituacaoContribuinte_Atomic">
+    <process:hasName>validacaoSituacaoContribuinte</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_5_validacaoSituacaoContribuinte_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacaoSituacaoContribuinte"/>
+    <process:hasOutput rdf:resource="#wsCFP_5_validacaoSituacaoContribuinte_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacaoSituacaoContribuinteResponse"/>
+    <process:hasPrecondition>The input parameters for the operation validacaoSituacaoContribuinte must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for the operation validacaoSituacaoContribuinteResponse will be returned according to the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_6_obterMotivoCancelamento_Atomic">
+    <process:hasName>obterMotivoCancelamento</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_6_obterMotivoCancelamento_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterMotivoCancelamento"/>
+    <process:hasOutput rdf:resource="#wsCFP_6_obterMotivoCancelamento_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterMotivoCancelamentoResponse"/>
+    <process:hasPrecondition>The web service endpoint compralegal.sefaz.ba.gov.br must be accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The response containing the cancellation reason will be returned upon successful invocation of the obterMotivoCancelamento operation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_7_consultaNotasFiscais_Atomic">
+    <process:hasName>consultaNotasFiscais</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_7_consultaNotasFiscais_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_consultaNotasFiscais"/>
+    <process:hasOutput rdf:resource="#wsCFP_7_consultaNotasFiscais_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_consultaNotasFiscaisResponse"/>
+    <process:hasPrecondition>The web service endpoint compralegal.sefaz.ba.gov.br must be accessible and properly configured to receive the consultaNotasFiscais request.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a consultaNotasFiscaisResponse containing the requested information from the SEFAZ Bahia.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_8_cancelarNotaFiscal_Atomic">
+    <process:hasName>cancelarNotaFiscal</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_8_cancelarNotaFiscal_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_cancelarNotaFiscal"/>
+    <process:hasOutput rdf:resource="#wsCFP_8_cancelarNotaFiscal_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_cancelarNotaFiscalResponse"/>
+    <process:hasPrecondition>The system must have a valid nota fiscal to cancel.</process:hasPrecondition>
+    <process:hasEffect>The nota fiscal will be successfully canceled in the SEFAZ Bahia system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_9_obterParametroImpressao_Atomic">
+    <process:hasName>obterParametroImpressao</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_9_obterParametroImpressao_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterParametroImpressao"/>
+    <process:hasOutput rdf:resource="#wsCFP_9_obterParametroImpressao_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterParametroImpressaoResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameters for obtaining the printing parameter must be correctly formatted.</process:hasPrecondition>
+    <process:hasEffect>The response will contain the printing parameter information retrieved from the specified web service endpoint.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_10_VerificaLiberacaoFornecedor_Atomic">
+    <process:hasName>VerificaLiberacaoFornecedor</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_10_VerificaLiberacaoFornecedor_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_VerificaLiberacaoFornecedor"/>
+    <process:hasOutput rdf:resource="#wsCFP_10_VerificaLiberacaoFornecedor_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_VerificaLiberacaoFornecedorResponse"/>
+    <process:hasPrecondition>The web service must receive a request to verify the release of a supplier on the SEFAZ Bahia website.</process:hasPrecondition>
+    <process:hasEffect>The web service will provide a response confirming the verification of the supplier's release on the SEFAZ Bahia website.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_11_obterversao_Atomic">
+    <process:hasName>obterversao</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_11_obterversao_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterversao"/>
+    <process:hasOutput rdf:resource="#wsCFP_11_obterversao_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterversaoResponse"/>
+    <process:hasPrecondition>The web service endpoint compralegal.sefaz.ba.gov.br must be accessible and functioning properly.</process:hasPrecondition>
+    <process:hasEffect>The response containing the version information for the web service operation obterversao will be returned successfully.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_12_consultaNotasFiscais_V02_Atomic">
+    <process:hasName>consultaNotasFiscais_V02</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_12_consultaNotasFiscais_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_consultaNotasFiscais_V02"/>
+    <process:hasOutput rdf:resource="#wsCFP_12_consultaNotasFiscais_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_consultaNotasFiscais_V02Response"/>
+    <process:hasPrecondition>The user must provide valid input parameters for the consultaNotasFiscais_V02 operation.</process:hasPrecondition>
+    <process:hasEffect>The system will return a response containing information related to the requested fiscal notes.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_13_imprimirNotaFiscal_V02_Atomic">
+    <process:hasName>imprimirNotaFiscal_V02</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_13_imprimirNotaFiscal_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_imprimirNotaFiscal_V02"/>
+    <process:hasOutput rdf:resource="#wsCFP_13_imprimirNotaFiscal_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_imprimirNotaFiscal_V02Response"/>
+    <process:hasPrecondition>The web service endpoint for imprimirNotaFiscal_V02 is accessible and the input parameters conform to the specified format.</process:hasPrecondition>
+    <process:hasEffect>The imprimirNotaFiscal_V02Response containing the requested nota fiscal is generated and returned successfully.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_14_transmitirNotasFiscais_V02_Atomic">
+    <process:hasName>transmitirNotasFiscais_V02</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_14_transmitirNotasFiscais_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_transmitirNotasFiscais_V02"/>
+    <process:hasOutput rdf:resource="#wsCFP_14_transmitirNotasFiscais_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_transmitirNotasFiscais_V02Response"/>
+    <process:hasPrecondition>The web service endpoint at compralegal.sefaz.ba.gov.br for transmitting fiscal notes V02 is accessible and properly configured.</process:hasPrecondition>
+    <process:hasEffect>The response from the web service endpoint at compralegal.sefaz.ba.gov.br for transmitting fiscal notes V02 is successfully received.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_15_obterMotivoCancelamento_V02_Atomic">
+    <process:hasName>obterMotivoCancelamento_V02</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_15_obterMotivoCancelamento_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_obterMotivoCancelamento_V02"/>
+    <process:hasOutput rdf:resource="#wsCFP_15_obterMotivoCancelamento_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_obterMotivoCancelamento_V02Response"/>
+    <process:hasPrecondition>The web service endpoint compralegal.sefaz.ba.gov.br must be accessible and properly configured to receive requests for obterMotivoCancelamento_V02.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the cancellation reason when the obterMotivoCancelamento_V02 operation is successfully invoked.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_16_cancelarNotaFiscal_V02_Atomic">
+    <process:hasName>cancelarNotaFiscal_V02</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_16_cancelarNotaFiscal_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_cancelarNotaFiscal_V02"/>
+    <process:hasOutput rdf:resource="#wsCFP_16_cancelarNotaFiscal_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_cancelarNotaFiscal_V02Response"/>
+    <process:hasPrecondition>The web service must receive a valid request to cancel a fiscal note in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will process the request and return a response confirming the cancellation of the fiscal note.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_17_VerificaLiberacaoFornecedor_V02_Atomic">
+    <process:hasName>VerificaLiberacaoFornecedor_V02</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_17_VerificaLiberacaoFornecedor_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_VerificaLiberacaoFornecedor_V02"/>
+    <process:hasOutput rdf:resource="#wsCFP_17_VerificaLiberacaoFornecedor_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_VerificaLiberacaoFornecedor_V02Response"/>
+    <process:hasPrecondition>The web service VerificaLiberacaoFornecedor_V02 is accessible and properly configured.</process:hasPrecondition>
+    <process:hasEffect>The VerificaLiberacaoFornecedor_V02Response containing the verification result of the supplier's release is returned.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_18_validacao_situacao_contribuinte_V02_Atomic">
+    <process:hasName>validacao_situacao_contribuinte_V02</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_18_validacao_situacao_contribuinte_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacao_situacao_contribuinte_V02"/>
+    <process:hasOutput rdf:resource="#wsCFP_18_validacao_situacao_contribuinte_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacao_situacao_contribuinte_V02Response"/>
+    <process:hasPrecondition>The input parameters for validacao_situacao_contribuinte_V02 are correctly formatted and comply with the expected data types.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for validacao_situacao_contribuinte_V02Response are generated with the validated information regarding the taxpayer's situation.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_19_validacaoSituacaoContribuinte_V02_Atomic">
+    <process:hasName>validacaoSituacaoContribuinte_V02</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_19_validacaoSituacaoContribuinte_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacaoSituacaoContribuinte_V02"/>
+    <process:hasOutput rdf:resource="#wsCFP_19_validacaoSituacaoContribuinte_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacaoSituacaoContribuinte_V02Response"/>
+    <process:hasPrecondition>The input parameters for the operation validacaoSituacaoContribuinte_V02 are correctly formatted according to the specified schema.</process:hasPrecondition>
+    <process:hasEffect>The output parameters for the operation validacaoSituacaoContribuinte_V02Response are generated based on the input parameters and comply with the expected response format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_20_inclui_nota_nao_transmitida_Atomic">
+    <process:hasName>inclui_nota_nao_transmitida</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_20_inclui_nota_nao_transmitida_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_inclui_nota_nao_transmitida"/>
+    <process:hasOutput rdf:resource="#wsCFP_20_inclui_nota_nao_transmitida_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_inclui_nota_nao_transmitidaResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the necessary authentication credentials must be provided.</process:hasPrecondition>
+    <process:hasEffect>The operation "inclui_nota_nao_transmitida" will be executed, potentially adding a non-transmitted note to the system.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_21_incluir_controle_nf_sem_autenticacao_Atomic">
+    <process:hasName>incluir_controle_nf_sem_autenticacao</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_21_incluir_controle_nf_sem_autenticacao_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_incluir_controle_nf_sem_autenticacao"/>
+    <process:hasOutput rdf:resource="#wsCFP_21_incluir_controle_nf_sem_autenticacao_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_incluir_controle_nf_sem_autenticacaoResponse"/>
+    <process:hasPrecondition>The web service must be accessible and properly configured to receive requests for including non-authenticated invoice control in the system.</process:hasPrecondition>
+    <process:hasEffect>The web service will process the request to include non-authenticated invoice control and provide a response confirming the operation completion.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_22_verifica_usuario_Atomic">
+    <process:hasName>verifica_usuario</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_22_verifica_usuario_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_verifica_usuario"/>
+    <process:hasOutput rdf:resource="#wsCFP_22_verifica_usuario_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_verifica_usuarioResponse"/>
+    <process:hasPrecondition>The web service endpoint compralegal.sefaz.ba.gov.br must be accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The verifica_usuario operation will be executed and a response will be returned from the web service endpoint compralegal.sefaz.ba.gov.br.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_23_validacaoCredito_V02_Atomic">
+    <process:hasName>validacaoCredito_V02</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_23_validacaoCredito_V02_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_validacaoCredito_V02"/>
+    <process:hasOutput rdf:resource="#wsCFP_23_validacaoCredito_V02_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_validacaoCredito_V02Response"/>
+    <process:hasPrecondition>The input parameters for the operation validacaoCredito_V02 must adhere to the semantic description provided by compralegal.sefaz.ba.gov.br.</process:hasPrecondition>
+    <process:hasEffect>The operation validacaoCredito_V02 will return output parameters according to the semantic description provided by compralegal.sefaz.ba.gov.br.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="wsCFP_24_autenticaUsuarioSEFAZ_Atomic">
+    <process:hasName>autenticaUsuarioSEFAZ</process:hasName>
+    <process:hasInput rdf:resource="#wsCFP_24_autenticaUsuarioSEFAZ_Atomic_input_parameters__compralegal.sefaz.ba.gov.br_autenticaUsuarioSEFAZ"/>
+    <process:hasOutput rdf:resource="#wsCFP_24_autenticaUsuarioSEFAZ_Atomic_output_parameters__compralegal.sefaz.ba.gov.br_autenticaUsuarioSEFAZResponse"/>
+    <process:hasPrecondition>The user must provide valid credentials to authenticate with the SEFAZ system.</process:hasPrecondition>
+    <process:hasEffect>The SEFAZ system will verify the provided credentials and return a response indicating successful or unsuccessful authentication.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="wsCFP_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_0_autenticaUsuarioExterno_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_1_transmitirNotasFiscais_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_2_imprimirNotaFiscal_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_3_obterNotaFiscal_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_4_validacaoCredito_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_5_validacaoSituacaoContribuinte_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_6_obterMotivoCancelamento_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_7_consultaNotasFiscais_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_8_cancelarNotaFiscal_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_9_obterParametroImpressao_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_10_VerificaLiberacaoFornecedor_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_11_obterversao_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_12_consultaNotasFiscais_V02_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_13_imprimirNotaFiscal_V02_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_14_transmitirNotasFiscais_V02_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_15_obterMotivoCancelamento_V02_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_16_cancelarNotaFiscal_V02_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_17_VerificaLiberacaoFornecedor_V02_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_18_validacao_situacao_contribuinte_V02_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_19_validacaoSituacaoContribuinte_V02_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_20_inclui_nota_nao_transmitida_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_21_incluir_controle_nf_sem_autenticacao_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_22_verifica_usuario_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_23_validacaoCredito_V02_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#wsCFP_24_autenticaUsuarioSEFAZ_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_0_autenticaUsuarioExterno_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_0_autenticaUsuarioExterno_Atomic"/>
+    <grounding:wsdlOperationName>autenticaUsuarioExterno</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>autenticaUsuarioExternoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>autenticaUsuarioExternoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_1_transmitirNotasFiscais_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_1_transmitirNotasFiscais_Atomic"/>
+    <grounding:wsdlOperationName>transmitirNotasFiscais</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>transmitirNotasFiscaisSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>transmitirNotasFiscaisSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_2_imprimirNotaFiscal_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_2_imprimirNotaFiscal_Atomic"/>
+    <grounding:wsdlOperationName>imprimirNotaFiscal</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>imprimirNotaFiscalSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>imprimirNotaFiscalSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_3_obterNotaFiscal_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_3_obterNotaFiscal_Atomic"/>
+    <grounding:wsdlOperationName>obterNotaFiscal</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>obterNotaFiscalSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>obterNotaFiscalSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_4_validacaoCredito_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_4_validacaoCredito_Atomic"/>
+    <grounding:wsdlOperationName>validacaoCredito</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>validacaoCreditoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>validacaoCreditoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_5_validacaoSituacaoContribuinte_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_5_validacaoSituacaoContribuinte_Atomic"/>
+    <grounding:wsdlOperationName>validacaoSituacaoContribuinte</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>validacaoSituacaoContribuinteSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>validacaoSituacaoContribuinteSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_6_obterMotivoCancelamento_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_6_obterMotivoCancelamento_Atomic"/>
+    <grounding:wsdlOperationName>obterMotivoCancelamento</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>obterMotivoCancelamentoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>obterMotivoCancelamentoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_7_consultaNotasFiscais_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_7_consultaNotasFiscais_Atomic"/>
+    <grounding:wsdlOperationName>consultaNotasFiscais</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>consultaNotasFiscaisSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>consultaNotasFiscaisSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_8_cancelarNotaFiscal_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_8_cancelarNotaFiscal_Atomic"/>
+    <grounding:wsdlOperationName>cancelarNotaFiscal</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>cancelarNotaFiscalSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>cancelarNotaFiscalSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_9_obterParametroImpressao_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_9_obterParametroImpressao_Atomic"/>
+    <grounding:wsdlOperationName>obterParametroImpressao</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>obterParametroImpressaoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>obterParametroImpressaoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_10_VerificaLiberacaoFornecedor_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_10_VerificaLiberacaoFornecedor_Atomic"/>
+    <grounding:wsdlOperationName>VerificaLiberacaoFornecedor</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VerificaLiberacaoFornecedorSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VerificaLiberacaoFornecedorSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_11_obterversao_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_11_obterversao_Atomic"/>
+    <grounding:wsdlOperationName>obterversao</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>obterversaoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>obterversaoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_12_consultaNotasFiscais_V02_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_12_consultaNotasFiscais_V02_Atomic"/>
+    <grounding:wsdlOperationName>consultaNotasFiscais_V02</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>consultaNotasFiscais_V02SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>consultaNotasFiscais_V02SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_13_imprimirNotaFiscal_V02_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_13_imprimirNotaFiscal_V02_Atomic"/>
+    <grounding:wsdlOperationName>imprimirNotaFiscal_V02</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>imprimirNotaFiscal_V02SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>imprimirNotaFiscal_V02SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_14_transmitirNotasFiscais_V02_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_14_transmitirNotasFiscais_V02_Atomic"/>
+    <grounding:wsdlOperationName>transmitirNotasFiscais_V02</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>transmitirNotasFiscais_V02SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>transmitirNotasFiscais_V02SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_15_obterMotivoCancelamento_V02_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_15_obterMotivoCancelamento_V02_Atomic"/>
+    <grounding:wsdlOperationName>obterMotivoCancelamento_V02</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>obterMotivoCancelamento_V02SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>obterMotivoCancelamento_V02SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_16_cancelarNotaFiscal_V02_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_16_cancelarNotaFiscal_V02_Atomic"/>
+    <grounding:wsdlOperationName>cancelarNotaFiscal_V02</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>cancelarNotaFiscal_V02SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>cancelarNotaFiscal_V02SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_17_VerificaLiberacaoFornecedor_V02_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_17_VerificaLiberacaoFornecedor_V02_Atomic"/>
+    <grounding:wsdlOperationName>VerificaLiberacaoFornecedor_V02</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>VerificaLiberacaoFornecedor_V02SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>VerificaLiberacaoFornecedor_V02SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_18_validacao_situacao_contribuinte_V02_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_18_validacao_situacao_contribuinte_V02_Atomic"/>
+    <grounding:wsdlOperationName>validacao_situacao_contribuinte_V02</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>validacao_situacao_contribuinte_V02SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>validacao_situacao_contribuinte_V02SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_19_validacaoSituacaoContribuinte_V02_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_19_validacaoSituacaoContribuinte_V02_Atomic"/>
+    <grounding:wsdlOperationName>validacaoSituacaoContribuinte_V02</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>validacaoSituacaoContribuinte_V02SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>validacaoSituacaoContribuinte_V02SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_20_inclui_nota_nao_transmitida_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_20_inclui_nota_nao_transmitida_Atomic"/>
+    <grounding:wsdlOperationName>inclui_nota_nao_transmitida</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>inclui_nota_nao_transmitidaSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>inclui_nota_nao_transmitidaSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_21_incluir_controle_nf_sem_autenticacao_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_21_incluir_controle_nf_sem_autenticacao_Atomic"/>
+    <grounding:wsdlOperationName>incluir_controle_nf_sem_autenticacao</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>incluir_controle_nf_sem_autenticacaoSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>incluir_controle_nf_sem_autenticacaoSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_22_verifica_usuario_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_22_verifica_usuario_Atomic"/>
+    <grounding:wsdlOperationName>verifica_usuario</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>verifica_usuarioSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>verifica_usuarioSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_23_validacaoCredito_V02_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_23_validacaoCredito_V02_Atomic"/>
+    <grounding:wsdlOperationName>validacaoCredito_V02</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>validacaoCredito_V02SoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>validacaoCredito_V02SoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="wsCFP_24_autenticaUsuarioSEFAZ_Grounding">
+    <grounding:owlsProcess rdf:resource="#wsCFP_24_autenticaUsuarioSEFAZ_Atomic"/>
+    <grounding:wsdlOperationName>autenticaUsuarioSEFAZ</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>wsCFPSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>wsCFPSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/175_174.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>autenticaUsuarioSEFAZSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>autenticaUsuarioSEFAZSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

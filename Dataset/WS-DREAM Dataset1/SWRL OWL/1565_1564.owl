@@ -1,0 +1,470 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Service">
+    <service:presents rdf:resource="#Service_Profile"/>
+    <service:describedBy rdf:resource="#Service_Composite"/>
+    <service:supports rdf:resource="#Service_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Service_Profile">
+    <profile:serviceName>Service</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Service"/>
+    <profile:hasProcess rdf:resource="#Service_0_getInbox_Atomic"/>
+    <profile:hasInput rdf:resource="#Service_0_getInbox_Atomic_input_parameters__SMSCountry_WebService_getInbox"/>
+    <profile:hasOutput rdf:resource="#Service_0_getInbox_Atomic_output_parameters__SMSCountry_WebService_getInboxResponse"/>
+    <profile:hasPrecondition>The SMSCountry WebService must be accessible and configured to retrieve inbox messages.</profile:hasPrecondition>
+    <profile:hasResult>The getInbox operation will return a response containing the inbox messages from the SMSCountry WebService.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service_1_MarkRead_inbox_Atomic"/>
+    <profile:hasInput rdf:resource="#Service_1_MarkRead_inbox_Atomic_input_parameters__SMSCountry_WebService_MarkRead_inbox"/>
+    <profile:hasOutput rdf:resource="#Service_1_MarkRead_inbox_Atomic_output_parameters__SMSCountry_WebService_MarkRead_inboxResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have access to the SMSCountry WebService to mark messages as read in the inbox.</profile:hasPrecondition>
+    <profile:hasResult>Marks the specified messages as read in the inbox through the SMSCountry WebService.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service_2_Mark_UnRead_inbox_Atomic"/>
+    <profile:hasInput rdf:resource="#Service_2_Mark_UnRead_inbox_Atomic_input_parameters__SMSCountry_WebService_Mark_UnRead_inbox"/>
+    <profile:hasOutput rdf:resource="#Service_2_Mark_UnRead_inbox_Atomic_output_parameters__SMSCountry_WebService_Mark_UnRead_inboxResponse"/>
+    <profile:hasPrecondition>The user must be authenticated and have access to the inbox in order to mark messages as unread.</profile:hasPrecondition>
+    <profile:hasResult>Marks the specified messages in the inbox as unread.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service_3_SendTextSMS_Atomic"/>
+    <profile:hasInput rdf:resource="#Service_3_SendTextSMS_Atomic_input_parameters__SMSCountry_WebService_SendTextSMS"/>
+    <profile:hasOutput rdf:resource="#Service_3_SendTextSMS_Atomic_output_parameters__SMSCountry_WebService_SendTextSMSResponse"/>
+    <profile:hasPrecondition>The SMSCountry WebService must be accessible and configured with valid authentication credentials.</profile:hasPrecondition>
+    <profile:hasResult>The SendTextSMS operation will be executed, sending a text SMS through the SMSCountry WebService, and returning a response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service_4_SendUnicodeSMS_Atomic"/>
+    <profile:hasInput rdf:resource="#Service_4_SendUnicodeSMS_Atomic_input_parameters__SMSCountry_WebService_SendUnicodeSMS"/>
+    <profile:hasOutput rdf:resource="#Service_4_SendUnicodeSMS_Atomic_output_parameters__SMSCountry_WebService_SendUnicodeSMSResponse"/>
+    <profile:hasPrecondition>The SMSCountry WebService must be accessible and configured to send Unicode SMS messages.</profile:hasPrecondition>
+    <profile:hasResult>The SendUnicodeSMS operation will be executed, sending a Unicode SMS message through the SMSCountry WebService and returning a response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service_5_SendPictureSMS_Atomic"/>
+    <profile:hasInput rdf:resource="#Service_5_SendPictureSMS_Atomic_input_parameters__SMSCountry_WebService_SendPictureSMS"/>
+    <profile:hasOutput rdf:resource="#Service_5_SendPictureSMS_Atomic_output_parameters__SMSCountry_WebService_SendPictureSMSResponse"/>
+    <profile:hasPrecondition>The SMSCountry WebService must be accessible and authenticated to send a picture SMS.</profile:hasPrecondition>
+    <profile:hasResult>The SendPictureSMS operation will be executed, and a response will be returned by the SMSCountry WebService.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service_6_SendBinarySMS_Atomic"/>
+    <profile:hasInput rdf:resource="#Service_6_SendBinarySMS_Atomic_input_parameters__SMSCountry_WebService_SendBinarySMS"/>
+    <profile:hasOutput rdf:resource="#Service_6_SendBinarySMS_Atomic_output_parameters__SMSCountry_WebService_SendBinarySMSResponse"/>
+    <profile:hasPrecondition>The SMSCountry WebService must be accessible and configured to send binary SMS messages.</profile:hasPrecondition>
+    <profile:hasResult>The SendBinarySMS operation will be executed, sending a binary SMS message through the SMSCountry WebService.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service_7_SendRingTone_Atomic"/>
+    <profile:hasInput rdf:resource="#Service_7_SendRingTone_Atomic_input_parameters__SMSCountry_WebService_SendRingTone"/>
+    <profile:hasOutput rdf:resource="#Service_7_SendRingTone_Atomic_output_parameters__SMSCountry_WebService_SendRingToneResponse"/>
+    <profile:hasPrecondition>The SMSCountry WebService must be accessible and configured to send ringtone data.</profile:hasPrecondition>
+    <profile:hasResult>The SendRingTone operation will successfully send the specified ringtone through the SMSCountry WebService and provide a response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service_8_SendLOGO_Atomic"/>
+    <profile:hasInput rdf:resource="#Service_8_SendLOGO_Atomic_input_parameters__SMSCountry_WebService_SendLOGO"/>
+    <profile:hasOutput rdf:resource="#Service_8_SendLOGO_Atomic_output_parameters__SMSCountry_WebService_SendLOGOResponse"/>
+    <profile:hasPrecondition>The SMSCountry WebService must be accessible and configured to accept the SendLOGO request.</profile:hasPrecondition>
+    <profile:hasResult>The SendLOGO request will be processed and a SendLOGOResponse will be generated by the SMSCountry WebService.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service_9_SendWapPush_Atomic"/>
+    <profile:hasInput rdf:resource="#Service_9_SendWapPush_Atomic_input_parameters__SMSCountry_WebService_SendWapPush"/>
+    <profile:hasOutput rdf:resource="#Service_9_SendWapPush_Atomic_output_parameters__SMSCountry_WebService_SendWapPushResponse"/>
+    <profile:hasPrecondition>The SMSCountry WebService must be accessible and configured to send WAP push messages.</profile:hasPrecondition>
+    <profile:hasResult>The SendWapPush operation will be executed, triggering the SMSCountry WebService to send a WAP push message, and returning a response through the SendWapPushResponse parameters.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service_10_SendFlashSMS_Atomic"/>
+    <profile:hasInput rdf:resource="#Service_10_SendFlashSMS_Atomic_input_parameters__SMSCountry_WebService_SendFlashSMS"/>
+    <profile:hasOutput rdf:resource="#Service_10_SendFlashSMS_Atomic_output_parameters__SMSCountry_WebService_SendFlashSMSResponse"/>
+    <profile:hasPrecondition>The SMSCountry WebService must be accessible and properly configured to send flash SMS messages.</profile:hasPrecondition>
+    <profile:hasResult>The SendFlashSMS operation will trigger the sending of a flash SMS message through the SMSCountry WebService and return a response confirming the action.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service_11_Getbalance_Atomic"/>
+    <profile:hasInput rdf:resource="#Service_11_Getbalance_Atomic_input_parameters__SMSCountry_WebService_Getbalance"/>
+    <profile:hasOutput rdf:resource="#Service_11_Getbalance_Atomic_output_parameters__SMSCountry_WebService_GetbalanceResponse"/>
+    <profile:hasPrecondition>The SMSCountry WebService must be accessible and authenticated to retrieve the balance.</profile:hasPrecondition>
+    <profile:hasResult>The Getbalance operation will return the current balance of the SMSCountry WebService.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service_12_GetDeliveryReport_Atomic"/>
+    <profile:hasInput rdf:resource="#Service_12_GetDeliveryReport_Atomic_input_parameters__SMSCountry_WebService_GetDeliveryReport"/>
+    <profile:hasOutput rdf:resource="#Service_12_GetDeliveryReport_Atomic_output_parameters__SMSCountry_WebService_GetDeliveryReportResponse"/>
+    <profile:hasPrecondition>The SMSCountry WebService must be accessible and configured to retrieve delivery reports.</profile:hasPrecondition>
+    <profile:hasResult>The GetDeliveryReport operation will return a response containing the delivery report data from the SMSCountry WebService.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Service_13_sendMultiSMS_Atomic"/>
+    <profile:hasInput rdf:resource="#Service_13_sendMultiSMS_Atomic_input_parameters__SMSCountry_WebService_sendMultiSMS"/>
+    <profile:hasOutput rdf:resource="#Service_13_sendMultiSMS_Atomic_output_parameters__SMSCountry_WebService_sendMultiSMSResponse"/>
+    <profile:hasPrecondition>The SMSCountry WebService must be accessible and configured to send multiple SMS messages.</profile:hasPrecondition>
+    <profile:hasResult>The sendMultiSMS operation will be executed, sending multiple SMS messages through the SMSCountry WebService, and returning a response.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Service_Composite">
+    <process:composedOf rdf:resource="#Service_0_getInbox_Atomic"/>
+    <process:composedOf rdf:resource="#Service_1_MarkRead_inbox_Atomic"/>
+    <process:composedOf rdf:resource="#Service_2_Mark_UnRead_inbox_Atomic"/>
+    <process:composedOf rdf:resource="#Service_3_SendTextSMS_Atomic"/>
+    <process:composedOf rdf:resource="#Service_4_SendUnicodeSMS_Atomic"/>
+    <process:composedOf rdf:resource="#Service_5_SendPictureSMS_Atomic"/>
+    <process:composedOf rdf:resource="#Service_6_SendBinarySMS_Atomic"/>
+    <process:composedOf rdf:resource="#Service_7_SendRingTone_Atomic"/>
+    <process:composedOf rdf:resource="#Service_8_SendLOGO_Atomic"/>
+    <process:composedOf rdf:resource="#Service_9_SendWapPush_Atomic"/>
+    <process:composedOf rdf:resource="#Service_10_SendFlashSMS_Atomic"/>
+    <process:composedOf rdf:resource="#Service_11_Getbalance_Atomic"/>
+    <process:composedOf rdf:resource="#Service_12_GetDeliveryReport_Atomic"/>
+    <process:composedOf rdf:resource="#Service_13_sendMultiSMS_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Service_0_getInbox_Atomic_input_parameters__SMSCountry_WebService_getInbox">
+    <process:parameterType>parameters:{SMSCountry WebService}getInbox</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service_0_getInbox_Atomic_output_parameters__SMSCountry_WebService_getInboxResponse">
+    <process:parameterType>parameters:{SMSCountry WebService}getInboxResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service_1_MarkRead_inbox_Atomic_input_parameters__SMSCountry_WebService_MarkRead_inbox">
+    <process:parameterType>parameters:{SMSCountry WebService}MarkRead_inbox</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service_1_MarkRead_inbox_Atomic_output_parameters__SMSCountry_WebService_MarkRead_inboxResponse">
+    <process:parameterType>parameters:{SMSCountry WebService}MarkRead_inboxResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service_2_Mark_UnRead_inbox_Atomic_input_parameters__SMSCountry_WebService_Mark_UnRead_inbox">
+    <process:parameterType>parameters:{SMSCountry WebService}Mark_UnRead_inbox</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service_2_Mark_UnRead_inbox_Atomic_output_parameters__SMSCountry_WebService_Mark_UnRead_inboxResponse">
+    <process:parameterType>parameters:{SMSCountry WebService}Mark_UnRead_inboxResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service_3_SendTextSMS_Atomic_input_parameters__SMSCountry_WebService_SendTextSMS">
+    <process:parameterType>parameters:{SMSCountry WebService}SendTextSMS</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service_3_SendTextSMS_Atomic_output_parameters__SMSCountry_WebService_SendTextSMSResponse">
+    <process:parameterType>parameters:{SMSCountry WebService}SendTextSMSResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service_4_SendUnicodeSMS_Atomic_input_parameters__SMSCountry_WebService_SendUnicodeSMS">
+    <process:parameterType>parameters:{SMSCountry WebService}SendUnicodeSMS</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service_4_SendUnicodeSMS_Atomic_output_parameters__SMSCountry_WebService_SendUnicodeSMSResponse">
+    <process:parameterType>parameters:{SMSCountry WebService}SendUnicodeSMSResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service_5_SendPictureSMS_Atomic_input_parameters__SMSCountry_WebService_SendPictureSMS">
+    <process:parameterType>parameters:{SMSCountry WebService}SendPictureSMS</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service_5_SendPictureSMS_Atomic_output_parameters__SMSCountry_WebService_SendPictureSMSResponse">
+    <process:parameterType>parameters:{SMSCountry WebService}SendPictureSMSResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service_6_SendBinarySMS_Atomic_input_parameters__SMSCountry_WebService_SendBinarySMS">
+    <process:parameterType>parameters:{SMSCountry WebService}SendBinarySMS</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service_6_SendBinarySMS_Atomic_output_parameters__SMSCountry_WebService_SendBinarySMSResponse">
+    <process:parameterType>parameters:{SMSCountry WebService}SendBinarySMSResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service_7_SendRingTone_Atomic_input_parameters__SMSCountry_WebService_SendRingTone">
+    <process:parameterType>parameters:{SMSCountry WebService}SendRingTone</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service_7_SendRingTone_Atomic_output_parameters__SMSCountry_WebService_SendRingToneResponse">
+    <process:parameterType>parameters:{SMSCountry WebService}SendRingToneResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service_8_SendLOGO_Atomic_input_parameters__SMSCountry_WebService_SendLOGO">
+    <process:parameterType>parameters:{SMSCountry WebService}SendLOGO</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service_8_SendLOGO_Atomic_output_parameters__SMSCountry_WebService_SendLOGOResponse">
+    <process:parameterType>parameters:{SMSCountry WebService}SendLOGOResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service_9_SendWapPush_Atomic_input_parameters__SMSCountry_WebService_SendWapPush">
+    <process:parameterType>parameters:{SMSCountry WebService}SendWapPush</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service_9_SendWapPush_Atomic_output_parameters__SMSCountry_WebService_SendWapPushResponse">
+    <process:parameterType>parameters:{SMSCountry WebService}SendWapPushResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service_10_SendFlashSMS_Atomic_input_parameters__SMSCountry_WebService_SendFlashSMS">
+    <process:parameterType>parameters:{SMSCountry WebService}SendFlashSMS</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service_10_SendFlashSMS_Atomic_output_parameters__SMSCountry_WebService_SendFlashSMSResponse">
+    <process:parameterType>parameters:{SMSCountry WebService}SendFlashSMSResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service_11_Getbalance_Atomic_input_parameters__SMSCountry_WebService_Getbalance">
+    <process:parameterType>parameters:{SMSCountry WebService}Getbalance</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service_11_Getbalance_Atomic_output_parameters__SMSCountry_WebService_GetbalanceResponse">
+    <process:parameterType>parameters:{SMSCountry WebService}GetbalanceResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service_12_GetDeliveryReport_Atomic_input_parameters__SMSCountry_WebService_GetDeliveryReport">
+    <process:parameterType>parameters:{SMSCountry WebService}GetDeliveryReport</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service_12_GetDeliveryReport_Atomic_output_parameters__SMSCountry_WebService_GetDeliveryReportResponse">
+    <process:parameterType>parameters:{SMSCountry WebService}GetDeliveryReportResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Service_13_sendMultiSMS_Atomic_input_parameters__SMSCountry_WebService_sendMultiSMS">
+    <process:parameterType>parameters:{SMSCountry WebService}sendMultiSMS</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Service_13_sendMultiSMS_Atomic_output_parameters__SMSCountry_WebService_sendMultiSMSResponse">
+    <process:parameterType>parameters:{SMSCountry WebService}sendMultiSMSResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Service_0_getInbox_Atomic">
+    <process:hasName>getInbox</process:hasName>
+    <process:hasInput rdf:resource="#Service_0_getInbox_Atomic_input_parameters__SMSCountry_WebService_getInbox"/>
+    <process:hasOutput rdf:resource="#Service_0_getInbox_Atomic_output_parameters__SMSCountry_WebService_getInboxResponse"/>
+    <process:hasPrecondition>The SMSCountry WebService must be accessible and configured to retrieve inbox messages.</process:hasPrecondition>
+    <process:hasEffect>The getInbox operation will return a response containing the inbox messages from the SMSCountry WebService.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service_1_MarkRead_inbox_Atomic">
+    <process:hasName>MarkRead_inbox</process:hasName>
+    <process:hasInput rdf:resource="#Service_1_MarkRead_inbox_Atomic_input_parameters__SMSCountry_WebService_MarkRead_inbox"/>
+    <process:hasOutput rdf:resource="#Service_1_MarkRead_inbox_Atomic_output_parameters__SMSCountry_WebService_MarkRead_inboxResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have access to the SMSCountry WebService to mark messages as read in the inbox.</process:hasPrecondition>
+    <process:hasEffect>Marks the specified messages as read in the inbox through the SMSCountry WebService.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service_2_Mark_UnRead_inbox_Atomic">
+    <process:hasName>Mark_UnRead_inbox</process:hasName>
+    <process:hasInput rdf:resource="#Service_2_Mark_UnRead_inbox_Atomic_input_parameters__SMSCountry_WebService_Mark_UnRead_inbox"/>
+    <process:hasOutput rdf:resource="#Service_2_Mark_UnRead_inbox_Atomic_output_parameters__SMSCountry_WebService_Mark_UnRead_inboxResponse"/>
+    <process:hasPrecondition>The user must be authenticated and have access to the inbox in order to mark messages as unread.</process:hasPrecondition>
+    <process:hasEffect>Marks the specified messages in the inbox as unread.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service_3_SendTextSMS_Atomic">
+    <process:hasName>SendTextSMS</process:hasName>
+    <process:hasInput rdf:resource="#Service_3_SendTextSMS_Atomic_input_parameters__SMSCountry_WebService_SendTextSMS"/>
+    <process:hasOutput rdf:resource="#Service_3_SendTextSMS_Atomic_output_parameters__SMSCountry_WebService_SendTextSMSResponse"/>
+    <process:hasPrecondition>The SMSCountry WebService must be accessible and configured with valid authentication credentials.</process:hasPrecondition>
+    <process:hasEffect>The SendTextSMS operation will be executed, sending a text SMS through the SMSCountry WebService, and returning a response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service_4_SendUnicodeSMS_Atomic">
+    <process:hasName>SendUnicodeSMS</process:hasName>
+    <process:hasInput rdf:resource="#Service_4_SendUnicodeSMS_Atomic_input_parameters__SMSCountry_WebService_SendUnicodeSMS"/>
+    <process:hasOutput rdf:resource="#Service_4_SendUnicodeSMS_Atomic_output_parameters__SMSCountry_WebService_SendUnicodeSMSResponse"/>
+    <process:hasPrecondition>The SMSCountry WebService must be accessible and configured to send Unicode SMS messages.</process:hasPrecondition>
+    <process:hasEffect>The SendUnicodeSMS operation will be executed, sending a Unicode SMS message through the SMSCountry WebService and returning a response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service_5_SendPictureSMS_Atomic">
+    <process:hasName>SendPictureSMS</process:hasName>
+    <process:hasInput rdf:resource="#Service_5_SendPictureSMS_Atomic_input_parameters__SMSCountry_WebService_SendPictureSMS"/>
+    <process:hasOutput rdf:resource="#Service_5_SendPictureSMS_Atomic_output_parameters__SMSCountry_WebService_SendPictureSMSResponse"/>
+    <process:hasPrecondition>The SMSCountry WebService must be accessible and authenticated to send a picture SMS.</process:hasPrecondition>
+    <process:hasEffect>The SendPictureSMS operation will be executed, and a response will be returned by the SMSCountry WebService.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service_6_SendBinarySMS_Atomic">
+    <process:hasName>SendBinarySMS</process:hasName>
+    <process:hasInput rdf:resource="#Service_6_SendBinarySMS_Atomic_input_parameters__SMSCountry_WebService_SendBinarySMS"/>
+    <process:hasOutput rdf:resource="#Service_6_SendBinarySMS_Atomic_output_parameters__SMSCountry_WebService_SendBinarySMSResponse"/>
+    <process:hasPrecondition>The SMSCountry WebService must be accessible and configured to send binary SMS messages.</process:hasPrecondition>
+    <process:hasEffect>The SendBinarySMS operation will be executed, sending a binary SMS message through the SMSCountry WebService.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service_7_SendRingTone_Atomic">
+    <process:hasName>SendRingTone</process:hasName>
+    <process:hasInput rdf:resource="#Service_7_SendRingTone_Atomic_input_parameters__SMSCountry_WebService_SendRingTone"/>
+    <process:hasOutput rdf:resource="#Service_7_SendRingTone_Atomic_output_parameters__SMSCountry_WebService_SendRingToneResponse"/>
+    <process:hasPrecondition>The SMSCountry WebService must be accessible and configured to send ringtone data.</process:hasPrecondition>
+    <process:hasEffect>The SendRingTone operation will successfully send the specified ringtone through the SMSCountry WebService and provide a response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service_8_SendLOGO_Atomic">
+    <process:hasName>SendLOGO</process:hasName>
+    <process:hasInput rdf:resource="#Service_8_SendLOGO_Atomic_input_parameters__SMSCountry_WebService_SendLOGO"/>
+    <process:hasOutput rdf:resource="#Service_8_SendLOGO_Atomic_output_parameters__SMSCountry_WebService_SendLOGOResponse"/>
+    <process:hasPrecondition>The SMSCountry WebService must be accessible and configured to accept the SendLOGO request.</process:hasPrecondition>
+    <process:hasEffect>The SendLOGO request will be processed and a SendLOGOResponse will be generated by the SMSCountry WebService.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service_9_SendWapPush_Atomic">
+    <process:hasName>SendWapPush</process:hasName>
+    <process:hasInput rdf:resource="#Service_9_SendWapPush_Atomic_input_parameters__SMSCountry_WebService_SendWapPush"/>
+    <process:hasOutput rdf:resource="#Service_9_SendWapPush_Atomic_output_parameters__SMSCountry_WebService_SendWapPushResponse"/>
+    <process:hasPrecondition>The SMSCountry WebService must be accessible and configured to send WAP push messages.</process:hasPrecondition>
+    <process:hasEffect>The SendWapPush operation will be executed, triggering the SMSCountry WebService to send a WAP push message, and returning a response through the SendWapPushResponse parameters.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service_10_SendFlashSMS_Atomic">
+    <process:hasName>SendFlashSMS</process:hasName>
+    <process:hasInput rdf:resource="#Service_10_SendFlashSMS_Atomic_input_parameters__SMSCountry_WebService_SendFlashSMS"/>
+    <process:hasOutput rdf:resource="#Service_10_SendFlashSMS_Atomic_output_parameters__SMSCountry_WebService_SendFlashSMSResponse"/>
+    <process:hasPrecondition>The SMSCountry WebService must be accessible and properly configured to send flash SMS messages.</process:hasPrecondition>
+    <process:hasEffect>The SendFlashSMS operation will trigger the sending of a flash SMS message through the SMSCountry WebService and return a response confirming the action.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service_11_Getbalance_Atomic">
+    <process:hasName>Getbalance</process:hasName>
+    <process:hasInput rdf:resource="#Service_11_Getbalance_Atomic_input_parameters__SMSCountry_WebService_Getbalance"/>
+    <process:hasOutput rdf:resource="#Service_11_Getbalance_Atomic_output_parameters__SMSCountry_WebService_GetbalanceResponse"/>
+    <process:hasPrecondition>The SMSCountry WebService must be accessible and authenticated to retrieve the balance.</process:hasPrecondition>
+    <process:hasEffect>The Getbalance operation will return the current balance of the SMSCountry WebService.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service_12_GetDeliveryReport_Atomic">
+    <process:hasName>GetDeliveryReport</process:hasName>
+    <process:hasInput rdf:resource="#Service_12_GetDeliveryReport_Atomic_input_parameters__SMSCountry_WebService_GetDeliveryReport"/>
+    <process:hasOutput rdf:resource="#Service_12_GetDeliveryReport_Atomic_output_parameters__SMSCountry_WebService_GetDeliveryReportResponse"/>
+    <process:hasPrecondition>The SMSCountry WebService must be accessible and configured to retrieve delivery reports.</process:hasPrecondition>
+    <process:hasEffect>The GetDeliveryReport operation will return a response containing the delivery report data from the SMSCountry WebService.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Service_13_sendMultiSMS_Atomic">
+    <process:hasName>sendMultiSMS</process:hasName>
+    <process:hasInput rdf:resource="#Service_13_sendMultiSMS_Atomic_input_parameters__SMSCountry_WebService_sendMultiSMS"/>
+    <process:hasOutput rdf:resource="#Service_13_sendMultiSMS_Atomic_output_parameters__SMSCountry_WebService_sendMultiSMSResponse"/>
+    <process:hasPrecondition>The SMSCountry WebService must be accessible and configured to send multiple SMS messages.</process:hasPrecondition>
+    <process:hasEffect>The sendMultiSMS operation will be executed, sending multiple SMS messages through the SMSCountry WebService, and returning a response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Service_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service_0_getInbox_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service_1_MarkRead_inbox_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service_2_Mark_UnRead_inbox_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service_3_SendTextSMS_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service_4_SendUnicodeSMS_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service_5_SendPictureSMS_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service_6_SendBinarySMS_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service_7_SendRingTone_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service_8_SendLOGO_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service_9_SendWapPush_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service_10_SendFlashSMS_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service_11_Getbalance_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service_12_GetDeliveryReport_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Service_13_sendMultiSMS_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service_0_getInbox_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service_0_getInbox_Atomic"/>
+    <grounding:wsdlOperationName>getInbox</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1565_1564.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getInboxSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getInboxSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service_1_MarkRead_inbox_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service_1_MarkRead_inbox_Atomic"/>
+    <grounding:wsdlOperationName>MarkRead_inbox</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1565_1564.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>MarkRead_inboxSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>MarkRead_inboxSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service_2_Mark_UnRead_inbox_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service_2_Mark_UnRead_inbox_Atomic"/>
+    <grounding:wsdlOperationName>Mark_UnRead_inbox</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1565_1564.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>Mark_UnRead_inboxSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>Mark_UnRead_inboxSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service_3_SendTextSMS_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service_3_SendTextSMS_Atomic"/>
+    <grounding:wsdlOperationName>SendTextSMS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1565_1564.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendTextSMSSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendTextSMSSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service_4_SendUnicodeSMS_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service_4_SendUnicodeSMS_Atomic"/>
+    <grounding:wsdlOperationName>SendUnicodeSMS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1565_1564.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendUnicodeSMSSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendUnicodeSMSSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service_5_SendPictureSMS_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service_5_SendPictureSMS_Atomic"/>
+    <grounding:wsdlOperationName>SendPictureSMS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1565_1564.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendPictureSMSSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendPictureSMSSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service_6_SendBinarySMS_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service_6_SendBinarySMS_Atomic"/>
+    <grounding:wsdlOperationName>SendBinarySMS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1565_1564.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendBinarySMSSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendBinarySMSSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service_7_SendRingTone_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service_7_SendRingTone_Atomic"/>
+    <grounding:wsdlOperationName>SendRingTone</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1565_1564.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendRingToneSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendRingToneSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service_8_SendLOGO_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service_8_SendLOGO_Atomic"/>
+    <grounding:wsdlOperationName>SendLOGO</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1565_1564.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendLOGOSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendLOGOSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service_9_SendWapPush_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service_9_SendWapPush_Atomic"/>
+    <grounding:wsdlOperationName>SendWapPush</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1565_1564.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendWapPushSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendWapPushSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service_10_SendFlashSMS_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service_10_SendFlashSMS_Atomic"/>
+    <grounding:wsdlOperationName>SendFlashSMS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1565_1564.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>SendFlashSMSSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>SendFlashSMSSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service_11_Getbalance_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service_11_Getbalance_Atomic"/>
+    <grounding:wsdlOperationName>Getbalance</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1565_1564.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetbalanceSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetbalanceSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service_12_GetDeliveryReport_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service_12_GetDeliveryReport_Atomic"/>
+    <grounding:wsdlOperationName>GetDeliveryReport</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1565_1564.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>GetDeliveryReportSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>GetDeliveryReportSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Service_13_sendMultiSMS_Grounding">
+    <grounding:owlsProcess rdf:resource="#Service_13_sendMultiSMS_Atomic"/>
+    <grounding:wsdlOperationName>sendMultiSMS</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1565_1564.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>sendMultiSMSSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>sendMultiSMSSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="ManagePhoneBookService">
+    <service:presents rdf:resource="#ManagePhoneBookService_Profile"/>
+    <service:describedBy rdf:resource="#ManagePhoneBookService_Composite"/>
+    <service:supports rdf:resource="#ManagePhoneBookService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="ManagePhoneBookService_Profile">
+    <profile:serviceName>ManagePhoneBookService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#ManagePhoneBookService"/>
+    <profile:hasProcess rdf:resource="#ManagePhoneBookService_0_removeContact_Atomic"/>
+    <profile:hasInput rdf:resource="#ManagePhoneBookService_0_removeContact_Atomic_input_removeContactPayload__http___phonebook.ws.sms.icontact__removeContactPayload"/>
+    <profile:hasOutput rdf:resource="#ManagePhoneBookService_0_removeContact_Atomic_output_removeContactResponse__http___phonebook.ws.sms.icontact__removeContactResponse"/>
+    <profile:hasPrecondition>The removeContactPayload must contain valid information for the contact to be successfully removed from the phonebook service.</profile:hasPrecondition>
+    <profile:hasResult>The removeContact operation will return a removeContactResponse indicating whether the contact was successfully removed or not.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ManagePhoneBookService_1_getContactsOfGroup_Atomic"/>
+    <profile:hasInput rdf:resource="#ManagePhoneBookService_1_getContactsOfGroup_Atomic_input_contactsOfGroupPayload__http___phonebook.ws.sms.icontact__contactsOfGroupPayload"/>
+    <profile:hasOutput rdf:resource="#ManagePhoneBookService_1_getContactsOfGroup_Atomic_output_getContactsOfGroupResponse__http___phonebook.ws.sms.icontact__getContactsOfGroupResponse"/>
+    <profile:hasPrecondition>The contactsOfGroupPayload must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a getContactsOfGroupResponse containing the contacts of the specified group.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ManagePhoneBookService_2_getFormattedCustomURL_Atomic"/>
+    <profile:hasInput rdf:resource="#ManagePhoneBookService_2_getFormattedCustomURL_Atomic_input_urlRedirectCustomPayload__http___phonebook.ws.sms.icontact__urlRedirectCustomPayload"/>
+    <profile:hasOutput rdf:resource="#ManagePhoneBookService_2_getFormattedCustomURL_Atomic_output_getFormattedCustomURLResponse__http___phonebook.ws.sms.icontact__getFormattedCustomURLResponse"/>
+    <profile:hasPrecondition>The input parameter urlRedirectCustomPayload must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a formatted custom URL in the getFormattedCustomURLResponse output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ManagePhoneBookService_3_getContact_Atomic"/>
+    <profile:hasInput rdf:resource="#ManagePhoneBookService_3_getContact_Atomic_input_contactPayload__http___phonebook.ws.sms.icontact__contactPayload"/>
+    <profile:hasOutput rdf:resource="#ManagePhoneBookService_3_getContact_Atomic_output_getContactResponse__http___phonebook.ws.sms.icontact__getContactResponse"/>
+    <profile:hasPrecondition>The web service must receive a valid contact payload in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the contact information in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ManagePhoneBookService_4_updateContact_Atomic"/>
+    <profile:hasInput rdf:resource="#ManagePhoneBookService_4_updateContact_Atomic_input_updateContactPayload__http___phonebook.ws.sms.icontact__updateContactPayload"/>
+    <profile:hasOutput rdf:resource="#ManagePhoneBookService_4_updateContact_Atomic_output_updateContactResponse__http___phonebook.ws.sms.icontact__updateContactResponse"/>
+    <profile:hasPrecondition>The updateContactPayload must contain valid data for the contact to be updated in the phonebook service.</profile:hasPrecondition>
+    <profile:hasResult>The updateContact operation will update the contact information based on the provided payload and return an updateContactResponse.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ManagePhoneBookService_5_searchContact_Atomic"/>
+    <profile:hasInput rdf:resource="#ManagePhoneBookService_5_searchContact_Atomic_input_searchContactPayload__http___phonebook.ws.sms.icontact__searchContactPayload"/>
+    <profile:hasOutput rdf:resource="#ManagePhoneBookService_5_searchContact_Atomic_output_searchContactResponse__http___phonebook.ws.sms.icontact__searchContactResponse"/>
+    <profile:hasPrecondition>The searchContact operation requires a valid searchContactPayload input containing the necessary search criteria.</profile:hasPrecondition>
+    <profile:hasResult>The searchContact operation returns a searchContactResponse output with the contact information matching the search criteria.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ManagePhoneBookService_6_addContact_Atomic"/>
+    <profile:hasInput rdf:resource="#ManagePhoneBookService_6_addContact_Atomic_input_addContactPayload__http___phonebook.ws.sms.icontact__addContactPayload"/>
+    <profile:hasOutput rdf:resource="#ManagePhoneBookService_6_addContact_Atomic_output_addContactResponse__http___phonebook.ws.sms.icontact__addContactResponse"/>
+    <profile:hasPrecondition>The addContactPayload must contain the necessary information to add a new contact to the phonebook web service.</profile:hasPrecondition>
+    <profile:hasResult>The addContact operation will return an addContactResponse confirming the successful addition of the contact to the phonebook.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ManagePhoneBookService_7_getGroups_Atomic"/>
+    <profile:hasInput rdf:resource="#ManagePhoneBookService_7_getGroups_Atomic_input_getGroupsPayload__http___phonebook.ws.sms.icontact__getGroupsPayload"/>
+    <profile:hasOutput rdf:resource="#ManagePhoneBookService_7_getGroups_Atomic_output_getGroupsResponse__http___phonebook.ws.sms.icontact__getGroupsResponse"/>
+    <profile:hasPrecondition>The system must be able to receive a valid request containing the payload for retrieving groups from the phonebook web service.</profile:hasPrecondition>
+    <profile:hasResult>The system will return a response containing the groups retrieved from the phonebook web service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ManagePhoneBookService_8_removeGroup_Atomic"/>
+    <profile:hasInput rdf:resource="#ManagePhoneBookService_8_removeGroup_Atomic_input_removeGroupPayload__http___phonebook.ws.sms.icontact__removeGroupPayload"/>
+    <profile:hasOutput rdf:resource="#ManagePhoneBookService_8_removeGroup_Atomic_output_removeGroupResponse__http___phonebook.ws.sms.icontact__removeGroupResponse"/>
+    <profile:hasPrecondition>The removeGroupPayload must contain valid information about the group to be removed from the phonebook web service.</profile:hasPrecondition>
+    <profile:hasResult>The removeGroup operation will remove the specified group from the phonebook and return a removeGroupResponse.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#ManagePhoneBookService_9_addGroup_Atomic"/>
+    <profile:hasInput rdf:resource="#ManagePhoneBookService_9_addGroup_Atomic_input_addGroupPayload__http___phonebook.ws.sms.icontact__addGroupPayload"/>
+    <profile:hasOutput rdf:resource="#ManagePhoneBookService_9_addGroup_Atomic_output_addGroupResponse__http___phonebook.ws.sms.icontact__addGroupResponse"/>
+    <profile:hasPrecondition>The addGroupPayload must contain the necessary information required to create a new group in the phonebook web service.</profile:hasPrecondition>
+    <profile:hasResult>The addGroup operation will successfully create a new group based on the information provided in the addGroupPayload and return an addGroupResponse.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="ManagePhoneBookService_Composite">
+    <process:composedOf rdf:resource="#ManagePhoneBookService_0_removeContact_Atomic"/>
+    <process:composedOf rdf:resource="#ManagePhoneBookService_1_getContactsOfGroup_Atomic"/>
+    <process:composedOf rdf:resource="#ManagePhoneBookService_2_getFormattedCustomURL_Atomic"/>
+    <process:composedOf rdf:resource="#ManagePhoneBookService_3_getContact_Atomic"/>
+    <process:composedOf rdf:resource="#ManagePhoneBookService_4_updateContact_Atomic"/>
+    <process:composedOf rdf:resource="#ManagePhoneBookService_5_searchContact_Atomic"/>
+    <process:composedOf rdf:resource="#ManagePhoneBookService_6_addContact_Atomic"/>
+    <process:composedOf rdf:resource="#ManagePhoneBookService_7_getGroups_Atomic"/>
+    <process:composedOf rdf:resource="#ManagePhoneBookService_8_removeGroup_Atomic"/>
+    <process:composedOf rdf:resource="#ManagePhoneBookService_9_addGroup_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="ManagePhoneBookService_0_removeContact_Atomic_input_removeContactPayload__http___phonebook.ws.sms.icontact__removeContactPayload">
+    <process:parameterType>removeContactPayload:{http://phonebook.ws.sms.icontact/}removeContactPayload</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ManagePhoneBookService_0_removeContact_Atomic_output_removeContactResponse__http___phonebook.ws.sms.icontact__removeContactResponse">
+    <process:parameterType>removeContactResponse:{http://phonebook.ws.sms.icontact/}removeContactResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ManagePhoneBookService_1_getContactsOfGroup_Atomic_input_contactsOfGroupPayload__http___phonebook.ws.sms.icontact__contactsOfGroupPayload">
+    <process:parameterType>contactsOfGroupPayload:{http://phonebook.ws.sms.icontact/}contactsOfGroupPayload</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ManagePhoneBookService_1_getContactsOfGroup_Atomic_output_getContactsOfGroupResponse__http___phonebook.ws.sms.icontact__getContactsOfGroupResponse">
+    <process:parameterType>getContactsOfGroupResponse:{http://phonebook.ws.sms.icontact/}getContactsOfGroupResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ManagePhoneBookService_2_getFormattedCustomURL_Atomic_input_urlRedirectCustomPayload__http___phonebook.ws.sms.icontact__urlRedirectCustomPayload">
+    <process:parameterType>urlRedirectCustomPayload:{http://phonebook.ws.sms.icontact/}urlRedirectCustomPayload</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ManagePhoneBookService_2_getFormattedCustomURL_Atomic_output_getFormattedCustomURLResponse__http___phonebook.ws.sms.icontact__getFormattedCustomURLResponse">
+    <process:parameterType>getFormattedCustomURLResponse:{http://phonebook.ws.sms.icontact/}getFormattedCustomURLResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ManagePhoneBookService_3_getContact_Atomic_input_contactPayload__http___phonebook.ws.sms.icontact__contactPayload">
+    <process:parameterType>contactPayload:{http://phonebook.ws.sms.icontact/}contactPayload</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ManagePhoneBookService_3_getContact_Atomic_output_getContactResponse__http___phonebook.ws.sms.icontact__getContactResponse">
+    <process:parameterType>getContactResponse:{http://phonebook.ws.sms.icontact/}getContactResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ManagePhoneBookService_4_updateContact_Atomic_input_updateContactPayload__http___phonebook.ws.sms.icontact__updateContactPayload">
+    <process:parameterType>updateContactPayload:{http://phonebook.ws.sms.icontact/}updateContactPayload</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ManagePhoneBookService_4_updateContact_Atomic_output_updateContactResponse__http___phonebook.ws.sms.icontact__updateContactResponse">
+    <process:parameterType>updateContactResponse:{http://phonebook.ws.sms.icontact/}updateContactResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ManagePhoneBookService_5_searchContact_Atomic_input_searchContactPayload__http___phonebook.ws.sms.icontact__searchContactPayload">
+    <process:parameterType>searchContactPayload:{http://phonebook.ws.sms.icontact/}searchContactPayload</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ManagePhoneBookService_5_searchContact_Atomic_output_searchContactResponse__http___phonebook.ws.sms.icontact__searchContactResponse">
+    <process:parameterType>searchContactResponse:{http://phonebook.ws.sms.icontact/}searchContactResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ManagePhoneBookService_6_addContact_Atomic_input_addContactPayload__http___phonebook.ws.sms.icontact__addContactPayload">
+    <process:parameterType>addContactPayload:{http://phonebook.ws.sms.icontact/}addContactPayload</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ManagePhoneBookService_6_addContact_Atomic_output_addContactResponse__http___phonebook.ws.sms.icontact__addContactResponse">
+    <process:parameterType>addContactResponse:{http://phonebook.ws.sms.icontact/}addContactResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ManagePhoneBookService_7_getGroups_Atomic_input_getGroupsPayload__http___phonebook.ws.sms.icontact__getGroupsPayload">
+    <process:parameterType>getGroupsPayload:{http://phonebook.ws.sms.icontact/}getGroupsPayload</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ManagePhoneBookService_7_getGroups_Atomic_output_getGroupsResponse__http___phonebook.ws.sms.icontact__getGroupsResponse">
+    <process:parameterType>getGroupsResponse:{http://phonebook.ws.sms.icontact/}getGroupsResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ManagePhoneBookService_8_removeGroup_Atomic_input_removeGroupPayload__http___phonebook.ws.sms.icontact__removeGroupPayload">
+    <process:parameterType>removeGroupPayload:{http://phonebook.ws.sms.icontact/}removeGroupPayload</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ManagePhoneBookService_8_removeGroup_Atomic_output_removeGroupResponse__http___phonebook.ws.sms.icontact__removeGroupResponse">
+    <process:parameterType>removeGroupResponse:{http://phonebook.ws.sms.icontact/}removeGroupResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="ManagePhoneBookService_9_addGroup_Atomic_input_addGroupPayload__http___phonebook.ws.sms.icontact__addGroupPayload">
+    <process:parameterType>addGroupPayload:{http://phonebook.ws.sms.icontact/}addGroupPayload</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="ManagePhoneBookService_9_addGroup_Atomic_output_addGroupResponse__http___phonebook.ws.sms.icontact__addGroupResponse">
+    <process:parameterType>addGroupResponse:{http://phonebook.ws.sms.icontact/}addGroupResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="ManagePhoneBookService_0_removeContact_Atomic">
+    <process:hasName>removeContact</process:hasName>
+    <process:hasInput rdf:resource="#ManagePhoneBookService_0_removeContact_Atomic_input_removeContactPayload__http___phonebook.ws.sms.icontact__removeContactPayload"/>
+    <process:hasOutput rdf:resource="#ManagePhoneBookService_0_removeContact_Atomic_output_removeContactResponse__http___phonebook.ws.sms.icontact__removeContactResponse"/>
+    <process:hasPrecondition>The removeContactPayload must contain valid information for the contact to be successfully removed from the phonebook service.</process:hasPrecondition>
+    <process:hasEffect>The removeContact operation will return a removeContactResponse indicating whether the contact was successfully removed or not.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ManagePhoneBookService_1_getContactsOfGroup_Atomic">
+    <process:hasName>getContactsOfGroup</process:hasName>
+    <process:hasInput rdf:resource="#ManagePhoneBookService_1_getContactsOfGroup_Atomic_input_contactsOfGroupPayload__http___phonebook.ws.sms.icontact__contactsOfGroupPayload"/>
+    <process:hasOutput rdf:resource="#ManagePhoneBookService_1_getContactsOfGroup_Atomic_output_getContactsOfGroupResponse__http___phonebook.ws.sms.icontact__getContactsOfGroupResponse"/>
+    <process:hasPrecondition>The contactsOfGroupPayload must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a getContactsOfGroupResponse containing the contacts of the specified group.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ManagePhoneBookService_2_getFormattedCustomURL_Atomic">
+    <process:hasName>getFormattedCustomURL</process:hasName>
+    <process:hasInput rdf:resource="#ManagePhoneBookService_2_getFormattedCustomURL_Atomic_input_urlRedirectCustomPayload__http___phonebook.ws.sms.icontact__urlRedirectCustomPayload"/>
+    <process:hasOutput rdf:resource="#ManagePhoneBookService_2_getFormattedCustomURL_Atomic_output_getFormattedCustomURLResponse__http___phonebook.ws.sms.icontact__getFormattedCustomURLResponse"/>
+    <process:hasPrecondition>The input parameter urlRedirectCustomPayload must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a formatted custom URL in the getFormattedCustomURLResponse output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ManagePhoneBookService_3_getContact_Atomic">
+    <process:hasName>getContact</process:hasName>
+    <process:hasInput rdf:resource="#ManagePhoneBookService_3_getContact_Atomic_input_contactPayload__http___phonebook.ws.sms.icontact__contactPayload"/>
+    <process:hasOutput rdf:resource="#ManagePhoneBookService_3_getContact_Atomic_output_getContactResponse__http___phonebook.ws.sms.icontact__getContactResponse"/>
+    <process:hasPrecondition>The web service must receive a valid contact payload in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the contact information in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ManagePhoneBookService_4_updateContact_Atomic">
+    <process:hasName>updateContact</process:hasName>
+    <process:hasInput rdf:resource="#ManagePhoneBookService_4_updateContact_Atomic_input_updateContactPayload__http___phonebook.ws.sms.icontact__updateContactPayload"/>
+    <process:hasOutput rdf:resource="#ManagePhoneBookService_4_updateContact_Atomic_output_updateContactResponse__http___phonebook.ws.sms.icontact__updateContactResponse"/>
+    <process:hasPrecondition>The updateContactPayload must contain valid data for the contact to be updated in the phonebook service.</process:hasPrecondition>
+    <process:hasEffect>The updateContact operation will update the contact information based on the provided payload and return an updateContactResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ManagePhoneBookService_5_searchContact_Atomic">
+    <process:hasName>searchContact</process:hasName>
+    <process:hasInput rdf:resource="#ManagePhoneBookService_5_searchContact_Atomic_input_searchContactPayload__http___phonebook.ws.sms.icontact__searchContactPayload"/>
+    <process:hasOutput rdf:resource="#ManagePhoneBookService_5_searchContact_Atomic_output_searchContactResponse__http___phonebook.ws.sms.icontact__searchContactResponse"/>
+    <process:hasPrecondition>The searchContact operation requires a valid searchContactPayload input containing the necessary search criteria.</process:hasPrecondition>
+    <process:hasEffect>The searchContact operation returns a searchContactResponse output with the contact information matching the search criteria.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ManagePhoneBookService_6_addContact_Atomic">
+    <process:hasName>addContact</process:hasName>
+    <process:hasInput rdf:resource="#ManagePhoneBookService_6_addContact_Atomic_input_addContactPayload__http___phonebook.ws.sms.icontact__addContactPayload"/>
+    <process:hasOutput rdf:resource="#ManagePhoneBookService_6_addContact_Atomic_output_addContactResponse__http___phonebook.ws.sms.icontact__addContactResponse"/>
+    <process:hasPrecondition>The addContactPayload must contain the necessary information to add a new contact to the phonebook web service.</process:hasPrecondition>
+    <process:hasEffect>The addContact operation will return an addContactResponse confirming the successful addition of the contact to the phonebook.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ManagePhoneBookService_7_getGroups_Atomic">
+    <process:hasName>getGroups</process:hasName>
+    <process:hasInput rdf:resource="#ManagePhoneBookService_7_getGroups_Atomic_input_getGroupsPayload__http___phonebook.ws.sms.icontact__getGroupsPayload"/>
+    <process:hasOutput rdf:resource="#ManagePhoneBookService_7_getGroups_Atomic_output_getGroupsResponse__http___phonebook.ws.sms.icontact__getGroupsResponse"/>
+    <process:hasPrecondition>The system must be able to receive a valid request containing the payload for retrieving groups from the phonebook web service.</process:hasPrecondition>
+    <process:hasEffect>The system will return a response containing the groups retrieved from the phonebook web service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ManagePhoneBookService_8_removeGroup_Atomic">
+    <process:hasName>removeGroup</process:hasName>
+    <process:hasInput rdf:resource="#ManagePhoneBookService_8_removeGroup_Atomic_input_removeGroupPayload__http___phonebook.ws.sms.icontact__removeGroupPayload"/>
+    <process:hasOutput rdf:resource="#ManagePhoneBookService_8_removeGroup_Atomic_output_removeGroupResponse__http___phonebook.ws.sms.icontact__removeGroupResponse"/>
+    <process:hasPrecondition>The removeGroupPayload must contain valid information about the group to be removed from the phonebook web service.</process:hasPrecondition>
+    <process:hasEffect>The removeGroup operation will remove the specified group from the phonebook and return a removeGroupResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="ManagePhoneBookService_9_addGroup_Atomic">
+    <process:hasName>addGroup</process:hasName>
+    <process:hasInput rdf:resource="#ManagePhoneBookService_9_addGroup_Atomic_input_addGroupPayload__http___phonebook.ws.sms.icontact__addGroupPayload"/>
+    <process:hasOutput rdf:resource="#ManagePhoneBookService_9_addGroup_Atomic_output_addGroupResponse__http___phonebook.ws.sms.icontact__addGroupResponse"/>
+    <process:hasPrecondition>The addGroupPayload must contain the necessary information required to create a new group in the phonebook web service.</process:hasPrecondition>
+    <process:hasEffect>The addGroup operation will successfully create a new group based on the information provided in the addGroupPayload and return an addGroupResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="ManagePhoneBookService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ManagePhoneBookService_0_removeContact_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ManagePhoneBookService_1_getContactsOfGroup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ManagePhoneBookService_2_getFormattedCustomURL_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ManagePhoneBookService_3_getContact_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ManagePhoneBookService_4_updateContact_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ManagePhoneBookService_5_searchContact_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ManagePhoneBookService_6_addContact_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ManagePhoneBookService_7_getGroups_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ManagePhoneBookService_8_removeGroup_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#ManagePhoneBookService_9_addGroup_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ManagePhoneBookService_0_removeContact_Grounding">
+    <grounding:owlsProcess rdf:resource="#ManagePhoneBookService_0_removeContact_Atomic"/>
+    <grounding:wsdlOperationName>removeContact</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ManagePhoneBookPortBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ManagePhoneBook</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1786_1785.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>removeContact</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>removeContactResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ManagePhoneBookService_1_getContactsOfGroup_Grounding">
+    <grounding:owlsProcess rdf:resource="#ManagePhoneBookService_1_getContactsOfGroup_Atomic"/>
+    <grounding:wsdlOperationName>getContactsOfGroup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ManagePhoneBookPortBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ManagePhoneBook</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1786_1785.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getContactsOfGroup</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getContactsOfGroupResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ManagePhoneBookService_2_getFormattedCustomURL_Grounding">
+    <grounding:owlsProcess rdf:resource="#ManagePhoneBookService_2_getFormattedCustomURL_Atomic"/>
+    <grounding:wsdlOperationName>getFormattedCustomURL</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ManagePhoneBookPortBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ManagePhoneBook</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1786_1785.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getFormattedCustomURL</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getFormattedCustomURLResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ManagePhoneBookService_3_getContact_Grounding">
+    <grounding:owlsProcess rdf:resource="#ManagePhoneBookService_3_getContact_Atomic"/>
+    <grounding:wsdlOperationName>getContact</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ManagePhoneBookPortBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ManagePhoneBook</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1786_1785.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getContact</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getContactResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ManagePhoneBookService_4_updateContact_Grounding">
+    <grounding:owlsProcess rdf:resource="#ManagePhoneBookService_4_updateContact_Atomic"/>
+    <grounding:wsdlOperationName>updateContact</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ManagePhoneBookPortBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ManagePhoneBook</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1786_1785.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>updateContact</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>updateContactResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ManagePhoneBookService_5_searchContact_Grounding">
+    <grounding:owlsProcess rdf:resource="#ManagePhoneBookService_5_searchContact_Atomic"/>
+    <grounding:wsdlOperationName>searchContact</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ManagePhoneBookPortBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ManagePhoneBook</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1786_1785.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>searchContact</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>searchContactResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ManagePhoneBookService_6_addContact_Grounding">
+    <grounding:owlsProcess rdf:resource="#ManagePhoneBookService_6_addContact_Atomic"/>
+    <grounding:wsdlOperationName>addContact</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ManagePhoneBookPortBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ManagePhoneBook</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1786_1785.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>addContact</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>addContactResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ManagePhoneBookService_7_getGroups_Grounding">
+    <grounding:owlsProcess rdf:resource="#ManagePhoneBookService_7_getGroups_Atomic"/>
+    <grounding:wsdlOperationName>getGroups</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ManagePhoneBookPortBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ManagePhoneBook</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1786_1785.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getGroups</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getGroupsResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ManagePhoneBookService_8_removeGroup_Grounding">
+    <grounding:owlsProcess rdf:resource="#ManagePhoneBookService_8_removeGroup_Atomic"/>
+    <grounding:wsdlOperationName>removeGroup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ManagePhoneBookPortBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ManagePhoneBook</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1786_1785.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>removeGroup</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>removeGroupResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="ManagePhoneBookService_9_addGroup_Grounding">
+    <grounding:owlsProcess rdf:resource="#ManagePhoneBookService_9_addGroup_Atomic"/>
+    <grounding:wsdlOperationName>addGroup</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>ManagePhoneBookPortBinding</grounding:wsdlBinding>
+    <grounding:wsdlPortType>ManagePhoneBook</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1786_1785.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>addGroup</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>addGroupResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

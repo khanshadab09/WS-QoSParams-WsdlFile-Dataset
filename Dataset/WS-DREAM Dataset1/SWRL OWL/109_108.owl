@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="BookStoreService">
+    <service:presents rdf:resource="#BookStoreService_Profile"/>
+    <service:describedBy rdf:resource="#BookStoreService_Composite"/>
+    <service:supports rdf:resource="#BookStoreService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="BookStoreService_Profile">
+    <profile:serviceName>BookStoreService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#BookStoreService"/>
+    <profile:hasProcess rdf:resource="#BookStoreService_0_Available_Atomic"/>
+    <profile:hasInput rdf:resource="#BookStoreService_0_Available_Atomic_input_parameters__http___tempuri.org__Available"/>
+    <profile:hasOutput rdf:resource="#BookStoreService_0_Available_Atomic_output_parameters__http___tempuri.org__AvailableResponse"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The service will return the availability status as specified in the response.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BookStoreService_1_Author_Atomic"/>
+    <profile:hasInput rdf:resource="#BookStoreService_1_Author_Atomic_input_parameters__http___tempuri.org__Author"/>
+    <profile:hasOutput rdf:resource="#BookStoreService_1_Author_Atomic_output_parameters__http___tempuri.org__AuthorResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid author object conforming to the specified schema.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response containing the author information in the specified format.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BookStoreService_2_Title_Atomic"/>
+    <profile:hasInput rdf:resource="#BookStoreService_2_Title_Atomic_input_parameters__http___tempuri.org__Title"/>
+    <profile:hasOutput rdf:resource="#BookStoreService_2_Title_Atomic_output_parameters__http___tempuri.org__TitleResponse"/>
+    <profile:hasPrecondition>The input parameter "Title" must be provided in the request.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a response containing the "Title" information.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#BookStoreService_3_Price_Atomic"/>
+    <profile:hasInput rdf:resource="#BookStoreService_3_Price_Atomic_input_parameters__http___tempuri.org__Price"/>
+    <profile:hasOutput rdf:resource="#BookStoreService_3_Price_Atomic_output_parameters__http___tempuri.org__PriceResponse"/>
+    <profile:hasPrecondition>The input parameter must be a valid price value.</profile:hasPrecondition>
+    <profile:hasResult>The service will return a response containing the price information.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="BookStoreService_Composite">
+    <process:composedOf rdf:resource="#BookStoreService_0_Available_Atomic"/>
+    <process:composedOf rdf:resource="#BookStoreService_1_Author_Atomic"/>
+    <process:composedOf rdf:resource="#BookStoreService_2_Title_Atomic"/>
+    <process:composedOf rdf:resource="#BookStoreService_3_Price_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="BookStoreService_0_Available_Atomic_input_parameters__http___tempuri.org__Available">
+    <process:parameterType>parameters:{http://tempuri.org/}Available</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BookStoreService_0_Available_Atomic_output_parameters__http___tempuri.org__AvailableResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}AvailableResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BookStoreService_1_Author_Atomic_input_parameters__http___tempuri.org__Author">
+    <process:parameterType>parameters:{http://tempuri.org/}Author</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BookStoreService_1_Author_Atomic_output_parameters__http___tempuri.org__AuthorResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}AuthorResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BookStoreService_2_Title_Atomic_input_parameters__http___tempuri.org__Title">
+    <process:parameterType>parameters:{http://tempuri.org/}Title</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BookStoreService_2_Title_Atomic_output_parameters__http___tempuri.org__TitleResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}TitleResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="BookStoreService_3_Price_Atomic_input_parameters__http___tempuri.org__Price">
+    <process:parameterType>parameters:{http://tempuri.org/}Price</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="BookStoreService_3_Price_Atomic_output_parameters__http___tempuri.org__PriceResponse">
+    <process:parameterType>parameters:{http://tempuri.org/}PriceResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="BookStoreService_0_Available_Atomic">
+    <process:hasName>Available</process:hasName>
+    <process:hasInput rdf:resource="#BookStoreService_0_Available_Atomic_input_parameters__http___tempuri.org__Available"/>
+    <process:hasOutput rdf:resource="#BookStoreService_0_Available_Atomic_output_parameters__http___tempuri.org__AvailableResponse"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The service will return the availability status as specified in the response.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BookStoreService_1_Author_Atomic">
+    <process:hasName>Author</process:hasName>
+    <process:hasInput rdf:resource="#BookStoreService_1_Author_Atomic_input_parameters__http___tempuri.org__Author"/>
+    <process:hasOutput rdf:resource="#BookStoreService_1_Author_Atomic_output_parameters__http___tempuri.org__AuthorResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid author object conforming to the specified schema.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response containing the author information in the specified format.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BookStoreService_2_Title_Atomic">
+    <process:hasName>Title</process:hasName>
+    <process:hasInput rdf:resource="#BookStoreService_2_Title_Atomic_input_parameters__http___tempuri.org__Title"/>
+    <process:hasOutput rdf:resource="#BookStoreService_2_Title_Atomic_output_parameters__http___tempuri.org__TitleResponse"/>
+    <process:hasPrecondition>The input parameter "Title" must be provided in the request.</process:hasPrecondition>
+    <process:hasEffect>The service will return a response containing the "Title" information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="BookStoreService_3_Price_Atomic">
+    <process:hasName>Price</process:hasName>
+    <process:hasInput rdf:resource="#BookStoreService_3_Price_Atomic_input_parameters__http___tempuri.org__Price"/>
+    <process:hasOutput rdf:resource="#BookStoreService_3_Price_Atomic_output_parameters__http___tempuri.org__PriceResponse"/>
+    <process:hasPrecondition>The input parameter must be a valid price value.</process:hasPrecondition>
+    <process:hasEffect>The service will return a response containing the price information.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="BookStoreService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BookStoreService_0_Available_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BookStoreService_1_Author_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BookStoreService_2_Title_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#BookStoreService_3_Price_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BookStoreService_0_Available_Grounding">
+    <grounding:owlsProcess rdf:resource="#BookStoreService_0_Available_Atomic"/>
+    <grounding:wsdlOperationName>Available</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BookStoreServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BookStoreServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/109_108.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AvailableSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AvailableSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BookStoreService_1_Author_Grounding">
+    <grounding:owlsProcess rdf:resource="#BookStoreService_1_Author_Atomic"/>
+    <grounding:wsdlOperationName>Author</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BookStoreServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BookStoreServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/109_108.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>AuthorSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>AuthorSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BookStoreService_2_Title_Grounding">
+    <grounding:owlsProcess rdf:resource="#BookStoreService_2_Title_Atomic"/>
+    <grounding:wsdlOperationName>Title</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BookStoreServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BookStoreServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/109_108.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>TitleSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>TitleSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="BookStoreService_3_Price_Grounding">
+    <grounding:owlsProcess rdf:resource="#BookStoreService_3_Price_Atomic"/>
+    <grounding:wsdlOperationName>Price</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>BookStoreServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>BookStoreServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/109_108.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>PriceSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>PriceSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

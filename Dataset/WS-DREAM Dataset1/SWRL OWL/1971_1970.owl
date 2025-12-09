@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="TemperatureConversions">
+    <service:presents rdf:resource="#TemperatureConversions_Profile"/>
+    <service:describedBy rdf:resource="#TemperatureConversions_Composite"/>
+    <service:supports rdf:resource="#TemperatureConversions_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="TemperatureConversions_Profile">
+    <profile:serviceName>TemperatureConversions</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#TemperatureConversions"/>
+    <profile:hasProcess rdf:resource="#TemperatureConversions_0_CelsiusToFahrenheit_Atomic"/>
+    <profile:hasInput rdf:resource="#TemperatureConversions_0_CelsiusToFahrenheit_Atomic_input_parameters__http___webservices.daehosting.com_temperature_CelsiusToFahrenheit"/>
+    <profile:hasOutput rdf:resource="#TemperatureConversions_0_CelsiusToFahrenheit_Atomic_output_parameters__http___webservices.daehosting.com_temperature_CelsiusToFahrenheitResponse"/>
+    <profile:hasPrecondition>The input parameter must be a temperature value in Celsius.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter will be the equivalent temperature value in Fahrenheit.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TemperatureConversions_1_FahrenheitToCelsius_Atomic"/>
+    <profile:hasInput rdf:resource="#TemperatureConversions_1_FahrenheitToCelsius_Atomic_input_parameters__http___webservices.daehosting.com_temperature_FahrenheitToCelsius"/>
+    <profile:hasOutput rdf:resource="#TemperatureConversions_1_FahrenheitToCelsius_Atomic_output_parameters__http___webservices.daehosting.com_temperature_FahrenheitToCelsiusResponse"/>
+    <profile:hasPrecondition>The input parameter for Fahrenheit temperature must be provided in order to convert it to Celsius.</profile:hasPrecondition>
+    <profile:hasResult>The Fahrenheit temperature will be converted to Celsius and returned as the output parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TemperatureConversions_2_WindChillInCelsius_Atomic"/>
+    <profile:hasInput rdf:resource="#TemperatureConversions_2_WindChillInCelsius_Atomic_input_parameters__http___webservices.daehosting.com_temperature_WindChillInCelsius"/>
+    <profile:hasOutput rdf:resource="#TemperatureConversions_2_WindChillInCelsius_Atomic_output_parameters__http___webservices.daehosting.com_temperature_WindChillInCelsiusResponse"/>
+    <profile:hasPrecondition>The input parameter for WindChillInCelsius must be provided in order to calculate the wind chill temperature in Celsius.</profile:hasPrecondition>
+    <profile:hasResult>The operation WindChillInCelsius will return the calculated wind chill temperature in Celsius as the output.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#TemperatureConversions_3_WindChillInFahrenheit_Atomic"/>
+    <profile:hasInput rdf:resource="#TemperatureConversions_3_WindChillInFahrenheit_Atomic_input_parameters__http___webservices.daehosting.com_temperature_WindChillInFahrenheit"/>
+    <profile:hasOutput rdf:resource="#TemperatureConversions_3_WindChillInFahrenheit_Atomic_output_parameters__http___webservices.daehosting.com_temperature_WindChillInFahrenheitResponse"/>
+    <profile:hasPrecondition>The input parameter for WindChillInFahrenheit must be provided in the specified format from the temperature web service.</profile:hasPrecondition>
+    <profile:hasResult>The output parameter WindChillInFahrenheitResponse will be returned with the calculated wind chill value in Fahrenheit.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="TemperatureConversions_Composite">
+    <process:composedOf rdf:resource="#TemperatureConversions_0_CelsiusToFahrenheit_Atomic"/>
+    <process:composedOf rdf:resource="#TemperatureConversions_1_FahrenheitToCelsius_Atomic"/>
+    <process:composedOf rdf:resource="#TemperatureConversions_2_WindChillInCelsius_Atomic"/>
+    <process:composedOf rdf:resource="#TemperatureConversions_3_WindChillInFahrenheit_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="TemperatureConversions_0_CelsiusToFahrenheit_Atomic_input_parameters__http___webservices.daehosting.com_temperature_CelsiusToFahrenheit">
+    <process:parameterType>parameters:{http://webservices.daehosting.com/temperature}CelsiusToFahrenheit</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TemperatureConversions_0_CelsiusToFahrenheit_Atomic_output_parameters__http___webservices.daehosting.com_temperature_CelsiusToFahrenheitResponse">
+    <process:parameterType>parameters:{http://webservices.daehosting.com/temperature}CelsiusToFahrenheitResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TemperatureConversions_1_FahrenheitToCelsius_Atomic_input_parameters__http___webservices.daehosting.com_temperature_FahrenheitToCelsius">
+    <process:parameterType>parameters:{http://webservices.daehosting.com/temperature}FahrenheitToCelsius</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TemperatureConversions_1_FahrenheitToCelsius_Atomic_output_parameters__http___webservices.daehosting.com_temperature_FahrenheitToCelsiusResponse">
+    <process:parameterType>parameters:{http://webservices.daehosting.com/temperature}FahrenheitToCelsiusResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TemperatureConversions_2_WindChillInCelsius_Atomic_input_parameters__http___webservices.daehosting.com_temperature_WindChillInCelsius">
+    <process:parameterType>parameters:{http://webservices.daehosting.com/temperature}WindChillInCelsius</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TemperatureConversions_2_WindChillInCelsius_Atomic_output_parameters__http___webservices.daehosting.com_temperature_WindChillInCelsiusResponse">
+    <process:parameterType>parameters:{http://webservices.daehosting.com/temperature}WindChillInCelsiusResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="TemperatureConversions_3_WindChillInFahrenheit_Atomic_input_parameters__http___webservices.daehosting.com_temperature_WindChillInFahrenheit">
+    <process:parameterType>parameters:{http://webservices.daehosting.com/temperature}WindChillInFahrenheit</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="TemperatureConversions_3_WindChillInFahrenheit_Atomic_output_parameters__http___webservices.daehosting.com_temperature_WindChillInFahrenheitResponse">
+    <process:parameterType>parameters:{http://webservices.daehosting.com/temperature}WindChillInFahrenheitResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="TemperatureConversions_0_CelsiusToFahrenheit_Atomic">
+    <process:hasName>CelsiusToFahrenheit</process:hasName>
+    <process:hasInput rdf:resource="#TemperatureConversions_0_CelsiusToFahrenheit_Atomic_input_parameters__http___webservices.daehosting.com_temperature_CelsiusToFahrenheit"/>
+    <process:hasOutput rdf:resource="#TemperatureConversions_0_CelsiusToFahrenheit_Atomic_output_parameters__http___webservices.daehosting.com_temperature_CelsiusToFahrenheitResponse"/>
+    <process:hasPrecondition>The input parameter must be a temperature value in Celsius.</process:hasPrecondition>
+    <process:hasEffect>The output parameter will be the equivalent temperature value in Fahrenheit.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TemperatureConversions_1_FahrenheitToCelsius_Atomic">
+    <process:hasName>FahrenheitToCelsius</process:hasName>
+    <process:hasInput rdf:resource="#TemperatureConversions_1_FahrenheitToCelsius_Atomic_input_parameters__http___webservices.daehosting.com_temperature_FahrenheitToCelsius"/>
+    <process:hasOutput rdf:resource="#TemperatureConversions_1_FahrenheitToCelsius_Atomic_output_parameters__http___webservices.daehosting.com_temperature_FahrenheitToCelsiusResponse"/>
+    <process:hasPrecondition>The input parameter for Fahrenheit temperature must be provided in order to convert it to Celsius.</process:hasPrecondition>
+    <process:hasEffect>The Fahrenheit temperature will be converted to Celsius and returned as the output parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TemperatureConversions_2_WindChillInCelsius_Atomic">
+    <process:hasName>WindChillInCelsius</process:hasName>
+    <process:hasInput rdf:resource="#TemperatureConversions_2_WindChillInCelsius_Atomic_input_parameters__http___webservices.daehosting.com_temperature_WindChillInCelsius"/>
+    <process:hasOutput rdf:resource="#TemperatureConversions_2_WindChillInCelsius_Atomic_output_parameters__http___webservices.daehosting.com_temperature_WindChillInCelsiusResponse"/>
+    <process:hasPrecondition>The input parameter for WindChillInCelsius must be provided in order to calculate the wind chill temperature in Celsius.</process:hasPrecondition>
+    <process:hasEffect>The operation WindChillInCelsius will return the calculated wind chill temperature in Celsius as the output.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="TemperatureConversions_3_WindChillInFahrenheit_Atomic">
+    <process:hasName>WindChillInFahrenheit</process:hasName>
+    <process:hasInput rdf:resource="#TemperatureConversions_3_WindChillInFahrenheit_Atomic_input_parameters__http___webservices.daehosting.com_temperature_WindChillInFahrenheit"/>
+    <process:hasOutput rdf:resource="#TemperatureConversions_3_WindChillInFahrenheit_Atomic_output_parameters__http___webservices.daehosting.com_temperature_WindChillInFahrenheitResponse"/>
+    <process:hasPrecondition>The input parameter for WindChillInFahrenheit must be provided in the specified format from the temperature web service.</process:hasPrecondition>
+    <process:hasEffect>The output parameter WindChillInFahrenheitResponse will be returned with the calculated wind chill value in Fahrenheit.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="TemperatureConversions_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TemperatureConversions_0_CelsiusToFahrenheit_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TemperatureConversions_1_FahrenheitToCelsius_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TemperatureConversions_2_WindChillInCelsius_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#TemperatureConversions_3_WindChillInFahrenheit_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TemperatureConversions_0_CelsiusToFahrenheit_Grounding">
+    <grounding:owlsProcess rdf:resource="#TemperatureConversions_0_CelsiusToFahrenheit_Atomic"/>
+    <grounding:wsdlOperationName>CelsiusToFahrenheit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TemperatureConversionsSoapBinding12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TemperatureConversionsSoapType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1971_1970.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>CelsiusToFahrenheitSoapRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>CelsiusToFahrenheitSoapResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TemperatureConversions_1_FahrenheitToCelsius_Grounding">
+    <grounding:owlsProcess rdf:resource="#TemperatureConversions_1_FahrenheitToCelsius_Atomic"/>
+    <grounding:wsdlOperationName>FahrenheitToCelsius</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TemperatureConversionsSoapBinding12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TemperatureConversionsSoapType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1971_1970.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>FahrenheitToCelsiusSoapRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>FahrenheitToCelsiusSoapResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TemperatureConversions_2_WindChillInCelsius_Grounding">
+    <grounding:owlsProcess rdf:resource="#TemperatureConversions_2_WindChillInCelsius_Atomic"/>
+    <grounding:wsdlOperationName>WindChillInCelsius</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TemperatureConversionsSoapBinding12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TemperatureConversionsSoapType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1971_1970.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>WindChillInCelsiusSoapRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>WindChillInCelsiusSoapResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="TemperatureConversions_3_WindChillInFahrenheit_Grounding">
+    <grounding:owlsProcess rdf:resource="#TemperatureConversions_3_WindChillInFahrenheit_Atomic"/>
+    <grounding:wsdlOperationName>WindChillInFahrenheit</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>TemperatureConversionsSoapBinding12</grounding:wsdlBinding>
+    <grounding:wsdlPortType>TemperatureConversionsSoapType</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1971_1970.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>WindChillInFahrenheitSoapRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>WindChillInFahrenheitSoapResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

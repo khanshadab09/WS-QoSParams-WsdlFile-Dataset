@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="Authentication">
+    <service:presents rdf:resource="#Authentication_Profile"/>
+    <service:describedBy rdf:resource="#Authentication_Composite"/>
+    <service:supports rdf:resource="#Authentication_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="Authentication_Profile">
+    <profile:serviceName>Authentication</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#Authentication"/>
+    <profile:hasProcess rdf:resource="#Authentication_0_Login_Atomic"/>
+    <profile:hasInput rdf:resource="#Authentication_0_Login_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__Login"/>
+    <profile:hasOutput rdf:resource="#Authentication_0_Login_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__LoginResponse"/>
+    <profile:hasPrecondition>The user must provide valid credentials to authenticate their identity.</profile:hasPrecondition>
+    <profile:hasResult>The system will grant access to the user's account and provide the necessary permissions to interact with the SharePoint service.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#Authentication_1_Mode_Atomic"/>
+    <profile:hasInput rdf:resource="#Authentication_1_Mode_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__Mode"/>
+    <profile:hasOutput rdf:resource="#Authentication_1_Mode_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__ModeResponse"/>
+    <profile:hasPrecondition>The input parameter must be provided in the specified format {http://schemas.microsoft.com/sharepoint/soap/}Mode.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return a response in the specified format {http://schemas.microsoft.com/sharepoint/soap/}ModeResponse.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="Authentication_Composite">
+    <process:composedOf rdf:resource="#Authentication_0_Login_Atomic"/>
+    <process:composedOf rdf:resource="#Authentication_1_Mode_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="Authentication_0_Login_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__Login">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}Login</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Authentication_0_Login_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__LoginResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}LoginResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="Authentication_1_Mode_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__Mode">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}Mode</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="Authentication_1_Mode_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__ModeResponse">
+    <process:parameterType>parameters:{http://schemas.microsoft.com/sharepoint/soap/}ModeResponse</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="Authentication_0_Login_Atomic">
+    <process:hasName>Login</process:hasName>
+    <process:hasInput rdf:resource="#Authentication_0_Login_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__Login"/>
+    <process:hasOutput rdf:resource="#Authentication_0_Login_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__LoginResponse"/>
+    <process:hasPrecondition>The user must provide valid credentials to authenticate their identity.</process:hasPrecondition>
+    <process:hasEffect>The system will grant access to the user's account and provide the necessary permissions to interact with the SharePoint service.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="Authentication_1_Mode_Atomic">
+    <process:hasName>Mode</process:hasName>
+    <process:hasInput rdf:resource="#Authentication_1_Mode_Atomic_input_parameters__http___schemas.microsoft.com_sharepoint_soap__Mode"/>
+    <process:hasOutput rdf:resource="#Authentication_1_Mode_Atomic_output_parameters__http___schemas.microsoft.com_sharepoint_soap__ModeResponse"/>
+    <process:hasPrecondition>The input parameter must be provided in the specified format {http://schemas.microsoft.com/sharepoint/soap/}Mode.</process:hasPrecondition>
+    <process:hasEffect>The operation will return a response in the specified format {http://schemas.microsoft.com/sharepoint/soap/}ModeResponse.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="Authentication_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Authentication_0_Login_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#Authentication_1_Mode_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Authentication_0_Login_Grounding">
+    <grounding:owlsProcess rdf:resource="#Authentication_0_Login_Atomic"/>
+    <grounding:wsdlOperationName>Login</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AuthenticationSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AuthenticationSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1247_1246.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>LoginSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>LoginSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="Authentication_1_Mode_Grounding">
+    <grounding:owlsProcess rdf:resource="#Authentication_1_Mode_Atomic"/>
+    <grounding:wsdlOperationName>Mode</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>AuthenticationSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>AuthenticationSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/1247_1246.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>ModeSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>ModeSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

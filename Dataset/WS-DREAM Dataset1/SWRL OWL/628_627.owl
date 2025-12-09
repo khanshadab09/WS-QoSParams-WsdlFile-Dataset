@@ -1,0 +1,491 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+  xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+  xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+  xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl"/>
+  </owl:Ontology>
+
+  <service:Service rdf:ID="WeatherWebService">
+    <service:presents rdf:resource="#WeatherWebService_Profile"/>
+    <service:describedBy rdf:resource="#WeatherWebService_Composite"/>
+    <service:supports rdf:resource="#WeatherWebService_Grounding"/>
+  </service:Service>
+
+  <profile:Profile rdf:ID="WeatherWebService_Profile">
+    <profile:serviceName>WeatherWebService</profile:serviceName>
+    <profile:textDescription>Auto-generated NL profile</profile:textDescription>
+    <profile:presentedBy rdf:resource="#WeatherWebService"/>
+    <profile:hasProcess rdf:resource="#WeatherWebService_0_getSupportCity_Atomic"/>
+    <profile:hasInput rdf:resource="#WeatherWebService_0_getSupportCity_Atomic_input_byProvinceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_0_getSupportCity_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <profile:hasPrecondition>The web service must have access to a database containing a list of cities supported by provinces.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return an array of strings representing the cities supported by the specified province.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WeatherWebService_1_getSupportProvince_Atomic"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_1_getSupportProvince_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <profile:hasPrecondition>The web service must be accessible and operational.</profile:hasPrecondition>
+    <profile:hasResult>The list of supported provinces will be returned in the response body.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WeatherWebService_2_getSupportDataSet_Atomic"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_2_getSupportDataSet_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a dataset containing support data.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WeatherWebService_3_getWeatherbyCityName_Atomic"/>
+    <profile:hasInput rdf:resource="#WeatherWebService_3_getWeatherbyCityName_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_3_getWeatherbyCityName_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <profile:hasPrecondition>Inputs must be present and valid.</profile:hasPrecondition>
+    <profile:hasResult>Operation completes and returns the specified outputs.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WeatherWebService_4_getWeatherbyCityNamePro_Atomic"/>
+    <profile:hasInput rdf:resource="#WeatherWebService_4_getWeatherbyCityNamePro_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#WeatherWebService_4_getWeatherbyCityNamePro_Atomic_input_theUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_4_getWeatherbyCityNamePro_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <profile:hasPrecondition>The user must provide a valid city name and a valid user ID as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of weather information for the specified city based on the provided user ID.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WeatherWebService_5_getSupportCity_Atomic"/>
+    <profile:hasInput rdf:resource="#WeatherWebService_5_getSupportCity_Atomic_input_parameters__http___WebXml.com.cn__getSupportCity"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_5_getSupportCity_Atomic_output_parameters__http___WebXml.com.cn__getSupportCityResponse"/>
+    <profile:hasPrecondition>The web service must have access to the necessary data source containing information about supported cities.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing a list of supported cities.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WeatherWebService_6_getSupportProvince_Atomic"/>
+    <profile:hasInput rdf:resource="#WeatherWebService_6_getSupportProvince_Atomic_input_parameters__http___WebXml.com.cn__getSupportProvince"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_6_getSupportProvince_Atomic_output_parameters__http___WebXml.com.cn__getSupportProvinceResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and the input parameter for getSupportProvince must be provided in the specified format.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing information about the supported provinces.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WeatherWebService_7_getSupportDataSet_Atomic"/>
+    <profile:hasInput rdf:resource="#WeatherWebService_7_getSupportDataSet_Atomic_input_parameters__http___WebXml.com.cn__getSupportDataSet"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_7_getSupportDataSet_Atomic_output_parameters__http___WebXml.com.cn__getSupportDataSetResponse"/>
+    <profile:hasPrecondition>The web service must be accessible and support the operation getSupportDataSet with the specified input parameters from http://WebXml.com.cn/.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a response containing the support data set based on the input parameters provided.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WeatherWebService_8_getWeatherbyCityName_Atomic"/>
+    <profile:hasInput rdf:resource="#WeatherWebService_8_getWeatherbyCityName_Atomic_input_parameters__http___WebXml.com.cn__getWeatherbyCityName"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_8_getWeatherbyCityName_Atomic_output_parameters__http___WebXml.com.cn__getWeatherbyCityNameResponse"/>
+    <profile:hasPrecondition>The user provides a valid city name as input parameter for the getWeatherbyCityName operation.</profile:hasPrecondition>
+    <profile:hasResult>The web service returns weather information for the specified city in the getWeatherbyCityNameResponse output parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WeatherWebService_9_getWeatherbyCityNamePro_Atomic"/>
+    <profile:hasInput rdf:resource="#WeatherWebService_9_getWeatherbyCityNamePro_Atomic_input_parameters__http___WebXml.com.cn__getWeatherbyCityNamePro"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_9_getWeatherbyCityNamePro_Atomic_output_parameters__http___WebXml.com.cn__getWeatherbyCityNameProResponse"/>
+    <profile:hasPrecondition>The user provides a city name as input parameter for the getWeatherbyCityNamePro operation.</profile:hasPrecondition>
+    <profile:hasResult>The operation returns weather information for the specified city in the getWeatherbyCityNameProResponse output parameter.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WeatherWebService_10_getSupportCity_Atomic"/>
+    <profile:hasInput rdf:resource="#WeatherWebService_10_getSupportCity_Atomic_input_byProvinceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_10_getSupportCity_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <profile:hasPrecondition>The web service must have access to a database containing information about support cities by province name.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return an array of strings representing the support cities for the specified province name.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WeatherWebService_11_getSupportProvince_Atomic"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_11_getSupportProvince_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <profile:hasPrecondition>The web service for retrieving support provinces is accessible and functional.</profile:hasPrecondition>
+    <profile:hasResult>The response will contain an array of strings representing the supported provinces.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WeatherWebService_12_getSupportDataSet_Atomic"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_12_getSupportDataSet_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <profile:hasPrecondition>The web service must be running and accessible.</profile:hasPrecondition>
+    <profile:hasResult>The web service will return a DataSet containing support data.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WeatherWebService_13_getWeatherbyCityName_Atomic"/>
+    <profile:hasInput rdf:resource="#WeatherWebService_13_getWeatherbyCityName_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_13_getWeatherbyCityName_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <profile:hasPrecondition>The input must be a valid city name in string format.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of strings containing weather information for the specified city.</profile:hasResult>
+    <profile:hasProcess rdf:resource="#WeatherWebService_14_getWeatherbyCityNamePro_Atomic"/>
+    <profile:hasInput rdf:resource="#WeatherWebService_14_getWeatherbyCityNamePro_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasInput rdf:resource="#WeatherWebService_14_getWeatherbyCityNamePro_Atomic_input_theUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <profile:hasOutput rdf:resource="#WeatherWebService_14_getWeatherbyCityNamePro_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <profile:hasPrecondition>The user must provide a valid city name and a valid user ID as input parameters.</profile:hasPrecondition>
+    <profile:hasResult>The operation will return an array of strings containing weather information for the specified city.</profile:hasResult>
+  </profile:Profile>
+
+  <process:CompositeProcess rdf:ID="WeatherWebService_Composite">
+    <process:composedOf rdf:resource="#WeatherWebService_0_getSupportCity_Atomic"/>
+    <process:composedOf rdf:resource="#WeatherWebService_1_getSupportProvince_Atomic"/>
+    <process:composedOf rdf:resource="#WeatherWebService_2_getSupportDataSet_Atomic"/>
+    <process:composedOf rdf:resource="#WeatherWebService_3_getWeatherbyCityName_Atomic"/>
+    <process:composedOf rdf:resource="#WeatherWebService_4_getWeatherbyCityNamePro_Atomic"/>
+    <process:composedOf rdf:resource="#WeatherWebService_5_getSupportCity_Atomic"/>
+    <process:composedOf rdf:resource="#WeatherWebService_6_getSupportProvince_Atomic"/>
+    <process:composedOf rdf:resource="#WeatherWebService_7_getSupportDataSet_Atomic"/>
+    <process:composedOf rdf:resource="#WeatherWebService_8_getWeatherbyCityName_Atomic"/>
+    <process:composedOf rdf:resource="#WeatherWebService_9_getWeatherbyCityNamePro_Atomic"/>
+    <process:composedOf rdf:resource="#WeatherWebService_10_getSupportCity_Atomic"/>
+    <process:composedOf rdf:resource="#WeatherWebService_11_getSupportProvince_Atomic"/>
+    <process:composedOf rdf:resource="#WeatherWebService_12_getSupportDataSet_Atomic"/>
+    <process:composedOf rdf:resource="#WeatherWebService_13_getWeatherbyCityName_Atomic"/>
+    <process:composedOf rdf:resource="#WeatherWebService_14_getWeatherbyCityNamePro_Atomic"/>
+  </process:CompositeProcess>
+
+  <process:Input rdf:ID="WeatherWebService_0_getSupportCity_Atomic_input_byProvinceName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>byProvinceName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WeatherWebService_0_getSupportCity_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString">
+    <process:parameterType>Body:{http://WebXml.com.cn/}ArrayOfString</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="WeatherWebService_1_getSupportProvince_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString">
+    <process:parameterType>Body:{http://WebXml.com.cn/}ArrayOfString</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="WeatherWebService_2_getSupportDataSet_Atomic_output_Body__http___WebXml.com.cn__DataSet">
+    <process:parameterType>Body:{http://WebXml.com.cn/}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WeatherWebService_3_getWeatherbyCityName_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theCityName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WeatherWebService_3_getWeatherbyCityName_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString">
+    <process:parameterType>Body:{http://WebXml.com.cn/}ArrayOfString</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WeatherWebService_4_getWeatherbyCityNamePro_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theCityName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="WeatherWebService_4_getWeatherbyCityNamePro_Atomic_input_theUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WeatherWebService_4_getWeatherbyCityNamePro_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString">
+    <process:parameterType>Body:{http://WebXml.com.cn/}ArrayOfString</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WeatherWebService_5_getSupportCity_Atomic_input_parameters__http___WebXml.com.cn__getSupportCity">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getSupportCity</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WeatherWebService_5_getSupportCity_Atomic_output_parameters__http___WebXml.com.cn__getSupportCityResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getSupportCityResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WeatherWebService_6_getSupportProvince_Atomic_input_parameters__http___WebXml.com.cn__getSupportProvince">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getSupportProvince</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WeatherWebService_6_getSupportProvince_Atomic_output_parameters__http___WebXml.com.cn__getSupportProvinceResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getSupportProvinceResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WeatherWebService_7_getSupportDataSet_Atomic_input_parameters__http___WebXml.com.cn__getSupportDataSet">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getSupportDataSet</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WeatherWebService_7_getSupportDataSet_Atomic_output_parameters__http___WebXml.com.cn__getSupportDataSetResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getSupportDataSetResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WeatherWebService_8_getWeatherbyCityName_Atomic_input_parameters__http___WebXml.com.cn__getWeatherbyCityName">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getWeatherbyCityName</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WeatherWebService_8_getWeatherbyCityName_Atomic_output_parameters__http___WebXml.com.cn__getWeatherbyCityNameResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getWeatherbyCityNameResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WeatherWebService_9_getWeatherbyCityNamePro_Atomic_input_parameters__http___WebXml.com.cn__getWeatherbyCityNamePro">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getWeatherbyCityNamePro</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WeatherWebService_9_getWeatherbyCityNamePro_Atomic_output_parameters__http___WebXml.com.cn__getWeatherbyCityNameProResponse">
+    <process:parameterType>parameters:{http://WebXml.com.cn/}getWeatherbyCityNameProResponse</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WeatherWebService_10_getSupportCity_Atomic_input_byProvinceName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>byProvinceName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WeatherWebService_10_getSupportCity_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString">
+    <process:parameterType>Body:{http://WebXml.com.cn/}ArrayOfString</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="WeatherWebService_11_getSupportProvince_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString">
+    <process:parameterType>Body:{http://WebXml.com.cn/}ArrayOfString</process:parameterType>
+  </process:Output>
+  <process:Output rdf:ID="WeatherWebService_12_getSupportDataSet_Atomic_output_Body__http___WebXml.com.cn__DataSet">
+    <process:parameterType>Body:{http://WebXml.com.cn/}DataSet</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WeatherWebService_13_getWeatherbyCityName_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theCityName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WeatherWebService_13_getWeatherbyCityName_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString">
+    <process:parameterType>Body:{http://WebXml.com.cn/}ArrayOfString</process:parameterType>
+  </process:Output>
+  <process:Input rdf:ID="WeatherWebService_14_getWeatherbyCityNamePro_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theCityName:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Input rdf:ID="WeatherWebService_14_getWeatherbyCityNamePro_Atomic_input_theUserID__http___www.w3.org_2001_XMLSchema_string">
+    <process:parameterType>theUserID:{http://www.w3.org/2001/XMLSchema}string</process:parameterType>
+  </process:Input>
+  <process:Output rdf:ID="WeatherWebService_14_getWeatherbyCityNamePro_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString">
+    <process:parameterType>Body:{http://WebXml.com.cn/}ArrayOfString</process:parameterType>
+  </process:Output>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_0_getSupportCity_Atomic">
+    <process:hasName>getSupportCity</process:hasName>
+    <process:hasInput rdf:resource="#WeatherWebService_0_getSupportCity_Atomic_input_byProvinceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#WeatherWebService_0_getSupportCity_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <process:hasPrecondition>The web service must have access to a database containing a list of cities supported by provinces.</process:hasPrecondition>
+    <process:hasEffect>The web service will return an array of strings representing the cities supported by the specified province.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_1_getSupportProvince_Atomic">
+    <process:hasName>getSupportProvince</process:hasName>
+    <process:hasOutput rdf:resource="#WeatherWebService_1_getSupportProvince_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <process:hasPrecondition>The web service must be accessible and operational.</process:hasPrecondition>
+    <process:hasEffect>The list of supported provinces will be returned in the response body.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_2_getSupportDataSet_Atomic">
+    <process:hasName>getSupportDataSet</process:hasName>
+    <process:hasOutput rdf:resource="#WeatherWebService_2_getSupportDataSet_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a dataset containing support data.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_3_getWeatherbyCityName_Atomic">
+    <process:hasName>getWeatherbyCityName</process:hasName>
+    <process:hasInput rdf:resource="#WeatherWebService_3_getWeatherbyCityName_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#WeatherWebService_3_getWeatherbyCityName_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <process:hasPrecondition>Inputs must be present and valid.</process:hasPrecondition>
+    <process:hasEffect>Operation completes and returns the specified outputs.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_4_getWeatherbyCityNamePro_Atomic">
+    <process:hasName>getWeatherbyCityNamePro</process:hasName>
+    <process:hasInput rdf:resource="#WeatherWebService_4_getWeatherbyCityNamePro_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#WeatherWebService_4_getWeatherbyCityNamePro_Atomic_input_theUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#WeatherWebService_4_getWeatherbyCityNamePro_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <process:hasPrecondition>The user must provide a valid city name and a valid user ID as input parameters.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of weather information for the specified city based on the provided user ID.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_5_getSupportCity_Atomic">
+    <process:hasName>getSupportCity</process:hasName>
+    <process:hasInput rdf:resource="#WeatherWebService_5_getSupportCity_Atomic_input_parameters__http___WebXml.com.cn__getSupportCity"/>
+    <process:hasOutput rdf:resource="#WeatherWebService_5_getSupportCity_Atomic_output_parameters__http___WebXml.com.cn__getSupportCityResponse"/>
+    <process:hasPrecondition>The web service must have access to the necessary data source containing information about supported cities.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing a list of supported cities.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_6_getSupportProvince_Atomic">
+    <process:hasName>getSupportProvince</process:hasName>
+    <process:hasInput rdf:resource="#WeatherWebService_6_getSupportProvince_Atomic_input_parameters__http___WebXml.com.cn__getSupportProvince"/>
+    <process:hasOutput rdf:resource="#WeatherWebService_6_getSupportProvince_Atomic_output_parameters__http___WebXml.com.cn__getSupportProvinceResponse"/>
+    <process:hasPrecondition>The web service must be accessible and the input parameter for getSupportProvince must be provided in the specified format.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing information about the supported provinces.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_7_getSupportDataSet_Atomic">
+    <process:hasName>getSupportDataSet</process:hasName>
+    <process:hasInput rdf:resource="#WeatherWebService_7_getSupportDataSet_Atomic_input_parameters__http___WebXml.com.cn__getSupportDataSet"/>
+    <process:hasOutput rdf:resource="#WeatherWebService_7_getSupportDataSet_Atomic_output_parameters__http___WebXml.com.cn__getSupportDataSetResponse"/>
+    <process:hasPrecondition>The web service must be accessible and support the operation getSupportDataSet with the specified input parameters from http://WebXml.com.cn/.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a response containing the support data set based on the input parameters provided.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_8_getWeatherbyCityName_Atomic">
+    <process:hasName>getWeatherbyCityName</process:hasName>
+    <process:hasInput rdf:resource="#WeatherWebService_8_getWeatherbyCityName_Atomic_input_parameters__http___WebXml.com.cn__getWeatherbyCityName"/>
+    <process:hasOutput rdf:resource="#WeatherWebService_8_getWeatherbyCityName_Atomic_output_parameters__http___WebXml.com.cn__getWeatherbyCityNameResponse"/>
+    <process:hasPrecondition>The user provides a valid city name as input parameter for the getWeatherbyCityName operation.</process:hasPrecondition>
+    <process:hasEffect>The web service returns weather information for the specified city in the getWeatherbyCityNameResponse output parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_9_getWeatherbyCityNamePro_Atomic">
+    <process:hasName>getWeatherbyCityNamePro</process:hasName>
+    <process:hasInput rdf:resource="#WeatherWebService_9_getWeatherbyCityNamePro_Atomic_input_parameters__http___WebXml.com.cn__getWeatherbyCityNamePro"/>
+    <process:hasOutput rdf:resource="#WeatherWebService_9_getWeatherbyCityNamePro_Atomic_output_parameters__http___WebXml.com.cn__getWeatherbyCityNameProResponse"/>
+    <process:hasPrecondition>The user provides a city name as input parameter for the getWeatherbyCityNamePro operation.</process:hasPrecondition>
+    <process:hasEffect>The operation returns weather information for the specified city in the getWeatherbyCityNameProResponse output parameter.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_10_getSupportCity_Atomic">
+    <process:hasName>getSupportCity</process:hasName>
+    <process:hasInput rdf:resource="#WeatherWebService_10_getSupportCity_Atomic_input_byProvinceName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#WeatherWebService_10_getSupportCity_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <process:hasPrecondition>The web service must have access to a database containing information about support cities by province name.</process:hasPrecondition>
+    <process:hasEffect>The web service will return an array of strings representing the support cities for the specified province name.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_11_getSupportProvince_Atomic">
+    <process:hasName>getSupportProvince</process:hasName>
+    <process:hasOutput rdf:resource="#WeatherWebService_11_getSupportProvince_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <process:hasPrecondition>The web service for retrieving support provinces is accessible and functional.</process:hasPrecondition>
+    <process:hasEffect>The response will contain an array of strings representing the supported provinces.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_12_getSupportDataSet_Atomic">
+    <process:hasName>getSupportDataSet</process:hasName>
+    <process:hasOutput rdf:resource="#WeatherWebService_12_getSupportDataSet_Atomic_output_Body__http___WebXml.com.cn__DataSet"/>
+    <process:hasPrecondition>The web service must be running and accessible.</process:hasPrecondition>
+    <process:hasEffect>The web service will return a DataSet containing support data.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_13_getWeatherbyCityName_Atomic">
+    <process:hasName>getWeatherbyCityName</process:hasName>
+    <process:hasInput rdf:resource="#WeatherWebService_13_getWeatherbyCityName_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#WeatherWebService_13_getWeatherbyCityName_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <process:hasPrecondition>The input must be a valid city name in string format.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of strings containing weather information for the specified city.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <process:AtomicProcess rdf:ID="WeatherWebService_14_getWeatherbyCityNamePro_Atomic">
+    <process:hasName>getWeatherbyCityNamePro</process:hasName>
+    <process:hasInput rdf:resource="#WeatherWebService_14_getWeatherbyCityNamePro_Atomic_input_theCityName__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasInput rdf:resource="#WeatherWebService_14_getWeatherbyCityNamePro_Atomic_input_theUserID__http___www.w3.org_2001_XMLSchema_string"/>
+    <process:hasOutput rdf:resource="#WeatherWebService_14_getWeatherbyCityNamePro_Atomic_output_Body__http___WebXml.com.cn__ArrayOfString"/>
+    <process:hasPrecondition>The user must provide a valid city name and a valid user ID as input parameters.</process:hasPrecondition>
+    <process:hasEffect>The operation will return an array of strings containing weather information for the specified city.</process:hasEffect>
+  </process:AtomicProcess>
+
+  <grounding:WsdlGrounding rdf:ID="WeatherWebService_Grounding">
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_0_getSupportCity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_1_getSupportProvince_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_2_getSupportDataSet_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_3_getWeatherbyCityName_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_4_getWeatherbyCityNamePro_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_5_getSupportCity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_6_getSupportProvince_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_7_getSupportDataSet_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_8_getWeatherbyCityName_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_9_getWeatherbyCityNamePro_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_10_getSupportCity_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_11_getSupportProvince_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_12_getSupportDataSet_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_13_getWeatherbyCityName_Grounding"/>
+    <grounding:hasAtomicProcessGrounding rdf:resource="#WeatherWebService_14_getWeatherbyCityNamePro_Grounding"/>
+  </grounding:WsdlGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_0_getSupportCity_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_0_getSupportCity_Atomic"/>
+    <grounding:wsdlOperationName>getSupportCity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportCityHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportCityHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_1_getSupportProvince_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_1_getSupportProvince_Atomic"/>
+    <grounding:wsdlOperationName>getSupportProvince</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportProvinceHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportProvinceHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_2_getSupportDataSet_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_2_getSupportDataSet_Atomic"/>
+    <grounding:wsdlOperationName>getSupportDataSet</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportDataSetHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportDataSetHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_3_getWeatherbyCityName_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_3_getWeatherbyCityName_Atomic"/>
+    <grounding:wsdlOperationName>getWeatherbyCityName</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getWeatherbyCityNameHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getWeatherbyCityNameHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_4_getWeatherbyCityNamePro_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_4_getWeatherbyCityNamePro_Atomic"/>
+    <grounding:wsdlOperationName>getWeatherbyCityNamePro</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceHttpPost</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceHttpPost</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getWeatherbyCityNameProHttpPostIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getWeatherbyCityNameProHttpPostOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_5_getSupportCity_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_5_getSupportCity_Atomic"/>
+    <grounding:wsdlOperationName>getSupportCity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportCitySoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportCitySoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_6_getSupportProvince_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_6_getSupportProvince_Atomic"/>
+    <grounding:wsdlOperationName>getSupportProvince</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportProvinceSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportProvinceSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_7_getSupportDataSet_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_7_getSupportDataSet_Atomic"/>
+    <grounding:wsdlOperationName>getSupportDataSet</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportDataSetSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportDataSetSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_8_getWeatherbyCityName_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_8_getWeatherbyCityName_Atomic"/>
+    <grounding:wsdlOperationName>getWeatherbyCityName</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getWeatherbyCityNameSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getWeatherbyCityNameSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_9_getWeatherbyCityNamePro_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_9_getWeatherbyCityNamePro_Atomic"/>
+    <grounding:wsdlOperationName>getWeatherbyCityNamePro</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceSoap</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceSoap</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getWeatherbyCityNameProSoapIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getWeatherbyCityNameProSoapOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_10_getSupportCity_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_10_getSupportCity_Atomic"/>
+    <grounding:wsdlOperationName>getSupportCity</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportCityHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportCityHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_11_getSupportProvince_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_11_getSupportProvince_Atomic"/>
+    <grounding:wsdlOperationName>getSupportProvince</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportProvinceHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportProvinceHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_12_getSupportDataSet_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_12_getSupportDataSet_Atomic"/>
+    <grounding:wsdlOperationName>getSupportDataSet</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getSupportDataSetHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getSupportDataSetHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_13_getWeatherbyCityName_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_13_getWeatherbyCityName_Atomic"/>
+    <grounding:wsdlOperationName>getWeatherbyCityName</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getWeatherbyCityNameHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getWeatherbyCityNameHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+  <grounding:WsdlAtomicProcessGrounding rdf:ID="WeatherWebService_14_getWeatherbyCityNamePro_Grounding">
+    <grounding:owlsProcess rdf:resource="#WeatherWebService_14_getWeatherbyCityNamePro_Atomic"/>
+    <grounding:wsdlOperationName>getWeatherbyCityNamePro</grounding:wsdlOperationName>
+    <grounding:wsdlBinding>WeatherWebServiceHttpGet</grounding:wsdlBinding>
+    <grounding:wsdlPortType>WeatherWebServiceHttpGet</grounding:wsdlPortType>
+    <grounding:wsdlDocument>http://127.0.0.1/wsdl/628_627.wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage>getWeatherbyCityNameProHttpGetIn</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage>getWeatherbyCityNameProHttpGetOut</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
