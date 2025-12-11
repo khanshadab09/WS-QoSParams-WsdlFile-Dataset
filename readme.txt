@@ -1,5 +1,3 @@
-# WS-QoSParams-WsdlFile-Dataset
-The dataset for Web services includes QoS parameter details and their corresponding WSDL files
 ----------------------------------------------------------------------------------
  * README document for the Integrated Dataset, which incorporates QoS parameters 
    along with OWL-S Semantic Web Service descriptions presented in dual formats — 
@@ -103,3 +101,4 @@ The dataset for Web services includes QoS parameter details and their correspond
    THANKS!
 
 	
+
