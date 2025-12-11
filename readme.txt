@@ -33,6 +33,8 @@
 +-----------------------+------------------+------------------------+-------------+
 
  * It is available for downloading at: 
+   https://github.com/khanshadab09/WS-QoSParams-WsdlFile-Dataset.git
+ * View the details about the dataset at:
    https://khanshadab09.github.io/WS-QoSParams-WsdlFile-Dataset/
 ----------------------------------------------------------------------------------
 			######## List of contents ########
@@ -103,5 +105,6 @@
    THANKS!
 
 	
+
 
 
