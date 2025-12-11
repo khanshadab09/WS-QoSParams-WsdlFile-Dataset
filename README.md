@@ -38,9 +38,9 @@ Each service is represented in both semantic formats, resulting in:
 +-----------------------+------------------+------------------------+-------------+
 ```
 
-Dataset download link:  
+- **Dataset download link:  
 https://github.com/khanshadab09/WS-QoSParams-WsdlFile-Dataset.git
-View the dataset details link:
+- **View the dataset details link:
 https://khanshadab09.github.io/WS-QoSParams-WsdlFile-Dataset/
 ---
 
