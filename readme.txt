@@ -61,7 +61,9 @@
 	the web services, presented in Natural Language and SWRL/KIF formats, 
 	respectively.
 
- * readme.txt
+* README.md
+
+* readme.txt
 ----------------------------------------------------------------------------------
 			######## References ########
 ----------------------------------------------------------------------------------
@@ -101,4 +103,5 @@
    THANKS!
 
 	
+
 
